@@ -6,7 +6,7 @@
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
             <!-- Heading of content -->
-            <x-settings-header>Novi povez</x-settings-header>
+            <x-settings-header/>
 
             <!-- Space for content -->
             <div class="scroll height-content section-content">

@@ -4,6 +4,7 @@
             <div>
                 <h1>
                     {{ $slot }}
+                    @yield('title')
                 </h1>
             </div>
             <div>
@@ -60,6 +61,7 @@
                         <li>
                             <a href="#" class="text-gray-400 hover:text-blue-600">
                                 {{ $slot }}
+                                @yield('title')
                             </a>
                         </li>
                     </ol>
