@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Script extends Model
 {
+
     use HasFactory;
+    protected $fillable = ['name'];
 }

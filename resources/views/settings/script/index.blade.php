@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Pismo
+        Pisma
     @endsection
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
@@ -40,6 +40,7 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white">
+                        @foreach($scripts as $script)
                             <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                 <td class="px-4 py-4 whitespace-no-wrap">
                                     <label class="inline-flex items-center">
@@ -47,7 +48,7 @@
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-4">
-                                    <p>Cirilica</p>
+                                    <p>{{$script->name}}</p>
                                 </td>
                                 <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                                     <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsScript hover:text-[#606FC7]">
@@ -58,25 +59,26 @@
                                         <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                             aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                             <div class="py-1">
-                                                <a href="editPismo.php" tabindex="0"
+                                                <a href="{{route('script.edit' , $script)}}" tabindex="0"
                                                     class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                     role="menuitem">
                                                     <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                                     <span class="px-4 py-0">Izmijeni pismo</span>
                                                 </a>
-                                                <form method="POST" action="{{ route('script.destroy', $publisher) }}" enctype="multipart/form-data" tabindex="0"
+                                                <form method="POST" action="{{ route('script.destroy', $script) }}" enctype="multipart/form-data" tabindex="0"
                                                       class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                       role="menuitem">
                                                     @csrf
                                                     @method('DELETE')
                                                     <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                                    <button type="submit"><span class="px-4 py-0">Izbrisi izdavača</span></button>
+                                                    <button type="submit"><span class="px-4 py-0">Izbrisi Pismo</span></button>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
+                        @endforeach
                         </tbody>
                     </table>
 
@@ -89,21 +91,18 @@
                                 class=" text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
                                 name="ucenici">
                                 <option value="">
+                                  5
+                                </option>
+                                <option value="">
+                                 10
+                                </option>
+                                <option value="">
+                                    15
+                                </option>
+                                <option value="">
                                     20
                                 </option>
-                                <option value="">
-                                    Option1
-                                </option>
-                                <option value="">
-                                    Option2
-                                </option>
-                                <option value="">
-                                    Option3
-                                </option>
-                                <option value="">
-                                    Option4
-                                </option>
-                            </select>
+                          </select>
                         </div>
 
                         <div>
