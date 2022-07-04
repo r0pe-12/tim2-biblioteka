@@ -3,7 +3,7 @@
         Povez
     @endsection
 
-    
+
 
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
@@ -17,8 +17,8 @@
                     </div>
                 </div>
             </div>
-            
-        
+
+
                 <x-settings-nav/>
             <div class="height-kategorije pb-[30px] scroll">
                 <x-flash-msg/>
@@ -28,8 +28,8 @@
                         <i class="fas fa-plus mr-[15px]"></i> Novi povez
                     </a>
                 </div>
-              
-     
+
+
 
                 <div
                     class="inline-block min-w-full px-[50px] pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
@@ -100,20 +100,18 @@
                                 class=" text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
                                 name="ucenici">
                                 <option value="">
-                                    20
+                                   5
                                 </option>
                                 <option value="">
-                                    Option1
+                                   10
                                 </option>
                                 <option value="">
-                                    Option2
+                                   15
                                 </option>
                                 <option value="">
-                                    Option3
+                                   20
                                 </option>
-                                <option value="">
-                                    Option4
-                                </option>
+
                             </select>
                         </div>
 

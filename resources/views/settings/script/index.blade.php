@@ -91,10 +91,10 @@
                                 class=" text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
                                 name="ucenici">
                                 <option value="">
-                                  5
+                                    5
                                 </option>
                                 <option value="">
-                                 10
+                                    10
                                 </option>
                                 <option value="">
                                     15
