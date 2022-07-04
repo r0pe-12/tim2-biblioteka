@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Genre;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class GenreController extends Controller
 {
@@ -14,7 +16,8 @@ class GenreController extends Controller
     public function index()
     {
         //
-        return view('settings.genre.index');
+        $genres = Genre::latest()->get();
+        return view('settings.genre.index', compact('genres'));
     }
 
     /**
@@ -32,11 +35,21 @@ class GenreController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nazivZanra' => 'required|string'
+        ]);
+
+        $genre = new Genre([
+            'name' => $request->nazivZanra,
+        ]);
+
+        $genre->save();
+        return \redirect()->route('genre.index')->with('success', 'Novi žanr "' . $genre->name . '" je uspješno kreiran');
     }
 
     /**
@@ -54,11 +67,12 @@ class GenreController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(Genre $genre)
     {
         //
+        return view('settings.genre.edit', compact('genre'));
     }
 
     /**
@@ -66,21 +80,38 @@ class GenreController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Genre $genre)
     {
         //
+        $request->validate([
+            'nazivZanrEdit' => 'required|string'
+        ]);
+
+        $genre->name = $request->nazivZanrEdit;
+
+        if ($genre->isClean()){
+//            if genre name is unchanged we throw form validation error
+            throw ValidationException::withMessages([
+                'nazivZanrEdit' => 'Polje je nepromijenjeno'
+            ]);
+        }
+        $genre->save();
+
+        return redirect()->route('genre.index')->with('success', 'Žanr uspješno izmijenjen');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Genre $genre)
     {
         //
+        $genre->delete();
+        return redirect()->route('genre.index')->with('success', 'Žanr "' . $genre->name . '" je uspješno obrisan');
     }
 }
