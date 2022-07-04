@@ -40,4 +40,4 @@
             </div>
         </section>
         <!-- End Content -->
-</x-layout>>
+</x-layout>
