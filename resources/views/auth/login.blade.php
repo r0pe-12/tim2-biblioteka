@@ -30,21 +30,25 @@
                     <form class="px-12 pt-6 pb-4 mb-4 bg-white rounded shadow-lg" method="POST" action="{{ route('login') }}">
                         @csrf
                         @method('POST')
+
                         <div class="flex justify-center py-2 mb-4 text-2xl text-gray-800 border-b-2">
                             Online Biblioteka - Login
                         </div>
+
+                            @error('email')
+                            <span class="invalid-feedback text-sm text-red-500" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+
                         <div class="mb-4">
                             <label class="block mb-2 text-sm font-normal text-gray-700" for="email">
                                 Email
                             </label>
+
                             <input
-                                class="w-full @error('email') is-invalid @enderror px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                 name="email"  type="email" required autofocus placeholder="Email" value="{{ old('email') }}">
-                            @error('email')
-                                <span class="invalid-feedback text-sm text-red-500" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
 
                         <div class="mb-6">
@@ -52,11 +56,11 @@
                                 Password
                             </label>
                             <input
-                                class="w-full @error('password') is-invalid @enderror px-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                class="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                 type="password" placeholder="Password" name="password" required autocomplete="current-password"
                             />
                             @error('password')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback text-sm text-red-500" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
