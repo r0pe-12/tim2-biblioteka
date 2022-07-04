@@ -262,20 +262,18 @@
                                 class=" text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
                                 name="ucenici">
                                 <option value="">
+                                    5
+                                </option>
+                                <option value="">
+                                    10
+                                </option>
+                                <option value="">
+                                    15
+                                </option>
+                                <option value="">
                                     20
                                 </option>
-                                <option value="">
-                                    Option1
-                                </option>
-                                <option value="">
-                                    Option2
-                                </option>
-                                <option value="">
-                                    Option3
-                                </option>
-                                <option value="">
-                                    Option4
-                                </option>
+
                             </select>
                         </div>
 
