@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\BookBind;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Session;
 
 class BookBindController extends Controller
 {
@@ -14,7 +17,8 @@ class BookBindController extends Controller
     public function index()
     {
         //
-        return view('settings.bookBind.index');
+        $bookbinds = BookBind::latest()->get();
+        return view('settings.bookBind.index', compact('bookbinds'));
     }
 
     /**
@@ -37,6 +41,25 @@ class BookBindController extends Controller
     public function store(Request $request)
     {
         //
+
+        $request->validate([
+
+            'nazivPovez' => 'required|string'
+
+        ]);
+
+        $bookbind = new BookBind([
+
+            'name' => $request->nazivPovez
+
+        ]);
+
+        $bookbind->save();
+       // return \redirect()->route('bookbind.index')->with('success', 'Novi povez "' . $bookbind->name . '" je uspješno kreiran');
+       return \redirect()->route('bookbind.index')->with('success', 'Novi povez "' . $bookbind->name . '" je uspješno kreiran');
+       
+
+
     }
 
     /**
@@ -56,9 +79,12 @@ class BookBindController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(BookBind $bookbind)
     {
         //
+
+        return view('settings.bookBind.edit', compact('bookbind'));
+
     }
 
     /**
@@ -68,10 +94,29 @@ class BookBindController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, BookBind $bookbind)
     {
         //
-    }
+        $request->validate([
+
+            'nazivPovezEdit' => 'required|string'
+
+        ]);
+
+        $bookbind->name = $request->nazivPovezEdit;
+
+        if ($bookbind->isClean()){
+                        throw ValidationException::withMessages([
+                            'nazivPovezEdit' => 'Polje je nepromijenjeno'
+                        ]);
+                    }
+                    $bookbind->save();
+                    return redirect()->route('bookbind.index')->with('success', 'Povez uspješno izmijenjen');
+            
+                    
+                }
+            
+
 
     /**
      * Remove the specified resource from storage.
@@ -79,8 +124,13 @@ class BookBindController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BookBind $bookbind)
     {
         //
+        $bookbind->delete();
+        return redirect()->route('bookbind.index')->with('success', 'Povez "' . $bookbind->name . '" je uspješno obrisan');
+
+       
+
     }
 }
