@@ -16,7 +16,7 @@ class ScriptController extends Controller
     public function index()
     {
         //
-$scripts= Script::all()->sortDesc();
+        $scripts = Script::all()->sortDesc();
         return view('settings.script.index', compact('scripts'));
     }
 
@@ -90,9 +90,9 @@ $scripts= Script::all()->sortDesc();
     public function update(Request $request, Script $script)
     {
         //
-$request->validate([
-   'nazivPismoEdit'=> 'required|string|max:50'
-]);
+        $request->validate([
+           'nazivPismoEdit'=> 'required|string|max:50'
+        ]);
         $script->name = $request->nazivPismoEdit;
 
         if
