@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Script;
 use Illuminate\Http\Request;
 
 class ScriptController extends Controller
@@ -54,11 +55,12 @@ class ScriptController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(Script $script)
     {
         //
+        return view('settings.script.edit', compact('script'));
     }
 
     /**
