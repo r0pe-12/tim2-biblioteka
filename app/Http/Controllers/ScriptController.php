@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Script;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class ScriptController extends Controller
 {
@@ -15,7 +16,8 @@ class ScriptController extends Controller
     public function index()
     {
         //
-        return view('settings.script.index');
+        $scripts = Script::all()->sortDesc();
+        return view('settings.script.index', compact('scripts'));
     }
 
     /**
@@ -26,18 +28,33 @@ class ScriptController extends Controller
     public function create()
     {
         //
+
         return view('settings.script.create');
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         //
+     $request->validate([
+         'nazivPismo'=> 'required|string|max:50'
+
+     ]);
+     $script = new Script([
+         'name'=> $request->nazivPismo,
+
+
+     ]);
+     $script->save();
+
+        return redirect()->route('script.index')->with('success', 'Novo Pismo "' . $script->name . '" je uspješno kreirano');
+
     }
 
     /**
@@ -68,21 +85,41 @@ class ScriptController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Script $script)
     {
         //
+        $request->validate([
+           'nazivPismoEdit'=> 'required|string|max:50'
+        ]);
+        $script->name = $request->nazivPismoEdit;
+
+        if
+        ($script->isClean()){
+
+            throw ValidationException::withMessages([
+                'nazivPismoEdit' => 'Polje je nepromijenjeno'
+            ]);
+        }
+        $script->save();
+
+        return redirect()->route('script.index')->with('success', 'Pismo uspješno izmijenjeno');
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Script $script)
     {
         //
+        $script->delete();
+        return redirect()->route('script.index')->with('success', 'Pismo "' . $script->name . '" je uspješno obrisano');
     }
 }
