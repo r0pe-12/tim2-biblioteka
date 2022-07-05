@@ -25,7 +25,7 @@
 <body>
     <!-- Main Content -->
     <main class="h-screen small:hidden bg-login">
-        <div class="flex items-center justify-center pt-[13%]">
+        <div class="flex items-center justify-center" style="padding-top: 15%">
             <div class="w-full" style="max-width: 500px">
                 @if (session('status'))
                     <div class="bg-blue-100 border-t flex items-center border-b border-blue-500 text-blue-700 px-4 py-3" style="background-color:#34d399" role="alert">

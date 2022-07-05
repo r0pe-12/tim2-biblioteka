@@ -36,12 +36,6 @@
                     Online Biblioteka - Type new password
                 </div>
 
-                @error('email')
-                        <span class="invalid-feedback text-sm text-red-500" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                @enderror
-
                 <div class="mb-4">
                     <label class="block mb-2 text-sm font-normal text-gray-700" for="email">
                         {{ __('Email Address') }}
@@ -50,6 +44,7 @@
                     <input
                         id="email" class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                         name="email"  type="email" required autofocus placeholder="Email" value="{{ $email ?? old('email') }}">
+
                     @error('email')
                         <span class="invalid-feedback text-sm text-red-500" role="alert">
                             <strong>{{ $message }}</strong>
