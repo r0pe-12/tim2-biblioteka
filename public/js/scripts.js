@@ -453,13 +453,13 @@ function validacijaBibliotekarEdit() {
     $('#validateUsernameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisnicko ime!</p>');
   }
 
-  if (pwBibliotekarEdit.length == 0) {
-    $('#validatePwBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti sifru!</p>');
-  }
-
-  if (pw2BibliotekarEdit.length == 0) {
-    $('#validatePw2BibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate ponoviti sifru!</p>');
-  }
+  // if (pwBibliotekarEdit.length == 0) {
+  //   $('#validatePwBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti sifru!</p>');
+  // }
+  //
+  // if (pw2BibliotekarEdit.length == 0) {
+  //   $('#validatePw2BibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate ponoviti sifru!</p>');
+  // }
 }
 
 function clearErrorsNameBibliotekarEdit() {

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LibrarianController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/librarians', LibrarianController::class);
+Route::put('/librarians/{user}/resetPassword', [LibrarianController::class, 'passwordReset'])->name('librarian.pwreset');
