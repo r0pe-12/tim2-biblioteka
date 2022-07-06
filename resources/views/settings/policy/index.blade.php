@@ -17,62 +17,67 @@
                 <x-settings-nav/>
             <div class="height-ucenikProfile pb-[30px] scroll">
                 <!-- Space for content -->
+                    <x-flash-msg/>
                 <div class="section- mt-[20px]">
                     <div class="flex flex-col">
-                        <div class="pl-[30px] flex border-b-[1px] border-[#e4dfdf]  pb-[20px]">
-                            <div>
-                                <h3>
-                                    Rok za rezervaciju
-                                </h3>
-                                <p class="pt-[15px] max-w-[400px]">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eligendi nihil, vel
-                                    necessitatibus saepe laboriosam! Perspiciatis laboriosam culpa veritatis ea
-                                    voluptatum commodi tempora unde, dolorum debitis quia id dicta vitae.
-                                </p>
+                        {!! Form::open(['method'=>'post', 'action' => 'PolicyController@store']) !!}
+                            @csrf
+                            <div class="pl-[30px] flex border-b-[1px] border-[#e4dfdf]  pb-[20px]">
+                                <div>
+                                    <h3>
+                                        Rok za rezervaciju
+                                    </h3>
+                                    <p class="pt-[15px] max-w-[400px]">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eligendi nihil, vel
+                                        necessitatibus saepe laboriosam! Perspiciatis laboriosam culpa veritatis ea
+                                        voluptatum commodi tempora unde, dolorum debitis quia id dicta vitae.
+                                    </p>
+                                </div>
+                                <div class="relative flex ml-[60px] mt-[20px]">
+                                    <input type="text" name="reservation_deadline" value="{{ $reservation }}"
+                                        class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                                        placeholder="..." />
+                                    <p class="ml-[10px] mt-[10px]">dana</p>
+                                </div>
                             </div>
-                            <div class="relative flex ml-[60px] mt-[20px]">
-                                <input type="text"
-                                    class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                                    placeholder="..." />
-                                <p class="ml-[10px] mt-[10px]">dana</p>
+                            <div class="pl-[30px] flex border-b-[1px] border-[#e4dfdf]  py-[20px]">
+                                <div>
+                                    <h3>
+                                        Rok vracanja
+                                    </h3>
+                                    <p class="pt-[15px] max-w-[400px]">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eligendi nihil, vel
+                                        necessitatibus saepe laboriosam! Perspiciatis laboriosam culpa veritatis ea
+                                        voluptatum commodi tempora unde, dolorum debitis quia id dicta vitae.
+                                    </p>
+                                </div>
+                                <div class="relative flex ml-[60px] mt-[20px]">
+                                    <input type="text" name="return_deadline" value="{{ $return }}"
+                                        class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                                        placeholder="..." />
+                                    <p class="ml-[10px] mt-[10px]">dana</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="pl-[30px] flex border-b-[1px] border-[#e4dfdf]  py-[20px]">
-                            <div>
-                                <h3>
-                                    Rok vracanja
-                                </h3>
-                                <p class="pt-[15px] max-w-[400px]">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eligendi nihil, vel
-                                    necessitatibus saepe laboriosam! Perspiciatis laboriosam culpa veritatis ea
-                                    voluptatum commodi tempora unde, dolorum debitis quia id dicta vitae.
-                                </p>
+                            <div class="pl-[30px] flex border-b-[1px] border-[#e4dfdf]  py-[20px]">
+                                <div>
+                                    <h3>
+                                        Rok konflikta
+                                    </h3>
+                                    <p class="pt-[15px] max-w-[400px]">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eligendi nihil, vel
+                                        necessitatibus saepe laboriosam! Perspiciatis laboriosam culpa veritatis ea
+                                        voluptatum commodi tempora unde, dolorum debitis quia id dicta vitae.
+                                    </p>
+                                </div>
+                                <div class="relative flex ml-[60px] mt-[20px]">
+                                    <input type="text" name="conflict_deadline" value="{{ $conflict }}"
+                                        class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                                        placeholder="..." />
+                                    <p class="ml-[10px] mt-[10px]">dana</p>
+                                </div>
                             </div>
-                            <div class="relative flex ml-[60px] mt-[20px]">
-                                <input type="text"
-                                    class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                                    placeholder="..." />
-                                <p class="ml-[10px] mt-[10px]">dana</p>
-                            </div>
-                        </div>
-                        <div class="pl-[30px] flex border-b-[1px] border-[#e4dfdf]  py-[20px]">
-                            <div>
-                                <h3>
-                                    Rok konflikta
-                                </h3>
-                                <p class="pt-[15px] max-w-[400px]">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eligendi nihil, vel
-                                    necessitatibus saepe laboriosam! Perspiciatis laboriosam culpa veritatis ea
-                                    voluptatum commodi tempora unde, dolorum debitis quia id dicta vitae.
-                                </p>
-                            </div>
-                            <div class="relative flex ml-[60px] mt-[20px]">
-                                <input type="text"
-                                    class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                                    placeholder="..." />
-                                <p class="ml-[10px] mt-[10px]">dana</p>
-                            </div>
-                        </div>
+                        <input type="submit" hidden>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
