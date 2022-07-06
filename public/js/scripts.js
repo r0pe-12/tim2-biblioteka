@@ -1065,17 +1065,25 @@ $("#sacuvajKategorijuEdit").keypress(function (e) {
 // Form validation for new author
 function validacijaAutor() {
 
-  $("#validateImePrezimeAutor").empty();
+  $("#validateImeAutor").empty();
+  $("#validatePrezimeAutor").empty();
 
-  let imePrezimeAutor = $("#imePrezimeAutor").val();
+  let imeAutor = $("#imeAutor").val();
+  let prezimeAutor = $("#prezimeAutor").val();
 
-  if (imePrezimeAutor.length == 0) {
-    $('#validateImePrezimeAutor').append('<p style="color:red;font-size:13px;">Morate unijeti ime i prezime autora!</p>');
+  if (imeAutor.length == 0) {
+    $('#validateImeAutor').append('<p style="color:red;font-size:13px;">Morate unijeti ime autora!</p>');
+  }
+  if (prezimeAutor.length == 0) {
+    $('#validatePrezimeAutor').append('<p style="color:red;font-size:13px;">Morate unijeti prezime autora!</p>');
   }
 }
 
-function clearErrorsImePrezimeAutor() {
-  $("#validateImePrezimeAutor").empty();
+function clearErrorsImeAutor() {
+  $("#validateImeAutor").empty();
+}
+function clearErrorsPrezimeAutor() {
+  $("#validatePrezimeAutor").empty();
 }
 
 $("#sacuvajAutora").keypress(function (e) {
@@ -1088,17 +1096,25 @@ $("#sacuvajAutora").keypress(function (e) {
 // Form validation for editing author info
 function validacijaAutorEdit() {
 
-  $("#validateImePrezimeAutorEdit").empty();
+  $("#validateImeAutorEdit").empty();
+  $("#validatePrezimeAutorEdit").empty();
 
-  let imePrezimeAutorEdit = $("#imePrezimeAutorEdit").val();
+  let imeAutorEdit = $("#imeAutorEdit").val();
+  let prezimeAutorEdit = $("#prezimeAutorEdit").val();
 
-  if (imePrezimeAutorEdit.length == 0) {
-    $('#validateImePrezimeAutorEdit').append('<p style="color:red;font-size:13px;">Morate unijeti ime i prezime autora!</p>');
+  if (imeAutorEdit.length == 0) {
+    $('#validateImeAutorEdit').append('<p style="color:red;font-size:13px;">Morate unijeti ime autora!</p>');
+  }
+  if (prezimeAutorEdit.length == 0) {
+    $('#validatePrezimeAutorEdit').append('<p style="color:red;font-size:13px;">Morate unijeti prezime autora!</p>');
   }
 }
 
-function clearErrorsImePrezimeAutorEdit() {
-  $("#validateImePrezimeAutorEdit").empty();
+function clearErrorsImeAutorEdit() {
+  $("#validateImeAutorEdit").empty();
+}
+function clearErrorsPrezimeAutorEdit() {
+  $("#validatePrezimeAutorEdit").empty();
 }
 
 $("#sacuvajAutoraEdit").keypress(function (e) {
