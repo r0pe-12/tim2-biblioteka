@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Format;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class FormatController extends Controller
 {
@@ -14,7 +16,8 @@ class FormatController extends Controller
     public function index()
     {
         //
-        return view('settings.format.index');
+        $formats = Format::latest()->get();
+        return view('settings.format.index', compact('formats'));
     }
 
     /**
@@ -32,11 +35,21 @@ class FormatController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nazivFormat' => ['required', 'max:255']
+        ]);
+
+        $format = new Format([
+            'name' => $request->nazivFormat
+        ]);
+
+        $format->save();
+        return redirect()->route('format.index')->with('success', 'Novi format "' . $format->name . '" je uspješno kreiran');
     }
 
     /**
@@ -54,11 +67,12 @@ class FormatController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(Format $format)
     {
         //
+        return view('settings.format.edit', compact('format'));
     }
 
     /**
@@ -66,21 +80,39 @@ class FormatController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Format $format)
     {
         //
+        $request->validate([
+            'nazivFormatEdit' => ['required', 'max:255']
+        ]);
+
+        $format->name = $request->nazivFormatEdit;
+
+        if ($format->isClean()){
+//            if format name is unchanged we throw form validation error
+            throw ValidationException::withMessages([
+                'nazivFormatEdit' => 'Polje je nepromijenjeno'
+            ]);
+        }
+        $format->save();
+
+        return redirect()->route('format.index')->with('success', 'Format uspješno izmijenjen');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Format $format)
     {
         //
+        $format->delete();
+        return redirect()->route('format.index')->with('success', 'Format "' . $format->name . '" je uspješno obrisan');
+
     }
 }
