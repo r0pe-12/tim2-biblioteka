@@ -349,6 +349,7 @@ $(".deniedBook").click(function () {
 function validacijaBibliotekar() {
 
   $("#validateNameBibliotekar").empty();
+  $("#validateSurnameBibliotekar").empty();
   $("#validateJmbgBibliotekar").empty();
   $("#validateEmailBibliotekar").empty();
   $("#validateUsernameBibliotekar").empty();
@@ -356,7 +357,8 @@ function validacijaBibliotekar() {
   $("#validatePw2Bibliotekar").empty();
 
 
-  let nameBibliotekar = $("#imePrezimeBibliotekar").val();
+  let nameBibliotekar = $("#imeBibliotekar").val();
+  let surnameBibliotekar = $("#prezimeBibliotekar").val();
   let jmbgBibliotekar = $("#jmbgBibliotekar").val();
   let emailBibliotekar = $("#emailBibliotekar").val();
   let usernameBibliotekar = $("#usernameBibliotekar").val();
@@ -364,7 +366,10 @@ function validacijaBibliotekar() {
   let pw2Bibliotekar = $("#pw2Bibliotekar").val();
 
   if (nameBibliotekar.length == 0) {
-    $('#validateNameBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti ime i prezime!</p>');
+    $('#validateNameBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti ime!</p>');
+  }
+  if (surnameBibliotekar.length == 0) {
+    $('#validateSurnameBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti prezime!</p>');
   }
 
   if (jmbgBibliotekar.length == 0) {
@@ -390,6 +395,9 @@ function validacijaBibliotekar() {
 
 function clearErrorsNameBibliotekar() {
   $("#validateNameBibliotekar").empty();
+}
+function clearErrorsSurnameBibliotekar() {
+  $("#validateSurnameBibliotekar").empty();
 }
 
 function clearErrorsJmbgBibliotekar() {
@@ -430,7 +438,8 @@ function validacijaBibliotekarEdit() {
   $("#validatePw2BibliotekarEdit").empty();
 
 
-  let nameBibliotekarEdit = $("#imePrezimeBibliotekarEdit").val();
+  let nameBibliotekarEdit = $("#imeBibliotekarEdit").val();
+  let surnameBibliotekarEdit = $("#prezimeBibliotekarEdit").val();
   let jmbgBibliotekarEdit = $("#jmbgBibliotekarEdit").val();
   let emailBibliotekarEdit = $("#emailBibliotekarEdit").val();
   let usernameBibliotekarEdit = $("#usernameBibliotekarEdit").val();
@@ -438,7 +447,10 @@ function validacijaBibliotekarEdit() {
   let pw2BibliotekarEdit = $("#pw2BibliotekarEdit").val();
 
   if (nameBibliotekarEdit.length == 0) {
-    $('#validateNameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti ime i prezime!</p>');
+    $('#validateNameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti ime!</p>');
+  }
+  if (surnameBibliotekarEdit.length == 0) {
+    $('#validateSurnameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti prezime!</p>');
   }
 
   if (jmbgBibliotekarEdit.length == 0) {
@@ -464,6 +476,9 @@ function validacijaBibliotekarEdit() {
 
 function clearErrorsNameBibliotekarEdit() {
   $("#validateNameBibliotekarEdit").empty();
+}
+function clearErrorsSurnameBibliotekarEdit() {
+  $("#validateSurnameBibliotekarEdit").empty();
 }
 
 function clearErrorsJmbgBibliotekarEdit() {

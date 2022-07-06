@@ -20,7 +20,7 @@ class BookBindController extends Controller
         $bookbinds = BookBind::latest()->get();
         return view('settings.bookBind.index', compact('bookbinds'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *

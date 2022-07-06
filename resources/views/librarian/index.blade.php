@@ -66,7 +66,7 @@
                                         <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{ $librarian->photoPath }}"
                                             alt="" />
                                         <a href="{{ route('librarians.show', $librarian->username) }}">
-                                            <span class="font-medium text-center">{{ $librarian->name }}</span>
+                                            <span class="font-medium text-center">{{ $librarian->name }} {{ $librarian->surname }}</span>
                                         </a>
                                     </td>
                                     <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
