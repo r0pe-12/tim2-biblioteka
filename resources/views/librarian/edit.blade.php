@@ -43,10 +43,16 @@
                     <div class="flex flex-row ml-[30px]">
                         <div class="w-[50%] mb-[100px]">
                             <div class="mt-[20px]">
-                                <span>Ime i prezime <span class="text-red-500">*</span></span>
-                                <input type="text" name="imePrezimeBibliotekarEdit" id="imePrezimeBibliotekarEdit" value="{{ $librarian->name }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekarEdit()"/>
+                                <span>Ime <span class="text-red-500">*</span></span>
+                                <input type="text" name="imeBibliotekarEdit" id="imeBibliotekarEdit" value="{{ $librarian->name }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekarEdit()"/>
                                 <div id="validateNameBibliotekarEdit"></div>
                                 @error('name') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                            </div>
+                            <div class="mt-[20px]">
+                                <span>Prezime <span class="text-red-500">*</span></span>
+                                <input type="text" name="prezimeBibliotekarEdit" id="prezimeBibliotekarEdit" value="{{ $librarian->surname }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsSurnameBibliotekarEdit()"/>
+                                <div id="validateSurnameBibliotekarEdit"></div>
+                                @error('surname') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
@@ -80,14 +86,14 @@
                             </div>
 
                             <div class="mt-[20px]">
-                                <span>Sifra <span class="text-red-500">*</span></span>
+                                <span>Šifra <span class="text-red-500">*</span></span>
                                 <input type="password" name="pwBibliotekarEdit" id="pwBibliotekarEdit" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
                                 <div id="validatePwBibliotekarEdit"></div>
                                 @error('password') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
-                                <span>Ponovi sifru <span class="text-red-500">*</span></span>
+                                <span>Ponovi šifru <span class="text-red-500">*</span></span>
                                 <input type="password" name="pw2BibliotekarEdit" id="pw2BibliotekarEdit" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
                                 <div id="validatePw2BibliotekarEdit"></div>
                             </div>

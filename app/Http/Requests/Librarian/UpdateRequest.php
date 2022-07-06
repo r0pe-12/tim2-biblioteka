@@ -25,11 +25,12 @@ class UpdateRequest extends FormRequest
     {
         return [
             //
-            "name" => 'required',
-            "JBMG" => ['required', 'numeric'],
-            "email" => ['required', 'email'],
-            "username" => ['required'],
-            "password" => ['confirmed'],
+            "name" => ['required', 'max:255'],
+            "surname" => ['required', 'max:255'],
+            "JBMG" => ['required', 'numeric', 'max:255'],
+            "email" => ['required', 'email', 'max:255'],
+            "username" => ['required', 'max:255'],
+            "password" => ['confirmed', 'max:255'],
             "photoPath" => ['']
         ];
     }
@@ -41,7 +42,8 @@ class UpdateRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->replace([
-            "name" => $this->imePrezimeBibliotekarEdit,
+            "name" => $this->imeBibliotekarEdit,
+            "surname" => $this->prezimeBibliotekarEdit,
             "JBMG" => $this->jmbgBibliotekarEdit,
             "email" => $this->emailBibliotekarEdit,
             "username" => $this->usernameBibliotekarEdit,

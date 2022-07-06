@@ -14,4 +14,10 @@ class Role extends Model
         # code
         return $this->hasMany(User::class);
     }
+
+//    accessor for role name
+    public function getNameAttribute($name){
+        # code
+        return ucwords($name);
+    }
 }

@@ -25,12 +25,14 @@ class CreateRequest extends FormRequest
     {
         return [
             //
-            "name" => 'required',
-            "JBMG" => ['required', 'numeric'],
-            "email" => ['required', 'email'],
-            "username" => ['required'],
-            "password" => ['required', 'confirmed'],
-            'photoPath' => ['mimes:jpg,bmp,png,jpeg,webp']
+            "name" => ['required', 'max:255'],
+            "surname" => ['required', 'max:255'],
+            "JBMG" => ['required', 'numeric', 'max:255'],
+            "email" => ['required', 'email', 'max:255'],
+            "username" => ['required', 'max:255'],
+            "password" => ['confirmed','min:8' , 'max:255'],
+            "photoPath" => [''],
+//            'photoPath' => ['mimes:jpg,bmp,png,jpeg,webp']
         ];
     }
     /**
@@ -41,7 +43,8 @@ class CreateRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->replace([
-            "name" => $this->imePrezimeBibliotekar,
+            "name" => $this->imeBibliotekar,
+            "surname" => $this->prezimeBibliotekar,
             "JBMG" => $this->jmbgBibliotekar,
             "email" => $this->emailBibliotekar,
             "username" => $this->usernameBibliotekar,

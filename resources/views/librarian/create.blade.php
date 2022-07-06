@@ -42,11 +42,19 @@
                     @method('POST')
                     <div class="flex flex-row ml-[30px]">
                         <div class="w-[50%] mb-[100px]">
-                        <div class="mt-[20px]">
-                                <span>Ime i prezime <span class="text-red-500">*</span></span>
-                                <input type="text" name="imePrezimeBibliotekar" id="imePrezimeBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()"/>
+{{--                            todo staviti odvojena polja za ime i prezime makes it lot easier --- tako zoran kaze--}}
+                            <div class="mt-[20px]">
+                                <span>Ime<span class="text-red-500">*</span></span>
+                                <input type="text" name="imeBibliotekar" id="imeBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()"/>
                                 <div id="validateNameBibliotekar"></div>
                                 @error('name') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                            </div>
+
+                            <div class="mt-[20px]">
+                                <span>Prezime <span class="text-red-500">*</span></span>
+                                <input type="text" name="prezimeBibliotekar" id="prezimeBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsSurnameBibliotekar()"/>
+                                <div id="validateSurnameBibliotekar"></div>
+                                @error('surname') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">

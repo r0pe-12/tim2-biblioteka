@@ -72,8 +72,12 @@
                 <div class="flex flex-row">
                     <div class="mr-[30px]">
                         <div class="mt-[20px]">
-                            <span class="text-gray-500">Ime i prezime</span>
+                            <span class="text-gray-500">Ime</span>
                             <p class="font-medium">{{ $librarian->name }}</p>
+                        </div>
+                        <div class="mt-[40px]">
+                            <span class="text-gray-500">Prezime</span>
+                            <p class="font-medium">{{ $librarian->surname }}</p>
                         </div>
                         <div class="mt-[40px]">
                             <span class="text-gray-500">Tip korisnika</span>
@@ -119,7 +123,7 @@
         <div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
             <!-- Modal Header -->
             <div class="flex items-center justify-between px-[30px] py-[20px] border-b">
-                <h3>Resetuj šifru: {{ $librarian->name }}</h3>
+                <h3>Resetuj šifru: {{ $librarian->name }} {{ $librarian->surname }}</h3>
                 <button class="text-black close-modal">&cross;</button>
             </div>
             <!-- Modal Body -->

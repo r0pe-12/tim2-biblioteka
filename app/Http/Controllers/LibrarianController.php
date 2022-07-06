@@ -91,6 +91,7 @@ class LibrarianController extends Controller
      */
     public function update(UpdateRequest $request, User $librarian)
     {
+//        todo mozda je dobra ideja da stavimo da username ne moze da se updatuje
         //
         $input = $request->validated();
         if (is_null($input['password'])){
@@ -139,6 +140,6 @@ class LibrarianController extends Controller
 
         $user->password = $request->password;
         $user->save();
-        return redirect()->back()->with('success', 'Šifra korisnika je uspješno resetovana');
+        return redirect()->back()->with('success', 'Šifra korisnika "' . $user->username . '" je uspješno resetovana');
     }
 }
