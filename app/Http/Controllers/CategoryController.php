@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use Illuminate\Validation\ValidationException;
 
 class CategoryController extends Controller
 {
@@ -14,7 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        return view('settings.category.index');
+        $categories = Category::latest()->get();
+        return view('settings.category.index', compact('categories'));
     }
 
     /**
@@ -37,6 +40,32 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $input = $request->validate([
+
+            'nazivKategorije' => ['required', 'string'],
+            'opisKategorije' => ['required', 'string', 'max:255'],
+            'iconPath' => []
+
+        ]);
+
+        if ($file = $request->file('iconPath')){
+            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
+            $file->storeAs('/images/categories', $name);
+            $input['iconPath'] = $name;
+        }
+
+        $category = new Category([
+
+            'name' => $input['nazivKategorije'],
+            'description' => $input['opisKategorije'],
+            'iconPath' => $input['iconPath']
+
+        ]);
+
+        $category->save();
+       return redirect()->route('category.index')->with('success', 'Nova kategorija "' . $category->name . '" je uspješno kreirana');
+
+
     }
 
     /**
@@ -56,9 +85,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
         //
+        return view('settings.category.edit', compact('category'));
     }
 
     /**
@@ -68,19 +98,56 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         //
-    }
+        $input = $request->validate([
 
+            'nazivKategorijeEdit' => ['required', 'string'],
+            'opisKategorijeEdit' => ['required', 'string', 'max:255'],
+            'iconPath' => []
+
+        ]);
+
+        if ($file = $request->file('iconPath')){
+            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
+            $file->storeAs('/images/categories', $name);
+            $input['iconPath'] = $name;
+
+            if (file_exists($iconPath = public_path() . $category->iconPath)){
+                unlink($iconPath);
+            }
+            $category->iconPath = $input['iconPath'];
+        } else{
+            unset($input['iconPath']);
+        }
+
+        $category->name = $request->nazivKategorijeEdit;
+        $category->description = $request->opisKategorijeEdit;
+
+        
+        $category->save();
+        return redirect()->route('category.index')->with('success', 'Kategorija uspješno izmijenjena');
+                    
+
+            
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         //
+        if (file_exists($iconPath = public_path() . $category->iconPath)){
+            unlink($iconPath);
+        }
+        $category->delete();
+        return redirect()->route('category.index')->with('success', 'Kategorija "' . $category->name . '" je uspješno obrisana');
+
+
+
     }
 }
