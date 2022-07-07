@@ -38,6 +38,7 @@
             <!-- Space for content -->
             <div class="scroll height-content section-content">
                 <form method="POST" class="text-gray-700 text-[14px] forma" action="{{ route('librarians.update', $librarian) }}" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="{{ $librarian->id }}">
                     @csrf
                     @method('PUT')
                     <div class="flex flex-row ml-[30px]">
@@ -68,7 +69,7 @@
                                 <span>JMBG <span class="text-red-500">*</span></span>
                                 <input type="text" name="jmbgBibliotekarEdit" id="jmbgBibliotekarEdit" value="{{ $librarian->JBMG }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekarEdit()"/>
                                 <div id="validateJmbgBibliotekarEdit"></div>
-                                @error('jbmg') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('JBMG') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">

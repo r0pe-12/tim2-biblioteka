@@ -40,18 +40,20 @@
                 <form method="POST" class="text-gray-700 text-[14px] forma" action="{{ route('librarians.store') }}" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
+{{--                    todo cudne stvari se odje desavaju naime: koristim prepare for validation funkciju jer su ova polja na srpskom a u bazi na end...., kad hocu greske da izbacim koristim ovo sto prodje validaciju, a kad hocu old() onda moram ovo na srpki da kucam--}}
+{{--                    todo da li moramo imati ovu js validaciju na cliend side ako da onda se treba nekako staviti da to radi kako treba da ne submituje formu preko te validacije a ako ne treba onda mozemo ovaj .js sto su nam dali da zajebemo skroz al onda se javlja problem jer njihov templejt koristi taj js === NE ZNAM STA DA RADIM--}}
                     <div class="flex flex-row ml-[30px]">
                         <div class="w-[50%] mb-[100px]">
                             <div class="mt-[20px]">
                                 <span>Ime<span class="text-red-500">*</span></span>
-                                <input type="text" name="imeBibliotekar" id="imeBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()"/>
+                                <input type="text" value="{{ old('imeBibliotekar') }}" name="imeBibliotekar" id="imeBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()"/>
                                 <div id="validateNameBibliotekar"></div>
                                 @error('name') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
                                 <span>Prezime <span class="text-red-500">*</span></span>
-                                <input type="text" name="prezimeBibliotekar" id="prezimeBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsSurnameBibliotekar()"/>
+                                <input type="text" value="{{ old('prezimeBibliotekar') }}" name="prezimeBibliotekar" id="prezimeBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsSurnameBibliotekar()"/>
                                 <div id="validateSurnameBibliotekar"></div>
                                 @error('surname') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
@@ -74,14 +76,14 @@
 
                             <div class="mt-[20px]">
                                 <span>E-mail <span class="text-red-500">*</span></span>
-                                <input type="email" name="emailBibliotekar" id="emailBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsEmailBibliotekar()"/>
+                                <input type="email" value="{{ old('emailBibliotekar') }}" name="emailBibliotekar" id="emailBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsEmailBibliotekar()"/>
                                 <div id="validateEmailBibliotekar"></div>
                                 @error('email') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
                                 <span>Korisničko ime <span class="text-red-500">*</span></span>
-                                <input type="text" name="usernameBibliotekar" id="usernameBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()"/>
+                                <input type="text" value="{{ old('usernameBibliotekar') }}" name="usernameBibliotekar" id="usernameBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()"/>
                                 <div id="validateUsernameBibliotekar"></div>
                                 @error('username') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
@@ -124,11 +126,11 @@
                             <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
                                 <button type="button"
                                         class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                            Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                            Poništi <i class="fas fa-times ml-[4px]"></i>
                                 </button>
                                 <button id="sacuvajBibliotekara" type="submit"
                                         class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaBibliotekar()">
-                                            Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                            Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                 </button>
                             </div>
                         </div>
