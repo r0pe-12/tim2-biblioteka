@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('role_id')->nullable();
             $table->string('JBMG')->nullable();
             $table->string('photoPath')->nullable();
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('name');
             $table->string('surname');
             $table->string('email')->unique();

@@ -28,8 +28,8 @@ class CreateRequest extends FormRequest
             "name" => ['required', 'max:255'],
             "surname" => ['required', 'max:255'],
             "JBMG" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
-            "email" => ['required', 'email', 'max:255'],
-            "username" => ['required', 'max:255'],
+            "email" => ['required', 'email', 'max:255', 'unique:users'],
+            "username" => ['required', 'max:255', 'unique:users'],
             "password" => ['confirmed','min:8' , 'max:255'],
             "photoPath" => [''],
 //            'photoPath' => ['mimes:jpg,bmp,png,jpeg,webp']
