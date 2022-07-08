@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
             //
             "name" => ['required', 'max:255'],
             "surname" => ['required', 'max:255'],
-            "JBMG" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
+            "jmbg" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
             "email" => ['required', 'email', 'max:255', Rule::unique('users')->ignore($this->id)],
             "username" => ['required', 'max:255', Rule::unique('users')->ignore($this->id)],
             "password" => ['confirmed', 'max:255'],
@@ -46,7 +46,7 @@ class UpdateRequest extends FormRequest
             "id" => $this->id,
             "name" => $this->imeBibliotekarEdit,
             "surname" => $this->prezimeBibliotekarEdit,
-            "JBMG" => $this->jmbgBibliotekarEdit,
+            "jmbg" => $this->jmbgBibliotekarEdit,
             "email" => $this->emailBibliotekarEdit,
             "username" => $this->usernameBibliotekarEdit,
             "password" => $this->pwBibliotekarEdit,

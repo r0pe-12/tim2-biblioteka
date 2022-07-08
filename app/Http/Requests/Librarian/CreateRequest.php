@@ -27,7 +27,7 @@ class CreateRequest extends FormRequest
             //
             "name" => ['required', 'max:255'],
             "surname" => ['required', 'max:255'],
-            "JBMG" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
+            "jmbg" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
             "email" => ['required', 'email', 'max:255', 'unique:users'],
             "username" => ['required', 'max:255', 'unique:users'],
             "password" => ['confirmed','min:8' , 'max:255'],
@@ -45,7 +45,7 @@ class CreateRequest extends FormRequest
         $this->replace([
             "name" => $this->imeBibliotekar,
             "surname" => $this->prezimeBibliotekar,
-            "JBMG" => $this->jmbgBibliotekar,
+            "jmbg" => $this->jmbgBibliotekar,
             "email" => $this->emailBibliotekar,
             "username" => $this->usernameBibliotekar,
             "password" => $this->pwBibliotekar,

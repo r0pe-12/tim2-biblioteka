@@ -89,7 +89,7 @@
                         </div>
                         <div class="mt-[40px]">
                             <span class="text-gray-500">JMBG</span>
-                            <p class="font-medium">{{ $librarian->JBMG }}</p>
+                            <p class="font-medium">{{ $librarian->jmbg }}</p>
                         </div>
                         <div class="mt-[40px]">
                             <span class="text-gray-500">Email</span>

@@ -22,7 +22,7 @@ class User extends Authenticatable
         'name',
         'surname',
         'username',
-        'JBMG',
+        'jmbg',
         'photoPath',
         'role_id',
         'email',
