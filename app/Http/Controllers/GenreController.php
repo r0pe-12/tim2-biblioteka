@@ -40,6 +40,7 @@ class GenreController extends Controller
     public function store(Request $request)
     {
         //
+//        todo add picture in form and implement it
         $request->validate([
             'nazivZanra' => 'required|string'
         ]);

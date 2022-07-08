@@ -129,6 +129,7 @@ class LibrarianController extends Controller
     public function destroy(User $librarian)
     {
         //
+        $this->authorize('delete', $librarian);
         $librarian->delete();
         return redirect()->route('librarians.index')->with('success', 'Bibliotekar "' . $librarian->username . '" uspješno izbrisan');
     }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -73,5 +75,16 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => $data['password'],
         ]);
+    }
+    protected function registered(Request $request, $user)
+    {
+        //
+        $role = Role::findOrNew(Role::GUEST);
+        if (!$role->id){
+            $role->id = Role::GUEST;
+            $role->name = Role::GUEST_NAME;
+            $role->save();
+        }
+        $role->users()->save(auth()->user());
     }
 }

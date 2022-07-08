@@ -25,6 +25,14 @@
                                         <span class="mx-2">/</span>
                                     </li>
                                     <li>
+                                        <a href="{{ route('librarians.show', $librarian->username) }}" class="text-[#2196f3] hover:text-blue-600">
+                                            {{ $librarian->username }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <span class="mx-2">/</span>
+                                    </li>
+                                    <li>
                                         <a href="#" class="text-gray-400 hover:text-blue-600">
                                             Izmijeni podatke
                                         </a>
