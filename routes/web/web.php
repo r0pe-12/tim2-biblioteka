@@ -1,5 +1,7 @@
 <?php
 use App\Http\Controllers\StudentController;
+
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\LibrarianController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,14 +19,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function (){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
+    Route::get('/', fn() => view('dashboard.index'));
+    Route::get('/activity', fn() => view('dashboard.activity'));
+
+    Route::resource('/librarians', LibrarianController::class);
+    Route::put('/librarians/{user}/resetPassword', [LibrarianController::class, 'passwordReset'])->name('librarian.pwreset');
+
+    Route::resource('/authors', AuthorController::class);
+
+    Route::resource('/students', StudentController::class);
 });
-
-Route::resource('/librarians', LibrarianController::class);
-Route::put('/librarians/{user}/resetPassword', [LibrarianController::class, 'passwordReset'])->name('librarian.pwreset');
-
-Route::resource('/students', StudentController::class);
-

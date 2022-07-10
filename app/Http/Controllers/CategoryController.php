@@ -40,6 +40,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+//        todo fix bug with creatig category without photo
         $input = $request->validate([
 
             'nazivKategorije' => ['required', 'string'],
@@ -125,12 +126,12 @@ class CategoryController extends Controller
         $category->name = $request->nazivKategorijeEdit;
         $category->description = $request->opisKategorijeEdit;
 
-        
+
         $category->save();
         return redirect()->route('category.index')->with('success', 'Kategorija uspješno izmijenjena');
-                    
 
-            
+
+
     }
     /**
      * Remove the specified resource from storage.

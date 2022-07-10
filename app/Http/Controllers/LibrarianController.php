@@ -9,6 +9,7 @@ use App\Models\Librarian;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use League\CommonMark\Util\SpecReader;
 
 class LibrarianController extends Controller
@@ -52,7 +53,13 @@ class LibrarianController extends Controller
             $input['photoPath'] = $name;
         }
         $librarian = new User($input);
-        Role::findOrFail(Librarian::role())->users()->save($librarian);
+        $role = Role::findOrNew(Librarian::ROLE);
+        if (!$role->id){
+            $role->id = Librarian::ROLE;
+            $role->name = 'bibliotekar';
+            $role->save();
+        }
+        $role->users()->save($librarian);
         return redirect()->route('librarians.index')->with('success', 'Bibliotekar "' . $librarian->name . '" je usjpešno kreiran');
     }
 
@@ -122,6 +129,7 @@ class LibrarianController extends Controller
     public function destroy(User $librarian)
     {
         //
+        $this->authorize('delete', $librarian);
         $librarian->delete();
         return redirect()->route('librarians.index')->with('success', 'Bibliotekar "' . $librarian->username . '" uspješno izbrisan');
     }

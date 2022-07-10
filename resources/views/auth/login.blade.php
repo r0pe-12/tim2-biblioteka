@@ -35,20 +35,20 @@
                             Online Biblioteka - Login
                         </div>
 
-                            @error('email')
+                            @error('username')
                             <span class="invalid-feedback text-sm text-red-500" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                             @enderror
 
                         <div class="mb-4">
-                            <label class="block mb-2 text-sm font-normal text-gray-700" for="email">
-                                Email
+                            <label class="block mb-2 text-sm font-normal text-gray-700" for="username">
+                                Username
                             </label>
 
                             <input
                                 class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                name="email"  type="email" required autofocus placeholder="Email" value="{{ old('email') }}">
+                                name="username"  type="text" required autofocus placeholder="Username" value="{{ old('username') }}">
                         </div>
 
                         <div class="mb-6">

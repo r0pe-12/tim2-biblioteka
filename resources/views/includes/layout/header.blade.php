@@ -4,7 +4,7 @@
     <div class="logo-font inline-flex bg-[#3F51B5] py-[18px] px-[30px]">
         <a class="_o6689fn" href="#">
             <div class="block">
-                <a href="dashboard.php" class="text-[20px] font-medium">
+                <a href="/" class="text-[20px] font-medium">
                     <div class="flex">
                         <img src='{{ asset('img/logo.svg') }}' alt="" width="35px" height="35px">
                         <p class="text-[20px] mt-[5px]">&nbsp;&nbsp;Online Biblioteka</p>
@@ -22,7 +22,7 @@
             <div class="flex items-center">
                 <!-- Notification Icon -->
                 <div class="relative block">
-                    <a href="dashboardAktivnost.php" class="relative inline-block px-3 py-2 focus:outline-none"
+                    <a href="/activity" class="relative inline-block px-3 py-2 focus:outline-none"
                         aria-label="Notification">
                         <div class="flex items-center h-5">
                             <div class="_xpkakx">
@@ -49,7 +49,7 @@
                     <div class="absolute right-[12px] w-56 mt-[35px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                         aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                         <div class="py-1">
-                            <a href="noviBibliotekar.php" tabindex="0"
+                            <a href="{{ route('librarians.create') }}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="far fa-address-book mr-[8px] ml-[5px] py-1"></i>
@@ -67,7 +67,7 @@
                                 <i class="far fa-copy mr-[10px] ml-[5px] py-1"></i>
                                 <span class="px-4 py-0">Knjiga</span>
                             </a>
-                            <a href="noviAutor.php" tabindex="0"
+                            <a href="{{ route('authors.create') }}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="far fa-address-book mr-[10px] ml-[5px] py-1"></i>
@@ -119,7 +119,7 @@
                         aria-label="User profile">
                         <div class="flex items-center h-5">
                             <div class="w-[40px] h-[40px] mt-[15px]">
-                                <img class="rounded-full" src="{{ asset('img/profileExample.jpg') }}" alt="">
+                                <img class="rounded-full" src="{{ auth()->user()->photoPath }}" alt="">
                             </div>
                         </div>
                     </a>
@@ -129,18 +129,19 @@
                     <div class="absolute right-[12px] w-56 mt-[35px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                         aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                         <div class="py-1">
-                            <a href="bibliotekarProfile.php" tabindex="0"
+                            <a href="{{ route('librarians.show', auth()->user()->username) }}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="fas fa-file mr-[8px] ml-[5px] py-1"></i>
                                 <span class="px-4 py-0">Profile</span>
                             </a>
-                            <a href="#" tabindex="0"
-                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                role="menuitem">
+                            <form method="POST" action="{{ route('logout') }}" enctype="multipart/form-data" tabindex="0"
+                                  class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                  role="menuitem">
+                                @csrf
                                 <i class="fas fa-sign-out-alt mr-[5px] ml-[5px] py-1"></i>
-                                <span class="px-4 py-0">Logout</span>
-                            </a>
+                                <button type="submit"><span class="px-4 py-0">Logout</span></button>
+                            </form>
                         </div>
                     </div>
                 </div>

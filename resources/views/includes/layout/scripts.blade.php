@@ -1,4 +1,5 @@
 <script src="{{ asset('js/jquery.min.js') }}" defer=""></script>
+<script src="{{ asset('js/bootstrap.bundle.js') }}" defer=""></script>
 <script src="{{ asset('js/scripts.js') }}" defer=""></script>
 <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 

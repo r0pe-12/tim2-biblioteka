@@ -42,6 +42,7 @@
 
         <!-- Scripts -->
         @include('includes/layout/scripts')
+        @yield('scripts')
         <!-- End Scripts -->
     </body>
 

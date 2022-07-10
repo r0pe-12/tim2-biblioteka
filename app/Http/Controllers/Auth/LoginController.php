@@ -62,4 +62,14 @@ class LoginController extends Controller
             ? new JsonResponse([], 204)
             : redirect()->intended($this->redirectPath());
     }
+
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'username';
+    }
 }

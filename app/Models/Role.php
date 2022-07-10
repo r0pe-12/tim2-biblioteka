@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
+    const GUEST = 2;
+    const GUEST_NAME = 'Guest';
     use HasFactory;
 
 //    get all users which have some role --- useful for creating new users through admin panel
