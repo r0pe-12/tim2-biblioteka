@@ -27,7 +27,7 @@ class UpdateStudentRequest extends FormRequest
         return [
             "name" => ['required', 'max:255'],
             "surname" => ['required', 'max:255'],
-            "JBMG" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
+            "jmbg" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
             "email" => ['required', 'email', 'max:255', Rule::unique('users')->ignore($this->id)],
             "username" => ['required', 'max:255'],
             "password" => ['confirmed', 'max:255'],
@@ -41,7 +41,12 @@ class UpdateStudentRequest extends FormRequest
             "id" => $this->id,
             "name" => $this->imeUcenikEdit,
             "surname" => $this->prezimeUcenikEdit,
-            "JBMG" => $this->jmbgUcenikEdit,
+            "jmbg" => $this->jmbgUcenikEdit,
+            "email" => $this->emailUcenikEdit,
+            "username" => $this->usernameUcenikEdit,
+            "password" => $this->pwUcenikEdit,
+            "password_confirmation" => $this->pw2UcenikEdit,
+            "photoPath" => $this->photoPath
             ]);
 }
 }

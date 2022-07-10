@@ -94,7 +94,7 @@
                             </div>
                             <div class="mt-[40px]">
                                 <span class="text-gray-500">JMBG</span>
-                                <p class="font-medium">{{$student->JBMG}}</p>
+                                <p class="font-medium">{{$student->jmbg}}</p>
                             </div>
                             <div class="mt-[40px]">
                                 <span class="text-gray-500">Email</span>

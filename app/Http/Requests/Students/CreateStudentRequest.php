@@ -25,7 +25,7 @@ class CreateStudentRequest extends FormRequest
     {
         return [    "name" => ['required', 'max:255'],
                     "surname" => ['required', 'max:255'],
-                    "JBMG" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
+                    "JMBG" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
                     "email" => ['required', 'email', 'max:255'],
                     "username" => ['required', 'max:255'],
                     "password" => ['confirmed','min:8' , 'max:255'],
@@ -38,7 +38,7 @@ class CreateStudentRequest extends FormRequest
         $this->replace([
             "name" => $this->imeUcenik,
             "surname" => $this->prezimeUcenik,
-            "JBMG" => $this->jmbgUcenik,
+            "JMBG" => $this->jmbgUcenik,
             "email" => $this->emailUcenik,
             "username" => $this->usernameUcenik,
             "password" => $this->pwUcenik,
