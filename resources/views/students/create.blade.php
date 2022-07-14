@@ -37,7 +37,7 @@
             </div>
             <!-- Space for content -->
             <div class="scroll height-content section-content">
-                <form method="POST" class="text-gray-700 text-[14px] forma" action="{{ route('librarians.store') }}" enctype="multipart/form-data">
+                <form method="POST" class="text-gray-700 text-[14px] forma" action="{{ route('students.store') }}" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <div class="flex flex-row ml-[30px]">

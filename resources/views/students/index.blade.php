@@ -32,8 +32,8 @@
                 <div class="inline-block min-w-full px-[50px] pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
                     <table class="overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
                         <thead class="bg-[#EFF3F6]">
-                        <tr class="border-b-[1px] border-[#e4dfdf]">
-                            <th class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500">
+                          <tr class="border-b-[1px] border-[#e4dfdf]">
+                             <th class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500">
                                 <label class="inline-flex items-center">
                                     <input type="checkbox" class="form-checkbox">
                                 </label>
@@ -57,12 +57,12 @@
                             </td>
                             <td class="flex flex-row items-center px-4 py-4">
                                 <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$student->photoPath}}" alt=""/>
-                                <a href="{{'students.show', $student->username}}">
+                                <a href="{{route('students.show', $student->username)}}">
                                     <span class="font-medium text-center">{{$student->name, $student->surname}}</span>
                                 </a>
                             </td>
                             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$student->email}}</td>
-                            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$student->role_name}}</td>
+                            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$student->role->name}}</td>
                             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$student->lastLogin()}}</td>
                             <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                                 <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsStudent hover:text-[#606FC7]">
@@ -93,13 +93,12 @@
                                                 <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
                                                 <button type="submit"><span class="px-4 py-0">Izbriši Korisnika</span></button>
                                             </form>
-                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                     <@endforeach>
+                          @endforeach
                         </tbody>
                     </table>
 

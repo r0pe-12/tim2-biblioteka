@@ -12,6 +12,6 @@ class Student extends Model
     const ROLE = 2;
     public static function all($columns = ['*'])
     {
-        return User::all()->where('role_id', Librarian::ROLE);
+        return User::all()->where('role_id', Student::ROLE);
     }
 }

@@ -31,4 +31,5 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/authors', AuthorController::class);
 
     Route::resource('/students', StudentController::class);
+    Route::put('/students/{user}/resetPassword', [StudentController::class, 'passwordReset'])->name('student.pwreset');
 });

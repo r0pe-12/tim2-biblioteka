@@ -27,9 +27,9 @@ class UpdateStudentRequest extends FormRequest
         return [
             "name" => ['required', 'max:255'],
             "surname" => ['required', 'max:255'],
-            "jmbg" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
+            "JMBG" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
             "email" => ['required', 'email', 'max:255', Rule::unique('users')->ignore($this->id)],
-            "username" => ['required', 'max:255'],
+            "username" => ['required', 'max:255', Rule::unique('users')->ignore($this->id)],
             "password" => ['confirmed', 'max:255'],
             "photoPath" => ['']
             //
@@ -37,16 +37,16 @@ class UpdateStudentRequest extends FormRequest
     }
     protected function prepareForValidation()
     {
-        $this->replace(input: [
+        $this->replace([
             "id" => $this->id,
             "name" => $this->imeUcenikEdit,
             "surname" => $this->prezimeUcenikEdit,
-            "jmbg" => $this->jmbgUcenikEdit,
+            "JMBG" => $this->jmbgUcenikEdit,
             "email" => $this->emailUcenikEdit,
             "username" => $this->usernameUcenikEdit,
             "password" => $this->pwUcenikEdit,
             "password_confirmation" => $this->pw2UcenikEdit,
             "photoPath" => $this->photoPath
-            ]);
-}
+        ]);
+    }
 }

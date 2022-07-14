@@ -512,6 +512,7 @@ $("#sacuvajBibliotekaraEdit").keypress(function (e) {
 function validacijaUcenik() {
 
   $("#validateNameUcenik").empty();
+  $("#validateSurnameUcenik").empty();
   $("#validateJmbgUcenik").empty();
   $("#validateEmailUcenik").empty();
   $("#validateUsernameUcenik").empty();
@@ -519,7 +520,8 @@ function validacijaUcenik() {
   $("#validatePw2Ucenik").empty();
 
 
-  let nameUcenik = $("#imePrezimeUcenik").val();
+  let nameUcenik = $("#imeUcenik").val();
+  let surnameUcenik = $("#prezimeUcenik").val();
   let jmbgUcenik = $("#jmbgUcenik").val();
   let emailUcenik = $("#emailUcenik").val();
   let usernameUcenik = $("#usernameUcenik").val();
@@ -527,8 +529,12 @@ function validacijaUcenik() {
   let pw2Ucenik = $("#pw2Ucenik").val();
 
   if (nameUcenik.length == 0) {
-    $('#validateNameUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti ime i prezime!</p>');
+    $('#validateNameUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti ime!</p>');
   }
+
+  if (surnameUcenik.length == 0) {
+        $('#validateSurnameUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti prezime!</p>');
+    }
 
   if (jmbgUcenik.length == 0) {
     $('#validateJmbgUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
@@ -555,6 +561,9 @@ function clearErrorsNameUcenik() {
   $("#validateNameUcenik").empty();
 }
 
+function clearErrorsSurnameUcenik() {
+    $("#validateSurnameUcenik").empty();
+}
 function clearErrorsJmbgUcenik() {
   $("#validateJmbgUcenik").empty();
 }
@@ -586,6 +595,7 @@ $("#sacuvajUcenika").keypress(function (e) {
 function validacijaUcenikEdit() {
 
   $("#validateNameUcenikEdit").empty();
+  $("#validateSurnameUcenikEdit").empty();
   $("#validateJmbgUcenikEdit").empty();
   $("#validateEmailUcenikEdit").empty();
   $("#validateUsernameUcenikEdit").empty();
@@ -593,7 +603,8 @@ function validacijaUcenikEdit() {
   $("#validatePw2UcenikEdit").empty();
 
 
-  let nameUcenikEdit = $("#imePrezimeUcenikEdit").val();
+  let nameUcenikEdit = $("#imeUcenikEdit").val();
+  let surnameUcenikEdit = $("#prezimeUcenikEdit").val();
   let jmbgUcenikEdit = $("#jmbgUcenikEdit").val();
   let emailUcenikEdit = $("#emailUcenikEdit").val();
   let usernameUcenikEdit = $("#usernameUcenikEdit").val();
@@ -601,8 +612,12 @@ function validacijaUcenikEdit() {
   let pw2UcenikEdit = $("#pw2UcenikEdit").val();
 
   if (nameUcenikEdit.length == 0) {
-    $('#validateNameUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti ime i prezime!</p>');
+    $('#validateNameUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti ime!</p>');
   }
+
+  if (surnameUcenikEdit.length == 0) {
+        $('#validatesurnameUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti prezime!</p>');
+    }
 
   if (jmbgUcenikEdit.length == 0) {
     $('#validateJmbgUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
@@ -627,6 +642,9 @@ function validacijaUcenikEdit() {
 
 function clearErrorsNameUcenikEdit() {
   $("#validateNameUcenikEdit").empty();
+}
+function clearErrorsSurnameUcenikEdit() {
+    $("#validateSurnameUcenikEdit").empty();
 }
 
 function clearErrorsJmbgUcenikEdit() {

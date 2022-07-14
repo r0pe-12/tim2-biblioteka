@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Students\CreateStudentRequest;
 use App\Http\Requests\Students\UpdateStudentRequest;
+use App\Http\Requests\Students;
 use App\Models\Role;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use League\CommonMark\Util\SpecReader;
 
 class StudentController extends Controller
 {
@@ -57,7 +60,7 @@ class StudentController extends Controller
             $role->save();
         }
         $role->users()->save($student);
-        return redirect()->route('librarians.index')->with('success', 'Ucenik, "' . $student->name . '", je usjpešno kreiran');
+        return redirect()->route('students.index')->with('success', 'Ucenik, "' . $student->name . '", je uspješno kreiran');
 
     }
 
@@ -84,7 +87,7 @@ class StudentController extends Controller
     {
         //
         $student = User::where('username', '=', $username)->first();
-        return view('students.show', compact('student'));
+        return view('students.edit', compact('student'));
 
     }
 
@@ -98,6 +101,7 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, User $student)
     {
         //
+
         $input = $request->validated();
         if (is_null($input['password'])){
             unset($input['password']);
@@ -129,7 +133,7 @@ class StudentController extends Controller
     {
         //
         $student->delete();
-        return redirect()->route('students.index')->with('success', 'Ucenik, "' . $student->username . '" ,uspješno izbrisan');
+        return redirect()->route('students.index')->with('success', 'Ucenik, "' . $student->username . '" ,je uspješno izbrisan');
     }
 
     public function passwordReset(Request $request, User $user){

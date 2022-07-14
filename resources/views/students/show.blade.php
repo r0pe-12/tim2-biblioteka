@@ -25,7 +25,7 @@
                                         <span class="mx-2">/</span>
                                     </li>
                                     <li>
-                                        <a href="{{route('students.show',$student->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                                        <a href="{{route('students.show', $student->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                             {{$student->username}}
                                         </a>
                                     </li>
@@ -45,13 +45,12 @@
                         <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-gray-300 dotsStudentProfile hover:text-[#606FC7]">
                             <i
                                 class="fas fa-ellipsis-v"></i>
-                        </p>
                         <div
                             class="z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-student-profile">
                             <div class="absolute right-0 w-56 mt-[10px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                  aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                 <div class="py-1">
-                                    <form method="POST" action="{{ route('librarians.destroy', $librarian) }}" enctype="multipart/form-data" tabindex="0"
+                                    <form method="POST" action="{{ route('students.destroy', $student) }}" enctype="multipart/form-data" tabindex="0"
                                           class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                           role="menuitem">
                                         @csrf
@@ -63,6 +62,8 @@
                                 </div>
                             </div>
                         </div>
+                        </p>
+
                     </div>
                 </div>
             </div>
@@ -77,7 +78,7 @@
             <div class="height-ucenikProfile pb-[30px] scroll">
                 <!-- Space for content -->
                 <div class="pl-[30px] section- mt-[20px]">
-                    </x-flashmsg>
+                    <x-flash-msg/>
                     <div class="flex flex-row">
                         <div class="mr-[30px]">
                             <div class="mt-[20px]">
@@ -98,7 +99,7 @@
                             </div>
                             <div class="mt-[40px]">
                                 <span class="text-gray-500">Email</span>
-                                <a href="mail : {{$student->email}}" class="block font-medium text-[#2196f3]">{{}}</a>
+                                <a href="mail : {{$student->email}}" class="block font-medium text-[#2196f3]">{{$student->email}}</a>
                             </div>
                             <div class="mt-[40px]">
                                 <span class="text-gray-500">Korisnicko ime</span>
@@ -106,7 +107,7 @@
                             </div>
                             <div class="mt-[40px]">
                                 <span class="text-gray-500">Broj logovanja</span>
-                                <p class="font-medium">{{count($student->logins())}}</p>
+                                <p class="font-medium">{{count($student->logins)}}</p>
                             </div>
                             <div class="mt-[40px]">
                                 <span class="text-gray-500">Poslednji put logovan/a</span>
@@ -119,7 +120,7 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
         </section>
         <!-- End Content -->
         </main>
