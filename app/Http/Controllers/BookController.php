@@ -79,11 +79,14 @@ class BookController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(Book $book)
     {
         //
+        return view('book.show', [
+            'book' => $book->load('authors', 'categories', 'genres', 'publisher', 'script', 'bookBind', 'format')
+        ]);
     }
 
     /**

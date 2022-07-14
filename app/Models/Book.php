@@ -41,4 +41,28 @@ class Book extends Model
         # code
         return $this->belongsToMany(Genre::class);
     }
+
+//    1-many relation between books and publishers
+    public function publisher(){
+        # code
+        return $this->belongsTo(Publisher::class);
+    }
+
+//    1-many relation between books and scripts
+    public function script(){
+        # code
+        return $this->belongsTo(Script::class);
+    }
+
+//    1-many relation between books and bookbinds
+    public function bookBind(){
+        # code
+        return $this->belongsTo(BookBind::class, 'bookbind_id');
+    }
+
+//    1-many relation between books and formats
+    public function format(){
+        # code
+        return $this->belongsTo(Format::class);
+    }
 }
