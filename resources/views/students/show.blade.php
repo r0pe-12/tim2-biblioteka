@@ -99,7 +99,7 @@
                             </div>
                             <div class="mt-[40px]">
                                 <span class="text-gray-500">Email</span>
-                                <a href="mail : {{$student->email}}" class="block font-medium text-[#2196f3]">{{$student->email}}</a>
+                                <a href="mailto:{{$student->email}}" class="block font-medium text-[#2196f3]">{{$student->email}}</a>
                             </div>
                             <div class="mt-[40px]">
                                 <span class="text-gray-500">Korisnicko ime</span>
