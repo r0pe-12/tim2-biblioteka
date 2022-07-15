@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    const GUEST = 2;
+    const GUEST = 3;
     const GUEST_NAME = 'Guest';
     use HasFactory;
 

@@ -9,6 +9,7 @@ use phpDocumentor\Reflection\Types\This;
 class Librarian extends Model
 {
     use HasFactory;
+
     protected $table = 'users';
     const ROLE = 1;
 //    get all librarians === users who have role_id of Libraian::role()

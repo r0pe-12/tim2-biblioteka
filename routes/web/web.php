@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\StudentController;
 
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
@@ -31,4 +32,7 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/authors', AuthorController::class);
 
     Route::resource('/books', BookController::class);
+
+    Route::resource('/students', StudentController::class);
+    Route::put('/students/{user}/resetPassword', [StudentController::class, 'passwordReset'])->name('student.pwreset');
 });
