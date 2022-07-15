@@ -23,7 +23,6 @@ class User extends Authenticatable
         'surname',
         'username',
         'jmbg',
-        'JMBG',
         'photoPath',
         'role_id',
         'email',

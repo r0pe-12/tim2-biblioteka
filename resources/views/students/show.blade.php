@@ -77,8 +77,8 @@
             </div>
             <div class="height-ucenikProfile pb-[30px] scroll">
                 <!-- Space for content -->
-                <div class="pl-[30px] section- mt-[20px]">
                     <x-flash-msg/>
+                <div class="pl-[30px] section- mt-[20px]">
                     <div class="flex flex-row">
                         <div class="mr-[30px]">
                             <div class="mt-[20px]">
@@ -103,7 +103,7 @@
                             </div>
                             <div class="mt-[40px]">
                                 <span class="text-gray-500">Korisnicko ime</span>
-                                <p class="font-medium">{{$student->name}}</p>
+                                <p class="font-medium">{{$student->username}}</p>
                             </div>
                             <div class="mt-[40px]">
                                 <span class="text-gray-500">Broj logovanja</span>
