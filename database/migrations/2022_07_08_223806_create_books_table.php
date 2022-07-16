@@ -24,8 +24,8 @@ return new class extends Migration
             $table->year('publishDate');
             $table->string('isbn');
             $table->integer('samples');
-            $table->integer('borrowedSaples')->nullable();
-            $table->integer('reservedSamples')->nullable();
+            $table->integer('borrowedSaples')->default(0);
+            $table->integer('reservedSamples')->default(0);
             $table->text('description')->nullable();
             $table->timestamps();
         });

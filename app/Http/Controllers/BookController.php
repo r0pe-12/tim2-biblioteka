@@ -64,13 +64,13 @@ class BookController extends Controller
         $book = Book::create(Arr::except($input,['categories', 'genres', 'authors']));
 
 //        attaching book to multiple authors
-        $book->authors()->sync(explode(',', $input['authors']));
+        $book->authors()->sync($input['authors']);
 
 //        attaching book to multiple categories
-        $book->categories()->sync(explode(',', $input['categories']));
+        $book->categories()->sync($input['categories']);
 
 //        attaching book to multiple genres
-        $book->genres()->sync(explode(',', $input['genres']));
+        $book->genres()->sync($input['genres']);
 
         return redirect()->route('books.index')->with('success', 'Nova knjiga "' . $book->title . '" je uspješno kreirana');
     }
