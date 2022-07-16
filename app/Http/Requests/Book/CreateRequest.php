@@ -34,9 +34,9 @@ class CreateRequest extends FormRequest
             'format_id' => ['required', 'integer'],
             'publisher_id' => ['required', 'integer'],
             'publishDate' => ['required'],
-            'isbn' => ['required'],
+            'isbn' => ['required', 'regex:/^[0-9]{20}+$/', 'max:20', 'min:20'],
             'samples' => ['required', 'integer'],
-            'description' => ['required', 'string'],
+            'description' => [''],
 
 //          this should be assigned through has many relation pivot table
             'categories' => ['required'],

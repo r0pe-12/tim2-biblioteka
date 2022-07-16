@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('author_book', function (Blueprint $table) {
             //
-            $table->foreignId('author_id');
-            $table->foreignId('book_id');
+            $table->foreignId('author_id')->references('id')->on('authors')->cascadeOnDelete();
+            $table->foreignId('book_id')->references('id')->on('books')->cascadeOnDelete();
         });
     }
 

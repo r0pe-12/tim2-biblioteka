@@ -1,4 +1,7 @@
 <x-layout>
+    @section('title')
+        Knjige
+    @endsection
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
             <!-- Heading of content -->
@@ -85,15 +88,23 @@
                                                 <span class="font-medium text-center">{{ $book->title }}</span>
                                             </a>
                                         </td>
-                                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">AUTHORI</td>
-                                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">KATEGORIJE</td>
-                                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">DUMMY</td>
+                                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                                            @foreach($book->authors as $author)
+                                                {{ $author->name }} {{ $author->surname }}{!! $loop->remaining >= 1 ? ',&nbsp' : ''!!}
+                                            @endforeach
+                                        </td>
+                                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                                            @foreach($book->categories as $category)
+                                                {{ $category->name }} {!! $loop->remaining >= 1 ? ',&nbsp' : ''!!}
+                                            @endforeach
+                                        </td>
+                                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">NA RASPOLAGANjU</td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                                href="aktivneRezervacije.php">DUMMY</a></td>
+                                                href="aktivneRezervacije.php">{{ $book->reservedSamples }}</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                                href="izdateKnjige.php">DUMMY</a></td>
+                                                href="izdateKnjige.php">{{ $book->borrowedSaples }}</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                                href="knjigePrekoracenje.php">DUMMY</a></td>
+                                                href="knjigePrekoracenje.php">U PREKORACENjU</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $book->samples }}</td>
                                         <td class="px-6 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                                             <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsKnjige hover:text-[#606FC7]">

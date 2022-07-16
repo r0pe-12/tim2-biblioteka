@@ -14,7 +14,7 @@
                         <div class="pl-[15px]  flex flex-col">
                             <div>
                                 <h1>
-                                    Tom Sojer
+                                    {{ $book->title }}
                                 </h1>
                             </div>
                             <div>
@@ -65,18 +65,20 @@
                             <div class="absolute right-0 w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                 aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                 <div class="py-1">
-                                    <a href="editKnjiga.php" tabindex="0"
+                                    <a href="{{ route('books.edit', $book) }}" tabindex="0"
                                         class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                         role="menuitem">
                                         <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                         <span class="px-4 py-0">Izmijeni knjigu</span>
                                     </a>
-                                    <a href="#" tabindex="0"
-                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                        role="menuitem">
+                                    <form method="POST" action="{{ route('books.destroy', $book) }}" enctype="multipart/form-data" tabindex="0"
+                                          class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                          role="menuitem">
+                                        @csrf
+                                        @method('DELETE')
                                         <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                        <span class="px-4 py-0">Izbrisi knjigu</span>
-                                    </a>
+                                        <button type="submit"><span class="px-4 py-0">Izbriši knjigu</span></button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +129,7 @@
                                                     <span class="text-gray-500 text-[14px]">Autor/ri</span>
                                                     <p class="font-medium">
                                                         @foreach($book->authors as $author)
-                                                            <a href="#">{{ $author->name }}</a>{!! $loop->remaining >= 1 ? ',&nbsp;&nbsp;&nbsp;' : ''!!}
+                                                            <a href="{{ route('authors.show', $author) }}">{{ $author->name }}</a>{!! $loop->remaining >= 1 ? ',&nbsp;&nbsp;&nbsp;' : ''!!}
                                                         @endforeach
                                                     </p>
                                                 </div>
@@ -141,13 +143,11 @@
                                                 </div>
                                             </div>
                                             <div class="mr-[70px] mt-[20px] flex flex-col max-w-[600px]">
-                                                <div>
                                                     <h4 class="text-gray-500 ">
                                                         Storyline (Kratki sadrzaj)
                                                     </h4>
-                                                    <p class="addReadMore showlesscontent my-[10px]">
-{{--                                                        todo ovo ne radi--}}
-                                                        TODO ovo ne radi
+                                                <div class="scroll" style="max-height: 511px">
+                                                    <p class=" my-[10px]">
                                                         {!! $book->description !!}
                                                     </p>
                                                 </div>

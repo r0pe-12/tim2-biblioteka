@@ -765,8 +765,14 @@ function validacijaKnjiga(event) {
         event.preventDefault();
     }
 
-    if (isbn.length == 0) {
+    if (isNaN(isbn)){
+        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN je pogrešnog formata!</p>');
+        event.preventDefault();
+    } else if (isbn.length == 0) {
         $('#validateIsbn').append('<p style="color:red;font-size:13px;">Morate unijeti ISBN!</p>');
+        event.preventDefault();
+    } else if (isbn.length !== 20){
+        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN mora imati 20 cifara! Trenutno:' + isbn.length + '</p>');
         event.preventDefault();
     }
 }
