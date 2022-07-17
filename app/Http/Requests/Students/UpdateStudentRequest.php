@@ -39,8 +39,8 @@ class UpdateStudentRequest extends FormRequest
     {
         $this->replace([
             "id" => $this->id,
-            "name" => $this->imeUcenikEdit,
-            "surname" => $this->prezimeUcenikEdit,
+            "name" => $this->firstname,
+            "surname" => $this->lastname,
             "jmbg" => $this->jmbgUcenikEdit,
             "email" => $this->emailUcenikEdit,
             "username" => $this->usernameUcenikEdit,
