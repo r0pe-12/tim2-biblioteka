@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Novi Ucenik
+        Novi Učenik
     @endsection
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
@@ -10,7 +10,7 @@
                     <div class="pl-[30px] py-[10px] flex flex-col">
                         <div>
                             <h1 class="">
-                                Novi ucenik
+                                Novi učenik
                             </h1>
                         </div>
                         <div>
@@ -18,7 +18,7 @@
                                 <ol class="flex list-reset">
                                     <li>
                                         <a href="{{route('students.index')}}" class="text-[#2196f3] hover:text-blue-600">
-                                            Svi ucenici
+                                            Svi učenici
                                         </a>
                                     </li>
                                     <li>
@@ -26,7 +26,7 @@
                                     </li>
                                     <li>
                                         <a href="#" class="text-gray-400 hover:text-blue-600">
-                                            Novi ucenik
+                                            Novi učenik
                                         </a>
                                     </li>
                                 </ol>
@@ -44,15 +44,13 @@
                         <div class="w-[50%] mb-[100px]">
                             <div class="mt-[20px]">
                                 <span>Ime<span class="text-red-500">*</span></span>
-                                <input type="text" value="{{ old('imeUcenik') }}" name="imeUcenik" id="imeUcenik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameUcenik()"/>
+                                <input type="text" value="{{ old('imeUcenik') }}" name="firstname" id="imeUcenik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameUcenik()"/>
                                 <div id="validateNameUcenik"></div>
                                 @error('name') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
                             <div class="mt-[20px]">
                                 <span>Prezime<span class="text-red-500">*</span></span>
-                                <input type="text" value="{{ old('prezimeUcenik') }}" name="prezimeUcenik" id="prezimeUcenik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsSurnameUcenik()"/>
-
-
+                                <input type="text" value="{{ old('prezimeUcenik') }}" name="lastname" id="prezimeUcenik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsSurnameUcenik()"/>
                                 <div id="validateSurnameUcenik"></div>
                                 @error('surname') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
@@ -67,9 +65,9 @@
 
                             <div class="mt-[20px]">
                                 <span>JMBG <span class="text-red-500">*</span></span>
-                                <input type="text" name="jmbgUcenik" id="jmbgUcenik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgUcenik()"/>
+                                <input autocomplete="off" value="{{ old('jmbgUcenik') }}" type="text" name="jmbgUcenik" id="jmbgUcenik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgUcenik()"/>
                                 <div id="validateJmbgUcenik"></div>
-                                @error('JMBG') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('jmbg') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
@@ -87,14 +85,14 @@
                             </div>
 
                             <div class="mt-[20px]">
-                                <span>Sifra <span class="text-red-500">*</span></span>
+                                <span>Šifra <span class="text-red-500">*</span></span>
                                 <input type="password" name="pwUcenik" id="pwUcenik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPwUcenik()"/>
                                 <div id="validatePwUcenik"></div>
                                 @error('password') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
-                                <span>Ponovi sifru <span class="text-red-500">*</span></span>
+                                <span>Ponovi šifru <span class="text-red-500">*</span></span>
                                 <input type="password" name="pw2Ucenik" id="pw2Ucenik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPw2Ucenik()"/>
                                 <div id="validatePw2Ucenik"></div>
                             </div>
@@ -122,13 +120,15 @@
                     <div class="absolute bottom-0 w-full">
                         <div class="flex flex-row">
                             <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
-                                <button type="button"
-                                        class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                    Ponisti <i class="fas fa-times ml-[4px]"></i>
-                                </button>
+                                <a href="{{ route('students.index') }}">
+                                    <button type="button"
+                                            class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                                        Poništi <i class="fas fa-times ml-[4px]"></i>
+                                    </button>
+                                </a>
                                 <button id="sacuvajUcenika" type="submit"
-                                        class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaUcenik()">
-                                    Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                        class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaUcenik(event)">
+                                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                 </button>
                             </div>
                         </div>

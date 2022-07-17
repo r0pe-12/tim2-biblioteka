@@ -509,7 +509,7 @@ $("#sacuvajBibliotekaraEdit").keypress(function (e) {
 });
 
 // Form validation for new student
-function validacijaUcenik() {
+function validacijaUcenik(event) {
 
   $("#validateNameUcenik").empty();
   $("#validateSurnameUcenik").empty();
@@ -530,30 +530,43 @@ function validacijaUcenik() {
 
   if (nameUcenik.length == 0) {
     $('#validateNameUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti ime!</p>');
+    event.preventDefault();
   }
 
   if (surnameUcenik.length == 0) {
-        $('#validateSurnameUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti prezime!</p>');
-    }
-
-  if (jmbgUcenik.length == 0) {
-    $('#validateJmbgUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
+    $('#validateSurnameUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti prezime!</p>');
+    event.preventDefault();
   }
+
+    if (isNaN(jmbgUcenik)){
+        $('#validateJmbgUcenik').append('<p style="color:red;font-size:13px;">JMBG je pogrešnog formata!</p>');
+        event.preventDefault();
+    } else if (jmbgUcenik.length == 0) {
+        $('#validateJmbgUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
+        event.preventDefault();
+    } else if (jmbgUcenik.length !== 13) {
+        $('#validateJmbgUcenik').append('<p style="color:red;font-size:13px;">JMBG mora imati 13 cifara! Trenutno:' + jmbgUcenik.length + '</p>');
+        event.preventDefault();
+    }
 
   if (emailUcenik.length == 0) {
     $('#validateEmailUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti validnu e-mail adresu!</p>');
+    event.preventDefault();
   }
 
   if (usernameUcenik.length == 0) {
     $('#validateUsernameUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti korisnicko ime!</p>');
+    event.preventDefault();
   }
 
   if (pwUcenik.length == 0) {
     $('#validatePwUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti sifru!</p>');
+    event.preventDefault();
   }
 
   if (pw2Ucenik.length == 0) {
     $('#validatePw2Ucenik').append('<p style="color:red;font-size:13px;">Morate ponoviti sifru!</p>');
+    event.preventDefault();
   }
 }
 
@@ -592,7 +605,7 @@ $("#sacuvajUcenika").keypress(function (e) {
 });
 
 // Form validation for editing student info
-function validacijaUcenikEdit() {
+function validacijaUcenikEdit(event) {
 
   $("#validateNameUcenikEdit").empty();
   $("#validateSurnameUcenikEdit").empty();
@@ -613,31 +626,45 @@ function validacijaUcenikEdit() {
 
   if (nameUcenikEdit.length == 0) {
     $('#validateNameUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti ime!</p>');
+    event.preventDefault();
   }
 
   if (surnameUcenikEdit.length == 0) {
         $('#validatesurnameUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti prezime!</p>');
-    }
-
-  if (jmbgUcenikEdit.length == 0) {
-    $('#validateJmbgUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
+      event.preventDefault();
   }
+
+    if (isNaN(jmbgUcenikEdit)){
+        $('#validateJmbgUcenikEdit').append('<p style="color:red;font-size:13px;">JMBG je pogrešnog formata!</p>');
+        event.preventDefault();
+    } else if (jmbgUcenikEdit.length == 0) {
+        $('#validateJmbgUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
+        event.preventDefault();
+    } else if (jmbgUcenikEdit.length !== 13) {
+        $('#validateJmbgUcenikEdit').append('<p style="color:red;font-size:13px;">JMBG mora imati 13 cifara! Trenutno:' + jmbgUcenikEdit.length + '</p>');
+        event.preventDefault();
+    }
 
   if (emailUcenikEdit.length == 0) {
     $('#validateEmailUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti validnu e-mail adresu!</p>');
+      event.preventDefault();
   }
 
   if (usernameUcenikEdit.length == 0) {
-    $('#validateUsernameUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisnicko ime!</p>');
+    $('#validateUsernameUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
+      event.preventDefault();
   }
 
-  if (pwUcenikEdit.length == 0) {
-    $('#validatePwUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti sifru!</p>');
-  }
-
-  if (pw2UcenikEdit.length == 0) {
-    $('#validatePw2UcenikEdit').append('<p style="color:red;font-size:13px;">Morate ponoviti sifru!</p>');
-  }
+  // todo DA LI UOPSTE TREBAMO IMATI PASSWORD FIELD KOD UPDEJTA
+  // if (pwUcenikEdit.length == 0) {
+  //   $('#validatePwUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti šifru!</p>');
+  //     event.preventDefault();
+  // }
+  //
+  // if (pw2UcenikEdit.length == 0) {
+  //   $('#validatePw2UcenikEdit').append('<p style="color:red;font-size:13px;">Morate ponoviti šifru!</p>');
+  //     event.preventDefault();
+  // }
 }
 
 function clearErrorsNameUcenikEdit() {
