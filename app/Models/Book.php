@@ -65,4 +65,14 @@ class Book extends Model
         # code
         return $this->belongsTo(Format::class);
     }
+
+//    1-many relation between books and photos
+    public function photos(){
+        # code
+        return $this->hasMany(Galery::class);
+    }
+    public function cover(){
+        # code
+        return $this->photos()->where('cover', '=', 1)->first();
+    }
 }

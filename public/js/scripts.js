@@ -218,7 +218,7 @@ function dataFileDnD() {
     addFiles(e) {
       const files = createFileList([...this.files], [...e.target.files]);
       this.files = files;
-      this.form.formData.files = [...files];
+      // this.form.formData.files = [...files];
     }
   };
 }
@@ -1799,13 +1799,20 @@ $('.form-checkbox').click(function () {
 })
 
 // Edit book multimedia - delete (hide) image
-$('#hide-image1').click(function () {
-  $('.hiddenImage1').hide();
-});
+// VERY DUMB
+    // $('#hide-image1').click(function () {
+    //   $('.hiddenImage1').hide();
+    // });
+    //
+    // $('#hide-image2').click(function () {
+    //   $('.hiddenImage2').hide();
+    // });
+// end - VERY DUMB
 
-$('#hide-image2').click(function () {
-  $('.hiddenImage2').hide();
-});
+function deletePhoto(id) {
+    var child = document.getElementById('photo-' + id);
+    child.parentNode.removeChild(child);
+}
 
 // Header - dropdown for create button
 $('#dropdownCreate').click(function () {

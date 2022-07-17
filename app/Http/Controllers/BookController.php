@@ -8,6 +8,7 @@ use App\Models\Book;
 use App\Models\BookBind;
 use App\Models\Category;
 use App\Models\Format;
+use App\Models\Galery;
 use App\Models\Genre;
 use App\Models\Publisher;
 use App\Models\Script;
@@ -24,7 +25,7 @@ class BookController extends Controller
     {
         //
         return view('book.index', [
-            'books' => Book::all()->load('genres', 'authors', 'categories'),
+            'books' => Book::all()->load('genres', 'authors', 'categories', 'photos'),
         ]);
     }
 
@@ -119,9 +120,30 @@ class BookController extends Controller
     {
         //
         $input = $request->validated();
+        if ($request->hasFile('pictures')){
+            Galery::query()->update(['cover'=>'0']);
+            foreach ($input['pictures'] as $file){
+                $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
+                $file->storeAs('/images/books', $name);
+                $book->photos()->create([
+                    'path' => $name,
+                    'cover' => $file->getClientOriginalName() == $input['cover']
+                ]);
 
+//                todo dodati neku logiku za brisanje slika odje
+//                if (count($photos = $book->photos) < 1){
+////                    continue;
+//                }
+//                    foreach ($photos as $photo){
+//                        if (file_exists($photoPath = public_path() . $photo->path)){
+//                            unlink($photoPath);
+//                        }
+//                    }
+
+            }
+        }
 //        creating new record in books table
-        $book->update(Arr::except($input,['categories', 'genres', 'authors']));
+        $book->update(Arr::except($input,['categories', 'genres', 'authors', 'pictures', 'cover', 'present']));
 
 //        attaching book to multiple authors
         $book->authors()->sync($input['authors']);

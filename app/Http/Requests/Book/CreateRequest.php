@@ -42,6 +42,12 @@ class CreateRequest extends FormRequest
             'categories' => ['required'],
             'genres' => ['required'],
             'authors' => ['required'],
+
+//            multimedia
+            'pictures' => [''],
+            'cover' => [''],
+
+            'present' => ['']
         ];
     }
 
@@ -68,6 +74,12 @@ class CreateRequest extends FormRequest
             'categories' => $this->categories,
             'genres' => $this->genres,
             'authors' => $this->authors,
+
+//            multimedia
+            'pictures' => $this->pictures,
+            'cover' => $this->cover,
+
+            'present' => $this->present
         ]);
     }
 }

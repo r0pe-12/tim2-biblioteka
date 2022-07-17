@@ -83,7 +83,7 @@
                                             </label>
                                         </td>
                                         <td class="flex flex-row items-center px-4 py-4">
-                                            <img class="object-cover w-8 mr-2 h-11" src="img/tomsojer.jpg" alt="" />
+                                            <img class="object-cover w-8 mr-2 h-11" src="{{ $book->cover()->path }}" alt="" />
                                             <a href="{{ route('books.show', $book) }}">
                                                 <span class="font-medium text-center">{{ $book->title }}</span>
                                             </a>

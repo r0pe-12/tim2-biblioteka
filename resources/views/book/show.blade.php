@@ -2,6 +2,22 @@
     @section('title')
         Knjiga: {{ $book->title }}
     @endsection
+    @section('styles')
+        <style>
+            .grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-gap: 20px;
+                align-items: stretch;
+                justify-items: center;
+            }
+            .grid img {
+                border: 1px solid #ccc;
+                box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+                max-width: 100%;
+            }
+        </style>
+    @endsection
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
             <!-- Heading of content -->
@@ -9,7 +25,7 @@
                 <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
                     <div class="py-[10px] flex flex-row">
                         <div class="w-[77px] pl-[30px]">
-                            <img src="{{asset('img/tomsojer.jpg')}}" alt="">
+                            <img src="{{ $book->cover()->path }}" alt="">
                         </div>
                         <div class="pl-[15px]  flex flex-col">
                             <div>
@@ -92,7 +108,7 @@
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-link active" id="osnovniDetalji" data-bs-toggle="tab" href="#osnovniDetalji-tab"  role="tab" aria-controls="osnovniDetalji" aria-selected="true">Osnovni detalji</a>
                                 <a class="nav-link" id="specifikacije" data-bs-toggle="tab" href="#specifikacije-tab"  role="tab" aria-controls="specifikacije" aria-selected="false">Specifikacija</a>
-                                <a class="nav-link" id="evidencijaIznajmljivanja" data-bs-toggle="tab" href="#evidencijaIznajmljivanja-tab"  role="tab" aria-controls="nav-contact" aria-selected="false" aria-disabled="true">Evidencija iznajmljivanja</a>
+                                <a class="nav-link" id="evidencijaIznajmljivanja" data-bs-toggle="tab" href="#evidencijaIznajmljivanja-tab"  role="tab" aria-controls="nav-contact" aria-selected="false">Evidencija iznajmljivanja</a>
                                 <a class="nav-link" id="multimedija" data-bs-toggle="tab" href="#multimedija-tab"  role="tab" aria-controls="nav-contact" aria-selected="false" aria-disabled="true">Multimedija</a>
                             </div>
                         </nav>
@@ -156,6 +172,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- kraj OSNOVNI DETALJI -->
 
                         <!-- SPECIFIKACIJE -->
                         <div class="tab-pane fade" id="specifikacije-tab" role="tabpanel" aria-labelledby="specifikacije">
@@ -195,6 +212,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- kraj SPECIFIKACIJE -->
 
                         <!-- EVIDENCIJA IZNAJMLjIVANjA -->
                         <div class="tab-pane fade" id="evidencijaIznajmljivanja-tab" role="tabpanel" aria-labelledby="evidencijaIznajmljivanja">
@@ -713,7 +731,17 @@
 
                             </div>
                         </div>
+                        <!-- kraj EVIDENCIJA IZNAJMLjIVANjA -->
 
+                        <!-- MULTIMEDIJA -->
+                        <div class="tab-pane fade" id="multimedija-tab" role="tabpanel" aria-labelledby="multimedija">
+                            <div class="scroll grid p-[10px]" style="max-height: 700px">
+                                @foreach($book->photos as $photo)
+                                    <img src="{{ $photo->path }}" alt="">
+                                @endforeach
+                            </div>
+                        </div>
+                        <!-- kraj MULTIMEDIJA -->
                     </div>
 
 
