@@ -23,7 +23,7 @@ class StudentController extends Controller
     {
         //
         $students = Student::all()->load('logins', 'role');
-        return view('students.index', compact('students'));
+        return view('student.index', compact('students'));
     }
 
     /**
@@ -34,7 +34,7 @@ class StudentController extends Controller
     public function create()
     {
         //
-        return view('students.create');
+        return view('student.create');
     }
 
     /**
@@ -74,7 +74,7 @@ class StudentController extends Controller
     {
         //
         $student = User::where('username', '=', $username)->first();
-        return view('students.show', compact('student'));
+        return view('student.show', compact('student'));
     }
 
     /**
@@ -87,7 +87,7 @@ class StudentController extends Controller
     {
         //
         $student = User::where('username', '=', $username)->first();
-        return view('students.edit', compact('student'));
+        return view('student.edit', compact('student'));
 
     }
 
