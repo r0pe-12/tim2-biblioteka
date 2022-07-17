@@ -83,7 +83,7 @@
                                             </label>
                                         </td>
                                         <td class="flex flex-row items-center px-4 py-4">
-                                            <img class="object-cover w-8 mr-2 h-11" src="{{ $book->cover()->path }}" alt="" />
+                                            <img class="object-cover w-8 mr-2 h-11" src="{{ $book->cover() }}" alt="" />
                                             <a href="{{ route('books.show', $book) }}">
                                                 <span class="font-medium text-center">{{ $book->title }}</span>
                                             </a>
@@ -98,7 +98,7 @@
                                                 {{ $category->name }} {!! $loop->remaining >= 1 ? ',&nbsp' : ''!!}
                                             @endforeach
                                         </td>
-                                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">NA RASPOLAGANjU</td>
+                                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ ($book->samples)-($book->borrowedSaples) }}</td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
                                                 href="aktivneRezervacije.php">{{ $book->reservedSamples }}</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a

@@ -73,6 +73,9 @@ class Book extends Model
     }
     public function cover(){
         # code
-        return $this->photos()->where('cover', '=', 1)->first();
+        if ($cover = $this->photos()->where('cover', '=', 1)->first()){
+            return $cover->path;
+        }
+        return asset('img/book-cover-placeholder.png');
     }
 }

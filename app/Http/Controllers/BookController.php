@@ -120,8 +120,31 @@ class BookController extends Controller
     {
         //
         $input = $request->validated();
+
+        if  (($present = $input['present']) && ($photos = $book->photos)){
+//            we are making array of ids which book has
+            foreach ($photos as $photo) {
+                $current[] = $photo->id;
+            }
+
+            $diff = array_diff($current, $present);
+//            for every id that is deleted we are going to remove it from db and delete photo which is related to it
+            foreach ($diff as $id) {
+                $photo = Galery::find($id);
+
+                if (file_exists($photoPath = public_path() . $photo->path)){
+                    unlink($photoPath);
+                }
+
+                $photo->delete();
+            }
+        }
+
+        $book->photos()->update([
+            'cover' => 0
+        ]);
+
         if ($request->hasFile('pictures')){
-            Galery::query()->update(['cover'=>'0']);
             foreach ($input['pictures'] as $file){
                 $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
                 $file->storeAs('/images/books', $name);
@@ -129,18 +152,13 @@ class BookController extends Controller
                     'path' => $name,
                     'cover' => $file->getClientOriginalName() == $input['cover']
                 ]);
-
-//                todo dodati neku logiku za brisanje slika odje
-//                if (count($photos = $book->photos) < 1){
-////                    continue;
-//                }
-//                    foreach ($photos as $photo){
-//                        if (file_exists($photoPath = public_path() . $photo->path)){
-//                            unlink($photoPath);
-//                        }
-//                    }
-
             }
+        }
+
+        if (is_numeric($input['cover'])){
+            Galery::find($input['cover'])->update([
+                'cover' => 1
+            ]);
         }
 //        creating new record in books table
         $book->update(Arr::except($input,['categories', 'genres', 'authors', 'pictures', 'cover', 'present']));
