@@ -65,7 +65,7 @@
                                     </td>
                                     <td class="flex flex-row items-center px-4 py-3">
                                         <img class="object-cover w-8 mr-2 h-11" src="img/profileStudent.jpg" alt="" />
-                                        <a href="{{ route('authors.show', $author->name) }}">
+                                        <a href="{{ route('authors.show', $author) }}">
                                             <span class="mr-2 font-medium text-center">{{ $author->name }} {{ $author->surname }}</span>
                                         </a>
                                     </td>

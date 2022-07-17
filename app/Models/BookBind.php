@@ -9,7 +9,6 @@ class BookBind extends Model
 {
     use HasFactory;
 
-    
-
     protected $fillable = ['name'];
+    protected $table = 'bookbinds';
 }

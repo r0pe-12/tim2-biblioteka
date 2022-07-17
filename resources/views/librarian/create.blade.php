@@ -40,8 +40,6 @@
                 <form method="POST" class="text-gray-700 text-[14px] forma" action="{{ route('librarians.store') }}" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
-{{--                    todo cudne stvari se odje desavaju naime: koristim prepare for validation funkciju jer su ova polja na srpskom a u bazi na end...., kad hocu greske da izbacim koristim ovo sto prodje validaciju, a kad hocu old() onda moram ovo na srpki da kucam--}}
-{{--                    todo da li moramo imati ovu js validaciju na cliend side ako da onda se treba nekako staviti da to radi kako treba da ne submituje formu preko te validacije a ako ne treba onda mozemo ovaj .js sto su nam dali da zajebemo skroz al onda se javlja problem jer njihov templejt koristi taj js === NE ZNAM STA DA RADIM--}}
                     <div class="flex flex-row ml-[30px]">
                         <div class="w-[50%] mb-[100px]">
                             <div class="mt-[20px]">

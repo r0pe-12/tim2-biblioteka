@@ -19,6 +19,7 @@
 
         <!-- Styles -->
         @include('includes/layout/styles')
+        @yield('styles')
         <!-- End Styles -->
     </head>
 

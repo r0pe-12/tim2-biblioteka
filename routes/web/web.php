@@ -2,6 +2,7 @@
 use App\Http\Controllers\StudentController;
 
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\LibrarianController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,8 @@ Route::middleware(['auth'])->group(function (){
     Route::put('/librarians/{user}/resetPassword', [LibrarianController::class, 'passwordReset'])->name('librarian.pwreset');
 
     Route::resource('/authors', AuthorController::class);
+
+    Route::resource('/books', BookController::class);
 
     Route::resource('/students', StudentController::class);
     Route::put('/students/{user}/resetPassword', [StudentController::class, 'passwordReset'])->name('student.pwreset');

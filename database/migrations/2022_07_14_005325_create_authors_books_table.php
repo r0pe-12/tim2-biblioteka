@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bookbinds', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
+        Schema::create('author_book', function (Blueprint $table) {
+            //
+            $table->foreignId('author_id')->references('id')->on('authors')->cascadeOnDelete();
+            $table->foreignId('book_id')->references('id')->on('books')->cascadeOnDelete();
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookbinds');
+        Schema::dropIfExists('author_book');
     }
 };

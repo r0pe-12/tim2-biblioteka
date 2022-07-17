@@ -64,6 +64,7 @@
                 </div>
             </div>
 
+            <!-- todo dodati odje slika da se prikazuje -->
             <!-- Space for content -->
             <div class="pl-[30px] height-profile pb-[30px] scroll mt-[20px]">
                 <div class="mr-[30px]">
