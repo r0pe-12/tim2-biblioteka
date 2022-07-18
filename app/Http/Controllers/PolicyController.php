@@ -16,15 +16,30 @@ class PolicyController extends Controller
     public function index()
     {
         //
-        if ($reservation = Policy::where('name', '=', 'reservation_deadline')->first()){
-            $reservation = $reservation->value;
-        }
-        if ($return = Policy::where('name', '=', 'return_deadline')->first()){
-            $return = $return->value;
-        }
-        if ($conflict = Policy::where('name', '=', 'conflict_deadline')->first()){
-            $conflict = $conflict->value;
-        }
+        $reservation = Policy::findOrNew(Policy::RESERVATION);
+            if (!$reservation->id){
+                $reservation->id = Policy::RESERVATION;
+                $reservation->name = Policy::RESERVATION_NAME;
+                $reservation->value = 0;
+                $reservation->save();
+            }
+
+        $return = Policy::findOrNew(Policy::RETURN);
+            if (!$return->id){
+                $return->id = Policy::RETURN;
+                $return->name = Policy::RETURN_NAME;
+                $return->value = 0;
+                $return->save();
+            }
+
+        $conflict = Policy::findOrNew(Policy::CONFLICT);
+            if (!$conflict->id){
+                $conflict->id = Policy::CONFLICT;
+                $conflict->name = Policy::CONFLICT_NAME;
+                $conflict->value = 0;
+                $conflict->save();
+            }
+
         return view('settings.policy.index', compact('reservation', 'return', 'conflict'));
     }
 
@@ -103,7 +118,11 @@ class PolicyController extends Controller
     public function update(Request $request, $id)
     {
         //
-        return redirect()->route('policy.index');
+        $policy = Policy::find($_POST['id']);
+        $policy->value = $_POST['value'];
+//        $policy->value = Carbon::createFromFormat('z', $_POST['value'])->format('z');
+        $policy->save();
+//        return redirect()->route('policy.index');
     }
 
     /**
