@@ -24,6 +24,35 @@
     </head>
 
     <body class="small:bg-gradient-to-r small:from-green-400 small:to-blue-500">
+        <div class="loader-wrapper">
+            <div class="book">
+                <div class="inner">
+                    <div class="left"></div>
+                    <div class="middle"></div>
+                    <div class="right"></div>
+                </div>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
         <!-- Header -->
         @include('includes/layout/header')
         <!-- Header -->
@@ -44,6 +73,11 @@
         <!-- Scripts -->
         @include('includes/layout/scripts')
         @yield('scripts')
+        <script>
+            $(window).on("load", function () {
+                $(".loader-wrapper").fadeOut("slow");
+            })
+        </script>
         <!-- End Scripts -->
     </body>
 
