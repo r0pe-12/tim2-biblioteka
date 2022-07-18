@@ -17,3 +17,19 @@
         });
     });
 </script>
+
+    <!-- fade out flash session message -->
+<script>
+    $("document").ready(function(){
+        let flash = 3000;
+        let flash_msg = 5000;
+
+        setTimeout(function(){
+            $("#flash").fadeOut('slow');
+        }, flash );
+
+        setTimeout(function(){
+            $("#flash-msg").fadeOut('slow');
+        }, flash_msg );
+    });
+</script>

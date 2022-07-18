@@ -4,6 +4,7 @@ use App\Http\Controllers\BookBindController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FormatController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ScriptController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\PublisherController;
@@ -22,4 +23,4 @@ Route::resource('/publisher', PublisherController::class);
 Route::resource('/bookbind', BookBindController::class);
 Route::resource('/format', FormatController::class);
 Route::resource('/script', ScriptController::class);
-
+Route::resource('/language', LanguageController::class);

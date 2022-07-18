@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Format;
 use App\Models\Galery;
 use App\Models\Genre;
+use App\Models\Language;
 use App\Models\Publisher;
 use App\Models\Script;
 use Illuminate\Support\Arr;
@@ -43,6 +44,7 @@ class BookController extends Controller
             'authors' => Author::all(),
             'publishers' => Publisher::all(),
             'scripts' => Script::all(),
+            'languages' => Language::all(),
             'bookbinds' => BookBind::all(),
             'formats' => Format::all()
         ]);
@@ -104,6 +106,7 @@ class BookController extends Controller
             'authors' => Author::all(),
             'publishers' => Publisher::all(),
             'scripts' => Script::all(),
+            'languages' => Language::all(),
             'bookbinds' => BookBind::all(),
             'formats' => Format::all()
         ]);
@@ -121,7 +124,11 @@ class BookController extends Controller
         //
         $input = $request->validated();
 
-        if  (($present = $input['present']) && ($photos = $book->photos)){
+        if (!($present = $input['present'])){
+            $present = [];
+        }
+
+        if  (count($photos = $book->photos) > 0){
 //            we are making array of ids which book has
             foreach ($photos as $photo) {
                 $current[] = $photo->id;

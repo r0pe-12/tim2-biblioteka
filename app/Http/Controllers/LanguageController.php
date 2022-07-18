@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Publisher;
+use App\Models\Language;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-class PublisherController extends Controller
+class LanguageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class PublisherController extends Controller
     public function index()
     {
         //
-        $publishers = Publisher::latest()->get();
-        return view('settings.publisher.index', compact('publishers'));
+        $languages = Language::latest()->get();
+        return view('settings.language.index', compact('languages'));
     }
 
     /**
@@ -28,7 +28,7 @@ class PublisherController extends Controller
     public function create()
     {
         //
-        return view('settings.publisher.create');
+        return view('settings.language.create');
     }
 
     /**
@@ -41,15 +41,16 @@ class PublisherController extends Controller
     {
         //
         $request->validate([
-            'nazivIzdavac' => 'required|string'
+            'nazivJezik' => 'required|string'
         ]);
 
-        $publisher = new Publisher([
-            'name' => $request->nazivIzdavac,
+        $language = new Language([
+            'name' => $request->nazivJezik,
         ]);
 
-        $publisher->save();
-        return \redirect()->route('publisher.index')->with('success', 'Novi izdavač "' . $publisher->name . '" je uspješno kreiran');
+        $language->save();
+        return \redirect()->route('language.index')->with('success', 'Novi jezik "' . $language->name . '" je uspješno kreiran');
+
     }
 
     /**
@@ -69,10 +70,10 @@ class PublisherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(Publisher $publisher)
+    public function edit(Language $language)
     {
         //
-        return view('settings.publisher.edit', compact('publisher'));
+        return view('settings.language.edit', compact('language'));
     }
 
     /**
@@ -82,36 +83,34 @@ class PublisherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Publisher $publisher)
+    public function update(Request $request, Language $language)
     {
         //
         $request->validate([
-            'nazivIzdavacEdit' => 'required|string'
+            'nazivJezik' => 'required|string'
         ]);
 
-        $publisher->name = $request->nazivIzdavacEdit;
+        $language->name = $request->nazivJezik;
 
-        if ($publisher->isClean()){
+        if ($language->isClean()){
 //            if publisher name is unchanged we throw form validation error
             throw ValidationException::withMessages([
-                'nazivIzdavacEdit' => 'Polje je nepromijenjeno'
+                'nazivJezik' => 'Polje je nepromijenjeno'
             ]);
         }
-        $publisher->save();
+        $language->save();
 
-        return redirect()->route('publisher.index')->with('success', 'Izdavač je uspješno izmijenjen');
+        return redirect()->route('language.index')->with('success', 'Jezik je uspješno izmijenjen');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
-    public function destroy(Publisher $publisher)
+    public function destroy($id)
     {
         //
-        $publisher->delete();
-        return redirect()->route('publisher.index')->with('success', 'Izdavač "' . $publisher->name . '" je uspješno obrisan');
     }
 }

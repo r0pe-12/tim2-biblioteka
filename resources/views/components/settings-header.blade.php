@@ -53,6 +53,12 @@
                                         Kategorije
                                     </a>
                                 </li>
+                            @elseif(request()->routeIs('language.*'))
+                                <li>
+                                    <a href="{{ route('language.index') }}" class="text-[#2196f3] hover:text-blue-600">
+                                        Jezici
+                                    </a>
+                                </li>
                         @endif
                         <li>
                             <span class="mx-2">/</span>
