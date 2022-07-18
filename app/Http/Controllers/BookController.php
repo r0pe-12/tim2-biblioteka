@@ -191,6 +191,11 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         //
+        foreach ($book->photos as $photo){
+            if (file_exists($photoPath = public_path() . $photo->path)){
+                unlink($photoPath);
+            }
+        }
         $book->delete();
         return redirect()->route('books.index')->with('success', 'Knjiga: "' . $book->title . '" je uspješno izbrisana');
     }
