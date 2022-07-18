@@ -31,5 +31,9 @@
         setTimeout(function(){
             $("#flash-msg").fadeOut('slow');
         }, flash_msg );
+
+        setTimeout(function(){
+            $(".flash").fadeOut('slow');
+        }, flash );
     });
 </script>
