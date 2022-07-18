@@ -709,6 +709,7 @@ function validacijaKnjiga(event) {
     $("#validatePovez").empty();
     $("#validateFormat").empty();
     $("#validateIsbn").empty();
+    $('#validateJezik').empty();
 
   //  osnovni detalji
   $("#validateNazivKnjiga").empty();
@@ -734,6 +735,7 @@ function validacijaKnjiga(event) {
     let povez = $("#povez").val();
     let format = $("#format").val();
     let isbn = $("#isbn").val();
+    let jezik = $("#jezik").val();
 
   //  osnovni detalji
   if (nazivKnjiga.length == 0) {
@@ -779,6 +781,11 @@ function validacijaKnjiga(event) {
 
     if (pismo == null) {
         $('#validatePismo').append('<p style="color:red;font-size:13px;">Morate selektovati pismo!</p>');
+        event.preventDefault();
+    }
+
+    if (jezik == null) {
+        $('#validateJezik').append('<p style="color:red;font-size:13px;">Morate selektovati jezik!</p>');
         event.preventDefault();
     }
 
@@ -929,6 +936,10 @@ function clearErrorsBrStrana() {
 
 function clearErrorsPismo() {
   $("#validatePismo").empty();
+}
+
+function clearErrorsJezik() {
+  $("#validateJezik").empty();
 }
 
 function clearErrorsPovez() {
@@ -1250,6 +1261,37 @@ function clearErrorsNazivIzdavac() {
 }
 
 $("#sacuvajIzdavac").keypress(function (e) {
+  if (e.which == 13) {
+    validacijaIzdavac();
+    return false;
+  }
+});
+
+// Form validation for new language
+function validacijaJezik(event) {
+
+  $("#validateNazivJezik").empty();
+
+  let nazivJezik = $("#nazivJezik").val();
+
+  if (nazivJezik.length == 0) {
+    $('#validateNazivJezik').append('<p style="color:red;font-size:13px;">Morate unijeti naziv jezika!</p>');
+    event.preventDefault();
+  } else {
+      if (isNaN(nazivJezik)){
+
+      } else {
+          $('#validateNazivJezik').append('<p style="color:red;font-size:13px;">Jezik je pogrešnog formata!</p>');
+          event.preventDefault();
+      }
+  }
+}
+
+function clearErrorsNazivJezik() {
+  $("#validateNazivJezik").empty();
+}
+
+$("#sacuvajJezik").keypress(function (e) {
   if (e.which == 13) {
     validacijaIzdavac();
     return false;

@@ -7,6 +7,7 @@ use App\Models\BookBind;
 use App\Models\Category;
 use App\Models\Format;
 use App\Models\Genre;
+use App\Models\Language;
 use App\Models\Publisher;
 use App\Models\Script;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
         Genre::factory(10)->create();
         Publisher::factory(10)->create();
         Script::factory(10)->create();
+        Language::factory(10)->create();
 
         Author::factory(10)->create();
     }

@@ -207,7 +207,7 @@
                                     </div>
 
                                     <div class="mt-[20px]">
-                                        <p>Pismo <span class="text-red-500">*</span></p>
+                                        <p class="mb-2">Pismo <span class="text-red-500">*</span></p>
                                         <select style="width: 45%"
                                             class="select2 flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="pismo" id="pismo" onchange="clearErrorsPismo()">
                                             <option disabled="" selected=""></option>
@@ -217,9 +217,20 @@
                                         </select>
                                         <div id="validatePismo"></div>
                                     </div>
+                                    <div class="mt-[20px]">
+                                        <p class="mb-2">Jezik <span class="text-red-500">*</span></p>
+                                        <select style="width: 45%"
+                                            class="select2 flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="jezik" id="jezik" onchange="clearErrorsJezik()">
+                                            <option disabled="" selected=""></option>
+                                            @foreach($languages as $lang)
+                                                <option value="{{ $lang->id }}">{{ $lang->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div id="validateJezik"></div>
+                                    </div>
 
                                     <div class="mt-[20px]">
-                                        <p>Povez <span class="text-red-500">*</span></p>
+                                        <p class="mb-2">Povez <span class="text-red-500">*</span></p>
                                         <select style="width: 45%"
                                             class="select2 flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="povez" id="povez" onchange="clearErrorsPovez()">
                                             <option disabled="" selected=""></option>
@@ -231,7 +242,7 @@
                                     </div>
 
                                     <div class="mt-[20px]">
-                                        <p>Format <span class="text-red-500">*</span></p>
+                                        <p class="mb-2">Format <span class="text-red-500">*</span></p>
                                         <select style="width: 45%"
                                                 class="select2 flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="format" id="format" onchange="clearErrorsFormat()">
                                             <option disabled="" selected=""></option>

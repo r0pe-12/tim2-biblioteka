@@ -20,4 +20,7 @@
     <a href="{{ route('script.index') }}" class="inline ml-[70px] hover:text-blue-800 {{ request()->routeIs('script.index') ? 'active-book-nav' : ''}}">
         Pismo
     </a>
+    <a href="{{ route('language.index') }}" class="inline ml-[70px] hover:text-blue-800 {{ request()->routeIs('language.index') ? 'active-book-nav' : ''}}">
+        Jezik
+    </a>
 </div>

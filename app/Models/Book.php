@@ -13,6 +13,7 @@ class Book extends Model
         'title',
         'pageNum',
         'script_id',
+        'language_id',
         'bookbind_id',
         'format_id',
         'publisher_id',
@@ -52,6 +53,12 @@ class Book extends Model
     public function script(){
         # code
         return $this->belongsTo(Script::class);
+    }
+
+//    1-many relation between books ang languages
+    public function lang(){
+        # code
+        return $this->belongsTo(Language::class, 'language_id');
     }
 
 //    1-many relation between books and bookbinds

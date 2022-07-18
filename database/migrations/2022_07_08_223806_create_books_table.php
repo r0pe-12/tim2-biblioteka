@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('bookbind_id');
             $table->foreignId('format_id');
             $table->foreignId('publisher_id');
+            $table->foreignId('language_id');
             $table->year('publishDate');
             $table->string('isbn');
             $table->integer('samples');
