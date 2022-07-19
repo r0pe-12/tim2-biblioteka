@@ -37,7 +37,7 @@
             </div>
             <!-- Space for content -->
             <div class="scroll height-content section-content">
-                <form method="POST" class="text-gray-700 text-[14px] forma" action="{{ route('librarians.store') }}" enctype="multipart/form-data">
+                <form id="form" method="POST" class="text-gray-700 text-[14px] forma" action="{{ route('librarians.store') }}" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <div class="flex flex-row ml-[30px]">
@@ -110,9 +110,9 @@
                                             <polyline points="21 15 16 10 5 21"></polyline>
                                         </svg>
                                         <span class="px-4 py-2 mt-2 leading-normal">Add photo</span>
-                                        <input type='file' class="hidden" :accept="accept" onchange="loadFileLibrarian(event)" name="photoPath" />
+                                        <input onchange="cropperFunction(event)" id="upload-picture" value="" name="picture-raw" type="file" class="hidden" :accept="accept">
                                     </div>
-                                    <img id="image-output-librarian" class="hidden absolute w-48 h-[188px] bottom-0" />
+                                    <img id="image-output" class="hidden absolute w-48 h-[188px] bottom-0">
                                 </div>
                             </label>
                             @error('photoPath') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
@@ -133,9 +133,64 @@
                             </div>
                         </div>
                     </div>
+                    <style>
+                        #cropper-wrapper {
+                            width: 100vw;
+                            height: 100vh;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            z-index: 99999;
+                            background: rgba(0, 0, 0, 0.85);
+                        }
+                    
+                        #cropper-frame {
+                            margin: 1.25rem auto;
+                            position: absolute;
+                            top: 55%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            padding: 1.25rem;
+                    
+                        }
+                    
+                        #cropper-image-frame {
+                            max-width: 80vw;
+                            max-height: 60vh;
+                        }
+                    
+                        #cropper-preview {
+                            width: 100%;
+                        }
+                    
+                        #cropper-image-frame {
+                            min-width: 25vw;
+                            min-height: 25vh;
+                        }
+                    
+                        #cropper-action-btns {
+                            margin-top: 1.25rem;
+                        }
+                    </style>
+                    <div id="cropper-wrapper" style="display: none;">
+                        <div id="cropper-frame" class="bg-white shadow-lg">
+                            <div id="cropper-image-frame">
+                                <img src="{{  asset('img/login.jpg') }}" alt="" id="cropper-preview">
+                            </div>
+                    
+                            <div id="cropper-action-btns" class="mx-2">
+                                <button id="cropper-cancle-btn" type="button" class="text-white btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                                             <i class="fas fa-times ml-[4px]"></i>
+                                </button>
+                                <button id="cropper-crop-btn" type="button" onclick="loadFileLibrarian(event)" class="text-white btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
+                                            <i class="fas fa-check ml-[4px]"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
                 </form>
             </div>
         </section>
         <!-- End Content -->
-</x-layout>>
+</x-layout>
