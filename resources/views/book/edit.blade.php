@@ -203,6 +203,26 @@
                             </div>
                         </div>
                     </div>
+                    <div class="absolute bottom-0 w-full">
+                        <div class="flex flex-row">
+                            <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
+                                <button id="sacuvajKnjigu" type="submit"
+                                        class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaKnjiga(event)">
+                                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                                </button>
+                                <a href="{{ route('books.show', $book) }}">
+                                    <button type="button"
+                                            class="btn-animation shadow-lg ml-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                                        Poništi <i class="fas fa-times ml-[4px]"></i>
+                                    </button>
+                                </a>
+                                <button type="button"
+                                        class="btn-animation ml-[15px] shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="tab('specifikacije-tab')">
+                                    Sledeća <i class="fas fa-arrow-right ml-[4px]"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- kraj Osnovni Detalji -->
 
@@ -272,6 +292,30 @@
                                            type="text" name="isbn" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()">
                                     <div id="validateIsbn"></div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 w-full">
+                        <div class="flex flex-row">
+                            <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
+                                <a href="{{ route('books.show', $book) }}">
+                                    <button type="button"
+                                            class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                                        Poništi <i class="fas fa-times ml-[4px]"></i>
+                                    </button>
+                                </a>
+                                <button id="sacuvajKnjigu" type="submit"
+                                        class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaKnjiga(event)">
+                                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                                </button>
+                                <button type="button"
+                                        class="btn-animation ml-[15px] shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="tab('osnovniDetalji-tab')" style="background: #325EA8">
+                                    Predhodna <i class="fas fa-arrow-left ml-[4px]"></i>
+                                </button>
+                                <button type="button"
+                                        class="btn-animation ml-[15px] shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="tab('multimedija-tab')">
+                                    Sledeća <i class="fas fa-arrow-right ml-[4px]"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -411,27 +455,29 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="absolute bottom-0 w-full">
+                        <div class="flex flex-row">
+                            <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
+                                <a href="{{ route('books.show', $book) }}">
+                                    <button type="button"
+                                            class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                                        Poništi <i class="fas fa-times ml-[4px]"></i>
+                                    </button>
+                                </a>
+                                <button type="button"
+                                        class="btn-animation mr-[15px] shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="tab('specifikacije-tab')" style="background: #325EA8">
+                                    Predhodna <i class="fas fa-arrow-left ml-[4px]"></i>
+                                </button>
+                                <button id="sacuvajKnjigu" type="submit"
+                                        class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaKnjiga(event)">
+                                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- kraj MULTIMEDIJA -->
                 <!-- kraj tab-content -->
-            </div>
-
-            <div class="absolute bottom-0 w-full">
-                <div class="flex flex-row">
-                    <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
-                        <a href="{{ route('books.index') }}">
-                            <button type="button"
-                                    class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                Poništi <i class="fas fa-times ml-[4px]"></i>
-                            </button>
-                        </a>
-                        <button id="sacuvajKnjigu" type="submit"
-                                class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaKnjiga(event)">
-                            Sačuvaj <i class="fas fa-check ml-[4px]"></i>
-                        </button>
-                    </div>
-                </div>
             </div>
         </form>
         <!-- Space for content -->
