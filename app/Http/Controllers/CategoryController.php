@@ -45,26 +45,26 @@ class CategoryController extends Controller
 
             'nazivKategorije' => ['required', 'string'],
             'opisKategorije' => ['required', 'string', 'max:255'],
-            'iconPath' => []
+            'photoPath' => []
 
         ]);
 
-        if ($file = $request->file('iconPath')){
+        if ($file = $request->file('photoPath')){
             $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
             $file->storeAs('/images/categories', $name);
-            $input['iconPath'] = $name;
+            $input['photoPath'] = $name;
         }
 
         $category = new Category([
 
             'name' => $input['nazivKategorije'],
             'description' => $input['opisKategorije'],
-            'iconPath' => $input['iconPath']
+            'iconPath' => $input['photoPath']
 
         ]);
 
         $category->save();
-       return redirect()->route('category.index')->with('success', 'Nova kategorija "' . $category->name . '" je uspješno kreirana');
+        return redirect()->route('category.index')->with('success', 'Nova kategorija "' . $category->name . '" je uspješno kreirana');
 
 
     }
@@ -106,19 +106,19 @@ class CategoryController extends Controller
 
             'nazivKategorijeEdit' => ['required', 'string'],
             'opisKategorijeEdit' => ['required', 'string', 'max:255'],
-            'iconPath' => []
+            'photoPath' => []
 
         ]);
 
-        if ($file = $request->file('iconPath')){
+        if ($file = $request->file('photoPath')){
             $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
             $file->storeAs('/images/categories', $name);
-            $input['iconPath'] = $name;
+            $input['photoPath'] = $name;
 
             if (file_exists($iconPath = public_path() . $category->iconPath)){
                 unlink($iconPath);
             }
-            $category->iconPath = $input['iconPath'];
+            $category->iconPath = $input['photoPath'];
         } else{
             unset($input['iconPath']);
         }
