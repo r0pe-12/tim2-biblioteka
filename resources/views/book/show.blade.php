@@ -107,9 +107,9 @@
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-link active" id="osnovniDetalji" data-bs-toggle="tab" href="#osnovniDetalji-tab"  role="tab" aria-controls="osnovniDetalji" aria-selected="true">Osnovni detalji</a>
-                                <a class="nav-link" id="specifikacije" data-bs-toggle="tab" href="#specifikacije-tab"  role="tab" aria-controls="specifikacije" aria-selected="false">Specifikacija</a>
+                                <a class="nav-link" id="specifikacija" data-bs-toggle="tab" href="#specifikacija-tab"  role="tab" aria-controls="specifikacija" aria-selected="false">Specifikacija</a>
                                 <a class="nav-link" id="evidencijaIznajmljivanja" data-bs-toggle="tab" href="#evidencijaIznajmljivanja-tab"  role="tab" aria-controls="nav-contact" aria-selected="false">Evidencija iznajmljivanja</a>
-                                <a class="nav-link" id="multimedija" data-bs-toggle="tab" href="#multimedija-tab"  role="tab" aria-controls="nav-contact" aria-selected="false" aria-disabled="true">Multimedija</a>
+                                <a class="nav-link" id="multimedija" data-bs-toggle="tab" href="#multimedija-tab"  role="tab" aria-controls="nav-contact" aria-selected="false">Multimedija</a>
                             </div>
                         </nav>
                     </div>
@@ -175,7 +175,7 @@
                         <!-- kraj OSNOVNI DETALJI -->
 
                         <!-- SPECIFIKACIJE -->
-                        <div class="tab-pane fade" id="specifikacije-tab" role="tabpanel" aria-labelledby="specifikacije">
+                        <div class="tab-pane fade" id="specifikacija-tab" role="tabpanel" aria-labelledby="specifikacija">
                             <div class="scroll height-content section-content">
                                 <!-- Space for content -->
                                 <div class="pl-[30px] section- mt-[20px]">
@@ -743,8 +743,6 @@
                         </div>
                         <!-- kraj MULTIMEDIJA -->
                     </div>
-
-
                 </div>
                 <div class="min-w-[20%] border-l-[1px] border-[#e4dfdf] ">
                     <div class="border-b-[1px] border-[#e4dfdf]">
@@ -757,20 +755,31 @@
                                 <p class="mt-[20px]">Ukupna kolicina:</p>
                             </div>
                             <div class="text-center pb-[30px]">
-                                <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">5
-                                    primjeraka</p>
-                                <a href="iznajmljivanjeAktivne.php"><p
+                                <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
+                                    {{ $available }} {{ $available == 0 ? 'primjeraka' : ($available == 1 ? 'primjerak' : ($available > 1 && $available < 5 ? 'primjerka' : 'primjeraka')) }}
+                                </p>
+                                <a href="iznajmljivanjeAktivne.php">
+                                    <p
                                     class=" mt-[16px] bg-yellow-200 text-yellow-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                    2 primjerka</p></a>
-                                    <a href="iznajmljivanjeIzdate.php"><p
+                                    {{ $book->reservedSamples }} {{ $book->reservedSamples == 0 ? 'primjeraka' : ($book->reservedSamples == 1 ? 'primjerak' : ($book->reservedSamples > 1 && $book->reservedSamples < 5 ? 'primjerka' : 'primjeraka')) }}
+                                    </p>
+                                </a>
+                                <a href="iznajmljivanjeIzdate.php">
+                                    <p
                                     class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                    102 primjerka</p></a>
-                                    <a href="iznajmljivanjePrekoracenje.php">  <p
-                                    class=" mt-[16px] bg-red-200 text-red-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                    2 primjerka</p></a>
+                                    {{ $book->borrowedSaples }} {{ $book->borrowedSaples == 0 ? 'primjeraka' : ($book->borrowedSaples == 1 ? 'primjerak' : ($book->borrowedSaples > 1 && $book->borrowedSaples < 5 ? 'primjerka' : 'primjeraka')) }}
+                                    </p>
+                                </a>
+                                    <a href="iznajmljivanjePrekoracenje.php">
+                                        <p
+                                        class=" mt-[16px] bg-red-200 text-red-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
+                                        U PREKORACENjU
+                                        </p>
+                                    </a>
                                 <p
                                     class=" mt-[16px] border-[1px] border-green-700 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                    15 primjeraka</p>
+                                    {{ $book->samples }} {{ $book->samples == 0 ? 'primjeraka' : ($book->samples == 1 ? 'primjerak' : ($book->samples > 1 && $book->samples < 5 ? 'primjerka' : 'primjeraka')) }}
+                                </p>
                             </div>
                         </div>
                     </div>

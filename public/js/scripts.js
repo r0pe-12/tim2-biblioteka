@@ -31,6 +31,28 @@ $(function () {
   });
 });
 
+    // With HTML5 history API, we can easily prevent scrolling!
+    $('.nav-tabs a').on('shown.bs.tab', function (e) {
+        if(history.pushState) {
+            history.pushState(null, null, e.target.hash);
+        } else {
+            window.location.hash = e.target.hash; //Polyfill for old browsers
+        }
+    })
+    // Javascript to enable link to tab
+    var hash = location.hash.replace(/^#/, '');  // ^ means starting, meaning only match the first hash
+    if (hash) {
+        $('.nav-tabs a[href="#' + hash + '"]').tab('show');
+    }
+    // Change hash for page-reload
+    $('.nav-tabs a').on('shown.bs.tab', function (e) {
+        window.location.hash = e.target.hash;
+    })
+
+function tab(tab) {
+    $('a[href="#' + tab + '"]').tab('show');
+}
+
 //open close submenu
 $(function () {
   var asideArrow = $('.asideArrow');
