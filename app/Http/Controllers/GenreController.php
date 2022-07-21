@@ -41,12 +41,24 @@ class GenreController extends Controller
     {
         //
 //        todo add picture in form and implement it
-        $request->validate([
-            'nazivZanra' => 'required|string'
+        $input = $request->validate([
+
+            'nazivZanra' => ['required', 'string'],
+            'photoPath' => []
+
         ]);
 
+        if ($file = $request->file('photoPath')){
+            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
+            $file->storeAs('/images/genres', $name);
+            $input['photoPath'] = $name;
+        }
+
         $genre = new Genre([
-            'name' => $request->nazivZanra,
+
+            'name' => $input['nazivZanra'],
+            'icon' => $input['photoPath']
+
         ]);
 
         $genre->save();
@@ -86,7 +98,7 @@ class GenreController extends Controller
     public function update(Request $request, Genre $genre)
     {
         //
-        $request->validate([
+        /*$request->validate([
             'nazivZanrEdit' => 'required|string'
         ]);
 
@@ -97,12 +109,61 @@ class GenreController extends Controller
             throw ValidationException::withMessages([
                 'nazivZanrEdit' => 'Polje je nepromijenjeno'
             ]);
+        }*/
+
+        /*$input = $request->validate([
+
+            'nazivZanrEdit' => ['required', 'string'],
+            'photoPath' => []
+
+        ]);
+
+        if ($file = $request->file('photoPath')){
+            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
+            $file->storeAs('/images/categories', $name);
+            $input['photoPath'] = $name;
+
+            if (file_exists($icon= public_path() . $genre->icon)){
+                unlink($icon);
+            }
+            $genre->icon = $input['photoPath'];
+        } else{
+            unset($input['icon']);
         }
+
+        $genre->name = $request->nazivZanrEdit;
         $genre->save();
 
         return redirect()->route('genre.index')->with('success', 'Žanr uspješno izmijenjen');
-    }
+    }*/
 
+        $input = $request->validate([
+
+            'nazivZanrEdit' => ['required', 'string'],
+            'photoPath' => []
+
+        ]);
+
+        if ($file = $request->file('photoPath')) {
+            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
+            $file->storeAs('/images/genres', $name);
+            $input['photoPath'] = $name;
+
+            if (file_exists($icon = public_path() . $genre->icon)) {
+                unlink($icon);
+            }
+            $genre->icon = $input['photoPath'];
+        } else {
+            unset($input['icon']);
+        }
+
+        $genre->name = $request->nazivZanrEdit;
+
+
+        $genre->save();
+        return redirect()->route('genre.index')->with('success', 'Žanr uspješno izmijenjen');
+
+    }
     /**
      * Remove the specified resource from storage.
      *

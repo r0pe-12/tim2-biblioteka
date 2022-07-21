@@ -117,7 +117,6 @@
                             </label>
                             @error('photoPath') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                         </div>
-                    </div>
 
                     <div class="absolute bottom-0 w-full">
                         <div class="flex flex-row">

@@ -225,7 +225,7 @@ function dataFileDnD() {
 
 // Student image upload
 var loadFileStudent = function (event) {
-  var imageStudent = document.getElementById('image-output-student');
+  var imageStudent = document.getElementById('image-output');
   imageStudent.style.display = "block";
   imageStudent.src = URL.createObjectURL(event.target.files[0]);
 };
@@ -288,6 +288,7 @@ var cropperFunction = function (e) {
     // reject cropped data
     cropperCancleBtn.addEventListener('click', function(e) {
       cropper.destroy();
+      cropper = null;
       cropperOverlay.style.display = 'none';
       $('input[type="file"]').val('');
     });
