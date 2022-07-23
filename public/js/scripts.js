@@ -1517,7 +1517,7 @@ $("#sacuvajPovezEdit").keypress(function (e) {
 });
 
 // Form validation for new book format
-function validacijaFormat() {
+function validacijaFormat(event) {
 
   $("#validateNazivFormat").empty();
 
@@ -1525,7 +1525,12 @@ function validacijaFormat() {
 
   if (nazivFormat.length == 0) {
     $('#validateNazivFormat').append('<p style="color:red;font-size:13px;">Morate unijeti naziv formata!</p>');
+    event.preventDefault();
   }
+    if (nazivFormat.length > 255) {
+        $('#validateNazivFormat').append('<p style="color:red;font-size:13px;">Naziv formata je predugačak! Trenutno: ' + nazivFormat.length + ', Maksimalno: 255</p>');
+        event.preventDefault();
+    }
 }
 
 function clearErrorsNazivFormat() {
@@ -1540,7 +1545,7 @@ $("#sacuvajFormat").keypress(function (e) {
 });
 
 // Form validation for editing book format info
-function validacijaFormatEdit() {
+function validacijaFormatEdit(event) {
 
   $("#validateNazivFormatEdit").empty();
 
@@ -1548,7 +1553,12 @@ function validacijaFormatEdit() {
 
   if (nazivFormatEdit.length == 0) {
     $('#validateNazivFormatEdit').append('<p style="color:red;font-size:13px;">Morate unijeti naziv formata!</p>');
+    event.preventDefault();
   }
+    if (nazivFormatEdit.length > 255) {
+        $('#validateNazivFormatEdit').append('<p style="color:red;font-size:13px;">Naziv formata je predugačak! Trenutno: ' + nazivFormatEdit.length + ', Maksimalno: 255</p>');
+        event.preventDefault();
+    }
 }
 
 function clearErrorsNazivFormatEdit() {
