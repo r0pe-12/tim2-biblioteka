@@ -15,9 +15,9 @@
                     <div class="w-[50%] mb-[150px]">
                         <div class="mt-[20px]">
                             <p>Naziv jezika<span class="text-red-500">*</span></p>
-                            <input autocomplete="off" value="{{ old('nazivJezik') }}" type="text" name="nazivJezik" id="nazivJezik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNazivJezik()"/>
+                            <input autocomplete="off" autofocus value="{{ old('nazivJezik') }}" type="text" name="nazivJezik" id="nazivJezik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNazivJezik()"/>
                             <div id="validateNazivJezik"></div>
-                            @error('nazivJezik') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                            @error('nazivJezik') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                         </div>
                     </div>
                 </div>
