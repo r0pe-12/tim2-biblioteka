@@ -35,24 +35,23 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         //
-//        todo fix bug with creatig category without photo
         $input = $request->validate([
-
-            'nazivKategorije' => ['required', 'string'],
-            'opisKategorije' => ['required', 'string', 'max:255'],
+            'nazivKategorije' => ['required', 'string', 'max:255'],
+            'opisKategorije' => ['max:60000'],
             'photoPath' => []
-
         ]);
 
         if ($file = $request->file('photoPath')){
             $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
             $file->storeAs('/images/categories', $name);
             $input['photoPath'] = $name;
+        } else{
+            $input['photoPath'] = null;
         }
 
         $category = new Category([
@@ -84,7 +83,7 @@ class CategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Category $category)
     {
@@ -97,15 +96,15 @@ class CategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Category $category)
     {
         //
         $input = $request->validate([
 
-            'nazivKategorijeEdit' => ['required', 'string'],
-            'opisKategorijeEdit' => ['required', 'string', 'max:255'],
+            'nazivKategorijeEdit' => ['required', 'string', 'max:255'],
+            'opisKategorijeEdit' => ['max:60000'],
             'photoPath' => []
 
         ]);
@@ -119,8 +118,6 @@ class CategoryController extends Controller
                 unlink($iconPath);
             }
             $category->iconPath = $input['photoPath'];
-        } else{
-            unset($input['iconPath']);
         }
 
         $category->name = $request->nazivKategorijeEdit;
@@ -128,7 +125,7 @@ class CategoryController extends Controller
 
 
         $category->save();
-        return redirect()->route('category.index')->with('success', 'Kategorija uspješno izmijenjena');
+        return redirect()->route('category.index')->with('success', 'Kategorija "' . $category->name . '" uspješno izmijenjena');
 
 
 
@@ -137,7 +134,7 @@ class CategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Category $category)
     {

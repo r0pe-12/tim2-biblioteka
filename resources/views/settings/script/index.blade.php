@@ -16,6 +16,7 @@
             </div>
                 <x-settings-nav/>
             <div class="height-kategorije pb-[30px] scroll">
+                <x-flash-msg/>
                 <div class="flex items-center px-[50px] py-8 space-x-3 rounded-lg">
                     <a href="{{ route('script.create') }}"
                         class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">

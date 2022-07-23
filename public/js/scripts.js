@@ -1179,19 +1179,34 @@ $("#rezervisiKnjigu").keypress(function (e) {
 });
 
 // Form validation for new category
-function validacijaKategorija() {
+function validacijaKategorija(event) {
 
   $("#validateNazivKategorije").empty();
+  $("#validateOpisKategorije").empty();
 
   let nazivKategorije = $("#nazivKategorije").val();
+  let opisKategorije = $("#opisKategorije").val();
 
   if (nazivKategorije.length == 0) {
     $('#validateNazivKategorije').append('<p style="color:red;font-size:13px;">Morate unijeti naziv kategorije!</p>');
+    event.preventDefault();
+  }
+  if (nazivKategorije.length > 255) {
+      $('#validateNazivKategorije').append('<p style="color:red;font-size:13px;">Naziv kategorije je predugačak! Trenutno: ' + nazivKategorije.length + '</p>');
+      event.preventDefault();
+  }
+
+  if (opisKategorije.length > 60000) {
+      $('#validateOpisKategorije').append('<p style="color:red;font-size:13px;">Opis kategorije je predugačak! Trenutno: ' + opisKategorije.length + '</p>');
+      event.preventDefault();
   }
 }
 
 function clearErrorsNazivKategorije() {
   $("#validateNazivKategorije").empty();
+}
+function clearErrorsOpisKategorije() {
+  $("#validateOpisKategorije").empty();
 }
 
 $("#sacuvajKategoriju").keypress(function (e) {
@@ -1202,15 +1217,27 @@ $("#sacuvajKategoriju").keypress(function (e) {
 });
 
 // Form validation for editing category info
-function validacijaKategorijaEdit() {
+function validacijaKategorijaEdit(event) {
 
   $("#validateNazivKategorijeEdit").empty();
+    $("#validateOpisKategorije").empty();
 
-  let nazivKategorijeEdit = $("#nazivKategorijeEdit").val();
+    let nazivKategorijeEdit = $("#nazivKategorijeEdit").val();
+    let opisKategorije = $("#opisKategorije").val();
 
-  if (nazivKategorijeEdit.length == 0) {
+    if (nazivKategorijeEdit.length == 0) {
     $('#validateNazivKategorijeEdit').append('<p style="color:red;font-size:13px;">Morate unijeti naziv kategorije!</p>');
+    event.preventDefault();
   }
+    if (nazivKategorijeEdit.length > 255) {
+        $('#validateNazivKategorijeEdit').append('<p style="color:red;font-size:13px;">Naziv kategorije je predugačak! Trenutno: '+ nazivKategorijeEdit.length +'</p>');
+        event.preventDefault();
+    }
+
+    if (opisKategorije.length > 60000) {
+        $('#validateOpisKategorije').append('<p style="color:red;font-size:13px;">Opis kategorije je predugačak! Trenutno: ' + opisKategorije.length + '</p>');
+        event.preventDefault();
+    }
 }
 
 function clearErrorsNazivKategorijeEdit() {

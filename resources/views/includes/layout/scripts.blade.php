@@ -6,7 +6,8 @@
 
 <!-- File upload -->
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-<script src="https://unpkg.com/create-file-list"></script>
+{{--<script src="https://unpkg.com/create-file-list"></script>--}}
+<script src="{{ asset('js/create-file-list.min.js') }}"></script>
 <!-- select2 -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <!-- convert select to select2 -->
