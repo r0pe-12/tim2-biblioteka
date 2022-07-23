@@ -18,7 +18,7 @@
                                 <p>Naziv izdavača <span class="text-red-500">*</span></p>
                                 <input type="text" name="nazivIzdavacEdit" id="nazivIzdavacEdit" value="{{ $publisher->name }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNazivIzdavacEdit()"/>
                                 <div id="validateNazivIzdavacEdit"></div>
-                                @error('nazivIzdavacEdit') <div class="text-red-500 text-sm mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('nazivIzdavacEdit') <div class="flash text-red-500 text-sm mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                                     Poništi <i class="fas fa-times ml-[4px]"></i>
                                 </button>
                                 <button id="sacuvajIzdavacEdit" type="submit"
-                                    class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaIzdavacEdit()">
+                                    class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaIzdavacEdit(event)">
                                     Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                 </button>
                             </div>

@@ -18,7 +18,7 @@
                     <p>Naziv žanra <span class="text-red-500">*</span></p>
                     <input type="text" name="nazivZanrEdit" id="nazivZanrEdit" value="{{ $genre->name }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNazivZanrEdit()"/>
                     <div id="validateNazivZanrEdit"></div>
-                    @error('nazivZanrEdit') <div class="text-red-500 text-sm mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                    @error('nazivZanrEdit') <div class="flash text-red-500 text-sm mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                 </div>
 
 
@@ -39,7 +39,7 @@
                             <img id="image-output" class="absolute w-48 h-[188px] bottom-0" src="{{ $genre->icon }}">
                         </div>
                     </label>
-                    @error('photoPath') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                    @error('photoPath') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                 </div>
 
 

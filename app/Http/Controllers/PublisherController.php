@@ -41,7 +41,7 @@ class PublisherController extends Controller
     {
         //
         $request->validate([
-            'nazivIzdavac' => 'required|string'
+            'nazivIzdavac' => 'required|string|max:255'
         ]);
 
         $publisher = new Publisher([
@@ -86,7 +86,7 @@ class PublisherController extends Controller
     {
         //
         $request->validate([
-            'nazivIzdavacEdit' => 'required|string'
+            'nazivIzdavacEdit' => 'required|string|max:255'
         ]);
 
         $publisher->name = $request->nazivIzdavacEdit;

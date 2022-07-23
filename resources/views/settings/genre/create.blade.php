@@ -15,11 +15,11 @@
                 <div class="w-[50%] mb-[100px]">
                     <div class="mt-[20px]">
                         <p>Naziv žanra <span class="text-red-500">*</span></p>
-                        <input type="text" name="nazivZanra" id="nazivZanra"
+                        <input autofocus type="text" name="nazivZanra" id="nazivZanra"
                                class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                                onkeydown="clearErrorsNazivZanra()" />
                         <div id="validateNazivZanra"></div>
-                        @error('nazivZanra') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                        @error('nazivZanra') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
 
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                             <img id="image-output" class="hidden absolute w-48 h-[188px] bottom-0">
                         </div>
                     </label>
-                    @error('icon') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                    @error('photoPath') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                 </div>
 
                 <div class="absolute bottom-0 w-full">

@@ -1371,15 +1371,22 @@ $("#sacuvajZanrEdit").keypress(function (e) {
 });
 
 // Form validation for new publisher
-function validacijaIzdavac() {
+function validacijaIzdavac(event) {
 
   $("#validateNazivIzdavac").empty();
 
   let nazivIzdavac = $("#nazivIzdavac").val();
 
   if (nazivIzdavac.length == 0) {
-    $('#validateNazivIzdavac').append('<p style="color:red;font-size:13px;">Morate unijeti naziv izdavaca!</p>');
+    $('#validateNazivIzdavac').append('<p style="color:red;font-size:13px;">Morate unijeti naziv izdavača!</p>');
+    event.preventDefault();
   }
+
+    if (nazivIzdavac.length > 255) {
+        $('#validateNazivIzdavac').append('<p style="color:red;font-size:13px;">Naziv izdavača je predugačak! Trenutno: ' + nazivIzdavac.length + ', Maksimalno: 255</p>');
+        event.preventDefault();
+    }
+
 }
 
 function clearErrorsNazivIzdavac() {
@@ -1425,15 +1432,20 @@ $("#sacuvajJezik").keypress(function (e) {
 });
 
 // Form validation for editing publisher info
-function validacijaIzdavacEdit() {
+function validacijaIzdavacEdit(event) {
 
   $("#validateNazivIzdavacEdit").empty();
 
   let nazivIzdavacEdit = $("#nazivIzdavacEdit").val();
 
   if (nazivIzdavacEdit.length == 0) {
-    $('#validateNazivIzdavacEdit').append('<p style="color:red;font-size:13px;">Morate unijeti naziv izdavaca!</p>');
+    $('#validateNazivIzdavacEdit').append('<p style="color:red;font-size:13px;">Morate unijeti naziv izdavača!</p>');
+    event.preventDefault();
   }
+    if (nazivIzdavacEdit.length > 255) {
+        $('#validateNazivIzdavacEdit').append('<p style="color:red;font-size:13px;">Naziv izdavača je predugačak! Trenutno: ' + nazivZanraEdit.length + ', Maksimalno: 255</p>');
+        event.preventDefault();
+    }
 }
 
 function clearErrorsNazivIzdavacEdit() {

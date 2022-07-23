@@ -15,11 +15,11 @@
                     <div class="w-[50%] mb-[100px]">
                         <div class="mt-[20px]">
                             <p>Naziv kategorije <span class="text-red-500">*</span></p>
-                            <input type="text" name="nazivKategorije" id="nazivKategorije"
+                            <input autofocus type="text" name="nazivKategorije" id="nazivKategorije"
                                    class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                                    onkeydown="clearErrorsNazivKategorije()" />
                             <div id="validateNazivKategorije"></div>
-                            @error('nazivKategorije') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                            @error('nazivKategorije') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                         </div>
 
                         <div class="mt-[20px]">
@@ -27,7 +27,7 @@
                             <textarea name="opisKategorije" rows="10" id="opisKategorije"
                                       class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsOpisKategorije()"></textarea>
                             <div id="validateOpisKategorije"></div>
-                            @error('opisKategorije') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                            @error('opisKategorije') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                         </div>
                     </div>
                     <div class="mt-[50px]">
@@ -45,7 +45,7 @@
                                 <img id="image-output" class="hidden absolute w-48 h-[188px] bottom-0">
                             </div>
                         </label>
-                        @error('photoPath') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                        @error('photoPath') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                     </div>
                 </div>
                 <div class="absolute bottom-0 w-full">

@@ -22,7 +22,7 @@
                                     class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                                     onkeydown="clearErrorsNazivKategorijeEdit()" />
                                 <div id="validateNazivKategorijeEdit"></div>
-                                @error('nazivKategorijeEdit') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('nazivKategorijeEdit') <div class=" flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
@@ -30,7 +30,7 @@
                                 <textarea name="opisKategorijeEdit" rows="10" id="opisKategorije"
                                     class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsOpisKategorije()">{{ $category->description }}</textarea>
                                     <div id="validateOpisKategorije"></div>
-                                    @error('opisKategorijeEdit') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                    @error('opisKategorijeEdit') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                                 </div>
                         </div>
                         <div class="mt-[50px]">
@@ -48,7 +48,7 @@
                                     <img id="image-output" class="absolute w-48 h-[188px] bottom-0" src="{{ $category->iconPath }}">
                                 </div>
                             </label>
-                            @error('photoPath') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                            @error('photoPath') <div class=" flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                         </div>
                     </div>
                     <div class="absolute bottom-0 w-full">
