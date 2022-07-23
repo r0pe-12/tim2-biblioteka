@@ -1460,7 +1460,7 @@ $("#sacuvajIzdavacEdit").keypress(function (e) {
 });
 
 // Form validation for new book bind
-function validacijaPovez() {
+function validacijaPovez(event) {
 
   $("#validateNazivPovez").empty();
 
@@ -1468,7 +1468,12 @@ function validacijaPovez() {
 
   if (nazivPovez.length == 0) {
     $('#validateNazivPovez').append('<p style="color:red;font-size:13px;">Morate unijeti naziv poveza!</p>');
+    event.preventDefault();
   }
+    if (nazivPovez.length > 255) {
+        $('#validateNazivPovez').append('<p style="color:red;font-size:13px;">Naziv poveza je predugačak! Trenutno: ' + nazivPovez.length + ', Maksimalno: 255</p>');
+        event.preventDefault();
+    }
 }
 
 function clearErrorsNazivPovez() {
@@ -1483,7 +1488,7 @@ $("#sacuvajPovez").keypress(function (e) {
 });
 
 // Form validation for editing book bind info
-function validacijaPovezEdit() {
+function validacijaPovezEdit(event) {
 
   $("#validateNazivPovezEdit").empty();
 
@@ -1491,7 +1496,13 @@ function validacijaPovezEdit() {
 
   if (nazivPovezEdit.length == 0) {
     $('#validateNazivPovezEdit').append('<p style="color:red;font-size:13px;">Morate unijeti naziv poveza!</p>');
+    event.preventDefault();
   }
+
+    if (nazivPovezEdit.length > 255) {
+        $('#validateNazivPovezEdit').append('<p style="color:red;font-size:13px;">Naziv žanra je predugačak! Trenutno: ' + nazivPovezEdit.length + ', Maksimalno: 255</p>');
+        event.preventDefault();
+    }
 }
 
 function clearErrorsNazivPovezEdit() {

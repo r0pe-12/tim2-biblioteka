@@ -19,9 +19,9 @@
                         <div class="w-[50%] mb-[150px]">
                             <div class="mt-[20px]">
                                 <p>Naziv poveza <span class="text-red-500">*</span></p>
-                                <input type="text" name="nazivPovezEdit" id="nazivPovezEdit" value="{{ $bookbind->name }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNazivPovezEdit()"/>
+                                <input autofocus type="text" name="nazivPovezEdit" id="nazivPovezEdit" value="{{ $bookbind->name }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNazivPovezEdit()"/>
                                 <div id="validateNazivPovezEdit"></div>
-                                @error('nazivPovezEdit') <div class="text-red-500 text-sm mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('nazivPovezEdit') <div class="flash text-red-500 text-sm mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
                         </div>
                     </div>

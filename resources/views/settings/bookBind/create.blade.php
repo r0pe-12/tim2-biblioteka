@@ -10,15 +10,15 @@
 
             <!-- Space for content -->
             <div class="scroll height-content section-content">
-                <form method="POST" action={{ route('bookbind.store') }} class="text-gray-700 forma">
+                <form method="POST" action="{{ route('bookbind.store') }}" class="text-gray-700 forma">
                     @csrf
                     <div class="flex flex-row ml-[30px]">
                         <div class="w-[50%] mb-[150px]">
                             <div class="mt-[20px]">
                                 <p>Naziv poveza <span class="text-red-500">*</span></p>
-                                <input type="text" name="nazivPovez" id="nazivPovez" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNazivPovez()"/>
+                                <input autofocus value="{{ old('nazivPovez') }}" type="text" name="nazivPovez" id="nazivPovez" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNazivPovez()"/>
                                 <div id="validateNazivPovez"></div>
-                                @error('nazivPovez') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('nazivPovez') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                                     </button>
                                 </a>
                                 <button id="sacuvajPovez" type="submit"
-                                    class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaPovez()">
+                                    class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaPovez(event)">
                                     Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                 </button>
                             </div>
