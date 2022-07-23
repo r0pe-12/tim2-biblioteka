@@ -9,12 +9,12 @@
 
             <!-- Space for content -->
 
-            <form id="form" method="POST" action={{ route('genre.store') }}  class="text-gray-700 forma" enctype="multipart/form-data">
+            <form id="form" method="POST" action="{{ route('genre.store') }}"  class="text-gray-700 forma" enctype="multipart/form-data">
             @csrf
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[100px]">
                     <div class="mt-[20px]">
-                        <p>Naziv zanra <span class="text-red-500">*</span></p>
+                        <p>Naziv žanra <span class="text-red-500">*</span></p>
                         <input type="text" name="nazivZanra" id="nazivZanra"
                                class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                                onkeydown="clearErrorsNazivZanra()" />
@@ -22,29 +22,26 @@
                         @error('nazivZanra') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
 
                     </div>
-
-                    <div class="mt-[50px]">
-                        <p>Uploaduj ikonicu</p>
-                        <label class="mt-6 cursor-pointer">
-                            <div id="empty-cover-art" class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid">
-                                <div class="py-4">
-                                    <svg class="mx-auto feather feather-image mb-[15px]" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                        <polyline points="21 15 16 10 5 21"></polyline>
-                                    </svg>
-                                    <span class="px-4 py-2 mt-2 leading-normal">Add photo</span>
-                                    <input onchange="cropperFunction(event)"  id="icon-upload" type='file'  name="picture-raw" class="hidden type="file" class="hidden" :accept="accept">
-                                </div>
-                                <img id="image-output" class="hidden absolute w-48 h-[188px] bottom-0">
+                </div>
+                <div class="mt-[50px]">
+                    <label class="mt-6 cursor-pointer">
+                        <div id="empty-cover-art" class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid">
+                            <div class="py-4">
+                                <svg class="mx-auto feather feather-image mb-[15px]" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                    <polyline points="21 15 16 10 5 21"></polyline>
+                                </svg>
+                                <span class="px-4 py-2 mt-2 leading-normal">Add icon</span>
+                                <input onchange="cropperFunction(event)"  id="icon-upload" type='file'  name="picture-raw" class="hidden">
                             </div>
-                        </label>
-                        @error('icon') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
-                    </div>
+                            <img id="image-output" class="hidden absolute w-48 h-[188px] bottom-0">
+                        </div>
+                    </label>
+                    @error('icon') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                 </div>
 
-
-                    <div class="absolute bottom-0 w-full">
+                <div class="absolute bottom-0 w-full">
                         <div class="flex flex-row">
                             <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
                                 <a href="{{ route('genre.index')}}">
@@ -54,7 +51,7 @@
                                     </button>
                                 </a>
                                 <button id="sacuvajZanr" type="submit"
-                                    class="btn-animation mr-[30px] shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaZanr()">
+                                    class="btn-animation mr-[30px] shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaZanr(event)">
                                     Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                 </button>
                             </div>

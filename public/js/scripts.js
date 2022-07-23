@@ -1314,14 +1314,19 @@ $("#sacuvajAutoraEdit").keypress(function (e) {
 });
 
 // Form validation for new genre
-function validacijaZanr() {
+function validacijaZanr(event) {
 
   $("#validateNazivZanra").empty();
 
   let nazivZanra = $("#nazivZanra").val();
 
   if (nazivZanra.length == 0) {
-    $('#validateNazivZanra').append('<p style="color:red;font-size:13px;">Morate unijeti naziv zanra!</p>');
+    $('#validateNazivZanra').append('<p style="color:red;font-size:13px;">Morate unijeti naziv žanra!</p>');
+    event.preventDefault();
+  }
+  if (nazivZanra.length > 255) {
+      $('#validateNazivZanra').append('<p style="color:red;font-size:13px;">Naziv žanra je predugačak! Trenutno: ' + nazivZanra.length + ', Maksimalno: 255</p>');
+      event.preventDefault();
   }
 }
 
@@ -1337,7 +1342,7 @@ $("#sacuvajZanr").keypress(function (e) {
 });
 
 // Form validation for editing genre info
-function validacijaZanrEdit() {
+function validacijaZanrEdit(event) {
 
   $("#validateNazivZanraEdit").empty();
 
@@ -1345,6 +1350,12 @@ function validacijaZanrEdit() {
 
   if (nazivZanraEdit.length == 0) {
     $('#validateNazivZanraEdit').append('<p style="color:red;font-size:13px;">Morate unijeti naziv zanra!</p>');
+    event.preventDefault();
+  }
+
+  if (nazivZanraEdit.length > 255) {
+      $('#validateNazivZanraEdit').append('<p style="color:red;font-size:13px;">Naziv žanra je predugačak! Trenutno: ' + nazivZanraEdit.length + ', Maksimalno: 255</p>');
+      event.preventDefault();
   }
 }
 

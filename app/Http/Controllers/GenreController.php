@@ -40,10 +40,9 @@ class GenreController extends Controller
     public function store(Request $request)
     {
         //
-//        todo add picture in form and implement it
         $input = $request->validate([
 
-            'nazivZanra' => ['required', 'string'],
+            'nazivZanra' => ['required', 'string', 'max:255'],
             'photoPath' => []
 
         ]);
@@ -52,6 +51,8 @@ class GenreController extends Controller
             $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
             $file->storeAs('/images/genres', $name);
             $input['photoPath'] = $name;
+        } else {
+            $input['photoPath'] = null;
         }
 
         $genre = new Genre([
@@ -98,48 +99,10 @@ class GenreController extends Controller
     public function update(Request $request, Genre $genre)
     {
         //
-        /*$request->validate([
-            'nazivZanrEdit' => 'required|string'
-        ]);
-
-        $genre->name = $request->nazivZanrEdit;
-
-        if ($genre->isClean()){
-//            if genre name is unchanged we throw form validation error
-            throw ValidationException::withMessages([
-                'nazivZanrEdit' => 'Polje je nepromijenjeno'
-            ]);
-        }*/
-
-        /*$input = $request->validate([
-
-            'nazivZanrEdit' => ['required', 'string'],
-            'photoPath' => []
-
-        ]);
-
-        if ($file = $request->file('photoPath')){
-            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
-            $file->storeAs('/images/categories', $name);
-            $input['photoPath'] = $name;
-
-            if (file_exists($icon= public_path() . $genre->icon)){
-                unlink($icon);
-            }
-            $genre->icon = $input['photoPath'];
-        } else{
-            unset($input['icon']);
-        }
-
-        $genre->name = $request->nazivZanrEdit;
-        $genre->save();
-
-        return redirect()->route('genre.index')->with('success', 'Žanr uspješno izmijenjen');
-    }*/
 
         $input = $request->validate([
 
-            'nazivZanrEdit' => ['required', 'string'],
+            'nazivZanrEdit' => ['required', 'string', 'max:255'],
             'photoPath' => []
 
         ]);
@@ -159,9 +122,15 @@ class GenreController extends Controller
 
         $genre->name = $request->nazivZanrEdit;
 
+        if ($genre->isClean()){
+//            if genre name is unchanged we throw form validation error
+            throw ValidationException::withMessages([
+                'nazivZanrEdit' => 'Polje je nepromijenjeno'
+            ]);
+        }
 
         $genre->save();
-        return redirect()->route('genre.index')->with('success', 'Žanr uspješno izmijenjen');
+        return redirect()->route('genre.index')->with('success', 'Žanr "' . $genre->name .  '" uspješno izmijenjen');
 
     }
     /**

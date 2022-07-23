@@ -123,6 +123,12 @@ class CategoryController extends Controller
         $category->name = $request->nazivKategorijeEdit;
         $category->description = $request->opisKategorijeEdit;
 
+        if ($category->isClean()){
+//            if category name is unchanged we throw form validation error
+            throw ValidationException::withMessages([
+                'nazivKategorije' => 'Polje je nepromijenjeno'
+            ]);
+        }
 
         $category->save();
         return redirect()->route('category.index')->with('success', 'Kategorija "' . $category->name . '" uspješno izmijenjena');

@@ -18,7 +18,8 @@ class GenreFactory extends Factory
     {
         return [
             //
-            'name' => fake()->unique()->word
+            'name' => fake()->unique()->word,
+            'icon' => fake()->imageUrl,
         ];
     }
 }
