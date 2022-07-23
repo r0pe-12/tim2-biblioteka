@@ -16,7 +16,7 @@ class ScriptController extends Controller
     public function index()
     {
         //
-        $scripts = Script::all()->sortDesc();
+        $scripts = Script::latest()->get();
         return view('settings.script.index', compact('scripts'));
     }
 
@@ -43,7 +43,7 @@ class ScriptController extends Controller
     {
         //
      $request->validate([
-         'nazivPismo'=> 'required|string|max:50'
+         'nazivPismo'=> 'required|string|max:255'
 
      ]);
      $script = new Script([
@@ -91,7 +91,7 @@ class ScriptController extends Controller
     {
         //
         $request->validate([
-           'nazivPismoEdit'=> 'required|string|max:50'
+           'nazivPismoEdit'=> 'required|string|max:255'
         ]);
         $script->name = $request->nazivPismoEdit;
 

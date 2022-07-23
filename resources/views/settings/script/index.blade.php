@@ -72,7 +72,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                                    <button type="submit"><span class="px-4 py-0">Izbrisi Pismo</span></button>
+                                                    <button type="submit"><span class="px-4 py-0">Izbriši pismo</span></button>
                                                 </form>
                                             </div>
                                         </div>

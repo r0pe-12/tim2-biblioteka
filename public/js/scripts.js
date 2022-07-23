@@ -1573,7 +1573,7 @@ $("#sacuvajFormatEdit").keypress(function (e) {
 });
 
 // Form validation for new book script
-function validacijaPismo() {
+function validacijaPismo(event) {
 
   $("#validateNazivPismo").empty();
 
@@ -1581,7 +1581,12 @@ function validacijaPismo() {
 
   if (nazivPismo.length == 0) {
     $('#validateNazivPismo').append('<p style="color:red;font-size:13px;">Morate unijeti naziv pisma!</p>');
+    event.preventDefault();
   }
+    if (nazivPismo.length > 255) {
+        $('#validateNazivPismo').append('<p style="color:red;font-size:13px;">Naziv pisma je predugačak! Trenutno: ' + nazivPismo.length + ', Maksimalno: 255</p>');
+        event.preventDefault();
+    }
 }
 
 function clearErrorsNazivPismo() {
@@ -1596,7 +1601,7 @@ $("#sacuvajPismo").keypress(function (e) {
 });
 
 // Form validation for new book script
-function validacijaPismoEdit() {
+function validacijaPismoEdit(event) {
 
   $("#validateNazivPismoEdit").empty();
 
@@ -1604,7 +1609,12 @@ function validacijaPismoEdit() {
 
   if (nazivPismoEdit.length == 0) {
     $('#validateNazivPismoEdit').append('<p style="color:red;font-size:13px;">Morate unijeti naziv pisma!</p>');
+    event.preventDefault();
   }
+    if (nazivPismoEdit.length > 255) {
+        $('#validateNazivPismoEdit').append('<p style="color:red;font-size:13px;">Naziv pisma je predugačak! Trenutno: ' + nazivPismoEdit.length + ', Maksimalno: 255</p>');
+        event.preventDefault();
+    }
 }
 
 function clearErrorsNazivPismoEdit() {
