@@ -44,8 +44,8 @@ class UpdateRequest extends FormRequest
     {
         $this->replace([
             "id" => $this->id,
-            "name" => $this->imeBibliotekarEdit,
-            "surname" => $this->prezimeBibliotekarEdit,
+            "name" => $this->firstname,
+            "surname" => $this->lastname,
             "jmbg" => $this->jmbgBibliotekarEdit,
             "email" => $this->emailBibliotekarEdit,
             "username" => $this->usernameBibliotekarEdit,

@@ -434,7 +434,7 @@ $(".deniedBook").click(function () {
 })
 
 // Form validation for new librarian
-function validacijaBibliotekar() {
+function validacijaBibliotekar(event) {
 
   $("#validateNameBibliotekar").empty();
   $("#validateSurnameBibliotekar").empty();
@@ -455,29 +455,53 @@ function validacijaBibliotekar() {
 
   if (nameBibliotekar.length == 0) {
     $('#validateNameBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti ime!</p>');
+    event.preventDefault();
   }
   if (surnameBibliotekar.length == 0) {
     $('#validateSurnameBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti prezime!</p>');
+    event.preventDefault();
   }
 
-  if (jmbgBibliotekar.length == 0) {
-    $('#validateJmbgBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
-  }
+    if (isNaN(jmbgBibliotekar)){
+        $('#validateJmbgBibliotekar').append('<p style="color:red;font-size:13px;">JMBG je pogrešnog formata!</p>');
+        event.preventDefault();
+    } else if (jmbgBibliotekar.length == 0) {
+        $('#validateJmbgBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
+        event.preventDefault();
+    } else if (jmbgBibliotekar.length !== 13) {
+        $('#validateJmbgBibliotekar').append('<p style="color:red;font-size:13px;">JMBG mora imati 13 cifara! Trenutno:' + jmbgBibliotekar.length + '</p>');
+        event.preventDefault();
+    }
 
   if (emailBibliotekar.length == 0) {
     $('#validateEmailBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti validnu e-mail adresu!</p>');
+    event.preventDefault();
   }
 
   if (usernameBibliotekar.length == 0) {
-    $('#validateUsernameBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti korisnicko ime!</p>');
+    $('#validateUsernameBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
+    event.preventDefault();
   }
 
   if (pwBibliotekar.length == 0) {
-    $('#validatePwBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti sifru!</p>');
+    $('#validatePwBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti šifru!</p>');
+    event.preventDefault();
+  }
+
+  if (pwBibliotekar.length < 8){
+    $('#validatePwBibliotekar').append('<p style="color:red;font-size:13px;">Šifra mora imati barem 8 karaktera! Trenutno: ' + pwBibliotekar.length + '</p>');
+    event.preventDefault();
   }
 
   if (pw2Bibliotekar.length == 0) {
-    $('#validatePw2Bibliotekar').append('<p style="color:red;font-size:13px;">Morate ponoviti sifru!</p>');
+    $('#validatePw2Bibliotekar').append('<p style="color:red;font-size:13px;">Morate ponoviti šifru!</p>');
+    event.preventDefault();
+  }
+
+  if (pwBibliotekar !== pw2Bibliotekar){
+      $('#validatePwBibliotekar').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
+      $('#validatePw2Bibliotekar').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
+      event.preventDefault();
   }
 }
 
@@ -516,7 +540,7 @@ $("#sacuvajBibliotekara").keypress(function (e) {
 });
 
 // Form validation for editing librarian info
-function validacijaBibliotekarEdit() {
+function validacijaBibliotekarEdit(event) {
 
   $("#validateNameBibliotekarEdit").empty();
   $("#validateJmbgBibliotekarEdit").empty();
@@ -536,30 +560,49 @@ function validacijaBibliotekarEdit() {
 
   if (nameBibliotekarEdit.length == 0) {
     $('#validateNameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti ime!</p>');
+    event.preventDefault();
   }
   if (surnameBibliotekarEdit.length == 0) {
     $('#validateSurnameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti prezime!</p>');
+    event.preventDefault();
   }
 
-  if (jmbgBibliotekarEdit.length == 0) {
-    $('#validateJmbgBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
-  }
+    if (isNaN(jmbgBibliotekarEdit)){
+        $('#validateJmbgBibliotekarEdit').append('<p style="color:red;font-size:13px;">JMBG je pogrešnog formata!</p>');
+        event.preventDefault();
+    } else if (jmbgBibliotekarEdit.length == 0) {
+        $('#validateJmbgBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
+        event.preventDefault();
+    } else if (jmbgBibliotekarEdit.length !== 13) {
+        $('#validateJmbgBibliotekarEdit').append('<p style="color:red;font-size:13px;">JMBG mora imati 13 cifara! Trenutno:' + jmbgBibliotekarEdit.length + '</p>');
+        event.preventDefault();
+    }
 
   if (emailBibliotekarEdit.length == 0) {
     $('#validateEmailBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti validnu e-mail adresu!</p>');
+    event.preventDefault();
   }
 
   if (usernameBibliotekarEdit.length == 0) {
     $('#validateUsernameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisnicko ime!</p>');
+    event.preventDefault();
   }
 
-  // if (pwBibliotekarEdit.length == 0) {
-  //   $('#validatePwBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti sifru!</p>');
-  // }
-  //
-  // if (pw2BibliotekarEdit.length == 0) {
-  //   $('#validatePw2BibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate ponoviti sifru!</p>');
-  // }
+    if (pwBibliotekarEdit.length < 8 && pwBibliotekarEdit > 0){
+        $('#validatePwBibliotekarEdit').append('<p style="color:red;font-size:13px;">Šifra mora imati barem 8 karaktera! Trenutno: ' + pwBibliotekarEdit.length + '</p>');
+        event.preventDefault();
+    }
+
+    if (pw2BibliotekarEdit.length == 0 && pwBibliotekarEdit > 0) {
+        $('#validatePw2BibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate ponoviti šifru!</p>');
+        event.preventDefault();
+    }
+
+    if (pwBibliotekar !== pw2Bibliotekar){
+        $('#validatePwBibliotekar').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
+        $('#validatePw2Bibliotekar').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
+        event.preventDefault();
+    }
 }
 
 function clearErrorsNameBibliotekarEdit() {
@@ -1662,7 +1705,7 @@ $("#resetujSifruUcenik").keypress(function (e) {
 });
 
 // Form validation for reseting password - librarian
-function validacijaSifraBibliotekar() {
+function validacijaSifraBibliotekar(event) {
 
   $("#validatePwResetBibliotekar").empty();
   $("#validatePw2ResetBibliotekar").empty();
@@ -1670,13 +1713,26 @@ function validacijaSifraBibliotekar() {
   let pwResetBibliotekar = $("#pwResetBibliotekar").val();
   let pw2ResetBibliotekar = $("#pw2ResetBibliotekar").val();
 
-  if (pwResetBibliotekar.length == 0) {
-    $('#validatePwResetBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti sifru!</p>');
-  }
+    if (pwResetBibliotekar.length == 0) {
+        $('#validatePwResetBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti šifru!</p>');
+        event.preventDefault();
+    }
 
-  if (pw2ResetBibliotekar.length == 0) {
-    $('#validatePw2ResetBibliotekar').append('<p style="color:red;font-size:13px;">Morate ponoviti sifru!</p>');
-  }
+    if (pwResetBibliotekar.length < 8){
+        $('#validatePwResetBibliotekar').append('<p style="color:red;font-size:13px;">Šifra mora imati barem 8 karaktera! Trenutno: ' + pwResetBibliotekar.length + '</p>');
+        event.preventDefault();
+    }
+
+    if (pw2ResetBibliotekar.length == 0) {
+        $('#validatePw2ResetBibliotekar').append('<p style="color:red;font-size:13px;">Morate ponoviti šifru!</p>');
+        event.preventDefault();
+    }
+
+    if (pwResetBibliotekar !== pw2ResetBibliotekar){
+        $('#validatePwResetBibliotekar').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
+        $('#validatePw2ResetBibliotekar').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
+        event.preventDefault();
+    }
 }
 
 function clearErrorsPwResetBibliotekar() {

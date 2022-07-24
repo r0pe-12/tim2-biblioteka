@@ -43,8 +43,8 @@ class CreateRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->replace([
-            "name" => $this->imeBibliotekar,
-            "surname" => $this->prezimeBibliotekar,
+            "name" => $this->firstname,
+            "surname" => $this->lastname,
             "jmbg" => $this->jmbgBibliotekar,
             "email" => $this->emailBibliotekar,
             "username" => $this->usernameBibliotekar,
