@@ -23,8 +23,8 @@ return new class extends Migration
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('users')->cascadeOnDelete();
 
-            $table->date('borrow_date');
-            $table->date('return_date');
+            $table->timestamp('borrow_date')->nullable();
+            $table->timestamp('return_date')->nullable();
 
             $table->timestamps();
         });

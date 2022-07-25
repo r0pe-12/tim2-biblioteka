@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\BookBorrowController;
 use App\Http\Controllers\StudentController;
 
 use App\Http\Controllers\AuthorController;
@@ -31,7 +33,17 @@ Route::middleware(['auth'])->group(function (){
 
     Route::resource('/authors', AuthorController::class);
 
-    Route::resource('/books', BookController::class);
+//    rute za knjigu
+        Route::resource('/books', BookController::class);
+        Route::controller(BookBorrowController::class)->group(function (){
+    //        izdaj knjigu
+            Route::get('/book/{book}/izdaj', 'izdajForm')->name('izdaj.create');
+            Route::post('/book/{book}/izdaj', 'izdaj')->name('izdaj.store');
+    //        END-izdaj knjigu
+
+            Route::get('/izdate', 'izdate')->name('izdate');
+        });
+//    END-rute za knjigu
 
     Route::resource('/students', StudentController::class);
     Route::put('/students/{user}/resetPassword', [StudentController::class, 'passwordReset'])->name('student.pwreset');
