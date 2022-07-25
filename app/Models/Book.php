@@ -85,4 +85,10 @@ class Book extends Model
         }
         return asset('img/book-cover-placeholder.png');
     }
+
+//    1-many relation book-borrows
+    public function borrows(){
+        # code
+        return $this->hasMany(Borrow::class);
+    }
 }

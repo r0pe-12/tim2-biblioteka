@@ -102,7 +102,7 @@
                     <div class="ml-[30px]">
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
-                                <a href="izdateKnjige.php" aria-label="Knjige">
+                                <a href="{{ route('izdate') }}" aria-label="Knjige">
                                     <i
                                         class="text-[22px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-exchange-alt"></i>
                                     <div class="hidden sidebar-item">

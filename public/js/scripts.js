@@ -1156,7 +1156,7 @@ $("#sacuvajSpecifikacijuEdit").keypress(function (e) {
 });
 
 // Form validation for renting books
-function validacijaIzdavanje() {
+function validacijaIzdavanje(event) {
 
   $("#validateUcenikIzdavanje").empty();
   $("#validateDatumIzdavanja").empty();
@@ -1165,11 +1165,13 @@ function validacijaIzdavanje() {
   let datumIzdavanja = $("#datumIzdavanja").val();
 
   if (ucenikIzdavanje == null) {
-    $('#validateUcenikIzdavanje').append('<p style="color:red;font-size:13px;">Morate selektovati ucenika!</p>');
+    $('#validateUcenikIzdavanje').append('<p style="color:red;font-size:13px;">Morate selektovati učenika!</p>');
+    event.preventDefault();
   }
 
   if (datumIzdavanja.length == 0) {
     $('#validateDatumIzdavanja').append('<p style="color:red;font-size:13px;">Morate selektovati datum izdavanja!</p>');
+    event.preventDefault();
   }
 }
 
@@ -2059,18 +2061,12 @@ function dropdown() {
 }
 
 function funkcijaDatumVracanja() {
-  var selectedDate = new Date($('#datumIzdavanja').val());
-  var numberOfDaysToAdd = 20;
+  var selectedDate = Math.floor(new Date($('#datumIzdavanja').val()).getTime() / 1000);
+  var numberOfDaysToAdd = $("#return_deadline").val() * 24 * 60 * 60;
 
-  selectedDate.setDate(selectedDate.getDate() + numberOfDaysToAdd);
+  var newUnix = new Date((selectedDate + numberOfDaysToAdd) * 1000);
 
-  var day = selectedDate.getDate();
-  var month = selectedDate.getMonth() + 1;
-  var year = selectedDate.getFullYear();
-
-  var newDate = [day, month, year].join('/');
-
-  document.getElementById('datumVracanja').value = newDate;
+  document.getElementById('datumVracanja').valueAsDate = newUnix;
 }
 
 //click on one and check all checkboxes (vratiKnjigu.php)
