@@ -68,4 +68,24 @@ class BookBorrowController extends Controller
         ]);
     }
 //    END-Izdavanje knjiga tab
+
+//    izdate kopije jedne knjige
+    public function izdate1(Book $book){
+        # code
+        return view('book.evidencija.izdate', [
+            'book' => $book,
+            'available' => $book->samples - $book->borrowedSaples
+        ]);
+    }
+//    izdate kopije jedne knjige
+
+//    prikaz jedne transakcije
+    public function show(Book $book, Borrow $borrow){
+        # code
+        return view('book.evidencija.izdate1', [
+            'book' => $book,
+            'borrow' => $borrow
+        ]);
+    }
+//    END-prikaz jedne transakcije
 }

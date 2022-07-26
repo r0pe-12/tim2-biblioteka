@@ -13,18 +13,18 @@
     </div>
     <div class="text-center pb-[30px]">
         <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-            {{ $available }} {{ $available%10 == 0 ? 'primjeraka' : ($available%10 == 1 ? 'primjerak' : ($available > 1 && $available < 5 ? 'primjerka' : 'primjeraka')) }}
+            {{ $available }} {{ $available%10 == 0 ? 'primjeraka' : ($available%10 == 1 ? 'primjerak' : ($available%10 > 1 && $available%10 < 5 ? 'primjerka' : 'primjeraka')) }}
         </p>
         <a href="iznajmljivanjeAktivne.php">
             <p
                     class=" mt-[16px] bg-yellow-200 text-yellow-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                {{ $book->reservedSamples }} {{ $book->reservedSamples%10 == 0 ? 'primjeraka' : ($book->reservedSamples%10 == 1 ? 'primjerak' : ($book->reservedSamples > 1 && $book->reservedSamples < 5 ? 'primjerka' : 'primjeraka')) }}
+                {{ $book->reservedSamples }} {{ $book->reservedSamples%10 == 0 ? 'primjeraka' : ($book->reservedSamples%10 == 1 ? 'primjerak' : ($book->reservedSamples%10 > 1 && $book->reservedSamples%10 < 5 ? 'primjerka' : 'primjeraka')) }}
             </p>
         </a>
         <a href="iznajmljivanjeIzdate.php">
             <p
                     class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                {{ $book->borrowedSaples }} {{ $book->borrowedSaples%10 == 0 ? 'primjeraka' : ($book->borrowedSaples%10 == 1 ? 'primjerak' : ($book->borrowedSaples > 1 && $book->borrowedSaples < 5 ? 'primjerka' : 'primjeraka')) }}
+                {{ $book->borrowedSaples }} {{ $book->borrowedSaples%10 == 0 ? 'primjeraka' : ($book->borrowedSaples%10 == 1 ? 'primjerak' : ($book->borrowedSaples%10 > 1 && $book->borrowedSaples%10 < 5 ? 'primjerka' : 'primjeraka')) }}
             </p>
         </a>
         <a href="iznajmljivanjePrekoracenje.php">
@@ -35,7 +35,7 @@
         </a>
         <p
                 class=" mt-[16px] border-[1px] border-green-700 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-            {{ $book->samples }} {{ $book->samples%10 == 0 ? 'primjeraka' : ($book->samples%10 == 1 ? 'primjerak' : ($book->samples > 1 && $book->samples < 5 ? 'primjerka' : 'primjeraka')) }}
+            {{ $book->samples }} {{ $book->samples%10 == 0 ? 'primjeraka' : ($book->samples%10 == 1 ? 'primjerak' : ($book->samples%10 > 1 && $book->samples%10 < 5 ? 'primjerka' : 'primjeraka')) }}
         </p>
     </div>
 </div>

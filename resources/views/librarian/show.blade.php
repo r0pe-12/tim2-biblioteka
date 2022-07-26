@@ -10,7 +10,7 @@
                     <div class="pl-[30px] py-[10px] flex flex-col">
                         <div>
                             <h1>
-                                {{ $librarian->name }}
+                                {{ $librarian->name }} {{ $librarian->surname }}
                             </h1>
                         </div>
                         <div>
