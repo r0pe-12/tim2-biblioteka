@@ -23,7 +23,7 @@ class UserFactory extends Factory
             'surname' => fake()->lastName,
             'email' => fake()->safeEmail(),
             'username' => fake()->userName,
-            'role_id' => Role::create(['name' => 'bibliotekar']),
+            'role_id' => null,
             'email_verified_at' => now(),
             'password' => 'password', // it will be crypted by mutator
             'remember_token' => Str::random(10),

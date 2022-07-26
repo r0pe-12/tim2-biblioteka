@@ -44,4 +44,19 @@ class Borrow extends Model
         }
         return Carbon::parse($hold);
     }
+
+//    get all statuses of izdavanje knjige
+    public function statuses(){
+        # code
+        return $this->belongsToMany(BookStatus::class, 'book_borrow_status', 'borrow_id', 'bookStatus_id')->withPivot('bookStatus_id');
+    }
+
+//    sva izdavanja koja su trenutno aktivna
+    public static function izdavanja(){
+        # code
+        return self
+            ::join('book_borrow_status','borrows.id','=','borrow_id')
+            ->where('book_borrow_status.bookStatus_id','=', BookStatus::BORROWED)
+            ->get();
+    }
 }
