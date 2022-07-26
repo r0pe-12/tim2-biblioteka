@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\BookStatus;
 use App\Models\Borrow;
 use App\Models\Policy;
 use App\Models\Student;
@@ -15,11 +16,18 @@ class BookBorrowController extends Controller
     //    prikazi formu za izdavanje odredjene knjige
     public function izdajForm(Book $book){
         # code
+        $return = Policy::findOrNew(Policy::RETURN);
+        if (!$return->id){
+            $return->id = Policy::RETURN;
+            $return->name = Policy::RETURN_NAME;
+            $return->value = 0;
+            $return->save();
+        }
         return view('book.izdaj', [
             'book' => $book,
             'available' => $book->samples - $book->borrowedSaples,
             'students' => Student::all(),
-            'return' => Policy::where('name', '=', 'return_deadline')->first()->value,
+            'return' => $return,
         ]);
     }
 //    END-prikazi formu za izdavanje odredjene knjige
@@ -40,6 +48,10 @@ class BookBorrowController extends Controller
             'return_date' => Carbon::parse(\request()->datumVracanja),
         ]);
         $book->borrows()->save($borrow);
+
+        $status = BookStatus::borrowed();
+        $borrow->statuses()->attach($status);
+
         $book->borrowedSaples = $book->borrowedSaples + 1;
         $book->save();
 
@@ -52,7 +64,7 @@ class BookBorrowController extends Controller
     public function izdate(){
         # code
         return view('izdavanje.izdate',[
-            'izdate' => Borrow::all(),
+            'izdate' => Borrow::izdavanja(),
         ]);
     }
 //    END-Izdavanje knjiga tab

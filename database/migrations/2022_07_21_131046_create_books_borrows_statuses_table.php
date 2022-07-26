@@ -17,7 +17,7 @@ return new class extends Migration
             //
             $table->foreignId('borrow_id');
             $table->foreignId('bookStatus_id');
-            $table->date('datum')->useCurrent();
+            $table->timestamp('datum')->useCurrent();
         });
     }
 

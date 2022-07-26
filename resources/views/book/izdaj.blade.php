@@ -9,6 +9,13 @@
                 }
             </script>
     @endsection
+    @section('styles')
+            <style>
+                a.edit:hover{
+                    color: #4558be;
+                }
+            </style>
+    @endsection
         <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
             <!-- Heading of content -->
             <x-book-header :book="$book"/>
@@ -56,12 +63,14 @@
                                             'id' => 'datumVracanja',
                                             'readonly'
                                             ]) !!}
+                                    <a class="edit" href="{{ route('policy.index') }}" target="_blank">
+                                        <div>
+                                            <p class="w-[90%]">Rok vraćanja u danima: {{ $return->value }} <i class="fa fa-edit" style="float: right; padding-top: 3px"></i></p>
+                                            <input type="hidden" id="return_deadline" value="{{ $return->value }}">
+                                        </div>
+                                    </a>
                                     </label>
                                     @error('datumVracanja') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
-                                    <div>
-                                        <p>Rok vraćanja u danima: {{ $return }}</p>
-                                        <input type="hidden" id="return_deadline" value="{{ $return }}">
-                                    </div>
                                 </div>
                             </div>
                         </div>

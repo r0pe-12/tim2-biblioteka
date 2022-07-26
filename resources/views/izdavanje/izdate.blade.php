@@ -516,8 +516,8 @@
                                                 </label>
                                             </td>
                                             <td class="flex flex-row items-center px-4 py-3">
-                                                <img class="object-cover w-8 mr-2 h-11" src="img/tomsojer.jpg" alt="" />
-                                                <a href="knjigaOsnovniDetalji.php">
+                                                <img class="object-cover w-8 mr-2 h-11" src="{{ $zapis->book->cover() }}" alt="" />
+                                                <a href="{{ route('books.show', $zapis->book) }}">
                                                     <span class="font-medium text-center">{{ $zapis->book->title }}</span>
                                                 </a>
                                             </td>
