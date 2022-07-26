@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function (){
     //        END-izdaj knjigu
 
             Route::get('/izdate', 'izdate')->name('izdate');
+            Route::get('/book/{book}/evidencija/izdate', 'izdate1')->name('izdate1');
         });
 //    END-rute za knjigu
 

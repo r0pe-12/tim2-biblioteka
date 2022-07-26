@@ -91,4 +91,12 @@ class Book extends Model
         # code
         return $this->hasMany(Borrow::class);
     }
+
+    public function active(){
+        # code
+        return $this->borrows()
+            ->join('book_borrow_status','borrows.id','=','borrow_id')
+            ->where('book_borrow_status.bookStatus_id','=', BookStatus::BORROWED)
+            ->get();
+    }
 }
