@@ -1297,7 +1297,7 @@ $("#sacuvajKategorijuEdit").keypress(function (e) {
 });
 
 // Form validation for new author
-function validacijaAutor() {
+function validacijaAutor(event) {
 
   $("#validateImeAutor").empty();
   $("#validatePrezimeAutor").empty();
@@ -1307,9 +1307,11 @@ function validacijaAutor() {
 
   if (imeAutor.length == 0) {
     $('#validateImeAutor').append('<p style="color:red;font-size:13px;">Morate unijeti ime autora!</p>');
+    event.preventDefault();
   }
   if (prezimeAutor.length == 0) {
     $('#validatePrezimeAutor').append('<p style="color:red;font-size:13px;">Morate unijeti prezime autora!</p>');
+    event.preventDefault();
   }
 }
 
@@ -1328,7 +1330,7 @@ $("#sacuvajAutora").keypress(function (e) {
 });
 
 // Form validation for editing author info
-function validacijaAutorEdit() {
+function validacijaAutorEdit(event) {
 
   $("#validateImeAutorEdit").empty();
   $("#validatePrezimeAutorEdit").empty();
@@ -1338,9 +1340,11 @@ function validacijaAutorEdit() {
 
   if (imeAutorEdit.length == 0) {
     $('#validateImeAutorEdit').append('<p style="color:red;font-size:13px;">Morate unijeti ime autora!</p>');
+    event.preventDefault();
   }
   if (prezimeAutorEdit.length == 0) {
     $('#validatePrezimeAutorEdit').append('<p style="color:red;font-size:13px;">Morate unijeti prezime autora!</p>');
+    event.preventDefault();
   }
 }
 

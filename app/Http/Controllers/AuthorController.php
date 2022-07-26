@@ -52,7 +52,7 @@ class AuthorController extends Controller
             'biography' => $request->opis_autor
         ]);
         $author->save();
-        return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . '" je uspješno kreiran');
+        return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name  . ' ' . $author->surname . '" je uspješno kreiran');
     }
 
     /**
@@ -105,7 +105,7 @@ class AuthorController extends Controller
             ]);
         }
         $author->save();
-        return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . '" je uspješno izmijenjen');
+        return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . ' ' . $author->surname . '" je uspješno izmijenjen');
     }
 
     /**
@@ -118,6 +118,6 @@ class AuthorController extends Controller
     {
         //
         $author->delete();
-        return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . '" je uspješno izbrisan');
+        return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . ' ' . $author->surname . '" je uspješno izbrisan');
     }
 }
