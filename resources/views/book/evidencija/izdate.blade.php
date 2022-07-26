@@ -87,7 +87,7 @@
                                                         <i class="fas fa-ellipsis-v"></i>
                                                     </a>
                                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                        <a href="izdavanjeDetalji.php" tabindex="0"
+                                                        <a href="{{ route('izdate.show', [$book, $active]) }}" tabindex="0"
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                            role="menuitem">
                                                             <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>

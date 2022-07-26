@@ -1,6 +1,7 @@
 @props([
     /** @var \App\Models\Book */
-    'book'
+    'book',
+    'borrow' => 0
 ])
 
 <div {{ $attributes->class(['heading']) }}>
@@ -40,6 +41,17 @@
                                     <a href="#"
                                        class="text-[#2196f3] hover:text-blue-600">
                                         Izdaj knjigu
+                                    </a>
+                                </li>
+                            @endif
+                            @if(request()->routeIs('izdate.show'))
+                                <li>
+                                    <span class="mx-2">/</span>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       class="text-[#2196f3] hover:text-blue-600">
+                                        IZDAVANJE-{{ $borrow }}
                                     </a>
                                 </li>
                             @endif

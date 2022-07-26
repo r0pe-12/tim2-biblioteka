@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function (){
 
             Route::get('/izdate', 'izdate')->name('izdate');
             Route::get('/book/{book}/evidencija/izdate', 'izdate1')->name('izdate1');
+            Route::get('/book/{book}/evidencija/izdate/{borrow}', 'show')->name('izdate.show');
         });
 //    END-rute za knjigu
 
