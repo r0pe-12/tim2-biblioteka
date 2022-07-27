@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="pt-[24px] mr-[30px]">
-            <a href="otpisiKnjigu.php" class="inline hover:text-blue-600">
+            <a href="{{ route('otpisi.create', $book) }}" class="inline hover:text-blue-600">
                 <i class="fas fa-level-up-alt mr-[3px]"></i>
                 Otpisi knjigu
             </a>
