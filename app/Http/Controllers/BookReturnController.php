@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\BookReturn;
 use App\Models\BookStatus;
 use App\Models\Borrow;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class BookReturnController extends Controller
@@ -29,10 +30,15 @@ class BookReturnController extends Controller
         foreach (\request('toReturn') as $id) {
             $borrow = Borrow::findOrFail($id);
 
+//            todo odje ispisati logiku za vracanje sa prekoracenjem al to sjutra
             $newStatus = BookStatus::returned();
 
             $borrow->statuses()->sync($newStatus);
+            $book->borrowedSaples--;
+            $book->save();
         }
+        return redirect()->route('vracene1', $book)->with('success', 'Knjiga: ' . $book->title . '  je uspješno vraćena');
+
     }
 //    END-vrati knjigu
 
