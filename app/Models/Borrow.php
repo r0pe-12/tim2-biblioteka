@@ -48,7 +48,7 @@ class Borrow extends Model
 //    get all statuses of izdavanje knjige
     public function statuses(){
         # code
-        return $this->belongsToMany(BookStatus::class, 'book_borrow_status', 'borrow_id', 'bookStatus_id')->withPivot('bookStatus_id');
+        return $this->belongsToMany(BookStatus::class, 'book_borrow_status', 'borrow_id', 'bookStatus_id')->withPivot('datum');
     }
 
 //    sva izdavanja koja su trenutno aktivna

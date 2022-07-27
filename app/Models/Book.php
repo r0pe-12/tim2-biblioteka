@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\This;
 
 class Book extends Model
 {
@@ -97,6 +98,16 @@ class Book extends Model
         return $this->borrows()
             ->join('book_borrow_status','borrows.id','=','borrow_id')
             ->where('book_borrow_status.bookStatus_id','=', BookStatus::BORROWED)
+            ->get();
+    }
+
+//    sve vracene kopije jedne knjige
+    public function returned(){
+        # code
+        return $this->borrows()
+            ->join('book_borrow_status','borrows.id','=','borrow_id')
+            ->where('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED)
+            ->orwhere('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED1)
             ->get();
     }
 }

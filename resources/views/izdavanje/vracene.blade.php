@@ -1,7 +1,8 @@
 <x-layout>
     @section('title')
-        Izdate Knjige
+        Vracene knjige
     @endsection
+
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
             <!-- Heading of content -->
             <div class="heading mt-[7px]">
@@ -19,7 +20,7 @@
                                    placeholder="Pretrazi knjige..." autocomplete="off">
                         </div>
                     </div>
-                    <a href="novaKnjiga.php"
+                    <a href="#"
                        class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">Pretrazi
                     </a>
                 </div>
@@ -33,15 +34,16 @@
                                         <span
                                             class=" whitespace-nowrap w-full text-[25px]  flex justify-between fill-current">
                                             <div
-                                                class="py-[15px] px-[20px] w-[268px] cursor-pointer bg-[#EFF3F6] rounded-[10px]">
-                                                <a href="izdateKnjige.php" aria-label="Sve knjige"
+                                                class="py-[15px] px-[20px] w-[268px] cursor-pointer group hover:bg-[#EFF3F6] rounded-[10px]">
+                                                <a href="{{ route('izdate') }}" aria-label="Sve knjige"
                                                    class="flex items-center">
                                                     <i
-                                                        class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[#576cdf] far fa-copy text-[20px]"></i>
+                                                        class="text-[#707070] transition duration-300 ease-in group-hover:text-[#576cdf] far fa-copy text-[20px]"></i>
                                                     <div>
                                                         <p
-                                                            class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[#576cdf] text-[15px] ml-[18px]">
-                                                            Izdate knjige</p>
+                                                            class="transition duration-300 ease-in group-hover:text-[#576cdf]  text-[15px] ml-[18px]">
+                                                            Izdate knjige
+                                                        </p>
                                                     </div>
                                                 </a>
                                             </div>
@@ -53,15 +55,16 @@
                                         <span
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
-                                                class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="{{ route('vracene') }}" aria-label="Izdate knjige"
+                                                class="group bg-[#EFF3F6] hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                                <a href="{{ route('vracene') }}" aria-label="Vracene knjige"
                                                    class="flex items-center">
                                                     <i
-                                                        class="text-[#707070] text-[20px] fas fa-file transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
+                                                        class="transition duration-300 ease-in  text-[#707070] text-[20px] fas fa-file text-[#576cdf]"></i>
                                                     <div>
                                                         <p
-                                                            class="text-[15px] ml-[21px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                                            Vracene knjige</p>
+                                                            class="transition duration-300 ease-in  text-[15px] ml-[21px] text-[#576cdf]">
+                                                            Vracene knjige
+                                                        </p>
                                                     </div>
                                                 </a>
                                             </div>
@@ -149,7 +152,7 @@
                                     <!-- Izdato uceniku + dropdown filter for ucenik -->
                                     <th
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
-                                        Izdato uceniku <i class="ml-2 fas fa-filter"></i>
+                                        Izdato uceniku<i class="ml-2 fas fa-filter"></i>
                                         <div id="uceniciDropdown"
                                              class="uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-t pin-l border-2 border-gray-300">
                                             <ul class="border-b-2 border-gray-300 list-reset">
@@ -293,11 +296,10 @@
                                             </div>
                                         </div>
                                     </th>
-
-                                    <!-- Datum izdavanja + dropdown filter for datum -->
+                                    <!-- Datum izdavanja + dropdown filter for date -->
                                     <th
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
-                                        Datum izdavanja <i class="fas fa-filter"></i>
+                                        Datum izdavanja<i class="fas fa-filter"></i>
                                         <div id="datumDropdown"
                                              class="datumMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-l border-2 border-gray-300">
                                             <div
@@ -325,11 +327,41 @@
                                             </div>
                                         </div>
                                     </th>
-
-                                    <!-- Trenutno zadrzavanje + dropdown filter for zadrzavanje -->
+                                    <!-- Datum vracanja + dropdown filter for date -->
+                                    <th
+                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">
+                                        Datum vracanja<i class="fas fa-filter"></i>
+                                        <div id="vracanjeDropdown"
+                                             class="vracanjeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] right-0 border-2 border-gray-300">
+                                            <div
+                                                class="flex justify-between flex-row p-2 pb-[15px] border-b-[2px] relative border-gray-300">
+                                                <div>
+                                                    <label class="font-medium text-gray-500">Period od:</label>
+                                                    <input type="date"
+                                                           class="border-[1px] border-[#e4dfdf]  cursor-pointer focus:outline-none">
+                                                </div>
+                                                <div class="ml-[50px]">
+                                                    <label class="font-medium text-gray-500">Period do:</label>
+                                                    <input type="date"
+                                                           class="border-[1px] border-[#e4dfdf]  cursor-pointer focus:outline-none">
+                                                </div>
+                                            </div>
+                                            <div class="flex pt-[10px] text-white ">
+                                                <a href="#"
+                                                   class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
+                                                    Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                                </a>
+                                                <a href="#"
+                                                   class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                                                    Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <!-- Zadrzavanje knjige + dropdown filter for date -->
                                     <th
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
-                                        Trenutno zadrzavanje knjige <i class="fas fa-filter"></i>
+                                        Zadrzavanje knjige <i class="fas fa-filter"></i>
                                         <div id="zadrzavanjeDropdown"
                                              class="zadrzavanjeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] right-0 border-2 border-gray-300">
                                             <div
@@ -357,10 +389,10 @@
                                             </div>
                                         </div>
                                     </th>
-                                    <!-- Knjigu izdao + dropdown filter for bibliotekar -->
+                                    <!-- Knjigu primio + dropdown filter for bibliotekari -->
                                     <th
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">
-                                        Knjigu izdao <i class="fas fa-filter"></i>
+                                        Knjigu primio<i class="fas fa-filter"></i>
                                         <div id="bibliotekariDropdown"
                                              class="bibliotekariMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] right-0 border-2 border-gray-300">
                                             <ul class="border-b-2 border-gray-300 list-reset">
@@ -508,7 +540,7 @@
                                 </tr>
                                 </thead>
                                 <tbody class="bg-white">
-                                    @foreach($izdate as $zapis)
+                                    @foreach($returned as $zapis)
                                         <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                             <td class="px-4 py-3 whitespace-no-wrap">
                                                 <label class="inline-flex items-center">
@@ -523,24 +555,52 @@
                                             </td>
                                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ $zapis->student->name }} {{ $zapis->student->surname }}</td>
                                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($zapis->borrow_date)->format('d.m.Y') }}</td>
+                                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($zapis->statuses()->latest()->first()->pivot->datum)->format('d.m.Y') }}</td>
                                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                                 <div>
-                                                    <span>{{ ($days = $zapis->hold(true)/86400) > 6 ? floor($days/7) . ' nedelje ' . $days%7 : $days}} dan</span>
+                                                    <span>TODO <!-- todo --> </span>
                                                 </div>
                                             </td>
-                                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ $zapis->librarian->name }} {{ $zapis->librarian->surname }}</td>
-                                            <td>
-                                                <ul class="navbar-nav px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                                                    <li class="nav-bar">
-                                                        <a id="navbarDropdown" class="link-dark inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsGenre hover:text-[#606FC7]" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                            <i class="fas fa-ellipsis-v"></i>
-                                                        </a>
-                                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ $zapis->librarian->name }} {{ $zapis->librarian->surname }}
+                                            </td>
+                                            <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
+                                                <p
+                                                    class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsVraceneKnjige hover:text-[#606FC7]">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </p>
+                                                <div
+                                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 vracene-knjige">
+                                                    <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
+                                                         aria-labelledby="headlessui-menu-button-1"
+                                                         id="headlessui-menu-items-117" role="menu">
+                                                        <div class="py-1">
                                                             <a href="{{ route('izdate.show', [$zapis->book, $zapis]) }}" tabindex="0"
                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                                role="menuitem">
                                                                 <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
                                                                 <span class="px-4 py-0">Pogledaj detalje</span>
+                                                            </a>
+
+                                                            <a href="izdajKnjigu.php" tabindex="0"
+                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                               role="menuitem">
+                                                                <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
+                                                                <span class="px-4 py-0">Izdaj knjigu</span>
+                                                            </a>
+
+                                                            <a href="vratiKnjigu.php" tabindex="0"
+                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                               role="menuitem">
+                                                                <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
+                                                                <span class="px-4 py-0">Vrati knjigu</span>
+                                                            </a>
+
+                                                            <a href="rezervisiKnjigu.php" tabindex="0"
+                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                               role="menuitem">
+                                                                <i
+                                                                    class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
+                                                                <span class="px-4 py-0">Rezervisi knjigu</span>
                                                             </a>
 
                                                             <a href="otpisiKnjigu.php" tabindex="0"
@@ -550,15 +610,15 @@
                                                                 <span class="px-4 py-0">Otpisi knjigu</span>
                                                             </a>
 
-                                                            <a href="vratiKnjigu.php" tabindex="0"
+                                                            <a href="#" tabindex="0"
                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                                role="menuitem">
-                                                                <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
-                                                                <span class="px-4 py-0">Vrati knjigu</span>
+                                                                <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
+                                                                <span class="px-4 py-0">Izbrisi knjigu</span>
                                                             </a>
                                                         </div>
-                                                    </li>
-                                                </ul>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -596,7 +656,7 @@
                                         <div>
                                             <a href="#"
                                                class="relative inline-flex items-center px-4 py-2 -ml-px font-medium leading-5 transition duration-150 ease-in-out bg-white text-md focus:z-10 focus:outline-none">
-                                                1 of 1
+                                                1 of 5
                                             </a>
                                         </div>
                                         <div>
