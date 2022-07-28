@@ -104,7 +104,7 @@
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
                                                 href="{{ route('izdate1', $book) }}">{{ $book->borrowedSaples }}</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                                href="knjigePrekoracenje.php">U PREKORACENjU</a></td>
+                                                href="{{ route('prekoracene1', $book) }}">{{ count($book->failed()) }}</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $book->samples }}</td>
                                         <td>
                                             <ul class="navbar-nav px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
@@ -158,7 +158,7 @@
                                                             <form method="post" action="{{ route('books.destroy', $book) }}">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button tabindex="0"
+                                                                <button tabindex="0" type="submit"
                                                                         class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                                         role="menuitem">
                                                                     <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>

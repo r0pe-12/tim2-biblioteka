@@ -19,14 +19,14 @@ class Borrow extends Model
 //    relation between borrows and librarian
     public function librarian(){
         # code
-        return $this->belongsTo(Librarian::class);
+        return $this->belongsTo(User::class);
     }
 
 
 //    relation between borrows and student
     public function student(){
         # code
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(User::class);
     }
 
 //    relation between borrows and book

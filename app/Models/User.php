@@ -63,7 +63,8 @@ class User extends Authenticatable
         if ($path){
             return '/storage/images/users/' . $path;
         }
-        return 'https://via.placeholder.com/900x900.png/280137?text=NO%20PHOTO';
+//        return 'https://via.placeholder.com/900x900.png/280137?text=NO%20PHOTO';
+        return asset('img/profile.jpg');
     }
 
 //    get all logins of an user

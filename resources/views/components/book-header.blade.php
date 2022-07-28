@@ -55,6 +55,28 @@
                                     </a>
                                 </li>
                             @endif
+                            @if(request()->routeIs('otpisi.create'))
+                                <li>
+                                    <span class="mx-2">/</span>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       class="text-[#2196f3] hover:text-blue-600">
+                                        Otpisi knjigu
+                                    </a>
+                                </li>
+                            @endif
+                            @if(request()->routeIs('vrati.create'))
+                                <li>
+                                    <span class="mx-2">/</span>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       class="text-[#2196f3] hover:text-blue-600">
+                                        Vrati knjigu
+                                    </a>
+                                </li>
+                            @endif
                         </ol>
                     </nav>
                 </div>

@@ -65,9 +65,9 @@
                                 </label>
                             </td>
                             <td class="flex flex-row items-center px-4 py-4">
-                                <img class="object-cover w-8 h-8 mr-2 rounded-full" src="img/profileStudent.jpg"
+                                <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{ $fail->student->photoPath }}"
                                      alt="" />
-                                <a href="ucenikProfile.php">
+                                <a href="{{ route('students.show', $fail->student->username ) }}">
                                     <span class="font-medium text-center">{{ $fail->student->name }} {{ $fail->student->surname }}</span>
                                 </a>
                             </td>

@@ -93,15 +93,15 @@
                                                             <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
                                                             <span class="px-4 py-0">Pogledaj detalje</span>
                                                         </a>
-
-                                                        <a href="otpisiKnjigu.php" tabindex="0"
+                                                            <!-- todo da li ova dugmad trebaju direktno da otpisu knjigu ili da nas vode na onu stranu za otpisivanje -->
+                                                        <a href="{{ route('otpisi.create', $book) }}" tabindex="0"
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                            role="menuitem">
                                                             <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Otpisi knjigu</span>
+                                                            <span class="px-4 py-0">Otpiši knjigu</span>
                                                         </a>
 
-                                                        <a href="vratiKnjigu.php" tabindex="0"
+                                                        <a href="{{ route('vrati.create', $book) }}" tabindex="0"
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                            role="menuitem">
                                                             <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
