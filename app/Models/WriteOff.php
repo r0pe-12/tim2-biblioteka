@@ -14,7 +14,11 @@ class WriteOff extends Borrow
 
     public static function prekoracene(){
         # code
-        return WriteOff::all()->where('return_date', '<=', today('Europe/Belgrade'))->all();
+        return self
+            ::join('book_borrow_status', 'borrows.id', '=', 'borrow_id')
+            ->where('book_borrow_status.bookStatus_id', '!=', BookStatus::FAILED)
+            ->where('return_date', '<=', today('Europe/Belgrade'))
+            ->get();
     }
 
 
