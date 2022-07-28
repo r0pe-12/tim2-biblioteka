@@ -35,7 +35,7 @@
                                             class=" whitespace-nowrap w-full text-[25px]  flex justify-between fill-current">
                                             <div
                                                 class="py-[15px] px-[20px] w-[268px] cursor-pointer group hover:bg-[#EFF3F6] rounded-[10px]">
-                                                <a href="izdateKnjige.php" aria-label="Sve knjige"
+                                                <a href="{{route('izdate')}}" aria-label="Sve knjige"
                                                    class="flex items-center">
                                                     <i
                                                         class="text-[#707070] transition duration-300 ease-in group-hover:text-[#576cdf] far fa-copy text-[20px]"></i>
@@ -374,7 +374,7 @@
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-3">
-                                    <img class="object-cover w-8 mr-2 h-11" src="img/tomsojer.jpg" alt="" />
+                                    <img class="object-cover w-8 mr-2 h-11" src="{{ $prekoracena->book->cover() }}" alt="" />
                                     <a href="{{ route('books.show', $prekoracena->book) }}">
                                         <span class="font-medium text-center">{{$prekoracena->book->title}}</span>
                                     </a>
