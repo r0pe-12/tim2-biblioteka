@@ -73,7 +73,7 @@
             <div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
                 <!-- Modal Header -->
                 <div class="flex items-center justify-between px-[30px] py-[20px] border-b">
-                    <h3>Da li zelite da vratite knjigu "{{ $borrow->book->title }}" za ucenika "{{ $borrow->student->name }} {{ $borrow->student->surname }}"</h3>
+                    <h3>Da li zelite da vratite knjigu "{{ $borrow->book->title }}" za ucenika "{{ $borrow->student->name }} {{ $borrow->student->surname }}"?</h3>
                 </div>
                 <!-- Modal Body -->
                 <form method="post" action="{{ route('vrati.store', $book) }}" enctype="multipart/form-data">
@@ -101,19 +101,24 @@
             <div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
                 <!-- Modal Header -->
                 <div class="flex items-center justify-between px-[30px] py-[20px] border-b">
-                    <h3>Da li zelite da otpisete knjigu "Tom Sojer" za ucenika "Milos Milosevic?"</h3>
+                    <h3>Da li zelite da otpisete knjigu "{{ $book->title }}" za ucenika "{{ $borrow->student->name }} {{ $borrow->student->surname }}"?</h3>
                 </div>
                 <!-- Modal Body -->
-                <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
-                    <button type="button"
-                            class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                        Ponisti <i class="fas fa-times ml-[4px]"></i>
-                    </button>
-                    <button type="submit"
-                            class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"">
-                    Potvrdi <i class="fas fa-check ml-[4px]"></i>
-                    </button>
-                </div>
+                <form method="post" action="{{ route('otpisi.store', $book) }}" enctype="multipart/form-data">
+                    <input type="hidden" name="toWriteoff[]" value="{{ $borrow->id }}">
+                    @csrf
+                    @method('PUT')
+                    <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
+                        <button type="button"
+                                class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                            Ponisti <i class="fas fa-times ml-[4px]"></i>
+                        </button>
+                        <button type="submit"
+                                class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"">
+                        Potvrdi <i class="fas fa-check ml-[4px]"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
 
