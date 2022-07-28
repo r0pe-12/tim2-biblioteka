@@ -21,16 +21,16 @@
                 {{ $book->reservedSamples }} {{ $book->reservedSamples%10 == 0 ? 'primjeraka' : ($book->reservedSamples%10 == 1 ? 'primjerak' : ($book->reservedSamples%10 > 1 && $book->reservedSamples%10 < 5 ? 'primjerka' : 'primjeraka')) }}
             </p>
         </a>
-        <a href="iznajmljivanjeIzdate.php">
+        <a href="{{ route('izdate1', $book) }}">
             <p
                     class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                 {{ $book->borrowedSaples }} {{ $book->borrowedSaples%10 == 0 ? 'primjeraka' : ($book->borrowedSaples%10 == 1 ? 'primjerak' : ($book->borrowedSaples%10 > 1 && $book->borrowedSaples%10 < 5 ? 'primjerka' : 'primjeraka')) }}
             </p>
         </a>
-        <a href="iznajmljivanjePrekoracenje.php">
+        <a href="{{ route('prekoracene1', $book) }}">
             <p
                     class=" mt-[16px] bg-red-200 text-red-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                U PREKORACENjU
+                {{ count($book->failed()) }} {{ count($book->failed())%10 == 0 ? 'primjeraka' : (count($book->failed())%10 == 1 ? 'primjerak' : (count($book->failed())%10 > 1 && count($book->failed())%10 < 5 ? 'primjerka' : 'primjeraka')) }}
             </p>
         </a>
         <p

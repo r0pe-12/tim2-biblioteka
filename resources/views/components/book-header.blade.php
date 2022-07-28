@@ -55,6 +55,28 @@
                                     </a>
                                 </li>
                             @endif
+                            @if(request()->routeIs('otpisi.create'))
+                                <li>
+                                    <span class="mx-2">/</span>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       class="text-[#2196f3] hover:text-blue-600">
+                                        Otpisi knjigu
+                                    </a>
+                                </li>
+                            @endif
+                            @if(request()->routeIs('vrati.create'))
+                                <li>
+                                    <span class="mx-2">/</span>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       class="text-[#2196f3] hover:text-blue-600">
+                                        Vrati knjigu
+                                    </a>
+                                </li>
+                            @endif
                         </ol>
                     </nav>
                 </div>
@@ -69,7 +91,7 @@
                 <i class="far fa-hand-scissors mr-[3px]"></i>
                 Izdaj knjigu
             </a>
-            <a href="vratiKnjigu.php" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+            <a href="{{ route('vrati.create', $book) }}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                 <i class="fas fa-redo-alt mr-[3px] "></i>
                 Vrati knjigu
             </a>

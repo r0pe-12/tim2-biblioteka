@@ -100,12 +100,22 @@ class Book extends Model
             ->get();
     }
 
+//    sve vracene kopije jedne knjige
+    public function returned(){
+        # code
+        return $this->borrows()
+            ->join('book_borrow_status','borrows.id','=','borrow_id')
+            ->where('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED)
+            ->orwhere('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED1)
+            ->get();
+    }
+
     public function failed(){
         # code
         return $this->borrows()
             ->join('book_borrow_status', 'borrows.id', '=', 'borrow_id')
-            ->where('book_borrow_status.bookStatus_id', '!=', BookStatus::FAILED)
-            ->where('return_date', '<=', today('Europe/Belgrade'))
+            ->where('book_borrow_status.bookStatus_id', '=', BookStatus::BORROWED)
+            ->where('return_date', '<', today('Europe/Belgrade'))
             ->get();
     }
 }

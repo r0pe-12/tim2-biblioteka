@@ -19,14 +19,14 @@ class Borrow extends Model
 //    relation between borrows and librarian
     public function librarian(){
         # code
-        return $this->belongsTo(Librarian::class);
+        return $this->belongsTo(User::class);
     }
 
 
 //    relation between borrows and student
     public function student(){
         # code
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(User::class);
     }
 
 //    relation between borrows and book
@@ -48,7 +48,7 @@ class Borrow extends Model
 //    get all statuses of izdavanje knjige
     public function statuses(){
         # code
-        return $this->belongsToMany(BookStatus::class, 'book_borrow_status', 'borrow_id', 'bookStatus_id')->withPivot('bookStatus_id');
+        return $this->belongsToMany(BookStatus::class, 'book_borrow_status', 'borrow_id', 'bookStatus_id')->withPivot('datum');
     }
 
 //    sva izdavanja koja su trenutno aktivna

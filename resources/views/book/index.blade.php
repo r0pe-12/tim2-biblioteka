@@ -102,72 +102,73 @@
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
                                                 href="aktivneRezervacije.php">{{ $book->reservedSamples }}</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                                href="izdateKnjige.php">{{ $book->borrowedSaples }}</a></td>
+                                                href="{{ route('izdate1', $book) }}">{{ $book->borrowedSaples }}</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                                href="knjigePrekoracenje.php">U PREKORACENjU</a></td>
+                                                href="{{ route('prekoracene1', $book) }}">{{ count($book->failed()) }}</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $book->samples }}</td>
-                                        <td class="px-6 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsKnjige hover:text-[#606FC7]">
-                                                <i
-                                                    class="fas fa-ellipsis-v"></i>
-                                            </p>
-                                            <div
-                                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-knjige">
-                                                <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
-                                                    aria-labelledby="headlessui-menu-button-1"
-                                                    id="headlessui-menu-items-117" role="menu">
-                                                    <div class="py-1">
-                                                        <a href="knjigaOsnovniDetalji.php" tabindex="0"
-                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                            role="menuitem">
-                                                            <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Pogledaj detalje</span>
-                                                        </a>
+                                        <td>
+                                            <ul class="navbar-nav px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
+                                                <li class="nav-bar">
+                                                    <a id="navbarDropdown" class="link-dark inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsGenre hover:text-[#606FC7]" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                        <div class="py-1">
+                                                            <a href="{{ route('books.show', $book) }}" tabindex="0"
+                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                               role="menuitem">
+                                                                <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
+                                                                <span class="px-4 py-0">Pogledaj detalje</span>
+                                                            </a>
 
-                                                        <a href="editKnjiga.php" tabindex="0"
-                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                            role="menuitem">
-                                                            <i class="fas fa-edit mr-[6px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Izmijeni knjigu</span>
-                                                        </a>
+                                                            <a href="{{ route('books.edit', $book) }}" tabindex="0"
+                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                               role="menuitem">
+                                                                <i class="fas fa-edit mr-[6px] ml-[5px] py-1"></i>
+                                                                <span class="px-4 py-0">Izmijeni knjigu</span>
+                                                            </a>
 
-                                                        <a href="{{route('otpisi.create', $book)}}" tabindex="0"
-                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                            role="menuitem">
-                                                            <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Otpisi knjigu</span>
-                                                        </a>
+                                                            <a href="{{route('otpisi.create', $book)}}" tabindex="0"
+                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                               role="menuitem">
+                                                                <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
+                                                                <span class="px-4 py-0">Otpisi knjigu</span>
+                                                            </a>
 
-                                                        <a href="izdajKnjigu.php" tabindex="0"
-                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                            role="menuitem">
-                                                            <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Izdaj knjigu</span>
-                                                        </a>
+                                                            <a href="{{ route('izdaj.create', $book) }}" tabindex="0"
+                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                               role="menuitem">
+                                                                <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
+                                                                <span class="px-4 py-0">Izdaj knjigu</span>
+                                                            </a>
 
-                                                        <a href="vratiKnjigu.php" tabindex="0"
-                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                            role="menuitem">
-                                                            <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Vrati knjigu</span>
-                                                        </a>
+                                                            <a href="{{ route('vrati.create', $book) }}" tabindex="0"
+                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                               role="menuitem">
+                                                                <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
+                                                                <span class="px-4 py-0">Vrati knjigu</span>
+                                                            </a>
 
-                                                        <a href="rezervisiKnjigu.php" tabindex="0"
-                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                            role="menuitem">
-                                                            <i class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Rezervisi knjigu</span>
-                                                        </a>
-
-                                                        <a href="#" tabindex="0"
-                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                            role="menuitem">
-                                                            <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Izbrisi knjigu</span>
-                                                        </a>
+                                                            <a href="rezervisiKnjigu.php" tabindex="0"
+                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                               role="menuitem">
+                                                                <i class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
+                                                                <span class="px-4 py-0">Rezervisi knjigu</span>
+                                                            </a>
+                                                            <form method="post" action="{{ route('books.destroy', $book) }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button tabindex="0" type="submit"
+                                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                                        role="menuitem">
+                                                                    <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
+                                                                    <span class="px-4 py-0">Izbrisi knjigu</span>
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                </li>
+                                            </ul>
                                         </td>
                                     </tr>
                                @endforeach

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookBorrowController;
+use App\Http\Controllers\BookReturnController;
 use App\Http\Controllers\BookWriteOffController;
 use App\Http\Controllers\StudentController;
 
@@ -38,24 +39,34 @@ Route::middleware(['auth'])->group(function (){
         Route::resource('/books', BookController::class);
         Route::controller(BookBorrowController::class)->group(function (){
     //        izdaj knjigu
-            Route::get('/book/{book}/izdaj', 'izdajForm')->name('izdaj.create');
-            Route::post('/book/{book}/izdaj', 'izdaj')->name('izdaj.store');
+            Route::get('/books/{book}/izdaj', 'izdajForm')->name('izdaj.create');
+            Route::post('/books/{book}/izdaj', 'izdaj')->name('izdaj.store');
     //        END-izdaj knjigu
 
             Route::get('/izdate', 'izdate')->name('izdate');
-            Route::get('/book/{book}/evidencija/izdate', 'izdate1')->name('izdate1');
-            Route::get('/book/{book}/evidencija/izdate/{borrow}', 'show')->name('izdate.show');
+            Route::get('/books/{book}/evidencija/izdate', 'izdate1')->name('izdate1');
+            Route::get('/books/{book}/evidencija/izdate/{borrow}', 'show')->name('izdate.show');
 
         });
 
         Route::controller(BookWriteOffController::class)->group(function (){
     //      otpisi knjigu
-            Route::get('/book/{book}/otpisi', 'otpisiForm')->name('otpisi.create');
-            Route::put('/book/{book}/otpisi', 'otpisi')->name('otpisi.store');
+            Route::get('/books/{book}/otpisi', 'otpisiForm')->name('otpisi.create');
+            Route::put('/books/{book}/otpisi', 'otpisi')->name('otpisi.store');
     //      END-otpisi knjigu
 
             Route::get('/prekoracene', 'prekoracene')->name('prekoracene');
-            Route::get('/book/{book}/evidencija/prekoracene', 'prekoracene1')->name('prekoracene1');
+            Route::get('/books/{book}/evidencija/prekoracene', 'prekoracene1')->name('prekoracene1');
+        });
+
+        Route::controller(BookReturnController::class)->group(function (){
+    //      vrati knjigu
+            Route::get('/books/{book}/vrati', 'vratiForm')->name('vrati.create');
+            Route::put('/books/{book}/vrati', 'vrati')->name('vrati.store');
+    //      END-vrati knjigu
+
+            Route::get('/vracene', 'vracene')->name('vracene');
+            Route::get('/books/{book}/evidencija/vracene', 'vracene1')->name('vracene1');
         });
 //    END-rute za knjigu
 
