@@ -6,3 +6,5 @@
 
 
 //    todo iz nekog razloga nam se pojavljuje jeziks tabela u sql dumpu
+
+//    todo mozda je dobra ideja da dodamo jedan tab istorija transakcija vezanih za jednu knjigu i u globalu

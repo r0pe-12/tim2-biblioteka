@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookBorrowController;
 use App\Http\Controllers\BookReturnController;
+use App\Http\Controllers\BookWriteOffController;
 use App\Http\Controllers\StudentController;
 
 use App\Http\Controllers\AuthorController;
@@ -45,6 +46,17 @@ Route::middleware(['auth'])->group(function (){
             Route::get('/izdate', 'izdate')->name('izdate');
             Route::get('/book/{book}/evidencija/izdate', 'izdate1')->name('izdate1');
             Route::get('/book/{book}/evidencija/izdate/{borrow}', 'show')->name('izdate.show');
+
+        });
+
+        Route::controller(BookWriteOffController::class)->group(function (){
+    //      otpisi knjigu
+            Route::get('/book/{book}/otpisi', 'otpisiForm')->name('otpisi.create');
+            Route::put('/book/{book}/otpisi', 'otpisi')->name('otpisi.store');
+    //      END-otpisi knjigu
+
+            Route::get('/prekoracene', 'prekoracene')->name('prekoracene');
+            Route::get('/book/{book}/evidencija/prekoracene', 'prekoracene1')->name('prekoracene1');
         });
 
         Route::controller(BookReturnController::class)->group(function (){
