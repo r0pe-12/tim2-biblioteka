@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\BookStatus;
+use App\Models\Borrow;
+use App\Models\Student;
+use App\Models\WriteOff;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BookWriteOffController extends Controller
@@ -18,14 +23,29 @@ class BookWriteOffController extends Controller
 
 //  otpisi knjigu
     public function otpisi(Book $book) {
-        return 'knjiga je otpisana';
+        \request()->validate([
+            'toWriteoff' => 'required',
+        ]);
+        foreach (\request('toWriteoff') as $id) {
+            $borrow = Borrow::findOrFail($id);
+
+            $newStatus = BookStatus::failed();
+
+            $borrow->statuses()->sync($newStatus);
+            $book->borrowedSaples--;
+            $book->samples--;
+            $book->save();
+        }
+        return redirect()->route('books.index')->with('success', 'Knjiga "'. $book->title .'" je uspješno otpisana');
     }
 //  END-otpisi knjigu
 
 //  Prekoracene knjige tab
     public function prekoracene(){
         # code
-        return view('izdavanje.prekoracene');
+        return view('izdavanje.prekoracene',[
+            'prekoracene' => WriteOff::prekoracene(),
+        ]);
     }
 //  END-Prekoracene knjige tab
 
