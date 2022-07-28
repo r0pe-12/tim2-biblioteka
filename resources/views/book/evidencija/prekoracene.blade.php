@@ -26,12 +26,12 @@
                         <i class="text-[20px] far fa-copy mr-[3px]"></i>
                         Izdate knjige
                     </a>
-                    <a href="iznajmljivanjeVracene.php"
+                    <a href="{{ route('vracene1', $book) }}"
                        class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                         <i class="text-[20px]  group-hover:text-[#576cdf] fas fa-file mr-[3px]"></i>
                         Vracene knjige
                     </a>
-                    <a href="iznajmljivanjePrekoracenje.php"
+                    <a href="{{ route('prekoracene1', $book) }}"
                        class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] text-[#576cdf] bg-[#EFF3F6] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                         <i
                             class="text-[20px] group-hover:text-[#576cdf] fas fa-exclamation-triangle mr-[3px]"></i>
@@ -216,39 +216,7 @@
                 </div>
             </div>
             <div class="min-w-[20%] border-l-[1px] border-[#e4dfdf] ">
-                <div class="border-b-[1px] border-[#e4dfdf]">
-                    <div class="ml-[30px] mr-[70px] mt-[20px] flex flex-row justify-between">
-                        <div class="text-gray-500 ">
-                            <p>Na raspolaganju:</p>
-                            <p class="mt-[20px]">Rezervisano:</p>
-                            <p class="mt-[20px]">Izdato:</p>
-                            <p class="mt-[20px]">U prekoracenju:</p>
-                            <p class="mt-[20px]">Ukupna kolicina:</p>
-                        </div>
-                        <div class="text-center pb-[30px]">
-                            <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">5
-                                primjeraka</p>
-                            <a href="iznajmljivanjeAktivne.php">
-                                <p
-                                    class=" mt-[16px] bg-yellow-200 text-yellow-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                    2 primjerka</p>
-                            </a>
-                            <a href="iznajmljivanjeIzdate.php">
-                                <p
-                                    class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                    102 primjerka</p>
-                            </a>
-                            <a href="iznajmljivanjePrekoracenje.php">
-                                <p
-                                    class=" mt-[16px] bg-red-200 text-red-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                    2 primjerka</p>
-                            </a>
-                            <p
-                                class=" mt-[16px] border-[1px] border-green-700 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                15 primjeraka</p>
-                        </div>
-                    </div>
-                </div>
+                <x-book-samples :book="$book" :available="$available"/>
                 <div class="mt-[40px] mx-[30px]">
                     <div class="flex flex-col max-w-[304px]">
                         <div class="text-gray-500 ">

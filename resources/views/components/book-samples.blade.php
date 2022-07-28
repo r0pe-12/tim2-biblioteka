@@ -27,7 +27,7 @@
                 {{ $book->borrowedSaples }} {{ $book->borrowedSaples%10 == 0 ? 'primjeraka' : ($book->borrowedSaples%10 == 1 ? 'primjerak' : ($book->borrowedSaples%10 > 1 && $book->borrowedSaples%10 < 5 ? 'primjerka' : 'primjeraka')) }}
             </p>
         </a>
-        <a href="iznajmljivanjePrekoracenje.php">
+        <a href="{{ route('prekoracene1', $book) }}">
             <p
                     class=" mt-[16px] bg-red-200 text-red-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                 U PREKORACENjU
