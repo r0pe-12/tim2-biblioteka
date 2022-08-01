@@ -114,7 +114,6 @@
                                             </div>
                                             <div class="mt-[40px]">
                                                 <span class="text-gray-500 text-[14px]">Jezik</span>
-{{--                                                todo--}}
                                                 <p class="font-medium"><a href="#">{{ $book->lang->name }}</a></p>
                                             </div>
                                             <div class="mt-[40px]">

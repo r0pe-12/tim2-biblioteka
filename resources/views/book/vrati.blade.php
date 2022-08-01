@@ -64,7 +64,6 @@
                                                 </label>
                                             </td>
                                             <td class="flex flex-row items-center px-4 py-4">
-                                                <!-- todo slika nesto nije u redu -->
                                                 <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{ $active->student->photoPath }}"
                                                      alt="" />
                                                 <a href="{{ route('students.show', $active->student->username) }}">
@@ -72,8 +71,8 @@
                                                 </a>
                                             </td>
                                             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($active->borrow_date)->format('d.m.Y') }}</td>
-                                            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $active->hold(1) }}</td>
-                                            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">TODO</td>
+                                            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap"><x-date-diff :zapis="$active"/></td>
+                                            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap"><x-date-diff :zapis="$active" :failed="true"/></td>
                                             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $active->librarian->name }} {{ $active->librarian->surname }}</td>
                                         </tr>
                                 @endforeach

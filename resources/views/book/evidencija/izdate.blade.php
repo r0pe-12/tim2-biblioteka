@@ -76,7 +76,7 @@
                                         <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($active->borrow_date)->format('d.m.Y') }}</td>
                                         <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                             <div>
-                                                <span>{{ $active->hold(1) }}</span>
+                                                <span><x-date-diff :zapis="$active"/></span>
                                             </div>
                                         </td>
                                         <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ $active->librarian->name }} {{ $active->librarian->surname }}</td>
@@ -93,7 +93,6 @@
                                                             <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
                                                             <span class="px-4 py-0">Pogledaj detalje</span>
                                                         </a>
-                                                            <!-- todo da li ova dugmad trebaju direktno da otpisu knjigu ili da nas vode na onu stranu za otpisivanje -->
                                                         <a href="{{ route('otpisi.create', $book) }}" tabindex="0"
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                            role="menuitem">
