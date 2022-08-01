@@ -1,5 +1,4 @@
 <x-layout>
-{{--    todo set all "ponisti" button to redirect you to the index page--}}
     @section('title')
         Izmijeni podatke
     @endsection

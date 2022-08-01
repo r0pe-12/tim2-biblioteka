@@ -1,5 +1,4 @@
 <x-layout>
-{{--    TODO ako je name polje prazno izbacice gresku i nakon nekog vremena ce se refrshovati i obrisati je--}}
     @section('title')
         Izmijeni podatke
     @endsection

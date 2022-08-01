@@ -74,9 +74,6 @@ class BookController extends Controller
         $book->genres()->sync($input['genres']);
 
         return redirect()->route('books.index')->with('success', 'Nova knjiga "' . $book->title . '" je uspješno kreirana');
-
-//        todo ovo ispod ne radi iz nekog cudnog razloga a i kad ukucam taj link on mi skroz uvuce header
-//        return redirect('/books/' . $book->id . '/edit#multimedija-tab')->with('success', 'Nova knjiga "' . $book->title . '" je uspješno kreirana. Sada dodajte multimediju');
     }
 
     /**

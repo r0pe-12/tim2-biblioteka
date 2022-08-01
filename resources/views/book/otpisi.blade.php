@@ -72,10 +72,10 @@
                                 </a>
                             </td>
                             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($fail->borrow_date)->format('d.m.Y') }}</td>
-                            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$fail->hold(1)}}</td>
+                            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap"><x-date-diff :zapis="$fail"/></td>
                             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                                     <span class="px-[6px] py-[2px] bg-red-200 text-red-800 rounded-[10px]">
-                                        TODO <!--todo-->
+                                        <x-date-diff :zapis="$fail" :failed="true"/>
                                     </span>
                             </td>
                             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $fail->librarian->name }} {{ $fail->librarian->surname }}</td>

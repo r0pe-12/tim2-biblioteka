@@ -525,7 +525,7 @@
                                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($zapis->borrow_date)->format('d.m.Y') }}</td>
                                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                                 <div>
-                                                    <span>{{ ($days = $zapis->hold(true)/86400) > 6 ? floor($days/7) . ' nedelje ' . $days%7 : $days}} dan</span>
+                                                    <span><x-date-diff :zapis="$zapis"/></span>
                                                 </div>
                                             </td>
                                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ $zapis->librarian->name }} {{ $zapis->librarian->surname }}</td>
@@ -543,14 +543,14 @@
                                                                 <span class="px-4 py-0">Pogledaj detalje</span>
                                                             </a>
 
-                                                            <a href="otpisiKnjigu.php" tabindex="0"
+                                                            <a href="{{ route('otpisi.create', $zapis->book) }}" tabindex="0"
                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                                role="menuitem">
                                                                 <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
                                                                 <span class="px-4 py-0">Otpisi knjigu</span>
                                                             </a>
 
-                                                            <a href="vratiKnjigu.php" tabindex="0"
+                                                            <a href="{{ route('vrati.create', $zapis->book) }}" tabindex="0"
                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                                role="menuitem">
                                                                 <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>

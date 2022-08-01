@@ -83,12 +83,12 @@
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                         <div
                                             class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
-                                            <span class="text-xs text-red-800">TODO <!--todo--></span>
+                                            <span class="text-xs text-red-800"><x-date-diff :zapis="$fail" :failed="true"/></span>
                                         </div>
                                     </td>
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                         <div>
-                                            <span>{{ $fail->hold(1) }}</span>
+                                            <span><x-date-diff :zapis="$fail"/></span>
                                         </div>
                                     </td>
                                     <td>

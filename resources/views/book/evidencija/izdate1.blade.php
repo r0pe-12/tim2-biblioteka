@@ -26,11 +26,11 @@
                                 </div>
                                 <div class="mt-[40px]">
                                     <span class="text-gray-500">Trenutno zadrzavanje knjige</span>
-                                    <p class="font-medium">{{ $borrow->hold(1) }}</p> <!-- todo -->
+                                    <p class="font-medium"><x-date-diff :zapis="$borrow"/></p>
                                 </div>
                                 <div class="mt-[40px]">
                                     <span class="text-gray-500">Prekoracenje</span>
-                                    <p class="font-medium">Nema prekoracenja</p> <!-- todo -->
+                                    <p class="font-medium"><x-date-diff :zapis="$borrow" :failed="true"/></p>
                                 </div>
                                 <div class="mt-[40px]">
                                     <span class="text-gray-500">Bibliotekar</span>

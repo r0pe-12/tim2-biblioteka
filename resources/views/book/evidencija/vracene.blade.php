@@ -77,7 +77,7 @@
                                         <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($zapis->statuses()->latest()->first()->pivot->datum)->format('d.m.Y') }}</td>
                                         <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                             <div>
-                                                <span>TODO <!-- todo --></span>
+                                                <span><x-date-diff :zapis="$zapis" :holded="true"/></span>
                                             </div>
                                         </td>
                                         <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ $zapis->librarian->name }} {{ $zapis->librarian->surname }}</td>
