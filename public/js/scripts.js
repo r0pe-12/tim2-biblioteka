@@ -2856,6 +2856,7 @@ $('.checkOthers').click(function () {
         })
         $('.multiple').each(function () {
             this.hidden = true;
+            $('form').addClass('hidden');
         })
     } else if (checked >= 2) {
         $('.one').each(function () {
@@ -2863,6 +2864,7 @@ $('.checkOthers').click(function () {
         });
         $('.multiple').each(function () {
             this.hidden = false;
+            $('form').removeClass('hidden');
         })
     } else {
         $('.checkAll').each(function () {
@@ -2873,6 +2875,7 @@ $('.checkOthers').click(function () {
         });
         $('.multiple').each(function () {
             this.hidden = true;
+            $('form').addClass('hidden');
         })
     }
 })
