@@ -18,6 +18,25 @@
                         class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
                         <i class="fas fa-plus mr-[15px]"></i> Nova knjiga
                     </a>
+                    <!-- todo -->
+                    <form method="post" action="napraviOvo`" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="id[]" id="ids">
+                        <button type="submit" class="text-blue-800 multiple" hidden href="IZBRISI SVE"><i class="fa fa-trash ml-4"></i>  Izbrisi knjige</button>
+                    </form>
+
+                    <a class="text-blue-800 one" hidden id="detalji" href="#"><i class="far fa-copy"></i>  Pogledaj detalje</a>
+
+                    <!-- Autor + dropdown filter for autor -->
+                    <a class="text-blue-800 one" hidden id="edit" href="#"><i class="far fa-copy"></i>  Izmjeni knjigu</a>
+
+                    <!-- Kategorija + dropdown filter for kategorija -->
+                    <a class="text-blue-800 one" hidden id="otpisi" href="#"><i class="fas fa-level-up-alt ml-4"></i>  Otpisi knjigu</a>
+                    <a class="text-blue-800 one" hidden id="izdaj" href="#"><i class="far fa-hand-scissors"></i>  Izdaj knjigu</a>
+                    <a class="text-blue-800 one" hidden id="vrati" href="#"><i class="fas fa-redo-alt"></i>  Vrati knjigu</a>
+                    <a class="text-blue-800 one" hidden href="otpisiKnjigu.php"><i class="far fa-calendar-check"></i>  Rezervisi knjigu</a>
+                    <a class="text-blue-800 one" hidden href="otpisiKnjigu.php"><i class="fa fa-trash ml-4"></i>  Izbrisi knjigu</a>
+
                     <div class="flex items-center">
                         <div class="relative text-gray-600 focus-within:text-gray-400">
                             <span class="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -41,10 +60,10 @@
                         <table class="w-full overflow-hidden shadow-lg rounded-xl" id="myTable">
                             <!-- Table head-->
                             <thead class="bg-[#EFF3F6]">
-                                <tr class="border-b-[1px] border-[#e4dfdf]">
+                                <tr id="head" class="border-b-[1px] border-[#e4dfdf]">
                                     <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                         <label class="inline-flex items-center">
-                                            <input type="checkbox" class="form-checkbox checkAll">
+                                            <input type="checkbox" class="form-checkbox checkAll checkOthers">
                                         </label>
                                     </th>
                                     <th class="flex items-center px-4 py-4 leading-4 tracking-wider text-left">
@@ -74,12 +93,12 @@
                                     <th class="px-4 py-4"> </th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white">
+                            <tbody class="bg-white" id="myTableBody">
                                 @foreach($books as $book)
                                     <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                         <td class="px-4 py-4 whitespace-no-wrap">
                                             <label class="inline-flex items-center">
-                                                <input type="checkbox" class="form-checkbox checkOthers">
+                                                <input type="checkbox" class="form-checkbox checkOthers" value="{{ $book->id }}" id="book-{{ $book->id }}">
                                             </label>
                                         </td>
                                         <td class="flex flex-row items-center px-4 py-4">
