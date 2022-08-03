@@ -59,4 +59,12 @@ class Borrow extends Model
             ->where('book_borrow_status.bookStatus_id','=', BookStatus::BORROWED)
             ->get();
     }
+
+    public function isActive(){
+        # code
+        if (Borrow::izdavanja()->contains($this)){
+            return true;
+        }
+        return false;
+    }
 }
