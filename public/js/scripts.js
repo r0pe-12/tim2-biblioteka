@@ -588,19 +588,19 @@ function validacijaBibliotekarEdit(event) {
     event.preventDefault();
   }
 
-    if (pwBibliotekarEdit.length < 8 && pwBibliotekarEdit > 0){
+    if (pwBibliotekarEdit.length < 8 && pwBibliotekarEdit.length > 0){
         $('#validatePwBibliotekarEdit').append('<p style="color:red;font-size:13px;">Šifra mora imati barem 8 karaktera! Trenutno: ' + pwBibliotekarEdit.length + '</p>');
         event.preventDefault();
     }
 
-    if (pw2BibliotekarEdit.length == 0 && pwBibliotekarEdit > 0) {
+    if (pw2BibliotekarEdit.length == 0 && pwBibliotekarEdit.length > 0) {
         $('#validatePw2BibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate ponoviti šifru!</p>');
         event.preventDefault();
     }
 
-    if (pwBibliotekar !== pw2Bibliotekar){
-        $('#validatePwBibliotekar').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
-        $('#validatePw2Bibliotekar').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
+    if (pwBibliotekarEdit !== pw2BibliotekarEdit){
+        $('#validatePwBibliotekarEdit').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
+        $('#validatePw2BibliotekarEdit').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
         event.preventDefault();
     }
 }
@@ -797,16 +797,21 @@ function validacijaUcenikEdit(event) {
       event.preventDefault();
   }
 
-  // todo DA LI UOPSTE TREBAMO IMATI PASSWORD FIELD KOD UPDEJTA
-  // if (pwUcenikEdit.length == 0) {
-  //   $('#validatePwUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti šifru!</p>');
-  //     event.preventDefault();
-  // }
-  //
-  // if (pw2UcenikEdit.length == 0) {
-  //   $('#validatePw2UcenikEdit').append('<p style="color:red;font-size:13px;">Morate ponoviti šifru!</p>');
-  //     event.preventDefault();
-  // }
+    if (pwUcenikEdit.length < 8 && pwUcenikEdit.length > 0){
+        $('#validatePwUcenikEdit').append('<p style="color:red;font-size:13px;">Šifra mora imati barem 8 karaktera! Trenutno: ' + pwUcenikEdit.length + '</p>');
+        event.preventDefault();
+    }
+
+    if (pw2UcenikEdit.length == 0 && pwUcenikEdit.length > 0) {
+        $('#validatePw2UcenikEdit').append('<p style="color:red;font-size:13px;">Morate ponoviti šifru!</p>');
+        event.preventDefault();
+    }
+
+    if (pwUcenikEdit !== pw2UcenikEdit){
+        $('#validatePwUcenikEdit').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
+        $('#validatePw2UcenikEdit').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
+        event.preventDefault();
+    }
 }
 
 function clearErrorsNameUcenikEdit() {
