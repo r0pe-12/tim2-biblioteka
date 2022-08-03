@@ -690,15 +690,26 @@ function validacijaUcenik(event) {
     event.preventDefault();
   }
 
-  if (pwUcenik.length == 0) {
-    $('#validatePwUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti sifru!</p>');
-    event.preventDefault();
-  }
+    if (pwUcenik.length == 0) {
+        $('#validatePwUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti šifru!</p>');
+        event.preventDefault();
+    }
 
-  if (pw2Ucenik.length == 0) {
-    $('#validatePw2Ucenik').append('<p style="color:red;font-size:13px;">Morate ponoviti sifru!</p>');
-    event.preventDefault();
-  }
+    if (pwUcenik.length < 8){
+        $('#validatePwUcenik').append('<p style="color:red;font-size:13px;">Šifra mora imati barem 8 karaktera! Trenutno: ' + pwUcenik.length + '</p>');
+        event.preventDefault();
+    }
+
+    if (pw2Ucenik.length == 0) {
+        $('#validatePw2Ucenik').append('<p style="color:red;font-size:13px;">Morate ponoviti šifru!</p>');
+        event.preventDefault();
+    }
+
+    if (pwUcenik !== pw2Ucenik){
+        $('#validatePwUcenik').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
+        $('#validatePw2Ucenik').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
+        event.preventDefault();
+    }
 }
 
 function clearErrorsNameUcenik() {
