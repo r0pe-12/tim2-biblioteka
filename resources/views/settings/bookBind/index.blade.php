@@ -41,8 +41,7 @@
                                         <input type="checkbox" class="form-checkbox">
                                     </label>
                                 </th>
-                                <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv poveza<a href="#"><i
-                                            class="ml-3 fa-lg fas fa-long-arrow-alt-down" onclick="sortTable()"></i></a>
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv poveza<a href="#"></a>
                                 </th>
                                 <th class="px-4 py-4"> </th>
                             </tr>
