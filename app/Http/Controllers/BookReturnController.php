@@ -30,8 +30,11 @@ class BookReturnController extends Controller
         foreach (\request('toReturn') as $id) {
             $borrow = Borrow::findOrFail($id);
 
-//            todo odje ispisati logiku za vracanje sa prekoracenjem al to sjutra
-            $newStatus = BookStatus::returned();
+            if ($book->failed()->contains($borrow)){
+                $newStatus = BookStatus::returned1();
+            } else {
+                $newStatus = BookStatus::returned();
+            }
 
             $borrow->statuses()->sync($newStatus);
             $book->borrowedSaples--;

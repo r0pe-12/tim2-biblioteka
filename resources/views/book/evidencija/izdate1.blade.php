@@ -21,11 +21,18 @@
                                     </p>
                                 </div>
                                 <div class="mt-[40px]">
+                                    <span class="text-gray-500">Status transakcije</span><br>
+                                    <p
+                                        class="inline-block bg-blue-200 text-blue-800 rounded-[10px] text-center px-[6px] py-[2px]">
+                                        {{ $borrow->statuses()->latest()->first()->name }}
+                                    </p>
+                                </div>
+                                <div class="mt-[40px]">
                                     <span class="text-gray-500">Datum akcije</span>
                                     <p class="font-medium">{{ \Carbon\Carbon::parse($borrow->borrow_date)->format('d.m.Y') }}</p>
                                 </div>
                                 <div class="mt-[40px]">
-                                    <span class="text-gray-500">Trenutno zadrzavanje knjige</span>
+                                    <span class="text-gray-500">Ukupno zadrzavanje knjige</span>
                                     <p class="font-medium"><x-date-diff :zapis="$borrow"/></p>
                                 </div>
                                 <div class="mt-[40px]">

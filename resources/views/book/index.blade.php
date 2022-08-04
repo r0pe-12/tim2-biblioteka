@@ -19,7 +19,7 @@
                         <i class="fas fa-plus mr-[15px]"></i> Nova knjiga
                     </a>
                     <!-- todo -->
-                    <form method="post" action="napraviOvo`" enctype="multipart/form-data">
+                    <form method="post" class="hidden" action="napraviOvo" id="multiple" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id[]" id="ids">
                         <button type="submit" class="text-blue-800 multiple" hidden href="IZBRISI SVE"><i class="fa fa-trash ml-4"></i>  Izbrisi knjige</button>
