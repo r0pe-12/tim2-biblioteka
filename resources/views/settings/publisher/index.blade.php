@@ -80,6 +80,17 @@
                             </tr>
                             @endforeach
                         </tbody>
+
+                        <tfoot>
+                        <tr class="border-b-[1px] border-[#e4dfdf]">
+                            <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
+                            </th>
+                            <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv izdavača<a href="#"><i
+                                        class="ml-3 fa-lg fas fa-long-arrow-alt-down" onclick="sortTable()"></i></a>
+                            </th>
+                            <th class="px-4 py-4"> </th>
+                        </tr>
+                        </tfoot>
                     </table>
 
                     <div class="flex flex-row items-center justify-end mt-2">
