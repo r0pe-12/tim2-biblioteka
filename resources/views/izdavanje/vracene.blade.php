@@ -139,9 +139,7 @@
                                     </th>
                                     <th class="px-4 py-4 leading-4 tracking-wider text-left">
                                         Naziv knjige
-                                        <a href="#"><i class="ml-2 fa-lg fas fa-long-arrow-alt-down"
-                                                       onclick="sortTable()"></i>
-                                        </a>
+                                        <a href="#"></a>
                                     </th>
                                     <th
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
