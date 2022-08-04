@@ -47,6 +47,9 @@
                 orderable: false,
                 targets:   0
             } ],
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/sr-SP.json"
+            },
             initComplete: function () {
                 // Apply the search
                 this.api()
