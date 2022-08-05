@@ -41,16 +41,29 @@ class AuthorController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
+
+        $input = $request->validate([
             'imeAutor' => ['required', 'string', 'max:255'],
             'prezimeAutor' => ['required', 'string', 'max:255'],
             'opis_autor' => [''],
+            'photoPath' => ['']
         ]);
+
+        if ($file = $request->file('photoPath')){
+            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
+            $file->storeAs('/images/authors', $name);
+            $input['photoPath'] = $name;
+        } else{
+            $input['photoPath'] = null;
+        }
+
         $author = new Author([
-            'name' => $request->imeAutor,
-            'surname' => $request->prezimeAutor,
-            'biography' => $request->opis_autor
+            'name' => $input['imeAutor'],
+            'surname' => $input['prezimeAutor'],
+            'biography' => $input['opis_autor'],
+            'image' => $input['photoPath']
         ]);
+
         $author->save();
         return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name  . ' ' . $author->surname . '" je uspješno kreiran');
     }
@@ -89,14 +102,32 @@ class AuthorController extends Controller
     public function update(Request $request, Author $author)
     {
         //
-        $request->validate([
+        $input = $request->validate([
+
             'imeAutorEdit' => ['required', 'string', 'max:255'],
             'prezimeAutorEdit' => ['required', 'string', 'max:255'],
             'opis_autor_edit' => [''],
+            'photoPath' => ['']
+
         ]);
+
+        if ($file = $request->file('photoPath')) {
+            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
+            $file->storeAs('/images/authors', $name);
+            $input['photoPath'] = $name;
+
+            if (file_exists($image = public_path() . $author->image)) {
+                unlink($image);
+            }
+            $author->image = $input['photoPath'];
+        } else {
+            unset($input['photoPath']);
+        }
+
         $author->name = $request->imeAutorEdit;
         $author->surname = $request->prezimeAutorEdit;
         $author->biography = $request->opis_autor_edit;
+
 
         if ($author->isClean()){
             throw ValidationException::withMessages([
@@ -104,20 +135,23 @@ class AuthorController extends Controller
                 'prezimeAutorEdit' => 'Polje je nepromijenjeno'
             ]);
         }
-        $author->save();
-        return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . ' ' . $author->surname . '" je uspješno izmijenjen');
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy(Author $author)
-    {
-        //
-        $author->delete();
-        return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . ' ' . $author->surname . '" je uspješno izbrisan');
-    }
-}
+            $author->save();
+            return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . ' ' . $author->surname . '" je uspješno izmijenjen');
+        }
+
+
+            /**
+             * Remove the specified resource from storage.
+             *
+             * @param int $id
+             * @return \Illuminate\Http\RedirectResponse
+             */
+            public
+            function destroy(Author $author)
+            {
+                //
+                $author->delete();
+                return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . ' ' . $author->surname . '" je uspješno izbrisan');
+            }
+        }

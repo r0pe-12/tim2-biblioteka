@@ -78,6 +78,11 @@
                             {!! $author->biography !!}
                         </p>
                     </div>
+
+                    </div>
+                <div class="ml-[100px]  mt-[20px]">
+                    <img class="p-2 border-2 border-gray-300" width="300px" style="margin-top:-145px; margin-left:300px"  src="{{ $author->image }}" alt="">
+                </div>
                 </div>
             </div>
         </section>
