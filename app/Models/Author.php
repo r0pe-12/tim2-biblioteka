@@ -23,6 +23,6 @@ class Author extends Model
         if ($path){
             return '/storage/images/authors/' . $path;
         }
-        return 'http://127.0.0.1:8000/img/profile.jpg';
+        return asset('img/profile.jpg');
     }
 }
