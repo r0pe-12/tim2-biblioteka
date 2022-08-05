@@ -11,6 +11,18 @@ class Author extends Model
     protected $fillable = [
         'name',
         'surname',
-        'biography'
+        'biography',
+        'image'
     ];
+
+    public function getImageAttribute($path){
+        # code
+        if (strpos($path, 'http://') !== FALSE || strpos($path, 'https://') !== FALSE){
+            return $path;
+        }
+        if ($path){
+            return '/storage/images/authors/' . $path;
+        }
+        return asset('img/profile.jpg');
+    }
 }
