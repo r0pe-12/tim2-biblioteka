@@ -2850,6 +2850,17 @@ $('.checkAll').click(function () {
   }
 });
 
+//    if you click on tr checkbox will be selected
+
+$('tr').click(function (e) {
+    if (e.target.tagName != "TD") {
+        return;
+    }
+    $(this).find('td label input').each(function () {
+        this.click()
+    })
+})
+
 $('.checkOthers').click(function () {
     var checked = $('#myTableBody').find(':checked').length;
     var checbox = $('#myTableBody').find(':checkbox').length;
