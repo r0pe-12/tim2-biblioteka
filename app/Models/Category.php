@@ -19,6 +19,6 @@ class Category extends Model
         if ($path){
             return '/storage/images/categories/' . $path;
         }
-        return 'https://via.placeholder.com/900x900.png/280137?text=NO%20PHOTO';
+        return asset('img/settings.jpg');
     }
 }

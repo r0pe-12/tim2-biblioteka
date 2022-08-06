@@ -18,8 +18,7 @@ class Genre extends Model
         if ($path){
             return '/storage/images/genres/' . $path;
         }
-        return 'https://via.placeholder.com/900x900.png/280137?text=NO%20PHOTO';
-
+        return asset('img/settings.jpg');
 
     }
     }

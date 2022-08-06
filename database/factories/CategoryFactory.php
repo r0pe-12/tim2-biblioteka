@@ -20,7 +20,7 @@ class CategoryFactory extends Factory
             //
             'name' => fake()->unique()->word,
             'description' => fake()->unique()->paragraph,
-            'iconPath' => fake()->imageUrl
+            //'iconPath' => fake()->imageUrl
         ];
     }
 }
