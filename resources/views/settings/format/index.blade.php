@@ -143,8 +143,7 @@
                             <tr class="border-b-[1px] border-[#e4dfdf]">
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                 </th>
-                                <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv formata<a href="#"><i
-                                            class="ml-3 fa-lg fas fa-long-arrow-alt-down" onclick="sortTable()"></i></a>
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left">
                                 </th>
                                 <th class="px-4 py-4"> </th>
                             </tr>
