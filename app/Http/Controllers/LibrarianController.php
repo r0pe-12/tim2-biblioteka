@@ -98,7 +98,6 @@ class LibrarianController extends Controller
      */
     public function update(UpdateRequest $request, User $librarian)
     {
-//        todo mozda je dobra ideja da stavimo da username ne moze da se updatuje
         //
         $input = $request->validated();
         if (is_null($input['password'])){

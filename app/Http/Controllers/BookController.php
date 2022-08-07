@@ -200,4 +200,29 @@ class BookController extends Controller
         $book->delete();
         return redirect()->route('books.index')->with('success', 'Knjiga: "' . $book->title . '" je uspješno izbrisana');
     }
+
+
+    /**
+     * Remove the specified resourceS from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function bulkDelete()
+    {
+        //
+        $titles = [];
+        $ids = explode(',', request('ids'));
+        foreach ($ids as $id){
+            $book = Book::find($id);
+            foreach ($book->photos as $photo){
+                if (file_exists($photoPath = public_path() . $photo->path)){
+                    unlink($photoPath);
+                }
+            }
+            $book->delete();
+            $titles[] = $book->title;
+    }
+        return redirect()->route('books.index')->with('success', 'Knjige: "' . implode(', ', $titles) . '" su uspješno izbrisane');
+    }
 }

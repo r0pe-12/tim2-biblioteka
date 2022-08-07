@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function (){
 
 //    rute za knjigu
         Route::resource('/books', BookController::class);
+        Route::delete('/book/bulkdelete', [BookController::class, 'bulkDelete'])->name('book.bulk-delete');
         Route::controller(BookBorrowController::class)->group(function (){
     //        izdaj knjigu
             Route::get('/books/{book}/izdaj', 'izdajForm')->name('izdaj.create');

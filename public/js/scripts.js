@@ -2841,11 +2841,14 @@ $('.checkAll').click(function () {
       $('.checkOthers').each(function () {
           this.checked = true
       })
-    $('tr').addClass('bg-gray-200');
+    $('thead').addClass('bg-gray-200');
+    $('tr').slice(0, -1).addClass('bg-gray-200');
   } else {
       $('.checkOthers').each(function () {
           this.checked = false
       })
+    $('thead').removeClass('bg-gray-200');
+    $('tbody').removeClass('bg-gray-200');
     $('tr').removeClass('bg-gray-200');
   }
 });
@@ -2868,12 +2871,14 @@ $('.checkOthers').click(function () {
     if (checbox != checked) {
         $('.checkAll').each(function () {
             this.checked = false;
-            $('#head').removeClass('bg-gray-200');
+            $('thead').removeAttr('class');
+            $('#head').removeAttr('class');
         })
     } else if (checbox == checked) {
         $('.checkAll').each(function () {
             this.checked = true;
-            $('#head').addClass('bg-gray-200');
+            $('thead').addClass('bg-gray-200');
+            $('tr').slice(0, -1).addClass('bg-gray-200');
         })
     }
 
@@ -2883,7 +2888,6 @@ $('.checkOthers').click(function () {
         })
         $('.multiple').each(function () {
             this.hidden = true;
-            $('form').addClass('hidden');
         })
     } else if (checked >= 2) {
         $('.one').each(function () {
@@ -2891,7 +2895,6 @@ $('.checkOthers').click(function () {
         });
         $('.multiple').each(function () {
             this.hidden = false;
-            $('form').removeClass('hidden');
         })
     } else {
         $('.checkAll').each(function () {
@@ -2902,7 +2905,6 @@ $('.checkOthers').click(function () {
         });
         $('.multiple').each(function () {
             this.hidden = true;
-            $('form').addClass('hidden');
         })
     }
 })
@@ -2912,21 +2914,54 @@ $('.checkOthers').click(function () {
     if (checked.length == 1) {
         checked.each(function () {
             const id = this.defaultValue;
+            const name = this.getAttribute('data-name');
             document.getElementById("detalji").href = "/books/" + id;
             document.getElementById("edit").href = "/books/" + id + "/edit";
             document.getElementById("otpisi").href = "/books/" + id + "/otpisi";
             document.getElementById("izdaj").href = "/books/" + id + "/izdaj";
             document.getElementById("vrati").href = "/books/" + id + "/vrati";
+            document.getElementById("deleteOne").setAttribute('data-id', id);
+            document.getElementById("deleteOne").setAttribute('data-name', name);
         })
     } else if (checked.length >= 2){
-        //    todo nece da nam ubaci value kao array nego samo kao string pa cemo na serveru raditi explode
         var ids = [];
+        var names = [];
         checked.each(function () {
-            ids.push(this.defaultValue)
+            ids.push(this.defaultValue);
+            names.push(this.getAttribute('data-name'));
         })
-        console.log(ids);
-        document.getElementById("ids").value = ids;
+        // console.log(ids);
+        document.getElementById("deleteMany").setAttribute('data-id', ids);
+        document.getElementById("deleteMany").setAttribute('data-name', names);
     } else {
-        document.getElementById("ids").value = '';
+        // document.getElementById("ids").value = '';
+        document.getElementById("deleteOne").removeAttribute('data-id');
     }
+})
+
+$('.deleteOne').click(function () {
+    var id = this.getAttribute('data-id');
+    var name = this.getAttribute('data-name')
+    console.log(id, name);
+    var Modal = document.getElementById('deleteOneModal');
+    var modalTitle = Modal.querySelector('#modalLabel')
+    var modalForm = Modal.querySelector('form');
+
+    modalTitle.innerHTML = '<b>' + name + '</b>'
+    modalForm.action = window.location.href + '/' + id;
+})
+
+$('#deleteMany').click(function () {
+    var ids = this.getAttribute('data-id').split(',');
+    var names = this.getAttribute('data-name').split(',');
+    // console.log(ids, names);
+    var Modal = document.getElementById('deleteManyModal');
+    var modalTitle = Modal.querySelector('#modalLabel')
+    modalTitle.innerHTML = '';
+    var modalFormInput = Modal.querySelector('#ids');
+
+    names.forEach(function (a) {
+        modalTitle.innerHTML += '<li><b>' + a + '</b></li>';
+    })
+    modalFormInput.value = ids;
 })

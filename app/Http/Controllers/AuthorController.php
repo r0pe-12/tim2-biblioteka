@@ -8,7 +8,6 @@ use Illuminate\Validation\ValidationException;
 
 class AuthorController extends Controller
 {
-//    todo add picture to author in form as well as implement it
     /**
      * Display a listing of the resource.
      *
