@@ -730,13 +730,13 @@ input[type="reset"].btn-block,
 input[type="button"].btn-block {
     width: 100%;
 }
-.fade {
+.fadeM {
     opacity: 0;
     -webkit-transition: opacity 0.15s linear;
     -o-transition: opacity 0.15s linear;
     transition: opacity 0.15s linear;
 }
-.fade.in {
+.fadeM.in {
     opacity: 1;
 }
 .collapse {
@@ -806,7 +806,7 @@ button.close {
     -webkit-overflow-scrolling: touch;
     outline: 0;
 }
-.modal.fade .modal-dialog {
+.modal.fadeM .modal-dialog {
     -webkit-transform: translate(0, -25%);
     -ms-transform: translate(0, -25%);
     -o-transform: translate(0, -25%);
@@ -851,7 +851,7 @@ button.close {
     z-index: 1040;
     background-color: #000000;
 }
-.modal-backdrop.fade {
+.modal-backdrop.fadeM {
     filter: alpha(opacity=0);
     opacity: 0;
 }
