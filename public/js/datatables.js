@@ -18,6 +18,8 @@ $(document).ready(function () {
 
     // DataTable
     var table = $('#myTable').DataTable({
+        pageLength : 5,
+        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Sve']],
         "columnDefs": [ {
             "targets": [0, -1],
             "searchable": false,
