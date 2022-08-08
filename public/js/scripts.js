@@ -2942,13 +2942,19 @@ $('.checkOthers').click(function () {
 $('.deleteOne').click(function () {
     var id = this.getAttribute('data-id');
     var name = this.getAttribute('data-name')
-    console.log(id, name);
+    var action = this.getAttribute('data-action');
+    // console.log(action);
+    // console.log(id, name);
     var Modal = document.getElementById('deleteOneModal');
     var modalTitle = Modal.querySelector('#modalLabel')
     var modalForm = Modal.querySelector('form');
 
     modalTitle.innerHTML = '<b>' + name + '</b>'
-    modalForm.action = window.location.href + '/' + id;
+    if(!action){
+        modalForm.action = window.location.href + '/' + id;
+        return
+    }
+    modalForm.action = action;
 })
 
 $('#deleteMany').click(function () {
@@ -2965,3 +2971,30 @@ $('#deleteMany').click(function () {
     })
     modalFormInput.value = ids;
 })
+
+$('#deleteOneModal').on('hidden.bs.modal', function () {
+    this.querySelector('form').action = '';
+    this.querySelector('form input').value = '';
+})
+
+$('.makeSure').on('keyup', function () {
+    const prompt = this.value;
+    const form = $(this).closest('form')[0];
+    const button = form.querySelector('#sure');
+
+    if (prompt == 'DA') {
+        button.removeAttribute('disabled');
+    } else {
+        button.setAttribute('disabled', 'true');
+    }
+})
+
+function checkMakeSure(event, button) {
+    const form = $(button).closest('form')[0];
+    const prompt = form.querySelector('input').value;
+    if (prompt != 'DA') {
+        event.preventDefault();
+        console.log('I am not that dumb :)');
+        alert('I am not that dumb :)');
+    }
+}

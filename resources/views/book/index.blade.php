@@ -6,23 +6,25 @@
         <div class="modal fadeM" id="deleteOneModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati knjigu: </h5>
-                        <h5 class="modal-title" id="modalLabel"></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="text-red-800">
-                            Ova akcija je nepovratna
-                        </p>
-                    </div>
-                    <form method="post" action="" class="modal-footer" enctype="multipart/form-data">
+                    <form method="post" action="">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati knjigu: </h5>
+                            <h5 class="modal-title" id="modalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-red-800">
+                                Ova akcija je nepovratna. Da li ste sigurni: <input type="text" placeholder="Unesite DA" class="makeSure" style="padding-left: 6px">
+                            </p>
+                        </div>
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
-                        <button type="submit" class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
-                            Potvrdi <i class="fas fa-check ml-[4px]"></i>
-                        </button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button onclick="checkMakeSure(event, this)" id="sure" disabled="true" type="submit" class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                                Potvrdi <i class="fas fa-check ml-[4px]"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -32,26 +34,28 @@
         <div class="modal fadeM" id="deleteManyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati knjige: </h5>
-                        <h5 class="modal-title">
-                            <ul id="modalLabel"></ul>
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="text-red-800">
-                            Ova akcija je nepovratna
-                        </p>
-                    </div>
-                    <form method="post" action="{{ route('book.bulk-delete') }}" class="modal-footer" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('book.bulk-delete') }}" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati knjige: </h5>
+                            <h5 class="modal-title">
+                                <ul id="modalLabel"></ul>
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-red-800">
+                                Ova akcija je nepovratna. Da li ste sigurni: <input type="text" placeholder="Unesite DA" class="makeSure" style="padding-left: 6px">
+                            </p>
+                        </div>
                         @csrf
                         @method('DELETE')
-                        <input type="hidden" value="" name="ids" id="ids">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
-                        <button type="submit" class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
-                            Potvrdi <i class="fas fa-check ml-[4px]"></i>
-                        </button>
+                        <div class="modal-footer">
+                            <input type="hidden" value="" name="ids" id="ids">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="submit" onclick="checkMakeSure(event, this)" id="sure" disabled="true" class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                                Potvrdi <i class="fas fa-check ml-[4px]"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -213,6 +217,7 @@
                                                            data-target="#deleteOneModal"
                                                            data-id="{{ $book->id }}"
                                                            data-name="{{ $book->title }}"
+                                                           data-action="{{ route('books.destroy', $book) }}"
                                                         >
                                                             <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
                                                             <span class="px-4 py-0">Izbrisi knjigu</span>
