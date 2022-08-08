@@ -952,8 +952,8 @@ function validacijaKnjiga(event) {
     } else if (isbn.length == 0) {
         $('#validateIsbn').append('<p style="color:red;font-size:13px;">Morate unijeti ISBN!</p>');
         event.preventDefault();
-    } else if (isbn.length !== 20){
-        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN mora imati 20 cifara! Trenutno:' + isbn.length + '</p>');
+    } else if (isbn.length !== 13){
+        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN mora imati 13 cifara! Trenutno:' + isbn.length + '</p>');
         event.preventDefault();
     }
 }

@@ -35,7 +35,7 @@ class CreateRequest extends FormRequest
             'format_id' => ['required', 'integer'],
             'publisher_id' => ['required', 'integer'],
             'publishDate' => ['required'],
-            'isbn' => ['required', 'regex:/^[0-9]{20}+$/', 'max:20', 'min:20'],
+            'isbn' => ['required', 'regex:/^[0-9]{13}+$/', 'max:13', 'min:13'],
             'samples' => ['required', 'integer'],
             'description' => [''],
 
