@@ -73,3 +73,11 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/students', StudentController::class);
     Route::put('/students/{user}/resetPassword', [StudentController::class, 'passwordReset'])->name('student.pwreset');
 });
+
+Route::get('/arhivirane', function (){
+    return view('izdavanje.arhivirane');
+});
+
+Route::get('/arhivirane1', function (){
+    return view('book.evidencija.arhivirane');
+});
