@@ -21,7 +21,7 @@
                         @method('DELETE')
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
-                            <button onclick="checkMakeSure(event, this)" id="sure" disabled="true" type="submit" class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                            <button onclick="checkMakeSure(event, this)" disabled="true" type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
                         </div>
@@ -52,7 +52,7 @@
                         <div class="modal-footer">
                             <input type="hidden" value="" name="ids" id="ids">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
-                            <button type="submit" onclick="checkMakeSure(event, this)" id="sure" disabled="true" class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                            <button type="submit" onclick="checkMakeSure(event, this)" disabled="true" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
                         </div>
@@ -131,7 +131,7 @@
                                     <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                         <td class="px-4 py-4 whitespace-no-wrap">
                                             <label class="inline-flex items-center">
-                                                <input type="checkbox" class="form-checkbox checkOthers" value="{{ $book->id }}" id="book-{{ $book->id }}" data-name="{{ $book->title }}">
+                                                <input type="checkbox" class="form-checkbox checkOthers" data-id="{{ $book->id }}" id="book-{{ $book->id }}" data-name="{{ $book->title }}">
                                             </label>
                                         </td>
                                         <td class="flex flex-row items-center px-4 py-4">

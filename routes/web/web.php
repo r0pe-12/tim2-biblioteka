@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/activity', fn() => view('dashboard.activity'));
 
     Route::resource('/librarians', LibrarianController::class);
+    Route::delete('/librarian/bulkdelete', [LibrarianController::class, 'bulkDelete'])->name('librarian.bulk-delete');
     Route::put('/librarians/{user}/resetPassword', [LibrarianController::class, 'passwordReset'])->name('librarian.pwreset');
 
     Route::resource('/authors', AuthorController::class);

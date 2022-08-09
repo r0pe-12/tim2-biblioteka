@@ -2913,13 +2913,19 @@ $('.checkOthers').click(function () {
     var checked = $('#myTableBody').find(':checked');
     if (checked.length == 1) {
         checked.each(function () {
-            const id = this.defaultValue;
+            const path = window.location.pathname + '/';
+            console.log(path);
+            const id = this.getAttribute('data-id');
             const name = this.getAttribute('data-name');
-            document.getElementById("detalji").href = "/books/" + id;
-            document.getElementById("edit").href = "/books/" + id + "/edit";
-            document.getElementById("otpisi").href = "/books/" + id + "/otpisi";
-            document.getElementById("izdaj").href = "/books/" + id + "/izdaj";
-            document.getElementById("vrati").href = "/books/" + id + "/vrati";
+            document.getElementById("detalji").href = path + id;
+            document.getElementById("edit").href = path + id + "/edit";
+
+            if (path === '/books/') {
+                document.getElementById("otpisi").href = "/books/" + id + "/otpisi";
+                document.getElementById("izdaj").href = "/books/" + id + "/izdaj";
+                document.getElementById("vrati").href = "/books/" + id + "/vrati";
+            }
+
             document.getElementById("deleteOne").setAttribute('data-id', id);
             document.getElementById("deleteOne").setAttribute('data-name', name);
         })
@@ -2927,7 +2933,7 @@ $('.checkOthers').click(function () {
         var ids = [];
         var names = [];
         checked.each(function () {
-            ids.push(this.defaultValue);
+            ids.push(this.getAttribute('data-id'));
             names.push(this.getAttribute('data-name'));
         })
         // console.log(ids);
@@ -2980,7 +2986,7 @@ $('#deleteOneModal').on('hidden.bs.modal', function () {
 $('.makeSure').on('keyup', function () {
     const prompt = this.value;
     const form = $(this).closest('form')[0];
-    const button = form.querySelector('#sure');
+    const button = form.querySelector('.sure');
 
     if (prompt == 'DA') {
         button.removeAttribute('disabled');
