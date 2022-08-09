@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function (){
     Route::put('/librarians/{user}/resetPassword', [LibrarianController::class, 'passwordReset'])->name('librarian.pwreset');
 
     Route::resource('/authors', AuthorController::class);
+    Route::delete('/author/bulkdelete', [AuthorController::class, 'bulkDelete'])->name('author.bulk-delete');
 
 //    rute za knjigu
         Route::resource('/books', BookController::class);

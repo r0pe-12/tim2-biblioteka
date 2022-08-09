@@ -2982,6 +2982,10 @@ $('#deleteOneModal').on('hidden.bs.modal', function () {
     this.querySelector('form').action = '';
     this.querySelector('form input').value = '';
 })
+$('#deleteManyModal').on('hidden.bs.modal', function () {
+    // this.querySelector('form').action = '';
+    this.querySelector('form input').value = '';
+})
 
 $('.makeSure').on('keyup', function () {
     const prompt = this.value;

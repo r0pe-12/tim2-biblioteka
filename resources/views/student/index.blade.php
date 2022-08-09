@@ -34,7 +34,7 @@
         <div class="modal fadeM" id="deleteManyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="post" action="{{ route('student.bulk-delete') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('student.bulk-delete') }}">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati ucenike: </h5>
                             <h5 class="modal-title">
