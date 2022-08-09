@@ -73,5 +73,6 @@ Route::middleware(['auth'])->group(function (){
 //    END-rute za knjigu
 
     Route::resource('/students', StudentController::class);
+    Route::delete('/student/bulkdelete', [StudentController::class, 'bulkDelete'])->name('student.bulk-delete');
     Route::put('/students/{user}/resetPassword', [StudentController::class, 'passwordReset'])->name('student.pwreset');
 });

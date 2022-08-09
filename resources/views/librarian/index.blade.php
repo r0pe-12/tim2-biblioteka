@@ -79,7 +79,7 @@
                     <a href="#" class="text-red-800 multiple" id="deleteMany" hidden data-toggle="modal" data-target="#deleteManyModal"><i class="fa fa-trash ml-4"></i> Izbrisi bibliotekare</a>
 
                     <a class="text-blue-800 one" hidden id="detalji" href="#"><i class="far fa-copy"></i> Pogledaj detalje</a>
-                    <a class="text-blue-800 one" hidden id="edit" href="#"><i class="far fa-copy"></i> Izmjeni bibliotekara</a>
+                    <a class="text-blue-800 one" hidden id="edit" href="#"><i class="fas fa-user-edit"></i> Izmjeni bibliotekara</a>
 
                     <a href="#" class="text-red-800 one deleteOne" id="deleteOne" hidden data-toggle="modal" data-target="#deleteOneModal"><i class="fa fa-trash ml-4"></i> Izbrisi bibliotekara</a>
                     <div></div>

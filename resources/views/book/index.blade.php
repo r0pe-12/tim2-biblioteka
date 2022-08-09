@@ -80,7 +80,7 @@
 
 
                     <a class="text-blue-800 one" hidden id="detalji" href="#"><i class="far fa-copy"></i> Pogledaj detalje</a>
-                    <a class="text-blue-800 one" hidden id="edit" href="#"><i class="far fa-copy"></i> Izmjeni knjigu</a>
+                    <a class="text-blue-800 one" hidden id="edit" href="#"><i class="far fa-edit"></i> Izmjeni knjigu</a>
                     <a class="text-blue-800 one" hidden id="otpisi" href="#"><i class="fas fa-level-up-alt ml-4"></i> Otpisi knjigu</a>
                     <a class="text-blue-800 one" hidden id="izdaj" href="#"><i class="far fa-hand-scissors"></i> Izdaj knjigu</a>
                     <a class="text-blue-800 one" hidden id="vrati" href="#"><i class="fas fa-redo-alt"></i> Vrati knjigu</a>
