@@ -2918,26 +2918,28 @@ $('.checkOthers').click(function () {
             const id = this.getAttribute('data-id');
             const name = this.getAttribute('data-name');
 
-            if (path === '/izdate/') {
+            if (path === '/izdate/' || path === '/vracene/') {
                 const bookId = this.getAttribute('data-book-id');
                 const bookName = this.getAttribute('data-book-name');
                 const studentName = this.getAttribute('data-student-name');
 
                 document.getElementById("detalji").href = '/books/' + bookId + '/evidencija/' + id + '/show';
 
-                const vrati = document.getElementById('vrati');
-                vrati.setAttribute('data-action', '/books/' + bookId + '/vrati');
-                vrati.setAttribute('data-name', name);
-                vrati.setAttribute('data-id', id);
-                vrati.setAttribute('data-book-name', bookName);
-                vrati.setAttribute('data-student-name', studentName);
+               if (path === '/izdate') {
+                   const vrati = document.getElementById('vrati');
+                   vrati.setAttribute('data-action', '/books/' + bookId + '/vrati');
+                   vrati.setAttribute('data-name', name);
+                   vrati.setAttribute('data-id', id);
+                   vrati.setAttribute('data-book-name', bookName);
+                   vrati.setAttribute('data-student-name', studentName);
 
-                const otpisi = document.getElementById('otpisi');
-                otpisi.setAttribute('data-action', '/books/' + bookId + '/otpisi');
-                otpisi.setAttribute('data-name', name);
-                otpisi.setAttribute('data-id', id);
-                otpisi.setAttribute('data-book-name', bookName);
-                otpisi.setAttribute('data-student-name', studentName);
+                   const otpisi = document.getElementById('otpisi');
+                   otpisi.setAttribute('data-action', '/books/' + bookId + '/otpisi');
+                   otpisi.setAttribute('data-name', name);
+                   otpisi.setAttribute('data-id', id);
+                   otpisi.setAttribute('data-book-name', bookName);
+                   otpisi.setAttribute('data-student-name', studentName);
+               }
             } else {
                 document.getElementById("detalji").href = path + id;
                 document.getElementById("edit").href = path + id + "/edit";
@@ -2954,7 +2956,7 @@ $('.checkOthers').click(function () {
 
         })
     } else if (checked.length >= 2){
-        if (path === '/izdate/') {
+        if (path === '/izdate/' || path === '/vracene/') {
 
         } else {
             var ids = [];
@@ -2969,7 +2971,11 @@ $('.checkOthers').click(function () {
         }
     } else {
         // document.getElementById("ids").value = '';
-        document.getElementById("deleteOne").removeAttribute('data-id');
+        if (path === '/vracene/') {
+
+        } else {
+            document.getElementById("deleteOne").removeAttribute('data-id');
+        }
     }
 })
 
