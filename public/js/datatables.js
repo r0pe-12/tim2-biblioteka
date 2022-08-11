@@ -25,7 +25,7 @@ $(document).ready(function () {
             "searchable": false,
             "orderable": false
         } ],
-        order: [[1, 'desc']],
+        order: [[1, 'asc']],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/sr-SP.json"
         },

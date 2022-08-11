@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ asset('css/modal.css') }}">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
 

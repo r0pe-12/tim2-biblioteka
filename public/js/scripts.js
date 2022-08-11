@@ -952,8 +952,8 @@ function validacijaKnjiga(event) {
     } else if (isbn.length == 0) {
         $('#validateIsbn').append('<p style="color:red;font-size:13px;">Morate unijeti ISBN!</p>');
         event.preventDefault();
-    } else if (isbn.length !== 20){
-        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN mora imati 20 cifara! Trenutno:' + isbn.length + '</p>');
+    } else if (isbn.length !== 13){
+        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN mora imati 13 cifara! Trenutno:' + isbn.length + '</p>');
         event.preventDefault();
     }
 }
@@ -2841,11 +2841,14 @@ $('.checkAll').click(function () {
       $('.checkOthers').each(function () {
           this.checked = true
       })
-    $('tr').addClass('bg-gray-200');
+    $('thead').addClass('bg-gray-200');
+    $('tr').slice(0, -1).addClass('bg-gray-200');
   } else {
       $('.checkOthers').each(function () {
           this.checked = false
       })
+    $('thead').removeClass('bg-gray-200');
+    $('tbody').removeClass('bg-gray-200');
     $('tr').removeClass('bg-gray-200');
   }
 });
@@ -2868,12 +2871,14 @@ $('.checkOthers').click(function () {
     if (checbox != checked) {
         $('.checkAll').each(function () {
             this.checked = false;
-            $('#head').removeClass('bg-gray-200');
+            $('thead').removeAttr('class');
+            $('#head').removeAttr('class');
         })
     } else if (checbox == checked) {
         $('.checkAll').each(function () {
             this.checked = true;
-            $('#head').addClass('bg-gray-200');
+            $('thead').addClass('bg-gray-200');
+            $('tr').slice(0, -1).addClass('bg-gray-200');
         })
     }
 
@@ -2883,7 +2888,6 @@ $('.checkOthers').click(function () {
         })
         $('.multiple').each(function () {
             this.hidden = true;
-            $('form').addClass('hidden');
         })
     } else if (checked >= 2) {
         $('.one').each(function () {
@@ -2891,7 +2895,6 @@ $('.checkOthers').click(function () {
         });
         $('.multiple').each(function () {
             this.hidden = false;
-            $('form').removeClass('hidden');
         })
     } else {
         $('.checkAll').each(function () {
@@ -2902,31 +2905,223 @@ $('.checkOthers').click(function () {
         });
         $('.multiple').each(function () {
             this.hidden = true;
-            $('form').addClass('hidden');
         })
     }
 })
 
 $('.checkOthers').click(function () {
     var checked = $('#myTableBody').find(':checked');
+    const path = window.location.pathname + '/';
     if (checked.length == 1) {
         checked.each(function () {
-            const id = this.defaultValue;
-            document.getElementById("detalji").href = "/books/" + id;
-            document.getElementById("edit").href = "/books/" + id + "/edit";
-            document.getElementById("otpisi").href = "/books/" + id + "/otpisi";
-            document.getElementById("izdaj").href = "/books/" + id + "/izdaj";
-            document.getElementById("vrati").href = "/books/" + id + "/vrati";
+            console.log(path);
+            const id = this.getAttribute('data-id');
+            const name = this.getAttribute('data-name');
+
+            if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/') {
+                const bookId = this.getAttribute('data-book-id');
+                const bookName = this.getAttribute('data-book-name');
+                const studentName = this.getAttribute('data-student-name');
+
+                document.getElementById("detalji").href = '/books/' + bookId + '/evidencija/' + id + '/show';
+
+               if (path === '/izdate' || path === '/prekoracene/') {
+                   const vrati = document.getElementById('vrati');
+                   vrati.setAttribute('data-action', '/books/' + bookId + '/vrati');
+                   vrati.setAttribute('data-name', name);
+                   vrati.setAttribute('data-id', id);
+                   vrati.setAttribute('data-book-name', bookName);
+                   vrati.setAttribute('data-student-name', studentName);
+
+                   const otpisi = document.getElementById('otpisi');
+                   otpisi.setAttribute('data-action', '/books/' + bookId + '/otpisi');
+                   otpisi.setAttribute('data-name', name);
+                   otpisi.setAttribute('data-id', id);
+                   otpisi.setAttribute('data-book-name', bookName);
+                   otpisi.setAttribute('data-student-name', studentName);
+               }
+            } else {
+                document.getElementById("detalji").href = path + id;
+                document.getElementById("edit").href = path + id + "/edit";
+
+                if (path === '/books/') {
+                    document.getElementById("otpisi").href = "/books/" + id + "/otpisi";
+                    document.getElementById("izdaj").href = "/books/" + id + "/izdaj";
+                    document.getElementById("vrati").href = "/books/" + id + "/vrati";
+                }
+
+                document.getElementById("deleteOne").setAttribute('data-id', id);
+                document.getElementById("deleteOne").setAttribute('data-name', name);
+            }
+
         })
     } else if (checked.length >= 2){
-        //    todo nece da nam ubaci value kao array nego samo kao string pa cemo na serveru raditi explode
-        var ids = [];
-        checked.each(function () {
-            ids.push(this.defaultValue)
-        })
-        console.log(ids);
-        document.getElementById("ids").value = ids;
+        if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/') {
+
+        } else {
+            var ids = [];
+            var names = [];
+            checked.each(function () {
+                ids.push(this.getAttribute('data-id'));
+                names.push(this.getAttribute('data-name'));
+            })
+            // console.log(ids);
+            document.getElementById("deleteMany").setAttribute('data-id', ids);
+            document.getElementById("deleteMany").setAttribute('data-name', names);
+        }
     } else {
-        document.getElementById("ids").value = '';
+        // document.getElementById("ids").value = '';
+        if (path === '/vracene/') {
+
+        } else {
+            document.getElementById("deleteOne").removeAttribute('data-id');
+        }
     }
 })
+
+$('.deleteOne').click(function () {
+    var id = this.getAttribute('data-id');
+    var name = this.getAttribute('data-name')
+    var action = this.getAttribute('data-action');
+    // console.log(action);
+    // console.log(id, name);
+    var Modal = document.getElementById('deleteOneModal');
+    var modalTitle = Modal.querySelector('.modalLabel')
+    var modalForm = Modal.querySelector('form');
+
+    modalTitle.innerHTML = '<b>' + name + '</b>'
+    if(!action){
+        modalForm.action = window.location.href + '/' + id;
+        return
+    }
+    modalForm.action = action;
+})
+
+$('#deleteMany').click(function () {
+    var ids = this.getAttribute('data-id').split(',');
+    var names = this.getAttribute('data-name').split(',');
+    // console.log(ids, names);
+    var Modal = document.getElementById('deleteManyModal');
+    var modalTitle = Modal.querySelector('.modalLabel')
+    var collapse = Modal.querySelector('.showMorebtn');
+    modalTitle.innerHTML = '';
+    var modalFormInput = Modal.querySelector('#ids');
+
+    collapse.innerHTML = '<b>(' + ids.length + ')<i class="fa fa-caret-down" style="padding-left: 3px"></i></b>'
+    names.forEach(function (a) {
+        modalTitle.innerHTML += '<li><b>' + a + '</b></li>';
+    })
+    modalFormInput.value = ids;
+})
+
+$('.vrati').click(function () {
+    var id = this.getAttribute('data-id');
+    var name = this.getAttribute('data-name');
+    var bookId = this.getAttribute('data-book-id');
+    var bookName = this.getAttribute('data-book-name');
+    var studentName = this.getAttribute('data-student-name');
+    var action = this.getAttribute('data-action');
+
+    var Modal = document.getElementById('returnBookModal');
+    var modalTitle = Modal.querySelector('.modalLabel')
+    var form = Modal.querySelector('form');
+    var modalFormInput = Modal.querySelector('.ids');
+
+    form.action = action;
+
+    modalTitle.innerHTML = '<b>' + bookName + '</b> za ucenika <b>' + studentName + '</b>';
+
+    modalFormInput.value = id;
+})
+
+$('.otpisi').click(function () {
+    var id = this.getAttribute('data-id');
+    var name = this.getAttribute('data-name');
+    var bookId = this.getAttribute('data-book-id');
+    var bookName = this.getAttribute('data-book-name');
+    var studentName = this.getAttribute('data-student-name');
+    var action = this.getAttribute('data-action');
+    console.log(action);
+
+    var Modal = document.getElementById('writeoffBookModal');
+    var modalTitle = Modal.querySelector('.modalLabel')
+    var form = Modal.querySelector('form');
+    var modalFormInput = Modal.querySelector('.ids');
+
+    form.action = action;
+
+    modalTitle.innerHTML = '<b>' + bookName + '</b> za ucenika <b>' + studentName + '</b>';
+
+    modalFormInput.value = id;
+})
+
+$('#deleteOneModal').on('hidden.bs.modal', function () {
+    this.querySelector('form').action = '';
+    this.querySelector('form input').value = '';
+})
+$('#deleteManyModal').on('hidden.bs.modal', function () {
+    // this.querySelector('form').action = '';
+    this.querySelector('.ids').value = '';
+})
+$('#returnBookModal').on('hidden.bs.modal', function () {
+    this.querySelector('form').action = '';
+    this.querySelector('.ids').value = '';
+})
+
+$('.makeSure').on('keyup', function () {
+    const prompt = this.value;
+    const form = $(this).closest('form')[0];
+    const button = form.querySelector('.sure');
+
+    if (prompt == 'DA') {
+        button.removeAttribute('disabled');
+    } else {
+        button.setAttribute('disabled', 'true');
+    }
+})
+
+function checkMakeSure(event, button) {
+    const form = $(button).closest('form')[0];
+    const prompt = form.querySelector('input').value;
+    if (prompt != 'DA') {
+        event.preventDefault();
+        console.log('I am not that dumb :)');
+        alert('I am not that dumb :)');
+    }
+}
+
+
+(function ($) {
+    "use strict";
+    function centerModal() {
+        $(this).css('display', 'block');
+        var $dialog  = $(this).find(".modal-dialog"),
+            offset       = ($(window).height() - $dialog.height()) / 2,
+            bottomMargin = parseInt($dialog.css('marginBottom'), 10);
+
+        // Make sure you don't hide the top part of the modal w/ a negative margin if it's longer than the screen height, and keep the margin equal to the bottom margin of the modal
+        if(offset < bottomMargin) offset = bottomMargin;
+        $dialog.css("margin-top", offset);
+    }
+
+    $(document).on('show.bs.modal', '.modal', centerModal);
+    $(document).on('shown.bs.collapse', '.modal', centerModal);
+    // $(document).on('hidden.bs.collapse', '.modal', centerModal);
+    $(window).on("resize", function () {
+        $('.modal:visible').each(centerModal);
+    });
+}(jQuery));
+
+function flashMsg(msg) {
+    Swal.fire({
+        "title": msg,
+        // "text":msg,
+        "timer":5000,
+        "width":"40rem",
+        "padding":"1.2rem",
+        "showConfirmButton":false,
+        "showCloseButton":true,
+        "timerProgressBar":false,
+        "customClass":{"container":null,"popup":null,"header":null,"title":null,"closeButton":null,"icon":null,"image":null,"content":null,"input":null,"actions":null,"confirmButton":null,"cancelButton":null,"footer":null}, "toast":true,"icon":"success","position":"top-end"});
+
+}

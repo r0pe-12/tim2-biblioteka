@@ -2195,7 +2195,7 @@ h4 {
 }
 .bg-gray-200{
     --tw-bg-opacity: 1;
-    background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+    background-color: rgba(229, 231, 235, var(--tw-bg-opacity)) !important;
 }
 .bg-yellow-200{
     --tw-bg-opacity: 1;

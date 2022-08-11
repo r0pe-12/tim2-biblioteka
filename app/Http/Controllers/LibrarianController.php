@@ -60,7 +60,7 @@ class LibrarianController extends Controller
             $role->save();
         }
         $role->users()->save($librarian);
-        return redirect()->route('librarians.index')->with('success', 'Bibliotekar "' . $librarian->name . '" je usjpešno kreiran');
+        return redirect()->route('librarians.index')->with('success', 'Bibliotekar "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" je usjpešno kreiran');
     }
 
     /**
@@ -98,7 +98,6 @@ class LibrarianController extends Controller
      */
     public function update(UpdateRequest $request, User $librarian)
     {
-//        todo mozda je dobra ideja da stavimo da username ne moze da se updatuje
         //
         $input = $request->validated();
         if (is_null($input['password'])){
@@ -117,7 +116,7 @@ class LibrarianController extends Controller
             unset($input['photoPath']);
         }
         $librarian->update($input);
-        return redirect()->route('librarians.show', $librarian->username)->with('success', 'Bibliotekar "' . $librarian->username . '" uspješno izmijenjen');
+        return redirect()->route('librarians.show', $librarian->username)->with('success', 'Bibliotekar "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" uspješno izmijenjen');
     }
 
     /**
@@ -126,12 +125,39 @@ class LibrarianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(User $librarian)
+    public function destroy($username)
     {
         //
+        $librarian = User::where('username', '=', $username)->first();
         $this->authorize('delete', $librarian);
+        if (file_exists($photoPath = public_path() . $librarian->photoPath)){
+            unlink($photoPath);
+        }
         $librarian->delete();
-        return redirect()->route('librarians.index')->with('success', 'Bibliotekar "' . $librarian->username . '" uspješno izbrisan');
+        return redirect()->route('librarians.index')->with('success', 'Bibliotekar "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" uspješno izbrisan');
+    }
+
+
+    /**
+     * Remove the specified resourceS from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function bulkDelete()
+    {
+        //
+//        $names = [];
+        $unames = explode(',', request('unames'));
+        foreach ($unames as $uname){
+            $librarian = User::where('username', '=', $uname)->first();
+            if (file_exists($photoPath = public_path() . $librarian->photoPath)){
+                unlink($photoPath);
+            }
+            $librarian->delete();
+//            $names[] = $librarian->name . ' ' . $librarian->surname;
+        }
+        return redirect()->route('librarians.index')->with('success', 'Bibliotekari su uspješno izbrisani');
     }
 
 
@@ -148,6 +174,6 @@ class LibrarianController extends Controller
 
         $user->password = $request->password;
         $user->save();
-        return redirect()->back()->with('success', 'Šifra korisnika "' . $user->username . '" je uspješno resetovana');
+        return redirect()->back()->with('success', 'Šifra korisnika "' . $user->name . ' ' . $user->surname . ': ' . $user->username . '" je uspješno resetovana');
     }
 }

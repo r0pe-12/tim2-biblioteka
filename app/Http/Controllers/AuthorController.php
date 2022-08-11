@@ -8,7 +8,6 @@ use Illuminate\Validation\ValidationException;
 
 class AuthorController extends Controller
 {
-//    todo add picture to author in form as well as implement it
     /**
      * Display a listing of the resource.
      *
@@ -138,20 +137,44 @@ class AuthorController extends Controller
 
             $author->save();
             return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . ' ' . $author->surname . '" je uspješno izmijenjen');
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public
+    function destroy(Author $author)
+    {
+        //
+        if (file_exists($photoPath = public_path() . $author->image)){
+            unlink($photoPath);
         }
+        $author->delete();
+        return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . ' ' . $author->surname . '" je uspješno izbrisan');
+    }
 
-
-            /**
-             * Remove the specified resource from storage.
-             *
-             * @param int $id
-             * @return \Illuminate\Http\RedirectResponse
-             */
-            public
-            function destroy(Author $author)
-            {
-                //
-                $author->delete();
-                return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . ' ' . $author->surname . '" je uspješno izbrisan');
+    /**
+     * Remove the specified resourceS from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function bulkDelete()
+    {
+//        $names = [];
+        $ids = explode(',', request('ids'));
+        foreach ($ids as $id){
+            $author = Author::find($id);
+            if (file_exists($photoPath = public_path() . $author->image)){
+                unlink($photoPath);
             }
+            $author->delete();
+//            $names[] = $author->name . ' ' . $author->surname;
         }
+        return redirect()->route('authors.index')->with('success', 'Autori su uspješno izbrisani');
+    }
+}

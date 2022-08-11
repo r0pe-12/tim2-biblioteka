@@ -125,16 +125,48 @@
                                         </span>
                                     </div>
                                 </li>
+
+                                <li class="mb-[4px]">
+                                    <div class="w-[300px] pl-[32px]">
+                                        <span style="pointer-events: none"
+                                              class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                            <div
+                                                class="group py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                            </div>
+                                        </span>
+                                    </div>
+                                </li>
+
+                                <li class="mb-[4px] one" hidden>
+                                    <div class="w-[300px] pl-[32px]">
+                                        <span
+                                            class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                            <div
+                                                class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                                <a id="detalji" href="#"
+                                                   class="flex items-center">
+                                                    <i
+                                                        class="text-[20px] fas fa-copy transition duration-300 ease-in text-[#576cdf]"></i>
+                                                    <div>
+                                                        <p
+                                                            class="text-[15px] ml-[19px] transition duration-300 ease-in text-[#576cdf]">
+                                                            Pogledaj detalje</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
 
-                        <div class="w-full mt-[10px] ml-2 px-2">
+                        <div class="w-full px-[30px] pt-2 bg-white">
                             <table class="overflow-hidden shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
                                 <thead class="bg-[#EFF3F6]">
-                                <tr class="border-b-[1px] border-[#e4dfdf]">
+                                <tr id="head" class="border-b-[1px] border-[#e4dfdf]">
                                     <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                         <label class="inline-flex items-center">
-                                            <input type="checkbox" class="form-checkbox">
+                                            <input type="checkbox" class="form-checkbox checkAll checkOthers">
                                         </label>
                                     </th>
                                     <th class="px-4 py-4 leading-4 tracking-wider text-left">
@@ -149,17 +181,14 @@
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
                                         Datum izdavanja
                                     </th>
-                                    <!-- Datum vracanja + dropdown filter for date -->
                                     <th
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">
                                         Datum vracanja
                                     </th>
-                                    <!-- Zadrzavanje knjige + dropdown filter for date -->
                                     <th
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
                                         Zadrzavanje knjige
                                     </th>
-                                    <!-- Knjigu primio + dropdown filter for bibliotekari -->
                                     <th
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">
                                         Knjigu primio
@@ -167,12 +196,17 @@
                                     <th class="px-4 py-4"> </th>
                                 </tr>
                                 </thead>
-                                <tbody class="bg-white">
+                                <tbody class="bg-white" id="myTableBody">
                                     @foreach($returned as $zapis)
                                         <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                             <td class="px-4 py-3 whitespace-no-wrap">
                                                 <label class="inline-flex items-center">
-                                                    <input type="checkbox" class="form-checkbox">
+                                                    <input type="checkbox" class="form-checkbox checkOthers"
+                                                           data-book-id="{{ $zapis->book->id }}"
+                                                           data-book-name="{{ $zapis->book->title }}"
+                                                           data-student-name="{{ $zapis->student->name }} {{ $zapis->student->surname }}"
+                                                           data-id="{{ $zapis->id }}"
+                                                    >
                                                 </label>
                                             </td>
                                             <td class="flex flex-row items-center px-4 py-3">
@@ -207,42 +241,6 @@
                                                                role="menuitem">
                                                                 <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
                                                                 <span class="px-4 py-0">Pogledaj detalje</span>
-                                                            </a>
-
-                                                            <a href="izdajKnjigu.php" tabindex="0"
-                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                               role="menuitem">
-                                                                <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
-                                                                <span class="px-4 py-0">Izdaj knjigu</span>
-                                                            </a>
-
-                                                            <a href="vratiKnjigu.php" tabindex="0"
-                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                               role="menuitem">
-                                                                <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
-                                                                <span class="px-4 py-0">Vrati knjigu</span>
-                                                            </a>
-
-                                                            <a href="rezervisiKnjigu.php" tabindex="0"
-                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                               role="menuitem">
-                                                                <i
-                                                                    class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
-                                                                <span class="px-4 py-0">Rezervisi knjigu</span>
-                                                            </a>
-
-                                                            <a href="otpisiKnjigu.php" tabindex="0"
-                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                               role="menuitem">
-                                                                <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
-                                                                <span class="px-4 py-0">Otpisi knjigu</span>
-                                                            </a>
-
-                                                            <a href="#" tabindex="0"
-                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                               role="menuitem">
-                                                                <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
-                                                                <span class="px-4 py-0">Izbrisi knjigu</span>
                                                             </a>
                                                         </div>
                                                     </div>

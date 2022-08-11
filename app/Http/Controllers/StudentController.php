@@ -60,7 +60,7 @@ class StudentController extends Controller
             $role->save();
         }
         $role->users()->save($student);
-        return redirect()->route('students.index')->with('success', 'Ucenik, "' . $student->name . '", je uspješno kreiran');
+        return redirect()->route('students.index')->with('success', 'Ucenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" je uspješno kreiran');
 
     }
 
@@ -119,7 +119,7 @@ class StudentController extends Controller
             unset($input['photoPath']);
         }
         $student->update($input);
-        return redirect()->route('students.show', $student->username)->with('success', 'Ucenik, "' . $student->username . '" ,uspješno izmijenjen');
+        return redirect()->route('students.show', $student->username)->with('success', 'Ucenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" uspješno izmijenjen');
     }
 
 
@@ -129,12 +129,40 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(User $student)
+    public function destroy($username)
     {
         //
+        $student = User::where('username', '=', $username)->first();
+        $this->authorize('delete', $student);
+        if (file_exists($photoPath = public_path() . $student->photoPath)){
+            unlink($photoPath);
+        }
         $student->delete();
-        return redirect()->route('students.index')->with('success', 'Ucenik, "' . $student->username . '" ,je uspješno izbrisan');
+        return redirect()->route('students.index')->with('success', 'Ucenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" je uspješno izbrisan');
     }
+
+    /**
+     * Remove the specified resourceS from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function bulkDelete()
+    {
+        //
+//        $names = [];
+        $unames = explode(',', request('unames'));
+        foreach ($unames as $uname){
+            $student = User::where('username', '=', $uname)->first();
+            if (file_exists($photoPath = public_path() . $student->photoPath)){
+                unlink($photoPath);
+            }
+            $student->delete();
+//            $names[] = $student->name . ' ' . $student->surname;
+        }
+        return redirect()->route('students.index')->with('success', 'Ucenici su uspješno izbrisani');
+    }
+
 
     public function passwordReset(Request $request, User $user){
 

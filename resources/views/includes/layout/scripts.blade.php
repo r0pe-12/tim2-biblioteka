@@ -1,6 +1,7 @@
 {{--<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>--}}
 <script src="{{ asset('js/jquery.min.js') }}" crossorigin="anonymous"></script>
 
+<script src="{{ asset('js/modal.min.js') }}" defer=""></script>
 <script src="{{ asset('js/bootstrap.bundle.js') }}" defer=""></script>
 <script src="{{ asset('js/scripts.js') }}" defer=""></script>
 
@@ -58,3 +59,18 @@
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js" integrity="sha512-ooSWpxJsiXe6t4+PPjCgYmVfr1NS5QXJACcR/FPpsdm6kqG1FmQ2SVyg2RXeVuCRBLr0lWHnWJP6Zs1Efvxzww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
     <script src="{{ asset('js/cropper.min.js') }}" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- end cropper.js -->
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    window.onload = function () {
+        @if(session('success'))
+        const tempMsg = "{{ session('success') }}";
+        var temp = document.createElement('div');
+        temp.setAttribute('hidden', 'true');
+        temp.innerHTML = tempMsg;
+        const msg = temp.innerHTML;
+
+        flashMsg(msg);
+        @endif
+    }
+</script>

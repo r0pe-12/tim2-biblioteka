@@ -31,12 +31,15 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/activity', fn() => view('dashboard.activity'));
 
     Route::resource('/librarians', LibrarianController::class);
+    Route::delete('/librarian/bulkdelete', [LibrarianController::class, 'bulkDelete'])->name('librarian.bulk-delete');
     Route::put('/librarians/{user}/resetPassword', [LibrarianController::class, 'passwordReset'])->name('librarian.pwreset');
 
     Route::resource('/authors', AuthorController::class);
+    Route::delete('/author/bulkdelete', [AuthorController::class, 'bulkDelete'])->name('author.bulk-delete');
 
 //    rute za knjigu
         Route::resource('/books', BookController::class);
+        Route::delete('/book/bulkdelete', [BookController::class, 'bulkDelete'])->name('book.bulk-delete');
         Route::controller(BookBorrowController::class)->group(function (){
     //        izdaj knjigu
             Route::get('/books/{book}/izdaj', 'izdajForm')->name('izdaj.create');
@@ -45,7 +48,7 @@ Route::middleware(['auth'])->group(function (){
 
             Route::get('/izdate', 'izdate')->name('izdate');
             Route::get('/books/{book}/evidencija/izdate', 'izdate1')->name('izdate1');
-            Route::get('/books/{book}/evidencija/izdate/{borrow}', 'show')->name('izdate.show');
+            Route::get('/books/{book}/evidencija/{borrow}/show', 'show')->name('izdate.show');
 
         });
 
@@ -71,5 +74,6 @@ Route::middleware(['auth'])->group(function (){
 //    END-rute za knjigu
 
     Route::resource('/students', StudentController::class);
+    Route::delete('/student/bulkdelete', [StudentController::class, 'bulkDelete'])->name('student.bulk-delete');
     Route::put('/students/{user}/resetPassword', [StudentController::class, 'passwordReset'])->name('student.pwreset');
 });

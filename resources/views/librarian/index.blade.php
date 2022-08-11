@@ -2,6 +2,66 @@
     @section('title')
         Bibliotekari
     @endsection
+        <!-- Delete One Librarian Modal -->
+        <div class="modal fadeM" id="deleteOneModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" action="">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati bibliotekara: </h5>
+                            <h5 class="modal-title modalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-red-800">
+                                Ova akcija je nepovratna.
+                            </p>
+                        </div>
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                                Potvrdi <i class="fas fa-check ml-[4px]"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Many Librarians Modal -->
+        <div class="modal fadeM" id="deleteManyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" action="{{ route('librarian.bulk-delete') }}">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati sledece bibliotekare: </h5>
+                            <h5 class="modal-title">
+                                <a data-bs-toggle="collapse" href="#showMore" role="button" class="showMorebtn" aria-expanded="false" aria-controls="collapseExample"></a>
+                                <ul class="collapse modalLabel" id="showMore"></ul>
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-red-800">
+                                Ova akcija je nepovratna.
+                            </p>
+                        </div>
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-footer">
+                            <input type="hidden" value="" name="unames" id="ids">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                                Potvrdi <i class="fas fa-check ml-[4px]"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <!-- Content -->
         <section class="w-screen h-screen py-4 pl-[80px] text-[#333333]">
             <!-- Heading of content -->
@@ -17,24 +77,23 @@
                     <a href="{{ route('librarians.create') }}" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
                         <i class="fas fa-plus mr-[15px]"></i> Novi bibliotekar
                     </a>
-                    <div class="flex items-center">
-                        <div class="relative text-gray-600 focus-within:text-gray-400">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                                <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
-                                </button>
-                            </span>
-                        </div>
-                    </div>
+                    <a href="#" class="text-red-800 multiple" id="deleteMany" hidden data-toggle="modal" data-target="#deleteManyModal"><i class="fa fa-trash ml-4"></i> Izbrisi bibliotekare</a>
+
+                    <a class="text-blue-800 one" hidden id="detalji" href="#"><i class="far fa-copy"></i> Pogledaj detalje</a>
+                    <a class="text-blue-800 one" hidden id="edit" href="#"><i class="fas fa-user-edit"></i> Izmjeni bibliotekara</a>
+
+                    <a href="#" class="text-red-800 one deleteOne" id="deleteOne" hidden data-toggle="modal" data-target="#deleteOneModal"><i class="fa fa-trash ml-4"></i> Izbrisi bibliotekara</a>
+                    <div></div>
                 </div>
 
                 <div
                     class="inline-block min-w-full px-[30px] pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
                     <table class="overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
                         <thead class="bg-[#EFF3F6]">
-                            <tr class="border-[1px] border-[#e4dfdf]">
+                            <tr id="head" class="border-[1px] border-[#e4dfdf]">
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                     <label class="inline-flex items-center">
-                                        <input type="checkbox" class="form-checkbox">
+                                        <input type="checkbox" class="form-checkbox checkAll checkOthers">
                                     </label>
                                 </th>
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">Ime i prezime<a href="#"></a>
@@ -46,12 +105,12 @@
                                 <th class="px-4 py-4"> </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white">
+                        <tbody class="bg-white" id="myTableBody">
                             @foreach($librarians as $librarian)
                                 <tr class="hover:bg-gray-200 hover:shadow-md border-[1px] border-[#e4dfdf]">
                                     <td class="px-4 py-4 whitespace-no-wrap">
                                         <label class="inline-flex items-center">
-                                            <input type="checkbox" class="form-checkbox">
+                                            @if(auth()->user()->can('delete', $librarian))<input type="checkbox" class="form-checkbox checkOthers" data-id="{{ $librarian->username }}" data-name="{{ $librarian->name }} {{ $librarian->surname }}">@endif
                                         </label>
                                     </td>
                                     <td class="flex flex-row items-center px-4 py-4">
@@ -87,14 +146,20 @@
                                                         <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                                         <span class="px-4 py-0">Izmijeni bibliotekara</span>
                                                     </a>
-                                                    <form method="POST" action="{{ route('librarians.destroy', $librarian) }}" enctype="multipart/form-data" tabindex="0"
-                                                          class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                          role="menuitem">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                                        <button type="submit"><span class="px-4 py-0">Izbriši bibliotekara</span></button>
-                                                    </form>
+                                                    @if(auth()->user()->can('delete', $librarian))
+                                                        <a href="#"
+                                                           class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600 deleteOne"
+                                                           id="deleteOne"
+                                                           data-toggle="modal"
+                                                           data-target="#deleteOneModal"
+                                                           data-id="{{ $librarian->username }}"
+                                                           data-name="{{ $librarian->name }} {{ $librarian->surname }}"
+                                                           data-action="{{ route('librarians.destroy', $librarian->username) }}"
+                                                        >
+                                                            <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
+                                                            <span class="px-4 py-0">Izbrisi bibliotekara</span>
+                                                        </a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
