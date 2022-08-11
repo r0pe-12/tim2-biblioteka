@@ -27,7 +27,10 @@ class BookReturnController extends Controller
         \request()->validate([
             'toReturn' => 'required',
         ]);
-        foreach (\request('toReturn') as $id) {
+        if (!is_array($ids = \request('toReturn'))){
+            $ids = explode(',', $ids);
+        }
+        foreach ($ids as $id) {
             $borrow = Borrow::findOrFail($id);
 
             if ($book->failed()->contains($borrow)){

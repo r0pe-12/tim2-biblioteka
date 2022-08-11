@@ -2911,34 +2911,62 @@ $('.checkOthers').click(function () {
 
 $('.checkOthers').click(function () {
     var checked = $('#myTableBody').find(':checked');
+    const path = window.location.pathname + '/';
     if (checked.length == 1) {
         checked.each(function () {
-            const path = window.location.pathname + '/';
             console.log(path);
             const id = this.getAttribute('data-id');
             const name = this.getAttribute('data-name');
-            document.getElementById("detalji").href = path + id;
-            document.getElementById("edit").href = path + id + "/edit";
 
-            if (path === '/books/') {
-                document.getElementById("otpisi").href = "/books/" + id + "/otpisi";
-                document.getElementById("izdaj").href = "/books/" + id + "/izdaj";
-                document.getElementById("vrati").href = "/books/" + id + "/vrati";
+            if (path === '/izdate/') {
+                const bookId = this.getAttribute('data-book-id');
+                const bookName = this.getAttribute('data-book-name');
+                const studentName = this.getAttribute('data-student-name');
+
+                document.getElementById("detalji").href = '/books/' + bookId + '/evidencija/' + id + '/show';
+
+                const vrati = document.getElementById('vrati');
+                vrati.setAttribute('data-action', '/books/' + bookId + '/vrati');
+                vrati.setAttribute('data-name', name);
+                vrati.setAttribute('data-id', id);
+                vrati.setAttribute('data-book-name', bookName);
+                vrati.setAttribute('data-student-name', studentName);
+
+                const otpisi = document.getElementById('otpisi');
+                otpisi.setAttribute('data-action', '/books/' + bookId + '/otpisi');
+                otpisi.setAttribute('data-name', name);
+                otpisi.setAttribute('data-id', id);
+                otpisi.setAttribute('data-book-name', bookName);
+                otpisi.setAttribute('data-student-name', studentName);
+            } else {
+                document.getElementById("detalji").href = path + id;
+                document.getElementById("edit").href = path + id + "/edit";
+
+                if (path === '/books/') {
+                    document.getElementById("otpisi").href = "/books/" + id + "/otpisi";
+                    document.getElementById("izdaj").href = "/books/" + id + "/izdaj";
+                    document.getElementById("vrati").href = "/books/" + id + "/vrati";
+                }
+
+                document.getElementById("deleteOne").setAttribute('data-id', id);
+                document.getElementById("deleteOne").setAttribute('data-name', name);
             }
 
-            document.getElementById("deleteOne").setAttribute('data-id', id);
-            document.getElementById("deleteOne").setAttribute('data-name', name);
         })
     } else if (checked.length >= 2){
-        var ids = [];
-        var names = [];
-        checked.each(function () {
-            ids.push(this.getAttribute('data-id'));
-            names.push(this.getAttribute('data-name'));
-        })
-        // console.log(ids);
-        document.getElementById("deleteMany").setAttribute('data-id', ids);
-        document.getElementById("deleteMany").setAttribute('data-name', names);
+        if (path === '/izdate/') {
+
+        } else {
+            var ids = [];
+            var names = [];
+            checked.each(function () {
+                ids.push(this.getAttribute('data-id'));
+                names.push(this.getAttribute('data-name'));
+            })
+            // console.log(ids);
+            document.getElementById("deleteMany").setAttribute('data-id', ids);
+            document.getElementById("deleteMany").setAttribute('data-name', names);
+        }
     } else {
         // document.getElementById("ids").value = '';
         document.getElementById("deleteOne").removeAttribute('data-id');
@@ -2978,13 +3006,58 @@ $('#deleteMany').click(function () {
     modalFormInput.value = ids;
 })
 
+$('.vrati').click(function () {
+    var id = this.getAttribute('data-id');
+    var name = this.getAttribute('data-name');
+    var bookId = this.getAttribute('data-book-id');
+    var bookName = this.getAttribute('data-book-name');
+    var studentName = this.getAttribute('data-student-name');
+    var action = this.getAttribute('data-action');
+
+    var Modal = document.getElementById('returnBookModal');
+    var modalTitle = Modal.querySelector('#modalLabel')
+    var form = Modal.querySelector('form');
+    var modalFormInput = Modal.querySelector('#ids');
+
+    form.action = action;
+
+    modalTitle.innerHTML = '<b>' + bookName + '</b> za ucenika <b>' + studentName + '</b>';
+
+    modalFormInput.value = id;
+})
+
+$('.otpisi').click(function () {
+    var id = this.getAttribute('data-id');
+    var name = this.getAttribute('data-name');
+    var bookId = this.getAttribute('data-book-id');
+    var bookName = this.getAttribute('data-book-name');
+    var studentName = this.getAttribute('data-student-name');
+    var action = this.getAttribute('data-action');
+    console.log(action);
+
+    var Modal = document.getElementById('writeoffBookModal');
+    var modalTitle = Modal.querySelector('#modalLabel')
+    var form = Modal.querySelector('form');
+    var modalFormInput = Modal.querySelector('#ids');
+
+    form.action = action;
+
+    modalTitle.innerHTML = '<b>' + bookName + '</b> za ucenika <b>' + studentName + '</b>';
+
+    modalFormInput.value = id;
+})
+
 $('#deleteOneModal').on('hidden.bs.modal', function () {
     this.querySelector('form').action = '';
     this.querySelector('form input').value = '';
 })
 $('#deleteManyModal').on('hidden.bs.modal', function () {
     // this.querySelector('form').action = '';
-    this.querySelector('form input').value = '';
+    this.querySelector('#ids').value = '';
+})
+$('#returnBookModal').on('hidden.bs.modal', function () {
+    this.querySelector('form').action = '';
+    this.querySelector('#ids').value = '';
 })
 
 $('.makeSure').on('keyup', function () {

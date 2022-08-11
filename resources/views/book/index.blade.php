@@ -212,7 +212,6 @@
                                                         </a>
                                                         <a href="#"
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600 deleteOne"
-                                                           id="deleteOne"
                                                            data-toggle="modal"
                                                            data-target="#deleteOneModal"
                                                            data-id="{{ $book->id }}"

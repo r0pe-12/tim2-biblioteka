@@ -48,7 +48,7 @@ Route::middleware(['auth'])->group(function (){
 
             Route::get('/izdate', 'izdate')->name('izdate');
             Route::get('/books/{book}/evidencija/izdate', 'izdate1')->name('izdate1');
-            Route::get('/books/{book}/evidencija/izdate/{borrow}', 'show')->name('izdate.show');
+            Route::get('/books/{book}/evidencija/{borrow}/show', 'show')->name('izdate.show');
 
         });
 

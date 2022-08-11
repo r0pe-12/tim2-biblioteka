@@ -26,7 +26,10 @@ class BookWriteOffController extends Controller
         \request()->validate([
             'toWriteoff' => 'required',
         ]);
-        foreach (\request('toWriteoff') as $id) {
+        if (!is_array($ids = \request('toWriteoff'))){
+            $ids = explode(',', $ids);
+        }
+        foreach ($ids as $id) {
             $borrow = Borrow::findOrFail($id);
 
             $newStatus = BookStatus::failed();

@@ -75,6 +75,9 @@
         @yield('scripts')
         <script>
             $(window).on("load", function () {
+                $(':checkbox').each(function () {
+                    this.checked = false;
+                });
                 $(".loader-wrapper").fadeOut("slow");
             })
         </script>
