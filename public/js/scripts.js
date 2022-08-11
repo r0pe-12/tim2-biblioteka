@@ -2925,7 +2925,7 @@ $('.checkOthers').click(function () {
 
                 document.getElementById("detalji").href = '/books/' + bookId + '/evidencija/' + id + '/show';
 
-               if (path === '/izdate' || path === '/prekoracene/') {
+               if (path === '/izdate/' || path === '/prekoracene/') {
                    const vrati = document.getElementById('vrati');
                    vrati.setAttribute('data-action', '/books/' + bookId + '/vrati');
                    vrati.setAttribute('data-name', name);
