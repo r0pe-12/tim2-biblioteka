@@ -9,7 +9,7 @@
                     <form method="post" action="">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati bibliotekara: </h5>
-                            <h5 class="modal-title" id="modalLabel"></h5>
+                            <h5 class="modal-title modalLabel"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -36,9 +36,10 @@
                 <div class="modal-content">
                     <form method="post" action="{{ route('librarian.bulk-delete') }}">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati bibliotekare: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati sledece bibliotekare: </h5>
                             <h5 class="modal-title">
-                                <ul id="modalLabel"></ul>
+                                <a data-bs-toggle="collapse" href="#showMore" role="button" class="showMorebtn" aria-expanded="false" aria-controls="collapseExample"></a>
+                                <ul class="collapse modalLabel" id="showMore"></ul>
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>

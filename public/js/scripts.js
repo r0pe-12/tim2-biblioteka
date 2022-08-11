@@ -2980,7 +2980,7 @@ $('.deleteOne').click(function () {
     // console.log(action);
     // console.log(id, name);
     var Modal = document.getElementById('deleteOneModal');
-    var modalTitle = Modal.querySelector('#modalLabel')
+    var modalTitle = Modal.querySelector('.modalLabel')
     var modalForm = Modal.querySelector('form');
 
     modalTitle.innerHTML = '<b>' + name + '</b>'
@@ -2996,10 +2996,12 @@ $('#deleteMany').click(function () {
     var names = this.getAttribute('data-name').split(',');
     // console.log(ids, names);
     var Modal = document.getElementById('deleteManyModal');
-    var modalTitle = Modal.querySelector('#modalLabel')
+    var modalTitle = Modal.querySelector('.modalLabel')
+    var collapse = Modal.querySelector('.showMorebtn');
     modalTitle.innerHTML = '';
     var modalFormInput = Modal.querySelector('#ids');
 
+    collapse.innerHTML = '<b>(' + ids.length + ')<i class="fa fa-caret-down" style="padding-left: 3px"></i></b>'
     names.forEach(function (a) {
         modalTitle.innerHTML += '<li><b>' + a + '</b></li>';
     })
@@ -3015,9 +3017,9 @@ $('.vrati').click(function () {
     var action = this.getAttribute('data-action');
 
     var Modal = document.getElementById('returnBookModal');
-    var modalTitle = Modal.querySelector('#modalLabel')
+    var modalTitle = Modal.querySelector('.modalLabel')
     var form = Modal.querySelector('form');
-    var modalFormInput = Modal.querySelector('#ids');
+    var modalFormInput = Modal.querySelector('.ids');
 
     form.action = action;
 
@@ -3036,9 +3038,9 @@ $('.otpisi').click(function () {
     console.log(action);
 
     var Modal = document.getElementById('writeoffBookModal');
-    var modalTitle = Modal.querySelector('#modalLabel')
+    var modalTitle = Modal.querySelector('.modalLabel')
     var form = Modal.querySelector('form');
-    var modalFormInput = Modal.querySelector('#ids');
+    var modalFormInput = Modal.querySelector('.ids');
 
     form.action = action;
 
@@ -3097,6 +3099,8 @@ function checkMakeSure(event, button) {
     }
 
     $(document).on('show.bs.modal', '.modal', centerModal);
+    $(document).on('shown.bs.collapse', '.modal', centerModal);
+    // $(document).on('hidden.bs.collapse', '.modal', centerModal);
     $(window).on("resize", function () {
         $('.modal:visible').each(centerModal);
     });

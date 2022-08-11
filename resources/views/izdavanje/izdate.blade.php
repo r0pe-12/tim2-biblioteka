@@ -10,7 +10,7 @@
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Da li zelite vratiti knjigu: </h5>
                             <h5 class="modal-title">
-                                <ul id="modalLabel"></ul>
+                                <ul class="modalLabel"></ul>
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -21,7 +21,7 @@
                         </div>
                         @csrf
                         @method('PUT')
-                        <input type="hidden" id="ids" name="toReturn">
+                        <input type="hidden" class="ids" name="toReturn">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
@@ -41,7 +41,7 @@
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Da li zelite otpisati knjigu: </h5>
                             <h5 class="modal-title">
-                                <ul id="modalLabel"></ul>
+                                <ul class="modalLabel"></ul>
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -52,7 +52,7 @@
                         </div>
                         @csrf
                         @method('PUT')
-                        <input type="hidden" id="ids" name="toWriteoff">
+                        <input type="hidden" class="ids" name="toWriteoff">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
