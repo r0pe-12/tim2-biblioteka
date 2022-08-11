@@ -2918,14 +2918,14 @@ $('.checkOthers').click(function () {
             const id = this.getAttribute('data-id');
             const name = this.getAttribute('data-name');
 
-            if (path === '/izdate/' || path === '/vracene/') {
+            if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/') {
                 const bookId = this.getAttribute('data-book-id');
                 const bookName = this.getAttribute('data-book-name');
                 const studentName = this.getAttribute('data-student-name');
 
                 document.getElementById("detalji").href = '/books/' + bookId + '/evidencija/' + id + '/show';
 
-               if (path === '/izdate') {
+               if (path === '/izdate' || path === '/prekoracene/') {
                    const vrati = document.getElementById('vrati');
                    vrati.setAttribute('data-action', '/books/' + bookId + '/vrati');
                    vrati.setAttribute('data-name', name);
@@ -2956,7 +2956,7 @@ $('.checkOthers').click(function () {
 
         })
     } else if (checked.length >= 2){
-        if (path === '/izdate/' || path === '/vracene/') {
+        if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/') {
 
         } else {
             var ids = [];
@@ -3061,11 +3061,11 @@ $('#deleteOneModal').on('hidden.bs.modal', function () {
 })
 $('#deleteManyModal').on('hidden.bs.modal', function () {
     // this.querySelector('form').action = '';
-    this.querySelector('#ids').value = '';
+    this.querySelector('.ids').value = '';
 })
 $('#returnBookModal').on('hidden.bs.modal', function () {
     this.querySelector('form').action = '';
-    this.querySelector('#ids').value = '';
+    this.querySelector('.ids').value = '';
 })
 
 $('.makeSure').on('keyup', function () {
