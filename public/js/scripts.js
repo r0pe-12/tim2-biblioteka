@@ -3081,3 +3081,44 @@ function checkMakeSure(event, button) {
         alert('I am not that dumb :)');
     }
 }
+
+
+(function ($) {
+    "use strict";
+    function centerModal() {
+        $(this).css('display', 'block');
+        var $dialog  = $(this).find(".modal-dialog"),
+            offset       = ($(window).height() - $dialog.height()) / 2,
+            bottomMargin = parseInt($dialog.css('marginBottom'), 10);
+
+        // Make sure you don't hide the top part of the modal w/ a negative margin if it's longer than the screen height, and keep the margin equal to the bottom margin of the modal
+        if(offset < bottomMargin) offset = bottomMargin;
+        $dialog.css("margin-top", offset);
+    }
+
+    $(document).on('show.bs.modal', '.modal', centerModal);
+    $(window).on("resize", function () {
+        $('.modal:visible').each(centerModal);
+    });
+}(jQuery));
+
+/* center modal */
+// function centerModals($element) {
+//     var $modals;
+//     if ($element.length) {
+//         $modals = $element;
+//     } else {
+//         $modals = $('.modal-vcenter:visible');
+//     }
+//     $modals.each( function(i) {
+//         var $clone = $(this).clone().css('display', 'block').appendTo('body');
+//         var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
+//         top = top > 0 ? top : 0;
+//         $clone.remove();
+//         $(this).find('.modal-content').css("margin-top", top);
+//     });
+// }
+// $('.modal-vcenter').on('show.bs.modal', function(e) {
+//     centerModals($(this));
+// });
+// $(window).on('resize', centerModals);

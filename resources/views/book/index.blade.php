@@ -14,14 +14,14 @@
                         </div>
                         <div class="modal-body">
                             <p class="text-red-800">
-                                Ova akcija je nepovratna. Da li ste sigurni: <input type="text" placeholder="Unesite DA" class="makeSure" style="padding-left: 6px">
+                                Ova akcija je nepovratna.
                             </p>
                         </div>
                         @csrf
                         @method('DELETE')
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
-                            <button onclick="checkMakeSure(event, this)" disabled="true" type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                            <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
                         </div>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="modal-body">
                             <p class="text-red-800">
-                                Ova akcija je nepovratna. Da li ste sigurni: <input type="text" placeholder="Unesite DA" class="makeSure" style="padding-left: 6px">
+                                Ova akcija je nepovratna.
                             </p>
                         </div>
                         @csrf
@@ -52,7 +52,7 @@
                         <div class="modal-footer">
                             <input type="hidden" value="" name="ids" id="ids">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
-                            <button type="submit" onclick="checkMakeSure(event, this)" disabled="true" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                            <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
                         </div>

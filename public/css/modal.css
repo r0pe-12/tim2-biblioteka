@@ -863,6 +863,10 @@ button.close {
     padding: 15px;
     border-bottom: 1px solid #e5e5e5;
 }
+#modalLabel {
+    max-height: calc(100vh - 300px);
+    overflow-y: auto;
+}
 .modal-header .close {
     margin-top: -2px;
 }
@@ -900,7 +904,7 @@ button.close {
     .modal-dialog {
         width: 600px;
         margin: 30px auto;
-        padding-top: 12%;
+        /*padding-top: 12%;*/
     }
     .modal-content {
         -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
