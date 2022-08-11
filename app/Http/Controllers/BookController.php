@@ -211,7 +211,7 @@ class BookController extends Controller
     public function bulkDelete()
     {
         //
-        $titles = [];
+//        $titles = [];
         $ids = explode(',', request('ids'));
         foreach ($ids as $id){
             $book = Book::find($id);
@@ -221,8 +221,8 @@ class BookController extends Controller
                 }
             }
             $book->delete();
-            $titles[] = $book->title;
+//            $titles[] = $book->title;
     }
-        return redirect()->route('books.index')->with('success', 'Knjige: "' . implode(', ', $titles) . '" su uspješno izbrisane');
+        return redirect()->route('books.index')->with('success', 'Knjige su uspješno izbrisane');
     }
 }

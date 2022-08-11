@@ -165,7 +165,7 @@ class AuthorController extends Controller
      */
     public function bulkDelete()
     {
-        $names = [];
+//        $names = [];
         $ids = explode(',', request('ids'));
         foreach ($ids as $id){
             $author = Author::find($id);
@@ -173,8 +173,8 @@ class AuthorController extends Controller
                 unlink($photoPath);
             }
             $author->delete();
-            $names[] = $author->name . ' ' . $author->surname;
+//            $names[] = $author->name . ' ' . $author->surname;
         }
-        return redirect()->route('authors.index')->with('success', 'Autori: "' . implode(', ', $names) . '" su uspješno izbrisani');
+        return redirect()->route('authors.index')->with('success', 'Autori su uspješno izbrisani');
     }
 }

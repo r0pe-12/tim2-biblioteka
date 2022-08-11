@@ -59,3 +59,18 @@
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js" integrity="sha512-ooSWpxJsiXe6t4+PPjCgYmVfr1NS5QXJACcR/FPpsdm6kqG1FmQ2SVyg2RXeVuCRBLr0lWHnWJP6Zs1Efvxzww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
     <script src="{{ asset('js/cropper.min.js') }}" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- end cropper.js -->
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    window.onload = function () {
+        @if(session('success'))
+        const tempMsg = "{{ session('success') }}";
+        var temp = document.createElement('div');
+        temp.setAttribute('hidden', 'true');
+        temp.innerHTML = tempMsg;
+        const msg = temp.innerHTML;
+
+        flashMsg(msg);
+        @endif
+    }
+</script>

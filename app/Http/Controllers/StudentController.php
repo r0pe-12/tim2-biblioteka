@@ -150,7 +150,7 @@ class StudentController extends Controller
     public function bulkDelete()
     {
         //
-        $names = [];
+//        $names = [];
         $unames = explode(',', request('unames'));
         foreach ($unames as $uname){
             $student = User::where('username', '=', $uname)->first();
@@ -158,9 +158,9 @@ class StudentController extends Controller
                 unlink($photoPath);
             }
             $student->delete();
-            $names[] = $student->name . ' ' . $student->surname;
+//            $names[] = $student->name . ' ' . $student->surname;
         }
-        return redirect()->route('students.index')->with('success', 'Ucenici: "' . implode(', ', $names) . '" su uspješno izbrisani');
+        return redirect()->route('students.index')->with('success', 'Ucenici su uspješno izbrisani');
     }
 
 

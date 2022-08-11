@@ -3105,3 +3105,17 @@ function checkMakeSure(event, button) {
         $('.modal:visible').each(centerModal);
     });
 }(jQuery));
+
+function flashMsg(msg) {
+    Swal.fire({
+        "title": msg,
+        // "text":msg,
+        "timer":5000,
+        "width":"40rem",
+        "padding":"1.2rem",
+        "showConfirmButton":false,
+        "showCloseButton":true,
+        "timerProgressBar":false,
+        "customClass":{"container":null,"popup":null,"header":null,"title":null,"closeButton":null,"icon":null,"image":null,"content":null,"input":null,"actions":null,"confirmButton":null,"cancelButton":null,"footer":null}, "toast":true,"icon":"success","position":"top-end"});
+
+}

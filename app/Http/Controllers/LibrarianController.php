@@ -147,7 +147,7 @@ class LibrarianController extends Controller
     public function bulkDelete()
     {
         //
-        $names = [];
+//        $names = [];
         $unames = explode(',', request('unames'));
         foreach ($unames as $uname){
             $librarian = User::where('username', '=', $uname)->first();
@@ -155,9 +155,9 @@ class LibrarianController extends Controller
                 unlink($photoPath);
             }
             $librarian->delete();
-            $names[] = $librarian->name . ' ' . $librarian->surname;
+//            $names[] = $librarian->name . ' ' . $librarian->surname;
         }
-        return redirect()->route('librarians.index')->with('success', 'Bibliotekari: "' . implode(', ', $names) . '" su uspješno izbrisani');
+        return redirect()->route('librarians.index')->with('success', 'Bibliotekari su uspješno izbrisani');
     }
 
 
