@@ -48,4 +48,13 @@ class BookReserveConroller extends Controller
         return redirect()->route('books.index')->with('success', 'Knjiga je uspješno rezervisana učeniku: ' . Student::find(\request()->ucenik)->name . ' ' . Student::find(\request()->ucenik)->surname);
     }
 //    END-rezervisi odredjenu knjigu
+
+//    prikazi sve aktivne rezervacije
+    public function active(){
+        # code
+        return view('izdavanje.aktivne', [
+            'reservations' => Reservation::all() // todo fix this later
+        ]);
+    }
+//    prikazi sve aktivne rezervacije
 }

@@ -153,7 +153,7 @@
                                         class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                         <div
                                             class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                            <a href="aktivneRezervacije.php" aria-label="Rezervacije"
+                                            <a href="{{ route('aktivne-rezervacije') }}" aria-label="Rezervacije"
                                                class="flex items-center">
                                                 <i
                                                     class="text-[#707070] text-[20px] far fa-calendar-check transition duration-300 ease-in group-hover:text-[#576cdf]"></i>

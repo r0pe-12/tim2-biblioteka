@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('book_id');
+            $table->foreignId('book_id')->cascadeOnDelete();
 
             $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('users');
+            $table->foreign('student_id')->references('id')->on('users')->cascadeOnDelete();
 
             $table->unsignedBigInteger('librarian_id');
-            $table->foreign('librarian_id')->references('id')->on('users');
+            $table->foreign('librarian_id')->references('id')->on('users')->cascadeOnDelete();
 
             $table->foreignId('closingReason_id');
 
