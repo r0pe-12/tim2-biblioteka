@@ -77,3 +77,10 @@ Route::middleware(['auth'])->group(function (){
     Route::delete('/student/bulkdelete', [StudentController::class, 'bulkDelete'])->name('student.bulk-delete');
     Route::put('/students/{user}/resetPassword', [StudentController::class, 'passwordReset'])->name('student.pwreset');
 });
+Route::get('/aktivne', function (){
+    return view('izdavanje.aktivne');
+});
+
+Route::get('/aktivne1', function (){
+    return view('book.evidencija.aktivne');
+});
