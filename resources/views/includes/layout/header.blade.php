@@ -53,25 +53,25 @@
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="far fa-address-book mr-[8px] ml-[5px] py-1"></i>
-                                <span class="px-4 py-0">Bibliotekar</span>
+                                <span class="px-4 py-0">Novi bibliotekar</span>
                             </a>
                             <a href="{{route('students.create')}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="fas fa-users mr-[5px] ml-[3px] py-1"></i>
-                                <span class="px-4 py-0">Ucenik</span>
+                                <span class="px-4 py-0">Novi učenik</span>
                             </a>
                             <a href="{{ route('books.create') }}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="far fa-copy mr-[10px] ml-[5px] py-1"></i>
-                                <span class="px-4 py-0">Knjiga</span>
+                                <span class="px-4 py-0">Nova knjiga</span>
                             </a>
                             <a href="{{ route('authors.create') }}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="far fa-address-book mr-[10px] ml-[5px] py-1"></i>
-                                <span class="px-4 py-0">Autor</span>
+                                <span class="px-4 py-0">Novi autor</span>
                             </a>
                         </div>
                     </div>
