@@ -27,7 +27,7 @@ return new class extends Migration
 
 
             $table->timestamp('submttingDate');
-            $table->date('closingDate');
+            $table->date('closingDate')->nullable();
         });
     }
 

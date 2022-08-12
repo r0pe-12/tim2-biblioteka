@@ -118,4 +118,11 @@ class Book extends Model
             ->where('return_date', '<', today('Europe/Belgrade'))
             ->get();
     }
+
+    //    1-many relation book-reservations
+    public function reservations(){
+        # code
+        return $this->hasMany(Reservation::class);
+    }
+
 }

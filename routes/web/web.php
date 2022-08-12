@@ -76,6 +76,7 @@ Route::middleware(['auth'])->group(function (){
         Route::controller(BookReserveConroller::class)->group(function (){
     //      rezervisi knjigu
             Route::get('/books/{book}/rezervisi', 'reserveForm')->name('reserve.create');
+            Route::post('/books/{book}/rezervisi', 'reserve')->name('reserve.store');
     //      END-rezervisi knjigu
         });
 //    END-rute za knjigu
