@@ -1,6 +1,6 @@
 @props([
-    'available',
-    'book'
+    'book',
+    'available' => $book->samples - $book->borrowedSaples
 ])
 
 <div {{ $attributes->class(['ml-[30px] mr-[70px] mt-[20px] flex flex-row justify-between']) }}>

@@ -1207,7 +1207,7 @@ $("#izdajKnjigu").keypress(function (e) {
 });
 
 // Form validation for making reservations
-function validacijaRezervisanje() {
+function validacijaRezervisanje(event) {
 
   $("#validateUcenikRezervisanje").empty();
   $("#validateDatumRezervisanja").empty();
@@ -1217,10 +1217,12 @@ function validacijaRezervisanje() {
 
   if (ucenikRezervisanje == null) {
     $('#validateUcenikRezervisanje').append('<p style="color:red;font-size:13px;">Morate selektovati ucenika!</p>');
+    event.preventDefault();
   }
 
   if (datumRezervisanja.length == 0) {
     $('#validateDatumRezervisanja').append('<p style="color:red;font-size:13px;">Morate selektovati datum rezervisanja!</p>');
+    event.preventDefault()
   }
 }
 
@@ -2948,6 +2950,7 @@ $('.checkOthers').click(function () {
                     document.getElementById("otpisi").href = "/books/" + id + "/otpisi";
                     document.getElementById("izdaj").href = "/books/" + id + "/izdaj";
                     document.getElementById("vrati").href = "/books/" + id + "/vrati";
+                    document.getElementById("rezervisi").href = "/books/" + id + "/rezervisi";
                 }
 
                 document.getElementById("deleteOne").setAttribute('data-id', id);

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookBorrowController;
+use App\Http\Controllers\BookReserveConroller;
 use App\Http\Controllers\BookReturnController;
 use App\Http\Controllers\BookWriteOffController;
 use App\Http\Controllers\StudentController;
@@ -70,6 +71,12 @@ Route::middleware(['auth'])->group(function (){
 
             Route::get('/vracene', 'vracene')->name('vracene');
             Route::get('/books/{book}/evidencija/vracene', 'vracene1')->name('vracene1');
+        });
+
+        Route::controller(BookReserveConroller::class)->group(function (){
+    //      rezervisi knjigu
+            Route::get('/books/{book}/rezervisi', 'reserveForm')->name('reserve.create');
+    //      END-rezervisi knjigu
         });
 //    END-rute za knjigu
 
