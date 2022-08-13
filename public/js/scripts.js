@@ -3137,3 +3137,6 @@ function autofill() {
         $('#ucenikIzdavanje').val(id).trigger('change');
     }
 }
+
+//    add scroll class to every section cuz of small displays are unable to scroll down
+$('section').addClass('scroll');
