@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\BookStatus;
 use App\Models\Borrow;
+use App\Models\ClosingReason;
 use App\Models\Policy;
+use App\Models\ReservationStatus;
 use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -48,14 +50,30 @@ class BookBorrowController extends Controller
             'return_date' => Carbon::parse(\request()->datumVracanja),
         ]);
         $book->borrows()->save($borrow);
+        $zift = false;
+        if ($book->activeRes()->contains($res = $book->activeRes()->where('student_id', '=', $borrow->student_id)->first())) {
+            $res->closingReason_id = ClosingReason::bookBorrowed()->id;
+            $res->closingDate = today("Europe/Belgrade");
+            $res->save();
+            $resStatus = ReservationStatus::closed();
+            $res->statuses()->sync($resStatus);
 
-        $status = BookStatus::borrowed();
+            $status = BookStatus::reserved();
+            $zift = true;
+        } else {
+            $status = BookStatus::borrowed();
+        }
+
         $borrow->statuses()->attach($status);
 
         $book->borrowedSaples = $book->borrowedSaples + 1;
         $book->save();
 
-        return redirect()->route('books.index')->with('success', 'Knjiga je uspješno izdata učeniku: ' . Student::find(\request()->ucenik)->name . ' ' . Student::find(\request()->ucenik)->surname);
+        if ($zift) {
+            return redirect()->route('books.index')->with('success', 'Knjiga je uspješno izdata učeniku po rezervaciji: ' . Student::find(\request()->ucenik)->name . ' ' . Student::find(\request()->ucenik)->surname);
+        } else {
+            return redirect()->route('books.index')->with('success', 'Knjiga je uspješno izdata učeniku: ' . Student::find(\request()->ucenik)->name . ' ' . Student::find(\request()->ucenik)->surname);
+        }
     }
 //    END-izdaj odredjenu knjigu
 

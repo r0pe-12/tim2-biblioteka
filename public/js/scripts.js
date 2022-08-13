@@ -3128,3 +3128,12 @@ function flashMsg(msg) {
         "customClass":{"container":null,"popup":null,"header":null,"title":null,"closeButton":null,"icon":null,"image":null,"content":null,"input":null,"actions":null,"confirmButton":null,"cancelButton":null,"footer":null}, "toast":true,"icon":"success","position":"top-end"});
 
 }
+
+function autofill() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('ucenik');
+    console.log(id);
+    if ($('#ucenikIzdavanje').find("option[value='" + id + "']").length) {
+        $('#ucenikIzdavanje').val(id).trigger('change');
+    }
+}

@@ -175,7 +175,7 @@
                                             <td class="flex flex-row items-center px-4 py-3">
                                                 <img class="object-cover w-8 h-8 rounded-full" src="{{ $reservation->student->photoPath }}"
                                                      alt=""/>
-                                                <a href="ucenikProfile.php" class="ml-2 font-medium text-center">{{ $reservation->student->name }} {{ $reservation->student->surname }}</a>
+                                                <a href="{{ route('students.show', $reservation->student->username) }}" class="ml-2 font-medium text-center">{{ $reservation->student->name }} {{ $reservation->student->surname }}</a>
                                             </td>
                                             <td class="px-4 py-3 text-sm leading-5 text-blue-900 whitespace-no-wrap">
                                                 <div
@@ -194,7 +194,7 @@
                                                          aria-labelledby="headlessui-menu-button-1"
                                                          id="headlessui-menu-items-117" role="menu">
                                                         <div class="py-1">
-                                                            <a href="izdajKnjigu.php" tabindex="0"
+                                                            <a href="{{ route('izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}" tabindex="0"
                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                                role="menuitem">
                                                                 <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>

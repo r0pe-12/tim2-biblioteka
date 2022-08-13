@@ -13,7 +13,7 @@ class BookStatus extends Model
         $status = BookStatus::findOrNew(self::RESERVED);
         if (!$status->id){
             $status->id = self::RESERVED;
-            $status->name = 'Rezervisana';
+            $status->name = 'Izdata na osnovu rezervacije';
             $status->save();
         }
         return $status;

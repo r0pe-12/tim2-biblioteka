@@ -37,7 +37,7 @@ class BookReserveConroller extends Controller
             'student_id' => \request()->ucenik,
             'librarian_id' => auth()->user()->id,
             'closingReason_id' => ClosingReason::open()->id,
-            'submttingDate' => Carbon::parse(\request()->datumRezervisanja),
+            'submttingDate' => Carbon::parse(\request()->datumRezervisanja)->format('Y-m-d'),
         ]);
         $book->reservations()->save($reservation);
 
@@ -53,7 +53,7 @@ class BookReserveConroller extends Controller
     public function active(){
         # code
         return view('izdavanje.aktivne', [
-            'reservations' => Reservation::all() // todo fix this later
+            'reservations' => Reservation::active()
         ]);
     }
 //    prikazi sve aktivne rezervacije

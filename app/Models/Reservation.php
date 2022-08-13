@@ -47,4 +47,13 @@ protected $guarded = [];
         # code
         return $this->belongsToMany(ReservationStatus::class, 'reservation_status', 'reservation_id', 'reservationStatus_id');
     }
+
+//    sve trenutno aktivne rezervacije
+    public static function active(){
+        # code
+        return self
+            ::join('reservation_status','reservations.id','=','reservation_id')
+            ->where('reservation_status.reservationStatus_id','=', ReservationStatus::RESERVED)
+            ->get();
+    }
 }
