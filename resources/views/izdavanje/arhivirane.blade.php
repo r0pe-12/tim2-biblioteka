@@ -87,7 +87,7 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="aktivneRezervacije.php" aria-label="Rezervacije"
+                                                <a href="{{ route('aktivne-rezervacije') }}" aria-label="Rezervacije"
                                                    class="flex items-center">
                                                     <i
                                                         class="text-[#707070] group-hover:text-[#576cdf] text-[20px] far fa-calendar-check transition duration-300 ease-in"></i>
@@ -107,7 +107,7 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group bg-[#EFF3F6] hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="arhiviraneRezervacije.php" aria-label="Rezervacije"
+                                                <a href="{{ route('arhivirane-rezervacije') }}" aria-label="Rezervacije"
                                                    class="flex items-center">
                                                     <i
                                                         class="text-[#707070] text-[20px] fas fa-calendar-alt transition duration-300 ease-in text-[#576cdf]"></i>
@@ -132,31 +132,30 @@
                                         <input type="checkbox" class="form-checkbox">
                                     </label>
                                 </th>
-                                <th class="flex items-center px-4 py-4 leading-4 tracking-wider text-left">Naziv
-                                    knjige<a href="#"></a>
+                                <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Naziv knjige<a href="#"></a>
                                 </th>
 
                                 <!-- Datum rezervacije + dropdown filter for date -->
                                 <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
+                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">
                                     Datum rezervacije
                                 </th>
 
                                 <!-- Rezervacija istice + dropdown filter for date -->
                                 <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
+                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">
                                     Rezervacija istice
                                 </th>
 
                                 <!-- Rezervaciju podnio + dropdown filter for ucenik -->
                                 <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
+                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">
                                     Rezervaciju podnio
                                 </th>
 
                                 <!-- Status + dropdown filter for status -->
                                 <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer statusDrop-toggle">
+                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">
                                     Status
                                 </th>
                                 <th class="px-4 py-4"> </th>
@@ -552,31 +551,30 @@
                             <tr class="border-b-[1px] border-[#e4dfdf]">
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                 </th>
-                                <th class="flex items-center px-4 py-4 leading-4 tracking-wider text-left">Naziv
-                                    knjige<a href="#"></a>
+                                <th class="flex items-center px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige<a href="#"></a>
                                 </th>
 
                                 <!-- Datum rezervacije + dropdown filter for date -->
                                 <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
+                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">
                                     Datum rezervacije
                                 </th>
 
                                 <!-- Rezervacija istice + dropdown filter for date -->
                                 <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
+                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">
                                     Rezervacija istice
                                 </th>
 
                                 <!-- Rezervaciju podnio + dropdown filter for ucenik -->
                                 <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
+                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">
                                     Rezervaciju podnio
                                 </th>
 
                                 <!-- Status + dropdown filter for status -->
                                 <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer statusDrop-toggle">
+                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">
                                     Status
                                 </th>
                                 <th class="px-4 py-4"> </th>

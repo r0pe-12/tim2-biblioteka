@@ -79,6 +79,7 @@ Route::middleware(['auth'])->group(function (){
             Route::post('/books/{book}/rezervisi', 'reserve')->name('reserve.store');
     //      END-rezervisi knjigu
             Route::get('/aktivne-rezervacije', 'active')->name('aktivne-rezervacije');
+            Route::get('/arhivirane-rezervacije', 'archive')->name('arhivirane-rezervacije');
         });
 //    END-rute za knjigu
 
@@ -89,9 +90,6 @@ Route::middleware(['auth'])->group(function (){
 
 //    test routes
 
-    Route::get('/aktivne', function (){
-        return view('izdavanje.aktivne');
-    });
 
     Route::get('/aktivne1', function (){
         return view('book.evidencija.aktivne');

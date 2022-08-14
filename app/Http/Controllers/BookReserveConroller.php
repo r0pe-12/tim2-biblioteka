@@ -57,4 +57,13 @@ class BookReserveConroller extends Controller
         ]);
     }
 //    prikazi sve aktivne rezervacije
+
+//    prikazi sve arhivirane rezervacije
+    public function archive(){
+        # code
+        return view('izdavanje.arhivirane', [
+            'reservations' => Reservation::all()
+        ]);
+    }
+//    prikazi sve arhivirane rezervacije
 }
