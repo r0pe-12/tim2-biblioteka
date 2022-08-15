@@ -181,10 +181,11 @@ class StudentController extends Controller
 
 
 //    evidencija vezana za ucenika
-    public function izdate(User $student){
+    public function izdate(Student $student){
         # code
         return view('student.evidencija.izdate', [
-            'student' => $student
+            'student' => $student,
+            'izdate' => $student->active()
         ]);
     }
 
