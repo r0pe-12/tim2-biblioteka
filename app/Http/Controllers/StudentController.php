@@ -179,4 +179,13 @@ class StudentController extends Controller
         return redirect()->back()->with('success', 'Šifra korisnika "' . $user->username . '" je uspješno resetovana');
     }
 
+
+//    evidencija vezana za ucenika
+    public function izdate(User $student){
+        # code
+        return view('student.evidencija.izdate', [
+            'student' => $student
+        ]);
+    }
+//    END-evidencija vezana za ucenika
 }

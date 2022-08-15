@@ -86,6 +86,9 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/students', StudentController::class);
     Route::delete('/student/bulkdelete', [StudentController::class, 'bulkDelete'])->name('student.bulk-delete');
     Route::put('/students/{user}/resetPassword', [StudentController::class, 'passwordReset'])->name('student.pwreset');
+    Route::controller(StudentController::class)->prefix('/students/{student:username}/evidencija')->group(function (){
+        Route::get('/izdate', 'izdate')->name('ucenik.izdate');
+    });
 });
 
 //    test routes
