@@ -253,34 +253,12 @@
                                 <tr class="border-b-[1px] border-[#e4dfdf]">
                                     <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                     </th>
-                                    <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                        Naziv knjige
-                                        <a href="#"><i class="ml-2 fa-lg fas fa-long-arrow-alt-down"
-                                                       onclick="sortTable()"></i>
-                                        </a>
-                                    </th>
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
-                                        Izdato uceniku
-                                    </th>
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
-                                        Datum izdavanja
-                                    </th>
-                                    <!-- Datum vracanja + dropdown filter for date -->
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">
-                                        Datum vracanja
-                                    </th>
-                                    <!-- Zadrzavanje knjige + dropdown filter for date -->
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
-                                        Zadrzavanje knjige
-                                    </th>
-                                    <!-- Knjigu primio + dropdown filter for bibliotekari -->
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">
-                                        Knjigu primio
+                                    <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">Izdato uceniku</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">Datum izdavanja</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">Datum vracanja</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Zadrzavanje knjige</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">Knjigu primio
                                     </th>
                                     <th class="px-4 py-4"> </th>
                                 </tr>

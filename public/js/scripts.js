@@ -2920,7 +2920,7 @@ $('.checkOthers').click(function () {
             const id = this.getAttribute('data-id');
             const name = this.getAttribute('data-name');
 
-            if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/[a-zA-Z]+\/izdate/i.test(path)) {
+            if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/[a-zA-Z]+\/izdate/i.test(path) || /\/students\/[a-zA-Z]+\/vracene/i.test(path)) {
                 const bookId = this.getAttribute('data-book-id');
                 const bookName = this.getAttribute('data-book-name');
                 const studentName = this.getAttribute('data-student-name');
@@ -2959,7 +2959,7 @@ $('.checkOthers').click(function () {
 
         })
     } else if (checked.length >= 2){
-        if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/[a-zA-Z]+\/izdate/i.test(path)) {
+        if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/[a-zA-Z]+\/izdate/i.test(path) || /\/students\/[a-zA-Z]+\/vracene/i.test(path)) {
 
         } else {
             var ids = [];
@@ -2974,7 +2974,7 @@ $('.checkOthers').click(function () {
         }
     } else {
         // document.getElementById("ids").value = '';
-        if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/[a-zA-Z]+\/izdate/i.test(path)) {
+        if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/[a-zA-Z]+\/izdate/i.test(path) || /\/students\/[a-zA-Z]+\/vracene/i.test(path)) {
 
         } else {
             document.getElementById("deleteOne").removeAttribute('data-id');

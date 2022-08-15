@@ -28,4 +28,13 @@ class Student extends User
             ->orWhere('book_borrow_status.bookStatus_id','=', BookStatus::RESERVED)
             ->get();
     }
+
+    public function returned(){
+        # code
+        return $this->borrows()
+            ->join('book_borrow_status','borrows.id','=','borrow_id')
+            ->where('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED)
+            ->orwhere('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED1)
+            ->get();
+    }
 }

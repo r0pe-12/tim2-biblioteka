@@ -189,10 +189,11 @@ class StudentController extends Controller
         ]);
     }
 
-    public function vracene(User $student){
+    public function vracene(Student $student){
         # code
         return view('student.evidencija.vracene', [
-            'student' => $student
+            'student' => $student,
+            'returned' => $student->returned()
         ]);
     }
 
