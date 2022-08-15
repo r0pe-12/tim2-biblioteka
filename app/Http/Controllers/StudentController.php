@@ -194,5 +194,12 @@ class StudentController extends Controller
             'student' => $student
         ]);
     }
+
+    public function prekoracene(User $student){
+        # code
+        return view('student.evidencija.prekoracene', [
+            'student' => $student
+        ]);
+    }
 //    END-evidencija vezana za ucenika
 }

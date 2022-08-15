@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Vracene ucenika: {{ $student->username }}
+        Prekoracene ucenika: {{ $student->username }}
     @endsection
     <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
         <!-- Heading of content -->
@@ -23,7 +23,7 @@
                                 class=" whitespace-nowrap w-full text-[25px]  flex justify-between fill-current">
                                 <div
                                     class="py-[15px] px-[20px] w-[268px] cursor-pointer group hover:bg-[#EFF3F6] rounded-[10px]">
-                                    <a href="{{ route('ucenik.izdate', $student->username) }}" aria-label="Sve knjige"
+                                    <a href="{{ route('ucenik.izdate', $student) }}" aria-label="Sve knjige"
                                        class="flex items-center">
                                         <i
                                             class="text-[#707070] transition duration-300 ease-in group-hover:text-[#576cdf] far fa-copy text-[20px]"></i>
@@ -43,14 +43,14 @@
                             <span
                                 class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                 <div
-                                    class="group bg-[#EFF3F6] hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                    <a href="{{ route('ucenik.vracene', $student->username) }}" aria-label="Vracene knjige"
+                                    class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                    <a href="{{ route('ucenik.vracene', $student) }}" aria-label="Vracene knjige"
                                        class="flex items-center">
                                         <i
-                                            class="transition duration-300 ease-in  text-[#707070] text-[20px] fas fa-file text-[#576cdf]"></i>
+                                            class="transition duration-300 ease-in  text-[#707070] text-[20px] fas fa-file group-hover:text-[#576cdf]"></i>
                                         <div>
                                             <p
-                                                class="transition duration-300 ease-in  text-[15px] ml-[21px] text-[#576cdf]">
+                                                class="transition duration-300 ease-in  text-[15px] ml-[21px] group-hover:text-[#576cdf]">
                                                 Vracene knjige
                                             </p>
                                         </div>
@@ -64,14 +64,14 @@
                             <span
                                 class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                 <div
-                                    class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                    <a href="{{ route('ucenik.prekoracene', $student->username) }}" aria-label="Knjige na raspolaganju"
+                                    class="group bg-[#EFF3F6] hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                    <a href="{{ route('ucenik.prekoracene', $student) }}" aria-label="Knjige na raspolaganju"
                                        class="flex items-center">
                                         <i
-                                            class="text-[#707070] text-[20px] fas fa-exclamation-triangle transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
+                                            class="text-[#576cdf] text-[20px] fas fa-exclamation-triangle transition duration-300 ease-in "></i>
                                         <div>
                                             <p
-                                                class="text-[15px] ml-[17px] transition duration-300 ease-in group-hover:text-[#576cdf]">
+                                                class="text-[15px] ml-[17px] transition duration-300 ease-in text-[#576cdf]">
                                                 Knjige u prekoracenju</p>
                                         </div>
                                     </a>
@@ -131,11 +131,10 @@
                                 </label>
                             </th>
                             <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato uceniku</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum izdavanja</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum vracanja</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Zadrzavanje knjige </th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Knjigu primio</th>
+                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato uceniku</th>
+                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Prekoracenje u danima</th>
+                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Trenutno zadrzavanje knjige</th>
                             <th class="px-4 py-4"> </th>
                         </tr>
                     </thead>
@@ -149,25 +148,28 @@
                             <td class="flex flex-row items-center px-4 py-3">
                                 <img class="object-cover w-8 mr-2 h-11" src="img/tomsojer.jpg" alt="" />
                                 <a href="knjigaOsnovniDetalji.php">
-                                    <span class="font-medium text-center">Geografija Crne Gore</span>
+                                    <span class="font-medium text-center">Zbirka etida za harm...</span>
                                 </a>
                             </td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Pero Perovic</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">21.02.2021</td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">29.02.2021</td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Pero Perovic</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-                                <div>
-                                    <span>2 nedelje i 3 dana</span>
+                                <div class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
+                                    <span class="text-xs text-red-800">60 dana</span>
                                 </div>
                             </td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan</td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                <div>
+                                    <span>3 mjeseca i 3 dana</span>
+                                </div>
+                            </td>
                             <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
-                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikVraceneKnjigeTabela hover:text-[#606FC7]">
+                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikPrekoracenjeKnjige hover:text-[#606FC7]">
                                     <i
                                         class="fas fa-ellipsis-v"></i>
                                 </p>
                                 <div
-                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-vracene-knjige-tabela">
+                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-prekoracenje-knjige-tabela">
                                     <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                          aria-labelledby="headlessui-menu-button-1"
                                          id="headlessui-menu-items-117" role="menu">
@@ -234,25 +236,28 @@
                             <td class="flex flex-row items-center px-4 py-3">
                                 <img class="object-cover w-8 mr-2 h-11" src="img/tomsojer.jpg" alt="" />
                                 <a href="knjigaOsnovniDetalji.php">
-                                    <span class="font-medium text-center">Muzicka kultura I Razred Gi...</span>
+                                    <span class="font-medium text-center">Antigona</span>
                                 </a>
                             </td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">15.05.2020</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Nina Bulatovic</td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">15.05.2020</td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">15.05.2020</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-                                <div>
-                                    <span>5 dana</span>
+                                <div class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
+                                    <span class="text-xs text-red-800">31 dana</span>
                                 </div>
                             </td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan</td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                <div>
+                                    <span>2 mjeseca i 2 nedelje</span>
+                                </div>
+                            </td>
                             <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
-                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikVraceneKnjigeTabela hover:text-[#606FC7]">
+                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikPrekoracenjeKnjige hover:text-[#606FC7]">
                                     <i
                                         class="fas fa-ellipsis-v"></i>
                                 </p>
                                 <div
-                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-vracene-knjige-tabela">
+                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-prekoracenje-knjige-tabela">
                                     <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                          aria-labelledby="headlessui-menu-button-1"
                                          id="headlessui-menu-items-117" role="menu">
@@ -319,25 +324,28 @@
                             <td class="flex flex-row items-center px-4 py-3">
                                 <img class="object-cover w-8 mr-2 h-11" src="img/tomsojer.jpg" alt="" />
                                 <a href="knjigaOsnovniDetalji.php">
-                                    <span class="font-medium text-center">Tom Sojer</span>
+                                    <span class="font-medium text-center">Dundo Maroje</span>
                                 </a>
                             </td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">12.05.2020</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Milos Milosevic</td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">12.05.2020</td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">12.05.2020</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-                                <div>
-                                    <span>1 nedelja i 4 dana</span>
+                                <div class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
+                                    <span class="text-xs text-red-800">31 dana</span>
                                 </div>
                             </td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan</td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                <div>
+                                    <span>2 mjeseca i 2 nedelje</span>
+                                </div>
+                            </td>
                             <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
-                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikVraceneKnjigeTabela hover:text-[#606FC7]">
+                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikPrekoracenjeKnjige hover:text-[#606FC7]">
                                     <i
                                         class="fas fa-ellipsis-v"></i>
                                 </p>
                                 <div
-                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-vracene-knjige-tabela">
+                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-prekoracenje-knjige-tabela">
                                     <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                          aria-labelledby="headlessui-menu-button-1"
                                          id="headlessui-menu-items-117" role="menu">
@@ -407,22 +415,25 @@
                                     <span class="font-medium text-center">Robinson Kruso</span>
                                 </a>
                             </td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">09.04.2020</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Sanja Gardasevic</td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">09.04.2020</td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">09.04.2020</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                 <div class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
-                                    <span class="text-xs text-red-800">7 nedelja i 6 dana</span>
+                                    <span class="text-xs text-red-800">15 dana</span>
                                 </div>
                             </td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan</td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                <div>
+                                    <span>1 mjesec i 2 nedelje</span>
+                                </div>
+                            </td>
                             <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
-                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikVraceneKnjigeTabela hover:text-[#606FC7]">
+                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikPrekoracenjeKnjige hover:text-[#606FC7]">
                                     <i
                                         class="fas fa-ellipsis-v"></i>
                                 </p>
                                 <div
-                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-vracene-knjige-tabela">
+                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-prekoracenje-knjige-tabela">
                                     <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                          aria-labelledby="headlessui-menu-button-1"
                                          id="headlessui-menu-items-117" role="menu">
@@ -492,22 +503,25 @@
                                     <span class="font-medium text-center">Geografija Crne Gore</span>
                                 </a>
                             </td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">21.02.2021</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Pero Perovic</td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">21.02.2021</td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">21.02.2021</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                 <div class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
-                                    <span class="text-xs text-red-800">8 nedelja i 3 dana</span>
+                                    <span class="text-xs text-red-800">7 dana</span>
                                 </div>
                             </td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan</td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                <div>
+                                    <span>1 mjesec i 1 nedelja</span>
+                                </div>
+                            </td>
                             <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
-                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikVraceneKnjigeTabela hover:text-[#606FC7]">
+                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikPrekoracenjeKnjige hover:text-[#606FC7]">
                                     <i
                                         class="fas fa-ellipsis-v"></i>
                                 </p>
                                 <div
-                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-vracene-knjige-tabela">
+                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-prekoracenje-knjige-tabela">
                                     <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                          aria-labelledby="headlessui-menu-button-1"
                                          id="headlessui-menu-items-117" role="menu">
@@ -574,25 +588,28 @@
                             <td class="flex flex-row items-center px-4 py-3">
                                 <img class="object-cover w-8 mr-2 h-11" src="img/tomsojer.jpg" alt="" />
                                 <a href="knjigaOsnovniDetalji.php">
-                                    <span class="font-medium text-center">Muzicka kultura I Raz</span>
+                                    <span class="font-medium text-center">Don Kihot</span>
                                 </a>
                             </td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">15.05.2020</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Nina Bulatovic</td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">15.05.2020</td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">15.05.2020</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-                                <div>
-                                    <span>5 dana</span>
+                                <div class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
+                                    <span class="text-xs text-red-800">6 dana</span>
                                 </div>
                             </td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan</td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                <div>
+                                    <span>4 nedelje i 6 dana</span>
+                                </div>
+                            </td>
                             <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
-                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikVraceneKnjigeTabela hover:text-[#606FC7]">
+                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikPrekoracenjeKnjige hover:text-[#606FC7]">
                                     <i
                                         class="fas fa-ellipsis-v"></i>
                                 </p>
                                 <div
-                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-vracene-knjige-tabela">
+                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-prekoracenje-knjige-tabela">
                                     <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                          aria-labelledby="headlessui-menu-button-1"
                                          id="headlessui-menu-items-117" role="menu">
@@ -662,22 +679,25 @@
                                     <span class="font-medium text-center">Tom Sojer</span>
                                 </a>
                             </td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">12.05.2020</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Milos Milosevic</td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">12.05.2020</td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">12.05.2020</td>
                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-                                <div>
-                                    <span>1 nedelja i 4 dana</span>
+                                <div class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
+                                    <span class="text-xs text-red-800">3 dana</span>
                                 </div>
                             </td>
-                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan</td>
+                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                <div>
+                                    <span>4 nedelje i 3 dana</span>
+                                </div>
+                            </td>
                             <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
-                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikVraceneKnjigeTabela hover:text-[#606FC7]">
+                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikPrekoracenjeKnjige hover:text-[#606FC7]">
                                     <i
                                         class="fas fa-ellipsis-v"></i>
                                 </p>
                                 <div
-                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-vracene-knjige-tabela">
+                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-prekoracenje-knjige-tabela">
                                     <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                          aria-labelledby="headlessui-menu-button-1"
                                          id="headlessui-menu-items-117" role="menu">
@@ -744,25 +764,28 @@
                         <td class="flex flex-row items-center px-4 py-3">
                             <img class="object-cover w-8 mr-2 h-11" src="img/tomsojer.jpg" alt="" />
                             <a href="knjigaOsnovniDetalji.php">
-                                <span class="font-medium text-center">Robinson Kruso</span>
+                                <span class="font-medium text-center">Evgenije Onjegin</span>
                             </a>
                         </td>
+                        <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">09.04.2020</td>
                         <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Sanja Gardasevic</td>
-                        <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">09.04.2020</td>
-                        <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">09.04.2020</td>
                         <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-                            <div>
-                                <span>3 nedelje i 6 dana</span>
+                            <div class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
+                                <span class="text-xs text-red-800">2 dana</span>
                             </div>
                         </td>
-                        <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan</td>
+                        <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                            <div>
+                                <span>4 nedelje i 2 dana</span>
+                            </div>
+                        </td>
                         <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikVraceneKnjigeTabela hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsUcenikPrekoracenjeKnjige hover:text-[#606FC7]">
                                 <i
                                     class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-vracene-knjige-tabela">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 ucenik-prekoracenje-knjige-tabela">
                                 <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                      aria-labelledby="headlessui-menu-button-1"
                                      id="headlessui-menu-items-117" role="menu">
@@ -826,11 +849,10 @@
                         <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                         </th>
                         <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato uceniku</th>
                         <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum izdavanja</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum vracanja</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Zadrzavanje knjige </th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Knjigu primio</th>
+                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato uceniku</th>
+                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Prekoracenje u danima</th>
+                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Trenutno zadrzavanje knjige</th>
                         <th class="px-4 py-4"> </th>
                     </tr>
                     </tfoot>

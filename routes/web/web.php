@@ -89,6 +89,7 @@ Route::middleware(['auth'])->group(function (){
     Route::controller(StudentController::class)->prefix('/students/{student:username}/evidencija')->group(function (){
         Route::get('/izdate', 'izdate')->name('ucenik.izdate');
         Route::get('/vracene', 'vracene')->name('ucenik.vracene');
+        Route::get('/prekoracene', 'prekoracene')->name('ucenik.prekoracene');
     });
 });
 
