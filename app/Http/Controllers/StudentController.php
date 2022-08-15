@@ -208,5 +208,12 @@ class StudentController extends Controller
             'student' => $student
         ]);
     }
+
+    public function arhivirane(User $student){
+        # code
+        return view('student.evidencija.arhivirane', [
+            'student' => $student
+        ]);
+    }
 //    END-evidencija vezana za ucenika
 }

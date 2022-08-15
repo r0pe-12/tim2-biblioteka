@@ -86,11 +86,12 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/students', StudentController::class);
     Route::delete('/student/bulkdelete', [StudentController::class, 'bulkDelete'])->name('student.bulk-delete');
     Route::put('/students/{user}/resetPassword', [StudentController::class, 'passwordReset'])->name('student.pwreset');
-    Route::controller(StudentController::class)->prefix('/students/{student:username}/evidencija')->group(function (){
+    Route::controller(StudentController::class)->prefix('/students/{student:username}')->group(function (){
         Route::get('/izdate', 'izdate')->name('ucenik.izdate');
         Route::get('/vracene', 'vracene')->name('ucenik.vracene');
         Route::get('/prekoracene', 'prekoracene')->name('ucenik.prekoracene');
         Route::get('/aktivne-rezervacije', 'aktivne')->name('ucenik.aktivne');
+        Route::get('/arhivirane-rezervacije', 'arhivirane')->name('ucenik.arhivirane');
     });
 });
 
