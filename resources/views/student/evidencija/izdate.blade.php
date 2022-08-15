@@ -23,7 +23,7 @@
                                     class=" whitespace-nowrap w-full text-[25px]  flex justify-between fill-current">
                                     <div
                                         class="py-[15px] px-[20px] w-[268px] cursor-pointer bg-[#EFF3F6] rounded-[10px]">
-                                        <a href="ucenikIzdate.php" aria-label="Sve knjige"
+                                        <a href="{{ route('ucenik.izdate', $student->username) }}" aria-label="Sve knjige"
                                            class="flex items-center">
                                             <i
                                                 class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[#576cdf] far fa-copy text-[20px]"></i>
@@ -43,7 +43,7 @@
                                     class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                     <div
                                         class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                        <a href="ucenikVracene.php" aria-label="Izdate knjige"
+                                        <a href="{{ route('ucenik.vracene', $student->username) }}" aria-label="Izdate knjige"
                                            class="flex items-center">
                                             <i
                                                 class="text-[#707070] text-[20px] fas fa-file transition duration-300 ease-in group-hover:text-[#576cdf]"></i>

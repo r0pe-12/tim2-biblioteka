@@ -88,6 +88,7 @@ Route::middleware(['auth'])->group(function (){
     Route::put('/students/{user}/resetPassword', [StudentController::class, 'passwordReset'])->name('student.pwreset');
     Route::controller(StudentController::class)->prefix('/students/{student:username}/evidencija')->group(function (){
         Route::get('/izdate', 'izdate')->name('ucenik.izdate');
+        Route::get('/vracene', 'vracene')->name('ucenik.vracene');
     });
 });
 
