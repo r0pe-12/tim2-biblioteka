@@ -90,6 +90,7 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/izdate', 'izdate')->name('ucenik.izdate');
         Route::get('/vracene', 'vracene')->name('ucenik.vracene');
         Route::get('/prekoracene', 'prekoracene')->name('ucenik.prekoracene');
+        Route::get('/aktivne-rezervacije', 'aktivne')->name('ucenik.aktivne');
     });
 });
 

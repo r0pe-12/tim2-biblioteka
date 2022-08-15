@@ -83,7 +83,7 @@
                                     class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                     <div
                                         class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                        <a href="ucenikAktivne.php" aria-label="Rezervacije"
+                                        <a href="{{ route('ucenik.aktivne', $student) }}" aria-label="Rezervacije"
                                            class="flex items-center">
                                             <i
                                                 class="text-[#707070] text-[20px] far fa-calendar-check transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
@@ -119,16 +119,16 @@
                         </li>
                     </ul>
                 </div>
-                <div class="w-full mt-[10px] ml-2 px-2">
+                <div class="w-full px-[30px] pt-2 bg-white">
                     <table class="overflow-hidden shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
                         <thead class="bg-[#EFF3F6]">
                         <tr class="border-b-[1px] border-[#e4dfdf]">
-                            <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
+                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left text-blue-500">
                                 <label class="inline-flex items-center">
                                     <input type="checkbox" class="form-checkbox">
                                 </label>
                             </th>
-                            <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
+                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Naziv knjige</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato uceniku</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum izdavanja</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Trenutno zadrzavanje knjige</th>
@@ -811,16 +811,16 @@
                         </tr>
                         </tbody>
                         <tfoot>
-                        <tr class="border-b-[1px] border-[#e4dfdf]">
-                            <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
-                            </th>
-                            <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato uceniku</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum izdavanja</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Trenutno zadrzavanje knjige</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Knjigu izdao</th>
-                            <th class="px-4 py-4"> </th>
-                        </tr>
+                            <tr class="border-b-[1px] border-[#e4dfdf]">
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left text-blue-500">
+                                </th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Naziv knjige</th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato uceniku</th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum izdavanja</th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Trenutno zadrzavanje knjige</th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Knjigu izdao</th>
+                                <th class="px-4 py-4"> </th>
+                            </tr>
                         </tfoot>
                     </table>
                 </div>

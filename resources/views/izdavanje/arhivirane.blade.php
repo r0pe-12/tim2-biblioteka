@@ -123,7 +123,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="w-full mt-[10px] ml-2 px-2">
+                    <div class="w-full px-[30px] pt-2 bg-white">
                         <table class="overflow-hidden shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf] rezervacije" id="myTable">
                             <thead class="bg-[#EFF3F6]">
                             <tr class="border-b-[1px] border-[#e4dfdf]">
