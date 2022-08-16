@@ -115,8 +115,14 @@ class Book extends Model
         # code
         return $this->borrows()
             ->join('book_borrow_status', 'borrows.id', '=', 'borrow_id')
-            ->where('book_borrow_status.bookStatus_id', '=', BookStatus::BORROWED)
-            ->where('return_date', '<', today('Europe/Belgrade'))
+            ->where(function ($query){
+                $query->where('book_borrow_status.bookStatus_id', '=', BookStatus::BORROWED)
+                    ->where('return_date', '<', today('Europe/Belgrade'));
+            })
+            ->orWhere(function ($query){
+                $query->where('book_borrow_status.bookStatus_id', '=', BookStatus::RESERVED)
+                    ->where('return_date', '<', today('Europe/Belgrade'));
+            })
             ->get();
     }
 
