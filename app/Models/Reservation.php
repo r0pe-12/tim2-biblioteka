@@ -42,15 +42,32 @@ protected $guarded = [];
         return $this->belongsTo(Book::class);
     }
 
-//    get all statuses of rezervacija knjige
+//    get status of rezervacija knjige
     public function status(){
         # code
         return $this->belongsTo(ReservationStatus::class);
+    }
+
+//    get closingReason of rezervacija knjige
+    public function cReason(){
+        # code
+        return $this->belongsTo(ClosingReason::class, 'closingReason_id');
     }
 
 //    sve trenutno aktivne rezervacije
     public static function active(){
         # code
         return Reservation::where('status_id', '=', ReservationStatus::RESERVED)->get();
+    }
+
+//    sve trenutno NEaktivne rezervacije
+    public static function archive(){
+        # code
+        return Reservation::
+            where(function ($q){
+                $q->where('status_id', '!=', ReservationStatus::RESERVED)
+                    ->where('status_id', '!=', ReservationStatus::WAITING);
+            })
+            ->get();
     }
 }
