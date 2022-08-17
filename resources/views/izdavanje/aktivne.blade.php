@@ -125,15 +125,46 @@
                                         </span>
                                     </div>
                                 </li>
+                                <li class="mb-[4px]">
+                                    <div class="w-[300px] pl-[32px]">
+                                        <span style="pointer-events: none"
+                                              class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                            <div
+                                                class="group py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                            </div>
+                                        </span>
+                                    </div>
+                                </li>
+
+                                <li class="mb-[4px] one" hidden>
+                                    <div class="w-[300px] pl-[32px]">
+                                        <span
+                                            class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                            <div
+                                                class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                                <a id="izdaj" href="#"
+                                                   class="flex items-center">
+                                                    <i
+                                                        class="text-[20px] far fa-hand-scissors transition duration-300 ease-in text-[#576cdf]"></i>
+                                                    <div>
+                                                        <p
+                                                            class="text-[15px] ml-[19px] transition duration-300 ease-in text-[#576cdf]">
+                                                            Izdaj knjigu</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                         <div class="w-full px-[30px] pt-2 bg-white">
                             <table class="overflow-hidden shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf] rezervacije" id="myTable">
                                 <thead class="bg-[#EFF3F6]">
-                                    <tr class="border-b-[1px] border-[#e4dfdf]">
+                                    <tr id="head" class="border-b-[1px] border-[#e4dfdf]">
                                         <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                             <label class="inline-flex items-center">
-                                                <input type="checkbox" class="form-checkbox">
+                                                <input type="checkbox" class="form-checkbox checkAll checkOthers">
                                             </label>
                                         </th>
                                         <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">Naziv knjige</th>
@@ -156,12 +187,12 @@
                                         <th class="px-4 py-4"> </th>
                                     </tr>
                                 </thead>
-                                <tbody class="bg-white">
+                                <tbody id="myTableBody" class="bg-white">
                                     @foreach($reservations as $reservation)
                                         <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                             <td class="px-4 py-3 whitespace-no-wrap">
                                                 <label class="inline-flex items-center">
-                                                    <input type="checkbox" class="form-checkbox">
+                                                    <input type="checkbox" class="form-checkbox checkOthers" data-href="{{ route('izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}">
                                                 </label>
                                             </td>
                                             <td class="flex flex-row items-center px-4 py-3">
