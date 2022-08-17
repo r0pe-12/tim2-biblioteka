@@ -42,6 +42,8 @@ class BookReserveConroller extends Controller
             'submttingDate' => Carbon::parse(\request()->datumRezervisanja)->format('Y-m-d'),
         ]);
         $book->reservations()->save($reservationervation);
+        $book->reservedSamples++;
+        $book->save();
 
         $status = ReservationStatus::reserved();
 
@@ -76,6 +78,8 @@ class BookReserveConroller extends Controller
         $reservation->status_id = ReservationStatus::closed()->id;
         $reservation->closingDate = today("Europe/Belgrade");
         $reservation->save();
+        $reservation->book->reservedSamples--;
+        $reservation->book->save();
         return redirect()->back()->with('success', 'Rezervacija je uspjesno otkazana');
     }
 //    END-otkazi rezervaciju

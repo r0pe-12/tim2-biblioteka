@@ -56,6 +56,8 @@ class BookBorrowController extends Controller
             $res->status_id = ReservationStatus::closed()->id;
             $res->closingDate = today("Europe/Belgrade");
             $res->save();
+            $res->book->reservedSamples--;
+            $res->book->save();
 
             $status = BookStatus::reserved();
             $zift = true;
