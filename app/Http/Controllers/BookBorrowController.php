@@ -53,10 +53,9 @@ class BookBorrowController extends Controller
         $zift = false;
         if ($book->activeRes()->contains($res = $book->activeRes()->where('student_id', '=', $borrow->student_id)->first())) {
             $res->closingReason_id = ClosingReason::bookBorrowed()->id;
+            $res->status_id = ReservationStatus::closed()->id;
             $res->closingDate = today("Europe/Belgrade");
             $res->save();
-            $resStatus = ReservationStatus::closed();
-            $res->statuses()->sync($resStatus);
 
             $status = BookStatus::reserved();
             $zift = true;

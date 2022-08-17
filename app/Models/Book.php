@@ -135,8 +135,7 @@ class Book extends Model
     public function activeRes(){
         # code
         return $this->reservations()
-            ->join('reservation_status', 'reservations.id', '=', 'reservation_id')
-            ->where('reservation_status.reservationStatus_id', '=', ReservationStatus::RESERVED)
+            ->where('reservations.status_id', '=', ReservationStatus::RESERVED)
             ->get();
     }
 

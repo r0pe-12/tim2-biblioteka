@@ -51,6 +51,6 @@ protected $guarded = [];
 //    sve trenutno aktivne rezervacije
     public static function active(){
         # code
-        return Reservation::all();
+        return Reservation::where('status_id', '=', ReservationStatus::RESERVED)->get();
     }
 }

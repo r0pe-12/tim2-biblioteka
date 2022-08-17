@@ -16,29 +16,11 @@ class PolicyController extends Controller
     public function index()
     {
         //
-        $reservation = Policy::findOrNew(Policy::RESERVATION);
-            if (!$reservation->id){
-                $reservation->id = Policy::RESERVATION;
-                $reservation->name = Policy::RESERVATION_NAME;
-                $reservation->value = 0;
-                $reservation->save();
-            }
+        $reservation = Policy::reservation();
 
-        $return = Policy::findOrNew(Policy::RETURN);
-            if (!$return->id){
-                $return->id = Policy::RETURN;
-                $return->name = Policy::RETURN_NAME;
-                $return->value = 0;
-                $return->save();
-            }
+        $return = Policy::return();
 
-        $conflict = Policy::findOrNew(Policy::CONFLICT);
-            if (!$conflict->id){
-                $conflict->id = Policy::CONFLICT;
-                $conflict->name = Policy::CONFLICT_NAME;
-                $conflict->value = 0;
-                $conflict->save();
-            }
+        $conflict = Policy::conflict();
 
         return view('settings.policy.index', compact('reservation', 'return', 'conflict'));
     }

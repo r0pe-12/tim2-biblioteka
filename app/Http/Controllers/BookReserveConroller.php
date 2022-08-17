@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Carbon;
 use App\Models\ClosingReason;
+use App\Models\Policy;
 use App\Models\Reservation;
 use App\Models\ReservationStatus;
 use App\Models\Student;
@@ -52,7 +53,8 @@ class BookReserveConroller extends Controller
     public function active(){
         # code
         return view('izdavanje.aktivne', [
-            'reservations' => Reservation::active()
+            'reservations' => Reservation::active(),
+            'res_deadline' => Policy::reservation()
         ]);
     }
 //    prikazi sve aktivne rezervacije

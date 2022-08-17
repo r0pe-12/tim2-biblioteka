@@ -171,7 +171,7 @@
                                                 </a>
                                             </td>
                                             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($reservation->submttingDate)->format('d.m.Y') }}</td>
-                                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">DODAJ JOS JEDNO POLJE U TABELU LAKSE TI JE</td>
+                                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($reservation->submttingDate)->addDays($res_deadline->value)->format('d.m.Y') }}</td>
                                             <td class="flex flex-row items-center px-4 py-3">
                                                 <img class="object-cover w-8 h-8 rounded-full" src="{{ $reservation->student->photoPath }}"
                                                      alt=""/>
