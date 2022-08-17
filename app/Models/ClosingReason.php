@@ -25,7 +25,7 @@ class ClosingReason extends Model
         $status = ClosingReason::findOrNew(self::REJECTED);
         if (!$status->id){
             $status->id = self::REJECTED;
-            $status->name = 'Izdata';
+            $status->name = 'Rezervacija odbijena';
             $status->save();
         }
         return $status;
