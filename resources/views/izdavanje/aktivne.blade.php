@@ -2,6 +2,36 @@
     @section('title')
         Aktivne rezervacije
     @endsection
+        <!-- Cancel Book Reservation Modal -->
+        <div class="modal fadeM" id="otkaziRezModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" action="">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite otkazati rezervaciju knjige: </h5>
+                            <h5 class="modal-title">
+                                <ul class="modalLabel"></ul>
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-red-800">
+                                Ova akcija je nepovratna.
+                            </p>
+                        </div>
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                                Potvrdi <i class="fas fa-check ml-[4px]"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
            <!-- Content -->
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
             <!-- Heading of content -->
@@ -156,6 +186,25 @@
                                         </span>
                                     </div>
                                 </li>
+                                <li class="mb-[4px] one" hidden>
+                                    <div class="w-[300px] pl-[32px]">
+                                        <span
+                                            class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                            <div
+                                                class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                                <a id="otkaziRez" href="#" data-toggle="modal" data-target="#otkaziRezModal" tabindex="0" class="otkaziRez flex items-center" role="menuitem">
+                                                    <i
+                                                        class="text-[20px] fas fa-undo transition duration-300 ease-in text-[#576cdf]"></i>
+                                                    <div>
+                                                        <p
+                                                            class="text-[15px] ml-[19px] transition duration-300 ease-in text-[#576cdf]">
+                                                            Otkazi rezervaciju</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                         <div class="w-full px-[30px] pt-2 bg-white">
@@ -192,7 +241,10 @@
                                         <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                             <td class="px-4 py-3 whitespace-no-wrap">
                                                 <label class="inline-flex items-center">
-                                                    <input type="checkbox" class="form-checkbox checkOthers" data-href="{{ route('izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}">
+                                                    <input type="checkbox" class="form-checkbox checkOthers" data-href="{{ route('izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}"
+                                                           data-book-name="{{ $reservation->book->title }}"
+                                                           data-student-name="{{ $reservation->student->name }} {{ $reservation->student->surname }}"
+                                                            data-action="{{ route('rezervacija.otkazi', $reservation) }}">
                                                 </label>
                                             </td>
                                             <td class="flex flex-row items-center px-4 py-3">
@@ -232,9 +284,7 @@
                                                                 <span class="px-4 py-0">Izdaj knjigu</span>
                                                             </a>
 
-                                                            <a href="#" tabindex="0"
-                                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                               role="menuitem">
+                                                            <a href="#" data-toggle="modal" data-target="#otkaziRezModal" tabindex="0" class="otkaziRez flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600" role="menuitem" data-action="{{ route('rezervacija.otkazi', $reservation) }}" data-name="null" data-id="null" data-book-name="{{ $reservation->book->title }}" data-student-name="{{ $reservation->student->name }} {{ $reservation->student->surname }}">
                                                                 <i class="fas fa-undo mr-[10px] ml-[5px] py-1"></i>
                                                                 <span class="px-4 py-0">Otkazi rezervaciju</span>
                                                             </a>

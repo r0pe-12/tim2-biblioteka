@@ -132,6 +132,7 @@
                                             <input type="checkbox" class="form-checkbox checkAll checkOthers">
                                         </label>
                                     </th>
+                                    <!-- todo napraviti jednu kolonu rezervacija zatvorena jer imamo polje closingDate -->
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Naziv knjige</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Datum rezervacije</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Rezervacija istice</th>
@@ -162,8 +163,8 @@
                                             <a href="{{ route('students.show', $reservation->student->username) }}" class="ml-2 font-medium text-center">{{ $reservation->student->name }} {{ $reservation->student->surname }}</a>
                                         </td>
                                         <td class="px-4 py-3 text-sm leading-5 text-blue-900 whitespace-no-wrap">
-                                            <div class="inline-block px-[6px] py-[2px] font-medium {{ $reservation->cReason->id = \App\Models\ClosingReason::BOOK_BORROWED ? 'bg-green-200' : 'bg-red-200' }} rounded-[10px]">
-                                                <span class="text-xs {{ $reservation->cReason->id = \App\Models\ClosingReason::BOOK_BORROWED ? 'text-green-800' : 'text-red-800' }}">{{ $reservation->cReason->name }}</span>
+                                            <div class="inline-block px-[6px] py-[2px] font-medium {{ $reservation->cReason->id == \App\Models\ClosingReason::BOOK_BORROWED ? 'bg-green-200' : 'bg-red-200' }} rounded-[10px]">
+                                                <span class="text-xs {{ $reservation->cReason->id == \App\Models\ClosingReason::BOOK_BORROWED ? 'text-green-800' : 'text-red-800' }}">{{ $reservation->cReason->name }}</span>
                                             </div>
                                         </td>
                                         <td class="px-4 py-3 text-sm leading-5 text-right whitespace-no-wrap">

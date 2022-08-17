@@ -2900,6 +2900,15 @@ $('.checkOthers').click(function () {
             const href = this.getAttribute('data-href');
             if (path == '/aktivne-rezervacije/'){
                 document.getElementById('izdaj').href = href;
+                const otkazi = document.getElementById('otkaziRez');
+                const bookName = this.getAttribute('data-book-name');
+                const studentName = this.getAttribute('data-student-name');
+                const action = this.getAttribute('data-action');
+
+                otkazi.setAttribute('data-action', '/books/' + id + '/vrati');
+                otkazi.setAttribute('data-book-name', bookName);
+                otkazi.setAttribute('data-student-name', studentName);
+                otkazi.setAttribute('data-action', action);
             } else {
                 if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/[a-zA-Z]+\/izdate/i.test(path) || /\/students\/[a-zA-Z]+\/vracene/i.test(path)) {
                     const bookId = this.getAttribute('data-book-id');
@@ -3017,6 +3026,26 @@ $('.vrati').click(function () {
     modalTitle.innerHTML = '<b>' + bookName + '</b> za ucenika <b>' + studentName + '</b>';
 
     modalFormInput.value = id;
+})
+
+$('.otkaziRez').click(function () {
+    // var id = this.getAttribute('data-id');
+    var name = this.getAttribute('data-name');
+    var bookId = this.getAttribute('data-book-id');
+    var bookName = this.getAttribute('data-book-name');
+    var studentName = this.getAttribute('data-student-name');
+    var action = this.getAttribute('data-action');
+
+    var Modal = document.getElementById('otkaziRezModal');
+    var modalTitle = Modal.querySelector('.modalLabel')
+    var form = Modal.querySelector('form');
+    // var modalFormInput = Modal.querySelector('.ids');
+
+    form.action = action;
+
+    modalTitle.innerHTML = '<b>' + bookName + '</b> za ucenika <b>' + studentName + '</b>';
+
+    // modalFormInput.value = id;
 })
 
 $('.otpisi').click(function () {

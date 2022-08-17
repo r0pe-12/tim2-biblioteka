@@ -80,6 +80,9 @@ Route::middleware(['auth'])->group(function (){
     //      END-rezervisi knjigu
             Route::get('/aktivne-rezervacije', 'active')->name('aktivne-rezervacije');
             Route::get('/arhivirane-rezervacije', 'archive')->name('arhivirane-rezervacije');
+    //      otkazi rezervaciju
+            Route::put('/rezervacija/{reservation}/otkazi', 'cancel')->name('rezervacija.otkazi');
+    //      END-otkazi rezervaciju
         });
 //    END-rute za knjigu
 

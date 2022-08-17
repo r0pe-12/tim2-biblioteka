@@ -34,14 +34,14 @@ class BookReserveConroller extends Controller
         ]);
 //        \request()->dd();
 
-        $reservation = new Reservation([
+        $reservationervation = new Reservation([
             'student_id' => \request()->ucenik,
             'librarian_id' => auth()->user()->id,
             'status_id' => ReservationStatus::reserved()->id,
             'closingReason_id' => ClosingReason::open()->id,
             'submttingDate' => Carbon::parse(\request()->datumRezervisanja)->format('Y-m-d'),
         ]);
-        $book->reservations()->save($reservation);
+        $book->reservations()->save($reservationervation);
 
         $status = ReservationStatus::reserved();
 
@@ -68,4 +68,15 @@ class BookReserveConroller extends Controller
         ]);
     }
 //    prikazi sve arhivirane rezervacije
+
+//    otkazi rezervaciju
+    public function cancel(Reservation $reservation){
+        # code
+        $reservation->closingReason_id = ClosingReason::cancelled()->id;
+        $reservation->status_id = ReservationStatus::closed()->id;
+        $reservation->closingDate = today("Europe/Belgrade");
+        $reservation->save();
+        return redirect()->back()->with('success', 'Rezervacija je uspjesno otkazana');
+    }
+//    END-otkazi rezervaciju
 }
