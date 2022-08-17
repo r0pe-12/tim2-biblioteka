@@ -36,14 +36,13 @@ class BookReserveConroller extends Controller
         $reservation = new Reservation([
             'student_id' => \request()->ucenik,
             'librarian_id' => auth()->user()->id,
+            'status_id' => ReservationStatus::reserved()->id,
             'closingReason_id' => ClosingReason::open()->id,
             'submttingDate' => Carbon::parse(\request()->datumRezervisanja)->format('Y-m-d'),
         ]);
         $book->reservations()->save($reservation);
 
         $status = ReservationStatus::reserved();
-        $reservation->statuses()->attach($status);
-
 
         return redirect()->route('books.index')->with('success', 'Knjiga je uspješno rezervisana učeniku: ' . Student::find(\request()->ucenik)->name . ' ' . Student::find(\request()->ucenik)->surname);
     }

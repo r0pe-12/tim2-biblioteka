@@ -43,17 +43,14 @@ protected $guarded = [];
     }
 
 //    get all statuses of rezervacija knjige
-    public function statuses(){
+    public function status(){
         # code
-        return $this->belongsToMany(ReservationStatus::class, 'reservation_status', 'reservation_id', 'reservationStatus_id');
+        return $this->belongsTo(ReservationStatus::class);
     }
 
 //    sve trenutno aktivne rezervacije
     public static function active(){
         # code
-        return self
-            ::join('reservation_status','reservations.id','=','reservation_id')
-            ->where('reservation_status.reservationStatus_id','=', ReservationStatus::RESERVED)
-            ->get();
+        return Reservation::all();
     }
 }

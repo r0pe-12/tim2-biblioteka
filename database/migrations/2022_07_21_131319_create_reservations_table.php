@@ -23,6 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('librarian_id');
             $table->foreign('librarian_id')->references('id')->on('users')->cascadeOnDelete();
 
+            $table->foreignId('status_id');
             $table->foreignId('closingReason_id');
 
 
