@@ -31,6 +31,10 @@ $(function () {
   });
 });
 
+function tab(tab) {
+    $('a[href="#' + tab + '"]').tab('show');
+}
+
 //open close submenu
 $(function () {
   var asideArrow = $('.asideArrow');
