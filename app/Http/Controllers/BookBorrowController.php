@@ -50,7 +50,7 @@ class BookBorrowController extends Controller
             'return_date' => Carbon::parse(\request()->datumVracanja),
         ]);
         $book->borrows()->save($borrow);
-        $zift = false;
+        $isRes = false;
         if ($book->activeRes()->contains($res = $book->activeRes()->where('student_id', '=', $borrow->student_id)->first())) {
             $res->closingReason_id = ClosingReason::bookBorrowed()->id;
             $res->status_id = ReservationStatus::closed()->id;
@@ -60,7 +60,7 @@ class BookBorrowController extends Controller
             $res->book->save();
 
             $status = BookStatus::reserved();
-            $zift = true;
+            $isRes = true;
         } else {
             $status = BookStatus::borrowed();
         }
@@ -70,7 +70,7 @@ class BookBorrowController extends Controller
         $book->borrowedSaples = $book->borrowedSaples + 1;
         $book->save();
 
-        if ($zift) {
+        if ($isRes) {
             return redirect()->route('books.index')->with('success', 'Knjiga je uspješno izdata učeniku po rezervaciji: ' . Student::find(\request()->ucenik)->name . ' ' . Student::find(\request()->ucenik)->surname);
         } else {
             return redirect()->route('books.index')->with('success', 'Knjiga je uspješno izdata učeniku: ' . Student::find(\request()->ucenik)->name . ' ' . Student::find(\request()->ucenik)->surname);
