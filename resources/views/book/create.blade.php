@@ -272,7 +272,7 @@
                                     <div class="mt-[20px]">
                                         <p>International Standard Book Num <span class="text-red-500">*</span></p>
                                         <input autocomplete="off"
-                                            type="text" name="isbn" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()">
+                                            type="text" name="isbn" id="isbn" maxlength="13" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()">
                                         <div id="validateIsbn"></div>
                                     </div>
                                 </div>

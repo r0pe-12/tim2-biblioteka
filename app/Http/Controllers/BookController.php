@@ -192,16 +192,20 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         //
-        foreach ($book->photos as $photo){
-            if (file_exists($photoPath = public_path() . $photo->path)){
-                unlink($photoPath);
-            }
-        }
+        $photos = [];
+        $photos = $book->photos;
+
         try {
             $book->delete();
         } catch (\Exception $e){
             return redirect()->back()->with('fail', 'Brisanje knjige "' . $book->title . '" nije moguce');
-    }
+        }
+
+        foreach ($photos as $photo){
+            if (file_exists($photoPath = public_path() . $photo->path)){
+                unlink($photoPath);
+            }
+        }
         return redirect()->back()->with('success', 'Knjiga: "' . $book->title . '" je uspješno izbrisana');
     }
 
@@ -215,22 +219,27 @@ class BookController extends Controller
     public function bulkDelete()
     {
         //
-//        $titles = [];
-//        todo ovo ima jednu manu: kad hocemo da obrisemo vise knjiga slike od tih knjiga ce se obrisati ali sama knjiga nece ako je izdavana. isto i za single deleete
         $ids = explode(',', request('ids'));
-//        foreach ($ids as $id){
-//            $book = Book::find($id);
-//            foreach ($book->photos as $photo){
-//                if (file_exists($photoPath = public_path() . $photo->path)){
-//                    unlink($photoPath);
-//                }
-//            }
-////            $titles[] = $book->title;
-//        }
+        $books = Book::whereIn('id', $ids);
+
+        $galery = [];
+        foreach ($books->get() as $book) {
+            $galery[] = $book->photos;
+        }
+
+
         try {
-            Book::find($ids)->delete();
+            $books->delete();
         } catch (\Exception $e){
             return redirect()->back()->with('fail', 'Brisanje knjiga nije moguce');
+        }
+
+        foreach ($galery as $photos){
+            foreach ($photos as $photo) {
+                if (file_exists($photoPath = public_path() . $photo->path)){
+                    unlink($photoPath);
+                }
+            }
         }
         return redirect()->back()->with('success', 'Knjige su uspješno izbrisane');
     }
