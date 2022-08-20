@@ -150,11 +150,18 @@ class AuthorController extends Controller
     function destroy(Author $author)
     {
         //
-        if (file_exists($photoPath = public_path() . $author->image)){
+        $photo = $author->image;
+
+        try {
+            $author->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje autora "' . $author->name . ' ' . $author->surname . '" nije moguce');
+        }
+
+        if (file_exists($photoPath = public_path() . $photo)){
             unlink($photoPath);
         }
-        $author->delete();
-        return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . ' ' . $author->surname . '" je uspješno izbrisan');
+        return redirect()->back()->with('success', 'Autor "' . $author->name . ' ' . $author->surname . '" je uspješno izbrisan');
     }
 
     /**
@@ -167,13 +174,25 @@ class AuthorController extends Controller
     {
 //        $names = [];
         $ids = explode(',', request('ids'));
-        foreach ($ids as $id){
-            $author = Author::find($id);
-            if (file_exists($photoPath = public_path() . $author->image)){
+        $authors = Author::whereIn('id', $ids);
+
+        $photos = [];
+//        we will get all photopaths from authors
+        foreach ($authors->get() as $author){
+            $photos[] = $author->getOriginal('image');
+        }
+
+//        we will try to delete authors
+        try {
+            $authors->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje autora nije moguce');
+        }
+//        if we delete them we will delete photos from storage
+        foreach ($photos as $photo){
+            if (file_exists($photoPath = public_path() . $photo)){
                 unlink($photoPath);
             }
-            $author->delete();
-//            $names[] = $author->name . ' ' . $author->surname;
         }
         return redirect()->route('authors.index')->with('success', 'Autori su uspješno izbrisani');
     }
