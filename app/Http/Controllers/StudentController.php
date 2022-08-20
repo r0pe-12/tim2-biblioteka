@@ -134,12 +134,16 @@ class StudentController extends Controller
         //
         $student = User::where('username', '=', $username)->first();
         $this->authorize('delete', $student);
+
+        $photo = $student->photoPath;
+
         try {
             $student->delete();
         } catch (\Exception $e) {
             return redirect()->back()->with('fail', 'Brisanje ucenika "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" nije moguce');
         }
-        if (file_exists($photoPath = public_path() . $student->photoPath)){
+
+        if (file_exists($photoPath = public_path() . $photo)){
             unlink($photoPath);
         }
         return redirect()->back()->with('success', 'Ucenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" je uspješno izbrisan');
@@ -154,21 +158,27 @@ class StudentController extends Controller
     public function bulkDelete()
     {
         //
-//        $names = [];
         $unames = explode(',', request('unames'));
         $students = User::whereIn('username', $unames);
-//        todo fix this later
-//        foreach ($unames as $uname){
-//            $student = User::where('username', '=', $uname)->first();
-//            if (file_exists($photoPath = public_path() . $student->photoPath)){
-//                unlink($photoPath);
-//            }
-////            $names[] = $student->name . ' ' . $student->surname;
-//        }
+
+        $photos = [];
+//        we will get all photopaths from students
+        foreach ($students->get() as $item) {
+            $photos[] = $item->photoPath;
+        }
+
+//        we will try to delete students
         try {
             $students->delete();
         } catch (\Exception $e){
             return redirect()->back()->with('fail', 'Brisanje ucenika nije moguce');
+        }
+
+//        if wee delete them we will delete photos from storage
+        foreach ($photos as $photo) {
+            if (file_exists($photoPath = public_path() . $photo)){
+                unlink($photoPath);
+            }
         }
         return redirect()->back()->with('success', 'Ucenici su uspješno izbrisani');
     }
