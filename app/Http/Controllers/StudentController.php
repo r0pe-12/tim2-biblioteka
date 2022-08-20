@@ -134,11 +134,15 @@ class StudentController extends Controller
         //
         $student = User::where('username', '=', $username)->first();
         $this->authorize('delete', $student);
+        try {
+            $student->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje ucenika "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" nije moguce');
+        }
         if (file_exists($photoPath = public_path() . $student->photoPath)){
             unlink($photoPath);
         }
-        $student->delete();
-        return redirect()->route('students.index')->with('success', 'Ucenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" je uspješno izbrisan');
+        return redirect()->back()->with('success', 'Ucenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" je uspješno izbrisan');
     }
 
     /**
@@ -152,15 +156,21 @@ class StudentController extends Controller
         //
 //        $names = [];
         $unames = explode(',', request('unames'));
-        foreach ($unames as $uname){
-            $student = User::where('username', '=', $uname)->first();
-            if (file_exists($photoPath = public_path() . $student->photoPath)){
-                unlink($photoPath);
-            }
-            $student->delete();
-//            $names[] = $student->name . ' ' . $student->surname;
+        $students = User::whereIn('username', $unames);
+//        todo fix this later
+//        foreach ($unames as $uname){
+//            $student = User::where('username', '=', $uname)->first();
+//            if (file_exists($photoPath = public_path() . $student->photoPath)){
+//                unlink($photoPath);
+//            }
+////            $names[] = $student->name . ' ' . $student->surname;
+//        }
+        try {
+            $students->delete();
+        } catch (\Exception $e){
+            return redirect()->back()->with('fail', 'Brisanje ucenika nije moguce');
         }
-        return redirect()->route('students.index')->with('success', 'Ucenici su uspješno izbrisani');
+        return redirect()->back()->with('success', 'Ucenici su uspješno izbrisani');
     }
 
 

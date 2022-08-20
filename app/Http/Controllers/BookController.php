@@ -73,7 +73,7 @@ class BookController extends Controller
 //        attaching book to multiple genres
         $book->genres()->sync($input['genres']);
 
-        return redirect()->back()->with('success', 'Nova knjiga "' . $book->title . '" je uspješno kreirana');
+        return redirect()->route('books.index')->with('success', 'Nova knjiga "' . $book->title . '" je uspješno kreirana');
     }
 
     /**
@@ -218,15 +218,15 @@ class BookController extends Controller
 //        $titles = [];
 //        todo ovo ima jednu manu: kad hocemo da obrisemo vise knjiga slike od tih knjiga ce se obrisati ali sama knjiga nece ako je izdavana. isto i za single deleete
         $ids = explode(',', request('ids'));
-        foreach ($ids as $id){
-            $book = Book::find($id);
-            foreach ($book->photos as $photo){
-                if (file_exists($photoPath = public_path() . $photo->path)){
-                    unlink($photoPath);
-                }
-            }
-//            $titles[] = $book->title;
-        }
+//        foreach ($ids as $id){
+//            $book = Book::find($id);
+//            foreach ($book->photos as $photo){
+//                if (file_exists($photoPath = public_path() . $photo->path)){
+//                    unlink($photoPath);
+//                }
+//            }
+////            $titles[] = $book->title;
+//        }
         try {
             Book::find($ids)->delete();
         } catch (\Exception $e){

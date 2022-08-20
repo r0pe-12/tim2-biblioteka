@@ -156,13 +156,13 @@ class LibrarianController extends Controller
         $unames = explode(',', request('unames'));
         $librarians = User::whereIn('username', $unames);
 
-        foreach ($unames as $uname){
-            $librarian = User::where('username', '=', $uname)->first();
-            if (file_exists($photoPath = public_path() . $librarian->photoPath)){
-                unlink($photoPath);
-            }
-//            $names[] = $librarian->name . ' ' . $librarian->surname;
-        }
+//        foreach ($unames as $uname){
+//            $librarian = User::where('username', '=', $uname)->first();
+//            if (file_exists($photoPath = public_path() . $librarian->photoPath)){
+//                unlink($photoPath);
+//            }
+////            $names[] = $librarian->name . ' ' . $librarian->surname;
+//        }
         try {
             $librarians->delete();
         } catch (\Exception $e){
