@@ -73,7 +73,7 @@ class BookController extends Controller
 //        attaching book to multiple genres
         $book->genres()->sync($input['genres']);
 
-        return redirect()->route('books.index')->with('success', 'Nova knjiga "' . $book->title . '" je uspješno kreirana');
+        return redirect()->back()->with('success', 'Nova knjiga "' . $book->title . '" je uspješno kreirana');
     }
 
     /**
@@ -180,7 +180,7 @@ class BookController extends Controller
 //        attaching book to multiple genres
         $book->genres()->sync($input['genres']);
 
-        return redirect()->route('books.index')->with('success', 'Knjiga: "' . $book->title . '" je uspješno izmijenjena');
+        return redirect()->back()->with('success', 'Knjiga: "' . $book->title . '" je uspješno izmijenjena');
     }
 
     /**
@@ -197,8 +197,12 @@ class BookController extends Controller
                 unlink($photoPath);
             }
         }
-        $book->delete();
-        return redirect()->route('books.index')->with('success', 'Knjiga: "' . $book->title . '" je uspješno izbrisana');
+        try {
+            $book->delete();
+        } catch (\Exception $e){
+            return redirect()->back()->with('fail', 'Brisanje knjige "' . $book->title . '" nije moguce');
+    }
+        return redirect()->back()->with('success', 'Knjiga: "' . $book->title . '" je uspješno izbrisana');
     }
 
 
@@ -212,6 +216,7 @@ class BookController extends Controller
     {
         //
 //        $titles = [];
+//        todo ovo ima jednu manu: kad hocemo da obrisemo vise knjiga slike od tih knjiga ce se obrisati ali sama knjiga nece ako je izdavana. isto i za single deleete
         $ids = explode(',', request('ids'));
         foreach ($ids as $id){
             $book = Book::find($id);
@@ -220,9 +225,13 @@ class BookController extends Controller
                     unlink($photoPath);
                 }
             }
-            $book->delete();
 //            $titles[] = $book->title;
-    }
-        return redirect()->route('books.index')->with('success', 'Knjige su uspješno izbrisane');
+        }
+        try {
+            Book::find($ids)->delete();
+        } catch (\Exception $e){
+            return redirect()->back()->with('fail', 'Brisanje knjiga nije moguce');
+        }
+        return redirect()->back()->with('success', 'Knjige su uspješno izbrisane');
     }
 }
