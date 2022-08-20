@@ -487,6 +487,36 @@ function validacijaBibliotekar(event) {
   }
 }
 
+function jmbgCheckLC() {
+    $("#validateJmbgBibliotekar").empty();
+    $("#jmbgLabel").attr('style', 'color:red;')
+    let jmbgBibliotekar = $("#jmbgBibliotekar").val();
+    if (isNaN(jmbgBibliotekar)){
+        $('#validateJmbgBibliotekar').append('<p style="color:red;font-size:13px;">JMBG je pogrešnog formata!</p>');
+    } else if (jmbgBibliotekar.length == 0) {
+        $('#validateJmbgBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
+    } else if (jmbgBibliotekar.length !== 13) {
+        $('#validateJmbgBibliotekar').append('<p style="color:red;font-size:13px;">JMBG mora imati 13 cifara! Trenutno:' + jmbgBibliotekar.length + '</p>');
+    } else {
+        $("#jmbgLabel").attr('style', 'color:green;')
+    }
+}
+
+function jmbgCheckLE() {
+    $("#validateJmbgBibliotekarEdit").empty();
+    $("#jmbgLabel").attr('style', 'color:red;')
+    let jmbgBibliotekar = $("#jmbgBibliotekarEdit").val();
+    if (isNaN(jmbgBibliotekar)){
+        $('#validateJmbgBibliotekarEdit').append('<p style="color:red;font-size:13px;">JMBG je pogrešnog formata!</p>');
+    } else if (jmbgBibliotekar.length == 0) {
+        $('#validateJmbgBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
+    } else if (jmbgBibliotekar.length !== 13) {
+        $('#validateJmbgBibliotekarEdit').append('<p style="color:red;font-size:13px;">JMBG mora imati 13 cifara! Trenutno:' + jmbgBibliotekar.length + '</p>');
+    } else {
+        $("#jmbgLabel").attr('style', 'color:green;')
+    }
+}
+
 function clearErrorsNameBibliotekar() {
   $("#validateNameBibliotekar").empty();
 }
