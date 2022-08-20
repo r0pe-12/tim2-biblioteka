@@ -70,7 +70,7 @@ class User extends Authenticatable
 //    get all logins of an user
     public function logins(){
         # code
-        return $this->hasMany(Logins::class);
+        return $this->hasMany(Logins::class, 'user_id');
     }
 
 //    get last login of user

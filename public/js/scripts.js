@@ -3130,7 +3130,7 @@ function checkMakeSure(event, button) {
     });
 }(jQuery));
 
-function flashMsg(msg) {
+function flashMsg(msg, type) {
     Swal.fire({
         "title": msg,
         // "text":msg,
@@ -3140,8 +3140,10 @@ function flashMsg(msg) {
         "showConfirmButton":false,
         "showCloseButton":true,
         "timerProgressBar":false,
-        "customClass":{"container":null,"popup":null,"header":null,"title":null,"closeButton":null,"icon":null,"image":null,"content":null,"input":null,"actions":null,"confirmButton":null,"cancelButton":null,"footer":null}, "toast":true,"icon":"success","position":"top-end"});
-
+        "customClass":{"container":null,"popup":null,"header":null,"title":null,"closeButton":null,"icon":null,"image":null,"content":null,"input":null,"actions":null,"confirmButton":null,"cancelButton":null,"footer":null},
+        "toast":true,
+        "icon":type,
+        "position":"top-end"});
 }
 
 function autofill() {

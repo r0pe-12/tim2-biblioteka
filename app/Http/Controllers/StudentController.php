@@ -73,7 +73,7 @@ class StudentController extends Controller
     public function show($username)
     {
         //
-        $student = User::where('username', '=', $username)->first();
+        $student = Student::where('username', '=', $username)->first();
         return view('student.show', compact('student'));
     }
 
