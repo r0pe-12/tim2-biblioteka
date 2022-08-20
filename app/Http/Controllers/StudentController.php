@@ -74,6 +74,9 @@ class StudentController extends Controller
     {
         //
         $student = Student::where('username', '=', $username)->first();
+        if (is_null($student)) {
+            abort('404');
+        }
         return view('student.show', compact('student'));
     }
 
@@ -87,6 +90,9 @@ class StudentController extends Controller
     {
         //
         $student = User::where('username', '=', $username)->first();
+        if (is_null($student)) {
+            abort('404');
+        }
         return view('student.edit', compact('student'));
 
     }

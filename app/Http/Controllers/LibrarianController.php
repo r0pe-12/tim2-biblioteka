@@ -72,6 +72,9 @@ class LibrarianController extends Controller
     {
         //
         $librarian = User::where('username', '=', $username)->first();
+        if (is_null($librarian)) {
+            abort('404');
+        }
         return view('librarian.show', compact('librarian'));
     }
 
@@ -85,6 +88,9 @@ class LibrarianController extends Controller
     {
         //
         $librarian = User::where('username', '=', $username)->first();
+        if (is_null($librarian)) {
+            abort('404');
+        }
         return view('librarian.edit', compact('librarian'));
     }
 
