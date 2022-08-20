@@ -49,7 +49,7 @@
                 <div class="absolute right-0 w-56 mt-[10px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                      aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                     <div class="py-1">
-                        <form method="POST" action="{{ route('students.destroy', $student) }}"
+                        <form method="POST" action="{{ route('students.destroy', $student->username) }}"
                               enctype="multipart/form-data" tabindex="0"
                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                               role="menuitem">

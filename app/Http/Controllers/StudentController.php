@@ -146,7 +146,7 @@ class StudentController extends Controller
         if (file_exists($photoPath = public_path() . $photo)){
             unlink($photoPath);
         }
-        return redirect()->back()->with('success', 'Ucenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" je uspješno izbrisan');
+        return redirect()->route('students.index')->with('success', 'Ucenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" je uspješno izbrisan');
     }
 
     /**

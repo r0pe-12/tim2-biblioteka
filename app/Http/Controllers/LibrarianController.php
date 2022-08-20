@@ -141,7 +141,7 @@ class LibrarianController extends Controller
         if (file_exists($photoPath = public_path() . $photo)){
             unlink($photoPath);
         }
-        return redirect()->back()->with('success', 'Bibliotekar "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" uspješno izbrisan');
+        return redirect()->route('librarians.index')->with('success', 'Bibliotekar "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" uspješno izbrisan');
     }
 
 
