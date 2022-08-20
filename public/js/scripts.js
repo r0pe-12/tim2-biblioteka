@@ -940,6 +940,21 @@ function validacijaKnjiga(event) {
     }
 }
 
+function isbnCheck() {
+    $("#validateIsbn").empty();
+    $('#isbnLabel').attr('style', 'color:red;')
+    let isbn = $("#isbn").val();
+    if (isNaN(isbn)){
+        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN je pogrešnog formata!</p>');
+    } else if (isbn.length == 0) {
+        $('#validateIsbn').append('<p style="color:red;font-size:13px;">Morate unijeti ISBN!</p>');
+    } else if (isbn.length !== 13){
+        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN mora imati 13 cifara! Trenutno:' + isbn.length + '</p>');
+    } else {
+        $('#isbnLabel').attr('style', 'color:green;')
+    }
+}
+
 function clearErrorsNazivKnjiga() {
   $("#validateNazivKnjiga").empty();
 }
