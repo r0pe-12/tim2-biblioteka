@@ -3156,4 +3156,11 @@ function autofill() {
 }
 
 //    add scroll class to every section cuz of small displays are unable to scroll down
-$('section').addClass('scroll');
+// $('section').addClass('scroll');
+
+function stopTyping(max, event){
+    var input = event.target;
+    if (input.value.length >= max) {
+        event.preventDefault()
+    }
+}

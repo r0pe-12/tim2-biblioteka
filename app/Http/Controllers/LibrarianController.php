@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Librarian\CreateRequest;
 use App\Http\Requests\Librarian\UpdateRequest;
-use App\Http\Requests\LibrarianRequest;
 use App\Models\Librarian;
 use App\Models\Role;
 use App\Models\User;
@@ -130,11 +129,17 @@ class LibrarianController extends Controller
         //
         $librarian = User::where('username', '=', $username)->first();
         $this->authorize('delete', $librarian);
+
+        try {
+            $librarian->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje bibliotekara "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" nije moguce');
+        }
+
         if (file_exists($photoPath = public_path() . $librarian->photoPath)){
             unlink($photoPath);
         }
-        $librarian->delete();
-        return redirect()->route('librarians.index')->with('success', 'Bibliotekar "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" uspješno izbrisan');
+        return redirect()->back()->with('success', 'Bibliotekar "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" uspješno izbrisan');
     }
 
 
@@ -149,15 +154,21 @@ class LibrarianController extends Controller
         //
 //        $names = [];
         $unames = explode(',', request('unames'));
+        $librarians = User::whereIn('username', $unames);
+
         foreach ($unames as $uname){
             $librarian = User::where('username', '=', $uname)->first();
             if (file_exists($photoPath = public_path() . $librarian->photoPath)){
                 unlink($photoPath);
             }
-            $librarian->delete();
 //            $names[] = $librarian->name . ' ' . $librarian->surname;
         }
-        return redirect()->route('librarians.index')->with('success', 'Bibliotekari su uspješno izbrisani');
+        try {
+            $librarians->delete();
+        } catch (\Exception $e){
+            return redirect()->back()->with('fail', 'Brisanje bibliotekara nije moguce');
+        }
+        return redirect()->back()->with('success', 'Bibliotekari su uspješno izbrisani');
     }
 
 

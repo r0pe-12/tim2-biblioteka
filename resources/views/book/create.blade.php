@@ -11,7 +11,7 @@
         </script>
     @endsection
         <!-- Content -->
-        <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
+        <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700 scroll">
             <!-- Heading of content -->
             <div class="heading">
                 <div class="flex border-b-[1px] border-[#e4dfdf]">

@@ -67,7 +67,7 @@
 
                             <div class="mt-[20px]">
                                 <span>JMBG <span class="text-red-500">*</span></span>
-                                <input type="text" name="jmbgBibliotekar" id="jmbgBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()"/>
+                                <input type="text" autocomplete="off" onkeyup="stopTyping(13, event)" onkeypress="stopTyping(13, event)" name="jmbgBibliotekar" id="jmbgBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()"/>
                                 <div id="validateJmbgBibliotekar"></div>
                                 @error('jmbg') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
