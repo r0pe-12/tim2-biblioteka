@@ -130,13 +130,15 @@ class LibrarianController extends Controller
         $librarian = User::where('username', '=', $username)->first();
         $this->authorize('delete', $librarian);
 
+        $photo = $librarian->photoPath;
+
         try {
             $librarian->delete();
         } catch (\Exception $e) {
             return redirect()->back()->with('fail', 'Brisanje bibliotekara "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" nije moguce');
         }
 
-        if (file_exists($photoPath = public_path() . $librarian->photoPath)){
+        if (file_exists($photoPath = public_path() . $photo)){
             unlink($photoPath);
         }
         return redirect()->back()->with('success', 'Bibliotekar "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" uspješno izbrisan');
@@ -152,21 +154,27 @@ class LibrarianController extends Controller
     public function bulkDelete()
     {
         //
-//        $names = [];
         $unames = explode(',', request('unames'));
         $librarians = User::whereIn('username', $unames);
 
-//        foreach ($unames as $uname){
-//            $librarian = User::where('username', '=', $uname)->first();
-//            if (file_exists($photoPath = public_path() . $librarian->photoPath)){
-//                unlink($photoPath);
-//            }
-////            $names[] = $librarian->name . ' ' . $librarian->surname;
-//        }
+        $photos = [];
+//        we will get all photopaths from librarians
+        foreach ($librarians->get() as $lib){
+            $photos[] = $lib->getOriginal('photoPath');
+        }
+
+//        we will try to delete librarians
         try {
             $librarians->delete();
         } catch (\Exception $e){
             return redirect()->back()->with('fail', 'Brisanje bibliotekara nije moguce');
+        }
+
+//        if wee delete them we will delete photos from storage
+        foreach ($photos as $photo) {
+            if (file_exists($photoPath = public_path() . $photo)){
+                unlink($photoPath);
+            }
         }
         return redirect()->back()->with('success', 'Bibliotekari su uspješno izbrisani');
     }
