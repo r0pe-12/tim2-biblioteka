@@ -139,4 +139,15 @@ class Book extends Model
             ->get();
     }
 
+//    sve trenutno NEaktivne rezervacije jedne knjige
+    public function archiveRes(){
+        # code
+        return $this->reservations()
+                ->where(function ($q){
+                    $q->where('status_id', '!=', ReservationStatus::RESERVED)
+                        ->where('status_id', '!=', ReservationStatus::WAITING);
+                })
+                    ->get();
+    }
+
 }

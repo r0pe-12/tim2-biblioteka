@@ -86,7 +86,11 @@ class BookReserveConroller extends Controller
 //    prikazi sve arhivirane rezervacije jedne knjige
     public function archive1(Book $book){
         # code
-        return view('book.evidencija.arhivirane');
+        return view('book.evidencija.arhivirane', [
+            'book' => $book,
+            'reservations' => $book->archiveRes(),
+            'res_deadline' => Policy::reservation()
+        ]);
         return view('izdavanje.arhivirane', [
             'reservations' => Reservation::archive(),
             'res_deadline' => Policy::reservation()
