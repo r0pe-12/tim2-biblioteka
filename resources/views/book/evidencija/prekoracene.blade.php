@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Prekoracene
+        Prekoracene: {{ $book->title }}
     @endsection
         <!-- Return Book Modal -->
         <div class="modal fadeM" id="returnBookModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -98,13 +98,13 @@
                             class="text-[20px] group-hover:text-[#576cdf] fas fa-exclamation-triangle mr-[3px]"></i>
                         Knjige u prekoracenju
                     </a>
-                    <a href="iznajmljivanjeAktivne.php"
+                    <a href="{{ route('aktivne-rezervacije1', $book) }}"
                        class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                         <i
                             class="text-[20px] text-[#707070] group-hover:text-[#576cdf] far fa-calendar-check mr-[3px]"></i>
                         Aktivne rezervacije
                     </a>
-                    <a href="iznajmljivanjeArhivirane.php"
+                    <a href="{{ route('arhivirane-rezervacije1', $book) }}"
                        class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                         <i
                             class="text-[20px] text-[#707070] group-hover:text-[#576cdf] fas fa-calendar-alt  mr-[3px]"></i>
