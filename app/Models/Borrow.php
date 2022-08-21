@@ -57,6 +57,7 @@ class Borrow extends Model
         return self
             ::join('book_borrow_status','borrows.id','=','borrow_id')
             ->where('book_borrow_status.bookStatus_id','=', BookStatus::BORROWED)
+            ->orWhere('book_borrow_status.bookStatus_id','=', BookStatus::RESERVED)
             ->get();
     }
 

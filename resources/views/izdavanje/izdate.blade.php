@@ -90,7 +90,7 @@
                                             class=" whitespace-nowrap w-full text-[25px]  flex justify-between fill-current">
                                             <div
                                                 class="py-[15px] px-[20px] w-[268px] cursor-pointer bg-[#EFF3F6] rounded-[10px]">
-                                                <a href="izdateKnjige.php" aria-label="Sve knjige"
+                                                <a href="{{ route('izdate') }}" aria-label="Sve knjige"
                                                    class="flex items-center">
                                                     <i
                                                         class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[#576cdf] far fa-copy text-[20px]"></i>
@@ -150,7 +150,7 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="aktivneRezervacije.php" aria-label="Rezervacije"
+                                                <a href="{{ route('aktivne-rezervacije') }}" aria-label="Rezervacije"
                                                    class="flex items-center">
                                                     <i
                                                         class="text-[#707070] text-[20px] far fa-calendar-check transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
@@ -170,7 +170,7 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="arhiviraneRezervacije.php" aria-label="Rezervacije"
+                                                <a href="{{ route('arhivirane-rezervacije') }}" aria-label="Rezervacije"
                                                    class="flex items-center">
                                                     <i
                                                         class="text-[#707070] text-[20px] fas fa-calendar-alt transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
@@ -280,32 +280,11 @@
                                             <input type="checkbox" class="form-checkbox checkAll checkOthers">
                                         </label>
                                     </th>
-                                    <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                        Naziv knjige
-                                        <a href="#"></a>
-                                    </th>
-                                    <!-- Izdato uceniku + dropdown filter for ucenik -->
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
-                                        Izdato uceniku
-                                    </th>
-
-                                    <!-- Datum izdavanja + dropdown filter for datum -->
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
-                                        Datum izdavanja
-                                    </th>
-
-                                    <!-- Trenutno zadrzavanje + dropdown filter for zadrzavanje -->
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
-                                        Trenutno zadrzavanje knjige
-                                    </th>
-                                    <!-- Knjigu izdao + dropdown filter for bibliotekar -->
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">
-                                        Knjigu izdao
-                                    </th>
+                                    <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">Izdato uceniku</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">Datum izdavanja</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Trenutno zadrzavanje knjige</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">Knjigu izdao</th>
                                     <th class="px-4 py-4"> </th>
                                 </tr>
                                 </thead>
@@ -367,34 +346,11 @@
                                     <tr class="border-b-[1px] border-[#e4dfdf]">
                                         <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                         </th>
-                                        <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                            Naziv knjige
-                                            <a href="#"><i class="ml-2 fa-lg fas fa-long-arrow-alt-down"
-                                                           onclick="sortTable()"></i>
-                                            </a>
-                                        </th>
-                                        <!-- Izdato uceniku + dropdown filter for ucenik -->
-                                        <th
-                                            class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
-                                            Izdato uceniku
-                                        </th>
-
-                                        <!-- Datum izdavanja + dropdown filter for datum -->
-                                        <th
-                                            class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
-                                            Datum izdavanja
-                                        </th>
-
-                                        <!-- Trenutno zadrzavanje + dropdown filter for zadrzavanje -->
-                                        <th
-                                            class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
-                                            Trenutno zadrzavanje knjige
-                                        </th>
-                                        <!-- Knjigu izdao + dropdown filter for bibliotekar -->
-                                        <th
-                                            class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">
-                                            Knjigu izdao
-                                        </th>
+                                        <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">Izdato uceniku</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">Datum izdavanja</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Trenutno zadrzavanje knjige</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">Knjigu izdao</th>
                                         <th class="px-4 py-4"> </th>
                                     </tr>
                                     </tfoot>

@@ -85,7 +85,7 @@
                     <a class="text-blue-800 one" hidden id="otpisi" href="#"><i class="fas fa-level-up-alt ml-4"></i> Otpisi knjigu</a>
                     <a class="text-blue-800 one" hidden id="izdaj" href="#"><i class="far fa-hand-scissors"></i> Izdaj knjigu</a>
                     <a class="text-blue-800 one" hidden id="vrati" href="#"><i class="fas fa-redo-alt"></i> Vrati knjigu</a>
-                    <a class="text-blue-800 one" hidden href="otpisiKnjigu.php"><i class="far fa-calendar-check"></i>  Rezervisi knjigu</a>
+                    <a class="text-blue-800 one" hidden id="rezervisi" href="#"><i class="far fa-calendar-check"></i>  Rezervisi knjigu</a>
 
                     <a href="#" class="text-red-800 one deleteOne" id="deleteOne" hidden data-toggle="modal" data-target="#deleteOneModal"><i class="fa fa-trash ml-4"></i> Izbrisi knjigu</a>
                     <div></div>
@@ -205,7 +205,7 @@
                                                             <span class="px-4 py-0">Vrati knjigu</span>
                                                         </a>
 
-                                                        <a href="rezervisiKnjigu.php" tabindex="0"
+                                                        <a href="{{ route('reserve.create', $book) }}" tabindex="0"
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                            role="menuitem">
                                                             <i class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>

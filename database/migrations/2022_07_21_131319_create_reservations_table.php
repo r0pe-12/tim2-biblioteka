@@ -15,19 +15,18 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('book_id');
+            $table->foreignId('book_id')->constrained('books', 'id');
 
-            $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('users');
+            $table->foreignId('student_id')->constrained('users', 'id');
 
-            $table->unsignedBigInteger('librarian_id');
-            $table->foreign('librarian_id')->references('id')->on('users');
+            $table->foreignId('librarian_id')->constrained('users', 'id');
 
+            $table->foreignId('status_id');
             $table->foreignId('closingReason_id');
 
 
-            $table->timestamp('submttingDate');
-            $table->date('closingDate');
+            $table->date('submttingDate');
+            $table->date('closingDate')->nullable();
         });
     }
 
