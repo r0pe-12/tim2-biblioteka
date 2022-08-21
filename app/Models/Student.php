@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use phpDocumentor\Reflection\Types\This;
 
 class Student extends User
 {
@@ -35,6 +36,21 @@ class Student extends User
             ->join('book_borrow_status','borrows.id','=','borrow_id')
             ->where('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED)
             ->orwhere('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED1)
+            ->get();
+    }
+    public function prekoracene(){
+        # code
+        return $this->borrows()
+            ->join('book_borrow_status', 'borrows.id', '=', 'borrow_id')
+            ->where('book_borrow_status.bookStatus_id', '!=', BookStatus::FAILED)
+            ->where(function ($query){
+                $query->where('book_borrow_status.bookStatus_id', '=', BookStatus::BORROWED)
+                    ->where('return_date', '<', today('Europe/Belgrade'));
+            })
+            ->orWhere(function ($query){
+                $query->where('book_borrow_status.bookStatus_id', '=', BookStatus::RESERVED)
+                    ->where('return_date', '<', today('Europe/Belgrade'));
+            })
             ->get();
     }
 }

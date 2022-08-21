@@ -39,7 +39,7 @@ class BookWriteOffController extends Controller
             $book->samples--;
             $book->save();
         }
-        return redirect()->route('books.index')->with('success', 'Knjiga "'. $book->title .'" je uspješno otpisana');
+        return redirect()->back()->with('success', 'Knjiga "'. $book->title .'" je uspješno otpisana');
     }
 //  END-otpisi knjigu
 

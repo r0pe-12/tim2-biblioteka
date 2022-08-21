@@ -223,10 +223,11 @@ class StudentController extends Controller
         ]);
     }
 
-    public function prekoracene(User $student){
+    public function prekoracene(Student $student){
         # code
         return view('student.evidencija.prekoracene', [
-            'student' => $student
+            'student' => $student,
+            'prekoracene' => $student->prekoracene()
         ]);
     }
 
