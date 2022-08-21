@@ -10,14 +10,14 @@
                 const myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels:['Izdate knjige', 'Rezervisane knjige', 'Knjige u prekoračenju'],
+                        labels:['Izdate', 'Rezervisane', 'U prekoračenju'],
                         datasets:[{
-                            label: 'Data',
+                            label: 'Knjige',
                             data:
                                 [
                                    {{ count($izdate) }},
-                                   {{ count($rezervisane)}},
-                                   {{count($prekoracene)}},
+                                   {{ count($rezervisane) }},
+                                   {{ count($prekoracene) }},
                                 ],
 
                             /*data:[
@@ -27,9 +27,9 @@
 
                             //backgroundColor:'green',
                             backgroundColor:[
-                                'rgba(60, 179, 113, 0.6)',
-                                'rgba(255, 165, 0, 0.6)',
-                                'rgba(255, 0, 0, 0.6)',
+                                'rgb(6, 78, 59, 0.5)',
+                                'rgb(120, 53, 15, 0.5)',
+                                'rgb(127, 29, 29, 0.5)',
                             ],
                             borderWidth:1,
                             barThickness:40,
