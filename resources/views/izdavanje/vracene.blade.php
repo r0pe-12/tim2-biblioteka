@@ -163,40 +163,22 @@
                         <div class="w-full px-[30px] pt-2 bg-white">
                             <table class="overflow-hidden shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
                                 <thead class="bg-[#EFF3F6]">
-                                <tr id="head" class="border-b-[1px] border-[#e4dfdf]">
-                                    <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
-                                        <label class="inline-flex items-center">
-                                            <input type="checkbox" class="form-checkbox checkAll checkOthers">
-                                        </label>
-                                    </th>
-                                    <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                        Naziv knjige
-                                        <a href="#"></a>
-                                    </th>
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
-                                        Izdato uceniku
-                                    </th>
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
-                                        Datum izdavanja
-                                    </th>
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">
-                                        Datum vracanja
-                                    </th>
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
-                                        Zadrzavanje knjige
-                                    </th>
-                                    <th
-                                        class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">
-                                        Knjigu primio
-                                    </th>
-                                    <th class="px-4 py-4"> </th>
-                                </tr>
+                                    <tr id="head" class="border-b-[1px] border-[#e4dfdf]">
+                                        <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
+                                            <label class="inline-flex items-center">
+                                                <input type="checkbox" class="form-checkbox checkAll checkOthers">
+                                            </label>
+                                        </th>
+                                        <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">Izdato uceniku</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">Datum izdavanja</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">Datum vracanja</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Zadrzavanje knjige</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">Knjigu primio</th>
+                                        <th class="px-4 py-4"> </th>
+                                    </tr>
                                 </thead>
-                                <tbody class="bg-white" id="myTableBody">
+                                <tbody id="myTableBody" class="bg-white">
                                     @foreach($returned as $zapis)
                                         <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                             <td class="px-4 py-3 whitespace-no-wrap">
@@ -264,8 +246,6 @@
                                 </tr>
                                 </tfoot>
                             </table>
-
-
                         </div>
                     </div>
                 </div>

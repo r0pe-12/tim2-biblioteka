@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Izdate Knjige
+        Prekoracene Knjige
     @endsection
         <!-- Return Book Modal -->
         <div class="modal fadeM" id="returnBookModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -276,7 +276,7 @@
                     <div class="w-full px-[30px] pt-2 bg-white">
                         <table class="overflow-hidden shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
                             <thead class="bg-[#EFF3F6]">
-                            <tr class="border-b-[1px] border-[#e4dfdf]">
+                            <tr id="head" class="border-b-[1px] border-[#e4dfdf]">
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                     <label class="inline-flex items-center">
                                         <input type="checkbox" class="form-checkbox checkAll checkOthers">
