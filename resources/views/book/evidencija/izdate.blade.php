@@ -125,7 +125,7 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white">
-                                @foreach($book->active() as $zapis)
+                                @foreach($book->active()->get() as $zapis)
                                     <tr class="h-[60px] hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                         <td class="px-4 py-3 whitespace-no-wrap">
                                             <label class="inline-flex items-center">
