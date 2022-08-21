@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->integer('pageNum');
-            $table->foreignId('script_id');
-            $table->foreignId('bookbind_id');
-            $table->foreignId('format_id');
-            $table->foreignId('publisher_id');
-            $table->foreignId('language_id');
+            $table->foreignId('script_id')->constrained('scripts', 'id');
+            $table->foreignId('bookbind_id')->constrained('bookbinds', 'id');
+            $table->foreignId('format_id')->constrained('formats', 'id');
+            $table->foreignId('publisher_id')->constrained('publishers', 'id');
+            $table->foreignId('language_id')->constrained('languages', 'id');
             $table->year('publishDate');
             $table->string('isbn');
             $table->integer('samples');

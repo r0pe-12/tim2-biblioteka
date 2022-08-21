@@ -1,12 +1,12 @@
 $(document).ready(function () {
-    $('table').each(function () {
+    $('#myTable').each(function () {
         this.removeAttribute('class');
         this.class = 'table table-striped table-bordered';
     })
-    $('table thead').each(function () {
+    $('#myTable thead').each(function () {
         this.removeAttribute('class');
     })
-    $('table thead tr').each(function () {
+    $('#myTable thead tr').each(function () {
         this.removeAttribute('class');
     })
     // Setup - add a text input to each footer cell

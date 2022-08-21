@@ -31,24 +31,6 @@ $(function () {
   });
 });
 
-    // With HTML5 history API, we can easily prevent scrolling!
-    $('.nav-tabs a').on('shown.bs.tab', function (e) {
-        if(history.pushState) {
-            history.pushState(null, null, e.target.hash);
-        } else {
-            window.location.hash = e.target.hash; //Polyfill for old browsers
-        }
-    })
-    // Javascript to enable link to tab
-    var hash = location.hash.replace(/^#/, '');  // ^ means starting, meaning only match the first hash
-    if (hash) {
-        $('.nav-tabs a[href="#' + hash + '"]').tab('show');
-    }
-    // Change hash for page-reload
-    $('.nav-tabs a').on('shown.bs.tab', function (e) {
-        window.location.hash = e.target.hash;
-    })
-
 function tab(tab) {
     $('a[href="#' + tab + '"]').tab('show');
 }
@@ -505,6 +487,36 @@ function validacijaBibliotekar(event) {
   }
 }
 
+function jmbgCheckLC() {
+    $("#validateJmbgBibliotekar").empty();
+    $("#jmbgLabel").attr('style', 'color:red;')
+    let jmbgBibliotekar = $("#jmbgBibliotekar").val();
+    if (isNaN(jmbgBibliotekar)){
+        $('#validateJmbgBibliotekar').append('<p style="color:red;font-size:13px;">JMBG je pogrešnog formata!</p>');
+    } else if (jmbgBibliotekar.length == 0) {
+        $('#validateJmbgBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
+    } else if (jmbgBibliotekar.length !== 13) {
+        $('#validateJmbgBibliotekar').append('<p style="color:red;font-size:13px;">JMBG mora imati 13 cifara! Trenutno:' + jmbgBibliotekar.length + '</p>');
+    } else {
+        $("#jmbgLabel").attr('style', 'color:green;')
+    }
+}
+
+function jmbgCheckLE() {
+    $("#validateJmbgBibliotekarEdit").empty();
+    $("#jmbgLabel").attr('style', 'color:red;')
+    let jmbgBibliotekar = $("#jmbgBibliotekarEdit").val();
+    if (isNaN(jmbgBibliotekar)){
+        $('#validateJmbgBibliotekarEdit').append('<p style="color:red;font-size:13px;">JMBG je pogrešnog formata!</p>');
+    } else if (jmbgBibliotekar.length == 0) {
+        $('#validateJmbgBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
+    } else if (jmbgBibliotekar.length !== 13) {
+        $('#validateJmbgBibliotekarEdit').append('<p style="color:red;font-size:13px;">JMBG mora imati 13 cifara! Trenutno:' + jmbgBibliotekar.length + '</p>');
+    } else {
+        $("#jmbgLabel").attr('style', 'color:green;')
+    }
+}
+
 function clearErrorsNameBibliotekar() {
   $("#validateNameBibliotekar").empty();
 }
@@ -709,6 +721,38 @@ function validacijaUcenik(event) {
         $('#validatePwUcenik').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
         $('#validatePw2Ucenik').append('<p style="color:red;font-size:13px;">Šifre se ne poklapaju</p>');
         event.preventDefault();
+    }
+}
+
+function jmbgCheckSC() {
+    $("#validateJmbgUcenik").empty();
+    $("#jmbgLabel").attr('style', 'color:red;')
+    let jmbgUcenik = $("#jmbgUcenik").val();
+
+    if (isNaN(jmbgUcenik)){
+        $('#validateJmbgUcenik').append('<p style="color:red;font-size:13px;">JMBG je pogrešnog formata!</p>');
+    } else if (jmbgUcenik.length == 0) {
+        $('#validateJmbgUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
+    } else if (jmbgUcenik.length !== 13) {
+        $('#validateJmbgUcenik').append('<p style="color:red;font-size:13px;">JMBG mora imati 13 cifara! Trenutno:' + jmbgUcenik.length + '</p>');
+    } else {
+        $("#jmbgLabel").attr('style', 'color:green;')
+    }
+}
+
+function jmbgCheckSE() {
+    $("#validateJmbgUcenikEdit").empty();
+    $("#jmbgLabel").attr('style', 'color:red;')
+    let jmbgUcenik = $("#jmbgUcenikEdit").val();
+
+    if (isNaN(jmbgUcenik)){
+        $('#validateJmbgUcenikEdit').append('<p style="color:red;font-size:13px;">JMBG je pogrešnog formata!</p>');
+    } else if (jmbgUcenik.length == 0) {
+        $('#validateJmbgUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti JMBG!</p>');
+    } else if (jmbgUcenik.length !== 13) {
+        $('#validateJmbgUcenikEdit').append('<p style="color:red;font-size:13px;">JMBG mora imati 13 cifara! Trenutno:' + jmbgUcenik.length + '</p>');
+    } else {
+        $("#jmbgLabel").attr('style', 'color:green;')
     }
 }
 
@@ -955,6 +999,21 @@ function validacijaKnjiga(event) {
     } else if (isbn.length !== 13){
         $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN mora imati 13 cifara! Trenutno:' + isbn.length + '</p>');
         event.preventDefault();
+    }
+}
+
+function isbnCheck() {
+    $("#validateIsbn").empty();
+    $('#isbnLabel').attr('style', 'color:red;')
+    let isbn = $("#isbn").val();
+    if (isNaN(isbn)){
+        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN je pogrešnog formata!</p>');
+    } else if (isbn.length == 0) {
+        $('#validateIsbn').append('<p style="color:red;font-size:13px;">Morate unijeti ISBN!</p>');
+    } else if (isbn.length !== 13){
+        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN mora imati 13 cifara! Trenutno:' + isbn.length + '</p>');
+    } else {
+        $('#isbnLabel').attr('style', 'color:green;')
     }
 }
 
@@ -1207,7 +1266,7 @@ $("#izdajKnjigu").keypress(function (e) {
 });
 
 // Form validation for making reservations
-function validacijaRezervisanje() {
+function validacijaRezervisanje(event) {
 
   $("#validateUcenikRezervisanje").empty();
   $("#validateDatumRezervisanja").empty();
@@ -1217,10 +1276,12 @@ function validacijaRezervisanje() {
 
   if (ucenikRezervisanje == null) {
     $('#validateUcenikRezervisanje').append('<p style="color:red;font-size:13px;">Morate selektovati ucenika!</p>');
+    event.preventDefault();
   }
 
   if (datumRezervisanja.length == 0) {
     $('#validateDatumRezervisanja').append('<p style="color:red;font-size:13px;">Morate selektovati datum rezervisanja!</p>');
+    event.preventDefault()
   }
 }
 
@@ -2917,46 +2978,62 @@ $('.checkOthers').click(function () {
             console.log(path);
             const id = this.getAttribute('data-id');
             const name = this.getAttribute('data-name');
-
-            if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/') {
-                const bookId = this.getAttribute('data-book-id');
+            const href = this.getAttribute('data-href');
+            if (path == '/aktivne-rezervacije/' || /\/students\/.*\/aktivne-rezervacije/i.test(path)){
+                document.getElementById('izdaj').href = href;
+                const otkazi = document.getElementById('otkaziRez');
                 const bookName = this.getAttribute('data-book-name');
                 const studentName = this.getAttribute('data-student-name');
+                const action = this.getAttribute('data-action');
 
-                document.getElementById("detalji").href = '/books/' + bookId + '/evidencija/' + id + '/show';
-
-               if (path === '/izdate/' || path === '/prekoracene/') {
-                   const vrati = document.getElementById('vrati');
-                   vrati.setAttribute('data-action', '/books/' + bookId + '/vrati');
-                   vrati.setAttribute('data-name', name);
-                   vrati.setAttribute('data-id', id);
-                   vrati.setAttribute('data-book-name', bookName);
-                   vrati.setAttribute('data-student-name', studentName);
-
-                   const otpisi = document.getElementById('otpisi');
-                   otpisi.setAttribute('data-action', '/books/' + bookId + '/otpisi');
-                   otpisi.setAttribute('data-name', name);
-                   otpisi.setAttribute('data-id', id);
-                   otpisi.setAttribute('data-book-name', bookName);
-                   otpisi.setAttribute('data-student-name', studentName);
-               }
+                otkazi.setAttribute('data-action', '/books/' + id + '/vrati');
+                otkazi.setAttribute('data-book-name', bookName);
+                otkazi.setAttribute('data-student-name', studentName);
+                otkazi.setAttribute('data-action', action);
             } else {
-                document.getElementById("detalji").href = path + id;
-                document.getElementById("edit").href = path + id + "/edit";
+                if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/.*\/izdate/i.test(path) || /\/students\/.*\/vracene/i.test(path) || /\/students\/.*\/prekoracene/i.test(path)) {
+                    const bookId = this.getAttribute('data-book-id');
+                    const bookName = this.getAttribute('data-book-name');
+                    const studentName = this.getAttribute('data-student-name');
 
-                if (path === '/books/') {
-                    document.getElementById("otpisi").href = "/books/" + id + "/otpisi";
-                    document.getElementById("izdaj").href = "/books/" + id + "/izdaj";
-                    document.getElementById("vrati").href = "/books/" + id + "/vrati";
+                    document.getElementById("detalji").href = '/books/' + bookId + '/evidencija/' + id + '/show';
+
+                    if (path === '/izdate/' || path === '/prekoracene/' || /\/students\/.*\/izdate/i.test(path) || /\/students\/.*\/prekoracene/i.test(path)) {
+                        const vrati = document.getElementById('vrati');
+                        vrati.setAttribute('data-action', '/books/' + bookId + '/vrati');
+                        vrati.setAttribute('data-name', name);
+                        vrati.setAttribute('data-id', id);
+                        vrati.setAttribute('data-book-name', bookName);
+                        vrati.setAttribute('data-student-name', studentName);
+
+                        const otpisi = document.getElementById('otpisi');
+                        otpisi.setAttribute('data-action', '/books/' + bookId + '/otpisi');
+                        otpisi.setAttribute('data-name', name);
+                        otpisi.setAttribute('data-id', id);
+                        otpisi.setAttribute('data-book-name', bookName);
+                        otpisi.setAttribute('data-student-name', studentName);
+                    }
+                } else if (path === '/arhivirane-rezervacije/' || /\/students\/.*\/arhivirane-rezervacije/i.test(path)){
+
+                } else {
+                    document.getElementById("detalji").href = path + id;
+                    document.getElementById("edit").href = path + id + "/edit";
+
+                    if (path === '/books/') {
+                        document.getElementById("otpisi").href = "/books/" + id + "/otpisi";
+                        document.getElementById("izdaj").href = "/books/" + id + "/izdaj";
+                        document.getElementById("vrati").href = "/books/" + id + "/vrati";
+                        document.getElementById("rezervisi").href = "/books/" + id + "/rezervisi";
+                    }
+
+                    document.getElementById("deleteOne").setAttribute('data-id', id);
+                    document.getElementById("deleteOne").setAttribute('data-name', name);
                 }
-
-                document.getElementById("deleteOne").setAttribute('data-id', id);
-                document.getElementById("deleteOne").setAttribute('data-name', name);
             }
 
         })
     } else if (checked.length >= 2){
-        if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/') {
+        if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/.*\/izdate/i.test(path) || /\/students\/.*\/vracene/i.test(path) || /\/students\/.*\/prekoracene/i.test(path) || /\/students\/.*\/aktivne-rezervacije/i.test(path) || path == '/aktivne-rezervacije/' || path === '/arhivirane-rezervacije/' || /\/students\/.*\/arhivirane-rezervacije/i.test(path)) {
 
         } else {
             var ids = [];
@@ -2971,7 +3048,7 @@ $('.checkOthers').click(function () {
         }
     } else {
         // document.getElementById("ids").value = '';
-        if (path === '/vracene/') {
+        if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/.*\/izdate/i.test(path) || /\/students\/.*\/vracene/i.test(path) || /\/students\/.*\/prekoracene/i.test(path) || /\/students\/.*\/aktivne-rezervacije/i.test(path) || path == '/aktivne-rezervacije/' || path === '/arhivirane-rezervacije/' || /\/students\/.*\/arhivirane-rezervacije/i.test(path)) {
 
         } else {
             document.getElementById("deleteOne").removeAttribute('data-id');
@@ -3032,6 +3109,26 @@ $('.vrati').click(function () {
     modalTitle.innerHTML = '<b>' + bookName + '</b> za ucenika <b>' + studentName + '</b>';
 
     modalFormInput.value = id;
+})
+
+$('.otkaziRez').click(function () {
+    // var id = this.getAttribute('data-id');
+    var name = this.getAttribute('data-name');
+    var bookId = this.getAttribute('data-book-id');
+    var bookName = this.getAttribute('data-book-name');
+    var studentName = this.getAttribute('data-student-name');
+    var action = this.getAttribute('data-action');
+
+    var Modal = document.getElementById('otkaziRezModal');
+    var modalTitle = Modal.querySelector('.modalLabel')
+    var form = Modal.querySelector('form');
+    // var modalFormInput = Modal.querySelector('.ids');
+
+    form.action = action;
+
+    modalTitle.innerHTML = '<b>' + bookName + '</b> za ucenika <b>' + studentName + '</b>';
+
+    // modalFormInput.value = id;
 })
 
 $('.otpisi').click(function () {
@@ -3112,7 +3209,7 @@ function checkMakeSure(event, button) {
     });
 }(jQuery));
 
-function flashMsg(msg) {
+function flashMsg(msg, type) {
     Swal.fire({
         "title": msg,
         // "text":msg,
@@ -3122,6 +3219,21 @@ function flashMsg(msg) {
         "showConfirmButton":false,
         "showCloseButton":true,
         "timerProgressBar":false,
-        "customClass":{"container":null,"popup":null,"header":null,"title":null,"closeButton":null,"icon":null,"image":null,"content":null,"input":null,"actions":null,"confirmButton":null,"cancelButton":null,"footer":null}, "toast":true,"icon":"success","position":"top-end"});
-
+        "customClass":{"container":null,"popup":null,"header":null,"title":null,"closeButton":null,"icon":null,"image":null,"content":null,"input":null,"actions":null,"confirmButton":null,"cancelButton":null,"footer":null},
+        "toast":true,
+        "icon":type,
+        "position":"top-end"});
 }
+
+function autofill() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('ucenik');
+    console.log(id);
+    if ($('#ucenikIzdavanje').find("option[value='" + id + "']").length) {
+        $('#ucenikIzdavanje').val(id).trigger('change');
+    }
+}
+
+//    add scroll class to every section cuz of small displays are unable to scroll down
+// $('section').addClass('scroll');
+

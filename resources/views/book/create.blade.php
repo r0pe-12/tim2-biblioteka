@@ -11,7 +11,7 @@
         </script>
     @endsection
         <!-- Content -->
-        <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
+        <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700 scroll">
             <!-- Heading of content -->
             <div class="heading">
                 <div class="flex border-b-[1px] border-[#e4dfdf]">
@@ -270,9 +270,9 @@
                                     </div>
 
                                     <div class="mt-[20px]">
-                                        <p>International Standard Book Num <span class="text-red-500">*</span></p>
-                                        <input autocomplete="off"
-                                            type="text" name="isbn" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()">
+                                        <p id="isbnLabel">International Standard Book Num <span class="text-red-500">*</span></p>
+                                        <input autocomplete="off" onkeyup="isbnCheck()"
+                                            type="text" name="isbn" id="isbn" maxlength="13" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()">
                                         <div id="validateIsbn"></div>
                                     </div>
                                 </div>

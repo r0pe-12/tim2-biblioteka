@@ -43,7 +43,7 @@ class BookReturnController extends Controller
             $book->borrowedSaples--;
             $book->save();
         }
-        return redirect()->route('vracene1', $book)->with('success', 'Knjiga: ' . $book->title . '  je uspješno vraćena');
+        return redirect()->back()->with('success', 'Knjiga: ' . $book->title . '  je uspješno vraćena');
 
     }
 //    END-vrati knjigu

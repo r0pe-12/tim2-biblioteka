@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookBorrowController;
+use App\Http\Controllers\BookReserveConroller;
 use App\Http\Controllers\BookReturnController;
 use App\Http\Controllers\BookWriteOffController;
 use App\Http\Controllers\StudentController;
@@ -73,9 +74,39 @@ Route::middleware(['auth'])->group(function (){
             Route::get('/vracene', 'vracene')->name('vracene');
             Route::get('/books/{book}/evidencija/vracene', 'vracene1')->name('vracene1');
         });
+
+        Route::controller(BookReserveConroller::class)->group(function (){
+    //      rezervisi knjigu
+            Route::get('/books/{book}/rezervisi', 'reserveForm')->name('reserve.create');
+            Route::post('/books/{book}/rezervisi', 'reserve')->name('reserve.store');
+    //      END-rezervisi knjigu
+            Route::get('/aktivne-rezervacije', 'active')->name('aktivne-rezervacije');
+            Route::get('/arhivirane-rezervacije', 'archive')->name('arhivirane-rezervacije');
+    //      rezervacije jedne knjige
+            Route::get('/books/{book}/evidencija/aktivne-rezervacije', 'active1')->name('aktivne-rezervacije1');
+            Route::get('/books/{book}/evidencija/arhivirane-rezervacije', 'archive1')->name('arhivirane-rezervacije1');
+    //      ENDrezervacije jedne knjige
+    //      otkazi rezervaciju
+            Route::put('/rezervacija/{reservation}/otkazi', 'cancel')->name('rezervacija.otkazi');
+    //      END-otkazi rezervaciju
+        });
 //    END-rute za knjigu
 
     Route::resource('/students', StudentController::class);
     Route::delete('/student/bulkdelete', [StudentController::class, 'bulkDelete'])->name('student.bulk-delete');
     Route::put('/students/{user}/resetPassword', [StudentController::class, 'passwordReset'])->name('student.pwreset');
+    Route::controller(StudentController::class)->prefix('/students/{student:username}')->group(function (){
+        Route::get('/izdate', 'izdate')->name('ucenik.izdate');
+        Route::get('/vracene', 'vracene')->name('ucenik.vracene');
+        Route::get('/prekoracene', 'prekoracene')->name('ucenik.prekoracene');
+        Route::get('/aktivne-rezervacije', 'aktivne')->name('ucenik.aktivne');
+        Route::get('/arhivirane-rezervacije', 'arhivirane')->name('ucenik.arhivirane');
+    });
 });
+
+//    test routes
+
+
+
+//    END-test routes
+

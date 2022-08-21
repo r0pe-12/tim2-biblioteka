@@ -24,7 +24,7 @@
 
     <body>
     <!-- Main content -->
-        <main class="h-screen small:hidden bg-login">
+        <main class="h-screen small:hidden bg-login scroll">
             <div class="flex items-center justify-center pt-[13%]">
                 <div class="w-full max-w-md">
                     <form class="px-12 pt-6 pb-4 mb-4 bg-white rounded shadow-lg" method="POST" action="{{ route('login') }}">

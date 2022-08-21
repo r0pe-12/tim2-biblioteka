@@ -88,8 +88,8 @@
 
                 <div class="inline-block min-w-full px-[50px] pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
                     <table class="overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
-                        <thead id="head" class="bg-[#EFF3F6]">
-                          <tr class="border-b-[1px] border-[#e4dfdf]">
+                        <thead class="bg-[#EFF3F6]">
+                          <tr id="head" class="border-b-[1px] border-[#e4dfdf]">
                              <th class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500">
                                 <label class="inline-flex items-center">
                                     <input type="checkbox" class="form-checkbox checkAll checkOthers">

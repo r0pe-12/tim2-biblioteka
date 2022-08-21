@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Librarian\CreateRequest;
 use App\Http\Requests\Librarian\UpdateRequest;
-use App\Http\Requests\LibrarianRequest;
 use App\Models\Librarian;
 use App\Models\Role;
 use App\Models\User;
@@ -73,6 +72,9 @@ class LibrarianController extends Controller
     {
         //
         $librarian = User::where('username', '=', $username)->first();
+        if (is_null($librarian)) {
+            abort('404');
+        }
         return view('librarian.show', compact('librarian'));
     }
 
@@ -86,6 +88,9 @@ class LibrarianController extends Controller
     {
         //
         $librarian = User::where('username', '=', $username)->first();
+        if (is_null($librarian)) {
+            abort('404');
+        }
         return view('librarian.edit', compact('librarian'));
     }
 
@@ -130,10 +135,18 @@ class LibrarianController extends Controller
         //
         $librarian = User::where('username', '=', $username)->first();
         $this->authorize('delete', $librarian);
-        if (file_exists($photoPath = public_path() . $librarian->photoPath)){
+
+        $photo = $librarian->photoPath;
+
+        try {
+            $librarian->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje bibliotekara "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" nije moguce');
+        }
+
+        if (file_exists($photoPath = public_path() . $photo)){
             unlink($photoPath);
         }
-        $librarian->delete();
         return redirect()->route('librarians.index')->with('success', 'Bibliotekar "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" uspješno izbrisan');
     }
 
@@ -147,17 +160,29 @@ class LibrarianController extends Controller
     public function bulkDelete()
     {
         //
-//        $names = [];
         $unames = explode(',', request('unames'));
-        foreach ($unames as $uname){
-            $librarian = User::where('username', '=', $uname)->first();
-            if (file_exists($photoPath = public_path() . $librarian->photoPath)){
+        $librarians = User::whereIn('username', $unames);
+
+        $photos = [];
+//        we will get all photopaths from librarians
+        foreach ($librarians->get() as $lib){
+            $photos[] = $lib->getOriginal('photoPath');
+        }
+
+//        we will try to delete librarians
+        try {
+            $librarians->delete();
+        } catch (\Exception $e){
+            return redirect()->back()->with('fail', 'Brisanje bibliotekara nije moguce');
+        }
+
+//        if wee delete them we will delete photos from storage
+        foreach ($photos as $photo) {
+            if (file_exists($photoPath = public_path() . $photo)){
                 unlink($photoPath);
             }
-            $librarian->delete();
-//            $names[] = $librarian->name . ' ' . $librarian->surname;
         }
-        return redirect()->route('librarians.index')->with('success', 'Bibliotekari su uspješno izbrisani');
+        return redirect()->back()->with('success', 'Bibliotekari su uspješno izbrisani');
     }
 
 

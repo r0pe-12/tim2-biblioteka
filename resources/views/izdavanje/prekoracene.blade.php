@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Izdate Knjige
+        Prekoracene Knjige
     @endsection
         <!-- Return Book Modal -->
         <div class="modal fadeM" id="returnBookModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -153,7 +153,7 @@
                                         class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                         <div
                                             class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                            <a href="aktivneRezervacije.php" aria-label="Rezervacije"
+                                            <a href="{{ route('aktivne-rezervacije') }}" aria-label="Rezervacije"
                                                class="flex items-center">
                                                 <i
                                                     class="text-[#707070] text-[20px] far fa-calendar-check transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
@@ -173,7 +173,7 @@
                                         class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                         <div
                                             class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                            <a href="arhiviraneRezervacije.php" aria-label="Rezervacije"
+                                            <a href="{{ route('arhivirane-rezervacije') }}" aria-label="Rezervacije"
                                                class="flex items-center">
                                                 <i
                                                     class="text-[#707070] text-[20px] fas fa-calendar-alt transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
@@ -189,85 +189,85 @@
                             </li>
                             <li class="mb-[4px]">
                                 <div class="w-[300px] pl-[32px]">
-                                        <span style="pointer-events: none"
-                                              class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
-                                            <div
-                                                class="group py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                            </div>
-                                        </span>
+                                    <span style="pointer-events: none"
+                                          class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                        <div
+                                            class="group py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                        </div>
+                                    </span>
                                 </div>
                             </li>
 
                             <li class="mb-[4px] one" hidden>
                                 <div class="w-[300px] pl-[32px]">
-                                        <span
-                                            class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
-                                            <div
-                                                class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a id="detalji" href="#"
-                                                   class="flex items-center">
-                                                    <i
-                                                        class="text-[20px] fas fa-copy transition duration-300 ease-in text-[#576cdf]"></i>
-                                                    <div>
-                                                        <p
-                                                            class="text-[15px] ml-[19px] transition duration-300 ease-in text-[#576cdf]">
-                                                            Pogledaj detalje</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </span>
+                                    <span
+                                        class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                        <div
+                                            class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                            <a id="detalji" href="#"
+                                               class="flex items-center">
+                                                <i
+                                                    class="text-[20px] fas fa-copy transition duration-300 ease-in text-[#576cdf]"></i>
+                                                <div>
+                                                    <p
+                                                        class="text-[15px] ml-[19px] transition duration-300 ease-in text-[#576cdf]">
+                                                        Pogledaj detalje</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </span>
                                 </div>
                             </li>
                             <li class="mb-[4px] one" hidden>
                                 <div class="w-[300px] pl-[32px]">
-                                        <span
-                                            class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
-                                            <div
-                                                class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a id="vrati" href="#" data-toggle="modal" data-target="#returnBookModal"
-                                                   class="vrati flex items-center">
-                                                    <i
-                                                        class="text-[20px] fas fa-redo transition duration-300 ease-in text-[#576cdf]"></i>
-                                                    <div>
-                                                        <p
-                                                            class="text-[15px] ml-[19px] transition duration-300 ease-in text-[#576cdf]">
-                                                            Vrati knjigu</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </span>
+                                    <span
+                                        class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                        <div
+                                            class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                            <a id="vrati" href="#" data-toggle="modal" data-target="#returnBookModal"
+                                               class="vrati flex items-center">
+                                                <i
+                                                    class="text-[20px] fas fa-redo transition duration-300 ease-in text-[#576cdf]"></i>
+                                                <div>
+                                                    <p
+                                                        class="text-[15px] ml-[19px] transition duration-300 ease-in text-[#576cdf]">
+                                                        Vrati knjigu</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </span>
                                 </div>
                             </li>
 
                             <li class="mb-[4px]">
                                 <div class="w-[300px] pl-[32px]">
-                                        <span style="pointer-events: none"
-                                              class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
-                                            <div
-                                                class="group py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                            </div>
-                                        </span>
+                                    <span style="pointer-events: none"
+                                          class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                        <div
+                                            class="group py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                        </div>
+                                    </span>
                                 </div>
                             </li>
 
                             <li class="mb-[4px] one" hidden>
                                 <div class="w-[300px] pl-[32px]">
-                                        <span
-                                            class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
-                                            <div
-                                                class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a id="otpisi" href="#" data-toggle="modal" data-target="#writeoffBookModal"
-                                                   class="otpisi flex items-center">
-                                                    <i
-                                                        class="text-[20px] fas fa-level-up-alt transition duration-300 ease-in text-[#576cdf]"></i>
-                                                    <div>
-                                                        <p
-                                                            class="text-[15px] ml-[19px] transition duration-300 ease-in text-[#576cdf]">
-                                                            Otpisi knjigu</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </span>
+                                    <span
+                                        class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                        <div
+                                            class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                            <a id="otpisi" href="#" data-toggle="modal" data-target="#writeoffBookModal"
+                                               class="otpisi flex items-center">
+                                                <i
+                                                    class="text-[20px] fas fa-level-up-alt transition duration-300 ease-in text-[#576cdf]"></i>
+                                                <div>
+                                                    <p
+                                                        class="text-[15px] ml-[19px] transition duration-300 ease-in text-[#576cdf]">
+                                                        Otpisi knjigu</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </span>
                                 </div>
                             </li>
                         </ul>
@@ -276,37 +276,17 @@
                     <div class="w-full px-[30px] pt-2 bg-white">
                         <table class="overflow-hidden shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
                             <thead class="bg-[#EFF3F6]">
-                            <tr class="border-b-[1px] border-[#e4dfdf]">
+                            <tr id="head" class="border-b-[1px] border-[#e4dfdf]">
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                     <label class="inline-flex items-center">
                                         <input type="checkbox" class="form-checkbox checkAll checkOthers">
                                     </label>
                                 </th>
-                                <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                    Naziv knjige
-                                    <a href="#"></a>
-                                </th>
-                                <!-- Datum izdavanja + dropdown filter for date -->
-                                <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
-                                    Datum izdavanja
-
-                                </th>
-                                <!-- Izdato uceniku + dropdown filter for ucenik -->
-                                <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
-                                    Izdato uceniku
-
-                                </th>
-                                <!-- Prekoracenje u danima -->
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-                                    Prekoracenje u danima
-                                </th>
-                                <!-- Trenutno zadrzavanje knjige + dropdown filter for date -->
-                                <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
-                                    Trenutno zadrzavanje knjige
-                                </th>
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
+                                <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">Datum izdavanja</th>
+                                <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">Izdato uceniku</th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Prekoracenje u danima</th>
+                                <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Trenutno zadrzavanje knjige</th>
                                 <th class="px-4 py-4"> </th>
                             </tr>
                             </thead>
@@ -373,31 +353,11 @@
                             <tr class="border-b-[1px] border-[#e4dfdf]">
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                 </th>
-                                <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                    Naziv knjige
-                                    <a href="#"></a>
-                                </th>
-                                <!-- Datum izdavanja + dropdown filter for date -->
-                                <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
-                                    Datum izdavanja
-
-                                </th>
-                                <!-- Izdato uceniku + dropdown filter for ucenik -->
-                                <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
-                                    Izdato uceniku
-
-                                </th>
-                                <!-- Prekoracenje u danima -->
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-                                    Prekoracenje u danima
-                                </th>
-                                <!-- Trenutno zadrzavanje knjige + dropdown filter for date -->
-                                <th
-                                    class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
-                                    Trenutno zadrzavanje knjige
-                                </th>
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
+                                <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">Datum izdavanja</th>
+                                <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">Izdato uceniku</th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Prekoracenje u danima</th>
+                                <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Trenutno zadrzavanje knjige</th>
                                 <th class="px-4 py-4"> </th>
                             </tr>
                             </tfoot>

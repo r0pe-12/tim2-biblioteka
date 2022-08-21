@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Students\CreateStudentRequest;
 use App\Http\Requests\Students\UpdateStudentRequest;
 use App\Http\Requests\Students;
+use App\Models\Policy;
 use App\Models\Role;
 use App\Models\Student;
 use App\Models\User;
@@ -73,7 +74,10 @@ class StudentController extends Controller
     public function show($username)
     {
         //
-        $student = User::where('username', '=', $username)->first();
+        $student = Student::where('username', '=', $username)->first();
+        if (is_null($student)) {
+            abort('404');
+        }
         return view('student.show', compact('student'));
     }
 
@@ -87,6 +91,9 @@ class StudentController extends Controller
     {
         //
         $student = User::where('username', '=', $username)->first();
+        if (is_null($student)) {
+            abort('404');
+        }
         return view('student.edit', compact('student'));
 
     }
@@ -134,10 +141,18 @@ class StudentController extends Controller
         //
         $student = User::where('username', '=', $username)->first();
         $this->authorize('delete', $student);
-        if (file_exists($photoPath = public_path() . $student->photoPath)){
+
+        $photo = $student->photoPath;
+
+        try {
+            $student->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje ucenika "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" nije moguce');
+        }
+
+        if (file_exists($photoPath = public_path() . $photo)){
             unlink($photoPath);
         }
-        $student->delete();
         return redirect()->route('students.index')->with('success', 'Ucenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" je uspješno izbrisan');
     }
 
@@ -150,17 +165,29 @@ class StudentController extends Controller
     public function bulkDelete()
     {
         //
-//        $names = [];
         $unames = explode(',', request('unames'));
-        foreach ($unames as $uname){
-            $student = User::where('username', '=', $uname)->first();
-            if (file_exists($photoPath = public_path() . $student->photoPath)){
+        $students = User::whereIn('username', $unames);
+
+        $photos = [];
+//        we will get all photopaths from students
+        foreach ($students->get() as $item) {
+            $photos[] = $item->photoPath;
+        }
+
+//        we will try to delete students
+        try {
+            $students->delete();
+        } catch (\Exception $e){
+            return redirect()->back()->with('fail', 'Brisanje ucenika nije moguce');
+        }
+
+//        if wee delete them we will delete photos from storage
+        foreach ($photos as $photo) {
+            if (file_exists($photoPath = public_path() . $photo)){
                 unlink($photoPath);
             }
-            $student->delete();
-//            $names[] = $student->name . ' ' . $student->surname;
         }
-        return redirect()->route('students.index')->with('success', 'Ucenici su uspješno izbrisani');
+        return redirect()->back()->with('success', 'Ucenici su uspješno izbrisani');
     }
 
 
@@ -179,4 +206,48 @@ class StudentController extends Controller
         return redirect()->back()->with('success', 'Šifra korisnika "' . $user->username . '" je uspješno resetovana');
     }
 
+
+//    evidencija vezana za ucenika
+    public function izdate(Student $student){
+        # code
+        return view('student.evidencija.izdate', [
+            'student' => $student,
+            'izdate' => $student->active()
+        ]);
+    }
+
+    public function vracene(Student $student){
+        # code
+        return view('student.evidencija.vracene', [
+            'student' => $student,
+            'returned' => $student->returned()
+        ]);
+    }
+
+    public function prekoracene(Student $student){
+        # code
+        return view('student.evidencija.prekoracene', [
+            'student' => $student,
+            'prekoracene' => $student->prekoracene()
+        ]);
+    }
+
+    public function aktivne(Student $student){
+        # code
+        return view('student.evidencija.aktivne', [
+            'student' => $student,
+            'reservations' => $student->activeRes(),
+            'res_deadline' => Policy::reservation()
+        ]);
+    }
+
+    public function arhivirane(Student $student){
+        # code
+        return view('student.evidencija.arhivirane', [
+            'student' => $student,
+            'reservations' => $student->archiveRes(),
+            'res_deadline' => Policy::reservation()
+        ]);
+    }
+//    END-evidencija vezana za ucenika
 }

@@ -180,7 +180,7 @@ class BookController extends Controller
 //        attaching book to multiple genres
         $book->genres()->sync($input['genres']);
 
-        return redirect()->route('books.index')->with('success', 'Knjiga: "' . $book->title . '" je uspješno izmijenjena');
+        return redirect()->back()->with('success', 'Knjiga: "' . $book->title . '" je uspješno izmijenjena');
     }
 
     /**
@@ -192,13 +192,21 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         //
-        foreach ($book->photos as $photo){
+        $photos = [];
+        $photos = $book->photos;
+
+        try {
+            $book->delete();
+        } catch (\Exception $e){
+            return redirect()->back()->with('fail', 'Brisanje knjige "' . $book->title . '" nije moguce');
+        }
+
+        foreach ($photos as $photo){
             if (file_exists($photoPath = public_path() . $photo->path)){
                 unlink($photoPath);
             }
         }
-        $book->delete();
-        return redirect()->route('books.index')->with('success', 'Knjiga: "' . $book->title . '" je uspješno izbrisana');
+        return redirect()->back()->with('success', 'Knjiga: "' . $book->title . '" je uspješno izbrisana');
     }
 
 
@@ -211,18 +219,28 @@ class BookController extends Controller
     public function bulkDelete()
     {
         //
-//        $titles = [];
         $ids = explode(',', request('ids'));
-        foreach ($ids as $id){
-            $book = Book::find($id);
-            foreach ($book->photos as $photo){
+        $books = Book::whereIn('id', $ids);
+
+        $galery = [];
+        foreach ($books->get() as $book) {
+            $galery[] = $book->photos;
+        }
+
+
+        try {
+            $books->delete();
+        } catch (\Exception $e){
+            return redirect()->back()->with('fail', 'Brisanje knjiga nije moguce');
+        }
+
+        foreach ($galery as $photos){
+            foreach ($photos as $photo) {
                 if (file_exists($photoPath = public_path() . $photo->path)){
                     unlink($photoPath);
                 }
             }
-            $book->delete();
-//            $titles[] = $book->title;
-    }
-        return redirect()->route('books.index')->with('success', 'Knjige su uspješno izbrisane');
+        }
+        return redirect()->back()->with('success', 'Knjige su uspješno izbrisane');
     }
 }

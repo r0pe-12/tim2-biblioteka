@@ -6,6 +6,7 @@
             <script>
                 window.onload = function () {
                     funkcijaDatumVracanja();
+                    autofill();
                 }
             </script>
     @endsection

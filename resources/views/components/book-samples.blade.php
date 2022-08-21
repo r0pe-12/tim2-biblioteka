@@ -1,6 +1,6 @@
 @props([
-    'available',
-    'book'
+    'book',
+    'available' => $book->samples - $book->borrowedSaples
 ])
 
 <div {{ $attributes->class(['ml-[30px] mr-[70px] mt-[20px] flex flex-row justify-between']) }}>
@@ -15,7 +15,7 @@
         <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
             {{ $available }} {{ $available%10 == 0 ? 'primjeraka' : ($available%10 == 1 ? 'primjerak' : ($available%10 > 1 && $available%10 < 5 ? 'primjerka' : 'primjeraka')) }}
         </p>
-        <a href="iznajmljivanjeAktivne.php">
+        <a href="{{ route('aktivne-rezervacije1', $book) }}">
             <p
                     class=" mt-[16px] bg-yellow-200 text-yellow-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                 {{ $book->reservedSamples }} {{ $book->reservedSamples%10 == 0 ? 'primjeraka' : ($book->reservedSamples%10 == 1 ? 'primjerak' : ($book->reservedSamples%10 > 1 && $book->reservedSamples%10 < 5 ? 'primjerka' : 'primjeraka')) }}
