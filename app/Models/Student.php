@@ -53,4 +53,15 @@ class Student extends User
             })
             ->get();
     }
+
+    public function reservations(){
+        # code
+        return $this->hasMany(Reservation::class);
+    }
+
+    public function activeRes(){
+        # code
+        return $this->reservations()
+                ->where('status_id', '=', ReservationStatus::RESERVED)->get();
+    }
 }

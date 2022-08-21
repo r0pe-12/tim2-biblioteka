@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Students\CreateStudentRequest;
 use App\Http\Requests\Students\UpdateStudentRequest;
 use App\Http\Requests\Students;
+use App\Models\Policy;
 use App\Models\Role;
 use App\Models\Student;
 use App\Models\User;
@@ -231,10 +232,12 @@ class StudentController extends Controller
         ]);
     }
 
-    public function aktivne(User $student){
+    public function aktivne(Student $student){
         # code
         return view('student.evidencija.aktivne', [
-            'student' => $student
+            'student' => $student,
+            'reservations' => $student->activeRes(),
+            'res_deadline' => Policy::reservation()
         ]);
     }
 
