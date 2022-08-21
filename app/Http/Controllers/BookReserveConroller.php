@@ -61,6 +61,18 @@ class BookReserveConroller extends Controller
     }
 //    prikazi sve aktivne rezervacije
 
+//    prikazi sve aktivne rezervacije jedne knjige
+    public function active1(Book $book){
+        # code
+        return view('book.evidencija.aktivne', [
+            'book' => $book,
+            'reservations' => $book->activeRes(),
+            'res_deadline' => Policy::reservation()
+
+        ]);
+    }
+//    prikazi sve aktivne rezervacije jedne knige
+
 //    prikazi sve arhivirane rezervacije
     public function archive(){
         # code
@@ -70,6 +82,17 @@ class BookReserveConroller extends Controller
         ]);
     }
 //    prikazi sve arhivirane rezervacije
+
+//    prikazi sve arhivirane rezervacije jedne knjige
+    public function archive1(Book $book){
+        # code
+        return view('book.evidencija.arhivirane');
+        return view('izdavanje.arhivirane', [
+            'reservations' => Reservation::archive(),
+            'res_deadline' => Policy::reservation()
+        ]);
+    }
+//    prikazi sve arhivirane rezervacije jedne knjige
 
 //    otkazi rezervaciju
     public function cancel(Reservation $reservation){

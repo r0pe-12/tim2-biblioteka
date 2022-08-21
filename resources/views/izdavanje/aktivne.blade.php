@@ -290,22 +290,10 @@
                                             </label>
                                         </th>
                                         <th class="flex items-center px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
-                                        <th
-                                            class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
-                                            Datum rezervacije
-                                        </th>
-                                        <th
-                                            class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
-                                            Rezervacija istice
-                                        </th>
-                                        <th
-                                            class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
-                                            Rezervaciju podnio
-                                        </th>
-                                        <th
-                                            class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer statusDrop-toggle">
-                                            Status
-                                        </th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">Datum rezervacije</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Rezervacija istice</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">Rezervaciju podnio</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer statusDrop-toggle">Status</th>
                                         <th class="px-4 py-4"> </th>
                                     </tr>
                                 </tfoot>

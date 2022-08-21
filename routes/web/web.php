@@ -80,6 +80,10 @@ Route::middleware(['auth'])->group(function (){
     //      END-rezervisi knjigu
             Route::get('/aktivne-rezervacije', 'active')->name('aktivne-rezervacije');
             Route::get('/arhivirane-rezervacije', 'archive')->name('arhivirane-rezervacije');
+    //      rezervacije jedne knjige
+            Route::get('/books/{book}/evidencija/aktivne-rezervacije', 'active1')->name('aktivne-rezervacije1');
+            Route::get('/books/{book}/evidencija/arhivirane-rezervacije', 'archive1')->name('arhivirane-rezervacije1');
+    //      ENDrezervacije jedne knjige
     //      otkazi rezervaciju
             Route::put('/rezervacija/{reservation}/otkazi', 'cancel')->name('rezervacija.otkazi');
     //      END-otkazi rezervaciju
@@ -105,9 +109,6 @@ Route::middleware(['auth'])->group(function (){
         return view('book.evidencija.aktivne');
     });
 
-    Route::get('/arhivirane', function (){
-        return view('izdavanje.arhivirane');
-    });
 
     Route::get('/arhivirane1', function (){
         return view('book.evidencija.arhivirane');
