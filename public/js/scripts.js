@@ -3013,6 +3013,8 @@ $('.checkOthers').click(function () {
                         otpisi.setAttribute('data-book-name', bookName);
                         otpisi.setAttribute('data-student-name', studentName);
                     }
+                } else if (path === '/arhivirane-rezervacije/' || /\/students\/.*\/arhivirane-rezervacije/i.test(path)){
+
                 } else {
                     document.getElementById("detalji").href = path + id;
                     document.getElementById("edit").href = path + id + "/edit";
@@ -3031,7 +3033,7 @@ $('.checkOthers').click(function () {
 
         })
     } else if (checked.length >= 2){
-        if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/.*\/izdate/i.test(path) || /\/students\/.*\/vracene/i.test(path) || /\/students\/.*\/prekoracene/i.test(path) || /\/students\/.*\/aktivne-rezervacije/i.test(path) || path == '/aktivne-rezervacije/') {
+        if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/.*\/izdate/i.test(path) || /\/students\/.*\/vracene/i.test(path) || /\/students\/.*\/prekoracene/i.test(path) || /\/students\/.*\/aktivne-rezervacije/i.test(path) || path == '/aktivne-rezervacije/' || path === '/arhivirane-rezervacije/' || /\/students\/.*\/arhivirane-rezervacije/i.test(path)) {
 
         } else {
             var ids = [];
@@ -3046,7 +3048,7 @@ $('.checkOthers').click(function () {
         }
     } else {
         // document.getElementById("ids").value = '';
-        if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/.*\/izdate/i.test(path) || /\/students\/.*\/vracene/i.test(path) || /\/students\/.*\/prekoracene/i.test(path) || /\/students\/.*\/aktivne-rezervacije/i.test(path) || path == '/aktivne-rezervacije/') {
+        if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/.*\/izdate/i.test(path) || /\/students\/.*\/vracene/i.test(path) || /\/students\/.*\/prekoracene/i.test(path) || /\/students\/.*\/aktivne-rezervacije/i.test(path) || path == '/aktivne-rezervacije/' || path === '/arhivirane-rezervacije/' || /\/students\/.*\/arhivirane-rezervacije/i.test(path)) {
 
         } else {
             document.getElementById("deleteOne").removeAttribute('data-id');

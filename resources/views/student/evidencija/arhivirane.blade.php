@@ -121,7 +121,6 @@
                         <tr class="border-b-[1px] border-[#e4dfdf]">
                             <th class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500">
                                 <label class="inline-flex items-center">
-                                    <input type="checkbox" class="form-checkbox checkAll checkOthers">
                                 </label>
                             </th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Naziv knjige</th>
@@ -137,7 +136,6 @@
                             <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                 <td class="px-4 py-3 whitespace-no-wrap">
                                     <label class="inline-flex items-center">
-                                        <input type="checkbox" class="form-checkbox checkOthers">
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-3">
