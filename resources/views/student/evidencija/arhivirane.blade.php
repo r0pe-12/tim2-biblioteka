@@ -125,7 +125,7 @@
                             </th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Naziv knjige</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum rezervacije</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervacija istice</th>
+                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervacija zatvorena</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervaciju podnio</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Status</th>
                             <th class="px-4 py-4"> </th>
@@ -145,7 +145,7 @@
                                     </a>
                                 </td>
                                 <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($reservation->submttingDate)->format('d.m.Y') }}</td>
-                                <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($reservation->submttingDate)->addDays($res_deadline->value)->format('d.m.Y') }}</td>
+                                <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($reservation->closingDate)->format('d.m.Y') }}</td>
                                 <td class="flex flex-row items-center px-4 py-3">
                                     <img class="object-cover w-8 h-8 rounded-full" src="{{ $reservation->student->photoPath }}"
                                          alt=""/>
@@ -187,7 +187,7 @@
                             </th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Naziv knjige</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum rezervacije</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervacija istice</th>
+                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervacija zatvorena</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervaciju podnio</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Status</th>
                             <th class="px-4 py-4"> </th>

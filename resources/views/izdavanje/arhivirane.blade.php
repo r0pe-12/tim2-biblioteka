@@ -134,7 +134,7 @@
                                     <!-- todo napraviti jednu kolonu rezervacija zatvorena jer imamo polje closingDate -->
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Naziv knjige</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Datum rezervacije</th>
-                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Rezervacija istice</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Rezervacija zatvorena</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Rezervaciju podnio</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Status</th>
                                     <th class="px-4 py-4"> </th>
@@ -154,7 +154,7 @@
                                             </a>
                                         </td>
                                         <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($reservation->submttingDate)->format('d.m.Y') }}</td>
-                                        <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($reservation->submttingDate)->addDays($res_deadline->value)->format('d.m.Y') }}</td>
+                                        <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ \Carbon\Carbon::parse($reservation->closingDate)->format('d.m.Y') }}</td>
                                         <td class="flex flex-row items-center px-4 py-3">
                                             <img class="object-cover w-8 h-8 rounded-full" src="{{ $reservation->student->photoPath }}"
                                                  alt=""/>
@@ -196,7 +196,7 @@
                                     </th>
                                     <th class="flex items-center px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Datum rezervacije</th>
-                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Rezervacija istice</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Rezervacija zatvorena</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Rezervaciju podnio</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Status</th>
                                     <th class="px-4 py-4"> </th>

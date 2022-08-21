@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreignId('closingReason_id');
 
 
-            $table->timestamp('submttingDate');
+            $table->date('submttingDate');
             $table->date('closingDate')->nullable();
         });
     }
