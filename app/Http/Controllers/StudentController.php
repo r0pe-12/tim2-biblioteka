@@ -241,10 +241,12 @@ class StudentController extends Controller
         ]);
     }
 
-    public function arhivirane(User $student){
+    public function arhivirane(Student $student){
         # code
         return view('student.evidencija.arhivirane', [
-            'student' => $student
+            'student' => $student,
+            'reservations' => $student->archiveRes(),
+            'res_deadline' => Policy::reservation()
         ]);
     }
 //    END-evidencija vezana za ucenika

@@ -64,4 +64,14 @@ class Student extends User
         return $this->reservations()
                 ->where('status_id', '=', ReservationStatus::RESERVED)->get();
     }
+
+    public function archiveRes(){
+        # code
+        return $this->reservations()
+                ->where(function ($q){
+                    $q->where('status_id', '!=', ReservationStatus::RESERVED)
+                        ->where('status_id', '!=', ReservationStatus::WAITING);
+                })
+                    ->get();
+    }
 }
