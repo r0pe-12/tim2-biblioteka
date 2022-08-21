@@ -105,14 +105,6 @@ Route::middleware(['auth'])->group(function (){
 //    test routes
 
 
-    Route::get('/aktivne1', function (){
-        return view('book.evidencija.aktivne');
-    });
-
-
-    Route::get('/arhivirane1', function (){
-        return view('book.evidencija.arhivirane');
-    });
 
 //    END-test routes
 

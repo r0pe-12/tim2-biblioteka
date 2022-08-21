@@ -91,10 +91,6 @@ class BookReserveConroller extends Controller
             'reservations' => $book->archiveRes(),
             'res_deadline' => Policy::reservation()
         ]);
-        return view('izdavanje.arhivirane', [
-            'reservations' => Reservation::archive(),
-            'res_deadline' => Policy::reservation()
-        ]);
     }
 //    prikazi sve arhivirane rezervacije jedne knjige
 
