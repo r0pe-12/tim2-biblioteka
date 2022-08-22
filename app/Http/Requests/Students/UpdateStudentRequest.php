@@ -29,7 +29,7 @@ class UpdateStudentRequest extends FormRequest
             "surname" => ['required', 'max:255'],
             "jmbg" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
             "email" => ['required', 'email', 'max:255', Rule::unique('users')->ignore($this->id)],
-            "username" => ['required', 'max:255', Rule::unique('users')->ignore($this->id)],
+            "username" => ['required', 'max:255', Rule::unique('users')->ignore($this->id), 'alpha_dash'],
             "password" => ['confirmed', 'max:255'],
             "photoPath" => ['']
             //

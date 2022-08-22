@@ -28,8 +28,10 @@ Auth::routes();
 Route::middleware(['auth'])->group(function (){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::get('/', fn() => view('dashboard.index'));
-    Route::get('/activity', fn() => view('dashboard.activity'));
+    //Route::get('/', fn() => view('dashboard.index'));
+    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard.index');
+    //Route::get('/activity', fn() => view('dashboard.activity'));
+    Route::get('/activity', [\App\Http\Controllers\DashboardController::class, 'activity'])->name('dashboard.activity');
 
     Route::resource('/librarians', LibrarianController::class);
     Route::delete('/librarian/bulkdelete', [LibrarianController::class, 'bulkDelete'])->name('librarian.bulk-delete');
