@@ -734,6 +734,9 @@ function validacijaUcenik(event) {
   if (usernameUcenik.length == 0) {
     $('#validateUsernameUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti korisnicko ime!</p>');
     event.preventDefault();
+  } else if (!(usernameUcenik.match(unameRegEx))){
+      $('#validateUsernameUcenik').append('<p style="color:red;font-size:13px;">Korisnicko ime pogresnog formata!</p>');
+      event.preventDefault();
   }
 
     if (pwUcenik.length == 0) {
@@ -787,6 +790,19 @@ function jmbgCheckSE() {
         $('#validateJmbgUcenikEdit').append('<p style="color:red;font-size:13px;">JMBG mora imati 13 cifara! Trenutno:' + jmbgUcenik.length + '</p>');
     } else {
         $("#jmbgLabel").attr('style', 'color:green;')
+    }
+}
+
+function usernameCheckSC() {
+    $("#validateUsernameUcenik").empty();
+    let usernameUcenik = $("#usernameUcenik").val();
+    $("#unameLabel").attr('style', 'color:red;');
+    if (usernameUcenik.length == 0) {
+        $('#validateUsernameUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti korisnicko ime!</p>');
+    } else if (!(usernameUcenik.match(unameRegEx))){
+        $('#validateUsernameUcenik').append('<p style="color:red;font-size:13px;">Korisnicko ime pogresnog formata!</p>');
+    } else {
+        $("#unameLabel").attr('style', 'color:green;');
     }
 }
 
