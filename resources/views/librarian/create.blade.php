@@ -67,7 +67,7 @@
 
                             <div class="mt-[20px]">
                                 <span id="jmbgLabel">JMBG <span class="text-red-500">*</span></span>
-                                <input type="text" autocomplete="off" onkeyup="jmbgCheckLC()" maxlength="13" value="{{ old('jmbgBibliotekar') }}" name="jmbgBibliotekar" id="jmbgBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()"/>
+                                <input type="text" autocomplete="off" onkeyup="jmbgCheckLC()" onkeypress="jmbgCheckLC()" maxlength="13" value="{{ old('jmbgBibliotekar') }}" name="jmbgBibliotekar" id="jmbgBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()"/>
                                 <div id="validateJmbgBibliotekar"></div>
                                 @error('jmbg') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
@@ -80,8 +80,8 @@
                             </div>
 
                             <div class="mt-[20px]">
-                                <span>Korisničko ime <span class="text-red-500">*</span></span>
-                                <input type="text" value="{{ old('usernameBibliotekar') }}" name="usernameBibliotekar" id="usernameBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()"/>
+                                <span id="unameLabel">Korisničko ime <span class="text-red-500">*</span></span>
+                                <input type="text" value="{{ old('usernameBibliotekar') }}" onkeyup="usernameCheckLC()" onkeypress="usernameCheckLC()" name="usernameBibliotekar" id="usernameBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()"/>
                                 <div id="validateUsernameBibliotekar"></div>
                                 @error('username') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>

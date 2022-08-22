@@ -1,4 +1,5 @@
 //open and close hamburger menu
+const unameRegEx = '^(?=[a-zA-Z0-9._-]{8,254}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$';
 $(function () {
   var hamburger = $('#hamburger');
   var sidebar = $('.sidebar');
@@ -463,6 +464,9 @@ function validacijaBibliotekar(event) {
   if (usernameBibliotekar.length == 0) {
     $('#validateUsernameBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
     event.preventDefault();
+  } else if (!(usernameBibliotekar.match(unameRegEx))) {
+    $('#validateUsernameBibliotekar').append('<p style="color:red;font-size:13px;">Korisničko ime je pogresnog formata!</p>');
+    event.preventDefault();
   }
 
   if (pwBibliotekar.length == 0) {
@@ -514,6 +518,19 @@ function jmbgCheckLE() {
         $('#validateJmbgBibliotekarEdit').append('<p style="color:red;font-size:13px;">JMBG mora imati 13 cifara! Trenutno:' + jmbgBibliotekar.length + '</p>');
     } else {
         $("#jmbgLabel").attr('style', 'color:green;')
+    }
+}
+
+function usernameCheckLC() {
+    $("#unameLabel").attr('style', 'color:red;');
+    $("#validateUsernameBibliotekar").empty();
+    let usernameBibliotekar = $("#usernameBibliotekar").val();
+    if (usernameBibliotekar.length == 0) {
+        $('#validateUsernameBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
+    } else if (!(usernameBibliotekar.match(unameRegEx))) {
+        $('#validateUsernameBibliotekar').append('<p style="color:red;font-size:13px;">Korisničko ime je pogresnog formata!</p>');
+    } else {
+        $("#unameLabel").attr('style', 'color:green;');
     }
 }
 
