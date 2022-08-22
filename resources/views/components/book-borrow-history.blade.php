@@ -16,7 +16,7 @@
                             Izdavanja knjige
                         </p>
                         <span>
-                            -  {{ str_replace(['pre', 'nedelju', 'mesec', '1 sekundu'], ['', 'nedelja', 'mjesec', 'Danas'], \App\Models\Carbon::parse($zapis->borrow_date)->diffForHumans(today('Europe/Belgrade'), null, false, 3)) }}
+                            -  {{ str_replace(['pre', 'nedelju', 'mesec', '1 sekundu', 'prije Danas'], ['prije', 'nedelja', 'mjesec', 'Danas', 'Danas'], \App\Models\Carbon::parse($zapis->borrow_date)->diffForHumans(today('Europe/Belgrade'), null, false, 3)) }}
                         </span>
                     </div>
                     <div>
