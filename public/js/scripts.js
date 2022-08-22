@@ -534,6 +534,20 @@ function usernameCheckLC() {
     }
 }
 
+function usernameCheckLE() {
+    $("#unameLabel").attr('style', 'color:red;');
+    $("#validateUsernameBibliotekarEdit").empty();
+    let usernameBibliotekarEdit = $("#usernameBibliotekarEdit").val();
+    if (usernameBibliotekarEdit.length == 0) {
+        $('#validateUsernameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
+    } else if (!(usernameBibliotekarEdit.match(unameRegEx))) {
+        $('#validateUsernameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Korisničko ime je pogresnog formata!</p>');
+    } else {
+        $("#unameLabel").attr('style', 'color:green;');
+    }
+}
+
+
 function clearErrorsNameBibliotekar() {
   $("#validateNameBibliotekar").empty();
 }
@@ -615,6 +629,9 @@ function validacijaBibliotekarEdit(event) {
   if (usernameBibliotekarEdit.length == 0) {
     $('#validateUsernameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisnicko ime!</p>');
     event.preventDefault();
+  } else if (!(usernameBibliotekarEdit.match(unameRegEx))) {
+      $('#validateUsernameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Korisničko ime je pogresnog formata!</p>');
+      event.preventDefault();
   }
 
     if (pwBibliotekarEdit.length < 8 && pwBibliotekarEdit.length > 0){
