@@ -32,5 +32,8 @@ Route::delete('/bookbinds/bulkDelete', [BookBindController::class, 'bulkDelete']
 
 
 Route::resource('/format', FormatController::class);
+Route::delete('/formats/bulkDelete', [BookBindController::class, 'bulkDelete'])->name('format.bulkDelete');
+
+
 Route::resource('/script', ScriptController::class);
 Route::resource('/language', LanguageController::class);
