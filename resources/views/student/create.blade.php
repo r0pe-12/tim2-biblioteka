@@ -44,13 +44,13 @@
                         <div class="w-[50%] mb-[100px]">
                             <div class="mt-[20px]">
                                 <span>Ime<span class="text-red-500">*</span></span>
-                                <input type="text" value="{{ old('imeUcenik') }}" name="firstname" id="imeUcenik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameUcenik()"/>
+                                <input type="text" value="{{ old('firstname') }}" name="firstname" id="imeUcenik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameUcenik()"/>
                                 <div id="validateNameUcenik"></div>
                                 @error('name') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
                             <div class="mt-[20px]">
                                 <span>Prezime<span class="text-red-500">*</span></span>
-                                <input type="text" value="{{ old('prezimeUcenik') }}" name="lastname" id="prezimeUcenik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsSurnameUcenik()"/>
+                                <input type="text" value="{{ old('lastname') }}" name="lastname" id="prezimeUcenik" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsSurnameUcenik()"/>
                                 <div id="validateSurnameUcenik"></div>
                                 @error('surname') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>

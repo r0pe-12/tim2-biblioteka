@@ -111,108 +111,36 @@
                         <div>
                             <table class="w-[560px] table-auto">
                                 <tbody class="bg-gray-200">
+                                @foreach($rezervisane as $zapis)
                                     <tr class="bg-white border-b-[1px] border-[#e4dfdf]">
                                         <td class="flex flex-row items-center px-2 py-4">
                                             <img class="object-cover w-8 h-8 rounded-full "
-                                                src="img/profileStudent.jpg" alt="" />
-                                            <a href="ucenikProfile.php" class="ml-2 font-medium text-center">Pero Perovic</a>
+                                                src="{{$zapis->student->photoPath}}" alt="" />
+                                            <a href="{{route('students.show', $zapis->student->username)}}" class="ml-2 font-medium text-center">{{$zapis->student->name}} {{$zapis->student->surname}}</a>
                                         <td>
                                         </td>
                                         <td class="px-2 py-2">
                                             <a href="knjigaOsnovniDetalji.php">
-                                            Ep o Gilgamesu
+                                            {{$zapis->book->title}}
                                             </a>
                                         </td>
                                         <td class="px-2 py-2">
-                                            <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">05.11.2020</span>
+                                            <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">{{ \Carbon\Carbon::parse($zapis->submttingDate)->format('d.m.Y') }}</span>
                                         </td>
                                         <td class="px-2 py-2">
-                                            <a href="#" class="hover:text-green-500 mr-[5px]">
-                                                <i class="fas fa-check"></i>
-                                            </a>
-                                            <a href="#" class="hover:text-red-500 ">
-                                                <i class="fas fa-times"></i>
-                                            </a>
+                                            <div
+                                                class="inline-block px-[6px] py-[2px] font-medium bg-yellow-200 rounded-[10px]">
+                                                <span class="text-xs text-yellow-700">{{ $zapis->status->name }}</span>
+                                            </div>
                                         </td>
                                     </tr>
-                                    <tr class="bg-white border-b-[1px] border-[#e4dfdf]">
-                                        <td class="flex flex-row items-center px-2 py-4">
-                                            <img class="object-cover w-8 h-8 rounded-full "
-                                            src="img/profileStudent.jpg" alt="" />
-                                            <a href="ucenikProfile.php" class="ml-2 font-medium text-center">Pero Perovic</a>
-                                        <td>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <a href="knjigaOsnovniDetalji.php">
-                                                Tom Sojer
-                                            </a>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">31.04.2019</span>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <a href="#" class="hover:text-green-500 mr-[5px]">
-                                                <i class="fas fa-check"></i>
-                                            </a>
-                                            <a href="#" class="hover:text-red-500 ">
-                                                <i class="fas fa-times"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white border-b-[1px] border-[#e4dfdf]">
-                                        <td class="flex flex-row items-center px-2 py-4">
-                                            <img class="object-cover w-8 h-8 rounded-full "
-                                            src="img/profileStudent.jpg" alt="" />
-                                            <a href="ucenikProfile.php" class="ml-2 font-medium text-center">Pero Perovic</a>
-                                        <td>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <a href="knjigaOsnovniDetalji.php">
-                                                Ilijada
-                                            </a>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">05.11.2020</span>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <a href="#" class="hover:text-green-500 mr-[5px]">
-                                                <i class="fas fa-check"></i>
-                                            </a>
-                                            <a href="#" class="hover:text-red-500 ">
-                                                <i class="fas fa-times"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white border-b-[1px] border-[#e4dfdf]">
-                                        <td class="flex flex-row items-center px-2 py-4">
-                                            <img class="object-cover w-8 h-8 rounded-full "
-                                            src="img/profileStudent.jpg" alt="" />
-                                            <a href="ucenikProfile.php" class="ml-2 font-medium text-center">Pero Perovic</a>
-                                        <td>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <a href="knjigaOsnovniDetalji.php">
-                                                Tom Sojer
-                                            </a>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">31.02.2021</span>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <a href="#" class="hover:text-green-500 mr-[5px]">
-                                                <i class="fas fa-check"></i>
-                                            </a>
-                                            <a href="#" class="hover:text-red-500 ">
-                                                <i class="fas fa-times"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                             <div class="text-right mt-[5px]">
-                                <a href="aktivneRezervacije.php" class="text-[#2196f3] hover:text-blue-600">
+                                <a href="{{route('aktivne-rezervacije')}}" class="text-[#2196f3] hover:text-blue-600">
                                     <i class="fas fa-calendar-alt mr-[4px]" aria-hidden="true"></i>
-                                    Prikazi sve
+                                    Prikaži sve
                                 </a>
                             </div>
                         </div>

@@ -44,14 +44,14 @@
                         <div class="w-[50%] mb-[100px]">
                             <div class="mt-[20px]">
                                 <span>Ime<span class="text-red-500">*</span></span>
-                                <input type="text" value="{{ old('imeBibliotekar') }}" name="firstname" id="imeBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()"/>
+                                <input type="text" value="{{ old('firstname') }}" name="firstname" id="imeBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()"/>
                                 <div id="validateNameBibliotekar"></div>
                                 @error('name') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
                                 <span>Prezime <span class="text-red-500">*</span></span>
-                                <input type="text" value="{{ old('prezimeBibliotekar') }}" name="lastname" id="prezimeBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsSurnameBibliotekar()"/>
+                                <input type="text" value="{{ old('lastname') }}" name="lastname" id="prezimeBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsSurnameBibliotekar()"/>
                                 <div id="validateSurnameBibliotekar"></div>
                                 @error('surname') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
@@ -67,7 +67,7 @@
 
                             <div class="mt-[20px]">
                                 <span id="jmbgLabel">JMBG <span class="text-red-500">*</span></span>
-                                <input type="text" autocomplete="off" onkeyup="jmbgCheckLC()" maxlength="13" name="jmbgBibliotekar" id="jmbgBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()"/>
+                                <input type="text" autocomplete="off" onkeyup="jmbgCheckLC()" maxlength="13" value="{{ old('jmbgBibliotekar') }}" name="jmbgBibliotekar" id="jmbgBibliotekar" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()"/>
                                 <div id="validateJmbgBibliotekar"></div>
                                 @error('jmbg') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
