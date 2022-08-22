@@ -52,7 +52,7 @@
                             @csrf
                             @method('DELETE')
                             <div class="modal-footer">
-                                <input type="hidden" value="" name="ids" id="ids">
+                                <input class="ids" type="hidden" value="" name="ids" id="ids">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
                                 <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                     Potvrdi <i class="fas fa-check ml-[4px]"></i>
