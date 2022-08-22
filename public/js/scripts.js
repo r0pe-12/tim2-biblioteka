@@ -3045,55 +3045,61 @@ $('.checkOthers').click(function () {
             const id = this.getAttribute('data-id');
             const name = this.getAttribute('data-name');
             const href = this.getAttribute('data-href');
-            if (path == '/aktivne-rezervacije/' || /\/students\/.*\/aktivne-rezervacije/i.test(path)){
-                document.getElementById('izdaj').href = href;
-                const otkazi = document.getElementById('otkaziRez');
-                const bookName = this.getAttribute('data-book-name');
-                const studentName = this.getAttribute('data-student-name');
-                const action = this.getAttribute('data-action');
-
-                otkazi.setAttribute('data-action', '/books/' + id + '/vrati');
-                otkazi.setAttribute('data-book-name', bookName);
-                otkazi.setAttribute('data-student-name', studentName);
-                otkazi.setAttribute('data-action', action);
+            if (/\/settings\/.*/gm.test(path)) {
+                document.getElementById("edit").href = path + id + "/edit";
+                document.getElementById("deleteOne").setAttribute('data-id', id);
+                document.getElementById("deleteOne").setAttribute('data-name', name);
             } else {
-                if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/.*\/izdate/i.test(path) || /\/students\/.*\/vracene/i.test(path) || /\/students\/.*\/prekoracene/i.test(path)) {
-                    const bookId = this.getAttribute('data-book-id');
+                if (path == '/aktivne-rezervacije/' || /\/students\/.*\/aktivne-rezervacije/i.test(path)){
+                    document.getElementById('izdaj').href = href;
+                    const otkazi = document.getElementById('otkaziRez');
                     const bookName = this.getAttribute('data-book-name');
                     const studentName = this.getAttribute('data-student-name');
+                    const action = this.getAttribute('data-action');
 
-                    document.getElementById("detalji").href = '/books/' + bookId + '/evidencija/' + id + '/show';
-
-                    if (path === '/izdate/' || path === '/prekoracene/' || /\/students\/.*\/izdate/i.test(path) || /\/students\/.*\/prekoracene/i.test(path)) {
-                        const vrati = document.getElementById('vrati');
-                        vrati.setAttribute('data-action', '/books/' + bookId + '/vrati');
-                        vrati.setAttribute('data-name', name);
-                        vrati.setAttribute('data-id', id);
-                        vrati.setAttribute('data-book-name', bookName);
-                        vrati.setAttribute('data-student-name', studentName);
-
-                        const otpisi = document.getElementById('otpisi');
-                        otpisi.setAttribute('data-action', '/books/' + bookId + '/otpisi');
-                        otpisi.setAttribute('data-name', name);
-                        otpisi.setAttribute('data-id', id);
-                        otpisi.setAttribute('data-book-name', bookName);
-                        otpisi.setAttribute('data-student-name', studentName);
-                    }
-                } else if (path === '/arhivirane-rezervacije/' || /\/students\/.*\/arhivirane-rezervacije/i.test(path)){
-
+                    otkazi.setAttribute('data-action', '/books/' + id + '/vrati');
+                    otkazi.setAttribute('data-book-name', bookName);
+                    otkazi.setAttribute('data-student-name', studentName);
+                    otkazi.setAttribute('data-action', action);
                 } else {
-                    document.getElementById("detalji").href = path + id;
-                    document.getElementById("edit").href = path + id + "/edit";
+                    if (path === '/izdate/' || path === '/vracene/' || path === '/prekoracene/' || /\/students\/.*\/izdate/i.test(path) || /\/students\/.*\/vracene/i.test(path) || /\/students\/.*\/prekoracene/i.test(path)) {
+                        const bookId = this.getAttribute('data-book-id');
+                        const bookName = this.getAttribute('data-book-name');
+                        const studentName = this.getAttribute('data-student-name');
 
-                    if (path === '/books/') {
-                        document.getElementById("otpisi").href = "/books/" + id + "/otpisi";
-                        document.getElementById("izdaj").href = "/books/" + id + "/izdaj";
-                        document.getElementById("vrati").href = "/books/" + id + "/vrati";
-                        document.getElementById("rezervisi").href = "/books/" + id + "/rezervisi";
+                        document.getElementById("detalji").href = '/books/' + bookId + '/evidencija/' + id + '/show';
+
+                        if (path === '/izdate/' || path === '/prekoracene/' || /\/students\/.*\/izdate/i.test(path) || /\/students\/.*\/prekoracene/i.test(path)) {
+                            const vrati = document.getElementById('vrati');
+                            vrati.setAttribute('data-action', '/books/' + bookId + '/vrati');
+                            vrati.setAttribute('data-name', name);
+                            vrati.setAttribute('data-id', id);
+                            vrati.setAttribute('data-book-name', bookName);
+                            vrati.setAttribute('data-student-name', studentName);
+
+                            const otpisi = document.getElementById('otpisi');
+                            otpisi.setAttribute('data-action', '/books/' + bookId + '/otpisi');
+                            otpisi.setAttribute('data-name', name);
+                            otpisi.setAttribute('data-id', id);
+                            otpisi.setAttribute('data-book-name', bookName);
+                            otpisi.setAttribute('data-student-name', studentName);
+                        }
+                    } else if (path === '/arhivirane-rezervacije/' || /\/students\/.*\/arhivirane-rezervacije/i.test(path)){
+
+                    } else {
+                        document.getElementById("detalji").href = path + id;
+                        document.getElementById("edit").href = path + id + "/edit";
+
+                        if (path === '/books/') {
+                            document.getElementById("otpisi").href = "/books/" + id + "/otpisi";
+                            document.getElementById("izdaj").href = "/books/" + id + "/izdaj";
+                            document.getElementById("vrati").href = "/books/" + id + "/vrati";
+                            document.getElementById("rezervisi").href = "/books/" + id + "/rezervisi";
+                        }
+
+                        document.getElementById("deleteOne").setAttribute('data-id', id);
+                        document.getElementById("deleteOne").setAttribute('data-name', name);
                     }
-
-                    document.getElementById("deleteOne").setAttribute('data-id', id);
-                    document.getElementById("deleteOne").setAttribute('data-name', name);
                 }
             }
 

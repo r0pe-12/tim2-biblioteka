@@ -111,7 +111,29 @@ class PublisherController extends Controller
     public function destroy(Publisher $publisher)
     {
         //
-        $publisher->delete();
+
+        try {
+            $publisher->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje izdavaca "' . $publisher->name . '" nije moguce');
+        }
+
         return redirect()->route('publisher.index')->with('success', 'Izdavač "' . $publisher->name . '" je uspješno obrisan');
+    }
+
+    public function bulkDelete()
+    {
+//        $names = [];
+        $ids = explode(',', request('ids'));
+        $publishers = Publisher::whereIn('id', $ids);
+
+//        we will try to delete genres
+        try {
+            $publishers->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje izdavaca nije moguce');
+        }
+
+        return redirect()->route('publisher.index')->with('success', 'Izdavaci su uspješno izbrisani');
     }
 }

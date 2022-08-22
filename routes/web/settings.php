@@ -17,10 +17,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('/policy', PolicyController::class);
+
 Route::resource('/category', CategoryController::class);
+Route::delete('/categories/bulkDelete', [CategoryController::class, 'bulkDelete'])->name('category.bulkDelete');
+
 Route::resource('/genre', GenreController::class);
+Route::delete('/genres/bulkDelete', [GenreController::class, 'bulkDelete'])->name('genre.bulkDelete');
+
 Route::resource('/publisher', PublisherController::class);
+Route::delete('/publishers/bulkDelete', [PublisherController::class, 'bulkDelete'])->name('publisher.bulkDelete');
+
 Route::resource('/bookbind', BookBindController::class);
+Route::delete('/bookbinds/bulkDelete', [BookBindController::class, 'bulkDelete'])->name('book-bind.bulkDelete');
+
+
 Route::resource('/format', FormatController::class);
+Route::delete('/formats/bulkDelete', [FormatController::class, 'bulkDelete'])->name('format.bulkDelete');
+
+
 Route::resource('/script', ScriptController::class);
+Route::delete('/scripts/bulkDelete', [ScriptController::class, 'bulkDelete'])->name('script.bulkDelete');
+
 Route::resource('/language', LanguageController::class);
+Route::delete('/languages/bulkDelete', [LanguageController::class, 'bulkDelete'])->name('language.bulkDelete');
+

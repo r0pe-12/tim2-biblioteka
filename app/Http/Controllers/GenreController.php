@@ -142,7 +142,52 @@ class GenreController extends Controller
     public function destroy(Genre $genre)
     {
         //
-        $genre->delete();
+        $photo = $genre->icon;
+
+        try {
+            $genre->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje zanra "' . $genre->name . '" nije moguce');
+        }
+
+        if (file_exists($iconPath = public_path() . $photo)){
+            unlink($iconPath);
+        }
         return redirect()->route('genre.index')->with('success', 'Žanr "' . $genre->name . '" je uspješno obrisan');
     }
+
+
+    /**
+     * Remove the specified resourceS from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function bulkDelete()
+    {
+//        $names = [];
+        $ids = explode(',', request('ids'));
+        $genres = Genre::whereIn('id', $ids);
+
+        $photos = [];
+//        we will get all photopaths from genres
+        foreach ($genres->get() as $genre){
+            $photos[] = $genre->iconPath;
+        }
+
+//        we will try to delete genres
+        try {
+            $genres->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje zanrova nije moguce');
+        }
+//        if we delete them we will delete photos from storage
+        foreach ($photos as $photo){
+            if (file_exists($photoPath = public_path() . $photo)){
+                unlink($photoPath);
+            }
+        }
+        return redirect()->route('genre.index')->with('success', 'Zanrovi su uspješno izbrisane');
+    }
+
 }

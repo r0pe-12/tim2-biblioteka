@@ -112,7 +112,27 @@ class LanguageController extends Controller
     public function destroy(Language $language)
     {
         //
-        $language->delete();
+        //
+        try {
+            $language->delete();
+        }catch (\Exception $e){
+            return redirect()->back()->with('fail', 'Brisanje jezika "' . $language->name . '" nije moguce');
+        }
         return redirect()->route('language.index')->with('success', 'Jezik "' . $language->name . '" je uspješno obrisan');
+    }
+
+    public function bulkDelete()
+    {
+//        $names = [];
+        $ids = explode(',', request('ids'));
+        $languages = Language::whereIn('id', $ids);
+
+//        we will try to delete genres
+        try {
+            $languages->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje jezika nije moguce');
+        }
+        return redirect()->route('genre.index')->with('success', 'Jezici su uspješno izbrisane');
     }
 }

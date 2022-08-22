@@ -111,8 +111,29 @@ class FormatController extends Controller
     public function destroy(Format $format)
     {
         //
-        $format->delete();
+        //$format->delete();
+        try {
+            $format->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje formata "' . $format->name . '" nije moguce');
+        }
         return redirect()->route('format.index')->with('success', 'Format "' . $format->name . '" je uspješno obrisan');
 
+    }
+
+    public function bulkDelete()
+    {
+//        $names = [];
+        $ids = explode(',', request('ids'));
+        $formats = Format::whereIn('id', $ids);
+
+//        we will try to delete genres
+        try {
+            $formats->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje formata nije moguce');
+        }
+
+        return redirect()->route('publisher.index')->with('success', 'Formati su uspješno izbrisani');
     }
 }
