@@ -95,6 +95,7 @@ class Book extends Model
     public function active(){
         # code
         return $this->borrows()
+            ->where('active', '=', '1')
             ->join('book_borrow_status','borrows.id','=','borrow_id')
             ->where('book_borrow_status.bookStatus_id','=', BookStatus::BORROWED)
             ->orWhere('book_borrow_status.bookStatus_id','=', BookStatus::RESERVED);
@@ -104,6 +105,7 @@ class Book extends Model
     public function returned(){
         # code
         return $this->borrows()
+            ->where('active', '=', '0')
             ->join('book_borrow_status','borrows.id','=','borrow_id')
             ->where('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED)
             ->orwhere('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED1)
@@ -113,6 +115,7 @@ class Book extends Model
     public function failed(){
         # code
         return $this->borrows()
+            ->where('active', '=', '1')
             ->join('book_borrow_status', 'borrows.id', '=', 'borrow_id')
             ->where(function ($query){
                 $query->where('book_borrow_status.bookStatus_id', '=', BookStatus::BORROWED)

@@ -580,11 +580,11 @@
                                             <div
                                                 class="flex justify-between flex-row p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                                 <div>
-                                                    <label class="font-medium text-gray-500">Period od:</label>
+                                                    <label class="font-bold text-gray-500">Period od:</label>
                                                     <input type="date" class="border-[1px] border-[#e4dfdf]  cursor-pointer focus:outline-none">
                                                 </div>
                                                 <div class="ml-[50px]">
-                                                    <label class="font-medium text-gray-500">Period do:</label>
+                                                    <label class="font-bold text-gray-500">Period do:</label>
                                                     <input type="date" class="border-[1px] border-[#e4dfdf]  cursor-pointer focus:outline-none">
                                                 </div>
                                             </div>
@@ -607,7 +607,27 @@
                             </div>
                         </div>
                         <!-- Activity Cards -->
-                        <div class="activity-card flex flex-row mb-[30px]">
+                        @if(count($izdate) > 0)
+                            @foreach($izdate as $zapis)
+                                <x-book-activity-row :zapis="$zapis"/>
+                            @endforeach
+                        @else
+                            <div class="flex flex-row mb-[30px]">
+                                <div class="ml-[15px] mt-[5px] flex flex-col">
+                                    <div class="text-gray-500 mb-[5px]" style="font-size: 30px">
+                                        <h2 class="uppercase">
+                                            NEMA AKTIVNOSTI
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="mr-[50px] ">
+                        <h3 class="uppercase mb-[20px] text-left">
+                            Rezervacije knjiga
+                        </h3>
+                        <div class="flex flex-row mb-[30px]">
                             <div class="w-[60px] h-[60px]">
                                 <img class="rounded-full" src="img/profileStudent.jpg" alt="">
                             </div>
@@ -625,11 +645,11 @@
                                         <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Valentina K.
                                         </a>
-                                        je izdala knjigu <span class="font-medium">Tom Sojer </span>
+                                        je izdala knjigu <span class="font-bold">Tom Sojer </span>
                                         <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Peru Perovicu
                                         </a>
-                                        dana <span class="font-medium">21.02.2021.</span>
+                                        dana <span class="font-bold">21.02.2021.</span>
                                         <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
                                             pogledaj detaljnije >>
                                         </a>
@@ -637,7 +657,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="activity-card flex flex-row mb-[30px]">
+                        <div class="flex flex-row mb-[30px]">
                             <div class="w-[60px] h-[60px]">
                                 <img class="rounded-full" src="img/profileExample.jpg" alt="">
                             </div>
@@ -655,11 +675,11 @@
                                         <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Valentina K.
                                         </a>
-                                        je izdala knjigu <span class="font-medium">Robinson Kruso</span>
+                                        je izdala knjigu <span class="font-bold">Robinson Kruso</span>
                                         <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Petru Njegosu
                                         </a>
-                                        dana <span class="font-medium">12.03.2020.</span>
+                                        dana <span class="font-bold">12.03.2020.</span>
                                         <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
                                             pogledaj detaljnije >>
                                         </a>
@@ -667,7 +687,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="activity-card flex flex-row mb-[30px]">
+                        <div class="flex flex-row mb-[30px]">
                             <div class="w-[60px] h-[60px]">
                                 <img class="rounded-full" src="img/profileStudent.jpg" alt="">
                             </div>
@@ -685,11 +705,11 @@
                                         <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Valentina K.
                                         </a>
-                                        je izdala knjigu <span class="font-medium">Tom Sojer </span>
+                                        je izdala knjigu <span class="font-bold">Tom Sojer </span>
                                         <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Peru Perovicu
                                         </a>
-                                        dana <span class="font-medium">21.02.2021.</span>
+                                        dana <span class="font-bold">21.02.2021.</span>
                                         <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
                                             pogledaj detaljnije >>
                                         </a>
@@ -697,7 +717,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="activity-card flex flex-row mb-[30px]">
+                        <div class="flex flex-row mb-[30px]">
                             <div class="w-[60px] h-[60px]">
                                 <img class="rounded-full" src="img/profileExample.jpg" alt="">
                             </div>
@@ -715,11 +735,11 @@
                                         <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Valentina K.
                                         </a>
-                                        je izdala knjigu <span class="font-medium">Robinson Kruso</span>
+                                        je izdala knjigu <span class="font-bold">Robinson Kruso</span>
                                         <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Petru Njegosu
                                         </a>
-                                        dana <span class="font-medium">12.03.2020.</span>
+                                        dana <span class="font-bold">12.03.2020.</span>
                                         <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
                                             pogledaj detaljnije >>
                                         </a>
@@ -727,7 +747,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="activity-card flex flex-row mb-[30px]">
+                        <div class="flex flex-row mb-[30px]">
                             <div class="w-[60px] h-[60px]">
                                 <img class="rounded-full" src="img/profileStudent.jpg" alt="">
                             </div>
@@ -745,11 +765,11 @@
                                         <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Valentina K.
                                         </a>
-                                        je izdala knjigu <span class="font-medium">Tom Sojer </span>
+                                        je izdala knjigu <span class="font-bold">Tom Sojer </span>
                                         <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Peru Perovicu
                                         </a>
-                                        dana <span class="font-medium">21.02.2021.</span>
+                                        dana <span class="font-bold">21.02.2021.</span>
                                         <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
                                             pogledaj detaljnije >>
                                         </a>
@@ -757,7 +777,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="activity-card flex flex-row mb-[30px]">
+                        <div class="flex flex-row mb-[30px]">
                             <div class="w-[60px] h-[60px]">
                                 <img class="rounded-full" src="img/profileExample.jpg" alt="">
                             </div>
@@ -775,11 +795,11 @@
                                         <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Valentina K.
                                         </a>
-                                        je izdala knjigu <span class="font-medium">Robinson Kruso</span>
+                                        je izdala knjigu <span class="font-bold">Robinson Kruso</span>
                                         <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Petru Njegosu
                                         </a>
-                                        dana <span class="font-medium">12.03.2020.</span>
+                                        dana <span class="font-bold">12.03.2020.</span>
                                         <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
                                             pogledaj detaljnije >>
                                         </a>
@@ -787,7 +807,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="activity-card flex flex-row mb-[30px]">
+                        <div class="flex flex-row mb-[30px]">
                             <div class="w-[60px] h-[60px]">
                                 <img class="rounded-full" src="img/profileStudent.jpg" alt="">
                             </div>
@@ -805,11 +825,11 @@
                                         <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Valentina K.
                                         </a>
-                                        je izdala knjigu <span class="font-medium">Tom Sojer </span>
+                                        je izdala knjigu <span class="font-bold">Tom Sojer </span>
                                         <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Peru Perovicu
                                         </a>
-                                        dana <span class="font-medium">21.02.2021.</span>
+                                        dana <span class="font-bold">21.02.2021.</span>
                                         <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
                                             pogledaj detaljnije >>
                                         </a>
@@ -817,7 +837,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="activity-card flex flex-row mb-[30px]">
+                        <div class="flex flex-row mb-[30px]">
                             <div class="w-[60px] h-[60px]">
                                 <img class="rounded-full" src="img/profileExample.jpg" alt="">
                             </div>
@@ -835,11 +855,11 @@
                                         <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Valentina K.
                                         </a>
-                                        je izdala knjigu <span class="font-medium">Robinson Kruso</span>
+                                        je izdala knjigu <span class="font-bold">Robinson Kruso</span>
                                         <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Petru Njegosu
                                         </a>
-                                        dana <span class="font-medium">12.03.2020.</span>
+                                        dana <span class="font-bold">12.03.2020.</span>
                                         <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
                                             pogledaj detaljnije >>
                                         </a>
@@ -847,7 +867,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="activity-card flex flex-row mb-[30px]">
+                        <div class="flex flex-row mb-[30px]">
                             <div class="w-[60px] h-[60px]">
                                 <img class="rounded-full" src="img/profileStudent.jpg" alt="">
                             </div>
@@ -865,11 +885,11 @@
                                         <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Valentina K.
                                         </a>
-                                        je izdala knjigu <span class="font-medium">Tom Sojer </span>
+                                        je izdala knjigu <span class="font-bold">Tom Sojer </span>
                                         <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Peru Perovicu
                                         </a>
-                                        dana <span class="font-medium">21.02.2021.</span>
+                                        dana <span class="font-bold">21.02.2021.</span>
                                         <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
                                             pogledaj detaljnije >>
                                         </a>
@@ -877,7 +897,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="activity-card flex flex-row mb-[30px]">
+                        <div class="flex flex-row mb-[30px]">
                             <div class="w-[60px] h-[60px]">
                                 <img class="rounded-full" src="img/profileExample.jpg" alt="">
                             </div>
@@ -895,23 +915,17 @@
                                         <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Valentina K.
                                         </a>
-                                        je izdala knjigu <span class="font-medium">Robinson Kruso</span>
+                                        je izdala knjigu <span class="font-bold">Robinson Kruso</span>
                                         <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
                                             Petru Njegosu
                                         </a>
-                                        dana <span class="font-medium">12.03.2020.</span>
+                                        dana <span class="font-bold">12.03.2020.</span>
                                         <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
                                             pogledaj detaljnije >>
                                         </a>
                                     </p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="inline-block w-full mt-4">
-                            <button type="button"
-                                class="btn-animation w-full px-4 py-2 text-sm tracking-wider text-gray-600 transition duration-300 ease-in border-[1px] border-gray-400 rounded activity-showMore hover:bg-gray-200 focus:outline-none focus:ring-[1px] focus:ring-gray-300">
-                                Show more
-                            </button>
                         </div>
                     </div>
                 </div>

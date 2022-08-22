@@ -15,7 +15,8 @@ class WriteOff extends Borrow
     public static function prekoracene(){
         # code
         return self
-            ::join('book_borrow_status', 'borrows.id', '=', 'borrow_id')
+            ::where('active', '=', '1')
+            ->join('book_borrow_status', 'borrows.id', '=', 'borrow_id')
             ->where('book_borrow_status.bookStatus_id', '!=', BookStatus::FAILED)
             ->where(function ($query){
                 $query->where('book_borrow_status.bookStatus_id', '=', BookStatus::BORROWED)

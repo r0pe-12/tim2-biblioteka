@@ -44,6 +44,7 @@ class BookBorrowController extends Controller
         ]);
 
         $borrow = new Borrow([
+            'active' => 1,
             'librarian_id' => auth()->user()->id,
             'student_id' => \request()->ucenik,
             'borrow_date' => Carbon::parse(\request()->datumIzdavanja),

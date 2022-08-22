@@ -19,7 +19,7 @@ class DashboardController extends Controller
         return view('dashboard.index', [
             //'izdate' => Borrow::latest()->get(),
             'izdateAll' => Borrow::izdavanja(),
-            'izdate' => Borrow::latest()->take(10)->get(),
+            'izdate' => Borrow::allOrdered()->take(10)->get(),
             'rezervisaneAll' => Reservation::all(),
             'rezervisane' => Reservation::orderBy('id', 'desc')->take(4)->get(),
             'prekoracene' => WriteOff::prekoracene()
@@ -29,8 +29,9 @@ class DashboardController extends Controller
     public function activity(){
         /*$activity = Borrow::izdavanja()->merge(BookReturn::returned())->sortByDesc('datum');
         dd($activity);*/
+//        dd(Borrow::allOrdered()->get());
             return view('dashboard.activity', [
-                'izdate' => Borrow::izdavanja(),
+                'izdate' => Borrow::allOrdered()->get(),
                 'returned' => BookReturn::returned()
             ]);
     }

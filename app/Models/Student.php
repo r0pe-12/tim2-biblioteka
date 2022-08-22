@@ -24,6 +24,7 @@ class Student extends User
     public function active(){
         # code
         return $this->borrows()
+            ->where('active', '=', '1')
             ->join('book_borrow_status','borrows.id','=','borrow_id')
             ->where('book_borrow_status.bookStatus_id','=', BookStatus::BORROWED)
             ->orWhere('book_borrow_status.bookStatus_id','=', BookStatus::RESERVED)
@@ -33,6 +34,7 @@ class Student extends User
     public function returned(){
         # code
         return $this->borrows()
+            ->where('active', '=', '0')
             ->join('book_borrow_status','borrows.id','=','borrow_id')
             ->where('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED)
             ->orwhere('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED1)
@@ -41,6 +43,7 @@ class Student extends User
     public function prekoracene(){
         # code
         return $this->borrows()
+            ->where('active', '=', '1')
             ->join('book_borrow_status', 'borrows.id', '=', 'borrow_id')
             ->where('book_borrow_status.bookStatus_id', '!=', BookStatus::FAILED)
             ->where(function ($query){
