@@ -55,13 +55,13 @@
                                 <span>Ime <span class="text-red-500">*</span></span>
                                 <input type="text" name="firstname" id="imeUcenikEdit" value="{{ $student->name }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameUcenikEdit()"/>
                                 <div id="validateNameUcenikEdit"></div>
-                                @error('name') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('name') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
                             <div class="mt-[20px]">
                                 <span>Prezime <span class="text-red-500">*</span></span>
                                 <input type="text" name="lastname" id="prezimeUcenikEdit" value="{{ $student->surname }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsSurnameUcenikEdit()"/>
                                 <div id="validateSurnameUcenikEdit"></div>
-                                @error('surname') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('surname') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
@@ -77,26 +77,26 @@
                                 <span id="jmbgLabel">JMBG <span class="text-red-500">*</span></span>
                                 <input autocomplete="off" onkeyup="jmbgCheckSE()" maxlength="13" type="text" name="jmbgUcenikEdit" id="jmbgUcenikEdit" value="{{ $student->jmbg }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgUcenikEdit()"/>
                                 <div id="validateJmbgUcenikEdit"></div>
-                                @error('jmbg') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('jmbg') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
                                 <span>E-mail <span class="text-red-500">*</span></span>
                                 <input type="email" name="emailUcenikEdit" id="emailUcenikEdit" value="{{ $student->email }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsEmailUcenikEdit()"/>
                                 <div id="validateEmailUcenikEdit"></div>
-                                @error('email') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('email') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
                             <div class="mt-[20px]">
                                 <span>Korisnicko ime <span class="text-red-500">*</span></span>
                                 <input type="text" name="usernameUcenikEdit" id="usernameUcenikEdit" value="{{ $student->username }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameUcenikEdit()"/>
                                 <div id="validateUsernameUcenikEdit"></div>
-                                @error('username') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('username') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
                             <div class="mt-[20px]">
                                 <span>Šifra <span class="text-red-500">*</span></span>
                                 <input type="password" name="pwUcenikEdit" id="pwUcenikEdit" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
                                 <div id="validatePwUcenikEdit"></div>
-                                @error('password') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('password') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
                             <div class="mt-[20px]">
                                 <span>Ponovi šifru <span class="text-red-500">*</span></span>
@@ -120,7 +120,7 @@
                                     <img id="image-output" class="absolute w-48 h-[188px] bottom-0" src="{{ $student->photoPath }}">
                                 </div>
                             </label>
-                            @error('photoPath') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                            @error('photoPath') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                         </div>
                     </div>
 

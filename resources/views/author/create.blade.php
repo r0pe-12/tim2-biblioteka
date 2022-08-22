@@ -56,14 +56,14 @@
                                 <p>Ime <span class="text-red-500">*</span></p>
                                 <input type="text" name="imeAutor" id="imeAutor" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsImeAutor()"/>
                                 <div id="validateImeAutor"></div>
-                                @error('imeAutor') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('imeAutor') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
                                 <p>Prezime <span class="text-red-500">*</span></p>
                                 <input type="text" name="prezimeAutor" id="prezimeAutor" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPrezimeAutor()"/>
                                 <div id="validatePrezimeAutor"></div>
-                                @error('prezimeAutor') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('prezimeAutor') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">

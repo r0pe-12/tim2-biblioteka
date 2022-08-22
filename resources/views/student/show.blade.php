@@ -84,7 +84,7 @@
                             <span>Unesi novu sifru <span class="text-red-500">*</span></span>
                             <input class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" type="password" name="pwResetUcenik" id="pwResetUcenik" onkeydown="clearErrorsPwResetUcenik()">
                             <div id="validatePwResetUcenik"></div>
-                            @error('pwResetUcenik') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                            @error('pwResetUcenik') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                         </div>
                         <div class="flex flex-col pb-[30px]">
                             <span>Ponovi sifru <span class="text-red-500">*</span></span>

@@ -57,14 +57,14 @@
                                 <p>Ime <span class="text-red-500">*</span></p>
                                 <input type="text" name="imeAutorEdit" id="imeAutorEdit" value="{{ $author->name }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsImeAutorEdit()"/>
                                 <div id="validateImeAutorEdit"></div>
-                                @error('imeAutorEdit') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('imeAutorEdit') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
                                 <p>Prezime <span class="text-red-500">*</span></p>
                                 <input type="text" name="prezimeAutorEdit" id="prezimeAutorEdit" value="{{ $author->surname }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPrezimeAutorEdit()"/>
                                 <div id="validatePrezimeAutorEdit"></div>
-                                @error('prezimeAutorEdit') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                                @error('prezimeAutorEdit') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
