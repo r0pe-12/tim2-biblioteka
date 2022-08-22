@@ -88,6 +88,61 @@
                                     </a>
                                 </li>
                             @endif
+                            @if(request()->routeIs('izdate1'))
+                                <li>
+                                    <span class="mx-2">/</span>
+                                </li>
+                                <li>
+                                    <a href="{{ route('izdate1', $book) }}"
+                                       class="text-[#2196f3] hover:text-blue-600">
+                                        Izdate Knjige
+                                    </a>
+                                </li>
+                            @endif
+                            @if(request()->routeIs('vracene1'))
+                                <li>
+                                    <span class="mx-2">/</span>
+                                </li>
+                                <li>
+                                    <a href="{{ route('vracene1', $book) }}"
+                                       class="text-[#2196f3] hover:text-blue-600">
+                                        Vracene Knjige
+                                    </a>
+                                </li>
+                            @endif
+                            @if(request()->routeIs('prekoracene1'))
+                                <li>
+                                    <span class="mx-2">/</span>
+                                </li>
+                                <li>
+                                    <a href="{{ route('prekoracene1', $book) }}"
+                                       class="text-[#2196f3] hover:text-blue-600">
+                                        Prekoracene Knjige
+                                    </a>
+                                </li>
+                            @endif
+                            @if(request()->routeIs('aktivne-rezervacije1'))
+                                <li>
+                                    <span class="mx-2">/</span>
+                                </li>
+                                <li>
+                                    <a href="{{ route('aktivne-rezervacije1', $book) }}"
+                                       class="text-[#2196f3] hover:text-blue-600">
+                                        Aktivne Rezervacije
+                                    </a>
+                                </li>
+                            @endif
+                            @if(request()->routeIs('arhivirane-rezervacije1'))
+                                <li>
+                                    <span class="mx-2">/</span>
+                                </li>
+                                <li>
+                                    <a href="{{ route('arhivirane-rezervacije1', $book) }}"
+                                       class="text-[#2196f3] hover:text-blue-600">
+                                        Arhivirane Rezervacije
+                                    </a>
+                                </li>
+                            @endif
                         </ol>
                     </nav>
                 </div>
