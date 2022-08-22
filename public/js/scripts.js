@@ -806,6 +806,19 @@ function usernameCheckSC() {
     }
 }
 
+function usernameCheckSE() {
+    $("#validateUsernameUcenikEdit").empty();
+    let usernameUcenikEdit = $("#usernameUcenikEdit").val();
+    $("#unameLabel").attr('style', 'color:red;');
+    if (usernameUcenikEdit.length == 0) {
+        $('#validateUsernameUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisnicko ime!</p>');
+    } else if (!(usernameUcenikEdit.match(unameRegEx))){
+        $('#validateUsernameUcenikEdit').append('<p style="color:red;font-size:13px;">Korisnicko ime pogresnog formata!</p>');
+    } else {
+        $("#unameLabel").attr('style', 'color:green;');
+    }
+}
+
 function clearErrorsNameUcenik() {
   $("#validateNameUcenik").empty();
 }
@@ -888,6 +901,9 @@ function validacijaUcenikEdit(event) {
 
   if (usernameUcenikEdit.length == 0) {
     $('#validateUsernameUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
+      event.preventDefault();
+  } else if (!(usernameUcenikEdit.match(unameRegEx))){
+      $('#validateUsernameUcenikEdit').append('<p style="color:red;font-size:13px;">Korisničko ime je pogresnog formata!</p>');
       event.preventDefault();
   }
 
