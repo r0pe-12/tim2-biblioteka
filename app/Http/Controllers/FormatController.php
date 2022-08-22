@@ -125,7 +125,7 @@ class FormatController extends Controller
     {
 //        $names = [];
         $ids = explode(',', request('ids'));
-        $formats = Publisher::whereIn('id', $ids);
+        $formats = Format::whereIn('id', $ids);
 
 //        we will try to delete genres
         try {

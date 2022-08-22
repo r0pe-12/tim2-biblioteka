@@ -119,7 +119,28 @@ class ScriptController extends Controller
     public function destroy(Script $script)
     {
         //
-        $script->delete();
+        //$script->delete();
+        try {
+            $script->delete();
+        }catch (\Exception $e){
+            return redirect()->back()->with('fail', 'Brisanje pisma "' . $script->name . '" nije moguce');
+        }
         return redirect()->route('script.index')->with('success', 'Pismo "' . $script->name . '" je uspješno obrisano');
+    }
+
+    public function bulkDelete()
+    {
+//        $names = [];
+        $ids = explode(',', request('ids'));
+        $scripts = Script::whereIn('id', $ids);
+
+//        we will try to delete genres
+        try {
+            $scripts->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje pisama nije moguce');
+        }
+
+        return redirect()->route('publisher.index')->with('success', 'Pisma su uspješno izbrisana');
     }
 }
