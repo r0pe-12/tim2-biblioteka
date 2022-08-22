@@ -135,14 +135,13 @@
                                                     <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                                     <span class="px-4 py-0">Izmijeni kategoriju</span>
                                                 </a>
-                                        <form method="POST" action="{{ route('category.destroy', $category) }}" enctype="multipart/form-data" tabindex="0"
-                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                role="menuitem">
-                                              @csrf
-                                              @method('DELETE')
-                                                  <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                                  <button type="submit"><span class="px-4 py-0">Izbriši kategoriju</span></button>
-                                          </form>
+                                                <a href="#" tabindex="0" data-toggle="modal" data-target="#deleteOneModal"
+                                                   data-name="{{ $category->name }}" data-id="{{ $category->id }}"
+                                                    class="deleteOne flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                    role="menuitem">
+                                                    <i class="fa fa-trash mr-[1px] ml-[5px] py-1"></i>
+                                                    <span class="px-4 py-0">Izbrisi kategoriju</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
