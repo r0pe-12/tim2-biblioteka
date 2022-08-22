@@ -158,4 +158,39 @@ class CategoryController extends Controller
         }
         return redirect()->route('category.index')->with('success', 'Kategorija "' . $category->name . '" je uspješno obrisana');
     }
+
+
+    /**
+     * Remove the specified resourceS from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function bulkDelete()
+    {
+//        $names = [];
+        $ids = explode(',', request('ids'));
+        $categories = Category::whereIn('id', $ids);
+
+        $photos = [];
+//        we will get all photopaths from categories
+        foreach ($categories->get() as $category){
+            $photos[] = $category->iconPath;
+        }
+
+//        we will try to delete categories
+        try {
+            $categories->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje kategorija nije moguce');
+        }
+//        if we delete them we will delete photos from storage
+        foreach ($photos as $photo){
+            if (file_exists($photoPath = public_path() . $photo)){
+                unlink($photoPath);
+            }
+        }
+        return redirect()->route('category.index')->with('success', 'Kategorije su uspješno izbrisane');
+    }
+
 }
