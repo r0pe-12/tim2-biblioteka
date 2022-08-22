@@ -28,7 +28,7 @@ class CreateStudentRequest extends FormRequest
             "surname" => ['required', 'max:255'],
             "jmbg" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
             "email" => ['required', 'email', 'max:255', 'unique:users'],
-            "username" => ['required', 'max:255', 'unique:users'],
+            "username" => ['required', 'max:255', 'unique:users', 'alpha_dash'],
             "password" => ['confirmed','min:8' , 'max:255'],
             "photoPath" => [''],
         ];

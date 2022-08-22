@@ -139,7 +139,7 @@
                         <span>Unesi novu šifru <span class="text-red-500">*</span></span>
                         <input class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" type="password" name="pwResetBibliotekar" id="pwResetBibliotekar" onkeydown="clearErrorsPwResetBibliotekar()">
                         <div id="validatePwResetBibliotekar"></div>
-                        @error('pwResetBibliotekar') <div class="text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
+                        @error('pwResetBibliotekar') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                     </div>
                     <div class="flex flex-col pb-[30px]">
                         <span>Ponovi šifru <span class="text-red-500">*</span></span>
