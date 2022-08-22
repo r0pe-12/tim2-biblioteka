@@ -25,6 +25,8 @@ Route::resource('/genre', GenreController::class);
 Route::delete('/genres/bulkDelete', [GenreController::class, 'bulkDelete'])->name('genre.bulkDelete');
 
 Route::resource('/publisher', PublisherController::class);
+Route::delete('/publishers/bulkDelete', [PublisherController::class, 'bulkDelete'])->name('publisher.bulkDelete');
+
 Route::resource('/bookbind', BookBindController::class);
 Route::resource('/format', FormatController::class);
 Route::resource('/script', ScriptController::class);
