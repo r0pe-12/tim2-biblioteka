@@ -8,8 +8,8 @@
         <x-book-samples :book="$book"/>
     </div>
     <div class="mt-[40px] mx-[30px]">
-        @if($book->active()->count() > 0)
-            @foreach($book->active()->latest()->take(3)->get() as $zapis)
+        @if($book->borrows()->count() > 0)
+            @foreach($book->borrows()->latest()->take(3)->get() as $zapis)
                 <div class="mt-[40px] flex flex-col max-w-[304px]">
                     <div class="text-gray-500 ">
                         <p class="inline uppercase">
