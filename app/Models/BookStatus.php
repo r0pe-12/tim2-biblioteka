@@ -68,5 +68,5 @@ class BookStatus extends Model
     }
 
     use HasFactory;
-    protected $table = 'bookStatuses';
+    protected $table = 'bookstatuses';
 }
