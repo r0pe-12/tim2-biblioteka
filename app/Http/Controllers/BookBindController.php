@@ -124,10 +124,28 @@ class BookBindController extends Controller
     public function destroy(BookBind $bookbind)
     {
         //
-        $bookbind->delete();
+        try {
+            $bookbind->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje poveza "' . $bookbind->name . '" nije moguce');
+        }
         return redirect()->route('bookbind.index')->with('success', 'Povez "' . $bookbind->name . '" je uspješno obrisan');
 
+    }
 
+    public function bulkDelete()
+    {
+//        $names = [];
+        $ids = explode(',', request('ids'));
+        $bookbinds = BookBind::whereIn('id', $ids);
 
+//        we will try to delete genres
+        try {
+            $bookbinds->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje poveza nije moguce');
+        }
+
+        return redirect()->route('publisher.index')->with('success', 'Povezi su uspješno izbrisani');
     }
 }
