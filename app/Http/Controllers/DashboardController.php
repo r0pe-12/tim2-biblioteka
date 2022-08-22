@@ -19,7 +19,7 @@ class DashboardController extends Controller
         return view('dashboard.index', [
             //'izdate' => Borrow::latest()->get(),
             'izdateAll' => Borrow::izdavanja(),
-            'izdate' => Borrow::latest()->get(),
+            'izdate' => Borrow::latest()->take(10)->get(),
             'rezervisaneAll' => Reservation::all(),
             'rezervisane' => Reservation::orderBy('id', 'desc')->take(4)->get(),
             'prekoracene' => WriteOff::prekoracene()
