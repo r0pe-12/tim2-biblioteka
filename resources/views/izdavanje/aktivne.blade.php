@@ -96,6 +96,26 @@
                                     </div>
                                 </li>
                                 <li class="mb-[4px]">
+                                    <div class="w-[300px] pl-[32px]">
+                                        <span
+                                            class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                            <div
+                                                class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                                <a href="napravitiRutu" aria-label="Otpisane knjige"
+                                                   class="flex items-center">
+                                                    <i
+                                                        class="text-[#707070] text-[20px] fas fa-level-up-alt transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
+                                                    <div>
+                                                        <p
+                                                            class="text-[15px] ml-[19px] transition duration-300 ease-in group-hover:text-[#576cdf]">
+                                                            Otpisane knjige</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="mb-[4px]">
                                     <div class="w-[300px] pl-[28px]">
                                         <span
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">

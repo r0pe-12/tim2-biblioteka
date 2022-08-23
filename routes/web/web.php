@@ -61,6 +61,9 @@ Route::middleware(['auth'])->group(function (){
             Route::put('/books/{book}/otpisi', 'otpisi')->name('otpisi.store');
     //      END-otpisi knjigu
 
+
+
+
             Route::get('/prekoracene', 'prekoracene')->name('prekoracene');
             Route::get('/books/{book}/evidencija/prekoracene', 'prekoracene1')->name('prekoracene1');
         });
@@ -106,7 +109,13 @@ Route::middleware(['auth'])->group(function (){
 
 //    test routes
 
+Route::get('/otpisane',function(){
+    return view('izdavanje.otpisane');
+});
 
+Route::get('/otpisane1',function(){
+    return view('book.evidencija.otpisane');
+});
 
 //    END-test routes
 

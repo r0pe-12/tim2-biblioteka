@@ -27,6 +27,4 @@ class WriteOff extends Borrow
             })
             ->get();
     }
-
-
 }
