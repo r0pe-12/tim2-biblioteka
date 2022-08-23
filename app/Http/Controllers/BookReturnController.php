@@ -32,14 +32,15 @@ class BookReturnController extends Controller
         }
         foreach ($ids as $id) {
             $borrow = Borrow::findOrFail($id);
-            $borrow->active = 0;
-            $borrow->save();
 
             if ($book->failed()->contains($borrow)){
                 $newStatus = BookStatus::returned1();
             } else {
                 $newStatus = BookStatus::returned();
             }
+
+            $borrow->active = 0;
+            $borrow->save();
 
             $borrow->statuses()->attach($newStatus);
             $book->borrowedSaples--;
