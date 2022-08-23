@@ -26,8 +26,10 @@ class Student extends User
         return $this->borrows()
             ->where('active', '=', '1')
             ->join('book_borrow_status','borrows.id','=','borrow_id')
-            ->where('book_borrow_status.bookStatus_id','=', BookStatus::BORROWED)
-            ->orWhere('book_borrow_status.bookStatus_id','=', BookStatus::RESERVED)
+            ->where(function ($q) {
+                $q->where('book_borrow_status.bookStatus_id','=', BookStatus::BORROWED)
+                    ->orWhere('book_borrow_status.bookStatus_id','=', BookStatus::RESERVED);
+            })
             ->get();
     }
 
@@ -36,22 +38,26 @@ class Student extends User
         return $this->borrows()
             ->where('active', '=', '0')
             ->join('book_borrow_status','borrows.id','=','borrow_id')
-            ->where('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED)
-            ->orwhere('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED1)
+            ->where(function ($q) {
+                $q->where('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED)
+                    ->orwhere('book_borrow_status.bookStatus_id','=', BookStatus::RETURNED1);
+            })
             ->get();
     }
     public function prekoracene(){
         # code
         return $this->borrows()
-            ->where('active', '=', '1')
             ->join('book_borrow_status', 'borrows.id', '=', 'borrow_id')
-            ->where('book_borrow_status.bookStatus_id', '!=', BookStatus::FAILED)
             ->where(function ($query){
-                $query->where('book_borrow_status.bookStatus_id', '=', BookStatus::BORROWED)
+                $query->where('active', '=', '1')
+                    ->where('book_borrow_status.bookStatus_id', '!=', BookStatus::FAILED)
+                    ->where('book_borrow_status.bookStatus_id', '=', BookStatus::BORROWED)
                     ->where('return_date', '<', today('Europe/Belgrade'));
             })
             ->orWhere(function ($query){
-                $query->where('book_borrow_status.bookStatus_id', '=', BookStatus::RESERVED)
+                $query->where('active', '=', '1')
+                    ->where('book_borrow_status.bookStatus_id', '!=', BookStatus::FAILED)
+                    ->where('book_borrow_status.bookStatus_id', '=', BookStatus::RESERVED)
                     ->where('return_date', '<', today('Europe/Belgrade'));
             })
             ->get();
@@ -65,16 +71,23 @@ class Student extends User
     public function activeRes(){
         # code
         return $this->reservations()
-                ->where('status_id', '=', ReservationStatus::RESERVED)->get();
+                ->where('closingReason_id', '=', ClosingReason::OPEN)
+                ->join('reservation_status', 'reservation_status.reservation_id', 'reservations.id')
+                ->join('reservationstatuses', 'reservationstatuses.id', '=', 'reservation_status.resStatus_id')
+                ->join('closingreasons', 'closingreasons.id', 'reservations.closingReason_id')
+                ->select('reservations.*', 'reservation_status.datum', 'reservationstatuses.name as status', 'reservationstatuses.id as resStatus_id', 'closingreasons.name as cReason');
     }
 
     public function archiveRes(){
         # code
         return $this->reservations()
+                ->join('reservation_status', 'reservation_status.reservation_id', 'reservations.id')
+                ->join('reservationstatuses', 'reservationstatuses.id', '=', 'reservation_status.resStatus_id')
+                ->join('closingreasons', 'closingreasons.id', 'reservations.closingReason_id')
+                ->select('reservations.*', 'reservation_status.datum', 'reservationstatuses.name as status', 'reservationstatuses.id as resStatus_id', 'closingreasons.name as cReason')
                 ->where(function ($q){
-                    $q->where('status_id', '!=', ReservationStatus::RESERVED)
-                        ->where('status_id', '!=', ReservationStatus::WAITING);
-                })
-                    ->get();
+                    $q->where('resStatus_id', '!=', ReservationStatus::RESERVED)
+                        ->where('resStatus_id', '!=', ReservationStatus::WAITING);
+                });
     }
 }

@@ -15,16 +15,18 @@ class WriteOff extends Borrow
     public static function prekoracene(){
         # code
         return self
-            ::where('active', '=', '1')
-            ->join('book_borrow_status', 'borrows.id', '=', 'borrow_id')
-            ->where('book_borrow_status.bookStatus_id', '!=', BookStatus::FAILED)
+            ::join('book_borrow_status', 'borrows.id', '=', 'borrow_id')
             ->where(function ($query){
-                $query->where('book_borrow_status.bookStatus_id', '=', BookStatus::BORROWED)
-                ->where('return_date', '<', today('Europe/Belgrade'));
+                $query->where('active', '=', '1')
+                    ->where('book_borrow_status.bookStatus_id', '!=', BookStatus::FAILED)
+                    ->where('book_borrow_status.bookStatus_id', '=', BookStatus::BORROWED)
+                    ->where('return_date', '<', today('Europe/Belgrade'));
             })
             ->orWhere(function ($query){
-                $query->where('book_borrow_status.bookStatus_id', '=', BookStatus::RESERVED)
-                ->where('return_date', '<', today('Europe/Belgrade'));
+                $query->where('active', '=', '1')
+                    ->where('book_borrow_status.bookStatus_id', '!=', BookStatus::FAILED)
+                    ->where('book_borrow_status.bookStatus_id', '=', BookStatus::RESERVED)
+                    ->where('return_date', '<', today('Europe/Belgrade'));
             })
             ->get();
     }

@@ -52,11 +52,14 @@ class BookBorrowController extends Controller
         ]);
         $book->borrows()->save($borrow);
         $isRes = false;
-        if ($book->activeRes()->contains($res = $book->activeRes()->where('student_id', '=', $borrow->student_id)->first())) {
+        if ($book->activeRes()->get()->contains($res = $book->activeRes()->where('student_id', '=', $borrow->student_id)->first())) {
             $res->closingReason_id = ClosingReason::bookBorrowed()->id;
-            $res->status_id = ReservationStatus::closed()->id;
             $res->closingDate = today("Europe/Belgrade");
             $res->save();
+
+            $newResStatus = ReservationStatus::closed();
+            $res->statuses()->attach($newResStatus);
+
             $res->book->reservedSamples--;
             $res->book->save();
 

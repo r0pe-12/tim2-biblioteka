@@ -108,7 +108,7 @@
                                     <td class="px-4 py-3 text-sm leading-5 text-blue-900 whitespace-no-wrap">
                                         <div
                                             class="inline-block px-[6px] py-[2px] font-medium bg-yellow-200 rounded-[10px]">
-                                            <span class="text-xs text-yellow-700">{{ $reservation->status->name }}</span>
+                                            <span class="text-xs text-yellow-700">{{ $reservation->status }}</span>
                                         </div>
                                     </td>
                                     <td class="px-4 py-3 text-sm leading-5 text-right whitespace-no-wrap">

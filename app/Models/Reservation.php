@@ -18,6 +18,22 @@ class Reservation extends Model
 protected $guarded = [];
     use HasFactory;
 
+    /**
+     * Get all of the models from the database.
+     *
+     * @param  array|string  $columns
+     * @return Reservation
+     */
+    public static function allOrdered($columns = ['*'])
+    {
+        return self
+            ::join('reservation_status','reservation_status.reservation_id','=','reservations.id')
+            ->join('reservationstatuses', 'reservation_status.resStatus_id', '=', 'reservationstatuses.id')
+            ->join('closingreasons', 'closingreasons.id', 'reservations.closingReason_id')
+            ->select('reservations.*', 'reservation_status.datum', 'reservationstatuses.name as status', 'reservationstatuses.id as status_id', 'closingreasons.name as cReason')
+            ->orderBy('datum', 'desc');
+    }
+
 //    relation between reservation and librarian
     public function librarian(){
         # code
@@ -43,10 +59,17 @@ protected $guarded = [];
     }
 
 //    get status of rezervacija knjige
+    public function statuses(){
+        # code
+        return $this->belongsToMany(ReservationStatus::class, 'reservation_status', 'reservation_id', 'resStatus_id')->withPivot('datum');
+    }
+
+//    get last reservation status
     public function status(){
         # code
-        return $this->belongsTo(ReservationStatus::class);
+        return $this->statuses()->latest()->first();
     }
+
 
 //    get closingReason of rezervacija knjige
     public function cReason(){
@@ -57,17 +80,24 @@ protected $guarded = [];
 //    sve trenutno aktivne rezervacije
     public static function active(){
         # code
-        return Reservation::where('status_id', '=', ReservationStatus::RESERVED)->get();
+        return Reservation::where('closingReason_id', '=', ClosingReason::OPEN)
+            ->join('reservation_status', 'reservation_status.reservation_id', 'reservations.id')
+            ->join('reservationstatuses', 'reservationstatuses.id', '=', 'reservation_status.resStatus_id')
+            ->join('closingreasons', 'closingreasons.id', 'reservations.closingReason_id')
+            ->select('reservations.*', 'reservation_status.datum', 'reservationstatuses.name as status', 'reservationstatuses.id as resStatus_id', 'closingreasons.name as cReason');
     }
 
 //    sve trenutno NEaktivne rezervacije
     public static function archive(){
         # code
-        return Reservation::
-            where(function ($q){
-                $q->where('status_id', '!=', ReservationStatus::RESERVED)
-                    ->where('status_id', '!=', ReservationStatus::WAITING);
-            })
-            ->get();
+        return Reservation
+            ::join('reservation_status', 'reservation_status.reservation_id', 'reservations.id')
+            ->join('reservationstatuses', 'reservationstatuses.id', '=', 'reservation_status.resStatus_id')
+            ->join('closingreasons', 'closingreasons.id', 'reservations.closingReason_id')
+            ->select('reservations.*', 'reservation_status.datum', 'reservationstatuses.name as status', 'reservationstatuses.id as resStatus_id', 'closingreasons.name as cReason')
+            ->where(function ($q){
+                $q->where('resStatus_id', '!=', ReservationStatus::RESERVED)
+                    ->where('resStatus_id', '!=', ReservationStatus::WAITING);
+            });
     }
 }

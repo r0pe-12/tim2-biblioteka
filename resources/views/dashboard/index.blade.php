@@ -115,7 +115,7 @@
                                             <td class="px-2 py-2">
                                                 <div
                                                     class="inline-block px-[6px] py-[2px] font-medium bg-yellow-200 rounded-[10px]">
-                                                    <span class="text-xs text-yellow-700">{{ $zapis->status->name }}</span>
+                                                    <span class="text-xs text-yellow-700">{{ $zapis->status }}</span>
                                                 </div>
                                             </td>
                                         </tr>

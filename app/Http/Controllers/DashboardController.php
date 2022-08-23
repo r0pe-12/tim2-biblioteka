@@ -20,8 +20,8 @@ class DashboardController extends Controller
             //'izdate' => Borrow::latest()->get(),
             'izdateAll' => Borrow::izdavanja(),
             'izdate' => Borrow::allOrdered()->take(10)->get(),
-            'rezervisaneAll' => Reservation::all(),
-            'rezervisane' => Reservation::orderBy('id', 'desc')->take(4)->get(),
+            'rezervisaneAll' => Reservation::active()->get(),
+            'rezervisane' => Reservation::active()->orderBy('id', 'desc')->take(4)->get(),
             'prekoracene' => WriteOff::prekoracene()
         ]);
     }
@@ -29,7 +29,7 @@ class DashboardController extends Controller
     public function activity(){
         /*$activity = Borrow::izdavanja()->merge(BookReturn::returned())->sortByDesc('datum');
         dd($activity);*/
-//        dd(Borrow::allOrdered()->get());
+//        dd(Reservation::allOrdered()->get());
             return view('dashboard.activity', [
                 'izdate' => Borrow::allOrdered()->get(),
                 'returned' => BookReturn::returned()
