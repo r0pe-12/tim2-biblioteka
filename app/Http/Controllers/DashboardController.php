@@ -37,14 +37,19 @@ class DashboardController extends Controller
         $books = Book::all();
 
         $borrows = Borrow::allOrdered();
-        \request()->whenFilled('ucenik', function ($ucenik) use ($borrows) {
+        $reservations = Reservation::allOrdered();
+
+        \request()->whenFilled('ucenik', function ($ucenik) use ($borrows, $reservations) {
             $borrows->whereIn('student_id', $ucenik);
+            $reservations->whereIn('student_id', $ucenik);
         });
-        \request()->whenFilled('bibliotekar', function ($bibliotekar) use ($borrows) {
+        \request()->whenFilled('bibliotekar', function ($bibliotekar) use ($borrows, $reservations) {
             $borrows->whereIn('librarian_id', $bibliotekar);
+            $reservations->whereIn('librarian_id', $bibliotekar);
         });
-        \request()->whenFilled('knjiga', function ($knjiga) use ($borrows) {
+        \request()->whenFilled('knjiga', function ($knjiga) use ($borrows, $reservations) {
             $borrows->whereIn('book_id', $knjiga);
+            $reservations->whereIn('book_id', $knjiga);
         });
         \request()->whenFilled('transakcija', function ($transakcija) use ($borrows) {
             $transakcija = array_map(function ($val) {
@@ -60,18 +65,20 @@ class DashboardController extends Controller
             }, $transakcija);
             $borrows->whereIn('bookStatus_id', $transakcija);
         });
-        \request()->whenFilled('od', function ($od) use ($borrows) {
+        \request()->whenFilled('od', function ($od) use ($borrows, $reservations) {
             $od = Carbon::parse($od);
             $borrows->where('datum', '>', $od);
+            $reservations->where('datum', '>', $od);
         });
-        \request()->whenFilled('do', function ($do) use ($borrows) {
+        \request()->whenFilled('do', function ($do) use ($borrows, $reservations) {
             $do = Carbon::parse($do)->addDay();
             $borrows->where('datum', '<', $do);
+            $reservations->where('datum', '<', $do);
         });
 
             return view('dashboard.activity', [
                 'borrows' => $borrows->get(),
-                'reservations' => Reservation::allOrdered()->get(),
+                'reservations' => $reservations->get(),
                 'students' => $students,
                 'librarians' => $librarians,
                 'books' => $books,
