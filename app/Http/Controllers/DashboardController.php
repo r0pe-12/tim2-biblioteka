@@ -27,12 +27,10 @@ class DashboardController extends Controller
     }
 
     public function activity(){
-        /*$activity = Borrow::izdavanja()->merge(BookReturn::returned())->sortByDesc('datum');
-        dd($activity);*/
 //        dd(Reservation::allOrdered()->get());
             return view('dashboard.activity', [
-                'izdate' => Borrow::allOrdered()->get(),
-                'returned' => BookReturn::returned()
+                'borrows' => Borrow::allOrdered()->get(),
+                'reservations' => Reservation::allOrdered()->get()
             ]);
     }
 }
