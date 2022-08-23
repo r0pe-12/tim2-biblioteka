@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          User::factory()->create([
-             'username' => '@',
+             'username' => 'bibliotekar',
              'role_id' => Role::create(['name' => 'bibliotekar']),
          ]);
 
