@@ -57,5 +57,5 @@ class ReservationStatus extends Model
 
 
     use HasFactory;
-    protected $table = 'reservationStatuses';
+    protected $table = 'reservationstatuses';
 }
