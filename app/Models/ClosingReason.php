@@ -68,7 +68,7 @@ class ClosingReason extends Model
     }
 
     use HasFactory;
-    protected $table = 'closingReasons';
+    protected $table = 'closingreasons';
 
 //    relation between closingreason and reservations
     public function reservations(){
