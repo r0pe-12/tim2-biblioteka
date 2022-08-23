@@ -46,7 +46,7 @@
             @endforeach
 
             <div class="mt-[40px]">
-                <a href="#" class="text-[#2196f3] hover:text-blue-600">
+                <a href="{{ route('dashboard.activity', ['knjiga[]'=>$zapis->book_id]) }}" class="text-[#2196f3] hover:text-blue-600">
                     <i class="fas fa-history"></i> Prikazi sve
                 </a>
             </div>

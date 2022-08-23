@@ -22,6 +22,9 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
     }
     if(isset($_GET['knjiga'])) {
         $knjiga = count($_GET['knjiga']);
+        if ($knjiga === 1) {
+            $knjiga = \App\Models\Book::find($_GET['knjiga'][0])->title;
+        };
         $knjige = $_GET['knjiga'];
     } else {
         $knjiga = "Sve";
@@ -34,18 +37,22 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
         $transakcija = "Sve";
         $transakcije = [];
     }
-    if(isset($_GET['od']) && isset($_GET['do'])) {
+    $datum = [];
+    if (isset($_GET['od'])) {
         $od = $_GET['od'];
+        strlen($od) > 0 ? $datum[] = 'Od' : '';
+    }
+    if (isset($_GET['do'])) {
         $do = $_GET['do'];
+        strlen($do) > 0 ? $datum[] = 'Do' : '';
+    }
 
-        $datum = [];
-
-        strlen($od) > 0 ? $datum[] = $od : '';
-        strlen($do) > 0 ? $datum[] = $do : '';
-
-        count($datum) > 0 ? $datum = count($datum) : $datum = "Sve";
-    } else {
+    if (count($datum) == 1) {
+        $datum = $datum[0];
+    } elseif (count($datum) == 0) {
         $datum = "Sve";
+    } else {
+        $datum = count($datum);
     }
 
 } else {
