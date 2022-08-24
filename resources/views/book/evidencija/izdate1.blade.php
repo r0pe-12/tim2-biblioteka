@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Detalji o transakciji:
+        Detalji o transakciji: Izdavanje
     @endsection
         <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
             <!-- Heading of content -->
@@ -96,7 +96,7 @@
                                 Ponisti <i class="fas fa-times ml-[4px]"></i>
                             </button>
                             <button type="submit"
-                                    class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"">
+                                    class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
                             Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
                         </div>
@@ -124,7 +124,7 @@
                                 Ponisti <i class="fas fa-times ml-[4px]"></i>
                             </button>
                             <button type="submit"
-                                    class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"">
+                                    class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
                             Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
                         </div>
@@ -148,7 +148,7 @@
                         Ponisti <i class="fas fa-times ml-[4px]"></i>
                     </button>
                     <button type="submit"
-                            class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"">
+                            class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
                     Potvrdi <i class="fas fa-check ml-[4px]"></i>
                     </button>
                 </div>
