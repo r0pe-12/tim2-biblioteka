@@ -23,44 +23,23 @@
                         <ul class="text-[#2D3B48]">
                             <li class="mb-[4px]">
                                 <div class="w-[300px] pl-[32px]">
-                                        <span
-                                            class=" whitespace-nowrap w-full text-[25px]  flex justify-between fill-current">
-                                            <div
-                                                class="py-[15px] px-[20px] w-[268px] cursor-pointer group hover:bg-[#EFF3F6] rounded-[10px]">
-                                                <a href="{{route('izdate')}}" aria-label="Sve knjige"
-                                                   class="flex items-center">
-                                                    <i
-                                                        class="text-[#707070] transition duration-300 ease-in group-hover:text-[#576cdf] far fa-copy text-[20px]"></i>
-                                                    <div>
-                                                        <p
-                                                            class="transition duration-300 ease-in group-hover:text-[#576cdf]  text-[15px] ml-[18px]">
-                                                            Izdate knjige
-                                                        </p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </span>
-                                </div>
-                            </li>
-                            <li class="mb-[4px]">
-                                <div class="w-[300px] pl-[32px]">
-                                        <span
-                                            class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
-                                            <div
-                                                class="group bg-[#EFF3F6] hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="{{route('vracene')}}" aria-label="Vracene knjige"
-                                                   class="flex items-center">
-                                                    <i
-                                                        class="transition duration-300 ease-in  text-[#707070] text-[20px] fas fa-file text-[#576cdf]"></i>
-                                                    <div>
-                                                        <p
-                                                            class="transition duration-300 ease-in  text-[15px] ml-[21px] text-[#576cdf]">
-                                                            Vracene knjige
-                                                        </p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </span>
+                                    <span
+                                        class=" whitespace-nowrap w-full text-[25px]  flex justify-between fill-current">
+                                        <div
+                                            class="py-[15px] px-[20px] w-[268px] cursor-pointer group hover:bg-[#EFF3F6] rounded-[10px]">
+                                            <a href="{{route('izdate')}}" aria-label="Sve knjige"
+                                               class="flex items-center">
+                                                <i
+                                                    class="text-[#707070] transition duration-300 ease-in group-hover:text-[#576cdf] far fa-copy text-[20px]"></i>
+                                                <div>
+                                                    <p
+                                                        class="transition duration-300 ease-in group-hover:text-[#576cdf]  text-[15px] ml-[18px]">
+                                                        Izdate knjige
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </span>
                                 </div>
                             </li>
                             <li class="mb-[4px]">
@@ -69,18 +48,35 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="napravitiRutu" aria-label="Otpisane knjige"
+                                                <a href="{{ route('vracene') }}" aria-label="Izdate knjige"
                                                    class="flex items-center">
-                                                    <i
-                                                        class="text-[#707070] text-[20px] fas fa-level-up-alt transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
+                                                    <i class="text-[#707070] text-[20px] fas fa-file transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
                                                     <div>
-                                                        <p
-                                                            class="text-[15px] ml-[19px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                                            Otpisane knjige</p>
+                                                        <p class="text-[15px] ml-[21px] transition duration-300 ease-in group-hover:text-[#576cdf]">
+                                                            Vracene knjige</p>
                                                     </div>
                                                 </a>
                                             </div>
                                         </span>
+                                </div>
+                            </li>
+                            <li class="mb-[4px]">
+                                <div class="w-[300px] pl-[32px]">
+                                    <span
+                                        class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                        <div
+                                            class="group bg-[#EFF3F6] hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                            <a href="/otpisane" aria-label="Otpisane knjige"
+                                               class="flex items-center">
+                                                <i class="transition duration-300 ease-in fas fa-level-up-alt  text-[#707070] text-[20px] fas fa-file text-[#576cdf]"></i>
+                                                <div>
+                                                    <p class="transition duration-300 ease-in  text-[15px] ml-[21px] text-[#576cdf]">
+                                                        Otpisane knjige
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </span>
                                 </div>
                             </li>
                             <li class="mb-[4px]">
