@@ -68,6 +68,7 @@ Route::middleware(['auth'])->group(function (){
             Route::get('/books/{book}/evidencija/prekoracene', 'prekoracene1')->name('prekoracene1');
 
             Route::get('/otpisane', 'otpisane')->name('otpisane');
+            Route::get('/books/{book}/evidencija/otpisane', 'otpisane1')->name('otpisane1');
         });
 
         Route::controller(BookReturnController::class)->group(function (){
@@ -111,9 +112,7 @@ Route::middleware(['auth'])->group(function (){
 
 //    test routes
 
-Route::get('/otpisane1',function(){
-    return view('book.evidencija.otpisane');
-});
+
 
 //    END-test routes
 

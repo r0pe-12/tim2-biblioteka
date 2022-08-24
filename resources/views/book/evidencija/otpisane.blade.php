@@ -1,127 +1,49 @@
 <x-layout>
     @section('title')
-        Otpisane: Ime Knjige
+        Otpisane: {{ $book->title }}
     @endsection
     <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
         <!-- Heading of content -->
-        {{--<x-book-header :book="$book"/>--}}
-        <div class="heading">
-            <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
-                <div class="py-[10px] flex flex-row">
-                    <div class="w-[77px] pl-[30px]">
-                        <img src="img/tomsojer.jpg" alt="">
-                    </div>
-                    <div class="pl-[15px]  flex flex-col">
-                        <div>
-                            <h1>
-                                Tom Sojer
-                            </h1>
-                        </div>
-                        <div>
-                            <nav class="w-full rounded">
-                                <ol class="flex list-reset">
-                                    <li>
-                                        <a href="evidencijaKnjiga.php" class="text-[#2196f3] hover:text-blue-600">
-                                            Evidencija knjiga
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <span class="mx-2">/</span>
-                                    </li>
-                                    <li>
-                                        <a href="knjigaOsnovniDetalji.php"
-                                           class="text-[#2196f3] hover:text-blue-600">
-                                            KNJIGA-467
-                                        </a>
-                                    </li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-                <div class="pt-[24px] mr-[30px]">
-                    <a href="otpisiKnjigu.php" class="inline hover:text-blue-600">
-                        <i class="fas fa-level-up-alt mr-[3px]"></i>
-                        Otpisi knjigu
-                    </a>
-                    <a href="izdajKnjigu.php" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
-                        <i class="far fa-hand-scissors mr-[3px]"></i>
-                        Izdaj knjigu
-                    </a>
-                    <a href="vratiKnjigu.php" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
-                        <i class="fas fa-redo-alt mr-[3px] "></i>
-                        Vrati knjigu
-                    </a>
-                    <a href="rezervisiKnjigu.php" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
-                        <i class="far fa-calendar-check mr-[3px] "></i>
-                        Rezervisi knjigu
-                    </a>
-                    <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-[#e4dfdf] dotsIznajmljivanjeVracene hover:text-[#606FC7]">
-                        <i
-                            class="fas fa-ellipsis-v"></i>
-                    </p>
-                    <div
-                        class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-iznajmljivanje-vracene">
-                        <div class="absolute right-0 w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
-                             aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
-                            <div class="py-1">
-                                <a href="editKnjiga.php" tabindex="0"
-                                   class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                   role="menuitem">
-                                    <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                    <span class="px-4 py-0">Izmijeni knjigu</span>
-                                </a>
-                                <a href="#" tabindex="0"
-                                   class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                   role="menuitem">
-                                    <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                    <span class="px-4 py-0">Izbrisi knjigu</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-book-header :book="$book"/>
         <div class="flex flex-row height-iznajmljivanje scroll">
             <div class="w-[80%]">
                 <div class="py-4 text-gray-500 border-[#e4dfdf] pl-[30px]">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-link" href="napravitiRutu">Osnovni detalji</a>
-                            <a class="nav-link" href="napravitiRutu">Specifikacija</a>
-                            <a class="nav-link active"  href="napravitiRutu" aria-selected='true'>Evidencija iznajmljivanja</a>
-                            <a class="nav-link" href="napravitiRutu">Multimedija</a>
+                            <a class="nav-link" href="{{ route('books.show', $book) }}">Osnovni detalji</a>
+                            <a class="nav-link" href="{{ route('books.show', $book) }}">Specifikacija</a>
+                            <a class="nav-link active"  href="#" aria-selected='true'>Evidencija iznajmljivanja</a>
+                            <a class="nav-link" href="{{ route('books.show', $book) }}">Multimedija</a>
                         </div>
                     </nav>
                 </div>
                 <div class="py-4 pt-[20px] pl-[30px] text-[#2D3B48]">
-                    <a href="napravitiRutu"
+                    <a href="{{ route('izdate1', $book) }}"
                        class="py-[15px] px-[20px] w-[268px] cursor-pointer hover:bg-[#EFF3F6] rounded-[10px] inline hover:text-[#576cdf]">
                         <i class="text-[20px] far fa-copy mr-[3px]"></i>
                         Izdate knjige
                     </a>
-                    <a href="napravitiRutu"
-                       class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] text-[#576cdf] bg-[#EFF3F6] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
-                        <i class="text-[20px]  group-hover:text-[#576cdf] fas fa-file mr-[3px]"></i>
+                    <a href="{{ route('vracene1', $book) }}"
+                       class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
+                        <i class="text-[20px] text-[#707070] group-hover:text-[#576cdf] fas fa-file mr-[3px]"></i>
                         Vracene knjige
                     </a>
-                    <a href="napravitiRutu"
-                       class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
-                        <i class="text-[20px] text-[#707070] group-hover:text-[#576cdf] fas fa-level-up-alt mr-[3px]"></i>
+                    <a href="{{ route('otpisane1', $book) }}"
+                       class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] text-[#576cdf] bg-[#EFF3F6] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
+                        <i class="text-[20px] group-hover:text-[#576cdf] fas fa-level-up-alt mr-[3px]"></i>
                         Otpisane knjige
                     </a>
-                    <a href="napravitiRutu"
+                    <a href="{{route('prekoracene1', $book)}}"
                        class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                         <i class="text-[20px] text-[#707070] group-hover:text-[#576cdf] fas fa-exclamation-triangle mr-[3px]"></i>
                         Knjige u prekoracenju
                     </a>
-                    <a href="napravitiRutu"
+                    <a href="{{ route('aktivne-rezervacije1', $book) }}"
                        class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                         <i class="text-[20px] text-[#707070] group-hover:text-[#576cdf] far fa-calendar-check mr-[3px]"></i>
                         Aktivne rezervacije
                     </a>
-                    <a href="napravitiRutu"
+                    <a href="{{ route('arhivirane-rezervacije1', $book) }}"
                        class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                         <i class="text-[20px] text-[#707070] group-hover:text-[#576cdf] fas fa-calendar-alt  mr-[3px]"></i>
                         Arhivirane rezervacije
