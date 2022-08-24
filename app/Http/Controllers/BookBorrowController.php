@@ -124,7 +124,7 @@ class BookBorrowController extends Controller
 //        todo da li ovako ili da stavimo cascade od delete u bazi???
         $borrow->statuses()->sync([]);
         $borrow->delete();
-        return redirect()->route('dashboard.index')->with('success', 'Zapis knjige "' . $borrow->book->title . '" za ucenika "' . $borrow->student->name . $borrow->student->surname . '" je uspjesno obrisan');
+        return redirect()->route('dashboard.index')->with('success', 'Zapis izdavanja knjige "' . $borrow->book->title . '" je uspjesno obrisan');
     }
 //    ENDizbrisi zapis
 }

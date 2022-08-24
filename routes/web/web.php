@@ -101,6 +101,9 @@ Route::middleware(['auth'])->group(function (){
     //      END-otkazi rezervaciju
 
             Route::get('/books/{book}/rezervacija/{reservation}/show', 'show')->name('rezervisane.show');
+//            obrisi zapis
+            Route::delete('/books/rezervisane/{reservation}', 'destroy')->name('rezervisane.destroy');
+//            ENDobrisi zapis
         });
 //    END-rute za knjigu
 
