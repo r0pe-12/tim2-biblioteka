@@ -32,7 +32,7 @@
                         </a>
                         dana
                         <span class="font-bold">{{ \Carbon\Carbon::parse($zapis->datum)->format('d.m.Y') }}</span>
-                        <a href="OvoNapraviti" class="text-[#2196f3] hover:text-blue-600">
+                        <a href="{{ route('rezervisane.show', [$zapis->book, $zapis]) }}" class="text-[#2196f3] hover:text-blue-600">
                             pogledaj detaljnije >>
                         </a>
                     </p>
@@ -64,7 +64,7 @@
                         <span class="font-bold"><a href="{{ route('books.show', $zapis->book) }}">{{$zapis->book->title}}</a></span>
                         dana
                         <span class="font-bold">{{ \Carbon\Carbon::parse($zapis->datum)->format('d.m.Y') }}</span>
-                        <a href="OvoNapraviti" class="text-[#2196f3] hover:text-blue-600">
+                        <a href="{{ route('rezervisane.show', [$zapis->book, $zapis]) }}" class="text-[#2196f3] hover:text-blue-600">
                             pogledaj detaljnije >>
                         </a>
                     </p>
@@ -101,7 +101,7 @@
                         </a>
                         dana
                         <span class="font-bold">{{ \Carbon\Carbon::parse($zapis->datum)->format('d.m.Y') }}</span>
-                        <a href="OvoNapraviti" class="text-[#2196f3] hover:text-blue-600">
+                        <a href="{{ route('rezervisane.show', [$zapis->book, $zapis]) }}" class="text-[#2196f3] hover:text-blue-600">
                             pogledaj detaljnije >>
                         </a>
                     </p>
@@ -138,7 +138,7 @@
                         </a>
                         dana
                         <span class="font-bold">{{ \Carbon\Carbon::parse($zapis->datum)->format('d.m.Y') }}</span>
-                        <a href="OvoNapraviti" class="text-[#2196f3] hover:text-blue-600">
+                        <a href="{{ route('rezervisane.show', [$zapis->book, $zapis]) }}" class="text-[#2196f3] hover:text-blue-600">
                             pogledaj detaljnije >>
                         </a>
                     </p>
