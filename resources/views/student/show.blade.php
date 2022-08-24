@@ -6,13 +6,13 @@
         <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
             <!-- Heading of content -->
         <x-student-header :student="$student"/>
-            <div class="border-b-[1px] py-4 text-gray-500 border-[#e4dfdf] pl-[30px]">
-                <a href="#" class="inline active-book-nav">
-                    Osnovni detalji
-                </a>
-                <a href="{{ route('ucenik.izdate', $student->username) }}" class="inline ml-[70px] hover:text-blue-800">
-                    Evidencija iznajmljivanja
-                </a>
+            <div class="py-4 text-gray-500 border-[#e4dfdf] pl-[30px]">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-link active"  href="{{ route('students.show', $student->username) }}" aria-selected="true">Osnovni detalji</a>
+                        <a class="nav-link"  href="{{ route('ucenik.izdate', $student->username) }}" aria-selected="false">Evidencija iznajmljivanja</a>
+                    </div>
+                </nav>
             </div>
             <div class="height-ucenikProfile pb-[30px] scroll">
                 <!-- Space for content -->

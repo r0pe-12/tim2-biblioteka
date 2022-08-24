@@ -31,5 +31,15 @@ class WriteOff extends Borrow
             ->get();
     }
 
-
+    //    sve vracene knjige
+    public static function otpisane(){
+        # code
+        return self
+            ::where('active', '=', '0')
+            ->join('book_borrow_status','borrows.id','=','borrow_id')
+            ->where(function ($q) {
+                $q->where('book_borrow_status.bookStatus_id','=', BookStatus::FAILED);
+            })
+            ->get();
+    }
 }

@@ -61,8 +61,14 @@ Route::middleware(['auth'])->group(function (){
             Route::put('/books/{book}/otpisi', 'otpisi')->name('otpisi.store');
     //      END-otpisi knjigu
 
+
+
+
             Route::get('/prekoracene', 'prekoracene')->name('prekoracene');
             Route::get('/books/{book}/evidencija/prekoracene', 'prekoracene1')->name('prekoracene1');
+
+            Route::get('/otpisane', 'otpisane')->name('otpisane');
+            Route::get('/books/{book}/evidencija/otpisane', 'otpisane1')->name('otpisane1');
         });
 
         Route::controller(BookReturnController::class)->group(function (){
@@ -98,6 +104,7 @@ Route::middleware(['auth'])->group(function (){
     Route::controller(StudentController::class)->prefix('/students/{student:username}')->group(function (){
         Route::get('/izdate', 'izdate')->name('ucenik.izdate');
         Route::get('/vracene', 'vracene')->name('ucenik.vracene');
+        Route::get('/otpisane', 'otpisane')->name('ucenik.otpisane');
         Route::get('/prekoracene', 'prekoracene')->name('ucenik.prekoracene');
         Route::get('/aktivne-rezervacije', 'aktivne')->name('ucenik.aktivne');
         Route::get('/arhivirane-rezervacije', 'arhivirane')->name('ucenik.arhivirane');

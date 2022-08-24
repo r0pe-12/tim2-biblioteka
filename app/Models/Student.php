@@ -44,6 +44,17 @@ class Student extends User
             })
             ->get();
     }
+
+    public function otpisane(){
+        # code
+        return $this->borrows()
+            ->where('active', '=', '0')
+            ->join('book_borrow_status','borrows.id','=','borrow_id')
+            ->where(function ($q) {
+                $q->where('book_borrow_status.bookStatus_id','=', BookStatus::FAILED);
+            })
+            ->get();
+    }
     public function prekoracene(){
         # code
         return $this->borrows()

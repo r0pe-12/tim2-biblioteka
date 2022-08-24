@@ -5,13 +5,13 @@
     <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
         <!-- Heading of content -->
         <x-student-header :student="$student"/>
-        <div class="border-b-[1px] py-4 text-gray-500 border-[#e4dfdf] pl-[30px]">
-            <a href="{{ route('students.show', $student->username) }}" class="inline hover:text-blue-800">
-                Osnovni detalji
-            </a>
-            <a href="{{ route('ucenik.izdate', $student->username) }}" class="inline ml-[70px] active-book-nav">
-                Evidencija iznajmljivanja
-            </a>
+        <div class="py-4 text-gray-500 border-[#e4dfdf] pl-[30px]">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-link"  href="{{ route('students.show', $student->username) }}" aria-selected="false">Osnovni detalji</a>
+                    <a class="nav-link active"  href="{{ route('ucenik.izdate', $student->username) }}" aria-selected="true">Evidencija iznajmljivanja</a>
+                </div>
+            </nav>
         </div>
         <!-- Space for content -->
         <div class="flex justify-start pt-3 bg-white height-ucenikIzdate scroll">
@@ -54,6 +54,26 @@
                                     </a>
                                 </div>
                             </span>
+                        </div>
+                    </li>
+                    <li class="mb-[4px]">
+                        <div class="w-[300px] pl-[32px]">
+                                <span
+                                    class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                    <div
+                                        class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                        <a href="{{ route('ucenik.otpisane', $student->username) }}" aria-label="Izdate knjige"
+                                           class="flex items-center">
+                                            <i
+                                                class="text-[#707070] text-[20px] fas fa-level-up-alt transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
+                                            <div>
+                                                <p
+                                                    class="text-[15px] ml-[21px] transition duration-300 ease-in group-hover:text-[#576cdf]">
+                                                    Otpisane knjige</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </span>
                         </div>
                     </li>
                     <li class="mb-[4px]">
