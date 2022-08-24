@@ -192,6 +192,37 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                                <a id="detalji" href="#"
+                                                   class="flex items-center">
+                                                    <i
+                                                        class="text-[20px] fas fa-copy transition duration-300 ease-in text-[#576cdf]"></i>
+                                                    <div>
+                                                        <p
+                                                            class="text-[15px] ml-[19px] transition duration-300 ease-in text-[#576cdf]">
+                                                            Pogledaj detalje</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="mb-[4px]">
+                                    <div class="w-[300px] pl-[32px]">
+                                        <span style="pointer-events: none"
+                                              class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                            <div
+                                                class="group py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                            </div>
+                                        </span>
+                                    </div>
+                                </li>
+
+                                <li class="mb-[4px] one" hidden>
+                                    <div class="w-[300px] pl-[32px]">
+                                        <span
+                                            class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                            <div
+                                                class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
                                                 <a id="izdaj" href="#"
                                                    class="flex items-center">
                                                     <i
@@ -252,7 +283,8 @@
                                                     <input type="checkbox" class="form-checkbox checkOthers" data-href="{{ route('izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}"
                                                            data-book-name="{{ $reservation->book->title }}"
                                                            data-student-name="{{ $reservation->student->name }} {{ $reservation->student->surname }}"
-                                                            data-action="{{ route('rezervacija.otkazi', $reservation) }}">
+                                                            data-action="{{ route('rezervacija.otkazi', $reservation) }}"
+                                                            data-details="{{ route('rezervisane.show', [$reservation->book, $reservation]) }}">
                                                 </label>
                                             </td>
                                             <td class="flex flex-row items-center px-4 py-3">
@@ -285,6 +317,10 @@
                                                          aria-labelledby="headlessui-menu-button-1"
                                                          id="headlessui-menu-items-117" role="menu">
                                                         <div class="py-1">
+                                                            <a href="{{ route('rezervisane.show', [$reservation->book, $reservation]) }}" tabindex="0" class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600" role="menuitem">
+                                                                <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
+                                                                <span class="px-4 py-0">Pogledaj detalje</span>
+                                                            </a>
                                                             <a href="{{ route('izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}" tabindex="0"
                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                                role="menuitem">
