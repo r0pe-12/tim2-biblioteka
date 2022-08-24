@@ -13,8 +13,24 @@ class Borrow extends Model
         'librarian_id',
         'student_id',
         'borrow_date',
-        'return_date'
+        'return_date',
+        'active'
     ];
+
+    /**
+     * Get all of the models from the database.
+     *
+     * @param  array|string  $columns
+     * @return Borrow
+     */
+    public static function allOrdered($columns = ['*'])
+    {
+        return self
+            ::join('book_borrow_status','book_borrow_status.borrow_id','=','borrows.id')
+            ->join('bookstatuses', 'book_borrow_status.bookStatus_id', '=', 'bookstatuses.id')
+            ->select('borrows.*', 'book_borrow_status.datum', 'bookstatuses.name', 'bookstatuses.id as bookStatus_id')
+            ->orderBy('datum', 'desc');
+    }
 
 //    relation between borrows and librarian
     public function librarian(){
@@ -51,13 +67,22 @@ class Borrow extends Model
         return $this->belongsToMany(BookStatus::class, 'book_borrow_status', 'borrow_id', 'bookStatus_id')->withPivot('datum');
     }
 
+//    get last book status
+    public function status(){
+        # code
+        return $this->statuses()->latest()->first();
+    }
+
 //    sva izdavanja koja su trenutno aktivna
     public static function izdavanja(){
         # code
         return self
-            ::join('book_borrow_status','borrows.id','=','borrow_id')
-            ->where('book_borrow_status.bookStatus_id','=', BookStatus::BORROWED)
-            ->orWhere('book_borrow_status.bookStatus_id','=', BookStatus::RESERVED)
+            ::where('active', '=', '1')
+            ->join('book_borrow_status','borrows.id','=','borrow_id')
+            ->where(function ($q) {
+                $q->where('book_borrow_status.bookStatus_id','=', BookStatus::BORROWED)
+                ->orWhere('book_borrow_status.bookStatus_id','=', BookStatus::RESERVED);
+            })
             ->get();
     }
 

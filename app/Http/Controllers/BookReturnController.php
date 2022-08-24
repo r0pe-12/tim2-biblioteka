@@ -39,7 +39,10 @@ class BookReturnController extends Controller
                 $newStatus = BookStatus::returned();
             }
 
-            $borrow->statuses()->sync($newStatus);
+            $borrow->active = 0;
+            $borrow->save();
+
+            $borrow->statuses()->attach($newStatus);
             $book->borrowedSaples--;
             $book->save();
         }

@@ -23,12 +23,15 @@ class Kernel extends ConsoleKernel
         $schedule->call(function ()
         {
             $res_deadline = Policy::reservation()->value;
-            foreach (Reservation::active() as $res) {
+            foreach (Reservation::active()->get() as $res) {
                 if (\Carbon\Carbon::parse($res->submttingDate)->addDays($res_deadline) < today('Europe/Belgrade')) {
                     $res->closingReason_id = ClosingReason::expired()->id;
-                    $res->status_id = ReservationStatus::closed()->id;
                     $res->closingDate = today("Europe/Belgrade");
                     $res->save();
+
+                    $newResStatus = ReservationStatus::closed();
+                    $res->statuses()->attach($newResStatus);
+
                     $res->book->reservedSamples--;
                     $res->book->save();
                 };

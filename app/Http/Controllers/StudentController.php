@@ -236,7 +236,7 @@ class StudentController extends Controller
         # code
         return view('student.evidencija.aktivne', [
             'student' => $student,
-            'reservations' => $student->activeRes(),
+            'reservations' => $student->activeRes()->get(),
             'res_deadline' => Policy::reservation()
         ]);
     }
@@ -245,7 +245,7 @@ class StudentController extends Controller
         # code
         return view('student.evidencija.arhivirane', [
             'student' => $student,
-            'reservations' => $student->archiveRes(),
+            'reservations' => $student->archiveRes()->get(),
             'res_deadline' => Policy::reservation()
         ]);
     }

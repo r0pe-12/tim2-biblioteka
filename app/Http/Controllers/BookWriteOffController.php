@@ -31,10 +31,12 @@ class BookWriteOffController extends Controller
         }
         foreach ($ids as $id) {
             $borrow = Borrow::findOrFail($id);
+            $borrow->active = 0;
+            $borrow->save();
 
             $newStatus = BookStatus::failed();
 
-            $borrow->statuses()->sync($newStatus);
+            $borrow->statuses()->attach($newStatus);
             $book->borrowedSaples--;
             $book->samples--;
             $book->save();

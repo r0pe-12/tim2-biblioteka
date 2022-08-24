@@ -75,9 +75,12 @@
         @yield('scripts')
         <script>
             $(window).on("load", function () {
-                $(':checkbox').each(function () {
-                    this.checked = false;
-                });
+                console.log(window.location.pathname);
+                if (window.location.pathname != '/activity') {
+                    $(':checkbox').each(function () {
+                        this.checked = false;
+                    });
+                }
                 $(".loader-wrapper").fadeOut("slow");
             })
         </script>

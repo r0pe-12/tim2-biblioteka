@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->foreignId('librarian_id')->constrained('users', 'id');
 
-            $table->foreignId('status_id');
+//            $table->foreignId('status_id');
             $table->foreignId('closingReason_id');
 
 
