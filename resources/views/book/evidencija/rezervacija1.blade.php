@@ -56,14 +56,30 @@
                             <div class="mt-[40px]">
                                 <span class="text-gray-500">Status transakcije</span><br>
                                 <p
-                                    class="inline-block bg-blue-200 text-blue-800 rounded-[10px] text-center px-[6px] py-[2px]">
+                                    class="inline-block
+                                    @if($reservation->status()->id == \App\Models\ReservationStatus::RESERVED)
+                                        bg-green-200 text-green-800
+                                    @elseif($reservation->status()->id == \App\Models\ReservationStatus::CLOSED)
+                                        bg-red-200 text-red-800
+                                    @else
+                                        bg-blue-200 text-blue-800
+                                    @endif
+                                    rounded-[10px] text-center px-[6px] py-[2px]">
                                     {{ $reservation->statuses()->latest()->first()->name }}
                                 </p>
                             </div>
                             <div class="mt-[40px]">
                                 <span class="text-gray-500">Razlog zatvaranja</span><br>
                                 <p
-                                    class="inline-block bg-blue-200 text-blue-800 rounded-[10px] text-center px-[6px] py-[2px]">
+                                    class="inline-block
+                                    @if($reservation->closingReason->id == \App\Models\ClosingReason::BOOK_BORROWED)
+                                        bg-green-200 text-green-800
+                                    @elseif($reservation->closingReason->id == \App\Models\ClosingReason::OPEN)
+                                        bg-blue-200 text-blue-800
+                                    @else
+                                        bg-red-200 text-red-800
+                                    @endif
+                                    rounded-[10px] text-center px-[6px] py-[2px]">
                                     {{ $reservation->closingReason->name }}
                                 </p>
                             </div>
