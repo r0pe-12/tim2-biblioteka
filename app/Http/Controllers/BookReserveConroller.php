@@ -116,4 +116,15 @@ class BookReserveConroller extends Controller
         return redirect()->back()->with('success', 'Rezervacija je uspjesno otkazana');
     }
 //    END-otkazi rezervaciju
+
+//    prikaz jedne rezervacije
+    public function show(Book $book, Reservation $reservation){
+        # code
+        return view('book.evidencija.rezervacija1', [
+            'book' => $book,
+            'reservation' => $reservation,
+            'res_deadline' => Policy::reservation()
+        ]);
+    }
+//    END-prikaz jedne rezervacije
 }
