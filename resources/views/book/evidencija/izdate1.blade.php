@@ -23,7 +23,15 @@
                                 <div class="mt-[40px]">
                                     <span class="text-gray-500">Status transakcije</span><br>
                                     <p
-                                        class="inline-block bg-blue-200 text-blue-800 rounded-[10px] text-center px-[6px] py-[2px]">
+                                        class="inline-block
+                                        @if($borrow->status()->id == \App\Models\BookStatus::BORROWED || $borrow->status()->id == \App\Models\BookStatus::RESERVED)
+                                            bg-green-200 text-green-800
+                                        @elseif($borrow->status()->id == \App\Models\BookStatus::RETURNED)
+                                            bg-blue-200 text-blue-800
+                                        @else()
+                                            bg-red-200 text-red-800
+                                        @endif
+                                        rounded-[10px] text-center px-[6px] py-[2px]">
                                         {{ $borrow->statuses()->latest()->first()->name }}
                                     </p>
                                 </div>
