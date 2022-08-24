@@ -224,6 +224,14 @@ class StudentController extends Controller
         ]);
     }
 
+    public function otpisane(Student $student){
+        # code
+        return view('student.evidencija.otpisane', [
+            'student' => $student,
+            'otpisane' => $student->otpisane()
+        ]);
+    }
+
     public function prekoracene(Student $student){
         # code
         return view('student.evidencija.prekoracene', [
