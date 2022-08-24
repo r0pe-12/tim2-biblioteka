@@ -151,7 +151,6 @@
                                         <label class="inline-flex items-center">
                                         </label>
                                     </th>
-                                    <!-- todo napraviti jednu kolonu rezervacija zatvorena jer imamo polje closingDate -->
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Naziv knjige</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Datum rezervacije</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">Rezervacija zatvorena</th>
@@ -197,6 +196,10 @@
                                                      id="headlessui-menu-items-117" role="menu">
                                                     <!-- todo ne vidim potrebu da odje ista stoji u dropdown -->
                                                     <div class="py-1">
+                                                        <a href="{{ route('rezervisane.show', [$reservation->book, $reservation]) }}" tabindex="0" class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600" role="menuitem">
+                                                            <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
+                                                            <span class="px-4 py-0">Pogledaj detalje</span>
+                                                        </a>
                                                         <a href="{{ route('izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}" tabindex="0"
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                            role="menuitem">
