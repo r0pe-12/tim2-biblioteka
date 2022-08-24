@@ -151,9 +151,16 @@
                                                 {{ $category->name }} {!! $loop->remaining >= 1 ? ',&nbsp' : ''!!}
                                             @endforeach
                                         </td>
-                                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ ($book->samples)-($book->borrowedSamples) }}</td>
-                                        <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                                href="{{ route('aktivne-rezervacije1', $book) }}">{{ $book->reservedSamples }}</a></td>
+                                        @if(($book->samples)-($book->borrowedSamples) == 0)
+                                            <td class="px-4 py-4 text-sm text-red-800 leading-5 whitespace-no-wrap">
+                                                    <b>{{ ($book->samples)-($book->borrowedSamples) }}</b>
+                                            </td>
+                                        @else
+                                            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ ($book->samples)-($book->borrowedSamples) }}</td>
+                                        @endif
+                                        <td class="px-4 py-4 text-sm leading-5 text-blue-900 whitespace-no-wrap">
+                                            <a href="{{ route('aktivne-rezervacije1', $book) }}"><b>{{ $book->reservedSamples }}</b></a>
+                                        </td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
                                                 href="{{ route('izdate1', $book) }}">{{ $book->borrowedSamples }}</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
