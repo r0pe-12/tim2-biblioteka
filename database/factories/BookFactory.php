@@ -33,7 +33,7 @@ class BookFactory extends Factory
             'publishDate' => fake()->year,
             'isbn' => fake()->isbn13(),
             'samples' => fake()->numberBetween(100, 100),
-            'borrowedSaples' => 0,
+            'borrowedSamples' => 0,
             'reservedSamples' => 0,
         ];
     }

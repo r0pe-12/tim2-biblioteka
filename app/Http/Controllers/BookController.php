@@ -87,7 +87,7 @@ class BookController extends Controller
         //
         return view('book.show', [
             'book' => $book->load('authors', 'categories', 'genres', 'publisher', 'script', 'bookBind', 'format'),
-            'available' => $book->samples - $book->borrowedSaples,
+            'available' => $book->samples - $book->borrowedSamples,
         ]);
     }
 

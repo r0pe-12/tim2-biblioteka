@@ -43,7 +43,7 @@ class BookReturnController extends Controller
             $borrow->save();
 
             $borrow->statuses()->attach($newStatus);
-            $book->borrowedSaples--;
+            $book->borrowedSamples--;
             $book->save();
         }
         return redirect()->back()->with('success', 'Knjiga: ' . $book->title . '  je uspješno vraćena');
@@ -65,7 +65,7 @@ class BookReturnController extends Controller
         # code
         return view('book.evidencija.vracene', [
             'book' => $book,
-            'available' => $book->samples - $book->borrowedSaples
+            'available' => $book->samples - $book->borrowedSamples
         ]);
     }
 //    vracene kopije jedne knjige

@@ -20,7 +20,7 @@ class Book extends Model
         'publishDate',
         'isbn',
         'samples',
-        'borrowedSaples',
+        'borrowedSamples',
         'reservedSamples',
         'description'
     ];
@@ -162,6 +162,15 @@ class Book extends Model
                     $q->where('resStatus_id', '!=', ReservationStatus::RESERVED)
                         ->where('resStatus_id', '!=', ReservationStatus::WAITING);
                 });
+    }
+
+    public function ableToBorrow(){
+        # code
+        $able = false;
+        if ($this->samples - $this->borrowedSamples - $this->reservedSamples > 0) {
+            $able = true;
+        }
+        return $able;
     }
 
 }

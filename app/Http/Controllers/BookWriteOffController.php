@@ -37,7 +37,7 @@ class BookWriteOffController extends Controller
             $newStatus = BookStatus::failed();
 
             $borrow->statuses()->attach($newStatus);
-            $book->borrowedSaples--;
+            $book->borrowedSamples--;
             $book->samples--;
             $book->save();
         }
@@ -59,7 +59,7 @@ class BookWriteOffController extends Controller
         # code
         return view('book.evidencija.prekoracene', [
             'book' => $book,
-            'available' => $book->samples - $book->borrowedSaples
+            'available' => $book->samples - $book->borrowedSamples
         ]);
     }
 // END-prekoracene kopije jedne knjige
