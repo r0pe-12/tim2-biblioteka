@@ -34,14 +34,17 @@ class BookReserveConroller extends Controller
         ]);
 //        \request()->dd();
 
-        $reservationervation = new Reservation([
+        $reservation = new Reservation([
             'student_id' => \request()->ucenik,
             'librarian_id' => auth()->user()->id,
-            'status_id' => ReservationStatus::reserved()->id,
             'closingReason_id' => ClosingReason::open()->id,
             'submttingDate' => Carbon::parse(\request()->datumRezervisanja)->format('Y-m-d'),
         ]);
-        $book->reservations()->save($reservationervation);
+        $book->reservations()->save($reservation);
+
+        $resStatus = ReservationStatus::reserved();
+        $reservation->statuses()->attach($resStatus);
+
         $book->reservedSamples++;
         $book->save();
 
@@ -54,8 +57,9 @@ class BookReserveConroller extends Controller
 //    prikazi sve aktivne rezervacije
     public function active(){
         # code
+//        dd(Reservation::active()->get());
         return view('izdavanje.aktivne', [
-            'reservations' => Reservation::active(),
+            'reservations' => Reservation::active()->get(),
             'res_deadline' => Policy::reservation()
         ]);
     }
@@ -66,7 +70,7 @@ class BookReserveConroller extends Controller
         # code
         return view('book.evidencija.aktivne', [
             'book' => $book,
-            'reservations' => $book->activeRes(),
+            'reservations' => $book->activeRes()->get(),
             'res_deadline' => Policy::reservation()
 
         ]);
@@ -77,7 +81,7 @@ class BookReserveConroller extends Controller
     public function archive(){
         # code
         return view('izdavanje.arhivirane', [
-            'reservations' => Reservation::archive(),
+            'reservations' => Reservation::archive()->get(),
             'res_deadline' => Policy::reservation()
         ]);
     }
@@ -88,7 +92,7 @@ class BookReserveConroller extends Controller
         # code
         return view('book.evidencija.arhivirane', [
             'book' => $book,
-            'reservations' => $book->archiveRes(),
+            'reservations' => $book->archiveRes()->get(),
             'res_deadline' => Policy::reservation()
         ]);
     }
@@ -98,9 +102,12 @@ class BookReserveConroller extends Controller
     public function cancel(Reservation $reservation){
         # code
         $reservation->closingReason_id = ClosingReason::cancelled()->id;
-        $reservation->status_id = ReservationStatus::closed()->id;
         $reservation->closingDate = today("Europe/Belgrade");
         $reservation->save();
+
+        $newResStatus = ReservationStatus::closed();
+        $reservation->statuses()->attach($newResStatus);
+
         $reservation->book->reservedSamples--;
         $reservation->book->save();
         return redirect()->back()->with('success', 'Rezervacija je uspjesno otkazana');

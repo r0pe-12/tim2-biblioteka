@@ -1,5 +1,5 @@
 //open and close hamburger menu
-const unameRegEx = '^(?=[a-zA-Z0-9._-]{8,254}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$';
+const unameRegEx = '^(?=[a-zA-Z0-9_-]{3,254}$)(?!.*[_-]{2})[^_-].*[^_-]$';
 $(function () {
   var hamburger = $('#hamburger');
   var sidebar = $('.sidebar');

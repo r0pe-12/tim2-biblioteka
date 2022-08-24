@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bookstatuses', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
+        Schema::create('reservation_status', function (Blueprint $table) {
+            //
+            $table->foreignId('reservation_id');
+            $table->foreignId('resStatus_id');
+            $table->timestamp('datum')->useCurrent();
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('book_statuses');
+        Schema::dropIfExists('reservation_status');
     }
 };

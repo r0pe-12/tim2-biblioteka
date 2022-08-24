@@ -153,7 +153,7 @@
                                         </td>
                                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ ($book->samples)-($book->borrowedSaples) }}</td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                                href="aktivneRezervacije.php">{{ $book->reservedSamples }}</a></td>
+                                                href="{{ route('aktivne-rezervacije1', $book) }}">{{ $book->reservedSamples }}</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
                                                 href="{{ route('izdate1', $book) }}">{{ $book->borrowedSaples }}</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
