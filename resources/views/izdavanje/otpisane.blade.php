@@ -139,6 +139,37 @@
                                         </span>
                                 </div>
                             </li>
+                            <li class="mb-[4px]">
+                                <div class="w-[300px] pl-[32px]">
+                                        <span style="pointer-events: none"
+                                              class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                            <div
+                                                class="group py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                            </div>
+                                        </span>
+                                </div>
+                            </li>
+
+                            <li class="mb-[4px] one" hidden>
+                                <div class="w-[300px] pl-[32px]">
+                                        <span
+                                            class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
+                                            <div
+                                                class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
+                                                <a id="detalji" href="#"
+                                                   class="flex items-center">
+                                                    <i
+                                                        class="text-[20px] fas fa-copy transition duration-300 ease-in text-[#576cdf]"></i>
+                                                    <div>
+                                                        <p
+                                                            class="text-[15px] ml-[19px] transition duration-300 ease-in text-[#576cdf]">
+                                                            Pogledaj detalje</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </span>
+                                </div>
+                            </li>
                         </ul>
                     </div>
 
