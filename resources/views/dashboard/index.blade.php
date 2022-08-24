@@ -129,9 +129,17 @@
                                                         }
                                                     }
                                                 ?>
+                                                <style>
+                                                    .status:hover {
+                                                        color: #4558be;
+                                                    }
+                                                </style>
+
+                                                    <a href="{{ route('rezervisane.show', [$zapis->book, $zapis]) }}">
                                                 <div class="inline-block px-[6px] py-[2px] font-medium {{ $bg }} rounded-[10px]">
-                                                    <span class="text-xs {{ $txt }}">{{ $status }}</span>
+                                                        <span class="status text-xs {{ $txt }}">{{ $status }}</span>
                                                 </div>
+                                                    </a>
                                             </td>
                                         </tr>
                                     @endforeach
