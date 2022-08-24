@@ -110,6 +110,17 @@
                                     </a>
                                 </li>
                             @endif
+                            @if(request()->routeIs('otpisane1'))
+                                <li>
+                                    <span class="mx-2">/</span>
+                                </li>
+                                <li>
+                                    <a href="{{ route('vracene1', $book) }}"
+                                       class="text-[#2196f3] hover:text-blue-600">
+                                        Otpisane Knjige
+                                    </a>
+                                </li>
+                            @endif
                             @if(request()->routeIs('prekoracene1'))
                                 <li>
                                     <span class="mx-2">/</span>
