@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
-    const CREATED_AT = null;
-    const UPDATED_AT = null;
 //    protected $fillable = [
 //        'librarian_id',
 //        'student_id',

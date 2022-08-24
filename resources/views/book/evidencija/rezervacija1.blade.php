@@ -90,7 +90,7 @@
                                 <p
                                     class="inline-block
                                     @if($reservation->status()->id == \App\Models\ReservationStatus::RESERVED)
-                                        bg-green-200 text-green-800
+                                        bg-yellow-200 text-yellow-700
                                     @elseif($reservation->status()->id == \App\Models\ReservationStatus::CLOSED)
                                         bg-red-200 text-red-800
                                     @else

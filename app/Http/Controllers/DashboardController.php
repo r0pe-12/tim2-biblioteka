@@ -25,7 +25,7 @@ class DashboardController extends Controller
             'izdateAll' => Borrow::izdavanja(),
             'izdate' => Borrow::allOrdered()->take(10)->get(),
             'rezervisaneAll' => Reservation::active()->get(),
-            'rezervisane' => Reservation::active()->orderBy('id', 'desc')->take(4)->get(),
+            'rezervisane' => Reservation::orderBy('updated_at', 'desc')->take(4)->get(),
             'prekoracene' => WriteOff::prekoracene()
         ]);
     }
