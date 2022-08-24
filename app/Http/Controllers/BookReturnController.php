@@ -31,6 +31,11 @@ class BookReturnController extends Controller
             $ids = explode(',', $ids);
         }
         foreach ($ids as $id) {
+            if (!(Borrow::find($id)->isActive())) {
+                return redirect()->back()->with('fail', 'Transakcija neaktivna');
+            }
+        }
+        foreach ($ids as $id) {
             $borrow = Borrow::findOrFail($id);
 
             if ($book->failed()->contains($borrow)){

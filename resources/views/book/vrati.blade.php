@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Vrati knjigu:
+        Vrati knjigu: {{ $book->title }}
     @endsection
         <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
             <!-- Heading of content -->
