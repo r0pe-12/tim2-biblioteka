@@ -88,7 +88,7 @@ class Borrow extends Model
 
     public function isActive(){
         # code
-        if (Borrow::izdavanja()->contains($this)){
+        if ($this->active == 1){
             return true;
         }
         return false;

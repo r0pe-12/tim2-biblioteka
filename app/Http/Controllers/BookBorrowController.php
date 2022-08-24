@@ -27,7 +27,7 @@ class BookBorrowController extends Controller
         }
         return view('book.izdaj', [
             'book' => $book,
-            'available' => $book->samples - $book->borrowedSaples,
+            'available' => $book->samples - $book->borrowedSamples,
             'students' => Student::all(),
             'return' => $return,
         ]);
@@ -66,12 +66,15 @@ class BookBorrowController extends Controller
             $status = BookStatus::reserved();
             $isRes = true;
         } else {
+            if (!($book->ableToBorrow())) {
+                return redirect()->route('books.index')->with('fail', 'Nije moguce izdati knjigu: nedovoljno primjeraka');
+            }
             $status = BookStatus::borrowed();
         }
 
         $borrow->statuses()->attach($status);
 
-        $book->borrowedSaples = $book->borrowedSaples + 1;
+        $book->borrowedSamples = $book->borrowedSamples + 1;
         $book->save();
 
         if ($isRes) {
@@ -97,7 +100,7 @@ class BookBorrowController extends Controller
         # code
         return view('book.evidencija.izdate', [
             'book' => $book,
-            'available' => $book->samples - $book->borrowedSaples
+            'available' => $book->samples - $book->borrowedSamples
         ]);
     }
 //    izdate kopije jedne knjige

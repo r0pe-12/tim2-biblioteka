@@ -30,6 +30,11 @@ class BookWriteOffController extends Controller
             $ids = explode(',', $ids);
         }
         foreach ($ids as $id) {
+            if (!(Borrow::find($id)->isActive())) {
+                return redirect()->back()->with('fail', 'Transakcija neaktivna');
+            }
+        }
+        foreach ($ids as $id) {
             $borrow = Borrow::findOrFail($id);
             $borrow->active = 0;
             $borrow->save();
@@ -37,7 +42,7 @@ class BookWriteOffController extends Controller
             $newStatus = BookStatus::failed();
 
             $borrow->statuses()->attach($newStatus);
-            $book->borrowedSaples--;
+            $book->borrowedSamples--;
             $book->samples--;
             $book->save();
         }
@@ -59,7 +64,7 @@ class BookWriteOffController extends Controller
         # code
         return view('book.evidencija.prekoracene', [
             'book' => $book,
-            'available' => $book->samples - $book->borrowedSaples
+            'available' => $book->samples - $book->borrowedSamples
         ]);
     }
 // END-prekoracene kopije jedne knjige

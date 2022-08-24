@@ -25,7 +25,7 @@ return new class extends Migration
             $table->year('publishDate');
             $table->string('isbn');
             $table->integer('samples');
-            $table->integer('borrowedSaples')->default(0);
+            $table->integer('borrowedSamples')->default(0);
             $table->integer('reservedSamples')->default(0);
             $table->text('description')->nullable();
             $table->timestamps();

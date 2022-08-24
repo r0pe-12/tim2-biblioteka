@@ -32,6 +32,9 @@ class BookReserveConroller extends Controller
             'ucenik' => ['required', 'int'],
             'datumRezervisanja' => ['required', 'date'],
         ]);
+        if (!($book->ableToBorrow())) {
+            return redirect()->route('books.index')->with('fail', 'Nije moguce rezervisati knjigu: nedovoljno primjeraka');
+        }
 //        \request()->dd();
 
         $reservation = new Reservation([
