@@ -2,6 +2,107 @@
     @section('title')
         Detalji o transakciji: Izdavanje
     @endsection
+        @if($borrow->isActive())
+            <!-- WriteOff Book Modal -->
+            <div class="modal fadeM" id="otpisiKnjiguModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form method="post" action="{{ route('otpisi.store', $borrow->book) }}">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Da li zelite otpisati knjigu: </h5>
+                                <h5 class="modal-title">
+                                    <ul class="modalLabel">
+                                        <b>{{ $borrow->book->title }}</b> za ucenika <b>{{ $borrow->student->name }} {{ $borrow->student->surname }}</b>
+                                    </ul>
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-red-800">
+                                    Ova akcija je nepovratna.
+                                </p>
+                            </div>
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" name="toWriteoff[]" value="{{ $borrow->id }}">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                                <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                                    Potvrdi <i class="fas fa-check ml-[4px]"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Return Book Modal -->
+            <div class="modal fadeM" id="vratiKnjiguModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form method="post" action="{{ route('vrati.store', $borrow->book) }}">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Da li zelite vratiti knjigu: </h5>
+                                <h5 class="modal-title">
+                                    <ul class="modalLabel">
+                                        <b>{{ $borrow->book->title }}</b> za ucenika <b>{{ $borrow->student->name }} {{ $borrow->student->surname }}</b>
+                                    </ul>
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-red-800">
+                                    Ova akcija je nepovratna.
+                                </p>
+                            </div>
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" name="toReturn[]" value="{{ $borrow->id }}">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                                <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                                    Potvrdi <i class="fas fa-check ml-[4px]"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @else
+            <!-- Delete Borrow Modal -->
+            <div class="modal fadeM" id="obrisiZapisModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form method="post" action="{{ route('izdate.destroy', $borrow) }}">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Da li izbrisati zapis knjige: </h5>
+                                <h5 class="modal-title">
+                                    <ul class="modalLabel">
+                                        <b>{{ $borrow->book->title }}</b> za ucenika <b>{{ $borrow->student->name }} {{ $borrow->student->surname }}</b>
+                                    </ul>
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-red-800">
+                                    Ova akcija je nepovratna.
+                                </p>
+                            </div>
+                            @csrf
+                            @method('DELETE')
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                                <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                                    Potvrdi <i class="fas fa-check ml-[4px]"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        @endif
+
         <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
             <!-- Heading of content -->
             <x-book-header :book="$book" :borrow="$borrow->id"/>
@@ -66,102 +167,22 @@
                 <div class="flex flex-row">
                     <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
                         @if($borrow->isActive())
-                            <button type="submit"
-                                    class="btn-animation show-otpisiModal shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#FF470E] bg-[#FF5722]">
+                            <button type="submit" data-toggle="modal" data-target="#otpisiKnjiguModal" tabindex="0"
+                                    class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#FF470E] bg-[#FF5722]">
                                 <i class="fas fa-level-up-alt mr-[4px] "></i> Otpisi knjigu
                             </button>
-                            <button type="submit"
-                                    class="ml-[10px] btn-animation show-vratiModal shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
+                            <button type="submit" data-toggle="modal" data-target="#vratiKnjiguModal" tabindex="0"
+                                    class="ml-[10px] btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
                                 <i class="fas fa-redo-alt mr-[4px] "></i> Vrati knjigu
                             </button>
+                        @else
+                            <button type="button" data-toggle="modal" data-target="#obrisiZapisModal" tabindex="0"
+                                    class="ml-[10px] btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                                <i class="fas fa-trash mr-[4px]"></i> Izbrisi zapis
+                            </button>
                         @endif
-                        <button type="button"
-                                class="ml-[10px] btn-animation show-izbrisiModal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                            <i class="fas fa-trash mr-[4px]"></i> Izbrisi zapis
-                        </button>
                     </div>
                 </div>
             </div>
         </section>
-        @if($borrow->isActive())
-            <!-- Modal - Vrati Knjigu -->
-            <div
-                class="fixed top-0 left-0 flex items-center justify-center hidden w-full h-screen bg-black bg-opacity-50 vrati-modal">
-                <!-- Modal -->
-                <div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
-                    <!-- Modal Header -->
-                    <div class="flex items-center justify-between px-[30px] py-[20px] border-b">
-                        <h3>Da li zelite da vratite knjigu "{{ $borrow->book->title }}" za ucenika "{{ $borrow->student->name }} {{ $borrow->student->surname }}"?</h3>
-                    </div>
-                    <!-- Modal Body -->
-                    <form method="post" action="{{ route('vrati.store', $book) }}" enctype="multipart/form-data">
-                        <input type="hidden" name="toReturn[]" value="{{ $borrow->id }}">
-                        @csrf
-                        @method('PUT')
-                        <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
-                            <button type="button"
-                                    class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                Ponisti <i class="fas fa-times ml-[4px]"></i>
-                            </button>
-                            <button type="submit"
-                                    class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
-                            Potvrdi <i class="fas fa-check ml-[4px]"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Modal - Otpisi Knjigu -->
-            <div
-                class="fixed top-0 left-0 flex items-center justify-center hidden w-full h-screen bg-black bg-opacity-50 otpisi-modal">
-                <!-- Modal -->
-                <div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
-                    <!-- Modal Header -->
-                    <div class="flex items-center justify-between px-[30px] py-[20px] border-b">
-                        <h3>Da li zelite da otpisete knjigu "{{ $book->title }}" za ucenika "{{ $borrow->student->name }} {{ $borrow->student->surname }}"?</h3>
-                    </div>
-                    <!-- Modal Body -->
-                    <form method="post" action="{{ route('otpisi.store', $book) }}" enctype="multipart/form-data">
-                        <input type="hidden" name="toWriteoff[]" value="{{ $borrow->id }}">
-                        @csrf
-                        @method('PUT')
-                        <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
-                            <button type="button"
-                                    class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                Ponisti <i class="fas fa-times ml-[4px]"></i>
-                            </button>
-                            <button type="submit"
-                                    class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
-                            Potvrdi <i class="fas fa-check ml-[4px]"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        @endif
-        <!-- Modal - Izbrisi Zapis -->
-        <div
-            class="fixed top-0 left-0 flex items-center justify-center hidden w-full h-screen bg-black bg-opacity-50 izbrisi-modal">
-            <!-- Modal -->
-            <div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
-                <!-- Modal Header -->
-                <div class="flex items-center justify-between px-[30px] py-[20px] border-b">
-                    <h3>Da li zelite da izbrisete zapis knjige "Tom Sojer" za ucenika "Milos Milosevic?"</h3>
-                </div>
-                <!-- Modal Body -->
-                <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
-                    <button type="button"
-                            class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                        Ponisti <i class="fas fa-times ml-[4px]"></i>
-                    </button>
-                    <button type="submit"
-                            class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
-                    Potvrdi <i class="fas fa-check ml-[4px]"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-
 </x-layout>

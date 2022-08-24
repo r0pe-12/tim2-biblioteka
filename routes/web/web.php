@@ -53,6 +53,10 @@ Route::middleware(['auth'])->group(function (){
             Route::get('/books/{book}/evidencija/izdate', 'izdate1')->name('izdate1');
             Route::get('/books/{book}/evidencija/{borrow}/show', 'show')->name('izdate.show');
 
+//            delete-zapis
+            Route::delete('/books/izdate/{borrow}', 'destroy')->name('izdate.destroy');
+//            ENDdelete-zapis
+
         });
 
         Route::controller(BookWriteOffController::class)->group(function (){
