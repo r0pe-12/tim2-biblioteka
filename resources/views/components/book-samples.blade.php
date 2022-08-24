@@ -1,6 +1,6 @@
 @props([
     'book',
-    'available' => $book->samples - $book->borrowedSaples
+    'available' => $book->samples - $book->borrowedSamples
 ])
 
 <div {{ $attributes->class(['ml-[30px] mr-[70px] mt-[20px] flex flex-row justify-between']) }}>
@@ -24,7 +24,7 @@
         <a href="{{ route('izdate1', $book) }}">
             <p
                     class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                {{ $book->borrowedSaples }} {{ $book->borrowedSaples%10 == 0 ? 'primjeraka' : ($book->borrowedSaples%10 == 1 ? 'primjerak' : ($book->borrowedSaples%10 > 1 && $book->borrowedSaples%10 < 5 ? 'primjerka' : 'primjeraka')) }}
+                {{ $book->borrowedSamples }} {{ $book->borrowedSamples%10 == 0 ? 'primjeraka' : ($book->borrowedSamples%10 == 1 ? 'primjerak' : ($book->borrowedSamples%10 > 1 && $book->borrowedSamples%10 < 5 ? 'primjerka' : 'primjeraka')) }}
             </p>
         </a>
         <a href="{{ route('prekoracene1', $book) }}">
