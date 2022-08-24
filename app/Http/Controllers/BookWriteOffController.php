@@ -70,11 +70,10 @@ class BookWriteOffController extends Controller
 // END-prekoracene kopije jedne knjige
 
 // prekoracene kopije jedne knjige
-    public function otpisane(Book $book){
+    public function otpisane(){
         # code
         return view('izdavanje.otpisane', [
-            'book' => $book,
-            'available' => $book->samples - $book->borrowedSamples
+            'otpisane' => WriteOff::otpisane(),
         ]);
     }
 // END-prekoracene kopije jedne knjige
