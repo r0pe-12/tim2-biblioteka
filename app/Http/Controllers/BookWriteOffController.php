@@ -36,7 +36,9 @@ class BookWriteOffController extends Controller
         }
         foreach ($ids as $id) {
             $borrow = Borrow::findOrFail($id);
+
             $borrow->active = 0;
+            $borrow->mail = 0;
             $borrow->save();
 
             $newStatus = BookStatus::failed();

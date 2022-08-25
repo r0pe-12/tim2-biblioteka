@@ -45,6 +45,7 @@ class BookReturnController extends Controller
             }
 
             $borrow->active = 0;
+            $borrow->mail = 0;
             $borrow->save();
 
             $borrow->statuses()->attach($newStatus);

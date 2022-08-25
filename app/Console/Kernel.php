@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Mail\KnjigaIzdata;
+use App\Mail\KnjigaVracena;
 use App\Models\Borrow;
 use App\Models\ClosingReason;
 use App\Models\Policy;
@@ -45,7 +46,11 @@ class Kernel extends ConsoleKernel
            $toSendMail = Borrow::where('mail', '=', '0')->get();
            foreach ($toSendMail as $borrow) {
                try {
-                   \Mail::send(new KnjigaIzdata($borrow));
+                   if ($borrow->active == 1) {
+                       \Mail::send(new KnjigaIzdata($borrow));
+                   } elseif ($borrow->active == 0) {
+                       \Mail::send(new KnjigaVracena($borrow));
+                   }
                } catch (\Exception $e) {
 
                } finally {
