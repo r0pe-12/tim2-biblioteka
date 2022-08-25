@@ -1,10 +1,20 @@
 //open and close hamburger menu
 const unameRegEx = '^(?=[a-zA-Z0-9_-]{3,254}$)(?!.*[_-]{2})[^_-].*[^_-]$';
-$(function () {
   var hamburger = $('#hamburger');
   var sidebar = $('.sidebar');
 
-  hamburger.on('click', function () {
+  sidebar.on('mouseenter', function() {
+      //open menu
+      sidebar.addClass('sidebar-active');
+      //make hamburger shape change
+      hamburger.addClass('fa-times');
+      hamburger.removeClass('fa-bars');
+      //show text and arrow
+      $(".sidebar-item").removeClass("hidden");
+      $(".sidebar-item").addClass("inline");
+  })
+
+  sidebar.on('mouseleave', function () {
     if (sidebar.hasClass('sidebar-active')) { // if menu is opened
       //close menu by removing active class
       sidebar.removeClass('sidebar-active');
@@ -19,18 +29,8 @@ $(function () {
       //change all arrows which are up to down
       $('.arrow').removeClass('fa-angle-up');
       $('.arrow').addClass('fa-angle-down');
-    } else {
-      //open menu
-      sidebar.addClass('sidebar-active');
-      //make hamburger shape change
-      hamburger.addClass('fa-times');
-      hamburger.removeClass('fa-bars');
-      //show text and arrow
-      $(".sidebar-item").removeClass("hidden");
-      $(".sidebar-item").addClass("inline");
     }
   });
-});
 
 function tab(tab) {
     $('a[href="#' + tab + '"]').tab('show');
