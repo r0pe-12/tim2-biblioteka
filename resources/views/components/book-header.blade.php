@@ -7,7 +7,7 @@
 
 <div {{ $attributes->class(['heading']) }}>
     <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
-        <div class="py-[10px] flex flex-row">
+        <div class="py-[10px] flex flex-row items-center">
             <div class="w-[77px] pl-[30px]">
                 <img src="{{ $book->cover() }}" alt="">
             </div>
