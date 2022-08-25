@@ -186,7 +186,7 @@
                                     <tr id="head" class="border-b-[1px] border-[#e4dfdf]">
                                         <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                             <label class="inline-flex items-center">
-                                                <input type="checkbox" class="form-checkbox checkAll checkOthers">
+{{--                                                <input type="checkbox" class="form-checkbox checkAll checkOthers">--}}
                                             </label>
                                         </th>
                                         <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>

@@ -3051,6 +3051,8 @@ $('.checkOthers').click(function () {
                 document.getElementById("deleteOne").setAttribute('data-name', name);
             } else {
                 if (path == '/aktivne-rezervacije/' || /\/students\/.*\/aktivne-rezervacije/i.test(path)){
+                    const details = this.getAttribute('data-details');
+                    document.getElementById('detalji').href = details;
                     document.getElementById('izdaj').href = href;
                     const otkazi = document.getElementById('otkaziRez');
                     const bookName = this.getAttribute('data-book-name');

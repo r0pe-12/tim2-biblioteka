@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
-    const CREATED_AT = null;
-    const UPDATED_AT = null;
 //    protected $fillable = [
 //        'librarian_id',
 //        'student_id',
@@ -43,7 +41,7 @@ protected $guarded = [];
 //    relation between reservation and closingreason
     public function closingReason(){
         # code
-        return $this->belongsTo(ClosingReason::class);
+        return $this->belongsTo(ClosingReason::class, 'closingReason_id');
     }
 
 //    relation between reservation and student
@@ -99,5 +97,13 @@ protected $guarded = [];
                 $q->where('resStatus_id', '!=', ReservationStatus::RESERVED)
                     ->where('resStatus_id', '!=', ReservationStatus::WAITING);
             });
+    }
+
+    public function isActive(){
+        # code
+        if ($this->status()->id == ReservationStatus::RESERVED) {
+            return true;
+        }
+        return false;
     }
 }

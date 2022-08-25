@@ -110,13 +110,36 @@
                                                 </a>
                                             </td>
                                             <td class="px-2 py-2">
-                                                <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">{{ \Carbon\Carbon::parse($zapis->submttingDate)->format('d.m.Y') }}</span>
+                                                <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">{{ \Carbon\Carbon::parse($zapis->status()->datum)->format('d.m.Y') }}</span>
                                             </td>
                                             <td class="px-2 py-2">
-                                                <div
-                                                    class="inline-block px-[6px] py-[2px] font-medium bg-yellow-200 rounded-[10px]">
-                                                    <span class="text-xs text-yellow-700">{{ $zapis->status }}</span>
+                                                <?php
+                                                    if ($zapis->isActive()) {
+                                                        $bg = 'bg-yellow-200';
+                                                        $txt = 'text-yellow-700';
+                                                        $status = $zapis->status()->name;
+                                                    } else {
+                                                        $status = $zapis->closingReason->name;
+                                                        if ($zapis->closingReason_id == \App\Models\ClosingReason::BOOK_BORROWED) {
+                                                            $bg = 'bg-green-200';
+                                                            $txt = 'text-green-800';
+                                                        } else {
+                                                            $bg = 'bg-red-200';
+                                                            $txt = 'text-red-800';
+                                                        }
+                                                    }
+                                                ?>
+                                                <style>
+                                                    .status:hover {
+                                                        color: #4558be;
+                                                    }
+                                                </style>
+
+                                                    <a href="{{ route('rezervisane.show', [$zapis->book, $zapis]) }}">
+                                                <div class="inline-block px-[6px] py-[2px] font-medium {{ $bg }} rounded-[10px]">
+                                                        <span class="status text-xs {{ $txt }}">{{ $status }}</span>
                                                 </div>
+                                                    </a>
                                             </td>
                                         </tr>
                                     @endforeach

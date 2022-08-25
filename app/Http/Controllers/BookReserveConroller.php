@@ -116,4 +116,28 @@ class BookReserveConroller extends Controller
         return redirect()->back()->with('success', 'Rezervacija je uspjesno otkazana');
     }
 //    END-otkazi rezervaciju
+
+//    prikaz jedne rezervacije
+    public function show(Book $book, Reservation $reservation){
+        # code
+        return view('book.evidencija.rezervacija1', [
+            'book' => $book,
+            'reservation' => $reservation,
+            'res_deadline' => Policy::reservation()
+        ]);
+    }
+//    END-prikaz jedne rezervacije
+
+//    izbrisi zapis
+    public function destroy(Reservation $reservation){
+        # code
+        if ($reservation->isActive()) {
+            return redirect()->back()->with('fail', 'Transakcija aktivna');
+        }
+//        todo da li ovako ili da stavimo cascade od delete u bazi???
+        $reservation->statuses()->sync([]);
+        $reservation->delete();
+        return redirect()->route('dashboard.index')->with('success', 'Zapis rezervacije knjige "' . $reservation->book->title . '" je uspjesno obrisan');
+    }
+//    END-izbrisi zapis
 }

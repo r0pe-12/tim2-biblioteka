@@ -53,6 +53,10 @@ Route::middleware(['auth'])->group(function (){
             Route::get('/books/{book}/evidencija/izdate', 'izdate1')->name('izdate1');
             Route::get('/books/{book}/evidencija/{borrow}/show', 'show')->name('izdate.show');
 
+//            delete-zapis
+            Route::delete('/books/izdate/{borrow}', 'destroy')->name('izdate.destroy');
+//            ENDdelete-zapis
+
         });
 
         Route::controller(BookWriteOffController::class)->group(function (){
@@ -95,6 +99,11 @@ Route::middleware(['auth'])->group(function (){
     //      otkazi rezervaciju
             Route::put('/rezervacija/{reservation}/otkazi', 'cancel')->name('rezervacija.otkazi');
     //      END-otkazi rezervaciju
+
+            Route::get('/books/{book}/rezervacija/{reservation}/show', 'show')->name('rezervisane.show');
+//            obrisi zapis
+            Route::delete('/books/rezervisane/{reservation}', 'destroy')->name('rezervisane.destroy');
+//            ENDobrisi zapis
         });
 //    END-rute za knjigu
 

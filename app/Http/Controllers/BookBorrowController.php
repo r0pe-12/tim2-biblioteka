@@ -114,4 +114,17 @@ class BookBorrowController extends Controller
         ]);
     }
 //    END-prikaz jedne transakcije
+
+//    izbrisi zapis
+    public function destroy(Borrow $borrow){
+        # code
+        if ($borrow->isActive()) {
+            return redirect()->back()->with('fail', 'Transakcija aktivna');
+        }
+//        todo da li ovako ili da stavimo cascade od delete u bazi???
+        $borrow->statuses()->sync([]);
+        $borrow->delete();
+        return redirect()->route('dashboard.index')->with('success', 'Zapis izdavanja knjige "' . $borrow->book->title . '" je uspjesno obrisan');
+    }
+//    ENDizbrisi zapis
 }
