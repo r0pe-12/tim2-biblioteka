@@ -51,7 +51,7 @@ class Kernel extends ConsoleKernel
                    if ($borrow->active == 1) {
                        \Mail::send(new KnjigaIzdata($borrow));
                    } elseif ($borrow->active == 0) {
-                       if ($borrow->status()->id = BookStatus::FAILED) {
+                       if ($borrow->status()->id == BookStatus::FAILED) {
                            \Mail::send(new KnjigaOtpisana($borrow));
                        } else {
                             \Mail::send(new KnjigaVracena($borrow));
