@@ -27,7 +27,7 @@
                                         class=" whitespace-nowrap w-full text-[25px]  flex justify-between fill-current">
                                         <div
                                             class="py-[15px] px-[20px] w-[268px] cursor-pointer group hover:bg-[#EFF3F6] rounded-[10px]">
-                                            <a href="{{route('izdate')}}" aria-label="Sve knjige"
+                                            <a href="{{route('evidencija.izdate')}}" aria-label="Sve knjige"
                                                class="flex items-center">
                                                 <i
                                                     class="text-[#707070] transition duration-300 ease-in group-hover:text-[#576cdf] far fa-copy text-[20px]"></i>
@@ -48,7 +48,7 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="{{ route('vracene') }}" aria-label="Izdate knjige"
+                                                <a href="{{ route('evidencija.vracene') }}" aria-label="Izdate knjige"
                                                    class="flex items-center">
                                                     <i class="text-[#707070] text-[20px] fas fa-file transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
                                                     <div>
@@ -85,7 +85,7 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="{{route('prekoracene')}}" aria-label="Knjige na raspolaganju"
+                                                <a href="{{route('evidencija.prekoracene')}}" aria-label="Knjige na raspolaganju"
                                                    class="flex items-center">
                                                     <i
                                                         class="text-[#707070] text-[20px] fas fa-exclamation-triangle transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
@@ -105,7 +105,7 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="{{route('aktivne-rezervacije')}}" aria-label="Rezervacije"
+                                                <a href="{{route('evidencija.aktivne-rezervacije')}}" aria-label="Rezervacije"
                                                    class="flex items-center">
                                                     <i
                                                         class="text-[#707070] text-[20px] far fa-calendar-check transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
@@ -125,7 +125,7 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="{{route('arhivirane-rezervacije')}}" aria-label="Rezervacije"
+                                                <a href="{{route('evidencija.arhivirane-rezervacije')}}" aria-label="Rezervacije"
                                                    class="flex items-center">
                                                     <i
                                                         class="text-[#707070] text-[20px] fas fa-calendar-alt transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
@@ -231,7 +231,7 @@
                                                  aria-labelledby="headlessui-menu-button-1"
                                                  id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="{{ route('izdate.show', [$zapis->book, $zapis]) }}" tabindex="0"
+                                                    <a href="{{ route('book.izdate.show', [$zapis->book, $zapis]) }}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>

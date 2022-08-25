@@ -12,38 +12,38 @@
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-link" href="{{ route('books.show', $book) }}">Osnovni detalji</a>
                                 <a class="nav-link" href="{{ route('books.show', $book) }}">Specifikacija</a>
-                                <a class="nav-link active"  href="{{ route('izdate1', $book) }}" aria-selected='true'>Evidencija iznajmljivanja</a>
+                                <a class="nav-link active"  href="{{ route('book.izdate1', $book) }}" aria-selected='true'>Evidencija iznajmljivanja</a>
                                 <a class="nav-link" href="{{ route('books.show', $book) }}">Multimedija</a>
                             </div>
                         </nav>
                     </div>
                     <div class="py-4 pt-[20px] pl-[30px] text-[#2D3B48]">
-                        <a href="{{ route('izdate1', $book) }}"
+                        <a href="{{ route('book.izdate1', $book) }}"
                            class="py-[15px] px-[20px] w-[268px] cursor-pointer hover:bg-[#EFF3F6] rounded-[10px] inline hover:text-[#576cdf]">
                             <i class="text-[20px] far fa-copy mr-[3px]"></i>
                             Izdate knjige
                         </a>
-                        <a href="{{ route('vracene1', $book) }}"
+                        <a href="{{ route('book.vracene1', $book) }}"
                            class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] text-[#576cdf] bg-[#EFF3F6] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                             <i class="text-[20px]  group-hover:text-[#576cdf] fas fa-file mr-[3px]"></i>
                             Vracene knjige
                         </a>
-                        <a href="{{ route('otpisane1', $book) }}"
+                        <a href="{{ route('book.otpisane', $book) }}"
                            class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                             <i class="text-[20px] text-[#707070] group-hover:text-[#576cdf] fas fa-level-up-alt mr-[3px]"></i>
                             Otpisane knjige
                         </a>
-                        <a href="{{ route('prekoracene1', $book) }}"
+                        <a href="{{ route('book.prekoracene', $book) }}"
                            class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                             <i class="text-[20px] text-[#707070] group-hover:text-[#576cdf] fas fa-exclamation-triangle mr-[3px]"></i>
                             Knjige u prekoracenju
                         </a>
-                        <a href="{{ route('aktivne-rezervacije1', $book) }}"
+                        <a href="{{ route('evidencija.aktivne-rezervacije1', $book) }}"
                            class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                             <i class="text-[20px] text-[#707070] group-hover:text-[#576cdf] far fa-calendar-check mr-[3px]"></i>
                             Aktivne rezervacije
                         </a>
-                        <a href="{{ route('arhivirane-rezervacije1', $book) }}"
+                        <a href="{{ route('book.arhivirane-rezervacije1', $book) }}"
                            class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                             <i class="text-[20px] text-[#707070] group-hover:text-[#576cdf] fas fa-calendar-alt  mr-[3px]"></i>
                             Arhivirane rezervacije
@@ -96,7 +96,7 @@
                                                  aria-labelledby="headlessui-menu-button-1"
                                                  id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="{{ route('izdate.show', [$zapis->book, $zapis]) }}" tabindex="0"
+                                                    <a href="{{ route('book.izdate.show', [$zapis->book, $zapis]) }}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>

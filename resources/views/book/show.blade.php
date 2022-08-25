@@ -31,7 +31,7 @@
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-link active" id="osnovniDetalji" data-bs-toggle="tab" href="#osnovniDetalji-tab"  role="tab" aria-controls="osnovniDetalji" aria-selected="true">Osnovni detalji</a>
                                 <a class="nav-link" id="specifikacija" data-bs-toggle="tab" href="#specifikacija-tab"  role="tab" aria-controls="specifikacija" aria-selected="false">Specifikacija</a>
-                                <a class="nav-link"  href="{{ route('izdate1', $book) }}" aria-selected="false">Evidencija iznajmljivanja</a>
+                                <a class="nav-link"  href="{{ route('book.izdate1', $book) }}" aria-selected="false">Evidencija iznajmljivanja</a>
                                 <a class="nav-link" id="multimedija" data-bs-toggle="tab" href="#multimedija-tab"  role="tab" aria-controls="nav-contact" aria-selected="false">Multimedija</a>
                             </div>
                         </nav>

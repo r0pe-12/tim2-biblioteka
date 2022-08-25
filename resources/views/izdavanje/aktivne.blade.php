@@ -59,7 +59,7 @@
                                             class=" whitespace-nowrap w-full text-[25px]  flex justify-between fill-current">
                                             <div
                                                 class="py-[15px] px-[20px] w-[268px] cursor-pointer group hover:bg-[#EFF3F6] rounded-[10px]">
-                                                <a href="{{route('izdate')}}" aria-label="Sve knjige"
+                                                <a href="{{route('evidencija.izdate')}}" aria-label="Sve knjige"
                                                    class="flex items-center">
                                                     <i
                                                         class="text-[#707070] transition duration-300 ease-in group-hover:text-[#576cdf] far fa-copy text-[20px]"></i>
@@ -80,7 +80,7 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="{{route('vracene')}}" aria-label="Vracene knjige"
+                                                <a href="{{route('evidencija.vracene')}}" aria-label="Vracene knjige"
                                                    class="flex items-center">
                                                     <i
                                                         class="transition duration-300 ease-in  text-[#707070] text-[20px] fas fa-file group-hover:text-[#576cdf]"></i>
@@ -101,7 +101,7 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="{{ route('otpisane') }}" aria-label="Otpisane knjige"
+                                                <a href="{{ route('evidencija.otpisane') }}" aria-label="Otpisane knjige"
                                                    class="flex items-center">
                                                     <i
                                                         class="text-[#707070] text-[20px] fas fa-level-up-alt transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
@@ -121,7 +121,7 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="{{route('prekoracene')}}" aria-label="Knjige na raspolaganju"
+                                                <a href="{{route('evidencija.prekoracene')}}" aria-label="Knjige na raspolaganju"
                                                    class="flex items-center">
                                                     <i
                                                         class="group-hover:text-[#576cdf] text-[#707070] text-[20px] fas fa-exclamation-triangle transition duration-300 ease-in "></i>
@@ -141,7 +141,7 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group bg-[#EFF3F6] hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="{{ route('aktivne-rezervacije') }}" aria-label="Rezervacije"
+                                                <a href="{{ route('evidencija.aktivne-rezervacije') }}" aria-label="Rezervacije"
                                                    class="flex items-center">
                                                     <i
                                                         class="text-[#576cdf] text-[20px] far fa-calendar-check transition duration-300 ease-in"></i>
@@ -161,7 +161,7 @@
                                             class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                             <div
                                                 class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                                <a href="{{ route('arhivirane-rezervacije') }}" aria-label="Rezervacije"
+                                                <a href="{{ route('evidencija.arhivirane-rezervacije') }}" aria-label="Rezervacije"
                                                    class="flex items-center">
                                                     <i
                                                         class="text-[#707070] text-[20px] fas fa-calendar-alt transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
@@ -280,11 +280,11 @@
                                         <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                             <td class="px-4 py-3 whitespace-no-wrap">
                                                 <label class="inline-flex items-center">
-                                                    <input type="checkbox" class="form-checkbox checkOthers" data-href="{{ route('izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}"
+                                                    <input type="checkbox" class="form-checkbox checkOthers" data-href="{{ route('book.izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}"
                                                            data-book-name="{{ $reservation->book->title }}"
                                                            data-student-name="{{ $reservation->student->name }} {{ $reservation->student->surname }}"
                                                             data-action="{{ route('rezervacija.otkazi', $reservation) }}"
-                                                            data-details="{{ route('rezervisane.show', [$reservation->book, $reservation]) }}">
+                                                            data-details="{{ route('book.rezervisane.show', [$reservation->book, $reservation]) }}">
                                                 </label>
                                             </td>
                                             <td class="flex flex-row items-center px-4 py-3">
@@ -317,11 +317,11 @@
                                                          aria-labelledby="headlessui-menu-button-1"
                                                          id="headlessui-menu-items-117" role="menu">
                                                         <div class="py-1">
-                                                            <a href="{{ route('rezervisane.show', [$reservation->book, $reservation]) }}" tabindex="0" class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600" role="menuitem">
+                                                            <a href="{{ route('book.rezervisane.show', [$reservation->book, $reservation]) }}" tabindex="0" class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600" role="menuitem">
                                                                 <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
                                                                 <span class="px-4 py-0">Pogledaj detalje</span>
                                                             </a>
-                                                            <a href="{{ route('izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}" tabindex="0"
+                                                            <a href="{{ route('book.izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}" tabindex="0"
                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                                role="menuitem">
                                                                 <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>

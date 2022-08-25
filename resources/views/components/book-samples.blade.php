@@ -15,19 +15,19 @@
         <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
             {{ $available }} {{ $available%10 == 0 ? 'primjeraka' : ($available%10 == 1 ? 'primjerak' : ($available%10 > 1 && $available%10 < 5 ? 'primjerka' : 'primjeraka')) }}
         </p>
-        <a href="{{ route('aktivne-rezervacije1', $book) }}">
+        <a href="{{ route('evidencija.aktivne-rezervacije1', $book) }}">
             <p
                     class=" mt-[16px] bg-yellow-200 text-yellow-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                 {{ $book->reservedSamples }} {{ $book->reservedSamples%10 == 0 ? 'primjeraka' : ($book->reservedSamples%10 == 1 ? 'primjerak' : ($book->reservedSamples%10 > 1 && $book->reservedSamples%10 < 5 ? 'primjerka' : 'primjeraka')) }}
             </p>
         </a>
-        <a href="{{ route('izdate1', $book) }}">
+        <a href="{{ route('book.izdate1', $book) }}">
             <p
                     class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                 {{ $book->borrowedSamples }} {{ $book->borrowedSamples%10 == 0 ? 'primjeraka' : ($book->borrowedSamples%10 == 1 ? 'primjerak' : ($book->borrowedSamples%10 > 1 && $book->borrowedSamples%10 < 5 ? 'primjerka' : 'primjeraka')) }}
             </p>
         </a>
-        <a href="{{ route('prekoracene1', $book) }}">
+        <a href="{{ route('book.prekoracene', $book) }}">
             <p
                     class=" mt-[16px] bg-red-200 text-red-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                 {{ count($book->failed()) }} {{ count($book->failed())%10 == 0 ? 'primjeraka' : (count($book->failed())%10 == 1 ? 'primjerak' : (count($book->failed())%10 > 1 && count($book->failed())%10 < 5 ? 'primjerka' : 'primjeraka')) }}

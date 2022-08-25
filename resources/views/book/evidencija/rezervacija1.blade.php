@@ -153,7 +153,7 @@
                                 class="btn-animation shadow-lg disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#FF470E] bg-[#FF5722]">
                             <i class="fas fa-undo mr-[4px] "></i> Otkazi rezervaciju
                         </button>
-                        <button type="submit" onclick="window.location.href = '{{ route('izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}'"
+                        <button type="submit" onclick="window.location.href = '{{ route('book.izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}'"
                                 class="ml-[10px] btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
                             <i class="fas fa-hand-scissors mr-[4px] "></i> Izdaj knjigu
                         </button>

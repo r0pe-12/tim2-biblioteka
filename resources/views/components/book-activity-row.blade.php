@@ -51,7 +51,7 @@
                 </a>
                 dana <span
                         class="font-bold">{{ \Carbon\Carbon::parse($zapis->datum)->format('d.m.Y') }}</span>
-                <a href="{{ route('izdate.show', [$zapis->book, $zapis->id] ) }}"
+                <a href="{{ route('book.izdate.show', [$zapis->book, $zapis->id] ) }}"
                    class="text-[#2196f3] hover:text-blue-600">
                     pogledaj detaljnije >>
                 </a>

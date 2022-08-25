@@ -34,7 +34,7 @@
                                     KNJIGA-{{ $book->id }}
                                 </a>
                             </li>
-                            @if(request()->routeIs('izdaj.create'))
+                            @if(request()->routeIs('book.izdaj.create'))
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
@@ -45,7 +45,7 @@
                                     </a>
                                 </li>
                             @endif
-                            @if(request()->routeIs('izdate.show'))
+                            @if(request()->routeIs('book.izdate.show'))
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
@@ -56,7 +56,7 @@
                                     </a>
                                 </li>
                             @endif
-                            @if(request()->routeIs('rezervisane.show'))
+                            @if(request()->routeIs('book.rezervisane.show'))
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
@@ -67,7 +67,7 @@
                                     </a>
                                 </li>
                             @endif
-                            @if(request()->routeIs('otpisi.create'))
+                            @if(request()->routeIs('book.otpisi.create'))
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
@@ -78,7 +78,7 @@
                                     </a>
                                 </li>
                             @endif
-                            @if(request()->routeIs('vrati.create'))
+                            @if(request()->routeIs('book.vrati.create'))
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
@@ -89,7 +89,7 @@
                                     </a>
                                 </li>
                             @endif
-                            @if(request()->routeIs('reserve.create'))
+                            @if(request()->routeIs('book.reserve.create'))
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
@@ -100,67 +100,67 @@
                                     </a>
                                 </li>
                             @endif
-                            @if(request()->routeIs('izdate1'))
+                            @if(request()->routeIs('book.izdate1'))
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{ route('izdate1', $book) }}"
+                                    <a href="{{ route('book.izdate1', $book) }}"
                                        class="text-[#2196f3] hover:text-blue-600">
                                         Izdate Knjige
                                     </a>
                                 </li>
                             @endif
-                            @if(request()->routeIs('vracene1'))
+                            @if(request()->routeIs('book.vracene1'))
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{ route('vracene1', $book) }}"
+                                    <a href="{{ route('book.vracene1', $book) }}"
                                        class="text-[#2196f3] hover:text-blue-600">
                                         Vracene Knjige
                                     </a>
                                 </li>
                             @endif
-                            @if(request()->routeIs('otpisane1'))
+                            @if(request()->routeIs('book.otpisane'))
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{ route('vracene1', $book) }}"
+                                    <a href="{{ route('book.vracene1', $book) }}"
                                        class="text-[#2196f3] hover:text-blue-600">
                                         Otpisane Knjige
                                     </a>
                                 </li>
                             @endif
-                            @if(request()->routeIs('prekoracene1'))
+                            @if(request()->routeIs('book.prekoracene'))
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{ route('prekoracene1', $book) }}"
+                                    <a href="{{ route('book.prekoracene', $book) }}"
                                        class="text-[#2196f3] hover:text-blue-600">
                                         Prekoracene Knjige
                                     </a>
                                 </li>
                             @endif
-                            @if(request()->routeIs('aktivne-rezervacije1'))
+                            @if(request()->routeIs('evidencija.aktivne-rezervacije1'))
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{ route('aktivne-rezervacije1', $book) }}"
+                                    <a href="{{ route('evidencija.aktivne-rezervacije1', $book) }}"
                                        class="text-[#2196f3] hover:text-blue-600">
                                         Aktivne Rezervacije
                                     </a>
                                 </li>
                             @endif
-                            @if(request()->routeIs('arhivirane-rezervacije1'))
+                            @if(request()->routeIs('book.arhivirane-rezervacije1'))
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{ route('arhivirane-rezervacije1', $book) }}"
+                                    <a href="{{ route('book.arhivirane-rezervacije1', $book) }}"
                                        class="text-[#2196f3] hover:text-blue-600">
                                         Arhivirane Rezervacije
                                     </a>
@@ -172,19 +172,19 @@
             </div>
         </div>
         <div class="pt-[24px] mr-[30px]">
-            <a href="{{ route('otpisi.create', $book) }}" class="inline hover:text-blue-600">
+            <a href="{{ route('book.otpisi.create', $book) }}" class="inline hover:text-blue-600">
                 <i class="fas fa-level-up-alt mr-[3px]"></i>
                 Otpisi knjigu
             </a>
-            <a href="{{ route('izdaj.create', $book) }}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
+            <a href="{{ route('book.izdaj.create', $book) }}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
                 <i class="far fa-hand-scissors mr-[3px]"></i>
                 Izdaj knjigu
             </a>
-            <a href="{{ route('vrati.create', $book) }}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+            <a href="{{ route('book.vrati.create', $book) }}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                 <i class="fas fa-redo-alt mr-[3px] "></i>
                 Vrati knjigu
             </a>
-            <a href="{{ route('reserve.create', $book) }}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+            <a href="{{ route('book.reserve.create', $book) }}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                 <i class="far fa-calendar-check mr-[3px] "></i>
                 Rezervisi knjigu
             </a>
