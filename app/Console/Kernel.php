@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Mail\KnjigaIzdata;
+use App\Models\Borrow;
 use App\Models\ClosingReason;
 use App\Models\Policy;
 use App\Models\Reservation;
@@ -37,6 +39,21 @@ class Kernel extends ConsoleKernel
                 };
             }
         })->daily();
+
+        $schedule->call(function ()
+        {
+           $toSendMail = Borrow::where('mail', '=', '0')->get();
+           foreach ($toSendMail as $borrow) {
+               try {
+                   \Mail::send(new KnjigaIzdata($borrow));
+               } catch (\Exception $e) {
+
+               } finally {
+                   $borrow->mail = 1;
+                   $borrow->save();
+               }
+           }
+        });
     }
 
     /**

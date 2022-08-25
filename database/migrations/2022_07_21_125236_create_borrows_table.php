@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('borrows', function (Blueprint $table) {
             $table->id();
             $table->integer('active');
+            $table->boolean('mail')->default(false);
             $table->foreignId('book_id')->constrained('books', 'id');
 
             $table->foreignId('librarian_id')->constrained('users', 'id');
