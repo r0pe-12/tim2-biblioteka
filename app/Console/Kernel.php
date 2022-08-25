@@ -3,7 +3,9 @@
 namespace App\Console;
 
 use App\Mail\KnjigaIzdata;
+use App\Mail\KnjigaOtpisana;
 use App\Mail\KnjigaVracena;
+use App\Models\BookStatus;
 use App\Models\Borrow;
 use App\Models\ClosingReason;
 use App\Models\Policy;
@@ -49,7 +51,11 @@ class Kernel extends ConsoleKernel
                    if ($borrow->active == 1) {
                        \Mail::send(new KnjigaIzdata($borrow));
                    } elseif ($borrow->active == 0) {
-                       \Mail::send(new KnjigaVracena($borrow));
+                       if ($borrow->status()->id = BookStatus::FAILED) {
+                           \Mail::send(new KnjigaOtpisana($borrow));
+                       } else {
+                            \Mail::send(new KnjigaVracena($borrow));
+                       }
                    }
                } catch (\Exception $e) {
 
@@ -58,7 +64,7 @@ class Kernel extends ConsoleKernel
                    $borrow->save();
                }
            }
-        });
+        })->everyThreeMinutes();
     }
 
     /**
