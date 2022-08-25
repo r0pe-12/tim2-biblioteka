@@ -68,8 +68,8 @@
         <!-- Heading of content -->
         <x-book-header :book="$book"/>
 
-        <div class="flex flex-row height-iznajmljivanje scroll">
-            <div class="w-[80%]">
+        <div class="flex flex-row height-iznajmljivanje">
+            <div class="w-[80%] scrolly">
                 <div class="py-4 text-gray-500 border-[#e4dfdf] pl-[30px]">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
