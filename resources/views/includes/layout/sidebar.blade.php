@@ -127,7 +127,7 @@
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('books.index') }}" aria-label="Knjige">
-                                        <i class="text-[25px] transition duration-300 ease-in text-[#576cdf] text-[#707070] far fa-copy"></i>
+                                        <i class="text-[25px] transition duration-300 ease-in text-[#576cdf] text-[#707070] fas fa-book"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in text-[#576cdf] inline text-[15px] ml-[20px]">
                                                 Knjige
@@ -144,7 +144,7 @@
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('books.index') }}" aria-label="Knjige">
-                                        <i class="text-[25px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] far fa-copy"></i>
+                                        <i class="text-[25px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-book"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
                                                 Knjige
@@ -164,7 +164,7 @@
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('authors.index') }}" aria-label="Knjige">
-                                        <i class="text-[25px] transition duration-300 ease-in text-[#576cdf] text-[#707070] far fa-address-book"></i>
+                                        <i class="text-[25px] transition duration-300 ease-in text-[#576cdf] text-[#707070] fas fa-user-graduate"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in text-[#576cdf] inline text-[15px] ml-[20px]">
                                                 Autori
@@ -181,7 +181,7 @@
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('authors.index') }}" aria-label="Knjige">
-                                        <i class="text-[25px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] far fa-address-book"></i>
+                                        <i class="text-[25px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-user-graduate"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
                                                 Autori
