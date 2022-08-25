@@ -79,7 +79,7 @@ class User extends Authenticatable
         if (!count($this->logins)){
             return 'Nije se nikad ulogovao/la';
         }
-        return $this->logins()->latest()->first()->created_at->diffForHumans();
+        return str_replace(['pre'], ['prije'], Carbon::parse($this->logins()->latest()->first()->created_at)->diffForHumans());
     }
 
 //    get role of an user
