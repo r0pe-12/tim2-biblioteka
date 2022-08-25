@@ -204,7 +204,7 @@
                                         <i class="text-[22px] transition duration-300 ease-in text-[#576cdf] text-[#707070] fas fa-exchange-alt"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in text-[#576cdf] inline text-[15px] ml-[20px]">
-                                                Izdavanje knjiga
+                                                Izdavanje Knjiga
                                             </p>
                                         </div>
                                     </a>
@@ -221,7 +221,7 @@
                                         <i class="text-[22px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-exchange-alt"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                                                Izdavanje knjiga
+                                                Izdavanje Knjiga
                                             </p>
                                         </div>
                                     </a>
