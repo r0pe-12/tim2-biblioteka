@@ -53,6 +53,7 @@
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">
                                     Knjigu izdao
                                 </th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="bg-white">
@@ -74,6 +75,7 @@
                                             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap"><x-date-diff :zapis="$active"/></td>
                                             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap"><x-date-diff :zapis="$active" :failed="true"/></td>
                                             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $active->librarian->name }} {{ $active->librarian->surname }}</td>
+                                            <td></td>
                                         </tr>
                                 @endforeach
                             </tbody>
@@ -96,6 +98,7 @@
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">
                                     Knjigu izdao
                                 </th>
+                                <th></th>
                             </tr>
                             </tfoot>
                         </table>

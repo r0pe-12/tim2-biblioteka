@@ -273,11 +273,11 @@
                             <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                 <td class="px-4 py-3 whitespace-no-wrap">
                                     <label class="inline-flex items-center">
-                                        <input type="checkbox" class="form-checkbox checkOthers" data-href="{{ route('izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}"
+                                        <input type="checkbox" class="form-checkbox checkOthers" data-href="{{ route('book.izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}"
                                                data-book-name="{{ $reservation->book->title }}"
                                                data-student-name="{{ $reservation->student->name }} {{ $reservation->student->surname }}"
                                                data-action="{{ route('rezervacija.otkazi', $reservation) }}"
-                                                data-details="{{ route('rezervisane.show', [$reservation->book, $reservation]) }}">
+                                                data-details="{{ route('book.rezervisane.show', [$reservation->book, $reservation]) }}">
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-3">
@@ -310,11 +310,11 @@
                                              aria-labelledby="headlessui-menu-button-1"
                                              id="headlessui-menu-items-117" role="menu">
                                             <div class="py-1">
-                                                <a href="{{ route('rezervisane.show', [$reservation->book, $reservation]) }}" tabindex="0" class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600" role="menuitem">
+                                                <a href="{{ route('book.rezervisane.show', [$reservation->book, $reservation]) }}" tabindex="0" class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600" role="menuitem">
                                                     <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
                                                     <span class="px-4 py-0">Pogledaj detalje</span>
                                                 </a>
-                                                <a href="{{ route('izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}" tabindex="0"
+                                                <a href="{{ route('book.izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}" tabindex="0"
                                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                    role="menuitem">
                                                     <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>

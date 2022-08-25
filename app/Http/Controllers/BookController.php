@@ -64,6 +64,17 @@ class BookController extends Controller
 //        creating new record in books table
         $book = Book::create(Arr::except($input,['categories', 'genres', 'authors']));
 
+        if ($request->hasFile('pictures')){
+            foreach ($input['pictures'] as $file){
+                $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
+                $file->storeAs('/images/books', $name);
+                $book->photos()->create([
+                    'path' => $name,
+                    'cover' => $file->getClientOriginalName() == $input['cover']
+                ]);
+            }
+        }
+
 //        attaching book to multiple authors
         $book->authors()->sync($input['authors']);
 

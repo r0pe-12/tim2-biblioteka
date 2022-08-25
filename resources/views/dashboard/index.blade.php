@@ -135,7 +135,7 @@
                                                     }
                                                 </style>
 
-                                                    <a href="{{ route('rezervisane.show', [$zapis->book, $zapis]) }}">
+                                                    <a href="{{ route('book.rezervisane.show', [$zapis->book, $zapis]) }}">
                                                 <div class="inline-block px-[6px] py-[2px] font-medium {{ $bg }} rounded-[10px]">
                                                         <span class="status text-xs {{ $txt }}">{{ $status }}</span>
                                                 </div>
@@ -146,7 +146,7 @@
                                     </tbody>
                                 </table>
                                 <div class="text-right mt-[5px]">
-                                    <a href="{{route('aktivne-rezervacije')}}" class="text-[#2196f3] hover:text-blue-600">
+                                    <a href="{{route('evidencija.aktivne-rezervacije')}}" class="text-[#2196f3] hover:text-blue-600">
                                         <i class="fas fa-calendar-alt mr-[4px]" aria-hidden="true"></i>
                                         Prikaži sve
                                     </a>

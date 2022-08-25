@@ -37,7 +37,7 @@
                         </p>
                     </div>
                     <div>
-                        <a href="{{ route('izdate.show', [$zapis->book, $zapis]) }}"
+                        <a href="{{ route('book.izdate.show', [$zapis->book, $zapis]) }}"
                            class="text-[#2196f3] hover:text-blue-600">
                             pogledaj detaljnije >>
                         </a>

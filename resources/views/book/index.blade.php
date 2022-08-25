@@ -159,12 +159,12 @@
                                             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ ($book->samples)-($book->borrowedSamples) }}</td>
                                         @endif
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-900 whitespace-no-wrap">
-                                            <a href="{{ route('aktivne-rezervacije1', $book) }}"><b>{{ $book->reservedSamples }}</b></a>
+                                            <a href="{{ route('evidencija.aktivne-rezervacije1', $book) }}"><b>{{ $book->reservedSamples }}</b></a>
                                         </td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                                href="{{ route('izdate1', $book) }}">{{ $book->borrowedSamples }}</a></td>
+                                                href="{{ route('book.izdate1', $book) }}">{{ $book->borrowedSamples }}</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                                href="{{ route('prekoracene1', $book) }}">{{ count($book->failed()) }}</a></td>
+                                                href="{{ route('book.prekoracene', $book) }}">{{ count($book->failed()) }}</a></td>
                                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $book->samples }}</td>
                                         <td class="px-6 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                                             <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsKnjige hover:text-[#606FC7]">
@@ -191,28 +191,28 @@
                                                             <span class="px-4 py-0">Izmijeni knjigu</span>
                                                         </a>
 
-                                                        <a href="{{route('otpisi.create', $book)}}" tabindex="0"
+                                                        <a href="{{route('book.otpisi.create', $book)}}" tabindex="0"
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                            role="menuitem">
                                                             <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
                                                             <span class="px-4 py-0">Otpisi knjigu</span>
                                                         </a>
 
-                                                        <a href="{{ route('izdaj.create', $book) }}" tabindex="0"
+                                                        <a href="{{ route('book.izdaj.create', $book) }}" tabindex="0"
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                            role="menuitem">
                                                             <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
                                                             <span class="px-4 py-0">Izdaj knjigu</span>
                                                         </a>
 
-                                                        <a href="{{ route('vrati.create', $book) }}" tabindex="0"
+                                                        <a href="{{ route('book.vrati.create', $book) }}" tabindex="0"
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                            role="menuitem">
                                                             <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
                                                             <span class="px-4 py-0">Vrati knjigu</span>
                                                         </a>
 
-                                                        <a href="{{ route('reserve.create', $book) }}" tabindex="0"
+                                                        <a href="{{ route('book.reserve.create', $book) }}" tabindex="0"
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                            role="menuitem">
                                                             <i class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
@@ -255,21 +255,21 @@
                                                                 <span class="px-4 py-0">Izmijeni knjigu</span>
                                                             </a>
 
-                                                            <a href="{{route('otpisi.create', $book)}}" tabindex="0"
+                                                            <a href="{{route('book.otpisi.create', $book)}}" tabindex="0"
                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                                role="menuitem">
                                                                 <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
                                                                 <span class="px-4 py-0">Otpisi knjigu</span>
                                                             </a>
 
-                                                            <a href="{{ route('izdaj.create', $book) }}" tabindex="0"
+                                                            <a href="{{ route('book.izdaj.create', $book) }}" tabindex="0"
                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                                role="menuitem">
                                                                 <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
                                                                 <span class="px-4 py-0">Izdaj knjigu</span>
                                                             </a>
 
-                                                            <a href="{{ route('vrati.create', $book) }}" tabindex="0"
+                                                            <a href="{{ route('book.vrati.create', $book) }}" tabindex="0"
                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                                role="menuitem">
                                                                 <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
