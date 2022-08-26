@@ -2,6 +2,11 @@
 
 namespace App\Console;
 
+use App\Mail\KnjigaIzdata;
+use App\Mail\KnjigaOtpisana;
+use App\Mail\KnjigaVracena;
+use App\Models\BookStatus;
+use App\Models\Borrow;
 use App\Models\ClosingReason;
 use App\Models\Policy;
 use App\Models\Reservation;
@@ -20,23 +25,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->call(function ()
-        {
-            $res_deadline = Policy::reservation()->value;
-            foreach (Reservation::active()->get() as $res) {
-                if (\Carbon\Carbon::parse($res->submttingDate)->addDays($res_deadline) < today('Europe/Belgrade')) {
-                    $res->closingReason_id = ClosingReason::expired()->id;
-                    $res->closingDate = today("Europe/Belgrade");
-                    $res->save();
+        $schedule->command('check:rezervacijaIstekla')->daily();
 
-                    $newResStatus = ReservationStatus::closed();
-                    $res->statuses()->attach($newResStatus);
-
-                    $res->book->reservedSamples--;
-                    $res->book->save();
-                };
-            }
-        })->daily();
+        $schedule->command('mail:izdavanje')->everyThreeMinutes();
     }
 
     /**

@@ -18,13 +18,7 @@ class BookBorrowController extends Controller
     //    prikazi formu za izdavanje odredjene knjige
     public function izdajForm(Book $book){
         # code
-        $return = Policy::findOrNew(Policy::RETURN);
-        if (!$return->id){
-            $return->id = Policy::RETURN;
-            $return->name = Policy::RETURN_NAME;
-            $return->value = 0;
-            $return->save();
-        }
+        $return = Policy::return();
         return view('book.izdaj', [
             'book' => $book,
             'available' => $book->samples - $book->borrowedSamples,
