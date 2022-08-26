@@ -3311,3 +3311,52 @@ function autofill() {
 //    add scroll class to every section cuz of small displays are unable to scroll down
 // $('section').addClass('scroll');
 
+$('#searchIcon').on('mouseenter', function () {
+    var knjige = document.getElementById('knjige');
+    knjige.textContent = '';
+    $('#searchBar').fadeIn();
+    $('#searchDiv').fadeIn();
+})
+
+window.addEventListener('click', function(e){
+    if (document.getElementById('searchWrapper').contains(e.target)){
+        // Clicked in box
+    } else{
+        // Clicked outside the box
+        $('#searchBar').fadeOut();
+        $('#searchDiv').fadeOut();
+    }
+});
+// $('header').on('mouseleave', function () {
+//     $('#searchBar').fadeOut();
+//     $('#searchDiv').fadeOut();
+// })
+
+$('#searchBar').on('keyup', function () {
+    var knjige = document.getElementById('knjige');
+    knjige.textContent = '';
+    var search = $('#searchBar').val();
+    var form = $('#searchForm');
+    setTimeout(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $.ajax({
+            type: "POST",
+            url: "/search",
+            data: form.serialize(),
+            success:function(data){
+                setTimeout(function () {
+                    knjige.innerText = '';
+                    $.each(data.books, function (k, v) {
+                        knjige.innerHTML += `<a href="/books/${v.id}" style="font-size: 20px"><li style="padding-left: 15px">${v.title}</li></a>`;
+                    })
+                },200)
+            },
+        });
+    }, 300);
+})

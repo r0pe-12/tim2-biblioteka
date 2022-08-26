@@ -3,7 +3,7 @@
     <div class="">
         <!-- Hamburger Icon -->
         <div
-            class="cursor-pointer text-[#707070] pl-[30px] pt-[28px] pb-[27px] text-[25px] border-b-[1px] border-[#e4dfdf] ">
+            class="cursor-pointer text-[#707070] pl-[28px] pt-[28px] pb-[27px] text-[25px] border-b-[1px] border-[#e4dfdf] ">
             <i id="hamburger" class="hamburger-btn fas fa-bars"></i>
         </div>
         <div class="mt-[30px]">
@@ -49,7 +49,7 @@
                 <!-- Bibliotekari Icon -->
                 @if(request()->routeIs('librarians.*'))
                     <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[30px]">
+                        <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('librarians.index') }}" aria-label="Bibliotekari">
@@ -66,7 +66,7 @@
                     </li>
                 @else
                     <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[30px]">
+                        <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('librarians.index') }}" aria-label="Bibliotekari">
@@ -86,7 +86,7 @@
                 <!-- Ucenici Icon -->
                 @if(request()->routeIs('students.*', 'ucenik.*'))
                     <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[30px]">
+                        <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{route('students.index')}}" aria-label="Ucenici">
@@ -103,7 +103,7 @@
                     </li>
                 @else
                     <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[30px]">
+                        <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{route('students.index')}}" aria-label="Ucenici">
@@ -123,7 +123,7 @@
                 <!-- Knjige Icon -->
                 @if(request()->routeIs('books.*', 'book.*'))
                     <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[30px]">
+                        <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('books.index') }}" aria-label="Knjige">
@@ -140,7 +140,7 @@
                     </li>
                 @else
                     <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[30px]">
+                        <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('books.index') }}" aria-label="Knjige">
@@ -160,7 +160,7 @@
                 <!-- Autori Icon -->
                 @if(request()->routeIs('authors.*'))
                     <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[30px]">
+                        <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('authors.index') }}" aria-label="Knjige">
@@ -177,7 +177,7 @@
                     </li>
                 @else
                     <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[30px]">
+                        <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('authors.index') }}" aria-label="Knjige">
@@ -197,7 +197,7 @@
                 <!-- Izdavanje Icon -->
                 @if(request()->routeIs('evidencija.*'))
                     <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[30px]">
+                        <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('evidencija.izdate') }}" aria-label="Knjige">
@@ -214,7 +214,7 @@
                     </li>
                 @else
                     <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[30px]">
+                        <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('evidencija.izdate') }}" aria-label="Knjige">
@@ -236,7 +236,7 @@
     <div class="sidebar-nav py-[10px] border-t-[1px] border-[#e4dfdf] pt-[23px] pb-[29px]  group hover:bg-[#EFF3F6]">
         <!-- Settings Icon -->
         @if(request()->routeIs('policy.*', 'category.*', 'genre.*', 'publisher.*', 'bookbind.*', 'format.*', 'script.*', 'language.*'))
-            <a href="{{ route('policy.index') }}" aria-label="Settngs" class="ml-[30px]">
+            <a href="{{ route('policy.index') }}" aria-label="Settngs" class="ml-[25px]">
                 <span class="whitespace-nowrap">
                     <i
                         class="transition duration-300 ease-in text-[#576cdf] text-[22px] text-[#707070] fas fa-cog"></i>
@@ -247,7 +247,7 @@
                 </span>
             </a>
         @else
-            <a href="{{ route('policy.index') }}" aria-label="Settngs" class="ml-[30px]">
+            <a href="{{ route('policy.index') }}" aria-label="Settngs" class="ml-[25px]">
                 <span class="whitespace-nowrap">
                     <i
                         class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[22px] text-[#707070] fas fa-cog"></i>

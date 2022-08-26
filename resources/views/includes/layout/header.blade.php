@@ -1,7 +1,7 @@
 <header
-    class="z-20 small:hidden  flex items-center text-white justify-between w-full h-[71px] pr-[30px] mx-auto bg-[#4558BE]">
+    class="z-20 small:hidden  flex items-center text-white justify-between justify-content-around w-full h-[71px] pr-[30px] mx-auto bg-[#4558BE]">
     <!-- logo -->
-    <div class="logo-font inline-flex bg-[#3F51B5] py-[18px] px-[30px]">
+    <div class="logo-font inline-flex py-[18px] px-[30px]">
         <a class="_o6689fn" href="#">
             <div class="block">
                 <a href="/" class="text-[20px] font-medium">
@@ -15,6 +15,26 @@
         </a>
     </div>
     <!-- end logo -->
+    <div id="searchWrapper" class="inline-flex" style="margin-right: auto;font-size: 20px;">
+        <form id="searchForm" method="POST" action="/search">
+            @csrf
+            <span id="searchIcon" style="cursor: pointer">
+                <i class="fas fa-magnifying-glass pt-[10px] pr-[10px]"></i>
+            </span>
+            <input id="searchBar" name="searchWord" type="search" placeholder="Search" hidden class="w-[500px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+            <div id="searchDiv" style="top: 75px;position: absolute;margin-left: 30px;z-index: 999" hidden class="w-[500px] flex-1 w-full px-4 py-2  text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none">
+                Knjige
+                <ol id="knjige" style="padding-bottom: 10px; border: none; border-bottom: 1px solid">
+                </ol>
+                <br>
+
+                Ucenici
+                <ol id="ucenici">
+                    <li style="padding-left: 15px">Ucenik Ucenikovic</li>
+                </ol>
+            </div>
+        </form>
+    </div>
 
     <!-- login -->
     <div class="flex-initial">
