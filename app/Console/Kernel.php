@@ -25,46 +25,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->call(function ()
-        {
-            $res_deadline = Policy::reservation()->value;
-            foreach (Reservation::active()->get() as $res) {
-                if (\Carbon\Carbon::parse($res->submttingDate)->addDays($res_deadline) < today('Europe/Belgrade')) {
-                    $res->closingReason_id = ClosingReason::expired()->id;
-                    $res->closingDate = today("Europe/Belgrade");
-                    $res->save();
+        $schedule->command('check:rezervacijaIstekla')->daily();
 
-                    $newResStatus = ReservationStatus::closed();
-                    $res->statuses()->attach($newResStatus);
-
-                    $res->book->reservedSamples--;
-                    $res->book->save();
-                };
-            }
-        })->daily();
-
-        $schedule->call(function ()
-        {
-           $toSendMail = Borrow::where('mail', '=', '0')->get();
-           foreach ($toSendMail as $borrow) {
-               try {
-                   if ($borrow->active == 1) {
-                       \Mail::send(new KnjigaIzdata($borrow));
-                   } elseif ($borrow->active == 0) {
-                       if ($borrow->status()->id == BookStatus::FAILED) {
-                           \Mail::send(new KnjigaOtpisana($borrow));
-                       } else {
-                            \Mail::send(new KnjigaVracena($borrow));
-                       }
-                   }
-               } catch (\Exception $e) {
-
-               } finally {
-                   $borrow->mail = 1;
-                   $borrow->save();
-               }
-           }
-        })->everyThreeMinutes();
+        $schedule->command('mail:izdavanje')->everyThreeMinutes();
     }
 
     /**
