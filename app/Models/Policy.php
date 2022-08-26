@@ -15,7 +15,7 @@ class Policy extends Model
         if (!$reservation->id){
             $reservation->id = Policy::RESERVATION;
             $reservation->name = Policy::RESERVATION_NAME;
-            $reservation->value = 0;
+            $reservation->value = 15;
             $reservation->save();
         }
         return $reservation;
@@ -29,7 +29,7 @@ class Policy extends Model
         if (!$return->id){
             $return->id = Policy::RETURN;
             $return->name = Policy::RETURN_NAME;
-            $return->value = 0;
+            $return->value = 30;
             $return->save();
         }
         return $return;
