@@ -4,6 +4,7 @@ use App\Http\Controllers\BookBorrowController;
 use App\Http\Controllers\BookReserveConroller;
 use App\Http\Controllers\BookReturnController;
 use App\Http\Controllers\BookWriteOffController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StudentController;
 
 use App\Http\Controllers\AuthorController;
@@ -122,7 +123,7 @@ Route::middleware(['auth'])->group(function (){
 
 //    test routes
 
-
+Route::post('/search', [SearchController::class, 'search']);
 
 //    END-test routes
 

@@ -960,112 +960,12 @@ $("#sacuvajUcenikaEdit").keypress(function (e) {
 
 // Form validation for new book
 function validacijaKnjiga(event) {
-    //specifikacija
-    $("#validateBrStrana").empty();
-    $("#validatePismo").empty();
-    $("#validatePovez").empty();
-    $("#validateFormat").empty();
-    $("#validateIsbn").empty();
-    $('#validateJezik').empty();
 
-  //  osnovni detalji
-  $("#validateNazivKnjiga").empty();
-  $("#validateKategorija").empty();
-  $("#validateZanr").empty();
-  $("#validateAutori").empty();
-  $("#validateIzdavac").empty();
-  $("#validateGodinaIzdavanja").empty();
-  $("#validateKnjigaKolicina").empty();
+    //validacija za osnovne detalje
+    validacijaKnjigaOD(event);
 
-  //osnovni detalji
-  let nazivKnjiga = $("#nazivKnjiga").val();
-  let kategorija = $("#kategorijaInput").val();
-  let zanr = $("#zanroviInput").val();
-  let autori = $("#autoriInput").val();
-  let izdavac = $("#izdavac").val();
-  let godinaIzdavanja = $("#godinaIzdavanja").val();
-  let knjigaKolicina = $("#knjigaKolicina").val();
-
-    // specifikacija
-    let brStrana = $("#brStrana").val();
-    let pismo = $("#pismo").val();
-    let povez = $("#povez").val();
-    let format = $("#format").val();
-    let isbn = $("#isbn").val();
-    let jezik = $("#jezik").val();
-
-  //  osnovni detalji
-  if (nazivKnjiga.length == 0) {
-    $('#validateNazivKnjiga').append('<p style="color:red;font-size:13px;">Morate unijeti naziv knjige!</p>');
-    event.preventDefault();
-  }
-
-  if (kategorija.length == 0) {
-    $('#validateKategorija').append('<p style="color:red;font-size:13px;">Morate selektovati kategoriju!</p>');
-      event.preventDefault();
-  }
-
-  if (zanr.length == 0) {
-    $('#validateZanr').append('<p style="color:red;font-size:13px;">Morate selektovati zanr!</p>');
-      event.preventDefault();
-  }
-
-  if (autori.length == 0) {
-    $('#validateAutori').append('<p style="color:red;font-size:13px;">Morate odabrati autore!</p>');
-      event.preventDefault();
-  }
-
-  if (izdavac == null) {
-    $('#validateIzdavac').append('<p style="color:red;font-size:13px;">Morate selektovati izdavaca!</p>');
-      event.preventDefault();
-  }
-
-  if (godinaIzdavanja == null) {
-    $('#validateGodinaIzdavanja').append('<p style="color:red;font-size:13px;">Morate selektovati godinu izdavanja!</p>');
-      event.preventDefault();
-  }
-
-  if (knjigaKolicina.length == 0) {
-    $('#validateKnjigaKolicina').append('<p style="color:red;font-size:13px;">Morate unijeti kolicinu!</p>');
-      event.preventDefault();
-  }
-
-//  specifikacija
-    if (brStrana.length == 0) {
-        $('#validateBrStrana').append('<p style="color:red;font-size:13px;">Morate unijeti broj strana!</p>');
-        event.preventDefault();
-    }
-
-    if (pismo == null) {
-        $('#validatePismo').append('<p style="color:red;font-size:13px;">Morate selektovati pismo!</p>');
-        event.preventDefault();
-    }
-
-    if (jezik == null) {
-        $('#validateJezik').append('<p style="color:red;font-size:13px;">Morate selektovati jezik!</p>');
-        event.preventDefault();
-    }
-
-    if (povez == null) {
-        $('#validatePovez').append('<p style="color:red;font-size:13px;">Morate selektovati povez!</p>');
-        event.preventDefault();
-    }
-
-    if (format == null) {
-        $('#validateFormat').append('<p style="color:red;font-size:13px;">Morate selektovati format!</p>');
-        event.preventDefault();
-    }
-
-    if (isNaN(isbn)){
-        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN je pogrešnog formata!</p>');
-        event.preventDefault();
-    } else if (isbn.length == 0) {
-        $('#validateIsbn').append('<p style="color:red;font-size:13px;">Morate unijeti ISBN!</p>');
-        event.preventDefault();
-    } else if (isbn.length !== 13){
-        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN mora imati 13 cifara! Trenutno:' + isbn.length + '</p>');
-        event.preventDefault();
-    }
+//    validacija za specifikaciju
+    validacijaKnjigaSpec(event);
 }
 
 function isbnCheck() {
@@ -1080,6 +980,151 @@ function isbnCheck() {
         $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN mora imati 13 cifara! Trenutno:' + isbn.length + '</p>');
     } else {
         $('#isbnLabel').attr('style', 'color:green;')
+    }
+}
+
+//validacija za osnovne detalje
+function validacijaKnjigaOD(event, nextTab= null) {
+    //  osnovni detalji
+    $("#validateNazivKnjiga").empty();
+    $("#validateKategorija").empty();
+    $("#validateZanr").empty();
+    $("#validateAutori").empty();
+    $("#validateIzdavac").empty();
+    $("#validateGodinaIzdavanja").empty();
+    $("#validateKnjigaKolicina").empty();
+
+    //osnovni detalji
+    let nazivKnjiga = $("#nazivKnjiga").val();
+    let kategorija = $("#kategorijaInput").val();
+    let zanr = $("#zanroviInput").val();
+    let autori = $("#autoriInput").val();
+    let izdavac = $("#izdavac").val();
+    let godinaIzdavanja = $("#godinaIzdavanja").val();
+    let knjigaKolicina = $("#knjigaKolicina").val();
+
+    var errors = 0;
+
+    //  osnovni detalji
+    if (nazivKnjiga.length == 0) {
+        $('#validateNazivKnjiga').append('<p style="color:red;font-size:13px;">Morate unijeti naziv knjige!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (kategorija.length == 0) {
+        $('#validateKategorija').append('<p style="color:red;font-size:13px;">Morate selektovati kategoriju!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (zanr.length == 0) {
+        $('#validateZanr').append('<p style="color:red;font-size:13px;">Morate selektovati zanr!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (autori.length == 0) {
+        $('#validateAutori').append('<p style="color:red;font-size:13px;">Morate odabrati autore!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (izdavac == null) {
+        $('#validateIzdavac').append('<p style="color:red;font-size:13px;">Morate selektovati izdavaca!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (godinaIzdavanja == null) {
+        $('#validateGodinaIzdavanja').append('<p style="color:red;font-size:13px;">Morate selektovati godinu izdavanja!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (knjigaKolicina.length == 0) {
+        $('#validateKnjigaKolicina').append('<p style="color:red;font-size:13px;">Morate unijeti kolicinu!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (errors === 0) {
+        if (!(nextTab === null)) {
+            tab(nextTab)
+        }
+    }
+}
+
+//validacija za specifikaciju knjige
+function validacijaKnjigaSpec(event, nextTab = null) {
+    //specifikacija
+    $("#validateBrStrana").empty();
+    $("#validatePismo").empty();
+    $("#validatePovez").empty();
+    $("#validateFormat").empty();
+    $("#validateIsbn").empty();
+    $('#validateJezik').empty();
+
+
+    // specifikacija
+    let brStrana = $("#brStrana").val();
+    let pismo = $("#pismo").val();
+    let povez = $("#povez").val();
+    let format = $("#format").val();
+    let isbn = $("#isbn").val();
+    let jezik = $("#jezik").val();
+
+    var errors = 0;
+
+    //  specifikacija
+    if (brStrana.length == 0) {
+        $('#validateBrStrana').append('<p style="color:red;font-size:13px;">Morate unijeti broj strana!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (pismo == null) {
+        $('#validatePismo').append('<p style="color:red;font-size:13px;">Morate selektovati pismo!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (jezik == null) {
+        $('#validateJezik').append('<p style="color:red;font-size:13px;">Morate selektovati jezik!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (povez == null) {
+        $('#validatePovez').append('<p style="color:red;font-size:13px;">Morate selektovati povez!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (format == null) {
+        $('#validateFormat').append('<p style="color:red;font-size:13px;">Morate selektovati format!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (isNaN(isbn)){
+        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN je pogrešnog formata!</p>');
+        event.preventDefault();
+        errors++;
+    } else if (isbn.length == 0) {
+        $('#validateIsbn').append('<p style="color:red;font-size:13px;">Morate unijeti ISBN!</p>');
+        event.preventDefault();
+        errors++;
+    } else if (isbn.length !== 13){
+        $('#validateIsbn').append('<p style="color:red;font-size:13px;">ISBN mora imati 13 cifara! Trenutno:' + isbn.length + '</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (errors === 0) {
+        if (!(nextTab === null)) {
+            tab(nextTab)
+        }
     }
 }
 
@@ -3311,3 +3356,159 @@ function autofill() {
 //    add scroll class to every section cuz of small displays are unable to scroll down
 // $('section').addClass('scroll');
 
+// when we hover over search icon search field would be unhidden
+$('#searchIcon').on('click', function () {
+    if ($('#searchForm').is(':hidden')) {
+        var knjige = document.getElementById('knjige');
+        knjige.textContent = '';
+
+        var ucenici = document.getElementById('ucenici');
+        ucenici.textContent = '';
+
+        var bibliotekari = document.getElementById('bibliotekari');
+        bibliotekari.textContent = '';
+
+        $('#searchForm').fadeIn();
+    } else {
+        $('#resultWrapper').fadeOut();
+        $('#info').fadeOut();
+        $('#searchBar').val('');
+        $('#searchFilter').fadeOut();
+        $('#searchFilter input:checkbox:not(:checked)').each(function () {
+            this.click();
+        });
+    }
+})
+
+// when we click outsite header or search wrapper we will hide everything
+window.addEventListener('click', function(e){
+    if (document.getElementById('searchWrapper').contains(e.target) || document.getElementById('siteHeader').contains(e.target)){
+        // Clicked in box
+    } else{
+        // Clicked outside the box
+        $('#searchForm').fadeOut();
+        $('#resultWrapper').fadeOut();
+        $('#info').fadeOut();
+        $('#searchFilter').fadeOut();
+        $('#searchBar').val('');
+    }
+});
+// $('header').on('mouseleave', function () {
+//     $('#searchBar').fadeOut();
+//     $('#resultWrapper').fadeOut();
+// })
+
+$('#searchBar').on('input focusin', function () {
+    $('#searchFilter').fadeOut();
+
+    var info = document.getElementById('info');
+    var resultWrapper = document.getElementById('resultWrapper');
+
+    var knjige = document.getElementById('knjige');
+    knjige.textContent = '';
+
+    var ucenici = document.getElementById('ucenici');
+    ucenici.textContent = '';
+
+    var bibliotekari = document.getElementById('bibliotekari');
+    bibliotekari.textContent = '';
+
+
+    var search = $('#searchBar').val();
+    $('#resultWrapper').attr('hidden', 'true');
+    // if input length is lower than 3 chars ww will display notification
+    if (search.length < 3) {
+        $(resultWrapper).fadeOut(1);
+        $(info).fadeIn();
+        info.querySelector('ul').innerHTML = `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Morate unijeti barem 3 karaktera</li></a>`;
+    } else {
+        $(info).fadeOut(3);
+        $(resultWrapper).fadeIn(2);
+        $(resultWrapper).addClass('blur');
+        var form = $('#searchForm');
+        setTimeout(function () {
+            // send request to /search
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+
+            $.ajax({
+                type: "POST",
+                url: "/search",
+                data: form.serialize(),
+                success:function(data){
+                    setTimeout(function () {
+
+                        knjige.innerText = '';
+                        ucenici.innerText = '';
+                        bibliotekari.innerText = '';
+
+                        if (data.books.length < 1) {
+                            knjige.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronadjenih rezultata</li></a>`;
+                        } else {
+                            $.each(data.books, function (k, v) {
+                                knjige.innerHTML += `<a href="/books/${v.id}" style="font-size: 20px"><li style="padding-left: 15px">${v.title}</li></a>`;
+                            })
+                        }
+
+                        if (data.students.length < 1) {
+                            ucenici.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronadjenih rezultata</li></a>`;
+                        } else {
+                            $.each(data.students, function (k, v) {
+                                ucenici.innerHTML += `<a href="/students/${v.username}" style="font-size: 20px"><li style="padding-left: 15px">${v.name} ${v.surname}</li></a>`;
+                            })
+                        }
+
+                        if (data.librarians.length < 1) {
+                            bibliotekari.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronadjenih rezultata</li></a>`;
+                        } else {
+                            $.each(data.librarians, function (k, v) {
+                                bibliotekari.innerHTML += `<a href="/librarians/${v.username}" style="font-size: 20px"><li style="padding-left: 15px">${v.name} ${v.surname}</li></a>`;
+                            })
+                        }
+
+                        // $(resultWrapper).fadeIn(2);
+                        $(resultWrapper).removeClass('blur');
+                    },300)
+                },
+            });
+        }, 300);
+    }
+})
+
+$('#filterDropdown').on('click', function () {
+    var filter = document.getElementById('searchFilter');
+
+    if ($(filter).is(':hidden')) {
+        $(filter).fadeIn();
+    } else {
+        $(filter).fadeOut();
+    }
+})
+
+$('#knjigeFilter').click(function () {
+    if (this.checked == false) {
+        $('#knjigaWrapper').fadeOut();
+    } else {
+        $('#knjigaWrapper').fadeIn();
+    }
+});
+
+$('#ucenikFilter').click(function () {
+    if (this.checked == false) {
+        $('#ucenikWrapper').fadeOut();
+    } else {
+        $('#ucenikWrapper').fadeIn();
+    }
+});
+
+$('#bibliotekarFilter').click(function () {
+    if (this.checked == false) {
+        $('#bibliotekarWrapper').fadeOut();
+    } else {
+        $('#bibliotekarWrapper').fadeIn();
+    }
+});

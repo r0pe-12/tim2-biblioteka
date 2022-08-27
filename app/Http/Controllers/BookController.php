@@ -217,7 +217,7 @@ class BookController extends Controller
                 unlink($photoPath);
             }
         }
-        return redirect()->back()->with('success', 'Knjiga: "' . $book->title . '" je uspješno izbrisana');
+        return redirect()->route('books.index')->with('success', 'Knjiga: "' . $book->title . '" je uspješno izbrisana');
     }
 
 

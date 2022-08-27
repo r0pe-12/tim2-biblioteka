@@ -1,7 +1,7 @@
-<header
-    class="z-20 small:hidden  flex items-center text-white justify-between w-full h-[71px] pr-[30px] mx-auto bg-[#4558BE]">
+<header id="siteHeader"
+    class="z-20 small:hidden  flex items-center text-white justify-between justify-content-around w-full h-[71px] pr-[30px] mx-auto bg-[#4558BE]">
     <!-- logo -->
-    <div class="logo-font inline-flex bg-[#3F51B5] py-[18px] px-[30px]">
+    <div class="logo-font inline-flex py-[18px] px-[30px]">
         <a class="_o6689fn" href="#">
             <div class="block">
                 <a href="/" class="text-[20px] font-medium">
@@ -15,6 +15,58 @@
         </a>
     </div>
     <!-- end logo -->
+    <!-- live search -->
+    <div id="searchWrapper" class="inline-flex" style="margin-right: auto;font-size: 20px;">
+        <span id="searchIcon" style="cursor: pointer">
+            <i class="fas fa-magnifying-glass pt-[10px] pr-[10px]"></i>
+        </span>
+
+        <form onsubmit="event.preventDefault()" id="searchForm" hidden>
+            @csrf
+            <input id="searchBar" autofocus autocomplete="off" name="searchWord" type="search" placeholder="Search" class="w-[500px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+            <a id="filterDropdown" style="padding-left: 10px" href="#">Filteri <i class="fas fa-caret-down"></i></a>
+        </form>
+
+        <div id="info" style="top: 75px;position: absolute;margin-left: 30px;z-index: 999" hidden class="scrolly w-[500px] flex-1 w-full px-4 py-2  text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none">
+            <ul>
+            </ul>
+        </div>
+
+        <div id="resultWrapper" style="top: 75px;position: absolute;margin-left: 30px;z-index: 999;height: 300px; background-color: #eff3f6 " hidden class="scrolly w-[500px] flex-1 w-full px-4 py-2  text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none">
+            <div id="knjigaWrapper">
+                Knjige
+                <ul id="knjige" class="search">
+                </ul>
+            </div>
+
+            <div id="ucenikWrapper" class="search">
+                Ucenici
+                <ul id="ucenici">
+                </ul>
+            </div>
+
+            <div id="bibliotekarWrapper" class="search">
+                Bibliotekari
+                <ul id="bibliotekari">
+                </ul>
+            </div>
+        </div>
+
+        <div id="searchFilter" hidden style="top: 75px;position: absolute;margin-left: 540px;z-index: 999;background-color: #eff3f6" class="max-w-[304px] flex-1 w-full px-4 py-2  text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none">
+            <ul>
+                <li onclick="this.querySelector('input').click()" style="cursor: pointer">
+                    <input type="checkbox" id="knjigeFilter" checked> Knjige
+                </li>
+                <li style="padding-top: 5px;cursor: pointer" onclick="this.querySelector('input').click()">
+                    <input type="checkbox" id="ucenikFilter" checked> Ucenici
+                </li>
+                <li style="padding-top: 5px;cursor: pointer" onclick="this.querySelector('input').click()">
+                    <input type="checkbox" id="bibliotekarFilter" checked> Bibliotekari
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end live search -->
 
     <!-- login -->
     <div class="flex-initial">

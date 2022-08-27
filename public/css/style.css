@@ -1,6 +1,17 @@
 /*Font Rubik - import*/
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
 
+.search {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border: none;
+    border-bottom: 1px solid;
+}
+
+.blur {
+    filter: blur(20px);
+}
+
 .logo-font {
     font-family: 'Rubik';
 }
