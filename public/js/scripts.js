@@ -3319,6 +3319,9 @@ $('#searchIcon').on('mouseenter', function () {
     var ucenici = document.getElementById('ucenici');
     ucenici.textContent = '';
 
+    var bibliotekari = document.getElementById('bibliotekari');
+    bibliotekari.textContent = '';
+
     $('#searchForm').fadeIn();
 })
 
@@ -3348,6 +3351,10 @@ $('#searchBar').on('input', function () {
     var ucenici = document.getElementById('ucenici');
     ucenici.textContent = '';
 
+    var bibliotekari = document.getElementById('bibliotekari');
+    bibliotekari.textContent = '';
+
+
     var search = $('#searchBar').val();
     $('#resultWrapper').attr('hidden', 'true');
     // if input length is lower than 3 chars ww will display notification
@@ -3374,8 +3381,11 @@ $('#searchBar').on('input', function () {
                 data: form.serialize(),
                 success:function(data){
                     setTimeout(function () {
+
                         knjige.innerText = '';
                         ucenici.innerText = '';
+                        bibliotekari.innerText = '';
+
                         if (data.books.length < 1) {
                             knjige.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronadjenih rezultata</li></a>`;
                         } else {
@@ -3389,6 +3399,14 @@ $('#searchBar').on('input', function () {
                         } else {
                             $.each(data.students, function (k, v) {
                                 ucenici.innerHTML += `<a href="/students/${v.username}" style="font-size: 20px"><li style="padding-left: 15px">${v.name} ${v.surname}</li></a>`;
+                            })
+                        }
+
+                        if (data.librarians.length < 1) {
+                            bibliotekari.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronadjenih rezultata</li></a>`;
+                        } else {
+                            $.each(data.librarians, function (k, v) {
+                                bibliotekari.innerHTML += `<a href="/librarians/${v.username}" style="font-size: 20px"><li style="padding-left: 15px">${v.name} ${v.surname}</li></a>`;
                             })
                         }
 

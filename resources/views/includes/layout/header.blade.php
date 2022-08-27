@@ -43,6 +43,12 @@
                 <ul id="ucenici">
                 </ul>
             </div>
+
+            <div id="bibliotekarWrapper" class="search">
+                Bibliotekari
+                <ul id="bibliotekari">
+                </ul>
+            </div>
         </div>
     </div>
     <!-- end live search -->
