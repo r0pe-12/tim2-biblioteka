@@ -3312,17 +3312,23 @@ function autofill() {
 // $('section').addClass('scroll');
 
 // when we hover over search icon search field would be unhidden
-$('#searchIcon').on('mouseenter', function () {
-    var knjige = document.getElementById('knjige');
-    knjige.textContent = '';
+$('#searchIcon').on('click', function () {
+    if ($('#searchForm').is(':hidden')) {
+        var knjige = document.getElementById('knjige');
+        knjige.textContent = '';
 
-    var ucenici = document.getElementById('ucenici');
-    ucenici.textContent = '';
+        var ucenici = document.getElementById('ucenici');
+        ucenici.textContent = '';
 
-    var bibliotekari = document.getElementById('bibliotekari');
-    bibliotekari.textContent = '';
+        var bibliotekari = document.getElementById('bibliotekari');
+        bibliotekari.textContent = '';
 
-    $('#searchForm').fadeIn();
+        $('#searchForm').fadeIn();
+    } else {
+        $('#resultWrapper').fadeOut();
+        $('#info').fadeOut();
+        $('#searchBar').val('');
+    }
 })
 
 // when we click outsite header or search wrapper we will hide everything
