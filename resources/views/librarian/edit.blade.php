@@ -2,7 +2,7 @@
     @section('title')
         Edit : {{ $librarian->username }}
     @endsection
-        <!-- Delete One Librarian Modal -->
+        <!-- Delete Librarian profile photo Modal -->
         <div class="modal fadeM" id="deleteProfilePhotoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
