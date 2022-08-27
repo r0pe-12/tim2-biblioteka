@@ -201,4 +201,17 @@ class LibrarianController extends Controller
         $user->save();
         return redirect()->back()->with('success', 'Šifra korisnika "' . $user->name . ' ' . $user->surname . ': ' . $user->username . '" je uspješno resetovana');
     }
+
+
+    //    izbrisi profilnu sliku
+    public function deleteProfilePhoto(User $user){
+        # code
+        if (file_exists($photoPath = public_path() . $user->photoPath)){
+            $user->photoPath = null;
+            $user->save();
+            unlink($photoPath);
+        }
+    }
+//    END-izbrisi profilnu sliku
+
 }

@@ -258,4 +258,11 @@ class StudentController extends Controller
         ]);
     }
 //    END-evidencija vezana za ucenika
+
+//    izbrisi profilnu sliku
+    public function deleteProfilePhoto(Student $student){
+        # code
+        return response()->json(['student'=>$student]);
+    }
+//    END-izbrisi profilnu sliku
 }

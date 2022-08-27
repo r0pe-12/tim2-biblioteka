@@ -301,6 +301,29 @@ var cropperFunction = function (e) {
 
 }
 
+$('#deleteProfilePhotoModal form').submit(function () {
+    event.preventDefault();
+    var form = document.getElementById('deleteProfilePhotoModal').querySelector('form');
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+
+    $.ajax({
+        type: "POST",
+        url: $(form).attr('action'),
+        success: function (data) {
+            $('#deleteProfilePhotoModal .close-modal').click();
+            $('input[type="file"]').val('');
+            $('#image-output').attr('src', '/img/profile.jpg');
+            flashMsg('Profilna slika uspjesno obrisana', 'success');
+        }
+    })
+})
+
 // Librarian image upload
 var loadFileLibrarian = function (event) {
   var imageStudent = document.getElementById('image-output-librarian');
