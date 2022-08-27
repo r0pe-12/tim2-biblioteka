@@ -3311,52 +3311,90 @@ function autofill() {
 //    add scroll class to every section cuz of small displays are unable to scroll down
 // $('section').addClass('scroll');
 
+// when we hover over search icon search field would be unhidden
 $('#searchIcon').on('mouseenter', function () {
     var knjige = document.getElementById('knjige');
     knjige.textContent = '';
-    $('#searchBar').fadeIn();
-    $('#searchDiv').fadeIn();
+
+    var ucenici = document.getElementById('ucenici');
+    ucenici.textContent = '';
+
+    $('#searchForm').fadeIn();
 })
 
+// when we click outsite header or search wrapper we will hide everything
 window.addEventListener('click', function(e){
-    if (document.getElementById('searchWrapper').contains(e.target)){
+    if (document.getElementById('searchWrapper').contains(e.target) || document.getElementById('siteHeader').contains(e.target)){
         // Clicked in box
     } else{
         // Clicked outside the box
-        $('#searchBar').fadeOut();
-        $('#searchDiv').fadeOut();
+        $('#searchForm').fadeOut();
+        $('#resultWrapper').fadeOut();
     }
 });
 // $('header').on('mouseleave', function () {
 //     $('#searchBar').fadeOut();
-//     $('#searchDiv').fadeOut();
+//     $('#resultWrapper').fadeOut();
 // })
 
-$('#searchBar').on('keyup', function () {
+$('#searchBar').on('input', function () {
+    var info = document.getElementById('info');
+    var resultWrapper = document.getElementById('resultWrapper');
+
     var knjige = document.getElementById('knjige');
     knjige.textContent = '';
+
+    var ucenici = document.getElementById('ucenici');
+    ucenici.textContent = '';
+
     var search = $('#searchBar').val();
-    var form = $('#searchForm');
-    setTimeout(function () {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+    $('#resultWrapper').attr('hidden', 'true');
+    // if input length is lower than 3 chars ww will display notification
+    if (search.length < 3) {
+        $(resultWrapper).fadeOut(1);
+        $(info).fadeIn();
+        info.querySelector('ul').innerHTML = `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Morate unijeti barem 3 karaktera</li></a>`;
+    } else {
+        $(info).fadeOut(3);
+        $(resultWrapper).fadeOut(1);
+        var form = $('#searchForm');
+        setTimeout(function () {
+            // send request to /search
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
 
-        $.ajax({
-            type: "POST",
-            url: "/search",
-            data: form.serialize(),
-            success:function(data){
-                setTimeout(function () {
-                    knjige.innerText = '';
-                    $.each(data.books, function (k, v) {
-                        knjige.innerHTML += `<a href="/books/${v.id}" style="font-size: 20px"><li style="padding-left: 15px">${v.title}</li></a>`;
-                    })
-                },200)
-            },
-        });
-    }, 300);
+            $.ajax({
+                type: "POST",
+                url: "/search",
+                data: form.serialize(),
+                success:function(data){
+                    setTimeout(function () {
+                        knjige.innerText = '';
+                        ucenici.innerText = '';
+                        if (data.books.length < 1) {
+                            knjige.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronadjenih rezultata</li></a>`;
+                        } else {
+                            $.each(data.books, function (k, v) {
+                                knjige.innerHTML += `<a href="/books/${v.id}" style="font-size: 20px"><li style="padding-left: 15px">${v.title}</li></a>`;
+                            })
+                        }
+
+                        if (data.students.length < 1) {
+                            ucenici.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronadjenih rezultata</li></a>`;
+                        } else {
+                            $.each(data.students, function (k, v) {
+                                ucenici.innerHTML += `<a href="/students/${v.username}" style="font-size: 20px"><li style="padding-left: 15px">${v.name} ${v.surname}</li></a>`;
+                            })
+                        }
+
+                        $(resultWrapper).fadeIn(2);
+                    },300)
+                },
+            });
+        }, 300);
+    }
 })
