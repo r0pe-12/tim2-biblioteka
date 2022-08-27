@@ -3342,7 +3342,7 @@ window.addEventListener('click', function(e){
 //     $('#resultWrapper').fadeOut();
 // })
 
-$('#searchBar').on('input focus', function () {
+$('#searchBar').on('input focusin', function () {
     var info = document.getElementById('info');
     var resultWrapper = document.getElementById('resultWrapper');
 
