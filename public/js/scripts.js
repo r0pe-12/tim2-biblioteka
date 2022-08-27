@@ -3334,6 +3334,7 @@ window.addEventListener('click', function(e){
         $('#searchForm').fadeOut();
         $('#resultWrapper').fadeOut();
         $('#info').fadeOut();
+        $('#searchBar').val('');
     }
 });
 // $('header').on('mouseleave', function () {
@@ -3341,7 +3342,7 @@ window.addEventListener('click', function(e){
 //     $('#resultWrapper').fadeOut();
 // })
 
-$('#searchBar').on('input', function () {
+$('#searchBar').on('input focus', function () {
     var info = document.getElementById('info');
     var resultWrapper = document.getElementById('resultWrapper');
 
