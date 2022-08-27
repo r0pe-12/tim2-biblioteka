@@ -3329,6 +3329,9 @@ $('#searchIcon').on('click', function () {
         $('#info').fadeOut();
         $('#searchBar').val('');
         $('#searchFilter').fadeOut();
+        $('#searchFilter input:checkbox:not(:checked)').each(function () {
+            this.click();
+        });
     }
 })
 
