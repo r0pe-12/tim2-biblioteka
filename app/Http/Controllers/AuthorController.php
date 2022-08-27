@@ -161,7 +161,7 @@ class AuthorController extends Controller
         if (file_exists($photoPath = public_path() . $photo)){
             unlink($photoPath);
         }
-        return redirect()->back()->with('success', 'Autor "' . $author->name . ' ' . $author->surname . '" je uspješno izbrisan');
+        return redirect()->route('authors.index')->with('success', 'Autor "' . $author->name . ' ' . $author->surname . '" je uspješno izbrisan');
     }
 
     /**
