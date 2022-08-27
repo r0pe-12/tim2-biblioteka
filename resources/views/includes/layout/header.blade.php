@@ -31,7 +31,7 @@
             </ul>
         </div>
 
-        <div id="resultWrapper" style="top: 75px;position: absolute;margin-left: 30px;z-index: 999;max-height: 300px " hidden class="loading scrolly w-[500px] flex-1 w-full px-4 py-2  text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none">
+        <div id="resultWrapper" style="top: 75px;position: absolute;margin-left: 30px;z-index: 999;height: 300px; background-color: #eff3f6 " hidden class="loading scrolly w-[500px] flex-1 w-full px-4 py-2  text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none">
             <div id="knjigaWrapper">
                 Knjige
                 <ul id="knjige" class="search">

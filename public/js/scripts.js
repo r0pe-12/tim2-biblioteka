@@ -3371,7 +3371,8 @@ $('#searchBar').on('input focusin', function () {
         info.querySelector('ul').innerHTML = `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Morate unijeti barem 3 karaktera</li></a>`;
     } else {
         $(info).fadeOut(3);
-        $(resultWrapper).fadeOut(1);
+        $(resultWrapper).fadeIn(2);
+        $(resultWrapper).addClass('blur');
         var form = $('#searchForm');
         setTimeout(function () {
             // send request to /search
@@ -3417,7 +3418,8 @@ $('#searchBar').on('input focusin', function () {
                             })
                         }
 
-                        $(resultWrapper).fadeIn(2);
+                        // $(resultWrapper).fadeIn(2);
+                        $(resultWrapper).removeClass('blur');
                     },300)
                 },
             });

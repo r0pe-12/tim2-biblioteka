@@ -8,6 +8,10 @@
     border-bottom: 1px solid;
 }
 
+.blur {
+    filter: blur(20px);
+}
+
 .logo-font {
     font-family: 'Rubik';
 }
