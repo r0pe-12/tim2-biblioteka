@@ -77,7 +77,7 @@
             $(window).on("load", function () {
                 console.log(window.location.pathname);
                 if (window.location.pathname != '/activity') {
-                    $(':checkbox').each(function () {
+                    $(':checkbox .checkOthers').each(function () {
                         this.checked = false;
                     });
                 }

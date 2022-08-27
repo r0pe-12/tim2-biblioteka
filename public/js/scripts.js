@@ -3328,6 +3328,7 @@ $('#searchIcon').on('click', function () {
         $('#resultWrapper').fadeOut();
         $('#info').fadeOut();
         $('#searchBar').val('');
+        $('#searchFilter').fadeOut();
     }
 })
 
@@ -3340,6 +3341,7 @@ window.addEventListener('click', function(e){
         $('#searchForm').fadeOut();
         $('#resultWrapper').fadeOut();
         $('#info').fadeOut();
+        $('#searchFilter').fadeOut();
         $('#searchBar').val('');
     }
 });
@@ -3349,6 +3351,8 @@ window.addEventListener('click', function(e){
 // })
 
 $('#searchBar').on('input focusin', function () {
+    $('#searchFilter').fadeOut();
+
     var info = document.getElementById('info');
     var resultWrapper = document.getElementById('resultWrapper');
 
@@ -3426,3 +3430,37 @@ $('#searchBar').on('input focusin', function () {
         }, 300);
     }
 })
+
+$('#filterDropdown').on('click', function () {
+    var filter = document.getElementById('searchFilter');
+
+    if ($(filter).is(':hidden')) {
+        $(filter).fadeIn();
+    } else {
+        $(filter).fadeOut();
+    }
+})
+
+$('#knjigeFilter').click(function () {
+    if (this.checked == false) {
+        $('#knjigaWrapper').fadeOut();
+    } else {
+        $('#knjigaWrapper').fadeIn();
+    }
+});
+
+$('#ucenikFilter').click(function () {
+    if (this.checked == false) {
+        $('#ucenikWrapper').fadeOut();
+    } else {
+        $('#ucenikWrapper').fadeIn();
+    }
+});
+
+$('#bibliotekarFilter').click(function () {
+    if (this.checked == false) {
+        $('#bibliotekarWrapper').fadeOut();
+    } else {
+        $('#bibliotekarWrapper').fadeIn();
+    }
+});
