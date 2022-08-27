@@ -3330,6 +3330,7 @@ window.addEventListener('click', function(e){
         // Clicked outside the box
         $('#searchForm').fadeOut();
         $('#resultWrapper').fadeOut();
+        $('#info').fadeOut();
     }
 });
 // $('header').on('mouseleave', function () {
