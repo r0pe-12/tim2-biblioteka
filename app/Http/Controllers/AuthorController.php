@@ -196,4 +196,16 @@ class AuthorController extends Controller
         }
         return redirect()->route('authors.index')->with('success', 'Autori su uspješno izbrisani');
     }
+
+    //    izbrisi profilnu sliku
+    public function deleteProfilePhoto(Author $author){
+        # code
+        if (file_exists($photoPath = public_path() . $author->image)){
+            $author->image = null;
+            $author->save();
+            unlink($photoPath);
+        }
+    }
+//    END-izbrisi profilnu sliku
+
 }

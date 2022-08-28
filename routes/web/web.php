@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function (){
 
     Route::resource('/authors', AuthorController::class);
     Route::delete('/author/bulkdelete', [AuthorController::class, 'bulkDelete'])->name('author.bulk-delete');
+    Route::post('/author/{author}/deleteProfilePhoto', [AuthorController::class, 'deleteProfilePhoto'])->name('author.delete-profile-photo');
 
 //    rute za knjigu
         Route::resource('/books', BookController::class);

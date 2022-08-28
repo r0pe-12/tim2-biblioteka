@@ -10,6 +10,34 @@
             });
         </script>
     @endsection
+        <!-- Delete Author profile photo Modal -->
+        <div class="modal fadeM" id="deleteProfilePhotoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" action="{{ route('author.delete-profile-photo', $author) }}">
+                        @csrf
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="exampleModalLabel"><b>Da li zelite obrisati sliku autora: {{ $author->name }} {{ $author->surname }}</b></h2>
+                            <h5 class="modal-title modalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-red-800">
+                                Ova akcija je nepovratna.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="close-modal btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                                Potvrdi <i class="fas fa-check ml-[4px]"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
             <!-- Heading of content -->
@@ -27,6 +55,14 @@
                                     <li>
                                         <a href="{{ route('authors.index') }}" class="text-[#2196f3] hover:text-blue-600">
                                             Evidencija autora
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <span class="mx-2">/</span>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('authors.show', $author) }}" class="text-[#2196f3] hover:text-blue-600">
+                                            AUTOR-{{ $author->id }}
                                         </a>
                                     </li>
                                     <li>
@@ -88,6 +124,10 @@
                                     <img id="image-output" class="absolute w-48 h-[188px] bottom-0" src="{{ $author->image }}">
                                 </div>
                             </label>
+                            <button type="button" data-toggle="modal" data-target="#deleteProfilePhotoModal"
+                                    class="bg-[#F44336] btn-animation duration-300 ease-in focus:outline-none hover:bg-[#F55549] mr-[15px] mt-6 px-5 py-2.5 rounded-[5px] shadow-lg text-sm text-white transition w-full">
+                                Obrisi Sliku
+                            </button>
                             @error('photoPath') <div class=" flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                         </div>
                     </div>
