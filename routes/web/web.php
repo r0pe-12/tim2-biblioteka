@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/librarians', LibrarianController::class);
     Route::delete('/librarian/bulkdelete', [LibrarianController::class, 'bulkDelete'])->name('librarian.bulk-delete');
     Route::put('/librarians/{user}/resetPassword', [LibrarianController::class, 'passwordReset'])->name('librarian.pwreset');
-    Route::post('/students/{user}/deleteProfilePhoto', [LibrarianController::class, 'deleteProfilePhoto'])->name('librarian.delete-profile-photo');
+    Route::post('/librarians/{user}/deleteProfilePhoto', [LibrarianController::class, 'deleteProfilePhoto'])->name('librarian.delete-profile-photo');
 
     Route::resource('/authors', AuthorController::class);
     Route::delete('/author/bulkdelete', [AuthorController::class, 'bulkDelete'])->name('author.bulk-delete');
