@@ -124,11 +124,11 @@
     <div
         class="fixed top-0 left-0 flex items-center justify-center hidden w-full h-screen bg-black bg-opacity-50 modal">
         <!-- Modal -->
-        <div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
+        <div id="pwResetModal" class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
             <!-- Modal Header -->
             <div class="flex items-center justify-between px-[30px] py-[20px] border-b">
                 <h3>Resetuj šifru: {{ $librarian->name }} {{ $librarian->surname }}</h3>
-                <button class="text-black close-modal">&cross;</button>
+                <button class="text-black close-modal" onclick="$('#pwResetModal input').each(function() {this.value = ''})">&cross;</button>
             </div>
             <!-- Modal Body -->
             <form method="POST" class="forma" action="{{ route('librarian.pwreset', $librarian) }}">
@@ -148,7 +148,7 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
-                    <button type="button"
+                    <button type="button" onclick="$('#pwResetModal input').each(function() {this.value = ''})"
                         class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                         Poništi <i class="fas fa-times ml-[4px]"></i>
                     </button>

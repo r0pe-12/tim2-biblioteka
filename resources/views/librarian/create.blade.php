@@ -115,6 +115,10 @@
                                     <img id="image-output" class="hidden absolute w-48 h-[188px] bottom-0">
                                 </div>
                             </label>
+                            <button type="button"
+                                    class="deletePhotoCreate bg-[#F44336] btn-animation duration-300 ease-in focus:outline-none hover:bg-[#F55549] mr-[15px] mt-6 px-5 py-2.5 rounded-[5px] shadow-lg text-sm text-white transition w-full">
+                                Obrisi Sliku
+                            </button>
                             @error('photoPath') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                         </div>
 

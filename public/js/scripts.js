@@ -230,9 +230,9 @@ function dataFileDnD() {
 
 // Student image upload
 var loadFileStudent = function (event) {
-  var imageStudent = document.getElementById('image-output');
-  imageStudent.style.display = "block";
-  imageStudent.src = URL.createObjectURL(event.target.files[0]);
+  // var imageStudent = document.getElementById('image-output');
+  // imageStudent.style.display = "block";
+  // imageStudent.src = URL.createObjectURL(event.target.files[0]);
 };
 
 // Load cropper overlay
@@ -301,11 +301,40 @@ var cropperFunction = function (e) {
 
 }
 
+$('#deleteProfilePhotoModal form').submit(function () {
+    event.preventDefault();
+    var form = document.getElementById('deleteProfilePhotoModal').querySelector('form');
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+
+    $.ajax({
+        type: "POST",
+        url: $(form).attr('action'),
+        success: function (data) {
+            $('#deleteProfilePhotoModal .close-modal').click();
+            $('input[type="file"]').val('');
+            $('#image-output').attr('src', '/img/profile.jpg');
+            flashMsg('Profilna slika uspjesno obrisana', 'success');
+        }
+    })
+})
+
+$('.deletePhotoCreate').on('click', function () {
+    $('input[type="file"]').val('');
+    $('#image-output').removeAttr('src');
+    $('#image-output').removeAttr('style');
+})
+
 // Librarian image upload
 var loadFileLibrarian = function (event) {
-  var imageStudent = document.getElementById('image-output-librarian');
-  imageStudent.style.display = "block";
-  imageStudent.src = URL.createObjectURL(event.target.files[0]);
+  // var imageStudent = document.getElementById('image-output');
+  // imageStudent.style.display = "block";
+  // imageStudent.src = URL.createObjectURL(event.target.files[0]);
 };
 
 // Category icon upload

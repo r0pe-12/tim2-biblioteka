@@ -10,6 +10,7 @@
         <meta name="description" content="ICT Cortex Library - project for high school students..."/>
         <meta name="keywords" content="ict cortex, cortex, bild, bildstudio, highschool, students, coding"/>
         <meta name="author" content="bildstudio"/>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- End Meta -->
 
         <!-- Title -->

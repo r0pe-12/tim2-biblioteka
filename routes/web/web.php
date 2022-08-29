@@ -37,9 +37,11 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/librarians', LibrarianController::class);
     Route::delete('/librarian/bulkdelete', [LibrarianController::class, 'bulkDelete'])->name('librarian.bulk-delete');
     Route::put('/librarians/{user}/resetPassword', [LibrarianController::class, 'passwordReset'])->name('librarian.pwreset');
+    Route::post('/librarians/{user}/deleteProfilePhoto', [LibrarianController::class, 'deleteProfilePhoto'])->name('librarian.delete-profile-photo');
 
     Route::resource('/authors', AuthorController::class);
     Route::delete('/author/bulkdelete', [AuthorController::class, 'bulkDelete'])->name('author.bulk-delete');
+    Route::post('/author/{author}/deleteProfilePhoto', [AuthorController::class, 'deleteProfilePhoto'])->name('author.delete-profile-photo');
 
 //    rute za knjigu
         Route::resource('/books', BookController::class);
@@ -111,6 +113,7 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/students', StudentController::class);
     Route::delete('/student/bulkdelete', [StudentController::class, 'bulkDelete'])->name('student.bulk-delete');
     Route::put('/students/{user}/resetPassword', [StudentController::class, 'passwordReset'])->name('student.pwreset');
+    Route::post('/students/{user}/deleteProfilePhoto', [StudentController::class, 'deleteProfilePhoto'])->name('student.delete-profile-photo');
     Route::controller(StudentController::class)->prefix('/students/{student:username}')->group(function (){
         Route::get('/izdate', 'izdate')->name('ucenik.izdate');
         Route::get('/vracene', 'vracene')->name('ucenik.vracene');
