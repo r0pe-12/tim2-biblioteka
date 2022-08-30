@@ -3907,3 +3907,26 @@ $('#bibliotekariDropdown').on('change', function () {
 
     $(button).append(span);
 })
+
+$('#knjigeDropdown').on('change', function () {
+    var dropdown = document.getElementById('knjigeDropdown')
+    var button = document.getElementById('knjigeMenu');
+    var knjiga = "Sve";
+
+    if ($("input:checkbox:checked", dropdown).length === 1){
+        knjiga = $("input:checkbox:checked", dropdown)[0].getAttribute('data-book-name');
+    } else if ($("input:checkbox:checked", dropdown).length > 1) {
+        knjiga = $("input:checkbox:checked", dropdown).length;
+    }
+
+    button.innerText = '';
+
+    var span = $(`
+        ${knjiga === "Sve" ? "<span class='float-left'>" : "<span class='float-left bg-blue-200 text-blue-800 px-[8px] py-[2px]'>"}
+            Knjiga: ${knjiga}
+            <i class="px-[7px] fas fa-angle-down"></i>
+            </span>
+    `);
+
+    $(button).append(span);
+})
