@@ -3887,3 +3887,23 @@ $('#uceniciDropdown').on('change', function () {
 
     $(button).append(span);
 })
+
+$('#bibliotekariDropdown').on('change', function () {
+    var button = document.getElementById('bibliotekariButton');
+    var bibliotekar = "Sve";
+
+    if ($("#bibliotekariDropdown :checked").length > 0) {
+        bibliotekar = $("#bibliotekariDropdown :checked").length;
+    }
+
+    button.innerText = '';
+
+    var span = $(`
+        ${bibliotekar === "Sve" ? "<span class='float-left'>" : "<span class='float-left bg-blue-200 text-blue-800 px-[8px] py-[2px]'>"}
+            Bibliotekari: ${bibliotekar}
+            <i class="px-[7px] fas fa-angle-down"></i>
+            </span>
+    `);
+
+    $(button).append(span);
+})

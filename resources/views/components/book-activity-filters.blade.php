@@ -134,7 +134,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
         <div class="ml-[25px]">
             <div class="rounded">
                 <div class="relative">
-                    <button class="w-auto rounded focus:outline-none bibliotekariDrop-toggle" type="button">
+                    <button id="bibliotekariButton" class="w-auto rounded focus:outline-none bibliotekariDrop-toggle" type="button">
                         <?php if($bibliotekar==="Sve") {
                             echo "<span class='float-left'>";
                         } else {
@@ -184,8 +184,8 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                                class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
                                 Sacuvaj <i class="fas fa-check ml-[4px]"></i>
                             </button>
-                            <button type="reset"
-                               class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                            <button type="button" data-dropdown="bibliotekariDropdown"
+                               class="activity-reset btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                                 Ponisti <i class="fas fa-times ml-[4px]"></i>
                             </button>
                         </div>
