@@ -3869,11 +3869,12 @@ $('.activity-reset').on('click', function () {
 });
 
 $('#uceniciDropdown').on('change', function () {
+    var dropdown = document.getElementById('uceniciDropdown');
     var button = document.getElementById('uceniciButton');
     var ucenik = "Sve";
 
-    if ($("#uceniciDropdown :checked").length > 0) {
-        ucenik = $("#uceniciDropdown :checked").length;
+    if ($("input:checkbox:checked", dropdown).length > 0) {
+        ucenik = $("input:checkbox:checked", dropdown).length;
     }
 
     button.innerText = '';
@@ -3889,11 +3890,12 @@ $('#uceniciDropdown').on('change', function () {
 })
 
 $('#bibliotekariDropdown').on('change', function () {
+    var dropdown = document.getElementById('bibliotekariDropdown');
     var button = document.getElementById('bibliotekariButton');
     var bibliotekar = "Sve";
 
-    if ($("#bibliotekariDropdown :checked").length > 0) {
-        bibliotekar = $("#bibliotekariDropdown :checked").length;
+    if ($("input:checkbox:checked", dropdown).length > 0) {
+        bibliotekar = $("input:checkbox:checked", dropdown).length;
     }
 
     button.innerText = '';
