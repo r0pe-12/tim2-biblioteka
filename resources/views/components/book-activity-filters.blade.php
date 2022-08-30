@@ -61,8 +61,13 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
 }
 ?>
 
+<!-- todo kad se ucitavaju podaci i stavi se klasa blur ovi dropdownovi se proemete -->
 
-<form action="{{ route('dashboard.activity') }}" method="GET">
+<!-- todo napraviti dugme ponisti da radi kako treba tj da kad se stisne uncekira cekirano i refresuje formu -->
+
+<!-- todo kad se dropdown za ucenike otvori malo ekran secne i ucita se skrol  -->
+
+<form id="activityForm" action="{{ route('dashboard.activity') }}" method="GET">
     <div class="text-[14px] flex flex-row mb-[30px]">
         <div class="">
             <div class="rounded">

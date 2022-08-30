@@ -12,6 +12,10 @@
     filter: blur(20px);
 }
 
+.blur1 {
+    filter: blur(3px);
+}
+
 .logo-font {
     font-family: 'Rubik';
 }

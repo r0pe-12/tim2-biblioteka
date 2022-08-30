@@ -16,41 +16,45 @@
                     <div class="mr-[30px]">
                         <x-book-activity-filters :students="$students" :librarians="$librarians" :books="$books"/>
                         <!-- Activity Cards -->
-                        @if(count($borrows) > 0)
-                            @foreach($borrows as $zapis)
-                                <x-book-activity-row :zapis="$zapis"/>
-                            @endforeach
-                        @else
-                            <div class="flex flex-row mb-[30px]">
-                                <div class="ml-[15px] mt-[5px] flex flex-col">
-                                    <div class="text-gray-500 mb-[5px]" style="font-size: 30px">
-                                        <h2 class="uppercase">
-                                            NEMA AKTIVNOSTI
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
+                       <div id="izdavanja">
+                           @if(count($borrows) > 0)
+                               @foreach($borrows as $zapis)
+                                   <x-book-activity-row :zapis="$zapis"/>
+                               @endforeach
+                           @else
+                               <div class="flex flex-row mb-[30px]">
+                                   <div class="ml-[15px] mt-[5px] flex flex-col">
+                                       <div class="text-gray-500 mb-[5px]" style="font-size: 30px">
+                                           <h2 class="uppercase">
+                                               NEMA AKTIVNOSTI
+                                           </h2>
+                                       </div>
+                                   </div>
+                               </div>
+                           @endif
+                       </div>
                     </div>
                     <div class="mr-[50px] ">
                         <h3 class="uppercase mb-[20px] text-left">
                             Rezervacije knjiga
                         </h3>
-                        @if(count($reservations) > 0)
-                            @foreach($reservations as $zapis)
-                                <x-book-activity-row2 :zapis="$zapis"/>
-                            @endforeach
-                        @else
-                            <div class="flex flex-row mb-[30px]">
-                                <div class="ml-[15px] mt-[5px] flex flex-col">
-                                    <div class="text-gray-500 mb-[5px]" style="font-size: 30px">
-                                        <h2 class="uppercase">
-                                            NEMA AKTIVNOSTI
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
+                       <div id="rezervacije">
+                           @if(count($reservations) > 0)
+                               @foreach($reservations as $zapis)
+                                   <x-book-activity-row2 :zapis="$zapis"/>
+                               @endforeach
+                           @else
+                               <div class="flex flex-row mb-[30px]">
+                                   <div class="ml-[15px] mt-[5px] flex flex-col">
+                                       <div class="text-gray-500 mb-[5px]" style="font-size: 30px">
+                                           <h2 class="uppercase">
+                                               NEMA AKTIVNOSTI
+                                           </h2>
+                                       </div>
+                                   </div>
+                               </div>
+                           @endif
+                       </div>
                     </div>
                 </div>
             </div>

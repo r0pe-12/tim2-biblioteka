@@ -21,7 +21,7 @@ class Borrow extends Model
      * Get all of the models from the database.
      *
      * @param  array|string  $columns
-     * @return Borrow
+     * @return \Illuminate\Database\Eloquent\Builder|\LaravelIdea\Helper\App\Models\_IH_Borrow_QB
      */
     public static function allOrdered($columns = ['*'])
     {
@@ -29,6 +29,7 @@ class Borrow extends Model
             ::join('book_borrow_status','book_borrow_status.borrow_id','=','borrows.id')
             ->join('bookstatuses', 'book_borrow_status.bookStatus_id', '=', 'bookstatuses.id')
             ->select('borrows.*', 'book_borrow_status.datum', 'bookstatuses.name', 'bookstatuses.id as bookStatus_id')
+            ->with('librarian', 'student', 'book')
             ->orderBy('datum', 'desc');
     }
 
