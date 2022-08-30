@@ -72,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
         <div class="">
             <div class="rounded">
                 <div class="relative">
-                    <button class="w-auto rounded focus:outline-none uceniciDrop-toggle" type="button">
+                    <button id="uceniciButton" class="w-auto rounded focus:outline-none uceniciDrop-toggle" type="button">
                         <?php if($ucenik==="Sve") {
                             echo "<span class='float-left'>";
                         } else {
@@ -100,7 +100,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                                         <label class="flex items-center justify-start">
                                             <div
                                                 class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
-                                                <input type="checkbox" class="ucenik absolute opacity-0" name="ucenik[]" value="{{ $student->id }}" {{ in_array($student->id, $ucenici) ? 'checked' : '' }}>
+                                                <input type="checkbox" class="absolute opacity-0" name="ucenik[]" value="{{ $student->id }}" {{ in_array($student->id, $ucenici) ? 'checked' : '' }}>
                                                 <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
                                                      viewBox="0 0 20 20">
                                                     <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />

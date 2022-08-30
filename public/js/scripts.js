@@ -3857,3 +3857,23 @@ function diffForHumans(date1) {
 
     return data.diff;
 }
+
+$('#uceniciDropdown').on('change', function () {
+    var button = document.getElementById('uceniciButton');
+    var ucenik = "Sve";
+
+    if ($("#uceniciDropdown :checked").length > 0) {
+        ucenik = $("#uceniciDropdown :checked").length;
+    }
+
+    button.innerText = '';
+
+    var span = $(`
+        ${ucenik === "Sve" ? "<span class='float-left'>" : "<span class='float-left bg-blue-200 text-blue-800 px-[8px] py-[2px]'>"}
+            Ucenici: ${ucenik}
+            <i class="px-[7px] fas fa-angle-down"></i>
+            </span>
+    `);
+
+    $(button).append(span);
+})
