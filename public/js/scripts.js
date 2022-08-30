@@ -3858,6 +3858,16 @@ function diffForHumans(date1) {
     return data.diff;
 }
 
+$('.activity-reset').on('click', function () {
+    var button = this;
+    var id = button.getAttribute('data-dropdown');
+    var dropdown = document.getElementById(id);
+    var checked = $('input:checkbox:checked', dropdown);
+    checked.each(function () {
+        this.click();
+    })
+});
+
 $('#uceniciDropdown').on('change', function () {
     var button = document.getElementById('uceniciButton');
     var ucenik = "Sve";
