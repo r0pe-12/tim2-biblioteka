@@ -3549,6 +3549,9 @@ $('#bibliotekarFilter').click(function () {
 
 $('#activityForm').on('input submit', function (event) {
     event.preventDefault();
+    if (!(event.target.type === 'checkbox' || event.target.type === 'date')) {
+        return
+    }
     var form = $('#activityForm');
     var data = form.serialize();
 
