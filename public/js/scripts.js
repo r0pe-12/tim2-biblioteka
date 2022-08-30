@@ -3549,7 +3549,7 @@ $('#bibliotekarFilter').click(function () {
 
 $('#activityForm').on('input submit', function (event) {
     event.preventDefault();
-    if (!(event.target.type === 'checkbox' || event.target.type === 'date')) {
+    if (!(event.target.type === 'checkbox' || event.target.type === 'date' || event.target.id === 'activityForm')) {
         return
     }
     var form = $('#activityForm');
