@@ -3845,20 +3845,12 @@ function rezervacijeActivity(res) {
 }
 
 function diffForHumans(date1) {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    var data = $.parseJSON(
-        $.ajax({
-            url: '/dfh',
-            method: "POST",
-            data: {date1: date1},
-            async: false,
-        }).responseText)
+    date1 = dayjs(date1).format('YYYY-MM-DD');
 
-    return data.diff;
+    var diff =  dayjs(date1).from(dayjs().format('YYYY-MM-DD'));
+
+    diff = diff.replace('pre', 'prije').replace('prije nekoliko sekundi', 'danas').replace('meseca', 'mjeseca').replace('meseci', 'mjeseci');
+    return diff;
 }
 
 $('.activity-reset').on('click', function () {
