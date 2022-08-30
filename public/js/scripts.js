@@ -3954,3 +3954,55 @@ $('#transakcijeDropdown').on('change', function () {
     $(button).append(span);
 })
 
+$('#datumDropdown').on('change', function () {
+    var dropdown = document.getElementById('datumDropdown');
+    var button = document.getElementById('datumButton');
+    var datum = "Sve";
+    var haveVal = 0;
+
+    $("input", dropdown).each(function (k, v) {
+        if ($(v).val()) {
+            haveVal++;
+            datum = v.getAttribute('name');
+        }
+    });
+    if(haveVal > 1) {
+        datum = haveVal;
+    }
+    // if ($("input:checkbox:checked", dropdown).length > 0) {
+    //     datum = $("input:checkbox:checked", dropdown).length;
+    // }
+
+    button.innerText = '';
+
+    var span = $(`
+        ${datum === "Sve" ? "<span class='float-left'>" : "<span class='float-left bg-blue-200 text-blue-800 px-[8px] py-[2px]'>"}
+            Datum: ${datum}
+            <i class="px-[7px] fas fa-angle-down"></i>
+            </span>
+    `);
+
+    $(button).append(span);
+})
+
+$('.activity-reset-datum').on('click', function () {
+    var button = document.getElementById('datumButton');
+
+    var input = $('#datumDropdown input');
+    $.each(input, function (k, v) {
+        $(v).val('');
+    })
+    $('#activityForm').submit();
+
+    button.innerText = '';
+
+    var span = $(`
+            <span class='float-left'>
+                Datum: Sve
+                <i class="px-[7px] fas fa-angle-down"></i>
+            </span>
+    `);
+
+    $(button).append(span);
+
+})
