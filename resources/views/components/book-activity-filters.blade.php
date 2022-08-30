@@ -418,9 +418,9 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
             </div>
         </div>
         <div class="ml-[35px] cursor-pointer hover:text-blue-600">
-            <button type="submit">
+            <span style="cursor: pointer" onclick="$('#activityForm').submit()">
                 <i class="fa fa-check"></i>
-            </button>
+            </span>
         </div>
         <div class="ml-[35px] cursor-pointer hover:text-blue-600">
             <a href="{{ route('dashboard.activity') }}">
