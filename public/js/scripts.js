@@ -3932,3 +3932,25 @@ $('#knjigeDropdown').on('change', function () {
 
     $(button).append(span);
 })
+
+$('#transakcijeDropdown').on('change', function () {
+    var dropdown = document.getElementById('transakcijeDropdown');
+    var button = document.getElementById('transakcijeMenu');
+    var transakcija = "Sve";
+
+    if ($("input:checkbox:checked", dropdown).length > 0) {
+        transakcija = $("input:checkbox:checked", dropdown).length;
+    }
+
+    button.innerText = '';
+
+    var span = $(`
+        ${transakcija === "Sve" ? "<span class='float-left'>" : "<span class='float-left bg-blue-200 text-blue-800 px-[8px] py-[2px]'>"}
+            Transakcije: ${transakcija}
+            <i class="px-[7px] fas fa-angle-down"></i>
+            </span>
+    `);
+
+    $(button).append(span);
+})
+
