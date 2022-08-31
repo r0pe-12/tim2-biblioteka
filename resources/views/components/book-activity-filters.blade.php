@@ -61,9 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
 }
 ?>
 
-<!-- todo kad se ucitavaju podaci i stavi se klasa blur ovi dropdownovi se proemete -->
 
-<!-- todo napraviti dugme ponisti da radi kako treba tj da kad se stisne uncekira cekirano i refresuje formu -->
 
 <!-- todo kad se dropdown za ucenike otvori malo ekran secne i ucita se skrol  -->
 
@@ -82,7 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                         Ucenici: <?php echo $ucenik ?> <i class="px-[7px] fas fa-angle-down"></i></span>
                     </button>
                     <div id="uceniciDropdown"
-                         class="uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-l border-2 border-gray-300">
+                         class="activity-dropdown uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-l border-2 border-gray-300">
                         <ul class="border-b-2 border-gray-300 list-reset">
                             <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                 <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
@@ -144,7 +142,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                         Bibliotekari: <?php echo $bibliotekar ?> <i class="px-[7px] fas fa-angle-down"></i></span>
                     </button>
                     <div id="bibliotekariDropdown"
-                         class="bibliotekariMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
+                         class="activity-dropdown bibliotekariMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
                         <ul class="border-b-2 border-gray-300 list-reset">
                             <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                 <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
@@ -206,7 +204,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                         Knjiga: <?php echo $knjiga ?> <i class="px-[7px] fas fa-angle-down"></i></span>
                     </button>
                     <div id="knjigeDropdown"
-                         class="knjigeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
+                         class="activity-dropdown knjigeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
                         <ul class="border-b-2 border-gray-300 list-reset">
                             <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                 <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
@@ -269,7 +267,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
 
                     </button>
                     <div id="transakcijeDropdown"
-                         class="transakcijeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
+                         class="activity-dropdown transakcijeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
                         <ul class="border-b-2 border-gray-300 list-reset">
                             <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                 <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
@@ -391,7 +389,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                         Datum: <?php echo $datum ?> <i class="px-[7px] fas fa-angle-down"></i></span>
                     </button>
                     <div id="datumDropdown"
-                         class="datumMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
+                         class="activity-dropdown datumMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
                         <div
                             class="flex justify-between flex-row p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                             <div>
