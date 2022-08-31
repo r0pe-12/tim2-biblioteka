@@ -3823,7 +3823,7 @@ function rezervacijeActivity(res) {
                                class="text-[#2196f3] hover:text-blue-600">
                                ${res.librarian.name} ${res.librarian.surname}
                             </a>
-                            je zatvorio/la zahtjev za rezervaciju knjige
+                            je zatvorio/la rezervaciju knjige
                             <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>
                             ucenika
                             <a href="/students/${res.student.username}"
