@@ -20,7 +20,7 @@ protected $guarded = [];
      * Get all of the models from the database.
      *
      * @param  array|string  $columns
-     * @return Reservation
+     * @return \Illuminate\Database\Eloquent\Builder|\LaravelIdea\Helper\App\Models\_IH_Reservation_QB
      */
     public static function allOrdered($columns = ['*'])
     {
@@ -29,6 +29,7 @@ protected $guarded = [];
             ->join('reservationstatuses', 'reservation_status.resStatus_id', '=', 'reservationstatuses.id')
             ->join('closingreasons', 'closingreasons.id', 'reservations.closingReason_id')
             ->select('reservations.*', 'reservation_status.datum', 'reservationstatuses.name as status', 'reservationstatuses.id as status_id', 'closingreasons.name as cReason')
+            ->with('librarian', 'student', 'book')
             ->orderBy('datum', 'desc');
     }
 

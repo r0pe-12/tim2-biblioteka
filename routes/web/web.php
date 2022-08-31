@@ -128,5 +128,11 @@ Route::middleware(['auth'])->group(function (){
 
 Route::post('/search', [SearchController::class, 'search']);
 
+//    Route::post('/dfh', function (){
+//        $diff =str_replace(['pre', 'nedelju', 'mesec', '1 sekundu', 'prije Danas'], ['prije', 'nedelja', 'mjesec', 'Danas', 'Danas'], \App\Models\Carbon::parse(date('Y-m-d', strtotime(request('date1'))))->diffForHumans(today('Europe/Belgrade'), null, false, 3));
+//        return response()->json([
+//            'diff'=>$diff
+//        ]);
+//    });
 //    END-test routes
 

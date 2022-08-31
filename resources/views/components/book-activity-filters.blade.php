@@ -62,12 +62,15 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
 ?>
 
 
-<form action="{{ route('dashboard.activity') }}" method="GET">
+
+<!-- todo kad se dropdown za ucenike otvori malo ekran secne i ucita se skrol  -->
+
+<form id="activityForm" action="{{ route('dashboard.activity') }}" method="GET">
     <div class="text-[14px] flex flex-row mb-[30px]">
         <div class="">
             <div class="rounded">
                 <div class="relative">
-                    <button class="w-auto rounded focus:outline-none uceniciDrop-toggle" type="button">
+                    <button id="uceniciButton" class="w-auto rounded focus:outline-none uceniciDrop-toggle" type="button">
                         <?php if($ucenik==="Sve") {
                             echo "<span class='float-left'>";
                         } else {
@@ -77,7 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                         Ucenici: <?php echo $ucenik ?> <i class="px-[7px] fas fa-angle-down"></i></span>
                     </button>
                     <div id="uceniciDropdown"
-                         class="uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-l border-2 border-gray-300">
+                         class="activity-dropdown uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-l border-2 border-gray-300">
                         <ul class="border-b-2 border-gray-300 list-reset">
                             <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                 <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
@@ -95,7 +98,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                                         <label class="flex items-center justify-start">
                                             <div
                                                 class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
-                                                <input type="checkbox" class="ucenik absolute opacity-0" name="ucenik[]" value="{{ $student->id }}" {{ in_array($student->id, $ucenici) ? 'checked' : '' }}>
+                                                <input type="checkbox" class="absolute opacity-0" name="ucenik[]" value="{{ $student->id }}" {{ in_array($student->id, $ucenici) ? 'checked' : '' }}>
                                                 <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
                                                      viewBox="0 0 20 20">
                                                     <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
@@ -117,8 +120,8 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                                class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
                                 Sacuvaj <i class="fas fa-check ml-[4px]"></i>
                             </button>
-                            <button type="reset"
-                               class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                            <button type="button" data-dropdown="uceniciDropdown"
+                               class="activity-reset btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                                 Ponisti <i class="fas fa-times ml-[4px]"></i>
                             </button>
                         </div>
@@ -129,7 +132,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
         <div class="ml-[25px]">
             <div class="rounded">
                 <div class="relative">
-                    <button class="w-auto rounded focus:outline-none bibliotekariDrop-toggle" type="button">
+                    <button id="bibliotekariButton" class="w-auto rounded focus:outline-none bibliotekariDrop-toggle" type="button">
                         <?php if($bibliotekar==="Sve") {
                             echo "<span class='float-left'>";
                         } else {
@@ -139,7 +142,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                         Bibliotekari: <?php echo $bibliotekar ?> <i class="px-[7px] fas fa-angle-down"></i></span>
                     </button>
                     <div id="bibliotekariDropdown"
-                         class="bibliotekariMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
+                         class="activity-dropdown bibliotekariMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
                         <ul class="border-b-2 border-gray-300 list-reset">
                             <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                 <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
@@ -179,8 +182,8 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                                class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
                                 Sacuvaj <i class="fas fa-check ml-[4px]"></i>
                             </button>
-                            <button type="reset"
-                               class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                            <button type="button" data-dropdown="bibliotekariDropdown"
+                               class="activity-reset btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                                 Ponisti <i class="fas fa-times ml-[4px]"></i>
                             </button>
                         </div>
@@ -201,7 +204,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                         Knjiga: <?php echo $knjiga ?> <i class="px-[7px] fas fa-angle-down"></i></span>
                     </button>
                     <div id="knjigeDropdown"
-                         class="knjigeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
+                         class="activity-dropdown knjigeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
                         <ul class="border-b-2 border-gray-300 list-reset">
                             <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                 <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
@@ -219,7 +222,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                                         <label class="flex items-center justify-start">
                                             <div
                                                 class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
-                                                <input type="checkbox" class="absolute opacity-0" name="knjiga[]" value="{{ $book->id }}" {{ in_array($book->id, $knjige) ? 'checked' : '' }}>
+                                                <input data-book-name="{{ $book->title }}" type="checkbox" class="absolute opacity-0" name="knjiga[]" value="{{ $book->id }}" {{ in_array($book->id, $knjige) ? 'checked' : '' }}>
                                                 <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
                                                      viewBox="0 0 20 20">
                                                     <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
@@ -241,8 +244,8 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                                class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
                                 Sacuvaj <i class="fas fa-check ml-[4px]"></i>
                             </button>
-                            <button type="reset"
-                               class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                            <button type="button" data-dropdown="knjigeDropdown"
+                               class="activity-reset btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                                 Ponisti <i class="fas fa-times ml-[4px]"></i>
                             </button>
                         </div>
@@ -264,7 +267,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
 
                     </button>
                     <div id="transakcijeDropdown"
-                         class="transakcijeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
+                         class="activity-dropdown transakcijeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
                         <ul class="border-b-2 border-gray-300 list-reset">
                             <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                 <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
@@ -364,8 +367,8 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                                class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#009688] bg-[#46A149] rounded-[5px]">
                                 Sacuvaj <i class="fas fa-check ml-[4px]"></i>
                             </button>
-                            <button type="reset"
-                               class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                            <button type="button" data-dropdown="transakcijeDropdown"
+                               class="activity-reset btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                                 Ponisti <i class="fas fa-times ml-[4px]"></i>
                             </button>
                         </div>
@@ -376,7 +379,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
         <div class="ml-[25px]">
             <div class="rounded">
                 <div class="relative">
-                    <button class="w-auto rounded focus:outline-none datumDrop-toggle" type="button">
+                    <button id="datumButton" class="w-auto rounded focus:outline-none datumDrop-toggle" type="button">
                         <?php if($datum==="Sve") {
                             echo "<span class='float-left'>";
                         } else {
@@ -386,7 +389,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                         Datum: <?php echo $datum ?> <i class="px-[7px] fas fa-angle-down"></i></span>
                     </button>
                     <div id="datumDropdown"
-                         class="datumMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
+                         class="activity-dropdown datumMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md pin-t pin-l border-2 border-gray-300">
                         <div
                             class="flex justify-between flex-row p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                             <div>
@@ -403,8 +406,8 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                                class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#009688] bg-[#46A149] rounded-[5px]">
                                 Sacuvaj <i class="fas fa-check ml-[4px]"></i>
                             </button>
-                            <button type="reset" onclick="document.getElementById('datumDropdown').querySelectorAll('input').forEach(function($v) {$v.removeAttribute('value');})"
-                               class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                            <button type="button"
+                               class="activity-reset-datum btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                                 Ponisti <i class="fas fa-times ml-[4px]"></i>
                             </button>
                         </div>
@@ -413,9 +416,9 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
             </div>
         </div>
         <div class="ml-[35px] cursor-pointer hover:text-blue-600">
-            <button type="submit">
+            <span style="cursor: pointer" onclick="$('#activityForm').submit()">
                 <i class="fa fa-check"></i>
-            </button>
+            </span>
         </div>
         <div class="ml-[35px] cursor-pointer hover:text-blue-600">
             <a href="{{ route('dashboard.activity') }}">

@@ -76,6 +76,14 @@ class DashboardController extends Controller
             $reservations->where('datum', '<', $do);
         });
 
+
+        if(\request()->wantsJson()) {
+            return response()->json([
+                'borrows' => $borrows->get(),
+                'reservations' => $reservations->get(),
+            ]);
+        }
+
             return view('dashboard.activity', [
                 'borrows' => $borrows->get(),
                 'reservations' => $reservations->get(),

@@ -82,3 +82,12 @@
         @endif
     }
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+<script>dayjs().format()</script>
+
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/sr.js"></script>
+<script>dayjs.locale('sr')</script>
+
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+<script>dayjs.extend(window.dayjs_plugin_relativeTime)</script>

@@ -1,3 +1,8 @@
+// $.ajaxSetup({
+//     headers: {
+//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//     }
+// });
 //open and close hamburger menu
 const unameRegEx = '^(?=[a-zA-Z0-9_-]{3,254}$)(?!.*[_-]{2})[^_-].*[^_-]$';
   var hamburger = $('#hamburger');
@@ -3541,3 +3546,458 @@ $('#bibliotekarFilter').click(function () {
         $('#bibliotekarWrapper').fadeIn();
     }
 });
+
+$('#activityForm').on('input submit', function (event) {
+    event.preventDefault();
+    if (!(event.target.type === 'checkbox' || event.target.type === 'date' || event.target.id === 'activityForm')) {
+        return
+    }
+    var form = $('#activityForm');
+    var data = form.serialize();
+
+    window.history.pushState('', null, '?' + data)
+
+    var izdavanjaDiv = document.getElementById('izdavanja');
+    var rezervacijeDiv = document.getElementById('rezervacije');
+
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    // todo promijeni ovo u ajax
+
+    $.getJSON('/activity', data, function (data) {
+            $(izdavanjaDiv).addClass('blur1');
+            $(rezervacijeDiv).addClass('blur1');
+        setTimeout(function () {
+            var borrows = data.borrows;
+            var reservations = data.reservations;
+
+            if (borrows.length > 0) {
+
+                izdavanjaDiv.innerText = '';
+                $.each(borrows, function (k, v) {
+                    izdavanjaDiv.innerHTML += izdavanjeActivity(v);
+                })
+
+            } else {
+                izdavanjaDiv.innerHTML = noActivity();
+            }
+
+            if (reservations.length > 0) {
+
+                rezervacijeDiv.innerText = '';
+                $.each(reservations, function (k, v) {
+                    rezervacijeDiv.innerHTML += rezervacijeActivity(v);
+                })
+
+            } else {
+                rezervacijeDiv.innerHTML = noActivity();
+            }
+
+            $(izdavanjaDiv).removeClass('blur1');
+            $(rezervacijeDiv).removeClass('blur1');
+        }, 200);
+    })
+})
+
+function noActivity() {
+    return `
+                <div class="flex flex-row mb-[30px]">
+                   <div class="ml-[15px] mt-[5px] flex flex-col">
+                       <div class="text-gray-500 mb-[5px]" style="font-size: 30px">
+                           <h2 class="uppercase">
+                               NEMA AKTIVNOSTI
+                           </h2>
+                       </div>
+                   </div>
+               </div>
+            `;
+}
+
+function izdavanjeActivity(borrow) {
+    var date = new Date(Date.parse(borrow.datum));
+    let inside;
+    switch (borrow.bookStatus_id) {
+        case 1:
+            inside = `
+                izdao/la na osnovu rezervacije knjigu <span class="font-bold"><a
+                            href="/books/${borrow.book_id}">${borrow.book.title}</a></span>
+                uceniku
+            `;
+            break
+        case 2:
+            inside = `
+                izdao/la knjigu <span class="font-bold"><a
+                            href="/books/${borrow.book_id}">${borrow.book.title}</a></span>
+                uceniku
+            `;
+            break
+        case 3:case 4:
+            inside = `
+                preuzeo/la knjigu <span class="font-bold"><a
+                            href="/books/${borrow.book_id}">${borrow.book.title}</a></span> od
+                ucenika
+            `;
+            break
+        case 5:
+            inside = `
+                otpisao/la knjigu <span class="font-bold"><a
+                            href="/books/${borrow.book_id}">${borrow.book.title}</a></span>
+                ucenika
+            `;
+            break
+    }
+
+    var div = `
+        <div class="flex flex-row mb-[30px]">
+            <div class="flex w-[60px] h-[60px] items-center">
+                <img class="rounded-full" src="${borrow.librarian.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+borrow.librarian.photoPath}" alt="">
+            </div>
+            <div class="ml-[15px] mt-[5px] flex flex-col">
+                    <div class="text-gray-500 mb-[5px]">
+                        <p class="uppercase">
+                            <b>Knjiga ${borrow.name}</b>
+                            <span class="inline lowercase">
+                                - ${diffForHumans(borrow.datum)}
+                            </span>
+                        </p>
+                    </div>
+                <div class="">
+                    <p>
+                        <a href="/librarians/${borrow.librarian.username}"
+                           class="text-[#2196f3] hover:text-blue-600">
+                            ${borrow.librarian.name} ${borrow.librarian.surname}
+                        </a>
+                        je
+                        ${inside}
+                        <a href="/students/${borrow.student.username}"
+                           class="text-[#2196f3] hover:text-blue-600">
+                            ${borrow.student.name} ${borrow.student.surname}
+                        </a>
+                        dana <span
+                                class="font-bold">${("0" + date.getDate()).slice(-2)}.${("0" + (date.getMonth() + 1)).slice(-2)}.${date.getFullYear()}</span>
+                        <a href="/books/${borrow.book_id}/evidencija/${borrow.id}/show"
+                           class="text-[#2196f3] hover:text-blue-600">
+                            pogledaj detaljnije >>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    `;
+    return div;
+}
+
+function rezervacijeActivity(res) {
+    var date = new Date(Date.parse(res.datum));
+
+    let div;
+
+    switch (res.status_id) {
+        case 1:
+            div = `<div class="flex flex-row mb-[30px]">
+                <div class="w-[60px] h-[60px]">
+                    <img class="rounded-full" src="${res.librarian.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+res.librarian.photoPath}" alt="">
+                </div>
+                <div class="ml-[15px] mt-[5px] flex flex-col">
+                    <div class="text-gray-500 mb-[5px]">
+                        <p class="uppercase">
+                            Otvorena : ${res.status}
+                            <span class="inline lowercase">
+                                - ${diffForHumans(res.datum)}
+                            </span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <a href="/librarians/${res.librarian.username}"
+                               class="text-[#2196f3] hover:text-blue-600">
+                               ${res.librarian.name} ${res.librarian.surname}
+                            </a>
+                            je prihvatio/la zahtjev za rezervaciju knjige
+                            <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>
+                            ucenika
+                            <a href="/students/${res.student.username}"
+                               class="text-[#2196f3] hover:text-blue-600">
+                                ${res.student.name} ${res.student.surname}
+                            </a>
+                            dana
+                            <span class="font-bold">${("0" + date.getDate()).slice(-2)}.${("0" + (date.getMonth() + 1)).slice(-2)}.${date.getFullYear()}</span>
+                            <a href="/books/${res.book_id}/rezervacija/${res.id}/show" class="text-[#2196f3] hover:text-blue-600">
+                                pogledaj detaljnije >>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>`
+            break
+        case 2:
+            div = `<div class="flex flex-row mb-[30px]">
+                <div class="w-[60px] h-[60px]">
+                    <img class="rounded-full" src="${res.student.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+res.student.photoPath}" alt="">
+                </div>
+                <div class="ml-[15px] mt-[5px] flex flex-col">
+                    <div class="text-gray-500 mb-[5px]">
+                        <p class="uppercase">
+                            ${res.cReason} : ${res.status}
+                            <span class="inline lowercase">
+                                - ${diffForHumans(res.datum)}
+                            </span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <a href="/students/${res.student.username}"
+                               class="text-[#2196f3] hover:text-blue-600">
+                                ${res.student.name} ${res.student.surname}
+                            </a>
+                            je poslao/la zahtjev za rezervaciju knjige
+                            <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>
+                            dana
+                            <span class="font-bold">${("0" + date.getDate()).slice(-2)}.${("0" + (date.getMonth() + 1)).slice(-2)}.${date.getFullYear()}</span>
+                            <a href="/books/${res.book_id}/rezervacija/${res.id}/show" class="text-[#2196f3] hover:text-blue-600">
+                                pogledaj detaljnije >>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>`
+            break
+        case 3:
+            div = `<div class="flex flex-row mb-[30px]">
+                <div class="w-[60px] h-[60px]">
+                    <img class="rounded-full" src="${res.librarian.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+res.librarian.photoPath}" alt="">
+                </div>
+                <div class="ml-[15px] mt-[5px] flex flex-col">
+                    <div class="text-gray-500 mb-[5px]">
+                        <p class="uppercase">
+                            Otvorena : ${res.status}
+                            <span class="inline lowercase">
+                                - ${diffForHumans(res.datum)}
+                            </span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <a href="/librarians/${res.librarian.username}"
+                               class="text-[#2196f3] hover:text-blue-600">
+                               ${res.librarian.name} ${res.librarian.surname}
+                            </a>
+                            je odbio/la zahtjev za rezervaciju knjige
+                            <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>
+                            ucenika
+                            <a href="/students/${res.student.username}"
+                               class="text-[#2196f3] hover:text-blue-600">
+                                ${res.student.name} ${res.student.surname}
+                            </a>
+                            dana
+                            <span class="font-bold">${("0" + date.getDate()).slice(-2)}.${("0" + (date.getMonth() + 1)).slice(-2)}.${date.getFullYear()}</span>
+                            <a href="/books/${res.book_id}/rezervacija/${res.id}/show" class="text-[#2196f3] hover:text-blue-600">
+                                pogledaj detaljnije >>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>`
+            break
+        case 4:
+            div = `<div class="flex flex-row mb-[30px]">
+                <div class="w-[60px] h-[60px]">
+                    <img class="rounded-full" src="${res.librarian.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+res.librarian.photoPath}" alt="">
+                </div>
+                <div class="ml-[15px] mt-[5px] flex flex-col">
+                    <div class="text-gray-500 mb-[5px]">
+                        <p class="uppercase">
+                            Zatvorena : ${res.cReason}
+                            <span class="inline lowercase">
+                                - ${diffForHumans(res.datum)}
+                            </span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <a href="/librarians/${res.librarian.username}"
+                               class="text-[#2196f3] hover:text-blue-600">
+                               ${res.librarian.name} ${res.librarian.surname}
+                            </a>
+                            je zatvorio/la rezervaciju knjige
+                            <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>
+                            ucenika
+                            <a href="/students/${res.student.username}"
+                               class="text-[#2196f3] hover:text-blue-600">
+                                ${res.student.name} ${res.student.surname}
+                            </a>
+                            dana
+                            <span class="font-bold">${("0" + date.getDate()).slice(-2)}.${("0" + (date.getMonth() + 1)).slice(-2)}.${date.getFullYear()}</span>
+                            <a href="/books/${res.book_id}/rezervacija/${res.id}/show" class="text-[#2196f3] hover:text-blue-600">
+                                pogledaj detaljnije >>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>`
+            break
+    }
+    return div;
+}
+
+function diffForHumans(date1) {
+    date1 = dayjs(date1).format('YYYY-MM-DD');
+
+    var diff =  dayjs(date1).from(dayjs().format('YYYY-MM-DD'));
+
+    diff = diff.replace('pre', 'prije').replace('prije nekoliko sekundi', 'danas').replace('meseca', 'mjeseca').replace('meseci', 'mjeseci');
+    return diff;
+}
+
+$('.activity-reset').on('click', function () {
+    var button = this;
+    var id = button.getAttribute('data-dropdown');
+    var dropdown = document.getElementById(id);
+    var checked = $('input:checkbox:checked', dropdown);
+    checked.each(function () {
+        this.click();
+    })
+});
+
+$('#uceniciDropdown').on('change', function () {
+    var dropdown = document.getElementById('uceniciDropdown');
+    var button = document.getElementById('uceniciButton');
+    var ucenik = "Sve";
+
+    if ($("input:checkbox:checked", dropdown).length > 0) {
+        ucenik = $("input:checkbox:checked", dropdown).length;
+    }
+
+    button.innerText = '';
+
+    var span = $(`
+        ${ucenik === "Sve" ? "<span class='float-left'>" : "<span class='float-left bg-blue-200 text-blue-800 px-[8px] py-[2px]'>"}
+            Ucenici: ${ucenik}
+            <i class="px-[7px] fas fa-angle-down"></i>
+            </span>
+    `);
+
+    $(button).append(span);
+})
+
+$('#bibliotekariDropdown').on('change', function () {
+    var dropdown = document.getElementById('bibliotekariDropdown');
+    var button = document.getElementById('bibliotekariButton');
+    var bibliotekar = "Sve";
+
+    if ($("input:checkbox:checked", dropdown).length > 0) {
+        bibliotekar = $("input:checkbox:checked", dropdown).length;
+    }
+
+    button.innerText = '';
+
+    var span = $(`
+        ${bibliotekar === "Sve" ? "<span class='float-left'>" : "<span class='float-left bg-blue-200 text-blue-800 px-[8px] py-[2px]'>"}
+            Bibliotekari: ${bibliotekar}
+            <i class="px-[7px] fas fa-angle-down"></i>
+            </span>
+    `);
+
+    $(button).append(span);
+})
+
+$('#knjigeDropdown').on('change', function () {
+    var dropdown = document.getElementById('knjigeDropdown')
+    var button = document.getElementById('knjigeMenu');
+    var knjiga = "Sve";
+
+    if ($("input:checkbox:checked", dropdown).length === 1){
+        knjiga = $("input:checkbox:checked", dropdown)[0].getAttribute('data-book-name');
+    } else if ($("input:checkbox:checked", dropdown).length > 1) {
+        knjiga = $("input:checkbox:checked", dropdown).length;
+    }
+
+    button.innerText = '';
+
+    var span = $(`
+        ${knjiga === "Sve" ? "<span class='float-left'>" : "<span class='float-left bg-blue-200 text-blue-800 px-[8px] py-[2px]'>"}
+            Knjiga: ${knjiga}
+            <i class="px-[7px] fas fa-angle-down"></i>
+            </span>
+    `);
+
+    $(button).append(span);
+})
+
+$('#transakcijeDropdown').on('change', function () {
+    var dropdown = document.getElementById('transakcijeDropdown');
+    var button = document.getElementById('transakcijeMenu');
+    var transakcija = "Sve";
+
+    if ($("input:checkbox:checked", dropdown).length > 0) {
+        transakcija = $("input:checkbox:checked", dropdown).length;
+    }
+
+    button.innerText = '';
+
+    var span = $(`
+        ${transakcija === "Sve" ? "<span class='float-left'>" : "<span class='float-left bg-blue-200 text-blue-800 px-[8px] py-[2px]'>"}
+            Transakcije: ${transakcija}
+            <i class="px-[7px] fas fa-angle-down"></i>
+            </span>
+    `);
+
+    $(button).append(span);
+})
+
+$('#datumDropdown').on('change', function () {
+    var dropdown = document.getElementById('datumDropdown');
+    var button = document.getElementById('datumButton');
+    var datum = "Sve";
+    var haveVal = 0;
+
+    $("input", dropdown).each(function (k, v) {
+        if ($(v).val()) {
+            haveVal++;
+            datum = v.getAttribute('name');
+        }
+    });
+    if(haveVal > 1) {
+        datum = haveVal;
+    }
+    // if ($("input:checkbox:checked", dropdown).length > 0) {
+    //     datum = $("input:checkbox:checked", dropdown).length;
+    // }
+
+    button.innerText = '';
+
+    var span = $(`
+        ${datum === "Sve" ? "<span class='float-left'>" : "<span class='float-left bg-blue-200 text-blue-800 px-[8px] py-[2px]'>"}
+            Datum: ${datum}
+            <i class="px-[7px] fas fa-angle-down"></i>
+            </span>
+    `);
+
+    $(button).append(span);
+})
+
+$('.activity-reset-datum').on('click', function () {
+    var button = document.getElementById('datumButton');
+
+    var input = $('#datumDropdown input');
+    $.each(input, function (k, v) {
+        $(v).val('');
+    })
+    $('#activityForm').submit();
+
+    button.innerText = '';
+
+    var span = $(`
+            <span class='float-left'>
+                Datum: Sve
+                <i class="px-[7px] fas fa-angle-down"></i>
+            </span>
+    `);
+
+    $(button).append(span);
+
+})

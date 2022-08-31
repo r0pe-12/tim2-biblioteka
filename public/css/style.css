@@ -12,6 +12,14 @@
     filter: blur(20px);
 }
 
+.blur1 {
+    filter: blur(3px);
+}
+
+.activity-dropdown {
+    z-index: 1;
+}
+
 .logo-font {
     font-family: 'Rubik';
 }
