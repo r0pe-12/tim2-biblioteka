@@ -3661,7 +3661,7 @@ function izdavanjeActivity(borrow) {
                         <p class="uppercase">
                             <b>Knjiga ${borrow.name}</b>
                             <span class="inline lowercase">
-                                ${diffForHumans(borrow.datum)}
+                                - ${diffForHumans(borrow.datum)}
                             </span>
                         </p>
                     </div>
@@ -3707,7 +3707,7 @@ function rezervacijeActivity(res) {
                         <p class="uppercase">
                             Otvorena : ${res.status}
                             <span class="inline lowercase">
-                                ${diffForHumans(res.datum)}
+                                - ${diffForHumans(res.datum)}
                             </span>
                         </p>
                     </div>
@@ -3744,7 +3744,7 @@ function rezervacijeActivity(res) {
                         <p class="uppercase">
                             ${res.cReason} : ${res.status}
                             <span class="inline lowercase">
-                                ${diffForHumans(res.datum)}
+                                - ${diffForHumans(res.datum)}
                             </span>
                         </p>
                     </div>
@@ -3776,7 +3776,7 @@ function rezervacijeActivity(res) {
                         <p class="uppercase">
                             Otvorena : ${res.status}
                             <span class="inline lowercase">
-                                ${diffForHumans(res.datum)}
+                                - ${diffForHumans(res.datum)}
                             </span>
                         </p>
                     </div>
@@ -3813,7 +3813,7 @@ function rezervacijeActivity(res) {
                         <p class="uppercase">
                             Zatvorena : ${res.cReason}
                             <span class="inline lowercase">
-                                ${diffForHumans(res.datum)}
+                                - ${diffForHumans(res.datum)}
                             </span>
                         </p>
                     </div>
