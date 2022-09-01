@@ -83,11 +83,17 @@
     }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-<script>dayjs().format()</script>
+<!-- dayjs -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
 
-<script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/sr.js"></script>
-<script>dayjs.locale('sr')</script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/sr.js"></script>
+    <script>dayjs.locale('sr')</script>
 
-<script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
-<script>dayjs.extend(window.dayjs_plugin_relativeTime)</script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+    <script>dayjs.extend(window.dayjs_plugin_relativeTime)</script>
+<!-- Enddayjs -->
+
+
+<!-- lordicon animated icons -->
+<script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
