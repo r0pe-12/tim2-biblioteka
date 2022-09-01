@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->boolean('mail')->default(false);
             $table->foreignId('book_id')->constrained('books', 'id');
 
             $table->foreignId('student_id')->constrained('users', 'id');
