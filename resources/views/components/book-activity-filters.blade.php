@@ -65,8 +65,8 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
 
 <!-- todo kad se dropdown za ucenike otvori malo ekran secne i ucita se skrol  -->
 
-<form id="activityForm" action="{{ route('dashboard.activity') }}" method="GET">
-    <div class="text-[14px] flex flex-row mb-[30px]">
+<form id="activityForm" action="{{ route('dashboard.activity') }}" method="GET" style="margin: 0; position: absolute;top: 50%;-ms-transform: translateY(-50%);transform: translateY(-50%);">
+    <div class="text-[14px] flex flex-row">
         <div class="">
             <div class="rounded">
                 <div class="relative">
@@ -417,12 +417,19 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
         </div>
         <div class="ml-[35px] cursor-pointer hover:text-blue-600">
             <span style="cursor: pointer" onclick="$('#activityForm').submit()">
-                <i class="fa fa-check"></i>
+                <lord-icon
+                    src="https://cdn.lordicon.com/sihdhmit.json"
+                    trigger="click"
+                    colors="primary:#000000"
+                    state="hover"
+                    style="width:20px;height:20px">
+                </lord-icon>
+{{--                <i class="fa fa-sync-alt"></i>--}}
             </span>
         </div>
         <div class="ml-[35px] cursor-pointer hover:text-blue-600">
             <a href="{{ route('dashboard.activity') }}">
-                <i class="fas fa-sync-alt"></i>
+                <i class="far fa-xmark-circle"></i>
             </a>
         </div>
     </div>
