@@ -22,7 +22,7 @@ class CheckRezervacijaIstekla extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Check if reservation is expired if it is we change the status';
 
     /**
      * Execute the console command.
