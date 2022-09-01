@@ -65,8 +65,8 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
 
 <!-- todo kad se dropdown za ucenike otvori malo ekran secne i ucita se skrol  -->
 
-<form id="activityForm" action="{{ route('dashboard.activity') }}" method="GET">
-    <div class="text-[14px] flex flex-row mb-[30px]">
+<form id="activityForm" action="{{ route('dashboard.activity') }}" method="GET" style="margin: 0; position: absolute;top: 50%;-ms-transform: translateY(-50%);transform: translateY(-50%);">
+    <div class="text-[14px] flex flex-row">
         <div class="">
             <div class="rounded">
                 <div class="relative">

@@ -20,6 +20,10 @@
     z-index: 1;
 }
 
+.child {
+    flex: 1;
+}
+
 .logo-font {
     font-family: 'Rubik';
 }

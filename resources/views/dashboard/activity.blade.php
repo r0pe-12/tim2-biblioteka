@@ -5,17 +5,23 @@
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
             <!-- Heading of content -->
-            <div class="heading mt-[7px]">
-                <h1 class="pl-[30px] pb-[21px]  border-b-[1px] border-[#e4dfdf] ">
+            <div class="flex align-items-center heading border-b-[1px] border-[#e4dfdf] pb-[10px]">
+                <h1 class="child pl-[30px] max-w-[304px]">
                     Prikaz aktivnosti
                 </h1>
+                <div class="activity-dropdown child pl-[30px] relative">
+                    <x-book-activity-filters :students="$students" :librarians="$librarians" :books="$books"/>
+                </div>
             </div>
             <!-- Space for content -->
             <div class="pl-[30px] overflow-auto scroll height-dashboard pb-[30px] mt-[20px]">
                 <div class="flex flex-row justify-between">
+                    <!-- Activity Cards -->
+                    <!-- izdavanje knjiga -->
                     <div class="mr-[30px]">
-                        <x-book-activity-filters :students="$students" :librarians="$librarians" :books="$books"/>
-                        <!-- Activity Cards -->
+                        <h3 class="uppercase mb-[20px] text-left">
+                            Izdavanje knjiga
+                        </h3>
                        <div id="izdavanja">
                            @if(count($borrows) > 0)
                                @foreach($borrows as $zapis)
@@ -34,6 +40,9 @@
                            @endif
                        </div>
                     </div>
+                    <!-- end izdavanje knjiga -->
+
+                    <!-- rezervacija knjiga -->
                     <div class="mr-[50px] ">
                         <h3 class="uppercase mb-[20px] text-left">
                             Rezervacije knjiga
@@ -56,6 +65,7 @@
                            @endif
                        </div>
                     </div>
+                    <!-- end rezervacija knjiga -->
                 </div>
             </div>
         </section>
