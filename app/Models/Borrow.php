@@ -11,6 +11,7 @@ class Borrow extends Model
     use HasFactory;
     protected $fillable = [
         'librarian_id',
+        'librarian1_id',
         'student_id',
         'borrow_date',
         'return_date',

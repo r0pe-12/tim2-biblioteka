@@ -218,7 +218,7 @@
                                             <span><x-date-diff :zapis="$zapis" :holded="true"/></span>
                                         </div>
                                     </td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ $zapis->librarian->name }} {{ $zapis->librarian->surname }}
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ $zapis->librarian1->name }} {{ $zapis->librarian1->surname }}
                                     </td>
                                     <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
                                         <p
