@@ -37,6 +37,7 @@ class CheckRezervacijaIstekla extends Command
             if (\Carbon\Carbon::parse($res->submttingDate)->addDays($res_deadline) < today('Europe/Belgrade')) {
                 $res->closingReason_id = ClosingReason::expired()->id;
                 $res->closingDate = today("Europe/Belgrade");
+                $res->mail = 0;
                 $res->save();
 
                 $newResStatus = ReservationStatus::closed();

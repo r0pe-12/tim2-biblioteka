@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Mail\KnjigaRezervisana;
+use App\Mail\RezervacijaIstekla;
+use App\Models\ClosingReason;
 use App\Models\Reservation;
 use Illuminate\Console\Command;
 
@@ -32,7 +34,13 @@ class MailRezervacija extends Command
         $toSendMail = Reservation::where('mail', '=', '0')->get();
         foreach ($toSendMail as $res) {
             try {
-                \Mail::send(new KnjigaRezervisana($res));
+                if ($res->closingReason_id == ClosingReason::OPEN) {
+                    \Mail::send(new KnjigaRezervisana($res));
+                } else {
+                    if ($res->closingReason_id == ClosingReason::EXPIRED) {
+                        \Mail::send(new RezervacijaIstekla($res));
+                    }
+                }
             } catch (\Exception $e) {
 
             } finally {

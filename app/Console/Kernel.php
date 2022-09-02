@@ -28,6 +28,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('check:rezervacijaIstekla')->daily();
 
         $schedule->command('mail:izdavanje')->everyThreeMinutes();
+
+        $schedule->command('mail:rezervacija')->everyThreeMinutes();
     }
 
     /**
