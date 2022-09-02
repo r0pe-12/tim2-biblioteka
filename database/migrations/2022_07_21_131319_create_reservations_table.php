@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('student_id')->constrained('users', 'id');
 
             $table->foreignId('librarian_id')->constrained('users', 'id');
+            $table->foreignId('librarian1_id')->nullable()->constrained('users', 'id');
 
 //            $table->foreignId('status_id');
             $table->foreignId('closingReason_id');
