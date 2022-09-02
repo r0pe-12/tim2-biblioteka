@@ -44,6 +44,7 @@ class BookReturnController extends Controller
                 $newStatus = BookStatus::returned();
             }
 
+            $borrow->librarian1_id = auth()->user()->id;
             $borrow->active = 0;
             $borrow->mail = 0;
             $borrow->save();

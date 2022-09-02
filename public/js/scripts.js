@@ -3651,11 +3651,49 @@ function izdavanjeActivity(borrow) {
             break
     }
 
+    let librarian_photo;
+    let librarian_name;
+
+    switch (borrow.bookStatus_id) {
+        case 1:
+        case 2:
+            librarian_photo = `
+                <div class="flex w-[60px] h-[60px] items-center">
+                    <img class="rounded-full" src="${borrow.librarian.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+borrow.librarian.photoPath}" alt="">
+                </div>
+            `;
+
+            librarian_name = `
+                <a href="/librarians/${borrow.librarian.username}"
+                   class="text-[#2196f3] hover:text-blue-600">
+                    ${borrow.librarian.name} ${borrow.librarian.surname}
+                </a>
+            `;
+
+            break
+        case 3:
+        case 4:
+        case 5:
+            librarian_photo = `
+                <div class="flex w-[60px] h-[60px] items-center">
+                    <img class="rounded-full" src="${borrow.librarian1.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+borrow.librarian1.photoPath}" alt="">
+                </div>
+            `;
+
+            librarian_name = `
+                <a href="/librarians/${borrow.librarian1.username}"
+                   class="text-[#2196f3] hover:text-blue-600">
+                    ${borrow.librarian1.name} ${borrow.librarian1.surname}
+                </a>
+            `;
+
+            break
+    }
+
+
     var div = `
         <div class="flex flex-row mb-[30px]">
-            <div class="flex w-[60px] h-[60px] items-center">
-                <img class="rounded-full" src="${borrow.librarian.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+borrow.librarian.photoPath}" alt="">
-            </div>
+            ${librarian_photo}
             <div class="ml-[15px] mt-[5px] flex flex-col">
                     <div class="text-gray-500 mb-[5px]">
                         <p class="uppercase">
@@ -3667,10 +3705,7 @@ function izdavanjeActivity(borrow) {
                     </div>
                 <div class="">
                     <p>
-                        <a href="/librarians/${borrow.librarian.username}"
-                           class="text-[#2196f3] hover:text-blue-600">
-                            ${borrow.librarian.name} ${borrow.librarian.surname}
-                        </a>
+                        ${librarian_name}
                         je
                         ${inside}
                         <a href="/students/${borrow.student.username}"
@@ -3769,7 +3804,7 @@ function rezervacijeActivity(res) {
         case 3:
             div = `<div class="flex flex-row mb-[30px]">
                 <div class="w-[60px] h-[60px]">
-                    <img class="rounded-full" src="${res.librarian.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+res.librarian.photoPath}" alt="">
+                    <img class="rounded-full" src="${res.librarian1.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+res.librarian1.photoPath}" alt="">
                 </div>
                 <div class="ml-[15px] mt-[5px] flex flex-col">
                     <div class="text-gray-500 mb-[5px]">
@@ -3782,9 +3817,9 @@ function rezervacijeActivity(res) {
                     </div>
                     <div class="">
                         <p>
-                            <a href="/librarians/${res.librarian.username}"
+                            <a href="/librarians/${res.librarian1.username}"
                                class="text-[#2196f3] hover:text-blue-600">
-                               ${res.librarian.name} ${res.librarian.surname}
+                               ${res.librarian1.name} ${res.librarian1.surname}
                             </a>
                             je odbio/la zahtjev za rezervaciju knjige
                             <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>
@@ -3806,7 +3841,7 @@ function rezervacijeActivity(res) {
         case 4:
             div = `<div class="flex flex-row mb-[30px]">
                 <div class="w-[60px] h-[60px]">
-                    <img class="rounded-full" src="${res.librarian.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+res.librarian.photoPath}" alt="">
+                    <img class="rounded-full" src="${res.librarian1.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+res.librarian1.photoPath}" alt="">
                 </div>
                 <div class="ml-[15px] mt-[5px] flex flex-col">
                     <div class="text-gray-500 mb-[5px]">
@@ -3819,9 +3854,9 @@ function rezervacijeActivity(res) {
                     </div>
                     <div class="">
                         <p>
-                            <a href="/librarians/${res.librarian.username}"
+                            <a href="/librarians/${res.librarian1.username}"
                                class="text-[#2196f3] hover:text-blue-600">
-                               ${res.librarian.name} ${res.librarian.surname}
+                               ${res.librarian1.name} ${res.librarian1.surname}
                             </a>
                             je zatvorio/la rezervaciju knjige
                             <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>

@@ -72,11 +72,11 @@
         <x-book-header :book="$book" :reservation="$reservation->id"/>
 
 
-        <div class="flex flex-row height-detaljiIzdavanje scroll pb-[20px]">
+        <div class="flex-row height-detaljiIzdavanje scroll pb-[20px]">
             <div class="">
                 <!-- Space for content -->
                 <div class="pl-[30px] section- mt-[20px]">
-                    <div class="flex flex-row justify-between">
+                    <div class="flex-row justify-between">
                         <div class="mr-[30px]">
                             <div class="mt-[20px]">
                                 <span class="text-gray-500">Tip transakcije</span><br>
@@ -120,20 +120,29 @@
                                 <p class="font-medium">{{ \Carbon\Carbon::parse($reservation->submttingDate)->format('d.m.Y') }}</p>
                             </div>
                             @if($reservation->isActive())
-                                <div class="mt-[40px]">
+                                <div class="mt-[40px] mb-[30px]">
                                     <span class="text-gray-500">Rezervacija istice</span>
                                     <p class="font-medium">{{ \Carbon\Carbon::parse($reservation->submttingDate)->addDays($res_deadline->value)->format('d.m.Y') }}</p>
                                 </div>
                             @else
-                                <div class="mt-[40px]">
+                                <div class="mt-[40px] mb-[30px]">
                                     <span class="text-gray-500">Rezervacija zatvorena</span>
                                     <p class="font-medium">{{ \Carbon\Carbon::parse($reservation->closingDate)->format('d.m.Y') }}</p>
                                 </div>
                             @endif
-                            <div class="mt-[40px]">
-                                <span class="text-gray-500">Bibliotekar</span>
-                                <a href="{{ route('librarians.show', $reservation->librarian->username) }}"
-                                   class="block font-medium text-[#2196f3] hover:text-blue-600">{{ $reservation->librarian->name }} {{ $reservation->librarian->surname }}</a>
+                            <div class="row">
+                                <div class="mt-[40px] col-sm-3">
+                                    <span class="text-gray-500">Bibliotekar: otvorio</span>
+                                    <a href="{{ route('librarians.show', $reservation->librarian->username) }}"
+                                       class="block font-medium text-[#2196f3] hover:text-blue-600">{{ $reservation->librarian->name }} {{ $reservation->librarian->surname }}</a>
+                                </div>
+                                @if($reservation->librarian1)
+                                    <div class="mt-[40px] col-sm-3">
+                                        <span class="text-gray-500">Bibliotekar: zatvorio</span>
+                                        <a href="{{ route('librarians.show', $reservation->librarian1->username) }}"
+                                           class="block font-medium text-[#2196f3] hover:text-blue-600">{{ $reservation->librarian1->name }} {{ $reservation->librarian1->surname }}</a>
+                                    </div>
+                                @endif
                             </div>
                             <div class="mt-[40px]">
                                 <span class="text-gray-500">Ucenik</span>

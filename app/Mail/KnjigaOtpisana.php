@@ -34,6 +34,6 @@ class KnjigaOtpisana extends Mailable
      */
     public function build()
     {
-        return $this->to($this->borrow->student->email)->view('mail.knjigotpisana');
+        return $this->to($this->borrow->student->email)->view('mail.knjiga-izdavanje.knjigotpisana');
     }
 }

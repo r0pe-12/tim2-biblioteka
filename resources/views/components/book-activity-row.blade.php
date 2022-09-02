@@ -4,9 +4,21 @@
 ])
 
 <div {{ $attributes->class(['flex flex-row mb-[30px]']) }}>
-    <div class="flex w-[60px] h-[60px] items-center">
-        <img class="rounded-full" src="{{$zapis->librarian->photoPath}}" alt="">
-    </div>
+    @switch($zapis->bookStatus_id)
+        @case(1)
+        @case(2)
+            <div class="flex w-[60px] h-[60px] items-center">
+                <img class="rounded-full" src="{{$zapis->librarian->photoPath}}" alt="">
+            </div>
+            @break
+        @case(3)
+        @case(4)
+        @case(5)
+            <div class="flex w-[60px] h-[60px] items-center">
+                <img class="rounded-full" src="{{$zapis->librarian1->photoPath}}" alt="">
+            </div>
+            @break
+    @endswitch
     <div class="ml-[15px] mt-[5px] flex flex-col">
         <div class="text-gray-500 mb-[5px]">
             <p class="uppercase">
@@ -18,10 +30,23 @@
         </div>
         <div class="">
             <p>
-                <a href="{{ route('librarians.show', $zapis->librarian->username) }}"
-                   class="text-[#2196f3] hover:text-blue-600">
-                    {{$zapis->librarian->name}} {{$zapis->librarian->surname}}
-                </a>
+                @switch($zapis->bookStatus_id)
+                    @case(1)
+                    @case(2)
+                        <a href="{{ route('librarians.show', $zapis->librarian->username) }}"
+                           class="text-[#2196f3] hover:text-blue-600">
+                            {{$zapis->librarian->name}} {{$zapis->librarian->surname}}
+                        </a>
+                        @break
+                    @case(3)
+                    @case(4)
+                    @case(5)
+                        <a href="{{ route('librarians.show', $zapis->librarian1->username) }}"
+                           class="text-[#2196f3] hover:text-blue-600">
+                            {{$zapis->librarian1->name}} {{$zapis->librarian1->surname}}
+                        </a>
+                        @break
+                @endswitch
                 je
                 @switch($zapis->bookStatus_id)
                     @case(1)
@@ -34,7 +59,8 @@
                                     href="{{ route('books.show', $zapis->book) }}">{{$zapis->book->title}}</a></span>
                         uceniku
                         @break
-                    @case(3||4)
+                    @case(3)
+                    @case(4)
                         preuzeo/la knjigu <span class="font-bold"><a
                                     href="{{ route('books.show', $zapis->book) }}">{{$zapis->book->title}}</a></span> od
                         ucenika

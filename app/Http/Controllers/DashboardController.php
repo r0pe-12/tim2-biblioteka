@@ -44,8 +44,8 @@ class DashboardController extends Controller
             $reservations->whereIn('student_id', $ucenik);
         });
         \request()->whenFilled('bibliotekar', function ($bibliotekar) use ($borrows, $reservations) {
-            $borrows->whereIn('librarian_id', $bibliotekar);
-            $reservations->whereIn('librarian_id', $bibliotekar);
+            $borrows->whereIn('librarian_id', $bibliotekar)->orWhereIn('librarian1_id', $bibliotekar);
+            $reservations->whereIn('librarian_id', $bibliotekar)->orWhereIn('librarian1_id', $bibliotekar);
         });
         \request()->whenFilled('knjiga', function ($knjiga) use ($borrows, $reservations) {
             $borrows->whereIn('book_id', $knjiga);

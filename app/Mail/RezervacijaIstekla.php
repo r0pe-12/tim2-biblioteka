@@ -2,29 +2,29 @@
 
 namespace App\Mail;
 
-use App\Models\Borrow;
+use App\Models\Reservation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class KnjigaVracena extends Mailable
+class RezervacijaIstekla extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
-     * @var Borrow
+     * @var Reservation
      */
-    public $borrow;
+    public $reservation;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Borrow $borrow)
+    public function __construct(Reservation $reservation)
     {
         //
-        $this->borrow = $borrow;
+        $this->reservation = $reservation;
     }
 
     /**
@@ -34,6 +34,6 @@ class KnjigaVracena extends Mailable
      */
     public function build()
     {
-        return $this->to($this->borrow->student->email)->view('mail.knjiga-izdavanje.knjigavracena');
+        return $this->to($this->reservation->student->email)->view('mail.knjiga-rezervisanje.rezervacijaistekla');
     }
 }

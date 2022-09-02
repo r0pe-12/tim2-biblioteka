@@ -29,7 +29,7 @@ protected $guarded = [];
             ->join('reservationstatuses', 'reservation_status.resStatus_id', '=', 'reservationstatuses.id')
             ->join('closingreasons', 'closingreasons.id', 'reservations.closingReason_id')
             ->select('reservations.*', 'reservation_status.datum', 'reservationstatuses.name as status', 'reservationstatuses.id as status_id', 'closingreasons.name as cReason')
-            ->with('librarian', 'student', 'book')
+            ->with('librarian', 'librarian1','student', 'book')
             ->orderBy('datum', 'desc');
     }
 
@@ -38,6 +38,13 @@ protected $guarded = [];
         # code
         return $this->belongsTo(User::class);
     }
+
+//    relation between reservation and librarian who closed it
+    public function librarian1(){
+        # code
+        return $this->belongsTo(User::class, 'librarian1_id');
+    }
+
 
 //    relation between reservation and closingreason
     public function closingReason(){
