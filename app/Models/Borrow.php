@@ -30,7 +30,7 @@ class Borrow extends Model
             ::join('book_borrow_status','book_borrow_status.borrow_id','=','borrows.id')
             ->join('bookstatuses', 'book_borrow_status.bookStatus_id', '=', 'bookstatuses.id')
             ->select('borrows.*', 'book_borrow_status.datum', 'bookstatuses.name', 'bookstatuses.id as bookStatus_id')
-            ->with('librarian', 'student', 'book')
+            ->with('librarian', 'librarian1','student', 'book')
             ->orderBy('datum', 'desc');
     }
 
