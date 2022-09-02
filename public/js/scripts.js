@@ -3839,41 +3839,77 @@ function rezervacijeActivity(res) {
             </div>`
             break
         case 4:
-            div = `<div class="flex flex-row mb-[30px]">
-                <div class="w-[60px] h-[60px]">
-                    <img class="rounded-full" src="${res.librarian1.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+res.librarian1.photoPath}" alt="">
-                </div>
-                <div class="ml-[15px] mt-[5px] flex flex-col">
-                    <div class="text-gray-500 mb-[5px]">
-                        <p class="uppercase">
-                            Zatvorena : ${res.cReason}
-                            <span class="inline lowercase">
-                                - ${diffForHumans(res.datum)}
-                            </span>
-                        </p>
+            if (res.closingReason_id == 1) {
+                div = `<div class="flex flex-row mb-[30px]">
+                    <div class="w-[60px] h-[60px]">
+                        <img class="rounded-full" src="${res.librarian.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+res.librarian1.photoPath}" alt="">
                     </div>
-                    <div class="">
-                        <p>
-                            <a href="/librarians/${res.librarian1.username}"
-                               class="text-[#2196f3] hover:text-blue-600">
-                               ${res.librarian1.name} ${res.librarian1.surname}
-                            </a>
-                            je zatvorio/la rezervaciju knjige
-                            <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>
-                            ucenika
-                            <a href="/students/${res.student.username}"
-                               class="text-[#2196f3] hover:text-blue-600">
-                                ${res.student.name} ${res.student.surname}
-                            </a>
-                            dana
-                            <span class="font-bold">${("0" + date.getDate()).slice(-2)}.${("0" + (date.getMonth() + 1)).slice(-2)}.${date.getFullYear()}</span>
-                            <a href="/books/${res.book_id}/rezervacija/${res.id}/show" class="text-[#2196f3] hover:text-blue-600">
-                                pogledaj detaljnije >>
-                            </a>
-                        </p>
+                    <div class="ml-[15px] mt-[5px] flex flex-col">
+                        <div class="text-gray-500 mb-[5px]">
+                            <p class="uppercase">
+                                Zatvorena : ${res.cReason}
+                                <span class="inline lowercase">
+                                    - ${diffForHumans(res.datum)}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Rezervacija knjige
+                                <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>
+                                za
+                                ucenika
+                                <a href="/students/${res.student.username}"
+                                   class="text-[#2196f3] hover:text-blue-600">
+                                    ${res.student.name} ${res.student.surname}
+                                </a>
+                                je istekla
+                                dana
+                                <span class="font-bold">${("0" + date.getDate()).slice(-2)}.${("0" + (date.getMonth() + 1)).slice(-2)}.${date.getFullYear()}</span>
+                                <a href="/books/${res.book_id}/rezervacija/${res.id}/show" class="text-[#2196f3] hover:text-blue-600">
+                                    pogledaj detaljnije >>
+                                </a>
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </div>`
+                </div>`
+            } else {
+                div = `<div class="flex flex-row mb-[30px]">
+                    <div class="w-[60px] h-[60px]">
+                        <img class="rounded-full" src="${res.librarian1.photoPath == null ? '/img/profile.jpg' : '/storage/images/users/'+res.librarian1.photoPath}" alt="">
+                    </div>
+                    <div class="ml-[15px] mt-[5px] flex flex-col">
+                        <div class="text-gray-500 mb-[5px]">
+                            <p class="uppercase">
+                                Zatvorena : ${res.cReason}
+                                <span class="inline lowercase">
+                                    - ${diffForHumans(res.datum)}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                <a href="/librarians/${res.librarian1.username}"
+                                   class="text-[#2196f3] hover:text-blue-600">
+                                   ${res.librarian1.name} ${res.librarian1.surname}
+                                </a>
+                                je zatvorio/la rezervaciju knjige
+                                <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>
+                                ucenika
+                                <a href="/students/${res.student.username}"
+                                   class="text-[#2196f3] hover:text-blue-600">
+                                    ${res.student.name} ${res.student.surname}
+                                </a>
+                                dana
+                                <span class="font-bold">${("0" + date.getDate()).slice(-2)}.${("0" + (date.getMonth() + 1)).slice(-2)}.${date.getFullYear()}</span>
+                                <a href="/books/${res.book_id}/rezervacija/${res.id}/show" class="text-[#2196f3] hover:text-blue-600">
+                                    pogledaj detaljnije >>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>`
+            }
             break
     }
     return div;
