@@ -25,7 +25,7 @@
                         </a>
                         je prihvatio/la zahtjev za rezervaciju knjige
                         <span class="font-bold"><a href="{{ route('books.show', $zapis->book) }}">{{$zapis->book->title}}</a></span>
-                        ucenika
+                        učenika
                         <a href="{{route('students.show', $zapis->student->username)}}"
                            class="text-[#2196f3] hover:text-blue-600">
                             {{$zapis->student->name}} {{$zapis->student->surname}}
@@ -94,7 +94,7 @@
                         </a>
                         je odbio/la zahtjev za rezervaciju knjige
                         <span class="font-bold"><a href="{{ route('books.show', $zapis->book) }}">{{$zapis->book->title}}</a></span>
-                        ucenika
+                        učenika
                         <a href="{{route('students.show', $zapis->student->username)}}"
                            class="text-[#2196f3] hover:text-blue-600">
                             {{$zapis->student->name}} {{$zapis->student->surname}}
@@ -131,7 +131,7 @@
                         </a>
                         je zatvorio/la rezervaciju knjige
                         <span class="font-bold"><a href="{{ route('books.show', $zapis->book) }}">{{$zapis->book->title}}</a></span>
-                        ucenika
+                        učenika
                         <a href="{{route('students.show', $zapis->student->username)}}"
                            class="text-[#2196f3] hover:text-blue-600">
                             {{$zapis->student->name}} {{$zapis->student->surname}}

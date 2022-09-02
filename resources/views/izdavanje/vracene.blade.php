@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Vracene knjige
+        Vraćene knjige
     @endsection
 
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
@@ -57,7 +57,7 @@
                                                     <div>
                                                         <p
                                                             class="transition duration-300 ease-in  text-[15px] ml-[21px] text-[#576cdf]">
-                                                            Vracene knjige
+                                                            Vraćene knjige
                                                         </p>
                                                     </div>
                                                 </a>
@@ -98,7 +98,7 @@
                                                     <div>
                                                         <p
                                                             class="text-[15px] ml-[17px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                                            Knjige u prekoracenju</p>
+                                                            Knjige u prekoračenju</p>
                                                     </div>
                                                 </a>
                                             </div>
@@ -190,10 +190,10 @@
                                             </label>
                                         </th>
                                         <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
-                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">Izdato uceniku</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">Izdato učeniku</th>
                                         <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">Datum izdavanja</th>
-                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">Datum vracanja</th>
-                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Zadrzavanje knjige</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">Datum vraćanja</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Zadržavanje knjige</th>
                                         <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">Knjigu primio</th>
                                         <th class="px-4 py-4"> </th>
                                     </tr>
@@ -256,10 +256,10 @@
                                     <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                     </th>
                                     <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
-                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">Izdato uceniku</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">Izdato učeniku</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">Datum izdavanja</th>
-                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">Datum vracanja</th>
-                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Zadrzavanje knjige</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">Datum vraćanja</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Zadržavanje knjige</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">Knjigu primio
                                     </th>
                                     <th class="px-4 py-4"> </th>

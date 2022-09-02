@@ -8,7 +8,7 @@
                 <div class="modal-content">
                     <form method="post" action="">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati knjigu: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati knjigu: </h5>
                             <h5 class="modal-title modalLabel"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -20,7 +20,7 @@
                         @csrf
                         @method('DELETE')
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
@@ -36,7 +36,7 @@
                 <div class="modal-content">
                     <form method="post" action="{{ route('book.bulk-delete') }}">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati sledece knjige: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati sljedeće knjige: </h5>
                             <h5 class="modal-title">
                                 <a data-bs-toggle="collapse" href="#showMore" role="button" class="showMorebtn" aria-expanded="false" aria-controls="collapseExample"></a>
                                 <ul class="collapse modalLabel" id="showMore"></ul>
@@ -52,7 +52,7 @@
                         @method('DELETE')
                         <div class="modal-footer">
                             <input type="hidden" value="" name="ids" id="ids">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
@@ -82,10 +82,10 @@
 
                     <a class="text-blue-800 one" hidden id="detalji" href="#"><i class="far fa-copy"></i> Pogledaj detalje</a>
                     <a class="text-blue-800 one" hidden id="edit" href="#"><i class="far fa-edit"></i> Izmjeni knjigu</a>
-                    <a class="text-blue-800 one" hidden id="otpisi" href="#"><i class="fas fa-level-up-alt ml-4"></i> Otpisi knjigu</a>
+                    <a class="text-blue-800 one" hidden id="otpisi" href="#"><i class="fas fa-level-up-alt ml-4"></i> Otpiši knjigu</a>
                     <a class="text-blue-800 one" hidden id="izdaj" href="#"><i class="far fa-hand-scissors"></i> Izdaj knjigu</a>
                     <a class="text-blue-800 one" hidden id="vrati" href="#"><i class="fas fa-redo-alt"></i> Vrati knjigu</a>
-                    <a class="text-blue-800 one" hidden id="rezervisi" href="#"><i class="far fa-calendar-check"></i>  Rezervisi knjigu</a>
+                    <a class="text-blue-800 one" hidden id="rezervisi" href="#"><i class="far fa-calendar-check"></i>  Rezerviši knjigu</a>
 
                     <a href="#" class="text-red-800 one deleteOne" id="deleteOne" hidden data-toggle="modal" data-target="#deleteOneModal"><i class="fa fa-trash ml-4"></i> Izbrisi knjigu</a>
                     <div></div>
@@ -121,8 +121,8 @@
                                     </th>
                                     <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervisano</th>
                                     <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato</th>
-                                    <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">U prekoracenju</th>
-                                    <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Ukupna kolicina
+                                    <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">U prekoračenju</th>
+                                    <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Ukupna količina
                                     </th>
                                     <th class="px-4 py-4"> </th>
                                 </tr>
@@ -195,7 +195,7 @@
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                            role="menuitem">
                                                             <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Otpisi knjigu</span>
+                                                            <span class="px-4 py-0">Otpiši knjigu</span>
                                                         </a>
 
                                                         <a href="{{ route('book.izdaj.create', $book) }}" tabindex="0"
@@ -216,7 +216,7 @@
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                            role="menuitem">
                                                             <i class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Rezervisi knjigu</span>
+                                                            <span class="px-4 py-0">Rezerviši knjigu</span>
                                                         </a>
                                                         <a href="#"
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600 deleteOne"
@@ -227,7 +227,7 @@
                                                            data-action="{{ route('books.destroy', $book) }}"
                                                         >
                                                             <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Izbrisi knjigu</span>
+                                                            <span class="px-4 py-0">Izbriši knjigu</span>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -280,7 +280,7 @@
                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                                role="menuitem">
                                                                 <i class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
-                                                                <span class="px-4 py-0">Rezervisi knjigu</span>
+                                                                <span class="px-4 py-0">Rezerviši knjigu</span>
                                                             </a>
                                                             <a href="#"
                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600 deleteOne"
@@ -291,7 +291,7 @@
                                                                data-name="{{ $book->title }}"
                                                             >
                                                                 <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
-                                                                <span class="px-4 py-0">Izbrisi knjigu</span>
+                                                                <span class="px-4 py-0">Izbriši knjigu</span>
                                                             </a>
 {{--                                                            <form method="post" action="{{ route('books.destroy', $book) }}">--}}
 {{--                                                                @csrf--}}
@@ -300,7 +300,7 @@
 {{--                                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"--}}
 {{--                                                                        role="menuitem">--}}
 {{--                                                                    <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>--}}
-{{--                                                                    <span class="px-4 py-0">Izbrisi knjigu</span>--}}
+{{--                                                                    <span class="px-4 py-0">Izbriši knjigu</span>--}}
 {{--                                                                </button>--}}
 {{--                                                            </form>--}}
                                                         </div>
@@ -326,8 +326,8 @@
                                     <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Na raspolaganju</th>
                                     <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervisano</th>
                                     <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato</th>
-                                    <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">U prekoracenju</th>
-                                    <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Ukupna kolicina
+                                    <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">U prekoračenju</th>
+                                    <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Ukupna količina
                                     </th>
                                     <th class="px-4 py-4"> </th>
                                 </tr>

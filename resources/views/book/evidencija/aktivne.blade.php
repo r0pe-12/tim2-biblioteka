@@ -8,7 +8,7 @@
                 <div class="modal-content">
                     <form method="post" action="">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite otkazati rezervaciju knjige: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite otkazati rezervaciju knjige: </h5>
                             <h5 class="modal-title">
                                 <ul class="modalLabel"></ul>
                             </h5>
@@ -22,7 +22,7 @@
                         @csrf
                         @method('PUT')
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
@@ -55,7 +55,7 @@
                     <a href="{{ route('book.vracene1', $book) }}"
                        class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                         <i class="text-[20px]  group-hover:text-[#576cdf] fas fa-file mr-[3px]"></i>
-                        Vracene
+                        Vraćene
                     </a>
                     <a href="{{ route('book.otpisane', $book) }}"
                        class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
@@ -65,7 +65,7 @@
                     <a href="{{ route('book.prekoracene', $book) }}"
                        class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                         <i class="text-[20px] group-hover:text-[#576cdf] fas fa-exclamation-triangle mr-[3px]"></i>
-                        Knjige u prekoracenju
+                        Knjige u prekoračenju
                     </a>
                     <a href="{{ route('evidencija.aktivne-rezervacije1', $book) }}"
                        class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] bg-[#EFF3F6] text-[#576cdf] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
@@ -90,7 +90,7 @@
                                     </label>
                                 </th>
                                 <th class="px-4 py-3 text-sm leading-4 tracking-wider text-left">Datum rezervacije</th>
-                                <th class="px-4 py-3 text-sm leading-4 tracking-wider text-left">Rezervacija istice</th>
+                                <th class="px-4 py-3 text-sm leading-4 tracking-wider text-left">Rezervacija ističe</th>
                                 <th class="px-4 py-3 text-sm leading-4 tracking-wider text-left">Rezervaciju podnio</th>
                                 <th class="px-4 py-3 text-sm leading-4 tracking-wider text-left">Status</th>
                                 <th class="px-4 py-3"> </th>
@@ -140,7 +140,7 @@
 
                                                     <a href="#" data-toggle="modal" data-target="#otkaziRezModal" tabindex="0" class="otkaziRez flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600" role="menuitem" data-action="{{ route('rezervacija.otkazi', $reservation) }}" data-name="null" data-id="null" data-book-name="{{ $reservation->book->title }}" data-student-name="{{ $reservation->student->name }} {{ $reservation->student->surname }}">
                                                         <i class="fas fa-undo mr-[10px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Otkazi rezervaciju</span>
+                                                        <span class="px-4 py-0">Otkaži rezervaciju</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -156,7 +156,7 @@
                                     </label>
                                 </th>
                                 <th class="px-4 py-3 text-sm leading-4 tracking-wider text-left">Datum rezervacije</th>
-                                <th class="px-4 py-3 text-sm leading-4 tracking-wider text-left">Rezervacija istice</th>
+                                <th class="px-4 py-3 text-sm leading-4 tracking-wider text-left">Rezervacija ističe</th>
                                 <th class="px-4 py-3 text-sm leading-4 tracking-wider text-left">Rezervaciju podnio</th>
                                 <th class="px-4 py-3 text-sm leading-4 tracking-wider text-left">Status</th>
                                 <th class="px-4 py-3"> </th>

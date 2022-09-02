@@ -46,14 +46,14 @@
                                         class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                         <div
                                             class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                            <a href="{{route('evidencija.vracene')}}" aria-label="Vracene knjige"
+                                            <a href="{{route('evidencija.vracene')}}" aria-label="Vraćene knjige"
                                                class="flex items-center">
                                                 <i
                                                     class="transition duration-300 ease-in  text-[#707070] text-[20px] fas fa-file group-hover:text-[#576cdf]"></i>
                                                 <div>
                                                     <p
                                                         class="transition duration-300 ease-in  text-[15px] ml-[21px] group-hover:text-[#576cdf]">
-                                                        Vracene knjige
+                                                        Vraćene knjige
                                                     </p>
                                                 </div>
                                             </a>

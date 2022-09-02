@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Vracene: {{ $book->title }}
+        Vraćene: {{ $book->title }}
     @endsection
         <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
             <!-- Heading of content -->
@@ -26,7 +26,7 @@
                         <a href="{{ route('book.vracene1', $book) }}"
                            class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] text-[#576cdf] bg-[#EFF3F6] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                             <i class="text-[20px]  group-hover:text-[#576cdf] fas fa-file mr-[3px]"></i>
-                            Vracene
+                            Vraćene
                         </a>
                         <a href="{{ route('book.otpisane', $book) }}"
                            class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
@@ -36,7 +36,7 @@
                         <a href="{{ route('book.prekoracene', $book) }}"
                            class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                             <i class="text-[20px] text-[#707070] group-hover:text-[#576cdf] fas fa-exclamation-triangle mr-[3px]"></i>
-                            Knjige u prekoracenju
+                            Knjige u prekoračenju
                         </a>
                         <a href="{{ route('evidencija.aktivne-rezervacije1', $book) }}"
                            class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
@@ -58,11 +58,11 @@
                                     <label class="inline-flex items-center">
                                     </label>
                                 </th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato uceniku</th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato učeniku</th>
                                 <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum izdavanja
                                 </th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum vracanja</th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Zadrzavanje knjige
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum vraćanja</th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Zadržavanje knjige
                                 </th>
                                 <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Knjigu primio</th>
                                 <th class="px-4 py-4"> </th>
@@ -113,11 +113,11 @@
                             <tr class="border-b-[1px] border-[#e4dfdf]">
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                 </th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato uceniku</th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato učeniku</th>
                                 <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum izdavanja
                                 </th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum vracanja</th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Zadrzavanje knjige
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum vraćanja</th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Zadržavanje knjige
                                 </th>
                                 <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Knjigu primio</th>
                                 <th class="px-4 py-4"> </th>

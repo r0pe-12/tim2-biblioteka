@@ -41,7 +41,7 @@
                                 <a href="mailto:{{$student->email}}" class="block font-medium text-[#2196f3]">{{$student->email}}</a>
                             </div>
                             <div class="mt-[40px]">
-                                <span class="text-gray-500">Korisnicko ime</span>
+                                <span class="text-gray-500">Korisničko ime</span>
                                 <p class="font-medium">{{$student->username}}</p>
                             </div>
                             <div class="mt-[40px]">
@@ -49,7 +49,7 @@
                                 <p class="font-medium">{{count($student->logins)}}</p>
                             </div>
                             <div class="mt-[40px]">
-                                <span class="text-gray-500">Poslednji put logovan/a</span>
+                                <span class="text-gray-500">Posljednji put logovan/a</span>
                                 <p class="font-medium">{{$student->lastLogin()}}</p>
                             </div>
 
@@ -81,13 +81,13 @@
                     @method('PUT')
                     <div class="flex flex-col px-[30px] py-[30px]">
                         <div class="flex flex-col pb-[30px]">
-                            <span>Unesi novu sifru <span class="text-red-500">*</span></span>
+                            <span>Unesi novu šifru <span class="text-red-500">*</span></span>
                             <input class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" type="password" name="pwResetUcenik" id="pwResetUcenik" onkeydown="clearErrorsPwResetUcenik()">
                             <div id="validatePwResetUcenik"></div>
                             @error('pwResetUcenik') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                         </div>
                         <div class="flex flex-col pb-[30px]">
-                            <span>Ponovi sifru <span class="text-red-500">*</span></span>
+                            <span>Ponovi šifru <span class="text-red-500">*</span></span>
                             <input class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" type="password" name="pw2ResetUcenik" id="pw2ResetUcenik" onkeydown="clearErrorsPw2ResetUcenik()">
                             <div id="validatePw2ResetUcenik"></div>
                         </div>
@@ -95,12 +95,12 @@
                     <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
                         <button type="button" onclick="$('#pwResetModal input').each(function() {this.value = ''})"
                                 class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                            Ponisti <i class="fas fa-times ml-[4px]"></i>
+                            Poništi <i class="fas fa-times ml-[4px]"></i>
                         </button>
                         <button id="resetujSifruUcenik" type="submit"
                                 class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
                                 onclick="validacijaSifraUcenik()">
-                            Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                            Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                         </button>
                     </div>
                 </form>

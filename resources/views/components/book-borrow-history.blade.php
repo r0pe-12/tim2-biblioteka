@@ -47,7 +47,7 @@
 
             <div class="mt-[40px]">
                 <a href="{{ route('dashboard.activity', ['knjiga[]'=>$zapis->book_id]) }}" class="text-[#2196f3] hover:text-blue-600">
-                    <i class="fas fa-history"></i> Prikazi sve
+                    <i class="fas fa-history"></i> Prikaži sve
                 </a>
             </div>
         @else

@@ -9,7 +9,7 @@
                     <form method="post" action="{{ route('librarian.delete-profile-photo', $librarian) }}">
                         @csrf
                         <div class="modal-header">
-                            <h2 class="modal-title" id="exampleModalLabel"><b>Da li zelite obrisati vasu profilnu sliku</b></h2>
+                            <h2 class="modal-title" id="exampleModalLabel"><b>Da li želite obrisati vašu profilnu sliku</b></h2>
                             <h5 class="modal-title modalLabel"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -19,7 +19,7 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="close-modal btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="button" class="close-modal btn btn-secondary" data-dismiss="modal">Otkaži</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
@@ -115,7 +115,7 @@
                             </div>
 
                             <div class="mt-[20px]">
-                                <span id="unameLabel">Korisnicko ime <span class="text-red-500">*</span></span>
+                                <span id="unameLabel">Korisničko ime <span class="text-red-500">*</span></span>
                                 <input type="text" name="usernameBibliotekarEdit" onkeypress="usernameCheckLE()" onkeyup="usernameCheckLE()" id="usernameBibliotekarEdit" value="{{ $librarian->username }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekarEdit()"/>
                                 <div id="validateUsernameBibliotekarEdit"></div>
                                 @error('username') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
@@ -152,7 +152,7 @@
                         </label>
                         <button type="button" data-toggle="modal" data-target="#deleteProfilePhotoModal"
                             class="bg-[#F44336] btn-animation duration-300 ease-in focus:outline-none hover:bg-[#F55549] mr-[15px] mt-6 px-5 py-2.5 rounded-[5px] shadow-lg text-sm text-white transition w-full">
-                            Obrisi Sliku
+                            Obriši sliku
                         </button>
                             @error('photoPath') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                         </div>

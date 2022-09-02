@@ -40,8 +40,8 @@
             </div>
 
             <div id="ucenikWrapper" class="search">
-                Ucenici
-                <ul id="ucenici">
+                Učenici
+                <ul id="učenici">
                 </ul>
             </div>
 
@@ -58,7 +58,7 @@
                     <input type="checkbox" id="knjigeFilter" checked> Knjige
                 </li>
                 <li style="padding-top: 5px;cursor: pointer" onclick="this.querySelector('input').click()">
-                    <input type="checkbox" id="ucenikFilter" checked> Ucenici
+                    <input type="checkbox" id="ucenikFilter" checked> Učenici
                 </li>
                 <li style="padding-top: 5px;cursor: pointer" onclick="this.querySelector('input').click()">
                     <input type="checkbox" id="bibliotekarFilter" checked> Bibliotekari

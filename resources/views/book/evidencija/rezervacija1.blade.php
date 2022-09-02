@@ -9,10 +9,10 @@
                 <div class="modal-content">
                     <form method="post" action="{{ route('rezervacija.otkazi', $reservation) }}">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite otkazati rezervaciju knjige: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite otkazati rezervaciju knjige: </h5>
                             <h5 class="modal-title">
                                 <ul class="modalLabel">
-                                    <b>{{ $reservation->book->title }}</b> za ucenika <b>{{ $reservation->student->name }} {{ $reservation->student->surname }}</b>
+                                    <b>{{ $reservation->book->title }}</b> za ucčenika <b>{{ $reservation->student->name }} {{ $reservation->student->surname }}</b>
                                 </ul>
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -25,7 +25,7 @@
                         @csrf
                         @method('PUT')
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
@@ -41,10 +41,10 @@
                     <div class="modal-content">
                         <form method="post" action="{{ route('rezervisane.destroy', $reservation) }}">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Da li izbrisati zapis rezervacije: </h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Da li želite izbrisati zapis rezervacije: </h5>
                                 <h5 class="modal-title">
                                     <ul class="modalLabel">
-                                        <b>{{ $reservation->book->title }}</b> za ucenika <b>{{ $reservation->student->name }} {{ $reservation->student->surname }}</b>
+                                        <b>{{ $reservation->book->title }}</b> za učenika <b>{{ $reservation->student->name }} {{ $reservation->student->surname }}</b>
                                     </ul>
                                 </h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -57,7 +57,7 @@
                             @csrf
                             @method('DELETE')
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                                 <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                     Potvrdi <i class="fas fa-check ml-[4px]"></i>
                                 </button>
@@ -121,7 +121,7 @@
                             </div>
                             @if($reservation->isActive())
                                 <div class="mt-[40px]">
-                                    <span class="text-gray-500">Rezervacija istice</span>
+                                    <span class="text-gray-500">Rezervacija ističe</span>
                                     <p class="font-medium">{{ \Carbon\Carbon::parse($reservation->submttingDate)->addDays($res_deadline->value)->format('d.m.Y') }}</p>
                                 </div>
                             @else
@@ -136,7 +136,7 @@
                                    class="block font-medium text-[#2196f3] hover:text-blue-600">{{ $reservation->librarian->name }} {{ $reservation->librarian->surname }}</a>
                             </div>
                             <div class="mt-[40px]">
-                                <span class="text-gray-500">Ucenik</span>
+                                <span class="text-gray-500">Učenik</span>
                                 <a href="{{ route('students.show', $reservation->student->username) }}"
                                    class="block font-medium text-[#2196f3] hover:text-blue-600">{{ $reservation->student->name }} {{ $reservation->student->surname }}</a>
                             </div>
@@ -151,7 +151,7 @@
                     @if($reservation->isActive())
                         <button href="#" data-toggle="modal" data-target="#otkaziRezModal" tabindex="0"
                                 class="btn-animation shadow-lg disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#FF470E] bg-[#FF5722]">
-                            <i class="fas fa-undo mr-[4px] "></i> Otkazi rezervaciju
+                            <i class="fas fa-undo mr-[4px] "></i> Otkaži rezervaciju
                         </button>
                         <button type="submit" onclick="window.location.href = '{{ route('book.izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}'"
                                 class="ml-[10px] btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
@@ -160,7 +160,7 @@
                     @else
                         <button type="button" data-toggle="modal" data-target="#obrisiZapisModal" tabindex="0"
                                 class="ml-[10px] btn-animation show-izbrisiModal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                            <i class="fas fa-trash mr-[4px]"></i> Izbrisi zapis
+                            <i class="fas fa-trash mr-[4px]"></i> Izbriši zapis
                         </button>
                     @endif
                 </div>

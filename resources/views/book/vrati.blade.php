@@ -39,16 +39,16 @@
                                     </label>
                                 </th>
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                    Izdato uceniku
+                                    Izdato učeniku
                                 </th>
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">
                                     Datum izdavanja
                                 </th>
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                    Trenutno zadrzavanje knjige
+                                    Trenutno zadržavanje knjige
                                 </th>
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                    Prekoracenje u danima
+                                    Prekoračenje u danima
                                 </th>
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">
                                     Knjigu izdao
@@ -84,16 +84,16 @@
                                 <th class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500">
                                 </th>
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                    Izdato uceniku
+                                    Izdato učeniku
                                 </th>
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">
                                     Datum izdavanja
                                 </th>
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                    Trenutno zadrzavanje knjige
+                                    Trenutno zadržavanje knjige
                                 </th>
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                    Prekoracenje u danima
+                                    Prekoračenje u danima
                                 </th>
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">
                                     Knjigu izdao
@@ -111,7 +111,7 @@
                         <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
                             <button type="button"
                                     class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                Poništi <i class="fas fa-times ml-[4px]"></i>
                             </button>
                             <button type="submit"
                                     class="btn-animation disabled-btn shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"

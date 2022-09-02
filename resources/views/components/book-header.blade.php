@@ -74,7 +74,7 @@
                                 <li>
                                     <a href="#"
                                        class="text-[#2196f3] hover:text-blue-600">
-                                        Otpisi knjigu
+                                        Otpiši knjigu
                                     </a>
                                 </li>
                             @endif
@@ -96,7 +96,7 @@
                                 <li>
                                     <a href="#"
                                        class="text-[#2196f3] hover:text-blue-600">
-                                        Rezervisi knjigu
+                                        Rezerviši knjigu
                                     </a>
                                 </li>
                             @endif
@@ -118,7 +118,7 @@
                                 <li>
                                     <a href="{{ route('book.vracene1', $book) }}"
                                        class="text-[#2196f3] hover:text-blue-600">
-                                        Vracene Knjige
+                                        Vraćene Knjige
                                     </a>
                                 </li>
                             @endif
@@ -140,7 +140,7 @@
                                 <li>
                                     <a href="{{ route('book.prekoracene', $book) }}"
                                        class="text-[#2196f3] hover:text-blue-600">
-                                        Prekoracene Knjige
+                                        Prekoračene Knjige
                                     </a>
                                 </li>
                             @endif
@@ -174,7 +174,7 @@
         <div class="pt-[24px] mr-[30px]">
             <a href="{{ route('book.otpisi.create', $book) }}" class="inline hover:text-blue-600">
                 <i class="fas fa-level-up-alt mr-[3px]"></i>
-                Otpisi knjigu
+                Otpiši knjigu
             </a>
             <a href="{{ route('book.izdaj.create', $book) }}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
                 <i class="far fa-hand-scissors mr-[3px]"></i>
@@ -186,7 +186,7 @@
             </a>
             <a href="{{ route('book.reserve.create', $book) }}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                 <i class="far fa-calendar-check mr-[3px] "></i>
-                Rezervisi knjigu
+                Rezerviši knjigu
             </a>
             <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-[#e4dfdf] dotsKnjigaOsnovniDetalji hover:text-[#606FC7]">
                 <i

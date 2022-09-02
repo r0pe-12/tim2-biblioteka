@@ -58,7 +58,7 @@
                                 <span>Tip korisnika</span>
                                 <select class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="tip_korisnika" disabled>
                                     <option value="">
-                                        Ucenik
+                                        Učenik
                                     </option>
                                 </select>
                             </div>
@@ -116,7 +116,7 @@
                             </label>
                             <button type="button"
                                     class="deletePhotoCreate bg-[#F44336] btn-animation duration-300 ease-in focus:outline-none hover:bg-[#F55549] mr-[15px] mt-6 px-5 py-2.5 rounded-[5px] shadow-lg text-sm text-white transition w-full">
-                                Obrisi Sliku
+                                Obriši sliku
                             </button>
                             @error('photoPath') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                         </div>

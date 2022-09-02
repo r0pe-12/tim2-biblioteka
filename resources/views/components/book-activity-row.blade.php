@@ -27,22 +27,22 @@
                     @case(1)
                         izdao/la na osnovu rezervacije knjigu <span class="font-bold"><a
                                     href="{{ route('books.show', $zapis->book) }}">{{$zapis->book->title}}</a></span>
-                        uceniku
+                        učeniku
                         @break
                     @case(2)
                         izdao/la knjigu <span class="font-bold"><a
                                     href="{{ route('books.show', $zapis->book) }}">{{$zapis->book->title}}</a></span>
-                        uceniku
+                        učeniku
                         @break
                     @case(3||4)
                         preuzeo/la knjigu <span class="font-bold"><a
                                     href="{{ route('books.show', $zapis->book) }}">{{$zapis->book->title}}</a></span> od
-                        ucenika
+                        učenika
                         @break
                     @case(5)
                         otpisao/la knjigu <span class="font-bold"><a
                                     href="{{ route('books.show', $zapis->book) }}">{{$zapis->book->title}}</a></span>
-                        ucenika
+                        učenika
                         @break
                 @endswitch
                 <a href="{{route('students.show', $zapis->student->username)}}"

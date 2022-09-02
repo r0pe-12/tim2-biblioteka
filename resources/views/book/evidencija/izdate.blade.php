@@ -8,7 +8,7 @@
                 <div class="modal-content">
                     <form method="post" action="">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite vratiti knjigu: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite vratiti knjigu: </h5>
                             <h5 class="modal-title">
                                 <ul class="modalLabel"></ul>
                             </h5>
@@ -23,7 +23,7 @@
                         @method('PUT')
                         <input type="hidden" class="ids" name="toReturn">
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
@@ -39,7 +39,7 @@
                 <div class="modal-content">
                     <form method="post" action="">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite otpisati knjigu: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite otpisati knjigu: </h5>
                             <h5 class="modal-title">
                                 <ul class="modalLabel"></ul>
                             </h5>
@@ -54,7 +54,7 @@
                         @method('PUT')
                         <input type="hidden" class="ids" name="toWriteoff">
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
@@ -88,7 +88,7 @@
                         <a href="{{ route('book.vracene1', $book) }}"
                            class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                             <i class="text-[20px] text-[#707070] group-hover:text-[#576cdf] fas fa-file mr-[3px]"></i>
-                            Vracene
+                            Vraćene
                         </a>
                         <a href="{{ route('book.otpisane', $book) }}"
                            class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
@@ -98,7 +98,7 @@
                         <a href="{{route('book.prekoracene', $book)}}"
                            class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
                             <i class="text-[20px] text-[#707070] group-hover:text-[#576cdf] fas fa-exclamation-triangle mr-[3px]"></i>
-                            Knjige u prekoracenju
+                            Knjige u prekoračenju
                         </a>
                         <a href="{{ route('evidencija.aktivne-rezervacije1', $book) }}"
                            class="inline py-[15px] rounded-[10px] group px-[20px] w-[268px] hover:text-[#576cdf] hover:bg-[#EFF3F6] ml-[20px] pr-[10px]">
@@ -120,11 +120,11 @@
                                         <label class="inline-flex items-center">
                                         </label>
                                     </th>
-                                    <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato uceniku</th>
+                                    <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato učeniku</th>
                                     <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum izdavanja
                                     </th>
                                     <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Trenutno
-                                        zadrzavanje knjige</th>
+                                        zadržavanje knjige</th>
                                     <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Knjigu izdao</th>
                                     <th class="px-4 py-4"> </th>
                                 </tr>
@@ -158,7 +158,7 @@
 
                                                         <a id="otpisi" href="#" data-toggle="modal" tabindex="0" data-target="#writeoffBookModal" class="otpisi flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600" role="menuitem" data-action="/books/{{ $zapis->book->id }}/otpisi" data-name="null" data-id="{{ $zapis->id }}" data-book-name="{{ $zapis->book->title }}" data-student-name="{{ $zapis->student->name }} {{ $zapis->student->surname }}">
                                                             <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Otpisi knjigu</span>
+                                                            <span class="px-4 py-0">Otpiši knjigu</span>
                                                         </a>
 
                                                         <a href="#" data-toggle="modal" data-target="#returnBookModal" tabindex="0" class="vrati flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600" role="menuitem" data-action="/books/{{ $zapis->book->id }}/vrati" data-name="null" data-id="{{ $zapis->id }}" data-book-name="{{ $zapis->book->title }}" data-student-name="{{ $zapis->student->name }} {{ $zapis->student->surname }}">
@@ -176,9 +176,9 @@
                             <tr class="border-b-[1px] border-[#e4dfdf]">
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                 </th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato uceniku</th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato učeniku</th>
                                 <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum izdavanja</th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Trenutno zadrzavanje knjige</th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Trenutno zadržavanje knjige</th>
                                 <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Knjigu izdao</th>
                                 <th class="px-4 py-4"> </th>
                             </tr>

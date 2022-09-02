@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Arhivirane rezervacije ucenika: {{ $student->username }}
+        Arhivirane rezervacije učenika: {{ $student->username }}
     @endsection
     <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
         <!-- Heading of content -->
@@ -48,7 +48,7 @@
                                         <div>
                                             <p
                                                 class="transition duration-300 ease-in  text-[15px] ml-[21px] group-hover:text-[#576cdf]">
-                                                Vracene knjige
+                                                Vraćene knjige
                                             </p>
                                         </div>
                                     </a>
@@ -88,7 +88,7 @@
                                         <div>
                                             <p
                                                 class="text-[15px] ml-[17px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                                Knjige u prekoracenju</p>
+                                                Knjige u prekoračenju</p>
                                         </div>
                                     </a>
                                 </div>

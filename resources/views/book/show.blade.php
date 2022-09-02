@@ -57,7 +57,7 @@
                                                     </p>
                                                 </div>
                                                 <div class="mt-[40px]">
-                                                    <span class="text-gray-500 text-[14px]">Zanr</span>
+                                                    <span class="text-gray-500 text-[14px]">Žanr</span>
                                                     <p class="font-medium">
                                                         @foreach($book->genres as $genre)
                                                             <a href="#">{{ $genre->name }}</a>{!! $loop->remaining >= 1 ? ',&nbsp;&nbsp;&nbsp;' : ''!!}
@@ -65,7 +65,7 @@
                                                     </p>
                                                 </div>
                                                 <div class="mt-[40px]">
-                                                    <span class="text-gray-500 text-[14px]">Autor/ri</span>
+                                                    <span class="text-gray-500 text-[14px]">Autor/i</span>
                                                     <p class="font-medium">
                                                         @foreach($book->authors as $author)
                                                             <a href="{{ route('authors.show', $author) }}">{{ $author->name }}</a>{!! $loop->remaining >= 1 ? ',&nbsp;&nbsp;&nbsp;' : ''!!}
@@ -73,7 +73,7 @@
                                                     </p>
                                                 </div>
                                                 <div class="mt-[40px]">
-                                                    <span class="text-gray-500 text-[14px]">Izdavac</span>
+                                                    <span class="text-gray-500 text-[14px]">Izdavač</span>
                                                     <p class="font-medium"><a href="#">{{ $book->publisher->name }}</a></p>
                                                 </div>
                                                 <div class="mt-[40px]">
@@ -83,7 +83,7 @@
                                             </div>
                                             <div class="mr-[70px] mt-[20px] flex flex-col max-w-[600px]">
                                                     <h4 class="text-gray-500 ">
-                                                        Storyline (Kratki sadrzaj)
+                                                        Storyline (Kratki sadržaj)
                                                     </h4>
                                                 <div class="scroll" style="max-height: 511px">
                                                     <p class=" my-[10px]">

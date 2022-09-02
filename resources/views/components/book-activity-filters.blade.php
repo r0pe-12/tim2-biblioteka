@@ -6,9 +6,9 @@
 ])
 <?php
 if($_SERVER['REQUEST_METHOD'] == "GET") {
-    if(isset($_GET['ucenik'])) {
-        $ucenik = count($_GET['ucenik']);
-        $ucenici = $_GET['ucenik'];
+    if(isset($_GET['učenik'])) {
+        $ucenik = count($_GET['učenik']);
+        $ucenici = $_GET['učenik'];
     } else {
         $ucenik = "Sve";
         $ucenici = [];
@@ -77,7 +77,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                             echo "<span class='float-left bg-blue-200 text-blue-800 px-[8px] py-[2px]'>";
                         }
                         ?>
-                        Ucenici: <?php echo $ucenik ?> <i class="px-[7px] fas fa-angle-down"></i></span>
+                        Učenici: <?php echo $ucenik ?> <i class="px-[7px] fas fa-angle-down"></i></span>
                     </button>
                     <div id="uceniciDropdown"
                          class="activity-dropdown uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-l border-2 border-gray-300">
@@ -118,11 +118,11 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                         <div class="flex pt-[10px] text-white ">
                             <button type="submit"
                                class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                             </button>
                             <button type="button" data-dropdown="uceniciDropdown"
                                class="activity-reset btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                Poništi <i class="fas fa-times ml-[4px]"></i>
                             </button>
                         </div>
                     </div>
@@ -180,11 +180,11 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                         <div class="flex pt-[10px] text-white ">
                             <button type="submit"
                                class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                             </button>
                             <button type="button" data-dropdown="bibliotekariDropdown"
                                class="activity-reset btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                Poništi <i class="fas fa-times ml-[4px]"></i>
                             </button>
                         </div>
                     </div>
@@ -242,11 +242,11 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                         <div class="flex pt-[10px] text-white ">
                             <button type="submit"
                                class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                             </button>
                             <button type="button" data-dropdown="knjigeDropdown"
                                class="activity-reset btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                Poništi <i class="fas fa-times ml-[4px]"></i>
                             </button>
                         </div>
                     </div>
@@ -325,7 +325,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                                     </label>
                                     <p
                                         class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
-                                        Vracanje knjiga
+                                        Vraćanje knjiga
                                     </p>
                                 </li>
                                 <li onclick="this.querySelector('input').click()" class="flex p-2 mt-[2px] pt-[15px] group hover:bg-gray-200 dropdown-item-transakcije">
@@ -341,7 +341,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                                     </label>
                                     <p
                                         class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
-                                        Vracanje knjiga sa prekoracenjem
+                                        Vraćanje knjiga sa prekoračenjem
                                     </p>
                                 </li>
                                 <li onclick="this.querySelector('input').click()" class="flex p-2 mt-[2px] pt-[15px] group hover:bg-gray-200 dropdown-item-transakcije">
@@ -365,11 +365,11 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                         <div class="flex pt-[10px] text-white ">
                             <button type="submit"
                                class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#009688] bg-[#46A149] rounded-[5px]">
-                                Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                             </button>
                             <button type="button" data-dropdown="transakcijeDropdown"
                                class="activity-reset btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                Poništi <i class="fas fa-times ml-[4px]"></i>
                             </button>
                         </div>
                     </div>
@@ -404,11 +404,11 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
                         <div class="flex pt-[10px] text-white ">
                             <button type="submit"
                                class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#009688] bg-[#46A149] rounded-[5px]">
-                                Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                             </button>
                             <button type="button"
                                class="activity-reset-datum btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                Poništi <i class="fas fa-times ml-[4px]"></i>
                             </button>
                         </div>
                     </div>

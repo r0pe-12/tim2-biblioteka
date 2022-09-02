@@ -46,10 +46,10 @@
                                 Datum izdavanja
                             </th>
                             <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                Trenutno zadrzavanje knjige
+                                Trenutno zadržavanje knjige
                             </th>
                             <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                Prekoracenje u danima
+                                Prekoračenje u danima
                             </th>
                             <th class="px-4 py-4 leading-4 tracking-wider text-left">
                                 Knjigu izdao
@@ -89,16 +89,16 @@
                             <th class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500">
                             </th>
                             <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                Izdato uceniku
+                                Izdato učeniku
                             </th>
                             <th class="px-4 py-4 leading-4 tracking-wider text-left">
                                 Datum izdavanja
                             </th>
                             <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                Trenutno zadrzavanje knjige
+                                Trenutno zadržavanje knjige
                             </th>
                             <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                                Prekoracenje u danima
+                                Prekoračenje u danima
                             </th>
                             <th class="px-4 py-4 leading-4 tracking-wider text-left">
                                 Knjigu izdao

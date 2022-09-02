@@ -9,7 +9,7 @@
                     <div class="modal-content">
                         <form method="post" action="{{ route('otpisi.store', $borrow->book) }}">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Da li zelite otpisati knjigu: </h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Da li želite otpisati knjigu: </h5>
                                 <h5 class="modal-title">
                                     <ul class="modalLabel">
                                         <b>{{ $borrow->book->title }}</b> za ucenika <b>{{ $borrow->student->name }} {{ $borrow->student->surname }}</b>
@@ -26,7 +26,7 @@
                             @method('PUT')
                             <input type="hidden" name="toWriteoff[]" value="{{ $borrow->id }}">
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                                 <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                     Potvrdi <i class="fas fa-check ml-[4px]"></i>
                                 </button>
@@ -42,10 +42,10 @@
                     <div class="modal-content">
                         <form method="post" action="{{ route('vrati.store', $borrow->book) }}">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Da li zelite vratiti knjigu: </h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Da li želite vratiti knjigu: </h5>
                                 <h5 class="modal-title">
                                     <ul class="modalLabel">
-                                        <b>{{ $borrow->book->title }}</b> za ucenika <b>{{ $borrow->student->name }} {{ $borrow->student->surname }}</b>
+                                        <b>{{ $borrow->book->title }}</b> za učenika <b>{{ $borrow->student->name }} {{ $borrow->student->surname }}</b>
                                     </ul>
                                 </h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -59,7 +59,7 @@
                             @method('PUT')
                             <input type="hidden" name="toReturn[]" value="{{ $borrow->id }}">
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                                 <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                     Potvrdi <i class="fas fa-check ml-[4px]"></i>
                                 </button>
@@ -75,10 +75,10 @@
                     <div class="modal-content">
                         <form method="post" action="{{ route('izdate.destroy', $borrow) }}">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Da li izbrisati zapis knjige: </h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Da li želite izbrisati zapis knjige: </h5>
                                 <h5 class="modal-title">
                                     <ul class="modalLabel">
-                                        <b>{{ $borrow->book->title }}</b> za ucenika <b>{{ $borrow->student->name }} {{ $borrow->student->surname }}</b>
+                                        <b>{{ $borrow->book->title }}</b> za učenika <b>{{ $borrow->student->name }} {{ $borrow->student->surname }}</b>
                                     </ul>
                                 </h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -91,7 +91,7 @@
                             @csrf
                             @method('DELETE')
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                                 <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                     Potvrdi <i class="fas fa-check ml-[4px]"></i>
                                 </button>
@@ -141,11 +141,11 @@
                                     <p class="font-medium">{{ \Carbon\Carbon::parse($borrow->borrow_date)->format('d.m.Y') }}</p>
                                 </div>
                                 <div class="mt-[40px]">
-                                    <span class="text-gray-500">Ukupno zadrzavanje knjige</span>
+                                    <span class="text-gray-500">Ukupno zadržavanje knjige</span>
                                     <p class="font-medium"><x-date-diff :zapis="$borrow"/></p>
                                 </div>
                                 <div class="mt-[40px]">
-                                    <span class="text-gray-500">Prekoracenje</span>
+                                    <span class="text-gray-500">Prekoračenje</span>
                                     <p class="font-medium"><x-date-diff :zapis="$borrow" :failed="true"/></p>
                                 </div>
                                 <div class="mt-[40px]">
@@ -154,7 +154,7 @@
                                        class="block font-medium text-[#2196f3] hover:text-blue-600">{{ $borrow->librarian->name }} {{ $borrow->librarian->surname }}</a>
                                 </div>
                                 <div class="mt-[40px]">
-                                    <span class="text-gray-500">Ucenik</span>
+                                    <span class="text-gray-500">Učenik</span>
                                     <a href="{{ route('students.show', $borrow->student->username) }}"
                                        class="block font-medium text-[#2196f3] hover:text-blue-600">{{ $borrow->student->name }} {{ $borrow->student->surname }}</a>
                                 </div>
@@ -169,7 +169,7 @@
                         @if($borrow->isActive())
                             <button type="submit" data-toggle="modal" data-target="#otpisiKnjiguModal" tabindex="0"
                                     class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#FF470E] bg-[#FF5722]">
-                                <i class="fas fa-level-up-alt mr-[4px] "></i> Otpisi knjigu
+                                <i class="fas fa-level-up-alt mr-[4px] "></i> Otpiši knjigu
                             </button>
                             <button type="submit" data-toggle="modal" data-target="#vratiKnjiguModal" tabindex="0"
                                     class="ml-[10px] btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
@@ -178,7 +178,7 @@
                         @else
                             <button type="button" data-toggle="modal" data-target="#obrisiZapisModal" tabindex="0"
                                     class="ml-[10px] btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                <i class="fas fa-trash mr-[4px]"></i> Izbrisi zapis
+                                <i class="fas fa-trash mr-[4px]"></i> Izbriši zapis
                             </button>
                         @endif
                     </div>

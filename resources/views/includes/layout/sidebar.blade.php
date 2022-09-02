@@ -83,17 +83,17 @@
                     </li>
                 @endif
 
-                <!-- Ucenici Icon -->
-                @if(request()->routeIs('students.*', 'ucenik.*'))
+                <!-- Učenici Icon -->
+                @if(request()->routeIs('students.*', 'učenik.*'))
                     <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
                         <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
-                                    <a href="{{route('students.index')}}" aria-label="Ucenici">
+                                    <a href="{{route('students.index')}}" aria-label="Učenici">
                                         <i class="text-[18px] transition duration-300 ease-in text-[#576cdf] text-[#707070] fas fa-users"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in text-[#576cdf] inline text-[15px] ml-[20px]">
-                                                Ucenici
+                                                Učenici
                                             </p>
                                         </div>
                                     </a>
@@ -106,11 +106,11 @@
                         <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
-                                    <a href="{{route('students.index')}}" aria-label="Ucenici">
+                                    <a href="{{route('students.index')}}" aria-label="Učenici">
                                         <i class="text-[18px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-users"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                                                Ucenici
+                                                Učenici
                                             </p>
                                         </div>
                                     </a>
@@ -204,7 +204,7 @@
                                         <i class="text-[22px] transition duration-300 ease-in text-[#576cdf] text-[#707070] fas fa-exchange-alt"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in text-[#576cdf] inline text-[15px] ml-[20px]">
-                                                Izdavanje Knjiga
+                                                Izdavanje knjiga
                                             </p>
                                         </div>
                                     </a>
@@ -221,7 +221,7 @@
                                         <i class="text-[22px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-exchange-alt"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                                                Izdavanje Knjiga
+                                                Izdavanje knjiga
                                             </p>
                                         </div>
                                     </a>
@@ -236,7 +236,7 @@
     <div class="sidebar-nav py-[10px] border-t-[1px] border-[#e4dfdf] pt-[23px] pb-[29px]  group hover:bg-[#EFF3F6]">
         <!-- Settings Icon -->
         @if(request()->routeIs('policy.*', 'category.*', 'genre.*', 'publisher.*', 'bookbind.*', 'format.*', 'script.*', 'language.*'))
-            <a href="{{ route('policy.index') }}" aria-label="Settngs" class="ml-[25px]">
+            <a href="{{ route('policy.index') }}" aria-label="Settings" class="ml-[25px]">
                 <span class="whitespace-nowrap">
                     <i
                         class="transition duration-300 ease-in text-[#576cdf] text-[22px] text-[#707070] fas fa-cog"></i>
@@ -247,7 +247,7 @@
                 </span>
             </a>
         @else
-            <a href="{{ route('policy.index') }}" aria-label="Settngs" class="ml-[25px]">
+            <a href="{{ route('policy.index') }}" aria-label="Settings" class="ml-[25px]">
                 <span class="whitespace-nowrap">
                     <i
                         class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[22px] text-[#707070] fas fa-cog"></i>

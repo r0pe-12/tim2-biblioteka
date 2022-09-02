@@ -97,7 +97,7 @@
                                 class="cursor-pointer block font-medium text-[#2196f3] hover:text-blue-600">{{ $librarian->email }}</a>
                         </div>
                         <div class="mt-[40px]">
-                            <span class="text-gray-500">Korisnicko ime</span>
+                            <span class="text-gray-500">Korisničko ime</span>
                             <p class="font-medium">{{ $librarian->username }}</p>
                         </div>
                         <div class="mt-[40px]">
@@ -105,7 +105,7 @@
                             <p class="font-medium">{{ count($librarian->logins) }}</p>
                         </div>
                         <div class="mt-[40px]">
-                            <span class="text-gray-500">Poslednji put logovan/a</span>
+                            <span class="text-gray-500">Posljednji put logovan/a</span>
                             <p class="font-medium">{{ $librarian->lastLogin() }}</p>
                         </div>
 

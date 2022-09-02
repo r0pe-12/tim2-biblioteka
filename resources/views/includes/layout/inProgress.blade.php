@@ -4,6 +4,6 @@
         Trenutno nedostupno...
     </h1>
     <p class="text-[17px] text-white text-center">
-        Molimo Vas da koristite vecu rezoluciju.
+        Molimo Vas da koristite veću rezoluciju.
     </p>
 </div>

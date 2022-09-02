@@ -28,7 +28,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td align="center" style="font-size:18px;color:#0e0e0f;font-weight:700;font-family:Verdana;line-height:28px;vertical-align:top;text-align:center;padding:35px 40px 0px 40px">
-                                                        <strong>Knjiga uspjesno {{ strtolower($borrow->status()->name) }}</strong>
+                                                        <strong>Knjiga uspješno {{ strtolower($borrow->status()->name) }}</strong>
                                                         <p style="font-size: 15px; margin-bottom: 0">ID - {{ $borrow->id }}</p>
                                                     </td>
                                                 </tr>
@@ -49,12 +49,12 @@
                                                 <tr>
                                                     <td class="m_2113659865872709336content" style="font:16px/22px 'Helvetica Neue',Arial,'sans-serif';text-align:left;color:#555555;padding:40px 40px 0 40px">
                                                         <p> Zdravo {{ $borrow->student->name }}, </p>
-                                                        <p> Ovo je potvrda da je knjiga <b>"{{ $borrow->book->title }}"</b> uspjesno {{ strtolower($borrow->status()->name) }} dana {{ \App\Models\Carbon::parse($borrow->status()->datum)->format('d.m.Y.') }} </p>
-                                                        <p> Ukupno zadrzavanje knjige je: <b><x-date-diff :zapis="$borrow" :holded="true"/></b> </p>
+                                                        <p> Ovo je potvrda da je knjiga <b>"{{ $borrow->book->title }}"</b> uspješno {{ strtolower($borrow->status()->name) }} dana {{ \App\Models\Carbon::parse($borrow->status()->datum)->format('d.m.Y.') }} </p>
+                                                        <p> Ukupno zadržavanje knjige je: <b><x-date-diff :zapis="$borrow" :holded="true"/></b> </p>
                                                         @if($borrow->status()->id == \App\Models\BookStatus::RETURNED1 || $borrow->status()->id == \App\Models\BookStatus::FAILED)
-                                                            <p> Prekoracenje u danima: <b><x-date-diff :zapis="$borrow" :failed="true"/></b> </p>
+                                                            <p> Prekoračenje u danima: <b><x-date-diff :zapis="$borrow" :failed="true"/></b> </p>
                                                         @endif
-                                                        <p> Hvala na koriscenju skolske biblioteke. </p>
+                                                        <p> Hvala na korišćenju školske biblioteke. </p>
                                                     </td>
                                                 </tr>
 

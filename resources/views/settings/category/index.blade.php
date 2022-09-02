@@ -9,7 +9,7 @@
                     <div class="modal-content">
                         <form method="post" action="">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati kategoriju: </h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati kategoriju: </h5>
                                 <h5 class="modal-title modalLabel"></h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -21,7 +21,7 @@
                             @csrf
                             @method('DELETE')
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                                 <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                     Potvrdi <i class="fas fa-check ml-[4px]"></i>
                                 </button>
@@ -37,7 +37,7 @@
                     <div class="modal-content">
                         <form method="post" action="{{ route('category.bulkDelete') }}">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati sledece kategorije: </h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati sljedeće kategorije: </h5>
                                 <h5 class="modal-title">
                                     <a data-bs-toggle="collapse" href="#showMore" role="button" class="showMorebtn" aria-expanded="false" aria-controls="collapseExample"></a>
                                     <ul class="collapse modalLabel" id="showMore"></ul>
@@ -53,7 +53,7 @@
                             @method('DELETE')
                             <div class="modal-footer">
                                 <input class="ids" type="hidden" value="" name="ids" id="ids">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                                 <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                     Potvrdi <i class="fas fa-check ml-[4px]"></i>
                                 </button>
@@ -140,7 +140,7 @@
                                                     class="deleteOne flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                     role="menuitem">
                                                     <i class="fa fa-trash mr-[1px] ml-[5px] py-1"></i>
-                                                    <span class="px-4 py-0">Izbrisi kategoriju</span>
+                                                    <span class="px-4 py-0">Izbriši kategoriju</span>
                                                 </a>
                                             </div>
                                         </div>
