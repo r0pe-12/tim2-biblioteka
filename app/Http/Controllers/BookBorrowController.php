@@ -49,6 +49,7 @@ class BookBorrowController extends Controller
         if ($book->activeRes()->get()->contains($res = $book->activeRes()->where('student_id', '=', $borrow->student_id)->first())) {
             $res->closingReason_id = ClosingReason::bookBorrowed()->id;
             $res->closingDate = today("Europe/Belgrade");
+            $res->librarian1_id = auth()->user()->id;
             $res->save();
 
             $newResStatus = ReservationStatus::closed();

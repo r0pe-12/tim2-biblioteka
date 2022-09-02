@@ -106,6 +106,7 @@ class BookReserveConroller extends Controller
         # code
         $reservation->closingReason_id = ClosingReason::cancelled()->id;
         $reservation->closingDate = today("Europe/Belgrade");
+        $reservation->librarian1_id = auth()->user()->id;
         $reservation->save();
 
         $newResStatus = ReservationStatus::closed();
