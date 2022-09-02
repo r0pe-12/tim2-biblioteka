@@ -34,6 +34,6 @@ class RezervacijaIstekla extends Mailable
      */
     public function build()
     {
-        return $this->to($this->reservation->student->email)->view('mail.rezervacijaistekla');
+        return $this->to($this->reservation->student->email)->view('mail.knjiga-rezervisanje.rezervacijaistekla');
     }
 }
