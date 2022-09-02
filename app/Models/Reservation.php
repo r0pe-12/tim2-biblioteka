@@ -39,6 +39,13 @@ protected $guarded = [];
         return $this->belongsTo(User::class);
     }
 
+//    relation between reservation and librarian who closed it
+    public function librarian1(){
+        # code
+        return $this->belongsTo(User::class, 'librarian1_id');
+    }
+
+
 //    relation between reservation and closingreason
     public function closingReason(){
         # code

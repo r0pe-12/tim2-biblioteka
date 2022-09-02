@@ -39,6 +39,12 @@ class Borrow extends Model
         return $this->belongsTo(User::class);
     }
 
+//    relation between borrows and librarian who returned book
+    public function librarian1(){
+        # code
+        return $this->belongsTo(User::class, 'librarian1_id');
+    }
+
 
 //    relation between borrows and student
     public function student(){
