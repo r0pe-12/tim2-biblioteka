@@ -123,7 +123,7 @@ class ScriptController extends Controller
         try {
             $script->delete();
         }catch (\Exception $e){
-            return redirect()->back()->with('fail', 'Brisanje pisma "' . $script->name . '" nije moguđe');
+            return redirect()->back()->with('fail', 'Brisanje pisma "' . $script->name . '" nije moguće');
         }
         return redirect()->route('script.index')->with('success', 'Pismo "' . $script->name . '" je uspješno obrisano');
     }
