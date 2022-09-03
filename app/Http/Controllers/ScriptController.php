@@ -53,7 +53,7 @@ class ScriptController extends Controller
      ]);
      $script->save();
 
-        return redirect()->route('script.index')->with('success', 'Novo Pismo "' . $script->name . '" je uspješno kreirano');
+        return redirect()->route('script.index')->with('success', 'Novo pismo "' . $script->name . '" je uspješno kreirano');
 
     }
 
@@ -123,7 +123,7 @@ class ScriptController extends Controller
         try {
             $script->delete();
         }catch (\Exception $e){
-            return redirect()->back()->with('fail', 'Brisanje pisma "' . $script->name . '" nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje pisma "' . $script->name . '" nije moguđe');
         }
         return redirect()->route('script.index')->with('success', 'Pismo "' . $script->name . '" je uspješno obrisano');
     }
@@ -138,7 +138,7 @@ class ScriptController extends Controller
         try {
             $scripts->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje pisama nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje pisama nije moguće');
         }
 
         return redirect()->route('publisher.index')->with('success', 'Pisma su uspješno izbrisana');

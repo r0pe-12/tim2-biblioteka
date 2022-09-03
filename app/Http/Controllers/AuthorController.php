@@ -155,7 +155,7 @@ class AuthorController extends Controller
         try {
             $author->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje autora "' . $author->name . ' ' . $author->surname . '" nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje autora "' . $author->name . ' ' . $author->surname . '" nije moguće');
         }
 
         if (file_exists($photoPath = public_path() . $photo)){
@@ -186,7 +186,7 @@ class AuthorController extends Controller
         try {
             $authors->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje autora nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje autora nije moguće');
         }
 //        if we delete them we will delete photos from storage
         foreach ($photos as $photo){
@@ -197,7 +197,7 @@ class AuthorController extends Controller
         return redirect()->route('authors.index')->with('success', 'Autori su uspješno izbrisani');
     }
 
-    //    izbrisi profilnu sliku
+    //    izbriši profilnu sliku
     public function deleteProfilePhoto(Author $author){
         # code
         if (file_exists($photoPath = public_path() . $author->image)){
@@ -206,6 +206,6 @@ class AuthorController extends Controller
             unlink($photoPath);
         }
     }
-//    END-izbrisi profilnu sliku
+//    END-izbriši profilnu sliku
 
 }

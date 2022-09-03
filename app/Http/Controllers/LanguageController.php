@@ -116,7 +116,7 @@ class LanguageController extends Controller
         try {
             $language->delete();
         }catch (\Exception $e){
-            return redirect()->back()->with('fail', 'Brisanje jezika "' . $language->name . '" nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje jezika "' . $language->name . '" nije moguće');
         }
         return redirect()->route('language.index')->with('success', 'Jezik "' . $language->name . '" je uspješno obrisan');
     }
@@ -131,8 +131,8 @@ class LanguageController extends Controller
         try {
             $languages->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje jezika nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje jezika nije moguće');
         }
-        return redirect()->route('genre.index')->with('success', 'Jezici su uspješno izbrisane');
+        return redirect()->route('genre.index')->with('success', 'Jezici su uspješno izbrisani');
     }
 }

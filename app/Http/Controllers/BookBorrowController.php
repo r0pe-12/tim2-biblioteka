@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 class BookBorrowController extends Controller
 {
     //
-    //    prikazi formu za izdavanje odredjene knjige
+    //    prikazi formu za izdavanje određene knjige
     public function izdajForm(Book $book){
         # code
         $return = Policy::return();
@@ -26,7 +26,7 @@ class BookBorrowController extends Controller
             'return' => $return,
         ]);
     }
-//    END-prikazi formu za izdavanje odredjene knjige
+//    END-prikazi formu za izdavanje određene knjige
 
 //    izdaj odredjenu knjigu
     public function izdaj(Book $book){
@@ -49,6 +49,7 @@ class BookBorrowController extends Controller
         if ($book->activeRes()->get()->contains($res = $book->activeRes()->where('student_id', '=', $borrow->student_id)->first())) {
             $res->closingReason_id = ClosingReason::bookBorrowed()->id;
             $res->closingDate = today("Europe/Belgrade");
+            $res->librarian1_id = auth()->user()->id;
             $res->save();
 
             $newResStatus = ReservationStatus::closed();
@@ -61,7 +62,7 @@ class BookBorrowController extends Controller
             $isRes = true;
         } else {
             if (!($book->ableToBorrow())) {
-                return redirect()->route('books.index')->with('fail', 'Nije moguce izdati knjigu: nedovoljno primjeraka');
+                return redirect()->route('books.index')->with('fail', 'Nije moguće izdati knjigu: nedovoljno primjeraka');
             }
             $status = BookStatus::borrowed();
         }
@@ -77,7 +78,7 @@ class BookBorrowController extends Controller
             return redirect()->route('books.index')->with('success', 'Knjiga je uspješno izdata učeniku: ' . Student::find(\request()->ucenik)->name . ' ' . Student::find(\request()->ucenik)->surname);
         }
     }
-//    END-izdaj odredjenu knjigu
+//    END-izdaj određenu knjigu
 
 
 //    Izdavanje knjiga tab
@@ -109,7 +110,7 @@ class BookBorrowController extends Controller
     }
 //    END-prikaz jedne transakcije
 
-//    izbrisi zapis
+//    izbriši zapis
     public function destroy(Borrow $borrow){
         # code
         if ($borrow->isActive()) {
@@ -118,7 +119,7 @@ class BookBorrowController extends Controller
 //        todo da li ovako ili da stavimo cascade od delete u bazi???
         $borrow->statuses()->sync([]);
         $borrow->delete();
-        return redirect()->route('dashboard.index')->with('success', 'Zapis izdavanja knjige "' . $borrow->book->title . '" je uspjesno obrisan');
+        return redirect()->route('dashboard.index')->with('success', 'Zapis izdavanja knjige "' . $borrow->book->title . '" je uspješno obrisan');
     }
-//    ENDizbrisi zapis
+//    END-izbriši zapis
 }

@@ -127,7 +127,7 @@ class BookBindController extends Controller
         try {
             $bookbind->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje poveza "' . $bookbind->name . '" nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje poveza "' . $bookbind->name . '" nije moguće');
         }
         return redirect()->route('bookbind.index')->with('success', 'Povez "' . $bookbind->name . '" je uspješno obrisan');
 
@@ -143,7 +143,7 @@ class BookBindController extends Controller
         try {
             $bookbinds->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje poveza nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje poveza nije moguće');
         }
 
         return redirect()->route('publisher.index')->with('success', 'Povezi su uspješno izbrisani');

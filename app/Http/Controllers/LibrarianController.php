@@ -141,7 +141,7 @@ class LibrarianController extends Controller
         try {
             $librarian->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje bibliotekara "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje bibliotekara "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" nije moguće');
         }
 
         if (file_exists($photoPath = public_path() . $photo)){
@@ -173,7 +173,7 @@ class LibrarianController extends Controller
         try {
             $librarians->delete();
         } catch (\Exception $e){
-            return redirect()->back()->with('fail', 'Brisanje bibliotekara nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje bibliotekara nije moguće');
         }
 
 //        if wee delete them we will delete photos from storage
@@ -203,7 +203,7 @@ class LibrarianController extends Controller
     }
 
 
-    //    izbrisi profilnu sliku
+    //    izbriši profilnu sliku
     public function deleteProfilePhoto(User $user){
         # code
         if (file_exists($photoPath = public_path() . $user->photoPath)){
@@ -212,6 +212,6 @@ class LibrarianController extends Controller
             unlink($photoPath);
         }
     }
-//    END-izbrisi profilnu sliku
+//    END-izbriši profilnu sliku
 
 }

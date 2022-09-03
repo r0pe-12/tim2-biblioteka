@@ -57,11 +57,11 @@ class StudentController extends Controller
         $role = Role::findOrNew(Student::ROLE);
         if (!$role->id){
             $role->id = Student::ROLE;
-            $role->name = 'ucenik';
+            $role->name = 'učenik';
             $role->save();
         }
         $role->users()->save($student);
-        return redirect()->route('students.index')->with('success', 'Ucenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" je uspješno kreiran');
+        return redirect()->route('students.index')->with('success', 'Učenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" je uspješno kreiran');
 
     }
 
@@ -126,7 +126,7 @@ class StudentController extends Controller
             unset($input['photoPath']);
         }
         $student->update($input);
-        return redirect()->route('students.show', $student->username)->with('success', 'Ucenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" uspješno izmijenjen');
+        return redirect()->route('students.show', $student->username)->with('success', 'Učenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" uspješno izmijenjen');
     }
 
 
@@ -147,13 +147,13 @@ class StudentController extends Controller
         try {
             $student->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje ucenika "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje učenika "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" nije moguće');
         }
 
         if (file_exists($photoPath = public_path() . $photo)){
             unlink($photoPath);
         }
-        return redirect()->route('students.index')->with('success', 'Ucenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" je uspješno izbrisan');
+        return redirect()->route('students.index')->with('success', 'Učenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" je uspješno izbrisan');
     }
 
     /**
@@ -178,7 +178,7 @@ class StudentController extends Controller
         try {
             $students->delete();
         } catch (\Exception $e){
-            return redirect()->back()->with('fail', 'Brisanje ucenika nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje učenika nije moguće');
         }
 
 //        if wee delete them we will delete photos from storage
@@ -187,7 +187,7 @@ class StudentController extends Controller
                 unlink($photoPath);
             }
         }
-        return redirect()->back()->with('success', 'Ucenici su uspješno izbrisani');
+        return redirect()->back()->with('success', 'Učenici su uspješno izbrisani');
     }
 
 
@@ -207,7 +207,7 @@ class StudentController extends Controller
     }
 
 
-//    evidencija vezana za ucenika
+//    evidencija vezana za učenika
     public function izdate(Student $student){
         # code
         return view('student.evidencija.izdate', [
@@ -257,9 +257,9 @@ class StudentController extends Controller
             'res_deadline' => Policy::reservation()
         ]);
     }
-//    END-evidencija vezana za ucenika
+//    END-evidencija vezana za učenika
 
-//    izbrisi profilnu sliku
+//    izbriši profilnu sliku
     public function deleteProfilePhoto(User $user){
         # code
         if (file_exists($photoPath = public_path() . $user->photoPath)){
@@ -268,5 +268,5 @@ class StudentController extends Controller
             unlink($photoPath);
         }
     }
-//    END-izbrisi profilnu sliku
+//    END-izbriši profilnu sliku
 }

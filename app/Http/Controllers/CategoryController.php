@@ -150,7 +150,7 @@ class CategoryController extends Controller
         try {
             $category->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje kategorije "' . $category->name . '" nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje kategorije "' . $category->name . '" nije moguće');
         }
 
         if (file_exists($iconPath = public_path() . $photo)){
@@ -182,7 +182,7 @@ class CategoryController extends Controller
         try {
             $categories->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje kategorija nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje kategorija nije moguće');
         }
 //        if we delete them we will delete photos from storage
         foreach ($photos as $photo){

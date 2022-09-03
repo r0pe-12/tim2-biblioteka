@@ -108,11 +108,11 @@
             <x-book-header :book="$book" :borrow="$borrow->id"/>
 
 
-            <div class="flex flex-row height-detaljiIzdavanje scroll pb-[20px]">
+            <div class="flex-row height-detaljiIzdavanje scroll pb-[20px]">
                 <div class="">
                     <!-- Space for content -->
                     <div class="pl-[30px] section- mt-[20px]">
-                        <div class="flex flex-row justify-between">
+                        <div class="flex-row justify-between">
                             <div class="mr-[30px]">
                                 <div class="mt-[20px]">
                                     <span class="text-gray-500">Tip transakcije</span><br>
@@ -144,14 +144,28 @@
                                     <span class="text-gray-500">Ukupno zadržavanje knjige</span>
                                     <p class="font-medium"><x-date-diff :zapis="$borrow"/></p>
                                 </div>
+<<<<<<< HEAD
                                 <div class="mt-[40px]">
                                     <span class="text-gray-500">Prekoračenje</span>
+=======
+                                <div class="mt-[40px] mb-[30px]">
+                                    <span class="text-gray-500">Prekoracenje</span>
+>>>>>>> 28bef2614884052d313484d9d3bb4bd24ac1d42a
                                     <p class="font-medium"><x-date-diff :zapis="$borrow" :failed="true"/></p>
                                 </div>
-                                <div class="mt-[40px]">
-                                    <span class="text-gray-500">Bibliotekar</span>
-                                    <a href="{{ route('librarians.show', $borrow->librarian->username) }}"
-                                       class="block font-medium text-[#2196f3] hover:text-blue-600">{{ $borrow->librarian->name }} {{ $borrow->librarian->surname }}</a>
+                                <div class="row">
+                                    <div class="mt-[40px] col-sm-3">
+                                        <span class="text-gray-500">Bibliotekar: izdao</span>
+                                        <a href="{{ route('librarians.show', $borrow->librarian->username) }}"
+                                           class="block font-medium text-[#2196f3] hover:text-blue-600">{{ $borrow->librarian->name }} {{ $borrow->librarian->surname }}</a>
+                                    </div>
+                                    @if($borrow->librarian1)
+                                        <div class="mt-[40px] col-sm-3">
+                                            <span class="text-gray-500">Bibliotekar: vratio/otpisao</span>
+                                            <a href="{{ route('librarians.show', $borrow->librarian1->username) }}"
+                                               class="block font-medium text-[#2196f3] hover:text-blue-600">{{ $borrow->librarian1->name }} {{ $borrow->librarian1->surname }}</a>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="mt-[40px]">
                                     <span class="text-gray-500">Učenik</span>

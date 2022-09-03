@@ -22,7 +22,7 @@ class CheckRezervacijaIstekla extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Check if reservation is expired if it is we change the status';
 
     /**
      * Execute the console command.
@@ -37,6 +37,7 @@ class CheckRezervacijaIstekla extends Command
             if (\Carbon\Carbon::parse($res->submttingDate)->addDays($res_deadline) < today('Europe/Belgrade')) {
                 $res->closingReason_id = ClosingReason::expired()->id;
                 $res->closingDate = today("Europe/Belgrade");
+                $res->mail = 0;
                 $res->save();
 
                 $newResStatus = ReservationStatus::closed();

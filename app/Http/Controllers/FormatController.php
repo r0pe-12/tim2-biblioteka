@@ -115,7 +115,7 @@ class FormatController extends Controller
         try {
             $format->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje formata "' . $format->name . '" nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje formata "' . $format->name . '" nije moguće');
         }
         return redirect()->route('format.index')->with('success', 'Format "' . $format->name . '" je uspješno obrisan');
 
@@ -131,7 +131,7 @@ class FormatController extends Controller
         try {
             $formats->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje formata nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje formata nije moguće');
         }
 
         return redirect()->route('publisher.index')->with('success', 'Formati su uspješno izbrisani');

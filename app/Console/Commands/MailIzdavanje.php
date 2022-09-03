@@ -23,7 +23,7 @@ class MailIzdavanje extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'We check if mail column is 0 if it is we send the mail and change the mail column to 1';
 
     /**
      * Execute the console command.

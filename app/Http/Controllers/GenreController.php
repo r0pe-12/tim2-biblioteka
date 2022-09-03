@@ -147,7 +147,7 @@ class GenreController extends Controller
         try {
             $genre->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje zanra "' . $genre->name . '" nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje žanra "' . $genre->name . '" nije moguće');
         }
 
         if (file_exists($iconPath = public_path() . $photo)){
@@ -179,7 +179,7 @@ class GenreController extends Controller
         try {
             $genres->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje zanrova nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje žanrova nije moguće');
         }
 //        if we delete them we will delete photos from storage
         foreach ($photos as $photo){
@@ -187,7 +187,7 @@ class GenreController extends Controller
                 unlink($photoPath);
             }
         }
-        return redirect()->route('genre.index')->with('success', 'Zanrovi su uspješno izbrisane');
+        return redirect()->route('genre.index')->with('success', 'Žanrovi su uspješno izbrisani');
     }
 
 }

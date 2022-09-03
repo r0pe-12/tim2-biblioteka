@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->boolean('mail')->default(false);
             $table->foreignId('book_id')->constrained('books', 'id');
 
             $table->foreignId('student_id')->constrained('users', 'id');
 
             $table->foreignId('librarian_id')->constrained('users', 'id');
+            $table->foreignId('librarian1_id')->nullable()->constrained('users', 'id');
 
 //            $table->foreignId('status_id');
             $table->foreignId('closingReason_id');

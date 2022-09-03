@@ -192,9 +192,16 @@
                                         <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
                                         <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">Izdato učeniku</th>
                                         <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">Datum izdavanja</th>
+<<<<<<< HEAD
                                         <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">Datum vraćanja</th>
                                         <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Zadržavanje knjige</th>
                                         <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">Knjigu primio</th>
+=======
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">Datum vracanja</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Zadrzavanje knjige</th>
+                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">Knjigu izdao</th>
+{{--                                        <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">Knjigu primio</th>--}}
+>>>>>>> 28bef2614884052d313484d9d3bb4bd24ac1d42a
                                         <th class="px-4 py-4"> </th>
                                     </tr>
                                 </thead>
@@ -225,7 +232,9 @@
                                                     <span><x-date-diff :zapis="$zapis" :holded="true"/></span>
                                                 </div>
                                             </td>
-                                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ $zapis->librarian->name }} {{ $zapis->librarian->surname }}
+{{--                                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ $zapis->librarian->name }} {{ $zapis->librarian->surname }}--}}
+{{--                                            </td>--}}
+                                            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{ $zapis->librarian1->name }} {{ $zapis->librarian1->surname }}
                                             </td>
                                             <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
                                                 <p
@@ -258,8 +267,14 @@
                                     <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv knjige</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">Izdato učeniku</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">Datum izdavanja</th>
+<<<<<<< HEAD
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">Datum vraćanja</th>
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Zadržavanje knjige</th>
+=======
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">Datum vracanja</th>
+                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">Zadrzavanje knjige</th>
+{{--                                    <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">Knjigu izdao--}}
+>>>>>>> 28bef2614884052d313484d9d3bb4bd24ac1d42a
                                     <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">Knjigu primio
                                     </th>
                                     <th class="px-4 py-4"> </th>

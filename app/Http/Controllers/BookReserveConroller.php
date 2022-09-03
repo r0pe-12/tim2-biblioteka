@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 class BookReserveConroller extends Controller
 {
     //
-//    prikazi page za rezervisanje knjige
+//    prikaži page za rezervisanje knjige
     public function reserveForm(Book $book){
         # code
         return view('book.reserve', [
@@ -22,10 +22,10 @@ class BookReserveConroller extends Controller
             'students' => Student::all()
         ]);
     }
-//    prikazi page za rezervisanje knjige
+//    prikaži page za rezervisanje knjige
 
 
-//    rezervisi odredjenu knjigu
+//    rezerviši određenu knjigu
     public function reserve(Book $book){
         # code
         \request()->validate([
@@ -33,7 +33,7 @@ class BookReserveConroller extends Controller
             'datumRezervisanja' => ['required', 'date'],
         ]);
         if (!($book->ableToBorrow())) {
-            return redirect()->route('books.index')->with('fail', 'Nije moguce rezervisati knjigu: nedovoljno primjeraka');
+            return redirect()->route('books.index')->with('fail', 'Nije moguće rezervisati knjigu: nedovoljno primjeraka');
         }
 //        \request()->dd();
 
@@ -55,9 +55,9 @@ class BookReserveConroller extends Controller
 
         return redirect()->route('books.index')->with('success', 'Knjiga je uspješno rezervisana učeniku: ' . Student::find(\request()->ucenik)->name . ' ' . Student::find(\request()->ucenik)->surname);
     }
-//    END-rezervisi odredjenu knjigu
+//    END-rezerviši određenu knjigu
 
-//    prikazi sve aktivne rezervacije
+//    prikaži sve aktivne rezervacije
     public function active(){
         # code
 //        dd(Reservation::active()->get());
@@ -66,9 +66,9 @@ class BookReserveConroller extends Controller
             'res_deadline' => Policy::reservation()
         ]);
     }
-//    prikazi sve aktivne rezervacije
+//    prikaži sve aktivne rezervacije
 
-//    prikazi sve aktivne rezervacije jedne knjige
+//    prikaži sve aktivne rezervacije jedne knjige
     public function active1(Book $book){
         # code
         return view('book.evidencija.aktivne', [
@@ -78,9 +78,9 @@ class BookReserveConroller extends Controller
 
         ]);
     }
-//    prikazi sve aktivne rezervacije jedne knige
+//    prikaži sve aktivne rezervacije jedne knige
 
-//    prikazi sve arhivirane rezervacije
+//    prikaži sve arhivirane rezervacije
     public function archive(){
         # code
         return view('izdavanje.arhivirane', [
@@ -88,9 +88,9 @@ class BookReserveConroller extends Controller
             'res_deadline' => Policy::reservation()
         ]);
     }
-//    prikazi sve arhivirane rezervacije
+//    prikaži sve arhivirane rezervacije
 
-//    prikazi sve arhivirane rezervacije jedne knjige
+//    prikaži sve arhivirane rezervacije jedne knjige
     public function archive1(Book $book){
         # code
         return view('book.evidencija.arhivirane', [
@@ -99,13 +99,14 @@ class BookReserveConroller extends Controller
             'res_deadline' => Policy::reservation()
         ]);
     }
-//    prikazi sve arhivirane rezervacije jedne knjige
+//    prikaži sve arhivirane rezervacije jedne knjige
 
-//    otkazi rezervaciju
+//    otkaži rezervaciju
     public function cancel(Reservation $reservation){
         # code
         $reservation->closingReason_id = ClosingReason::cancelled()->id;
         $reservation->closingDate = today("Europe/Belgrade");
+        $reservation->librarian1_id = auth()->user()->id;
         $reservation->save();
 
         $newResStatus = ReservationStatus::closed();
@@ -113,9 +114,9 @@ class BookReserveConroller extends Controller
 
         $reservation->book->reservedSamples--;
         $reservation->book->save();
-        return redirect()->back()->with('success', 'Rezervacija je uspjesno otkazana');
+        return redirect()->back()->with('success', 'Rezervacija je uspješno otkazana');
     }
-//    END-otkazi rezervaciju
+//    END-otkaži rezervaciju
 
 //    prikaz jedne rezervacije
     public function show(Book $book, Reservation $reservation){
@@ -128,7 +129,7 @@ class BookReserveConroller extends Controller
     }
 //    END-prikaz jedne rezervacije
 
-//    izbrisi zapis
+//    izbriši zapis
     public function destroy(Reservation $reservation){
         # code
         if ($reservation->isActive()) {
@@ -137,7 +138,7 @@ class BookReserveConroller extends Controller
 //        todo da li ovako ili da stavimo cascade od delete u bazi???
         $reservation->statuses()->sync([]);
         $reservation->delete();
-        return redirect()->route('dashboard.index')->with('success', 'Zapis rezervacije knjige "' . $reservation->book->title . '" je uspjesno obrisan');
+        return redirect()->route('dashboard.index')->with('success', 'Zapis rezervacije knjige "' . $reservation->book->title . '" je uspješno obrisan');
     }
-//    END-izbrisi zapis
+//    END-izbriši zapis
 }
