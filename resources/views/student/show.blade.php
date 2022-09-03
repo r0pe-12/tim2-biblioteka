@@ -18,8 +18,8 @@
                 <!-- Space for content -->
                     <x-flash-msg/>
                 <div class="pl-[30px] section- mt-[20px]">
-                    <div class="flex flex-row">
-                        <div class="mr-[30px]">
+                    <div class="row flex-row">
+                        <div class="col-sm-3 mr-[30px]">
                             <div class="mt-[20px]">
                                 <span class="text-gray-500">Ime </span>
                                 <p class="font-medium">{{$student->name}}</p>
@@ -40,21 +40,22 @@
                                 <span class="text-gray-500">Email</span>
                                 <a href="mailto:{{$student->email}}" class="block font-medium text-[#2196f3]">{{$student->email}}</a>
                             </div>
-                            <div class="mt-[40px]">
+                            <div class="mt-[40px] mb-[30px]">
                                 <span class="text-gray-500">Korisničko ime</span>
                                 <p class="font-medium">{{$student->username}}</p>
                             </div>
-                            <div class="mt-[40px]">
-                                <span class="text-gray-500">Broj logovanja</span>
-                                <p class="font-medium">{{count($student->logins)}}</p>
+                            <div class="row">
+                                <div class="mt-[40px] col-sm-6 wb">
+                                    <span class="text-gray-500">Broj logovanja</span>
+                                    <p class="font-medium">{{count($student->logins)}}</p>
+                                </div>
+                                <div class="mt-[40px] col-sm-6">
+                                    <span class="text-gray-500">Posljednji put logovan/a</span>
+                                    <p class="font-medium">{{$student->lastLogin()}}</p>
+                                </div>
                             </div>
-                            <div class="mt-[40px]">
-                                <span class="text-gray-500">Posljednji put logovan/a</span>
-                                <p class="font-medium">{{$student->lastLogin()}}</p>
-                            </div>
-
                         </div>
-                        <div class="ml-[100px]  mt-[20px]">
+                        <div class="col-sm-3 ml-[100px]  mt-[20px]">
                             <img class="p-2 border-2 border-gray-300" width="300px" src="{{$student->photoPath}}" alt="">
                         </div>
                     </div>
@@ -62,7 +63,6 @@
             </div>
         </section>
         <!-- End Content -->
-        </main>
         <!-- End Main content -->
 
         <!-- This code will show up when we press reset password -->

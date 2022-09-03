@@ -24,6 +24,10 @@
     flex: 1;
 }
 
+.wb {
+    word-break: break-word;
+}
+
 .logo-font {
     font-family: 'Rubik';
 }
