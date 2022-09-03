@@ -280,7 +280,7 @@
                                         <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                             <td class="px-4 py-3 whitespace-no-wrap">
                                                 <label class="inline-flex items-center">
-                                                    <input type="checkbox" class="form-checkbox checkOthers" data-href="{{ route('book.izdaj.create',[$reservation->book, 'učenik' => $reservation->student->id]) }}"
+                                                    <input type="checkbox" class="form-checkbox checkOthers" data-href="{{ route('book.izdaj.create',[$reservation->book, 'ucenik' => $reservation->student->id]) }}"
                                                            data-book-name="{{ $reservation->book->title }}"
                                                            data-student-name="{{ $reservation->student->name }} {{ $reservation->student->surname }}"
                                                             data-action="{{ route('rezervacija.otkazi', $reservation) }}"
