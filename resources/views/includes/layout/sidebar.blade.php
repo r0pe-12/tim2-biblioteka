@@ -84,7 +84,7 @@
                 @endif
 
                 <!-- Učenici Icon -->
-                @if(request()->routeIs('students.*', 'učenik.*'))
+                @if(request()->routeIs('students.*', 'ucenik.*'))
                     <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
                         <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
