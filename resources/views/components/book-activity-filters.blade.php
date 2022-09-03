@@ -6,9 +6,9 @@
 ])
 <?php
 if($_SERVER['REQUEST_METHOD'] == "GET") {
-    if(isset($_GET['učenik'])) {
-        $ucenik = count($_GET['učenik']);
-        $ucenici = $_GET['učenik'];
+    if(isset($_GET['ucenik'])) {
+        $ucenik = count($_GET['ucenik']);
+        $ucenici = $_GET['ucenik'];
     } else {
         $ucenik = "Sve";
         $ucenici = [];
