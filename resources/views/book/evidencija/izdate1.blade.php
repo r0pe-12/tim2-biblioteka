@@ -144,13 +144,8 @@
                                     <span class="text-gray-500">Ukupno zadržavanje knjige</span>
                                     <p class="font-medium"><x-date-diff :zapis="$borrow"/></p>
                                 </div>
-<<<<<<< HEAD
-                                <div class="mt-[40px]">
-                                    <span class="text-gray-500">Prekoračenje</span>
-=======
                                 <div class="mt-[40px] mb-[30px]">
-                                    <span class="text-gray-500">Prekoracenje</span>
->>>>>>> 28bef2614884052d313484d9d3bb4bd24ac1d42a
+                                    <span class="text-gray-500">Prekoračenje</span>
                                     <p class="font-medium"><x-date-diff :zapis="$borrow" :failed="true"/></p>
                                 </div>
                                 <div class="row">
