@@ -41,7 +41,7 @@
 
             <div id="ucenikWrapper" class="search">
                 Učenici
-                <ul id="učenici">
+                <ul id="ucenici">
                 </ul>
             </div>
 
