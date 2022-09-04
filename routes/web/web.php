@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookBorrowController;
 use App\Http\Controllers\BookReserveConroller;
 use App\Http\Controllers\BookReturnController;
 use App\Http\Controllers\BookWriteOffController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StudentController;
 
@@ -27,12 +30,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::middleware(['auth'])->group(function (){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::post('/search', [SearchController::class, 'search']);
 
-    //Route::get('/', fn() => view('dashboard.index'));
-    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard.index');
-    //Route::get('/activity', fn() => view('dashboard.activity'));
-    Route::get('/activity', [\App\Http\Controllers\DashboardController::class, 'activity'])->name('dashboard.activity');
+//    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard.index');
+    Route::get('/activity', [DashboardController::class, 'activity'])->name('dashboard.activity');
+
+    Route::resource('/admins', AdminController::class);
 
     Route::resource('/librarians', LibrarianController::class);
     Route::delete('/librarian/bulkdelete', [LibrarianController::class, 'bulkDelete'])->name('librarian.bulk-delete');
@@ -126,13 +131,12 @@ Route::middleware(['auth'])->group(function (){
 
 //    test routes
 
-Route::post('/search', [SearchController::class, 'search']);
-
 //    Route::post('/dfh', function (){
 //        $diff =str_replace(['pre', 'nedelju', 'mesec', '1 sekundu', 'prije Danas'], ['prije', 'nedelja', 'mjesec', 'Danas', 'Danas'], \App\Models\Carbon::parse(date('Y-m-d', strtotime(request('date1'))))->diffForHumans(today('Europe/Belgrade'), null, false, 3));
 //        return response()->json([
 //            'diff'=>$diff
 //        ]);
 //    });
+
 //    END-test routes
 
