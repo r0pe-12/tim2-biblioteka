@@ -52,12 +52,8 @@ class LibrarianController extends Controller
             $input['photoPath'] = $name;
         }
         $librarian = new User($input);
-        $role = Role::findOrNew(Librarian::ROLE);
-        if (!$role->id){
-            $role->id = Librarian::ROLE;
-            $role->name = 'bibliotekar';
-            $role->save();
-        }
+
+        $role = Role::librarian();
         $role->users()->save($librarian);
         return redirect()->route('librarians.index')->with('success', 'Bibliotekar "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" je usjpešno kreiran');
     }

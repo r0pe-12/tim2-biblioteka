@@ -27,11 +27,11 @@ class DatabaseSeeder extends Seeder
     {
          User::factory()->create([
              'username' => 'bibliotekar',
-             'role_id' => Role::create(['name' => 'bibliotekar']),
+             'role_id' => Role::librarian()->id,
          ]);
 
          User::factory(10)->create([
-             'role_id' => Role::create(['name' => 'ucenik']),
+             'role_id' => Role::student()->id,
          ]);
 
          $book = Book::factory(3)
