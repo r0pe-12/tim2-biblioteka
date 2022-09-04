@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use phpDocumentor\Reflection\Types\This;
 
+//    todo ako nesto bude pravilo problem odje stavi extends User !!!
 class Librarian extends Model
 {
     use HasFactory;
