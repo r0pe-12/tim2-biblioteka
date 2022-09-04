@@ -23,6 +23,18 @@ class Role extends Model
         return ucwords($name);
     }
 
+    const ADMIN = Admin::ROLE;
+    public static function admin(){
+        # code
+        $role = Role::findOrNew(Role::ADMIN);
+        if (!$role->id){
+            $role->id = Role::ADMIN;
+            $role->name = 'administrator';
+            $role->save();
+        }
+        return $role;
+    }
+
     const LIBRARIAN = Librarian::ROLE;
     public static function librarian(){
         # code

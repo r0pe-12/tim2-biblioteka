@@ -30,6 +30,11 @@ class DatabaseSeeder extends Seeder
              'role_id' => Role::librarian()->id,
          ]);
 
+         User::factory()->create([
+             'username' => 'glavna-glava',
+             'role_id' => Role::admin()->id,
+         ]);
+
          User::factory(10)->create([
              'role_id' => Role::student()->id,
          ]);
