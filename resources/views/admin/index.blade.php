@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Bibliotekari
+        Administratori
     @endsection
         <!-- Delete One Admin Modal -->
         <div class="modal fadeM" id="deleteOneModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

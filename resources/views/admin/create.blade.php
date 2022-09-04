@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Novi bibliotekar
+        Novi administrator
     @endsection
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
@@ -10,15 +10,15 @@
                     <div class="pl-[30px] py-[10px] flex flex-col">
                         <div>
                             <h1>
-                                Novi bibliotekar
+                                Novi administrator
                             </h1>
                         </div>
                         <div>
                             <nav class="w-full rounded">
                                 <ol class="flex list-reset">
                                     <li>
-                                        <a href="{{ route('librarians.index') }}" class="text-[#2196f3] hover:text-blue-600">
-                                            Svi bibliotekari
+                                        <a href="{{ route('admins.index') }}" class="text-[#2196f3] hover:text-blue-600">
+                                            Svi administratori
                                         </a>
                                     </li>
                                     <li>
@@ -26,7 +26,7 @@
                                     </li>
                                     <li>
                                         <a href="#" class="text-gray-400 hover:text-blue-600">
-                                            Novi bibliotekar
+                                            Novi administrator
                                         </a>
                                     </li>
                                 </ol>
@@ -37,7 +37,7 @@
             </div>
             <!-- Space for content -->
             <div class="scroll height-content section-content">
-                <form id="form" method="POST" class="text-gray-700 text-[14px] forma" action="{{ route('librarians.store') }}" enctype="multipart/form-data">
+                <form id="form" method="POST" class="text-gray-700 text-[14px] forma" action="{{ route('admins.store') }}" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <div class="flex flex-row ml-[30px]">
@@ -60,7 +60,7 @@
                                 <span>Tip korisnika</span>
                                 <select class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="tip_korisnika" disabled id="tip_korisnika">
                                     <option value="">
-                                        Bibliotekar
+                                        Administrator
                                     </option>
                                 </select>
                             </div>
