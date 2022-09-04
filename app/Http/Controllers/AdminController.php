@@ -129,10 +129,26 @@ class AdminController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy($username)
     {
         //
+        $admin = User::where('username', '=', $username)->first();
+        $this->authorize('delete', $admin);
+
+        $photo = $admin->photoPath;
+
+        try {
+            $admin->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Brisanje administratora "' . $admin->name . ' ' . $admin->surname . ': ' . $admin->username . '" nije moguće');
+        }
+
+        if (file_exists($photoPath = public_path() . $photo)){
+            unlink($photoPath);
+        }
+        return redirect()->route('admins.index')->with('success', 'Administrator "' . $admin->name . ' ' . $admin->surname . ': ' . $admin->username . '" uspješno izbrisan');
+
     }
 }
