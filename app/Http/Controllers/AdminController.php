@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Librarian\CreateRequest;
+use App\Http\Requests\Librarian\UpdateRequest;
 use App\Models\Admin;
 use App\Models\Role;
 use App\Models\User;
@@ -79,11 +80,17 @@ class AdminController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit($username)
     {
         //
+        $admin = User::where('username', '=', $username)->first();
+        if (is_null($admin)) {
+            abort('404');
+        }
+        return view('admin.edit', compact('admin'));
+
     }
 
     /**
@@ -91,11 +98,31 @@ class AdminController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+//    odje koristimo request validaciju od biblioteara jer sve isto
+    public function update(UpdateRequest $request, User $admin)
     {
         //
+        $input = $request->validated();
+        if (is_null($input['password'])){
+            unset($input['password']);
+        }
+        if ($file = $request->file('photoPath')){
+            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
+            $file->storeAs('/images/users', $name);
+            $input['photoPath'] = $name;
+
+            if (file_exists($photoPath = public_path() . $admin->photoPath)){
+                unlink($photoPath);
+            }
+
+        } else{
+            unset($input['photoPath']);
+        }
+        $admin->update($input);
+        return redirect()->route('admins.show', $admin->username)->with('success', 'Administrator "' . $admin->name . ' ' . $admin->surname . ': ' . $admin->username . '" uspješno izmijenjen');
+
     }
 
     /**

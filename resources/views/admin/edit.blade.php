@@ -1,12 +1,12 @@
 <x-layout>
     @section('title')
-        Edit : {{ $librarian->username }}
+        Edit : {{ $admin->username }}
     @endsection
         <!-- Delete Librarian profile photo Modal -->
         <div class="modal fadeM" id="deleteProfilePhotoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="post" action="{{ route('librarian.delete-profile-photo', $librarian) }}">
+                    <form method="post" action="napraviOvo">
                         @csrf
                         <div class="modal-header">
                             <h2 class="modal-title" id="exampleModalLabel"><b>Da li želite obrisati vašu profilnu sliku</b></h2>
@@ -44,16 +44,16 @@
                             <nav class="w-full rounded">
                                 <ol class="flex list-reset">
                                     <li>
-                                        <a href="{{ route('librarians.index') }}" class="text-[#2196f3] hover:text-blue-600">
-                                            Svi bibliotekari
+                                        <a href="{{ route('admins.index') }}" class="text-[#2196f3] hover:text-blue-600">
+                                            Svi administratori
                                         </a>
                                     </li>
                                     <li>
                                         <span class="mx-2">/</span>
                                     </li>
                                     <li>
-                                        <a href="{{ route('librarians.show', $librarian->username) }}" class="text-[#2196f3] hover:text-blue-600">
-                                            {{ $librarian->username }}
+                                        <a href="{{ route('admins.show', $admin->username) }}" class="text-[#2196f3] hover:text-blue-600">
+                                            {{ $admin->username }}
                                         </a>
                                     </li>
                                     <li>
@@ -72,21 +72,21 @@
             </div>
             <!-- Space for content -->
             <div class="scroll height-content section-content">
-                <form id="form" method="POST" class="text-gray-700 text-[14px] forma" action="{{ route('librarians.update', $librarian) }}" enctype="multipart/form-data">
-                    <input type="hidden" name="id" value="{{ $librarian->id }}">
+                <form id="form" method="POST" class="text-gray-700 text-[14px] forma" action="{{ route('admins.update', $admin) }}" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="{{ $admin->id }}">
                     @csrf
                     @method('PUT')
                     <div class="flex flex-row ml-[30px]">
                         <div class="w-[50%] mb-[100px]">
                             <div class="mt-[20px]">
                                 <span>Ime <span class="text-red-500">*</span></span>
-                                <input type="text" name="firstname" id="imeBibliotekarEdit" value="{{ $librarian->name }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekarEdit()"/>
+                                <input type="text" name="firstname" id="imeBibliotekarEdit" value="{{ $admin->name }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekarEdit()"/>
                                 <div id="validateNameBibliotekarEdit"></div>
                                 @error('name') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
                             <div class="mt-[20px]">
                                 <span>Prezime <span class="text-red-500">*</span></span>
-                                <input type="text" name="lastname" id="prezimeBibliotekarEdit" value="{{ $librarian->surname }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsSurnameBibliotekarEdit()"/>
+                                <input type="text" name="lastname" id="prezimeBibliotekarEdit" value="{{ $admin->surname }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsSurnameBibliotekarEdit()"/>
                                 <div id="validateSurnameBibliotekarEdit"></div>
                                 @error('surname') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
@@ -95,28 +95,28 @@
                                 <span>Tip korisnika</span>
                                 <select class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="tip_korisnika" disabled>
                                     <option value="">
-                                        Bibliotekar
+                                        Administratori
                                     </option>
                                 </select>
                             </div>
 
                             <div class="mt-[20px]">
                                 <span id="jmbgLabel">JMBG <span class="text-red-500">*</span></span>
-                                <input type="text" autocomplete="off" onkeyup="jmbgCheckLE()" maxlength="13" name="jmbgBibliotekarEdit" id="jmbgBibliotekarEdit" value="{{ $librarian->jmbg }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekarEdit()"/>
+                                <input type="text" autocomplete="off" onkeyup="jmbgCheckLE()" maxlength="13" name="jmbgBibliotekarEdit" id="jmbgBibliotekarEdit" value="{{ $admin->jmbg }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekarEdit()"/>
                                 <div id="validateJmbgBibliotekarEdit"></div>
                                 @error('jmbg') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
                                 <span>E-mail <span class="text-red-500">*</span></span>
-                                <input type="email" name="emailBibliotekarEdit" id="emailBibliotekarEdit" value="{{ $librarian->email }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsEmailBibliotekarEdit()"/>
+                                <input type="email" name="emailBibliotekarEdit" id="emailBibliotekarEdit" value="{{ $admin->email }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsEmailBibliotekarEdit()"/>
                                 <div id="validateEmailBibliotekarEdit"></div>
                                 @error('email') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mt-[20px]">
                                 <span id="unameLabel">Korisničko ime <span class="text-red-500">*</span></span>
-                                <input type="text" name="usernameBibliotekarEdit" onkeypress="usernameCheckLE()" onkeyup="usernameCheckLE()" id="usernameBibliotekarEdit" value="{{ $librarian->username }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekarEdit()"/>
+                                <input type="text" name="usernameBibliotekarEdit" onkeypress="usernameCheckLE()" onkeyup="usernameCheckLE()" id="usernameBibliotekarEdit" value="{{ $admin->username }}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekarEdit()"/>
                                 <div id="validateUsernameBibliotekarEdit"></div>
                                 @error('username') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                             </div>
@@ -147,7 +147,7 @@
                                     <span class="px-4 py-2 mt-2 leading-normal">Add photo</span>
                                     <input onchange="cropperFunction(event)" id="upload-picture" value="" name="picture-raw" type="file" class="hidden" :accept="accept">
                                 </div>
-                                <img id="image-output" class="absolute w-48 h-[188px] bottom-0" src="{{ $librarian->photoPath }}">
+                                <img id="image-output" class="absolute w-48 h-[188px] bottom-0" src="{{ $admin->photoPath }}">
                             </div>
                         </label>
                         <button type="button" data-toggle="modal" data-target="#deleteProfilePhotoModal"
@@ -164,7 +164,7 @@
                     <div class="absolute bottom-0 w-full">
                         <div class="flex flex-row">
                             <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
-                                <a href="{{ route('librarians.show', $librarian->username) }}">
+                                <a href="{{ route('admins.show', $admin->username) }}">
                                     <button type="button"
                                             class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                                         Poništi <i class="fas fa-times ml-[4px]"></i>
