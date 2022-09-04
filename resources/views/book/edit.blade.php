@@ -18,7 +18,7 @@
                 <div class="pl-[30px] py-[10px] flex flex-col">
                     <div>
                         <h1>
-                            Izmijeni Knjigu: {{ $book->title }}
+                            Izmijeni knjigu: {{ $book->title }}
                         </h1>
                     </div>
                     <div>
@@ -44,7 +44,7 @@
                                 <li>
                                     <a href="#"
                                        class="text-gray-400 hover:text-blue-600">
-                                        Izmijeni Knjigu
+                                        Izmijeni knjigu
                                     </a>
                                 </li>
                             </ol>
@@ -99,7 +99,7 @@
                                 </div>
 
                                 <div class="mt-[20px]">
-                                    <p class="inline-block mb-2">Kratki sadrzaj</p>
+                                    <p class="inline-block mb-2">Kratki sadržaj</p>
                                     <textarea name="kratki_sadrzaj"
                                               class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">{{ $book->description }}</textarea>
                                 </div>
@@ -127,7 +127,7 @@
 
                                 <div class="mt-[20px]">
                                     <div class="flex flex-col w-[90%]">
-                                        <p class="mb-2">Izaberite zanrove <span class="text-red-500">*</span></p>
+                                        <p class="mb-2">Izaberite žanrove <span class="text-red-500">*</span></p>
                                         <div class="relative inline-block w-[100%]">
                                             <div class="relative flex flex-col items-center">
                                                 <div class="w-full svelte-1l8159u">
@@ -170,7 +170,7 @@
                                 </div>
 
                                 <div class="mt-[20px]">
-                                    <p class="mb-2">Izdavac <span class="text-red-500">*</span></p>
+                                    <p class="mb-2">Izdavač <span class="text-red-500">*</span></p>
                                     <select class="select2 flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="izdavac" id="izdavac" onchange="clearErrorsIzdavac()">
                                         <option selected hidden disabled></option>
                                         @foreach($publishers as $publisher)
@@ -194,7 +194,7 @@
                                 </div>
 
                                 <div class="mt-[20px]">
-                                    <p>Kolicina <span class="text-red-500">*</span></p>
+                                    <p>Količina <span class="text-red-500">*</span></p>
                                     <input autocomplete="off" value="{{ $book->samples }}"
                                            type="number" name="knjigaKolicina" id="knjigaKolicina"
                                            class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsKnjigaKolicina()">
@@ -218,7 +218,7 @@
                                 </a>
                                 <button type="button"
                                         class="btn-animation ml-[15px] shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaKnjigaOD(event, 'specifikacije-tab')">
-                                    Sledeća <i class="fas fa-arrow-right ml-[4px]"></i>
+                                    Sljedeća <i class="fas fa-arrow-right ml-[4px]"></i>
                                 </button>
                             </div>
                         </div>
@@ -310,11 +310,11 @@
                                 </button>
                                 <button type="button"
                                         class="btn-animation ml-[15px] shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="tab('osnovniDetalji-tab')" style="background: #325EA8">
-                                    Predhodna <i class="fas fa-arrow-left ml-[4px]"></i>
+                                    Prethodna <i class="fas fa-arrow-left ml-[4px]"></i>
                                 </button>
                                 <button type="button"
                                         class="btn-animation ml-[15px] shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaKnjigaSpec(event, 'multimedija-tab')">
-                                    Sledeća <i class="fas fa-arrow-right ml-[4px]"></i>
+                                    Sljedeća <i class="fas fa-arrow-right ml-[4px]"></i>
                                 </button>
                             </div>
                         </div>
@@ -466,7 +466,7 @@
                                 </a>
                                 <button type="button"
                                         class="btn-animation mr-[15px] shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="tab('specifikacije-tab')" style="background: #325EA8">
-                                    Predhodna <i class="fas fa-arrow-left ml-[4px]"></i>
+                                    Prethodna <i class="fas fa-arrow-left ml-[4px]"></i>
                                 </button>
                                 <button id="sacuvajKnjigu" type="submit"
                                         class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaKnjiga(event)">

@@ -15,7 +15,7 @@
                     <ol class="flex list-reset">
                         <li>
                             <a href="{{route('students.index')}}" class="text-[#2196f3] hover:text-blue-600">
-                                Svi ucenici
+                                Svi učenici
                             </a>
                         </li>
                         <li>
@@ -34,7 +34,7 @@
         <div class="pt-[24px] pr-[30px]">
             <a href="#" class="inline hover:text-blue-600 show-modal">
                 <i class="fas fa-redo-alt mr-[3px]"></i>
-                Resetuj sifru
+                Resetuj šifru
             </a>
             <a href="{{route('students.edit',$student->username)}}"
                class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
@@ -56,7 +56,7 @@
                             @csrf
                             @method('DELETE')
                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                            <button type="submit"><span class="px-4 py-0">Izbriši Korisnika</span></button>
+                            <button type="submit"><span class="px-4 py-0">Izbriši korisnika</span></button>
                         </form>
                         </a>
                     </div>

@@ -73,8 +73,8 @@
             <!-- Space for content -->
                     <x-flash-msg/>
             <div class="pl-[30px] height-profile pb-[30px] scroll mt-[20px]">
-                <div class="flex flex-row">
-                    <div class="mr-[30px]">
+                <div class="row flex-row">
+                    <div class="col-sm-3 mr-[30px]">
                         <div class="mt-[20px]">
                             <span class="text-gray-500">Ime</span>
                             <p class="font-medium">{{ $librarian->name }}</p>
@@ -96,21 +96,23 @@
                             <a href="mailto:{{ $librarian->email }}"
                                 class="cursor-pointer block font-medium text-[#2196f3] hover:text-blue-600">{{ $librarian->email }}</a>
                         </div>
-                        <div class="mt-[40px]">
-                            <span class="text-gray-500">Korisnicko ime</span>
+                        <div class="mt-[40px] mb-[30px]">
+                            <span class="text-gray-500">Korisničko ime</span>
                             <p class="font-medium">{{ $librarian->username }}</p>
                         </div>
-                        <div class="mt-[40px]">
-                            <span class="text-gray-500">Broj logovanja</span>
-                            <p class="font-medium">{{ count($librarian->logins) }}</p>
-                        </div>
-                        <div class="mt-[40px]">
-                            <span class="text-gray-500">Poslednji put logovan/a</span>
-                            <p class="font-medium">{{ $librarian->lastLogin() }}</p>
-                        </div>
+                       <div class="row">
+                           <div class="mt-[40px] col-sm-6 wb">
+                               <span class="text-gray-500">Broj logovanja</span>
+                               <p class="font-medium">{{ count($librarian->logins) }}</p>
+                           </div>
+                           <div class="mt-[40px] col-sm-6">
+                               <span class="text-gray-500">Posljednji put logovan/a</span>
+                               <p class="font-medium">{{ $librarian->lastLogin() }}</p>
+                           </div>
+                       </div>
 
                     </div>
-                    <div class="ml-[100px]  mt-[20px]">
+                    <div class="col-sm-3 ml-[100px]  mt-[20px]">
                         <img class="p-2 border-2 border-gray-300" width="300px" src="{{ $librarian->photoPath }}" alt="">
                     </div>
                 </div>

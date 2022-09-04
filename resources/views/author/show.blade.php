@@ -78,7 +78,7 @@
                         </div>
                         <div class="mr-[70px] mt-[20px] flex flex-col max-w-[600px]">
                             <h4 class="text-gray-500 ">
-                                Storyline (Kratki sadrzaj)
+                                Storyline (Kratki sadržaj)
                             </h4>
                             <div class="scroll" style="max-height: 511px">
                                 <p class=" my-[10px]">

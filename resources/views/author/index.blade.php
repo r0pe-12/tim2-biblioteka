@@ -8,7 +8,7 @@
                 <div class="modal-content">
                     <form method="post" action="">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati autora: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati autora: </h5>
                             <h5 class="modal-title modalLabel"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -20,7 +20,7 @@
                         @csrf
                         @method('DELETE')
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
@@ -36,7 +36,7 @@
                 <div class="modal-content">
                     <form method="post" action="{{ route('author.bulk-delete') }}">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati sledece autore: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati sljedeće autore: </h5>
                             <h5 class="modal-title">
                                 <a data-bs-toggle="collapse" href="#showMore" role="button" class="showMorebtn" aria-expanded="false" aria-controls="collapseExample"></a>
                                 <ul class="collapse modalLabel" id="showMore"></ul>
@@ -52,7 +52,7 @@
                         @method('DELETE')
                         <div class="modal-footer">
                             <input type="hidden" value="" name="ids" id="ids">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
@@ -81,12 +81,12 @@
                         class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
                         <i class="fas fa-plus mr-[15px]"></i> Novi autor
                     </a>
-                    <a href="#" class="text-red-800 multiple" id="deleteMany" hidden data-toggle="modal" data-target="#deleteManyModal"><i class="fa fa-trash ml-4"></i> Izbrisi autore</a>
+                    <a href="#" class="text-red-800 multiple" id="deleteMany" hidden data-toggle="modal" data-target="#deleteManyModal"><i class="fa fa-trash ml-4"></i> Izbriši autore</a>
 
                     <a class="text-blue-800 one" hidden id="detalji" href="#"><i class="far fa-copy"></i> Pogledaj detalje</a>
                     <a class="text-blue-800 one" hidden id="edit" href="#"><i class="fas fa-user-edit"></i> Izmjeni autora</a>
 
-                    <a href="#" class="text-red-800 one deleteOne" id="deleteOne" hidden data-toggle="modal" data-target="#deleteOneModal"><i class="fa fa-trash ml-4"></i> Izbrisi autora</a>
+                    <a href="#" class="text-red-800 one deleteOne" id="deleteOne" hidden data-toggle="modal" data-target="#deleteOneModal"><i class="fa fa-trash ml-4"></i> Izbriši autora</a>
                     <div></div>
                 </div>
 
@@ -155,7 +155,7 @@
                                                        data-action="{{ route('authors.destroy', $author) }}"
                                                     >
                                                         <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Izbrisi autora</span>
+                                                        <span class="px-4 py-0">Izbriši autora</span>
                                                     </a>
                                                 </div>
                                             </div>

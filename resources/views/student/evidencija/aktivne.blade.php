@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Aktivne rezervacije ucenika: {{ $student->username }}
+        Aktivne rezervacije učenika: {{ $student->username }}
     @endsection
         <!-- Cancel Book Reservation Modal -->
         <div class="modal fadeM" id="otkaziRezModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -8,7 +8,7 @@
                 <div class="modal-content">
                     <form method="post" action="">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite otkazati rezervaciju knjige: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite otkazati rezervaciju knjige: </h5>
                             <h5 class="modal-title">
                                 <ul class="modalLabel"></ul>
                             </h5>
@@ -22,7 +22,7 @@
                         @csrf
                         @method('PUT')
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
@@ -80,7 +80,7 @@
                                         <div>
                                             <p
                                                 class="transition duration-300 ease-in  text-[15px] ml-[21px] group-hover:text-[#576cdf]">
-                                                Vracene knjige
+                                                Vraćene knjige
                                             </p>
                                         </div>
                                     </a>
@@ -121,7 +121,7 @@
                                         <div>
                                             <p
                                                 class="text-[15px] ml-[17px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                                Knjige u prekoracenju</p>
+                                                Knjige u prekoračenju</p>
                                         </div>
                                     </a>
                                 </div>
@@ -242,7 +242,7 @@
                                         <div>
                                             <p
                                                 class="text-[15px] ml-[19px] transition duration-300 ease-in text-[#576cdf]">
-                                                Otkazi rezervaciju</p>
+                                                Otkaži rezervaciju</p>
                                         </div>
                                     </a>
                                 </div>
@@ -262,7 +262,7 @@
                             </th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Naziv knjige</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum rezervacije</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervacija istice</th>
+                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervacija ističe</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervaciju podnio</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Status</th>
                             <th class="px-4 py-4"> </th>
@@ -323,7 +323,7 @@
 
                                                 <a href="#" data-toggle="modal" data-target="#otkaziRezModal" tabindex="0" class="otkaziRez flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600" role="menuitem" data-action="{{ route('rezervacija.otkazi', $reservation) }}" data-name="null" data-id="null" data-book-name="{{ $reservation->book->title }}" data-student-name="{{ $reservation->student->name }} {{ $reservation->student->surname }}">
                                                     <i class="fas fa-undo mr-[10px] ml-[5px] py-1"></i>
-                                                    <span class="px-4 py-0">Otkazi rezervaciju</span>
+                                                    <span class="px-4 py-0">Otkaži rezervaciju</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -338,7 +338,7 @@
                             </th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Naziv knjige</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum rezervacije</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervacija istice</th>
+                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervacija ističe</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervaciju podnio</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Status</th>
                             <th class="px-4 py-4"> </th>

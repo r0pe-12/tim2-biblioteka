@@ -13,15 +13,15 @@ use Illuminate\Http\Request;
 class BookWriteOffController extends Controller
 {
     //
-//  prikazi page za otpisivanje knjige
+//  prikaži page za otpisivanje knjige
     public function otpisiForm(Book $book) {
         return view('book.otpisi', [
             'book' => $book
         ]);
     }
-//  END-prikazi page za otpisivanje knjige
+//  END-prikaži page za otpisivanje knjige
 
-//  otpisi knjigu
+//  otpiši knjigu
     public function otpisi(Book $book) {
         \request()->validate([
             'toWriteoff' => 'required',
@@ -51,18 +51,18 @@ class BookWriteOffController extends Controller
         }
         return redirect()->back()->with('success', 'Knjiga "'. $book->title .'" je uspješno otpisana');
     }
-//  END-otpisi knjigu
+//  END-otpiši knjigu
 
-//  Prekoracene knjige tab
+//  Prekoračene knjige tab
     public function prekoracene(){
         # code
         return view('izdavanje.prekoracene',[
             'prekoracene' => WriteOff::prekoracene(),
         ]);
     }
-//  END-Prekoracene knjige tab
+//  END-Prekoračene knjige tab
 
-// prekoracene kopije jedne knjige
+// prekoračene kopije jedne knjige
     public function prekoracene1(Book $book){
         # code
         return view('book.evidencija.prekoracene', [
@@ -70,7 +70,7 @@ class BookWriteOffController extends Controller
             'available' => $book->samples - $book->borrowedSamples
         ]);
     }
-// END-prekoracene kopije jedne knjige
+// END-prekoračene kopije jedne knjige
 
 // otpisane knjige tab
     public function otpisane(){

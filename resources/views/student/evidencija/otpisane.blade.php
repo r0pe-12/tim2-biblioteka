@@ -1,6 +1,6 @@
 <x-layout>
     @section('title')
-        Otpisane ucenika: {{ $student->username }}
+        Otpisane učenika: {{ $student->username }}
     @endsection
     <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
         <!-- Heading of content -->
@@ -51,7 +51,7 @@
                                         <div>
                                             <p
                                                 class="transition duration-300 ease-in  text-[15px] ml-[21px] group-hover:text-[#576cdf]">
-                                                Vracene knjige
+                                                Vraćene knjige
                                             </p>
                                         </div>
                                     </a>
@@ -91,7 +91,7 @@
                                         <div>
                                             <p
                                                 class="text-[15px] ml-[17px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                                Knjige u prekoracenju</p>
+                                                Knjige u prekoračenju</p>
                                         </div>
                                     </a>
                                 </div>
@@ -182,10 +182,10 @@
                             </label>
                         </th>
                         <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Naziv knjige</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato uceniku</th>
+                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato učeniku</th>
                         <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum izdavanja</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum vracanja</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Zadrzavanje knjige </th>
+                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum vraćanja</th>
+                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Zadržavanje knjige </th>
                         <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Knjigu primio</th>
                         <th class="px-4 py-4"> </th>
                     </tr>
@@ -248,10 +248,10 @@
                         <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left text-blue-500">
                         </th>
                         <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Naziv knjige</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato uceniku</th>
+                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato učeniku</th>
                         <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum izdavanja</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum vracanja</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Zadrzavanje knjige </th>
+                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Datum vraćanja</th>
+                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Zadržavanje knjige </th>
                         <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Knjigu primio</th>
                         <th class="px-4 py-4"> </th>
                     </tr>

@@ -8,7 +8,7 @@
                 <div class="modal-content">
                     <form method="post" action="">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati bibliotekara: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati bibliotekara: </h5>
                             <h5 class="modal-title modalLabel"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -20,7 +20,7 @@
                         @csrf
                         @method('DELETE')
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
@@ -36,7 +36,7 @@
                 <div class="modal-content">
                     <form method="post" action="{{ route('librarian.bulk-delete') }}">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li zelite obrisati sledece bibliotekare: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati sljedeće bibliotekare: </h5>
                             <h5 class="modal-title">
                                 <a data-bs-toggle="collapse" href="#showMore" role="button" class="showMorebtn" aria-expanded="false" aria-controls="collapseExample"></a>
                                 <ul class="collapse modalLabel" id="showMore"></ul>
@@ -52,7 +52,7 @@
                         @method('DELETE')
                         <div class="modal-footer">
                             <input type="hidden" class="ids" value="" name="unames" id="ids">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
                             <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
                                 Potvrdi <i class="fas fa-check ml-[4px]"></i>
                             </button>
@@ -80,7 +80,7 @@
                     <a href="#" class="text-red-800 multiple" id="deleteMany" hidden data-toggle="modal" data-target="#deleteManyModal"><i class="fa fa-trash ml-4"></i> Izbrisi bibliotekare</a>
 
                     <a class="text-blue-800 one" hidden id="detalji" href="#"><i class="far fa-copy"></i> Pogledaj detalje</a>
-                    <a class="text-blue-800 one" hidden id="edit" href="#"><i class="fas fa-user-edit"></i> Izmjeni bibliotekara</a>
+                    <a class="text-blue-800 one" hidden id="edit" href="#"><i class="fas fa-user-edit"></i> Izmijeni bibliotekara</a>
 
                     <a href="#" class="text-red-800 one deleteOne" id="deleteOne" hidden data-toggle="modal" data-target="#deleteOneModal"><i class="fa fa-trash ml-4"></i> Izbrisi bibliotekara</a>
                     <div></div>
@@ -157,7 +157,7 @@
                                                            data-action="{{ route('librarians.destroy', $librarian->username) }}"
                                                         >
                                                             <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Izbrisi bibliotekara</span>
+                                                            <span class="px-4 py-0">Izbriši bibliotekara</span>
                                                         </a>
                                                     @endif
                                                 </div>

@@ -115,7 +115,7 @@ class PublisherController extends Controller
         try {
             $publisher->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje izdavaca "' . $publisher->name . '" nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje izdavača "' . $publisher->name . '" nije moguće');
         }
 
         return redirect()->route('publisher.index')->with('success', 'Izdavač "' . $publisher->name . '" je uspješno obrisan');
@@ -131,9 +131,9 @@ class PublisherController extends Controller
         try {
             $publishers->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje izdavaca nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje izdavača nije moguće');
         }
 
-        return redirect()->route('publisher.index')->with('success', 'Izdavaci su uspješno izbrisani');
+        return redirect()->route('publisher.index')->with('success', 'Izdavači su uspješno izbrisani');
     }
 }

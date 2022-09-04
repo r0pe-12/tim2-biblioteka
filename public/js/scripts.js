@@ -17,6 +17,7 @@ const unameRegEx = '^(?=[a-zA-Z0-9_-]{3,254}$)(?!.*[_-]{2})[^_-].*[^_-]$';
       //show text and arrow
       $(".sidebar-item").removeClass("hidden");
       $(".sidebar-item").addClass("inline");
+      $("section").addClass("blur2");
   })
 
   sidebar.on('mouseleave', function () {
@@ -35,6 +36,7 @@ const unameRegEx = '^(?=[a-zA-Z0-9_-]{3,254}$)(?!.*[_-]{2})[^_-].*[^_-]$';
       $('.arrow').removeClass('fa-angle-up');
       $('.arrow').addClass('fa-angle-down');
     }
+      $("section").removeClass("blur2");
   });
 
 function tab(tab) {
@@ -116,7 +118,7 @@ $(document).ready(function () {
     vratiModal.addClass('hidden');
   })
 
-  // Otpisi Knjigu Modal
+  // Otpiši Knjigu Modal
   otpisiModal = $(".otpisi-modal");
   $(".show-otpisiModal").on('click', function () {
     otpisiModal.removeClass('hidden');
@@ -126,7 +128,7 @@ $(document).ready(function () {
     otpisiModal.addClass('hidden');
   })
 
-  // Izbrisi Zapis Modal
+  // Izbriši Zapis Modal
   izbrisiModal = $(".izbrisi-modal");
   $(".show-izbrisiModal").on('click', function () {
     izbrisiModal.removeClass('hidden');
@@ -141,9 +143,9 @@ function AddReadMore() {
   //This limit you can set after how much characters you want to show Read More.
   var carLmt = 1000;
   // Text to show when text is collapsed
-  var readMoreTxt = " ... Prikazi vise &#8681;";
+  var readMoreTxt = " ... Prikaži vise &#8681;";
   // Text to show when text is expanded
-  var readLessTxt = " Prikazi manje &#8657;";
+  var readLessTxt = " Prikaži manje &#8657;";
 
 
   //Traverse all selectors with this class and manupulate HTML part to show Read More
@@ -324,7 +326,7 @@ $('#deleteProfilePhotoModal form').submit(function () {
             $('#deleteProfilePhotoModal .close-modal').click();
             $('input[type="file"]').val('');
             $('#image-output').attr('src', '/img/profile.jpg');
-            flashMsg('Profilna slika uspjesno obrisana', 'success');
+            flashMsg('Profilna slika uspješno obrisana', 'success');
         }
     })
 })
@@ -425,7 +427,7 @@ $(".reservedBook").click(function () {
   changeColorStatus.removeClass('border-yellow-500')
   changeColorStatus.removeClass('bg-transparent')
   changeColorStatus.addClass('bg-yellow-200')
-  changeTextStatus.text('Potvrdjene rezervacije')
+  changeTextStatus.text('Potvrđene rezervacije')
   changeTextStatus.removeClass('text-yellow-500')
   changeTextStatus.addClass('text-yellow-700')
   checkMark.parent().addClass('hidden')
@@ -499,7 +501,7 @@ function validacijaBibliotekar(event) {
     $('#validateUsernameBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
     event.preventDefault();
   } else if (!(usernameBibliotekar.match(unameRegEx))) {
-    $('#validateUsernameBibliotekar').append('<p style="color:red;font-size:13px;">Korisničko ime je pogresnog formata!</p>');
+    $('#validateUsernameBibliotekar').append('<p style="color:red;font-size:13px;">Korisničko ime je pogrešnog formata!</p>');
     event.preventDefault();
   }
 
@@ -562,7 +564,7 @@ function usernameCheckLC() {
     if (usernameBibliotekar.length == 0) {
         $('#validateUsernameBibliotekar').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
     } else if (!(usernameBibliotekar.match(unameRegEx))) {
-        $('#validateUsernameBibliotekar').append('<p style="color:red;font-size:13px;">Korisničko ime je pogresnog formata!</p>');
+        $('#validateUsernameBibliotekar').append('<p style="color:red;font-size:13px;">Korisničko ime je pogrešnog formata!</p>');
     } else {
         $("#unameLabel").attr('style', 'color:green;');
     }
@@ -575,7 +577,7 @@ function usernameCheckLE() {
     if (usernameBibliotekarEdit.length == 0) {
         $('#validateUsernameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
     } else if (!(usernameBibliotekarEdit.match(unameRegEx))) {
-        $('#validateUsernameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Korisničko ime je pogresnog formata!</p>');
+        $('#validateUsernameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Korisničko ime je pogrešnog formata!</p>');
     } else {
         $("#unameLabel").attr('style', 'color:green;');
     }
@@ -661,10 +663,10 @@ function validacijaBibliotekarEdit(event) {
   }
 
   if (usernameBibliotekarEdit.length == 0) {
-    $('#validateUsernameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisnicko ime!</p>');
+    $('#validateUsernameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
     event.preventDefault();
   } else if (!(usernameBibliotekarEdit.match(unameRegEx))) {
-      $('#validateUsernameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Korisničko ime je pogresnog formata!</p>');
+      $('#validateUsernameBibliotekarEdit').append('<p style="color:red;font-size:13px;">Korisničko ime je pogrešnog formata!</p>');
       event.preventDefault();
   }
 
@@ -766,10 +768,10 @@ function validacijaUcenik(event) {
   }
 
   if (usernameUcenik.length == 0) {
-    $('#validateUsernameUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti korisnicko ime!</p>');
+    $('#validateUsernameUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
     event.preventDefault();
   } else if (!(usernameUcenik.match(unameRegEx))){
-      $('#validateUsernameUcenik').append('<p style="color:red;font-size:13px;">Korisnicko ime pogresnog formata!</p>');
+      $('#validateUsernameUcenik').append('<p style="color:red;font-size:13px;">Korisnčko ime je pogrešnog formata!</p>');
       event.preventDefault();
   }
 
@@ -832,9 +834,9 @@ function usernameCheckSC() {
     let usernameUcenik = $("#usernameUcenik").val();
     $("#unameLabel").attr('style', 'color:red;');
     if (usernameUcenik.length == 0) {
-        $('#validateUsernameUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti korisnicko ime!</p>');
+        $('#validateUsernameUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
     } else if (!(usernameUcenik.match(unameRegEx))){
-        $('#validateUsernameUcenik').append('<p style="color:red;font-size:13px;">Korisnicko ime pogresnog formata!</p>');
+        $('#validateUsernameUcenik').append('<p style="color:red;font-size:13px;">Korisničko ime je pogrešnog formata!</p>');
     } else {
         $("#unameLabel").attr('style', 'color:green;');
     }
@@ -845,9 +847,9 @@ function usernameCheckSE() {
     let usernameUcenikEdit = $("#usernameUcenikEdit").val();
     $("#unameLabel").attr('style', 'color:red;');
     if (usernameUcenikEdit.length == 0) {
-        $('#validateUsernameUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisnicko ime!</p>');
+        $('#validateUsernameUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
     } else if (!(usernameUcenikEdit.match(unameRegEx))){
-        $('#validateUsernameUcenikEdit').append('<p style="color:red;font-size:13px;">Korisnicko ime pogresnog formata!</p>');
+        $('#validateUsernameUcenikEdit').append('<p style="color:red;font-size:13px;">Korisničko ime je pogrešnog formata!</p>');
     } else {
         $("#unameLabel").attr('style', 'color:green;');
     }
@@ -937,7 +939,7 @@ function validacijaUcenikEdit(event) {
     $('#validateUsernameUcenikEdit').append('<p style="color:red;font-size:13px;">Morate unijeti korisničko ime!</p>');
       event.preventDefault();
   } else if (!(usernameUcenikEdit.match(unameRegEx))){
-      $('#validateUsernameUcenikEdit').append('<p style="color:red;font-size:13px;">Korisničko ime je pogresnog formata!</p>');
+      $('#validateUsernameUcenikEdit').append('<p style="color:red;font-size:13px;">Korisničko ime je pogrešnog formata!</p>');
       event.preventDefault();
   }
 
@@ -1053,7 +1055,7 @@ function validacijaKnjigaOD(event, nextTab= null) {
     }
 
     if (zanr.length == 0) {
-        $('#validateZanr').append('<p style="color:red;font-size:13px;">Morate selektovati zanr!</p>');
+        $('#validateZanr').append('<p style="color:red;font-size:13px;">Morate selektovati žanr!</p>');
         event.preventDefault();
         errors++;
     }
@@ -1065,7 +1067,7 @@ function validacijaKnjigaOD(event, nextTab= null) {
     }
 
     if (izdavac == null) {
-        $('#validateIzdavac').append('<p style="color:red;font-size:13px;">Morate selektovati izdavaca!</p>');
+        $('#validateIzdavac').append('<p style="color:red;font-size:13px;">Morate selektovati izdavača!</p>');
         event.preventDefault();
         errors++;
     }
@@ -1077,7 +1079,7 @@ function validacijaKnjigaOD(event, nextTab= null) {
     }
 
     if (knjigaKolicina.length == 0) {
-        $('#validateKnjigaKolicina').append('<p style="color:red;font-size:13px;">Morate unijeti kolicinu!</p>');
+        $('#validateKnjigaKolicina').append('<p style="color:red;font-size:13px;">Morate unijeti količinu!</p>');
         event.preventDefault();
         errors++;
     }
@@ -1234,7 +1236,7 @@ function validacijaKnjigaEdit() {
   }
 
   if (izdavacEdit == null) {
-    $('#validateIzdavacEdit').append('<p style="color:red;font-size:13px;">Morate selektovati izdavaca!</p>');
+    $('#validateIzdavacEdit').append('<p style="color:red;font-size:13px;">Morate selektovati izdavača!</p>');
   }
 
   if (godinaIzdavanjaEdit == null) {
@@ -1242,7 +1244,7 @@ function validacijaKnjigaEdit() {
   }
 
   if (knjigaKolicinaEdit.length == 0) {
-    $('#validateKnjigaKolicinaEdit').append('<p style="color:red;font-size:13px;">Morate unijeti kolicinu!</p>');
+    $('#validateKnjigaKolicinaEdit').append('<p style="color:red;font-size:13px;">Morate unijeti količinu!</p>');
   }
 }
 
@@ -1420,7 +1422,7 @@ function validacijaRezervisanje(event) {
   let datumRezervisanja = $("#datumRezervisanja").val();
 
   if (ucenikRezervisanje == null) {
-    $('#validateUcenikRezervisanje').append('<p style="color:red;font-size:13px;">Morate selektovati ucenika!</p>');
+    $('#validateUcenikRezervisanje').append('<p style="color:red;font-size:13px;">Morate selektovati učenika!</p>');
     event.preventDefault();
   }
 
@@ -1620,7 +1622,7 @@ function validacijaZanrEdit(event) {
   let nazivZanraEdit = $("#nazivZanraEdit").val();
 
   if (nazivZanraEdit.length == 0) {
-    $('#validateNazivZanraEdit').append('<p style="color:red;font-size:13px;">Morate unijeti naziv zanra!</p>');
+    $('#validateNazivZanraEdit').append('<p style="color:red;font-size:13px;">Morate unijeti naziv žanra!</p>');
     event.preventDefault();
   }
 
@@ -1909,11 +1911,11 @@ function validacijaSifraUcenik() {
   let pw2ResetUcenik = $("#pw2ResetUcenik").val();
 
   if (pwResetUcenik.length == 0) {
-    $('#validatePwResetUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti sifru!</p>');
+    $('#validatePwResetUcenik').append('<p style="color:red;font-size:13px;">Morate unijeti šifru!</p>');
   }
 
   if (pw2ResetUcenik.length == 0) {
-    $('#validatePw2ResetUcenik').append('<p style="color:red;font-size:13px;">Morate ponoviti sifru!</p>');
+    $('#validatePw2ResetUcenik').append('<p style="color:red;font-size:13px;">Morate ponoviti šifru!</p>');
   }
 }
 
@@ -2506,7 +2508,7 @@ $(document).on('mouseup', function (e) {
   }
 });
 
-// Student - profile - vracene knjige - dropdown
+// Student - profile - vraćene knjige - dropdown
 $(".dotsUcenikVraceneKnjige").click(function () {
   $(".ucenik-vracene-knjige").toggle();
 })
@@ -2520,7 +2522,7 @@ $(document).on('mouseup', function (e) {
   }
 });
 
-// Student - profile - knjige u prekoracenju - dropdown
+// Student - profile - knjige u prekoračenju - dropdown
 $(".dotsUcenikKnjigePrekoracenje").click(function () {
   $(".ucenik-prekoracenje-knjige").toggle();
 })
@@ -2592,7 +2594,7 @@ $(document).on('mouseup', function (e) {
   }
 });
 
-// Student - profile - knjige u prekoracenju tabela - dropdown
+// Student - profile - knjige u prekoračenju tabela - dropdown
 $(".dotsUcenikPrekoracenjeKnjige").click(function () {
   var dotsUcenikPrekoracenjeKnjige = $(this);
   var dropdownPrekoracenjeKnjige = dotsUcenikPrekoracenjeKnjige.closest("td").find(".ucenik-prekoracenje-knjige-tabela");
@@ -2666,7 +2668,7 @@ $(document).on('mouseup', function (e) {
   }
 });
 
-// Vracene knjige - dropdown
+// Vraćene knjige - dropdown
 $(".dotsVraceneKnjige").click(function () {
   var dotsVraceneKnjige = $(this);
   var dropdownVraceneKnjige = dotsVraceneKnjige.closest("td").find(".vracene-knjige");
@@ -2681,7 +2683,7 @@ $(document).on('mouseup', function (e) {
   }
 });
 
-// Knjige u prekoracenju - dropdown
+// Knjige u prekoračenju - dropdown
 $(".dotsKnjigePrekoracenje").click(function () {
   var dotsKnjigePrekoracenje = $(this);
   var dropdownKnjigePrekoracenje = dotsKnjigePrekoracenje.closest("td").find(".knjige-prekoracenje");
@@ -2826,7 +2828,7 @@ $(document).on('mouseup', function (e) {
   }
 });
 
-// Rezervisi knjigu - dropdown
+// Rezerviši knjigu - dropdown
 $(".dotsRezervisiKnjigu").click(function () {
   $(".dropdown-rezervisi-knjigu").toggle();
 })
@@ -2840,7 +2842,7 @@ $(document).on('mouseup', function (e) {
   }
 });
 
-// Otpisi knjigu - dropdown
+// Otpiši knjigu - dropdown
 $(".dotsOtpisiKnjigu").click(function () {
   $(".dropdown-otpisi-knjigu").toggle();
 })
@@ -2896,7 +2898,7 @@ $(document).on('mouseup', function (e) {
   }
 });
 
-// Iznajmljivanje - vracene - dropdown
+// Iznajmljivanje - vraćne - dropdown
 $(".dotsIznajmljivanjeVracene").click(function () {
   $(".dropdown-iznajmljivanje-vracene").toggle();
 })
@@ -2910,7 +2912,7 @@ $(document).on('mouseup', function (e) {
   }
 });
 
-// Iznajmljivanje - prekoracenje - dropdown
+// Iznajmljivanje - prekoračenje - dropdown
 $(".dotsIznajmljivanjePrekoracenje").click(function () {
   $(".dropdown-iznajmljivanje-prekoracenje").toggle();
 })
@@ -2981,7 +2983,7 @@ $(document).on('mouseup', function (e) {
   }
 });
 
-// Iznajmljivanje - vracene knjige - tabela - dropdown
+// Iznajmljivanje - vraćene knjige - tabela - dropdown
 $(".dotsIznajmljivanjeVraceneKnjige").click(function () {
   var dotsIznajmljivanjeVraceneKnjige = $(this);
   var dropdownIznajmljivanjeVraceneKnjige = dotsIznajmljivanjeVraceneKnjige.closest("td").find(".iznajmljivanje-vracene-knjige");
@@ -2996,7 +2998,7 @@ $(document).on('mouseup', function (e) {
   }
 });
 
-// Iznajmljivanje - knjige u prekoracenju - tabela - dropdown
+// Iznajmljivanje - knjige u prekoračenju - tabela - dropdown
 $(".dotsIznajmljivanjeKnjigePrekoracenje").click(function () {
   var dotsIznajmljivanjeKnjigePrekoracenje = $(this);
   var dropdownIznajmljivanjeKnjigePrekoracenje = dotsIznajmljivanjeKnjigePrekoracenje.closest("td").find(".iznajmljivanje-knjige-prekoracenje");
@@ -3481,7 +3483,7 @@ $('#searchBar').on('input focusin', function () {
                         bibliotekari.innerText = '';
 
                         if (data.books.length < 1) {
-                            knjige.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronadjenih rezultata</li></a>`;
+                            knjige.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronađenih rezultata</li></a>`;
                         } else {
                             $.each(data.books, function (k, v) {
                                 knjige.innerHTML += `<a href="/books/${v.id}" style="font-size: 20px"><li style="padding-left: 15px">${v.title}</li></a>`;
@@ -3489,7 +3491,7 @@ $('#searchBar').on('input focusin', function () {
                         }
 
                         if (data.students.length < 1) {
-                            ucenici.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronadjenih rezultata</li></a>`;
+                            ucenici.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronađenih rezultata</li></a>`;
                         } else {
                             $.each(data.students, function (k, v) {
                                 ucenici.innerHTML += `<a href="/students/${v.username}" style="font-size: 20px"><li style="padding-left: 15px">${v.name} ${v.surname}</li></a>`;
@@ -3497,7 +3499,7 @@ $('#searchBar').on('input focusin', function () {
                         }
 
                         if (data.librarians.length < 1) {
-                            bibliotekari.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronadjenih rezultata</li></a>`;
+                            bibliotekari.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronađenih rezultata</li></a>`;
                         } else {
                             $.each(data.librarians, function (k, v) {
                                 bibliotekari.innerHTML += `<a href="/librarians/${v.username}" style="font-size: 20px"><li style="padding-left: 15px">${v.name} ${v.surname}</li></a>`;
@@ -3625,28 +3627,28 @@ function izdavanjeActivity(borrow) {
             inside = `
                 izdao/la na osnovu rezervacije knjigu <span class="font-bold"><a
                             href="/books/${borrow.book_id}">${borrow.book.title}</a></span>
-                uceniku
+                učeniku
             `;
             break
         case 2:
             inside = `
                 izdao/la knjigu <span class="font-bold"><a
                             href="/books/${borrow.book_id}">${borrow.book.title}</a></span>
-                uceniku
+                učeniku
             `;
             break
         case 3:case 4:
             inside = `
                 preuzeo/la knjigu <span class="font-bold"><a
                             href="/books/${borrow.book_id}">${borrow.book.title}</a></span> od
-                ucenika
+                učenika
             `;
             break
         case 5:
             inside = `
                 otpisao/la knjigu <span class="font-bold"><a
                             href="/books/${borrow.book_id}">${borrow.book.title}</a></span>
-                ucenika
+                učenika
             `;
             break
     }
@@ -3754,7 +3756,7 @@ function rezervacijeActivity(res) {
                             </a>
                             je prihvatio/la zahtjev za rezervaciju knjige
                             <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>
-                            ucenika
+                            učenika
                             <a href="/students/${res.student.username}"
                                class="text-[#2196f3] hover:text-blue-600">
                                 ${res.student.name} ${res.student.surname}
@@ -3823,7 +3825,7 @@ function rezervacijeActivity(res) {
                             </a>
                             je odbio/la zahtjev za rezervaciju knjige
                             <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>
-                            ucenika
+                            učenika
                             <a href="/students/${res.student.username}"
                                class="text-[#2196f3] hover:text-blue-600">
                                 ${res.student.name} ${res.student.surname}
@@ -3858,7 +3860,7 @@ function rezervacijeActivity(res) {
                                 Rezervacija knjige
                                 <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>
                                 za
-                                ucenika
+                                učenika
                                 <a href="/students/${res.student.username}"
                                    class="text-[#2196f3] hover:text-blue-600">
                                     ${res.student.name} ${res.student.surname}
@@ -3895,7 +3897,7 @@ function rezervacijeActivity(res) {
                                 </a>
                                 je zatvorio/la rezervaciju knjige
                                 <span class="font-bold"><a href="/books/${res.book_id}">${res.book.title}</a></span>
-                                ucenika
+                                učenika
                                 <a href="/students/${res.student.username}"
                                    class="text-[#2196f3] hover:text-blue-600">
                                     ${res.student.name} ${res.student.surname}
@@ -3947,7 +3949,7 @@ $('#uceniciDropdown').on('change', function () {
 
     var span = $(`
         ${ucenik === "Sve" ? "<span class='float-left'>" : "<span class='float-left bg-blue-200 text-blue-800 px-[8px] py-[2px]'>"}
-            Ucenici: ${ucenik}
+            Učenici: ${ucenik}
             <i class="px-[7px] fas fa-angle-down"></i>
             </span>
     `);

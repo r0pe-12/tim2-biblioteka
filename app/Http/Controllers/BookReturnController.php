@@ -12,14 +12,14 @@ use Illuminate\Http\Request;
 class BookReturnController extends Controller
 {
     //
-//    prikazi page za vracanje knjige
+//    prikaži page za vraćanje knjige
     public function vratiForm(Book $book){
         # code
         return view('book.vrati', [
             'book' => $book
         ]);
     }
-//    END-prikazi page za vracanje knjige
+//    END-prikaži page za vraćanje knjige
 
 //    vrati knjigu
     public function vrati(Book $book){
@@ -58,16 +58,16 @@ class BookReturnController extends Controller
     }
 //    END-vrati knjigu
 
-//    vracene tab
+//    vraćene tab
     public function vracene(){
         # code
         return view('izdavanje.vracene', [
             'returned' => BookReturn::returned()
         ]);
     }
-//    END-vracene tab
+//    END-vraćene tab
 
-//    vracene kopije jedne knjige
+//    vraćene kopije jedne knjige
     public function vracene1(Book $book){
         # code
         return view('book.evidencija.vracene', [
@@ -75,5 +75,5 @@ class BookReturnController extends Controller
             'available' => $book->samples - $book->borrowedSamples
         ]);
     }
-//    vracene kopije jedne knjige
+//    vraćene kopije jedne knjige
 }

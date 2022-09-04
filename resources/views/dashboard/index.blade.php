@@ -5,7 +5,7 @@
         @section('scripts')
             <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
             <script>
-                var xValues = ["Izdate knjige", "Rezervisane knjige", "Knjige u prekoracenju"];
+                var xValues = ["Izdate knjige", "Rezervisane knjige", "Knjige u prekoračenju"];
                 const ctx = document.getElementById('myChart').getContext('2d');
                 const myChart = new Chart(ctx, {
                     type: 'bar',
@@ -74,7 +74,7 @@
                             <div class="inline-block w-full mt-4">
                                 <a href="{{ route('dashboard.activity') }}"
                                     class="btn-animation block text-center w-full px-4 py-2 text-sm tracking-wider text-gray-600 transition duration-300 ease-in border-[1px] border-gray-400 rounded hover:bg-gray-200 focus:outline-none focus:ring-[1px] focus:ring-gray-300">
-                                    Prikazi vise
+                                    Prikaži više
                                 </a>
                             </div>
                         @else

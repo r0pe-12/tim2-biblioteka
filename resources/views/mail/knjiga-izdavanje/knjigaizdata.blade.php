@@ -28,7 +28,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td align="center" style="font-size:18px;color:#0e0e0f;font-weight:700;font-family:Verdana;line-height:28px;vertical-align:top;text-align:center;padding:35px 40px 0px 40px">
-                                                        <strong>Knjiga uspjesno {{ strtolower($borrow->status()->name) }}</strong>
+                                                        <strong>Knjiga uspješno {{ strtolower($borrow->status()->name) }}</strong>
                                                         <p style="font-size: 15px; margin-bottom: 0">ID - {{ $borrow->id }}</p>
                                                     </td>
                                                 </tr>
@@ -49,9 +49,9 @@
                                                 <tr>
                                                     <td class="m_2113659865872709336content" style="font:16px/22px 'Helvetica Neue',Arial,'sans-serif';text-align:left;color:#555555;padding:40px 40px 0 40px">
                                                         <p> Zdravo {{ $borrow->student->name }}, </p>
-                                                        <p> Ovo je potvrda da Vam je bibliotekar "{{ $borrow->librarian->name }} {{ $borrow->librarian->surname }}" uspjesno izdao knjigu <b>"{{ $borrow->book->title }}"</b> {{ $borrow->status()->id == \App\Models\BookStatus::RESERVED ? ' na osnovu rezervacije ' : '' }} dana {{ \App\Models\Carbon::parse($borrow->borrow_date)->format('d.m.Y.') }} </p>
-                                                        <p> Krajnji rok za vracanje knjige je: <b>{{ \App\Models\Carbon::parse($borrow->return_date)->format('d.m.Y.') }}</b> </p>
-                                                        <p> Hvala na koriscenju skolske biblioteke. </p>
+                                                        <p> Ovo je potvrda da Vam je bibliotekar "{{ $borrow->librarian->name }} {{ $borrow->librarian->surname }}" uspješno izdao knjigu <b>"{{ $borrow->book->title }}"</b> {{ $borrow->status()->id == \App\Models\BookStatus::RESERVED ? ' na osnovu rezervacije ' : '' }} dana {{ \App\Models\Carbon::parse($borrow->borrow_date)->format('d.m.Y.') }} </p>
+                                                        <p> Krajnji rok za vraćanje knjige je: <b>{{ \App\Models\Carbon::parse($borrow->return_date)->format('d.m.Y.') }}</b> </p>
+                                                        <p> Hvala na korišćenju školske biblioteke. </p>
                                                     </td>
                                                 </tr>
 

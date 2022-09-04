@@ -18,8 +18,8 @@
                 <!-- Space for content -->
                     <x-flash-msg/>
                 <div class="pl-[30px] section- mt-[20px]">
-                    <div class="flex flex-row">
-                        <div class="mr-[30px]">
+                    <div class="row flex-row">
+                        <div class="col-sm-3 mr-[30px]">
                             <div class="mt-[20px]">
                                 <span class="text-gray-500">Ime </span>
                                 <p class="font-medium">{{$student->name}}</p>
@@ -40,21 +40,22 @@
                                 <span class="text-gray-500">Email</span>
                                 <a href="mailto:{{$student->email}}" class="block font-medium text-[#2196f3]">{{$student->email}}</a>
                             </div>
-                            <div class="mt-[40px]">
-                                <span class="text-gray-500">Korisnicko ime</span>
+                            <div class="mt-[40px] mb-[30px]">
+                                <span class="text-gray-500">Korisničko ime</span>
                                 <p class="font-medium">{{$student->username}}</p>
                             </div>
-                            <div class="mt-[40px]">
-                                <span class="text-gray-500">Broj logovanja</span>
-                                <p class="font-medium">{{count($student->logins)}}</p>
+                            <div class="row">
+                                <div class="mt-[40px] col-sm-6 wb">
+                                    <span class="text-gray-500">Broj logovanja</span>
+                                    <p class="font-medium">{{count($student->logins)}}</p>
+                                </div>
+                                <div class="mt-[40px] col-sm-6">
+                                    <span class="text-gray-500">Posljednji put logovan/a</span>
+                                    <p class="font-medium">{{$student->lastLogin()}}</p>
+                                </div>
                             </div>
-                            <div class="mt-[40px]">
-                                <span class="text-gray-500">Poslednji put logovan/a</span>
-                                <p class="font-medium">{{$student->lastLogin()}}</p>
-                            </div>
-
                         </div>
-                        <div class="ml-[100px]  mt-[20px]">
+                        <div class="col-sm-3 ml-[100px]  mt-[20px]">
                             <img class="p-2 border-2 border-gray-300" width="300px" src="{{$student->photoPath}}" alt="">
                         </div>
                     </div>
@@ -62,7 +63,6 @@
             </div>
         </section>
         <!-- End Content -->
-        </main>
         <!-- End Main content -->
 
         <!-- This code will show up when we press reset password -->
@@ -81,13 +81,13 @@
                     @method('PUT')
                     <div class="flex flex-col px-[30px] py-[30px]">
                         <div class="flex flex-col pb-[30px]">
-                            <span>Unesi novu sifru <span class="text-red-500">*</span></span>
+                            <span>Unesi novu šifru <span class="text-red-500">*</span></span>
                             <input class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" type="password" name="pwResetUcenik" id="pwResetUcenik" onkeydown="clearErrorsPwResetUcenik()">
                             <div id="validatePwResetUcenik"></div>
                             @error('pwResetUcenik') <div class="flash text-red-500 text-xs mt-1"><sup>*</sup>{{ $message }}</div> @enderror
                         </div>
                         <div class="flex flex-col pb-[30px]">
-                            <span>Ponovi sifru <span class="text-red-500">*</span></span>
+                            <span>Ponovi šifru <span class="text-red-500">*</span></span>
                             <input class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" type="password" name="pw2ResetUcenik" id="pw2ResetUcenik" onkeydown="clearErrorsPw2ResetUcenik()">
                             <div id="validatePw2ResetUcenik"></div>
                         </div>
@@ -95,12 +95,12 @@
                     <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
                         <button type="button" onclick="$('#pwResetModal input').each(function() {this.value = ''})"
                                 class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                            Ponisti <i class="fas fa-times ml-[4px]"></i>
+                            Poništi <i class="fas fa-times ml-[4px]"></i>
                         </button>
                         <button id="resetujSifruUcenik" type="submit"
                                 class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
                                 onclick="validacijaSifraUcenik()">
-                            Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                            Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                         </button>
                     </div>
                 </form>

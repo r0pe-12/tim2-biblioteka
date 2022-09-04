@@ -8,8 +8,8 @@
         <p>Na raspolaganju:</p>
         <p class="mt-[20px]">Rezervisano:</p>
         <p class="mt-[20px]">Izdato:</p>
-        <p class="mt-[20px]">U prekoracenju:</p>
-        <p class="mt-[20px]">Ukupna kolicina:</p>
+        <p class="mt-[20px]">U prekoračenju:</p>
+        <p class="mt-[20px]">Ukupna količina:</p>
     </div>
     <div class="text-center pb-[30px]">
         <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">

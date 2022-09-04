@@ -209,7 +209,7 @@ class BookController extends Controller
         try {
             $book->delete();
         } catch (\Exception $e){
-            return redirect()->back()->with('fail', 'Brisanje knjige "' . $book->title . '" nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje knjige "' . $book->title . '" nije moguće');
         }
 
         foreach ($photos as $photo){
@@ -242,7 +242,7 @@ class BookController extends Controller
         try {
             $books->delete();
         } catch (\Exception $e){
-            return redirect()->back()->with('fail', 'Brisanje knjiga nije moguce');
+            return redirect()->back()->with('fail', 'Brisanje knjiga nije moguće');
         }
 
         foreach ($galery as $photos){
