@@ -17,6 +17,7 @@ const unameRegEx = '^(?=[a-zA-Z0-9_-]{3,254}$)(?!.*[_-]{2})[^_-].*[^_-]$';
       //show text and arrow
       $(".sidebar-item").removeClass("hidden");
       $(".sidebar-item").addClass("inline");
+      $("section").addClass("blur2");
   })
 
   sidebar.on('mouseleave', function () {
@@ -35,6 +36,7 @@ const unameRegEx = '^(?=[a-zA-Z0-9_-]{3,254}$)(?!.*[_-]{2})[^_-].*[^_-]$';
       $('.arrow').removeClass('fa-angle-up');
       $('.arrow').addClass('fa-angle-down');
     }
+      $("section").removeClass("blur2");
   });
 
 function tab(tab) {

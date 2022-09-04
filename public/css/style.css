@@ -16,6 +16,10 @@
     filter: blur(3px);
 }
 
+.blur2 {
+    filter: blur(2px);
+}
+
 .activity-dropdown {
     z-index: 1;
 }
