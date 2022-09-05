@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/admins', AdminController::class);
     Route::delete('/admin/bulkdelete', [AdminController::class, 'bulkdelete'])->name('admin.bulkdelete');
     Route::put('/admins/{user}/resetPassword', [AdminController::class, 'passwordReset'])->name('admin.pwreset');
+    Route::post('/admins/{user}/deleteProfilePhoto', [AdminController::class, 'deleteProfilePhoto'])->name('admin.delete-profile-photo');
 
     Route::resource('/librarians', LibrarianController::class);
     Route::delete('/librarian/bulkdelete', [LibrarianController::class, 'bulkDelete'])->name('librarian.bulk-delete');

@@ -6,7 +6,7 @@
         <div class="modal fadeM" id="deleteProfilePhotoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="post" action="napraviOvo">
+                    <form method="post" action="{{ route('admin.delete-profile-photo', $admin) }}">
                         @csrf
                         <div class="modal-header">
                             <h2 class="modal-title" id="exampleModalLabel"><b>Da li želite obrisati vašu profilnu sliku</b></h2>

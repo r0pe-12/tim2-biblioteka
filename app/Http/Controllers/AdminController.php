@@ -202,4 +202,15 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Šifra korisnika "' . $user->name . ' ' . $user->surname . ': ' . $user->username . '" je uspješno resetovana');
     }
 
+    //    izbriši profilnu sliku
+    public function deleteProfilePhoto(User $user){
+        # code
+        if (file_exists($photoPath = public_path() . $user->photoPath)){
+            $user->photoPath = null;
+            $user->save();
+            unlink($photoPath);
+        }
+    }
+//    END-izbriši profilnu sliku
+
 }
