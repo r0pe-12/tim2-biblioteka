@@ -36,7 +36,7 @@
                 <div class="modal-content">
                     <form method="post" action="{{route('script.bulkDelete')}}">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati sljedeća pisma: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati sledeća pisma: </h5>
                             <h5 class="modal-title">
                                 <a data-bs-toggle="collapse" href="#showMore" role="button" class="showMorebtn" aria-expanded="false" aria-controls="collapseExample"></a>
                                 <ul class="collapse modalLabel" id="showMore"></ul>
