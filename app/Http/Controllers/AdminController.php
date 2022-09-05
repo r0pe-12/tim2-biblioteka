@@ -151,4 +151,39 @@ class AdminController extends Controller
         return redirect()->route('admins.index')->with('success', 'Administrator "' . $admin->name . ' ' . $admin->surname . ': ' . $admin->username . '" uspješno izbrisan');
 
     }
+
+    /**
+     * Remove the specified resourceS from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function bulkDelete()
+    {
+        //
+        $unames = explode(',', request('unames'));
+        $admins = User::whereIn('username', $unames);
+
+        $photos = [];
+//        we will get all photopaths from admins
+        foreach ($admins->get() as $lib){
+            $photos[] = $lib->getOriginal('photoPath');
+        }
+
+//        we will try to delete admins
+        try {
+            $admins->delete();
+        } catch (\Exception $e){
+            return redirect()->back()->with('fail', 'Brisanje administratora nije moguće');
+        }
+
+//        if wee delete them we will delete photos from storage
+        foreach ($photos as $photo) {
+            if (file_exists($photoPath = public_path() . $photo)){
+                unlink($photoPath);
+            }
+        }
+        return redirect()->back()->with('success', 'Administratori su uspješno izbrisani');
+    }
+
 }

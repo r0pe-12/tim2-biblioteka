@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/activity', [DashboardController::class, 'activity'])->name('dashboard.activity');
 
     Route::resource('/admins', AdminController::class);
+    Route::delete('/admin/bulkdelete', [AdminController::class, 'bulkdelete'])->name('admin.bulkdelete');
 
     Route::resource('/librarians', LibrarianController::class);
     Route::delete('/librarian/bulkdelete', [LibrarianController::class, 'bulkDelete'])->name('librarian.bulk-delete');
