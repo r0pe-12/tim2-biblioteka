@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function (){
 
     Route::resource('/admins', AdminController::class);
     Route::delete('/admin/bulkdelete', [AdminController::class, 'bulkdelete'])->name('admin.bulkdelete');
+    Route::put('/admins/{user}/resetPassword', [AdminController::class, 'passwordReset'])->name('admin.pwreset');
 
     Route::resource('/librarians', LibrarianController::class);
     Route::delete('/librarian/bulkdelete', [LibrarianController::class, 'bulkDelete'])->name('librarian.bulk-delete');

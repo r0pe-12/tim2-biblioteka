@@ -186,4 +186,20 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Administratori su uspješno izbrisani');
     }
 
+    //    reset password for specific admin
+    public function passwordReset(Request $request, User $user){
+        # code
+        $request['password'] = $request->pwResetBibliotekar;
+        $request['password_confirmation'] = $request->pw2ResetBibliotekar;
+        unset($request['pwResetBibliotekar'], $request['pw2ResetBibliotekar']);
+
+        $request->validate([
+            'password' => ['required', 'confirmed']
+        ]);
+
+        $user->password = $request->password;
+        $user->save();
+        return redirect()->back()->with('success', 'Šifra korisnika "' . $user->name . ' ' . $user->surname . ': ' . $user->username . '" je uspješno resetovana');
+    }
+
 }

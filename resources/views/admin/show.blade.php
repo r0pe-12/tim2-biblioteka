@@ -119,7 +119,6 @@
             </div>
         </section>
         <!-- End Content -->
-    </main>
     <!-- End Main content -->
 
     <!-- This code will show up when we press reset password -->
@@ -133,7 +132,7 @@
                 <button class="text-black close-modal" onclick="$('#pwResetModal input').each(function() {this.value = ''})">&cross;</button>
             </div>
             <!-- Modal Body -->
-            <form method="POST" class="forma" action="ovoNapravi">
+            <form method="POST" class="forma" action="{{ route('admin.pwreset', $admin) }}">
                 {{ csrf_field() }}
                 @method('PUT')
                 <div class="flex flex-col px-[30px] py-[30px]">
