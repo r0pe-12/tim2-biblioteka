@@ -85,6 +85,7 @@
                             </li>
                         @endif
                         @break
+                    @default
                 @endswitch
 
                 <!-- Učenici Icon -->
@@ -282,6 +283,7 @@
                             </li>
                         @endif
                         @break
+                    @default
                 @endswitch
             </ul>
         </div>
