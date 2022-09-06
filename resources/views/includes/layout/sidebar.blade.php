@@ -47,9 +47,11 @@
                 @endif
 
                 <!-- Bibliotekari Icon -->
-                @if(request()->routeIs('librarians.*'))
-                    <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[25px]">
+                @switch(auth()->user()->isAdmin())
+                    @case(true)
+                        @if(request()->routeIs('librarians.*'))
+                            <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+                                <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('librarians.index') }}" aria-label="Bibliotekari">
@@ -62,11 +64,11 @@
                                     </a>
                                 </div>
                             </span>
-                        </div>
-                    </li>
-                @else
-                    <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[25px]">
+                                </div>
+                            </li>
+                        @else
+                            <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+                                <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('librarians.index') }}" aria-label="Bibliotekari">
@@ -79,9 +81,11 @@
                                     </a>
                                 </div>
                             </span>
-                        </div>
-                    </li>
-                @endif
+                                </div>
+                            </li>
+                        @endif
+                        @break
+                @endswitch
 
                 <!-- Učenici Icon -->
                 @if(request()->routeIs('students.*', 'ucenik.*'))
@@ -233,16 +237,18 @@
 
                 <!-- Admin icon -->
 
-                <li style="pointer-events: none" class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                    <div class="ml-[25px]">
+                @switch(auth()->user()->isAdmin())
+                    @case(true)
+                        <li style="pointer-events: none" class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+                            <div class="ml-[25px]">
                         <span class="flex justify-between w-full whitespace-nowrap">
                         </span>
-                    </div>
-                </li>
+                            </div>
+                        </li>
 
-                @if(request()->routeIs('admins.*'))
-                    <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[25px]">
+                        @if(request()->routeIs('admins.*'))
+                            <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+                                <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('admins.index') }}" aria-label="Admin">
@@ -255,11 +261,11 @@
                                     </a>
                                 </div>
                             </span>
-                        </div>
-                    </li>
-                @else
-                    <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[25px]">
+                                </div>
+                            </li>
+                        @else
+                            <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+                                <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('admins.index') }}" aria-label="Admin">
@@ -272,10 +278,11 @@
                                     </a>
                                 </div>
                             </span>
-                        </div>
-                    </li>
-                @endif
-
+                                </div>
+                            </li>
+                        @endif
+                        @break
+                @endswitch
             </ul>
         </div>
     </div>
