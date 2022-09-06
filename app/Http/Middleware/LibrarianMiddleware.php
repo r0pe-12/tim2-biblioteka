@@ -16,7 +16,7 @@ class LibrarianMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->isLibrarian() && auth()->user()->isAdmin()) {
+        if (auth()->user()->isLibrarian() || auth()->user()->isAdmin()) {
             return $next($request);
         }
         auth()->logout();
