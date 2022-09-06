@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class AdminMiddleware
+class LibrarianMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,12 +16,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!(auth()->check())) {
-            return redirect('/login')->with('fail', 'Kontaktirajte bibliotekara vase skole');
+        if (auth()->user()->isLibrarian() && auth()->user()->isAdmin()) {
+            return $next($request);
         }
-        if (!(auth()->user()->isAdmin())) {
-            return redirect('/')->with('fail', 'Kontaktirajte administratora sistema');
-        }
-        return $next($request);
+        auth()->logout();
+        return redirect('/login')->with('fail', 'Ovaj sistem je namijenjen iskljucivo bibliotekarima. Instalirajte nasu mobilnu aplikaciju');
     }
 }

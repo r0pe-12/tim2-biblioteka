@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function (){
+Route::middleware(['auth', 'librarian'])->group(function (){
     Route::post('/search', [SearchController::class, 'search']);
 
 //    Route::get('/home', [HomeController::class, 'index'])->name('home');
