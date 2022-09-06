@@ -30,6 +30,10 @@ class UserPolicy
     public function view(User $user, User $model)
     {
         //
+        if ($user->isAdmin()) {
+            return true;
+        }
+        return $user->id == $model->id;
     }
 
     /**

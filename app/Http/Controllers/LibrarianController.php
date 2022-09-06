@@ -13,6 +13,10 @@ use League\CommonMark\Util\SpecReader;
 
 class LibrarianController extends Controller
 {
+    public function __construct(){
+        # code
+        $this->middleware('admin')->except('show', 'edit', 'update', 'passwordReset', 'deleteProfilePhoto');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -68,6 +72,7 @@ class LibrarianController extends Controller
     {
         //
         $librarian = User::where('username', '=', $username)->first();
+        $this->authorize('view', $librarian);
         if (is_null($librarian)) {
             abort('404');
         }
@@ -84,6 +89,7 @@ class LibrarianController extends Controller
     {
         //
         $librarian = User::where('username', '=', $username)->first();
+        $this->authorize('view', $librarian);
         if (is_null($librarian)) {
             abort('404');
         }
@@ -100,6 +106,7 @@ class LibrarianController extends Controller
     public function update(UpdateRequest $request, User $librarian)
     {
         //
+        $this->authorize('view', $librarian);
         $input = $request->validated();
         if (is_null($input['password'])){
             unset($input['password']);
@@ -130,6 +137,7 @@ class LibrarianController extends Controller
     {
         //
         $librarian = User::where('username', '=', $username)->first();
+        $this->authorize('view', $librarian);
         $this->authorize('delete', $librarian);
 
         $photo = $librarian->photoPath;
@@ -156,6 +164,9 @@ class LibrarianController extends Controller
     public function bulkDelete()
     {
         //
+        if (!(auth()->user()->isAdmin())) {
+            abort('403');
+        }
         $unames = explode(',', request('unames'));
         $librarians = User::whereIn('username', $unames);
 
@@ -185,6 +196,7 @@ class LibrarianController extends Controller
 //    reset password for specific librarian
     public function passwordReset(Request $request, User $user){
         # code
+        $this->authorize('view', $user);
         $request['password'] = $request->pwResetBibliotekar;
         $request['password_confirmation'] = $request->pw2ResetBibliotekar;
         unset($request['pwResetBibliotekar'], $request['pw2ResetBibliotekar']);
@@ -202,6 +214,7 @@ class LibrarianController extends Controller
     //    izbriši profilnu sliku
     public function deleteProfilePhoto(User $user){
         # code
+        $this->authorize('view', $user);
         if (file_exists($photoPath = public_path() . $user->photoPath)){
             $user->photoPath = null;
             $user->save();
