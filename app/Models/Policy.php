@@ -49,6 +49,20 @@ class Policy extends Model
         return $conflict;
     }
 
+    const MAXBORROWS = 4;
+    const MAXBORROWS_NAME = 'max_borrows';
+    public static function maxBorrows(){
+        # code
+        $maxBorrows = Policy::findOrNew(Policy::MAXBORROWS);
+        if (!$maxBorrows->id){
+            $maxBorrows->id = Policy::MAXBORROWS;
+            $maxBorrows->name = Policy::MAXBORROWS_NAME;
+            $maxBorrows->value = 5;
+            $maxBorrows->save();
+        }
+        return $maxBorrows;
+    }
+
     use HasFactory;
     protected $fillable = ['name', 'value'];
 }
