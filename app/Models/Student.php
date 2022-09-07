@@ -101,4 +101,11 @@ class Student extends User
                         ->where('resStatus_id', '!=', ReservationStatus::WAITING);
                 });
     }
+
+    public function ableToGet(){
+        # code
+        $maxBorrows = Policy::maxBorrows();
+        $borrows = $this->active()->count();
+        return $maxBorrows->value > $borrows;
+    }
 }
