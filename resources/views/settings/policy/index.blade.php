@@ -113,7 +113,7 @@
                                            onkeydown="return event.key != 'Enter';" class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="...">
                                     <p style="color: green;" hidden id="savedMessage4"><i class="fa fa-check  ml-[5px]"></i> Varijabla je uspješno sačuvana</p>
                                 </form>
-                                <p class="ml-[10px] mt-[10px]">dana</p>
+                                <p class="ml-[10px] mt-[10px]">knjiga</p>
                             </div>
                         </div>
 
