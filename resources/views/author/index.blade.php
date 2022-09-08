@@ -36,7 +36,7 @@
                 <div class="modal-content">
                     <form method="post" action="{{ route('author.bulk-delete') }}">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati sljedeće autore: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati sledeće autore: </h5>
                             <h5 class="modal-title">
                                 <a data-bs-toggle="collapse" href="#showMore" role="button" class="showMorebtn" aria-expanded="false" aria-controls="collapseExample"></a>
                                 <ul class="collapse modalLabel" id="showMore"></ul>

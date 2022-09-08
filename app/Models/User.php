@@ -88,4 +88,16 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function isAdmin(): bool
+    {
+        # code
+        return $this->role == Role::admin();
+    }
+
+    public function isLibrarian(): bool
+    {
+        # code
+        return $this->role == Role::librarian();
+    }
+
 }

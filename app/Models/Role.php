@@ -22,4 +22,40 @@ class Role extends Model
         # code
         return ucwords($name);
     }
+
+    const ADMIN = Admin::ROLE;
+    public static function admin(){
+        # code
+        $role = Role::findOrNew(Role::ADMIN);
+        if (!$role->id){
+            $role->id = Role::ADMIN;
+            $role->name = 'administrator';
+            $role->save();
+        }
+        return $role;
+    }
+
+    const LIBRARIAN = Librarian::ROLE;
+    public static function librarian(){
+        # code
+        $role = Role::findOrNew(Role::LIBRARIAN);
+        if (!$role->id){
+            $role->id = Role::LIBRARIAN;
+            $role->name = 'bibliotekar';
+            $role->save();
+        }
+        return $role;
+    }
+
+    const STUDENT = Student::ROLE;
+    public static function student(){
+        # code
+        $role = Role::findOrNew(Role::STUDENT);
+        if (!$role->id){
+            $role->id = Role::STUDENT;
+            $role->name = 'učenik';
+            $role->save();
+        }
+        return $role;
+    }
 }

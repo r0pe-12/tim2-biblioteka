@@ -9,6 +9,7 @@ use App\Models\ClosingReason;
 use App\Models\Policy;
 use App\Models\ReservationStatus;
 use App\Models\Student;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,11 @@ class BookBorrowController extends Controller
             'datumIzdavanja' => ['required', 'date'],
             'datumVracanja' => ['required', 'date'],
         ]);
+
+        $student = Student::findOrFail(\request()->ucenik);
+        if (!($student->ableToGet())) {
+            return redirect()->route('books.index')->with('fail', 'Nije moguće izdati knjigu: učenik već ima ' . $student->active()->count() . ' kod sebe');
+        }
 
         $borrow = new Borrow([
             'active' => 1,

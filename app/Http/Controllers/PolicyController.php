@@ -22,7 +22,9 @@ class PolicyController extends Controller
 
         $conflict = Policy::conflict();
 
-        return view('settings.policy.index', compact('reservation', 'return', 'conflict'));
+        $maxBorrows = Policy::maxBorrows();
+
+        return view('settings.policy.index', compact('reservation', 'return', 'conflict', 'maxBorrows'));
     }
 
     /**

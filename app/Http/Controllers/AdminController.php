@@ -4,19 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Librarian\CreateRequest;
 use App\Http\Requests\Librarian\UpdateRequest;
-use App\Models\Librarian;
+use App\Models\Admin;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use League\CommonMark\Util\SpecReader;
 
-class LibrarianController extends Controller
+class AdminController extends Controller
 {
-    public function __construct(){
-        # code
-        $this->middleware('admin')->except('show', 'edit', 'update', 'passwordReset', 'deleteProfilePhoto');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -25,8 +19,8 @@ class LibrarianController extends Controller
     public function index()
     {
         //
-        $librarians = Librarian::all()->load('logins', 'role');
-        return view('librarian.index', compact('librarians'));
+        $admins = Admin::all()->load('logins', 'role');
+        return view('admin.index', compact('admins'));
     }
 
     /**
@@ -37,7 +31,7 @@ class LibrarianController extends Controller
     public function create()
     {
         //
-        return view('librarian.create');
+        return view('admin.create');
     }
 
     /**
@@ -46,6 +40,7 @@ class LibrarianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
+//    odje cemo da koristimo request validaciju od bibliotekara jer je sve isto
     public function store(CreateRequest $request)
     {
         //
@@ -55,11 +50,13 @@ class LibrarianController extends Controller
             $file->storeAs('/images/users', $name);
             $input['photoPath'] = $name;
         }
-        $librarian = new User($input);
 
-        $role = Role::librarian();
-        $role->users()->save($librarian);
-        return redirect()->route('librarians.index')->with('success', 'Bibliotekar "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" je usjpešno kreiran');
+        $admin = new User($input);
+
+        $role = Role::admin();
+        $role->users()->save($admin);
+        return redirect()->route('admins.index')->with('success', 'Administrator "' . $admin->name . ' ' . $admin->surname . ': ' . $admin->username . '" je usjpešno kreiran');
+
     }
 
     /**
@@ -71,12 +68,12 @@ class LibrarianController extends Controller
     public function show($username)
     {
         //
-        $librarian = User::where('username', '=', $username)->first();
-        $this->authorize('view', $librarian);
-        if (is_null($librarian)) {
+        $admin = User::where('username', '=', $username)->first();
+        if (is_null($admin)) {
             abort('404');
         }
-        return view('librarian.show', compact('librarian'));
+        return view('admin.show', compact('admin'));
+
     }
 
     /**
@@ -88,12 +85,12 @@ class LibrarianController extends Controller
     public function edit($username)
     {
         //
-        $librarian = User::where('username', '=', $username)->first();
-        $this->authorize('view', $librarian);
-        if (is_null($librarian)) {
+        $admin = User::where('username', '=', $username)->first();
+        if (is_null($admin)) {
             abort('404');
         }
-        return view('librarian.edit', compact('librarian'));
+        return view('admin.edit', compact('admin'));
+
     }
 
     /**
@@ -103,10 +100,10 @@ class LibrarianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateRequest $request, User $librarian)
+//    odje koristimo request validaciju od biblioteara jer sve isto
+    public function update(UpdateRequest $request, User $admin)
     {
         //
-        $this->authorize('view', $librarian);
         $input = $request->validated();
         if (is_null($input['password'])){
             unset($input['password']);
@@ -116,15 +113,16 @@ class LibrarianController extends Controller
             $file->storeAs('/images/users', $name);
             $input['photoPath'] = $name;
 
-            if (file_exists($photoPath = public_path() . $librarian->photoPath)){
+            if (file_exists($photoPath = public_path() . $admin->photoPath)){
                 unlink($photoPath);
             }
 
         } else{
             unset($input['photoPath']);
         }
-        $librarian->update($input);
-        return redirect()->route('librarians.show', $librarian->username)->with('success', 'Bibliotekar "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" uspješno izmijenjen');
+        $admin->update($input);
+        return redirect()->route('admins.show', $admin->username)->with('success', 'Administrator "' . $admin->name . ' ' . $admin->surname . ': ' . $admin->username . '" uspješno izmijenjen');
+
     }
 
     /**
@@ -136,24 +134,23 @@ class LibrarianController extends Controller
     public function destroy($username)
     {
         //
-        $librarian = User::where('username', '=', $username)->first();
-        $this->authorize('view', $librarian);
-        $this->authorize('delete', $librarian);
+        $admin = User::where('username', '=', $username)->first();
+        $this->authorize('delete', $admin);
 
-        $photo = $librarian->photoPath;
+        $photo = $admin->photoPath;
 
         try {
-            $librarian->delete();
+            $admin->delete();
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Brisanje bibliotekara "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" nije moguće');
+            return redirect()->back()->with('fail', 'Brisanje administratora "' . $admin->name . ' ' . $admin->surname . ': ' . $admin->username . '" nije moguće');
         }
 
         if (file_exists($photoPath = public_path() . $photo)){
             unlink($photoPath);
         }
-        return redirect()->route('librarians.index')->with('success', 'Bibliotekar "' . $librarian->name . ' ' . $librarian->surname . ': ' . $librarian->username . '" uspješno izbrisan');
-    }
+        return redirect()->route('admins.index')->with('success', 'Administrator "' . $admin->name . ' ' . $admin->surname . ': ' . $admin->username . '" uspješno izbrisan');
 
+    }
 
     /**
      * Remove the specified resourceS from storage.
@@ -164,23 +161,20 @@ class LibrarianController extends Controller
     public function bulkDelete()
     {
         //
-        if (!(auth()->user()->isAdmin())) {
-            abort('403');
-        }
         $unames = explode(',', request('unames'));
-        $librarians = User::whereIn('username', $unames);
+        $admins = User::whereIn('username', $unames);
 
         $photos = [];
-//        we will get all photopaths from librarians
-        foreach ($librarians->get() as $lib){
+//        we will get all photopaths from admins
+        foreach ($admins->get() as $lib){
             $photos[] = $lib->getOriginal('photoPath');
         }
 
-//        we will try to delete librarians
+//        we will try to delete admins
         try {
-            $librarians->delete();
+            $admins->delete();
         } catch (\Exception $e){
-            return redirect()->back()->with('fail', 'Brisanje bibliotekara nije moguće');
+            return redirect()->back()->with('fail', 'Brisanje administratora nije moguće');
         }
 
 //        if wee delete them we will delete photos from storage
@@ -189,14 +183,12 @@ class LibrarianController extends Controller
                 unlink($photoPath);
             }
         }
-        return redirect()->back()->with('success', 'Bibliotekari su uspješno izbrisani');
+        return redirect()->back()->with('success', 'Administratori su uspješno izbrisani');
     }
 
-
-//    reset password for specific librarian
+    //    reset password for specific admin
     public function passwordReset(Request $request, User $user){
         # code
-        $this->authorize('view', $user);
         $request['password'] = $request->pwResetBibliotekar;
         $request['password_confirmation'] = $request->pw2ResetBibliotekar;
         unset($request['pwResetBibliotekar'], $request['pw2ResetBibliotekar']);
@@ -210,11 +202,9 @@ class LibrarianController extends Controller
         return redirect()->back()->with('success', 'Šifra korisnika "' . $user->name . ' ' . $user->surname . ': ' . $user->username . '" je uspješno resetovana');
     }
 
-
     //    izbriši profilnu sliku
     public function deleteProfilePhoto(User $user){
         # code
-        $this->authorize('view', $user);
         if (file_exists($photoPath = public_path() . $user->photoPath)){
             $user->photoPath = null;
             $user->save();

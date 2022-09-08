@@ -54,12 +54,8 @@ class StudentController extends Controller
             $input['photoPath'] = $name;
         }
         $student = new User($input);
-        $role = Role::findOrNew(Student::ROLE);
-        if (!$role->id){
-            $role->id = Student::ROLE;
-            $role->name = 'učenik';
-            $role->save();
-        }
+
+        $role = Role::student();
         $role->users()->save($student);
         return redirect()->route('students.index')->with('success', 'Učenik "' . $student->name . ' ' . $student->surname . ': ' . $student->username . '" je uspješno kreiran');
 

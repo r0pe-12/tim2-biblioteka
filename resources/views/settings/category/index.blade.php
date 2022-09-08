@@ -37,7 +37,7 @@
                     <div class="modal-content">
                         <form method="post" action="{{ route('category.bulkDelete') }}">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati sljedeće kategorije: </h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati sledeće kategorije: </h5>
                                 <h5 class="modal-title">
                                     <a data-bs-toggle="collapse" href="#showMore" role="button" class="showMorebtn" aria-expanded="false" aria-controls="collapseExample"></a>
                                     <ul class="collapse modalLabel" id="showMore"></ul>
@@ -83,11 +83,11 @@
                         <i class="fas fa-plus mr-[15px]"></i> Nova kategorija
                     </a>
 
-                    <a href="#" class="text-red-800 multiple" id="deleteMany" hidden data-toggle="modal" data-target="#deleteManyModal"><i class="fa fa-trash ml-4"></i> Izbrisi kategorije</a>
+                    <a href="#" class="text-red-800 multiple" id="deleteMany" hidden data-toggle="modal" data-target="#deleteManyModal"><i class="fa fa-trash ml-4"></i> Izbriši kategorije</a>
 
 
                     <a class="text-blue-800 one" hidden id="edit" href="#"><i class="far fa-edit"></i> Izmjeni kategoriju</a>
-                    <a href="#" class="text-red-800 one deleteOne" id="deleteOne" hidden data-toggle="modal" data-target="#deleteOneModal"><i class="fa fa-trash ml-4"></i> Izbrisi kategoriju</a>
+                    <a href="#" class="text-red-800 one deleteOne" id="deleteOne" hidden data-toggle="modal" data-target="#deleteOneModal"><i class="fa fa-trash ml-4"></i> Izbriši kategoriju</a>
                 </div>
 
                 <div

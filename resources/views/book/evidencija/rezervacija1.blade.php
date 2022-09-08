@@ -120,13 +120,8 @@
                                 <p class="font-medium">{{ \Carbon\Carbon::parse($reservation->submttingDate)->format('d.m.Y') }}</p>
                             </div>
                             @if($reservation->isActive())
-<<<<<<< HEAD
-                                <div class="mt-[40px]">
-                                    <span class="text-gray-500">Rezervacija ističe</span>
-=======
                                 <div class="mt-[40px] mb-[30px]">
-                                    <span class="text-gray-500">Rezervacija istice</span>
->>>>>>> 28bef2614884052d313484d9d3bb4bd24ac1d42a
+                                    <span class="text-gray-500">Rezervacija ističe</span>
                                     <p class="font-medium">{{ \Carbon\Carbon::parse($reservation->submttingDate)->addDays($res_deadline->value)->format('d.m.Y') }}</p>
                                 </div>
                             @else

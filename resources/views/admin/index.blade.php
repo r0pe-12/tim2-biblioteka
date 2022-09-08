@@ -1,14 +1,14 @@
 <x-layout>
     @section('title')
-        Bibliotekari
+        Administratori
     @endsection
-        <!-- Delete One Librarian Modal -->
+        <!-- Delete One Admin Modal -->
         <div class="modal fadeM" id="deleteOneModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form method="post" action="">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati bibliotekara: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati administratora: </h5>
                             <h5 class="modal-title modalLabel"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -30,13 +30,13 @@
             </div>
         </div>
 
-        <!-- Delete Many Librarians Modal -->
+        <!-- Delete Many Admin Modal -->
         <div class="modal fadeM" id="deleteManyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="post" action="{{ route('librarian.bulk-delete') }}">
+                    <form method="post" action="{{ route('admin.bulkdelete') }}">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati sledeće bibliotekare: </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati sledeće administratore: </h5>
                             <h5 class="modal-title">
                                 <a data-bs-toggle="collapse" href="#showMore" role="button" class="showMorebtn" aria-expanded="false" aria-controls="collapseExample"></a>
                                 <ul class="collapse modalLabel" id="showMore"></ul>
@@ -67,22 +67,22 @@
             <!-- Heading of content -->
             <div class="heading mt-[7px]">
                 <h1 class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
-                    Bibliotekari
+                    Administratori
                 </h1>
             </div>
             <!-- Space for content -->
             <div class="scroll height-dashboard">
                 <x-flash-msg/>
                 <div class="flex items-center justify-between px-[30px] py-4 space-x-3 rounded-lg">
-                    <a href="{{ route('librarians.create') }}" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
-                        <i class="fas fa-plus mr-[15px]"></i> Novi bibliotekar
+                    <a href="{{ route('admins.create') }}" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
+                        <i class="fas fa-plus mr-[15px]"></i> Novi Administrator
                     </a>
-                    <a href="#" class="text-red-800 multiple" id="deleteMany" hidden data-toggle="modal" data-target="#deleteManyModal"><i class="fa fa-trash ml-4"></i> Izbrisi bibliotekare</a>
+                    <a href="#" class="text-red-800 multiple" id="deleteMany" hidden data-toggle="modal" data-target="#deleteManyModal"><i class="fa fa-trash ml-4"></i> Izbriši administratore</a>
 
                     <a class="text-blue-800 one" hidden id="detalji" href="#"><i class="far fa-copy"></i> Pogledaj detalje</a>
-                    <a class="text-blue-800 one" hidden id="edit" href="#"><i class="fas fa-user-edit"></i> Izmijeni bibliotekara</a>
+                    <a class="text-blue-800 one" hidden id="edit" href="#"><i class="fas fa-user-edit"></i> Izmijeni administratora</a>
 
-                    <a href="#" class="text-red-800 one deleteOne" id="deleteOne" hidden data-toggle="modal" data-target="#deleteOneModal"><i class="fa fa-trash ml-4"></i> Izbrisi bibliotekara</a>
+                    <a href="#" class="text-red-800 one deleteOne" id="deleteOne" hidden data-toggle="modal" data-target="#deleteOneModal"><i class="fa fa-trash ml-4"></i> Izbriši administratora</a>
                     <div></div>
                 </div>
 
@@ -99,32 +99,32 @@
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left">Ime i prezime<a href="#"></a>
                                 </th>
                                 <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Email</th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Tip bibliotekara</th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Tip korisnika</th>
                                 <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Zadnji pristup sistemu
                                 </th>
                                 <th class="px-4 py-4"> </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white" id="myTableBody">
-                            @foreach($librarians as $librarian)
+                            @foreach($admins as $admin)
                                 <tr class="hover:bg-gray-200 hover:shadow-md border-[1px] border-[#e4dfdf]">
                                     <td class="px-4 py-4 whitespace-no-wrap">
                                         <label class="inline-flex items-center">
-                                            @if(auth()->user()->can('delete', $librarian))<input type="checkbox" class="form-checkbox checkOthers" data-id="{{ $librarian->username }}" data-name="{{ $librarian->name }} {{ $librarian->surname }}">@endif
+                                            @if(auth()->user()->can('delete', $admin))<input type="checkbox" class="form-checkbox checkOthers" data-id="{{ $admin->username }}" data-name="{{ $admin->name }} {{ $admin->surname }}">@endif
                                         </label>
                                     </td>
                                     <td class="flex flex-row items-center px-4 py-4">
-                                        <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{ $librarian->photoPath }}"
+                                        <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{ $admin->photoPath }}"
                                             alt="" />
-                                        <a href="{{ route('librarians.show', $librarian->username) }}">
-                                            <span class="font-medium text-center">{{ $librarian->name }} {{ $librarian->surname }}</span>
+                                        <a href="{{ route('admins.show', $admin->username) }}">
+                                            <span class="font-medium text-center">{{ $admin->name }} {{ $admin->surname }}</span>
                                         </a>
                                     </td>
                                     <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-                                        {{ $librarian->email }}
+                                        {{ $admin->email }}
                                     </td>
-                                    <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $librarian->role->name }}</td>
-                                    <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $librarian->lastLogin() }}</td>
+                                    <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $admin->role->name }}</td>
+                                    <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $admin->lastLogin() }}</td>
                                     <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                                         <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsLibrarian hover:text-[#606FC7]">
                                             <i class="fas fa-ellipsis-v"></i>
@@ -134,30 +134,30 @@
                                             <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                                 aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="{{ route('librarians.show', $librarian->username) }}" tabindex="0"
+                                                    <a href="{{ route('admins.show', $admin->username) }}" tabindex="0"
                                                         class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                         role="menuitem">
                                                         <i class="far fa-file mr-[5px] ml-[5px] py-1"></i>
                                                         <span class="px-4 py-0">Pogledaj detalje</span>
                                                     </a>
-                                                    <a href="{{ route('librarians.edit', $librarian->username) }}" tabindex="0"
+                                                    <a href="{{ route('admins.edit', $admin->username) }}" tabindex="0"
                                                         class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                         role="menuitem">
                                                         <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Izmijeni bibliotekara</span>
+                                                        <span class="px-4 py-0">Izmijeni administratora</span>
                                                     </a>
-                                                    @if(auth()->user()->can('delete', $librarian))
+                                                    @if(auth()->user()->can('delete', $admin))
                                                         <a href="#"
                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600 deleteOne"
                                                            id="deleteOne"
                                                            data-toggle="modal"
                                                            data-target="#deleteOneModal"
-                                                           data-id="{{ $librarian->username }}"
-                                                           data-name="{{ $librarian->name }} {{ $librarian->surname }}"
-                                                           data-action="{{ route('librarians.destroy', $librarian->username) }}"
+                                                           data-id="{{ $admin->username }}"
+                                                           data-name="{{ $admin->name }} {{ $admin->surname }}"
+                                                           data-action="{{ route('admins.destroy', $admin->username) }}"
                                                         >
                                                             <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
-                                                            <span class="px-4 py-0">Izbriši bibliotekara</span>
+                                                            <span class="px-4 py-0">Izbriši administratora</span>
                                                         </a>
                                                     @endif
                                                 </div>
@@ -171,11 +171,10 @@
                         <tr class="border-[1px] border-[#e4dfdf]">
                             <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                             </th>
-                            <th class="px-4 py-4 leading-4 tracking-wider text-left">Ime i prezime<a href="#"><i
-                                        class="ml-3 fa-lg fas fa-long-arrow-alt-down" onclick="sortTable()"></i></a>
+                            <th class="px-4 py-4 leading-4 tracking-wider text-left">Ime i prezime
                             </th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Email</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Tip bibliotekara</th>
+                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Tip korisnika</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Zadnji pristup sistemu
                             </th>
                             <th class="px-4 py-4"> </th>

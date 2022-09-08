@@ -47,9 +47,11 @@
                 @endif
 
                 <!-- Bibliotekari Icon -->
-                @if(request()->routeIs('librarians.*'))
-                    <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[25px]">
+                @switch(auth()->user()->isAdmin())
+                    @case(true)
+                        @if(request()->routeIs('librarians.*'))
+                            <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+                                <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('librarians.index') }}" aria-label="Bibliotekari">
@@ -62,11 +64,11 @@
                                     </a>
                                 </div>
                             </span>
-                        </div>
-                    </li>
-                @else
-                    <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                        <div class="ml-[25px]">
+                                </div>
+                            </li>
+                        @else
+                            <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+                                <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
                                     <a href="{{ route('librarians.index') }}" aria-label="Bibliotekari">
@@ -79,9 +81,12 @@
                                     </a>
                                 </div>
                             </span>
-                        </div>
-                    </li>
-                @endif
+                                </div>
+                            </li>
+                        @endif
+                        @break
+                    @default
+                @endswitch
 
                 <!-- Učenici Icon -->
                 @if(request()->routeIs('students.*', 'ucenik.*'))
@@ -163,7 +168,7 @@
                         <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
-                                    <a href="{{ route('authors.index') }}" aria-label="Knjige">
+                                    <a href="{{ route('authors.index') }}" aria-label="Autori">
                                         <i class="text-[25px] transition duration-300 ease-in text-[#576cdf] text-[#707070] fas fa-user-graduate"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in text-[#576cdf] inline text-[15px] ml-[20px]">
@@ -180,7 +185,7 @@
                         <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
-                                    <a href="{{ route('authors.index') }}" aria-label="Knjige">
+                                    <a href="{{ route('authors.index') }}" aria-label="Autori">
                                         <i class="text-[25px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-user-graduate"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
@@ -200,7 +205,7 @@
                         <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
-                                    <a href="{{ route('evidencija.izdate') }}" aria-label="Knjige">
+                                    <a href="{{ route('evidencija.izdate') }}" aria-label="Izdavanje">
                                         <i class="text-[22px] transition duration-300 ease-in text-[#576cdf] text-[#707070] fas fa-exchange-alt"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in text-[#576cdf] inline text-[15px] ml-[20px]">
@@ -217,7 +222,7 @@
                         <div class="ml-[25px]">
                             <span class="flex justify-between w-full whitespace-nowrap">
                                 <div>
-                                    <a href="{{ route('evidencija.izdate') }}" aria-label="Knjige">
+                                    <a href="{{ route('evidencija.izdate') }}" aria-label="Izdavanje">
                                         <i class="text-[22px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-exchange-alt"></i>
                                         <div class="hidden sidebar-item">
                                             <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
@@ -230,6 +235,56 @@
                         </div>
                     </li>
                 @endif
+
+                <!-- Admin icon -->
+
+                @switch(auth()->user()->isAdmin())
+                    @case(true)
+                        <li style="pointer-events: none" class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+                            <div class="ml-[25px]">
+                        <span class="flex justify-between w-full whitespace-nowrap">
+                        </span>
+                            </div>
+                        </li>
+
+                        @if(request()->routeIs('admins.*'))
+                            <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+                                <div class="ml-[25px]">
+                            <span class="flex justify-between w-full whitespace-nowrap">
+                                <div>
+                                    <a href="{{ route('admins.index') }}" aria-label="Admin">
+                                        <i class="text-[22px] transition duration-300 ease-in text-[#576cdf] text-[#707070] fas fa-user-shield"></i>
+                                        <div class="hidden sidebar-item">
+                                            <p class="transition duration-300 ease-in text-[#576cdf] inline text-[15px] ml-[20px]">
+                                                Administratori
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </span>
+                                </div>
+                            </li>
+                        @else
+                            <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+                                <div class="ml-[25px]">
+                            <span class="flex justify-between w-full whitespace-nowrap">
+                                <div>
+                                    <a href="{{ route('admins.index') }}" aria-label="Admin">
+                                        <i class="text-[22px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-user-shield"></i>
+                                        <div class="hidden sidebar-item">
+                                            <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
+                                                Administratori
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </span>
+                                </div>
+                            </li>
+                        @endif
+                        @break
+                    @default
+                @endswitch
             </ul>
         </div>
     </div>

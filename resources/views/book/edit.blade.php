@@ -218,7 +218,7 @@
                                 </a>
                                 <button type="button"
                                         class="btn-animation ml-[15px] shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaKnjigaOD(event, 'specifikacije-tab')">
-                                    Sljedeća <i class="fas fa-arrow-right ml-[4px]"></i>
+                                    Sledeća <i class="fas fa-arrow-right ml-[4px]"></i>
                                 </button>
                             </div>
                         </div>
@@ -314,7 +314,7 @@
                                 </button>
                                 <button type="button"
                                         class="btn-animation ml-[15px] shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaKnjigaSpec(event, 'multimedija-tab')">
-                                    Sljedeća <i class="fas fa-arrow-right ml-[4px]"></i>
+                                    Sledeća <i class="fas fa-arrow-right ml-[4px]"></i>
                                 </button>
                             </div>
                         </div>
