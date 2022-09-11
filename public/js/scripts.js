@@ -4,6 +4,14 @@
 //     }
 // });
 //open and close hamburger menu
+
+
+
+$('button[type="submit"]').on('click', function (e) {
+   $(this).attr('disabled', true);
+    $(this).closest('form').submit();
+})
+
 const unameRegEx = '^(?=[a-zA-Z0-9_-]{3,254}$)(?!.*[_-]{2})[^_-].*[^_-]$';
   var hamburger = $('#hamburger');
   var sidebar = $('.sidebar');
@@ -266,7 +274,10 @@ var cropperFunction = function (e) {
 
       // setup cropper
       cropperPreview.src = e.target.result;
-      cropper = new Cropper(cropperPreview);
+        var options = {
+            aspectRatio: 1
+        }
+      cropper = new Cropper(cropperPreview, options);
       cropperOverlay.style.display = 'block';
     }
 

@@ -122,7 +122,6 @@ class BookBorrowController extends Controller
         if ($borrow->isActive()) {
             return redirect()->back()->with('fail', 'Transakcija aktivna');
         }
-//        todo da li ovako ili da stavimo cascade od delete u bazi???
         $borrow->statuses()->sync([]);
         $borrow->delete();
         return redirect()->route('dashboard.index')->with('success', 'Zapis izdavanja knjige "' . $borrow->book->title . '" je uspješno obrisan');
