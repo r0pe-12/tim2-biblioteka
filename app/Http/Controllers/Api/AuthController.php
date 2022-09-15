@@ -65,7 +65,7 @@ class AuthController extends BaseController
         }
 
         $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
+//        $input['password'] = bcrypt($input['password']);
         $student = User::create($input);
         $role = Role::student();
         $role->users()->save($student);
