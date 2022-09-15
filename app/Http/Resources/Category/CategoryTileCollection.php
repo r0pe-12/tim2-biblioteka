@@ -17,7 +17,7 @@ class CategoryTileCollection extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'photo' => $this->iconPath
+            'photo' => str_contains($this->iconPath, 'http://') || str_contains($this->iconPath, 'https://') ? $this->iconPath : url($this->iconPath),
         ];
     }
 }

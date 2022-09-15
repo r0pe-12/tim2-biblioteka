@@ -19,7 +19,7 @@ class BookNoFilterCollection extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'cover' => $this->cover(),
+            'cover' => str_contains($this->cover(), 'http://') || str_contains($this->cover(), 'https://') ? $this->cover() : url($this->cover()),
             'authors' => AuthorInBookCollection::collection($this->authors),
         ];
     }

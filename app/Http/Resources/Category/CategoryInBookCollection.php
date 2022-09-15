@@ -17,7 +17,7 @@ class CategoryInBookCollection extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'photo' => $this->iconPath
+//            'photo' => $this->iconPath
         ];
     }
 }

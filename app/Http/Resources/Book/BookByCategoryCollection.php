@@ -20,7 +20,7 @@ class BookByCategoryCollection extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'photo' => $this->cover(),
+            'photo' => str_contains($this->cover(), 'http://') || str_contains($this->cover(), 'https://') ? $this->cover() : url($this->cover()),
 
             'authors' => AuthorInBookCollection::collection($this->authors),
             'categories' => CategoryInBookCollection::collection($this->categories),

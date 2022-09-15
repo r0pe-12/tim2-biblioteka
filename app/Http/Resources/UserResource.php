@@ -18,7 +18,7 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'role' => $this->role->name,
             'jmbg' => $this->jmbg,
-            'photoPath' => $this->photoPath,
+            'photoPath' => str_contains($this->photoPath, 'http://') || str_contains($this->photoPath, 'https://') ? $this->photoPath : url($this->photoPath),
             'username' => $this->username,
             'name' => $this->name,
             'surname' => $this->surname,

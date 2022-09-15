@@ -17,7 +17,7 @@ class GenreInBookCollection extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'photo' => $this->icon
+//            'photo' => $this->icon
         ];
     }
 }
