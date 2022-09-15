@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Book\BookByCategoryCollection;
 use App\Http\Resources\Book\BookNoFilterCollection;
+use App\Http\Resources\Category\CategoryTileCollection;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -24,6 +25,19 @@ class BookController extends BaseController
         $books = Book::all();
 
         return BookNoFilterCollection::collection($books);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return AnonymousResourceCollection
+     */
+    public function categories()
+    {
+        //
+        $categories = Category::all();
+
+        return CategoryTileCollection::collection($categories);
     }
 
     /**

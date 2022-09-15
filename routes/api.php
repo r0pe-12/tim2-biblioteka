@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
 //    knjige
     Route::controller(BookController::class)->group(function () {
+        Route::get('/categories', 'categories');
+
         Route::get('/books', 'index')->name('api.books.index');
         Route::get('/books/category/{category}', 'byCategory');
     });
