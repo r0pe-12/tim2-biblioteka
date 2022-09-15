@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Book\BookByCategoryCollection;
 use App\Http\Resources\Book\BookNoFilterCollection;
+use App\Http\Resources\Book\BookResource;
 use App\Http\Resources\Category\CategoryTileCollection;
 use App\Models\Book;
 use App\Models\Category;
@@ -56,11 +57,12 @@ class BookController extends BaseController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Book $book
+     * @return BookResource
      */
-    public function show($id)
+    public function show(Book $book)
     {
         //
+        return new BookResource($book);
     }
 }
