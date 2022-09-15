@@ -8,10 +8,16 @@ use App\Http\Resources\Book\BookNoFilterCollection;
 use App\Http\Resources\Book\BookResource;
 use App\Http\Resources\Category\CategoryTileCollection;
 use App\Models\Book;
+use App\Models\Carbon;
 use App\Models\Category;
+use App\Models\ClosingReason;
+use App\Models\Reservation;
+use App\Models\ReservationStatus;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 
 class BookController extends BaseController
 {
@@ -64,5 +70,31 @@ class BookController extends BaseController
     {
         //
         return new BookResource($book);
+    }
+
+    public function reserve(Book $book){
+        # code
+        if (!($book->ableToBorrow())) {
+            return $this->sendError('Not enough samples.', ['errors' => 'Nedovoljno primjeraka'], \Symfony\Component\HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+//        \request()->dd();
+
+        $reservation = new Reservation([
+            'student_id' => \request()->user()->id,
+            'librarian_id' => 1,
+            'closingReason_id' => ClosingReason::open()->id,
+            'submttingDate' => today('Europe/Belgrade')->format('Y-m-d'),
+        ]);
+        $book->reservations()->save($reservation);
+
+        $resStatus = ReservationStatus::reserved();
+        $reservation->statuses()->attach($resStatus);
+
+        $book->reservedSamples++;
+        $book->save();
+
+        $status = ReservationStatus::reserved();
+
+        return $this->sendResponse('', 'Book successfully reserved.', \Symfony\Component\HttpFoundation\Response::HTTP_OK);
     }
 }
