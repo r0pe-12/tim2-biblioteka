@@ -111,7 +111,7 @@
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-4">
-                                    <img src="{{ $genre->icon }}" alt="" class="object-cover w-8 h-8 mr-2 rounded-full">
+                                    <img src="{{ $genre->icon }}" alt="" class="object-cover w-8 h-8 mr-2 rounded">
                                      <p class="ml-4 text-center">{{ $genre->name }}</p>
                                  </td>
                                 <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">

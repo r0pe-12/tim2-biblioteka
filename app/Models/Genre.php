@@ -18,7 +18,7 @@ class Genre extends Model
         if ($path){
             return '/storage/images/genres/' . $path;
         }
-        return asset('img/settings.jpg');
+        return asset('img/settings.svg');
 
     }
     }
