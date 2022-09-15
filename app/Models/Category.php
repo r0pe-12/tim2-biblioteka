@@ -21,4 +21,9 @@ class Category extends Model
         }
         return asset('img/settings.jpg');
     }
+
+    public function books(){
+        # code
+        return $this->belongsToMany(Book::class);
+    }
 }
