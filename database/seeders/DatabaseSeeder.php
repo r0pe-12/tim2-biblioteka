@@ -28,11 +28,11 @@ class DatabaseSeeder extends Seeder
          User::factory()->create([
              'username' => 'bibliotekar',
              'role_id' => Role::librarian()->id,
-             'password' => 'kisjelavoda'
+             'password' => '@password'
          ]);
 
          User::factory()->create([
-             'username' => 'glavna-glava',
+             'username' => 'admin-123',
              'role_id' => Role::admin()->id,
              'password' => 'sundjerbob123'
          ]);
