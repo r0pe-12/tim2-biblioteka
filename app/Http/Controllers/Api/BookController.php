@@ -8,6 +8,7 @@ use App\Http\Resources\Book\BookNoFilterCollection;
 use App\Http\Resources\Book\BookResource;
 use App\Http\Resources\Category\CategoryTileCollection;
 use App\Models\Book;
+use App\Models\BookReview;
 use App\Models\Carbon;
 use App\Models\Category;
 use App\Models\ClosingReason;
@@ -96,5 +97,28 @@ class BookController extends BaseController
         $status = ReservationStatus::reserved();
 
         return $this->sendResponse('', 'Book successfully reserved.', \Symfony\Component\HttpFoundation\Response::HTTP_OK);
+    }
+
+    public function review(Book $book){
+        # code
+        $validator = Validator::make(\request()->all(), [
+            'review' => ['required'],
+            'star' => ['required', 'integer', 'between:0,5']
+        ]);
+
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->messages(), \Symfony\Component\HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        $review = new BookReview([
+            'book_id' => $book->id,
+            'student_id' => \request()->user()->id,
+            'body' => \request('review'),
+            'star' => \request('star')
+        ]);
+
+        $review->save();
+
+        return $this->sendResponse('', 'Book review successfully created.', \Symfony\Component\HttpFoundation\Response::HTTP_OK);
     }
 }
