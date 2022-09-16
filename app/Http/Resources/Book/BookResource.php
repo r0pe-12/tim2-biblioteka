@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Book;
 
 use App\Http\Resources\Author\AuthorInBookCollection;
+use App\Http\Resources\BookReview\BookReviewCollection;
 use App\Http\Resources\Category\CategoryInBookCollection;
 use App\Http\Resources\Genre\GenreInBookCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -33,8 +34,8 @@ class BookResource extends JsonResource
             'genres' => GenreInBookCollection::collection($this->genres),
 
             'description' => $this->description,
-            'rating' => 'prosjek od svih reviewa : integer',
-            'comments' => 'svi komentari : array'
+            'rating' => $this->reviews->count() > 0 ? round($this->reviews->sum('star') / $this->reviews->count(), 2) : 'Nema komentara',
+            'comments' => BookReviewCollection::collection($this->reviews)
         ];
     }
 }

@@ -102,7 +102,7 @@ class BookController extends BaseController
     public function review(Book $book){
         # code
         $validator = Validator::make(\request()->all(), [
-            'review' => ['required'],
+            'body' => ['required'],
             'star' => ['required', 'integer', 'between:0,5']
         ]);
 
@@ -113,7 +113,7 @@ class BookController extends BaseController
         $review = new BookReview([
             'book_id' => $book->id,
             'student_id' => \request()->user()->id,
-            'body' => \request('review'),
+            'body' => \request('body'),
             'star' => \request('star')
         ]);
 
