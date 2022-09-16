@@ -195,10 +195,12 @@ function dataFileDnD() {
       );
     },
     remove(index) {
-      let files = [...this.files];
-      files.splice(index, 1);
+        let files = [...this.files];
+        const input = $('#multimediaInput');
+        files.splice(index, 1);
 
-      this.files = createFileList(files);
+        this.files = createFileList(files);
+        input[0].files = this.files;
     },
     drop(e) {
       let removed, add;

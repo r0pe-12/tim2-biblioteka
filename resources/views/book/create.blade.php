@@ -313,7 +313,7 @@
                                      class="relative flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
                                     <div x-ref="dnd"
                                          class="relative flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer">
-                                        <input accept="*" type="file" multiple name="pictures[]"
+                                        <input accept="*" type="file" multiple name="pictures[]" id="multimediaInput"
                                                class="absolute inset-0 z-50 w-full h-full p-0 m-0 outline-none opacity-0 cursor-pointer"
                                                @change="addFiles($event)"
                                                @dragover="$refs.dnd.classList.add('border-blue-400'); $refs.dnd.classList.add('ring-4'); $refs.dnd.classList.add('ring-inset');"
