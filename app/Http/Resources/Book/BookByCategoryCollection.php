@@ -27,7 +27,7 @@ class BookByCategoryCollection extends JsonResource
             'genres' => GenreInBookCollection::collection($this->genres),
 
             'description' => $this->description,
-            'rating' => 'prosjek od svih reviewa : integer'
+            'rating' => $this->reviews->count() > 0 ? round($this->reviews->sum('star') / $this->reviews->count(), 2) : 'Nema komentara',
         ];
     }
 }
