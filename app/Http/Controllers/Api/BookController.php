@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Resources\Book\BookByCategoryCollection;
 use App\Http\Resources\Book\BookNoFilterCollection;
 use App\Http\Resources\Book\BookResource;
 use App\Http\Resources\Category\CategoryTileCollection;
 use App\Models\Book;
 use App\Models\BookReview;
-use App\Models\Carbon;
 use App\Models\Category;
 use App\Models\ClosingReason;
 use App\Models\Reservation;
 use App\Models\ReservationStatus;
-use App\Models\Student;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
 class BookController extends BaseController
@@ -31,6 +26,11 @@ class BookController extends BaseController
     {
         //
         $books = Book::all();
+
+        if (\request()->filled('category')) {
+            $category = Category::findOrFail(\request('category'));
+            return BookByCategoryCollection::collection($category->books);
+        }
 
         return BookNoFilterCollection::collection($books);
     }
@@ -48,18 +48,6 @@ class BookController extends BaseController
         return CategoryTileCollection::collection($categories);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return AnonymousResourceCollection
-     */
-    public function byCategory(Category $category)
-    {
-        //
-        $books = $category->books;
-
-        return BookByCategoryCollection::collection($books);
-    }
 
     /**
      * Display the specified resource.

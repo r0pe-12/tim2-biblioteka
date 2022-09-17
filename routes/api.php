@@ -43,8 +43,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('/books/{book}/reserve', 'reserve');
 
         Route::post('/books/{book}/review', 'review');
-
-        Route::get('/books/category/{category}', 'byCategory');
     });
 //    END-knjige
 });
