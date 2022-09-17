@@ -188,7 +188,7 @@
         <div class="pt-[24px] mr-[30px]">
 
             <!-- star rating -->
-                <div class="stars-outer book-rating">
+                <div class="stars-outer book-rating" title="{{ $book->reviews->count() > 0 ? round($book->reviews->sum('star') / $book->reviews->count(), 1) : 'Nema komentara' }}">
                     <div class="stars-inner" star-rating="{{ $book->reviews->count() > 0 ? round($book->reviews->sum('star') / $book->reviews->count(), 1) : 0 }}">
                     </div>
                 </div>
