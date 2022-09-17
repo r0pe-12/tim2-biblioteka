@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Resources\Book\BookByCategoryCollection;
 use App\Http\Resources\Book\BookNoFilterCollection;
 use App\Http\Resources\Book\BookResource;
+use App\Http\Resources\Category\CategoriesWithBooksCollection;
 use App\Http\Resources\Category\CategoryTileCollection;
 use App\Models\Book;
 use App\Models\BookReview;
@@ -25,14 +26,14 @@ class BookController extends BaseController
     public function index()
     {
         //
-        $books = Book::all();
-
         if (\request()->filled('category')) {
             $category = Category::findOrFail(\request('category'));
             return BookByCategoryCollection::collection($category->books);
         }
 
-        return BookNoFilterCollection::collection($books);
+        $categories = Category::all();
+
+        return CategoriesWithBooksCollection::collection($categories);
     }
 
     /**
