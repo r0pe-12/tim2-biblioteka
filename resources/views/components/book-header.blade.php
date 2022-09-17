@@ -179,15 +179,15 @@
                     </div>
                 </div>
 
-            <a href="{{ route('book.otpisi.create', $book) }}" class="inline hover:text-blue-600">
-                <i class="fas fa-level-up-alt mr-[3px] ml-[30px]"></i>
+            <a href="{{ route('book.otpisi.create', $book) }}" class="inline hover:text-blue-600 ml-[20px]">
+                <i class="fas fa-level-up-alt mr-[3px]"></i>
                 Otpiši knjigu
             </a>
-            <a href="{{ route('book.izdaj.create', $book) }}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
+            <a href="{{ route('book.izdaj.create', $book) }}" class="inline hover:text-blue-600 ml-[20px]">
                 <i class="far fa-hand-scissors mr-[3px]"></i>
                 Izdaj knjigu
             </a>
-            <a href="{{ route('book.vrati.create', $book) }}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+            <a href="{{ route('book.vrati.create', $book) }}" class="hover:text-blue-600 inline ml-[20px]">
                 <i class="fas fa-redo-alt mr-[3px] "></i>
                 Vrati knjigu
             </a>
