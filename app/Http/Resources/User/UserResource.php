@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\User;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserReviewResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,6 +16,8 @@ class UserReviewResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'role' => $this->role->name,
+            'jmbg' => $this->jmbg,
             'photoPath' => str_contains($this->photoPath, 'http://') || str_contains($this->photoPath, 'https://') ? $this->photoPath : url($this->photoPath),
             'username' => $this->username,
             'name' => $this->name,
