@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\Api\StudentUpdateRequest;
 use App\Http\Resources\User\UserAllBorrowsResource;
+use App\Http\Resources\User\UserAllReservationsResource;
 use App\Http\Resources\User\UserResource;
 use App\Models\Student;
 use Illuminate\Http\JsonResponse;
@@ -33,6 +34,19 @@ class StudentController extends BaseController
         $user = Student::findOrFail(request()->user()->id);
 
         return new UserAllBorrowsResource($user);
+    }
+
+    /**
+     * Display a listing of my rezervacije.
+     *
+     * @return UserAllReservationsResource
+     */
+    public function rezervacije()
+    {
+        //
+        $user = Student::findOrFail(request()->user()->id);
+
+        return new UserAllReservationsResource($user);
     }
 
     /**
