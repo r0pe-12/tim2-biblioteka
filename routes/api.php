@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::controller(StudentController::class)->group(function () {
         Route::post('/users/me', 'me')->name('api-me');
         Route::put('/users/me', 'update')->name('api-update');
+        Route::get('/users/me/izdavanja', 'izdavanja');
     });
 //    END-user
 

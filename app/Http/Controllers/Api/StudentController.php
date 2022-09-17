@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\Api\StudentUpdateRequest;
+use App\Http\Resources\User\UserAllBorrowsResource;
 use App\Http\Resources\User\UserResource;
+use App\Models\Student;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -18,6 +20,19 @@ class StudentController extends BaseController
     {
         //
         return new UserResource(request()->user());
+    }
+
+    /**
+     * Display a listing of my izdavanja.
+     *
+     * @return UserAllBorrowsResource
+     */
+    public function izdavanja()
+    {
+        //
+        $user = Student::findOrFail(request()->user()->id);
+
+        return new UserAllBorrowsResource($user);
     }
 
     /**
