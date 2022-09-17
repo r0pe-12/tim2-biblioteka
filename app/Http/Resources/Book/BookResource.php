@@ -35,7 +35,7 @@ class BookResource extends JsonResource
 
             'description' => $this->description,
             'rating' => $this->reviews->count() > 0 ? round($this->reviews->sum('star') / $this->reviews->count(), 2) : 'Nema komentara',
-            'comments' => BookReviewCollection::collection($this->reviews)
+            'comments' => $this->reviews->count() > 0 ? BookReviewCollection::collection($this->reviews) : 'Nema komentara',
         ];
     }
 }
