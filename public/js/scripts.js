@@ -7,7 +7,7 @@
 
 
 
-$('button[type="submit"]').on('click', function (e) {
+$('button[type="submit"] .sure').on('click', function (e) {
    $(this).attr('disabled', true);
     $(this).closest('form').submit();
 })
