@@ -5,6 +5,20 @@
     'reservation' => 0
 ])
 
+@section('scripts')
+    <script>
+        // star rating
+        // total number of stars
+        const starTotal = 5;
+
+        var stars = $('.book-rating .stars-inner').attr('star-rating');
+
+        const starPercentage = (stars / starTotal) * 100;
+        const starPercentageRounded = `${((starPercentage / 10) * 10)}%`;
+        document.querySelector(`.stars-inner`).style.width = starPercentageRounded;
+    </script>
+@endsection
+
 <div {{ $attributes->class(['heading']) }}>
     <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
         <div class="py-[10px] flex flex-row items-center">
