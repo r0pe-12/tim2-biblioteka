@@ -172,8 +172,15 @@
             </div>
         </div>
         <div class="pt-[24px] mr-[30px]">
+
+            <!-- star rating -->
+                <div class="stars-outer book-rating">
+                    <div class="stars-inner" star-rating="{{ $book->reviews->count() > 0 ? round($book->reviews->sum('star') / $book->reviews->count(), 1) : 0 }}">
+                    </div>
+                </div>
+
             <a href="{{ route('book.otpisi.create', $book) }}" class="inline hover:text-blue-600">
-                <i class="fas fa-level-up-alt mr-[3px]"></i>
+                <i class="fas fa-level-up-alt mr-[3px] ml-[30px]"></i>
                 Otpiši knjigu
             </a>
             <a href="{{ route('book.izdaj.create', $book) }}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">

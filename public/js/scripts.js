@@ -4087,3 +4087,13 @@ $('.activity-reset-datum').on('click', function () {
     $(button).append(span);
 
 })
+
+// star rating
+    // total number of stars
+    const starTotal = 5;
+
+    var stars = $('.book-rating .stars-inner').attr('star-rating');
+
+    const starPercentage = (stars / starTotal) * 100;
+    const starPercentageRounded = `${((starPercentage / 10) * 10)}%`;
+    document.querySelector(`.stars-inner`).style.width = starPercentageRounded;
