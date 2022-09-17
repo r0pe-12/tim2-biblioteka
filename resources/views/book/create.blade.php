@@ -185,7 +185,7 @@
                                     <div class="mt-[20px]">
                                         <p>Količina <span class="text-red-500">*</span></p>
                                         <input autocomplete="off"
-                                            type="number" name="knjigaKolicina" id="knjigaKolicina"
+                                            type="number" name="knjigaKolicina" id="knjigaKolicina" min="0"
                                             class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsKnjigaKolicina()">
                                         <div id="validateKnjigaKolicina"></div>
                                     </div>
@@ -218,7 +218,7 @@
                                 <div class="w-[50%] mb-[150px]">
                                     <div class="mt-[20px]">
                                         <p>Broj strana <span class="text-red-500">*</span></p>
-                                        <input type="number" name="brStrana" id="brStrana" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsBrStrana()">
+                                        <input type="number" name="brStrana" id="brStrana" min="0" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsBrStrana()">
                                         <div id="validateBrStrana"></div>
                                     </div>
 
