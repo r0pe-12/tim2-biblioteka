@@ -157,8 +157,16 @@
                                     @csrf
                                     @method('PUT')
                                     <input type="hidden" name="id" class="id" value="{{ $allowManyBooks->id }}">
-                                    <input name="value" type="checkbox" value="1" {{ $allowManyBooks->value == 1 ? 'checked' : '' }}
+                                    <input hidden name="value" type="checkbox" value="1" {{ $allowManyBooks->value == 1 ? 'checked' : '' }}
                                            onkeydown="return event.key != 'Enter';" class="inputValue">
+
+                                    <div class='toggle switch {{ $allowManyBooks->value == 1 ? 'toggle-on' : '' }}'>
+                                        <div class='toggle-text-off'>NE &nbsp</div>
+                                        <div class='glow-comp'></div>
+                                        <div class='toggle-button'></div>
+                                        <div class='toggle-text-on'>DA</div>
+                                    </div>
+
                                     <p style="color: green;" hidden id="savedMessage5"><i class="fa fa-check  ml-[5px]"></i> Varijabla je uspješno sačuvana</p>
                                     <div id="errorDiv5">
                                         <p class="e1"></p>

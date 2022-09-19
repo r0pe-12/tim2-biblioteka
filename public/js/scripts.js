@@ -4100,3 +4100,9 @@ $('.activity-reset-datum').on('click', function () {
 
 })
 
+$('.toggle').click(function(e){
+    e.preventDefault(); // The flicker is a codepen thing
+    $(this).toggleClass('toggle-on');
+    var checkbox = this.closest('form.policy').querySelector('input[type="checkbox"]');
+    $(checkbox).click();
+});
