@@ -109,7 +109,7 @@ class Student extends User
 
         $ableByBorrows = $maxBorrows->value > $borrows;
 
-        if (Policy::allowManyBooks()->value === 1) {
+        if (Policy::allowManyBooks()->value != 1) {
             $ableByBooks = $this->active()->where('book_id', $book_id)->count() === 0;
         } else {
             $ableByBooks = true;
