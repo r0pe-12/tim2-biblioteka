@@ -73,6 +73,7 @@ class AuthController extends BaseController
         $role->users()->save($student);
         $success['token'] = $student->createToken($request->device)->plainTextToken;
         $success['name'] = $student->username;
+
         $student->logins()->create();
 
         return $this->sendResponse($success, 'User registered successfully.', Response::HTTP_CREATED);
