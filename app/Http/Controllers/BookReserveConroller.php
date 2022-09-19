@@ -35,6 +35,12 @@ class BookReserveConroller extends Controller
         if (!($book->ableToBorrow())) {
             return redirect()->route('books.index')->with('fail', 'Nije moguće rezervisati knjigu: nedovoljno primjeraka');
         }
+
+        $student = Student::findOrFail(\request()->ucenik);
+        if (!($student->ableToGet($book->id, true))){
+            return redirect()->route('books.index')->with('fail', 'Nije moguće rezervisati knjigu: učenik već ima rezervisano ' . $student->activeRes()->count() . '. Primjeraka ove knjige ' . $student->activeRes()->where('book_id', $book->id)->count());
+        }
+
 //        \request()->dd();
 
         $reservation = new Reservation([
