@@ -37,9 +37,9 @@ class DatabaseSeeder extends Seeder
              'password' => 'sundjerbob123'
          ]);
 
-//         User::factory(10)->create([
-//             'role_id' => Role::student()->id,
-//         ]);
+         User::factory(10)->create([
+             'role_id' => Role::student()->id,
+         ]);
 
          $book = Book::factory(3)
              ->has(Category::factory()->count(3))

@@ -110,10 +110,21 @@ class Student extends User
 
             $ableByRes = $maxRes->value > $activeRes;
 
+//            ako je u polisi definisano da se NE moze izdavati vise primjeraka iste knjige onda upadamo u ovaj if
             if (Policy::allowManyBooks()->value != 1) {
                 $ableByBooks = $this->activeRes()->where('book_id', $book_id)->count() === 0;
+
+//                ako vec ima knjigu kod sebe a pokusava da je rezervise nece moci ove noci
+                if ($this->active()->where('book_id', $book_id)->count() > 0) {
+                    $ableByRes = false;
+                }
             } else {
                 $ableByBooks = true;
+
+//                mozda je ovo nepotrebno
+                if ($this->active()->count() + $this->activeRes()->count() >= $maxRes->value * 2) {
+                    $ableByRes = false;
+                }
             }
             return $ableByRes && $ableByBooks;
         }

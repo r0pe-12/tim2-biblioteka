@@ -18,7 +18,7 @@
                 </div>
             </div>
                 <x-settings-nav/>
-            <div class="height-ucenikProfile pb-[30px] scroll">
+            <div class="height-ucenikProfile pb-[30px] scrolly">
                 <!-- Space for content -->
                     <x-flash-msg/>
                 <div class="section- mt-[20px] row">
