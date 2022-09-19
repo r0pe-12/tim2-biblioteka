@@ -21,9 +21,9 @@
             <div class="height-ucenikProfile pb-[30px] scroll">
                 <!-- Space for content -->
                     <x-flash-msg/>
-                <div class="section- mt-[20px]">
-                    <div class="flex flex-col">
-                        <div class="pl-[30px] flex border-b-[1px] border-[#e4dfdf]  pb-[20px]">
+                <div class="section- mt-[20px] row">
+                    <div class="flex flex-col col-xl-6">
+                        <div class="pl-[30px] flex border-b-[1px] border-[#e4dfdf]  py-[20px]">
                             <div>
                                 <h3>
                                     Rok za rezervaciju
@@ -134,6 +134,38 @@
                                     </div>
                                 </form>
                                 <p class="ml-[10px] mt-[10px]">knjiga</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="flex flex-col col-xl-6">
+
+                        <div class="pl-[30px] flex border-b-[1px] border-[#e4dfdf]  py-[20px]">
+                            <div>
+                                <h3>
+                                    Izdavanje iste knjige više puta jednom učeniku
+                                </h3>
+                                <p class="pt-[15px] max-w-[400px]">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eligendi nihil, vel
+                                    necessitatibus saepe laboriosam! Perspiciatis laboriosam culpa veritatis ea
+                                    voluptatum commodi tempora unde, dolorum debitis quia id dicta vitae.
+                                </p>
+                            </div>
+                            <div class="relative flex ml-[60px] mt-[20px]">
+                                <form identifier="5" class="policy w-[300px] text-gray-700" action="/settings/policy/{{$allowManyBooks->id}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="id" class="id" value="{{ $allowManyBooks->id }}">
+                                    <input name="value" type="checkbox" value="1" {{ $allowManyBooks->value == 1 ? 'checked' : '' }}
+                                           onkeydown="return event.key != 'Enter';" class="inputValue">
+                                    <p style="color: green;" hidden id="savedMessage5"><i class="fa fa-check  ml-[5px]"></i> Varijabla je uspješno sačuvana</p>
+                                    <div id="errorDiv5">
+                                        <p class="e1"></p>
+                                        <p class="e2"></p>
+                                        <p class="e3"></p>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 

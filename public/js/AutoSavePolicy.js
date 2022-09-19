@@ -30,7 +30,23 @@ $('form.policy').on('input propertychange change', function() {
     $(errorDiv.querySelector('.e3')).fadeOut();
 
     var form = this;
-    var value = $('.inputValue', this).val();
+    let value, data;
+    var id = form.querySelector('.id').value
+
+    var input = $('.inputValue', this);
+    if (input.prop('type').toLowerCase() === 'checkbox') {
+        if (input.prop('checked')) {
+            value = 1;
+            data = $(form).serialize()
+
+        } else {
+            value = 0;
+            data = $(form).serialize() + '&value=' + value;
+        }
+    } else {
+        value = input.val();
+        data = $(form).serialize()
+    }
 
     var send = validate(value, errorDiv);
 
@@ -45,7 +61,7 @@ $('form.policy').on('input propertychange change', function() {
             $.ajax({
                 type: "POST",
                 url: form.action,
-                data: $(form).serialize(),
+                data: data,
                 success:function(data){
                     setTimeout(function () {
                         savedMsg.fadeIn();
