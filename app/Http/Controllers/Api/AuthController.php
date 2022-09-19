@@ -78,4 +78,18 @@ class AuthController extends BaseController
 
         return $this->sendResponse($success, 'User registered successfully.', Response::HTTP_CREATED);
     }
+
+    public function logout(){
+        # code
+        $all = false;
+
+        if (\request('all') == true) {
+            $all = true;
+            request()->user()->tokens()->delete();
+        } else {
+            request()->user()->currentAccessToken()->delete();
+        }
+
+        return $this->sendResponse($all ? 'All tokens revoked' : 'Current token revoked', 'User logout successfully.', Response::HTTP_OK);
+    }
 }

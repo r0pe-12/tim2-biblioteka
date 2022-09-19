@@ -28,6 +28,10 @@ Route::group(['middleware' => 'check.token'], function () {
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
 //    user
+    Route::controller(AuthController::class)->group(function () {
+        Route::post('logout', 'logout')->name('api-logout');
+    });
+
     Route::controller(StudentController::class)->group(function () {
         Route::post('/users/me', 'me')->name('api-me');
         Route::put('/users/me', 'update')->name('api-update');
