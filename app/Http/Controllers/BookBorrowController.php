@@ -39,8 +39,8 @@ class BookBorrowController extends Controller
         ]);
 
         $student = Student::findOrFail(\request()->ucenik);
-        if (!($student->ableToGet())) {
-            return redirect()->route('books.index')->with('fail', 'Nije moguće izdati knjigu: učenik već ima ' . $student->active()->count() . ' kod sebe');
+        if (!($student->ableToGet($book->id))){
+            return redirect()->route('books.index')->with('fail', 'Nije moguće izdati knjigu: učenik već ima ' . $student->active()->count() . ' kod sebe. Primjeraka ove knjige ' . $student->active()->where('book_id', $book->id)->count());
         }
 
         $borrow = new Borrow([

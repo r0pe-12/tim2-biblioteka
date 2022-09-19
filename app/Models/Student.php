@@ -102,10 +102,19 @@ class Student extends User
                 });
     }
 
-    public function ableToGet(){
+    public function ableToGet($book_id){
         # code
         $maxBorrows = Policy::maxBorrows();
         $borrows = $this->active()->count();
-        return $maxBorrows->value > $borrows;
+
+        $ableByBorrows = $maxBorrows->value > $borrows;
+
+        if (Policy::allowManyBooks()->value === 1) {
+            $ableByBooks = $this->active()->where('book_id', $book_id)->count() === 0;
+        } else {
+            $ableByBooks = true;
+        }
+
+        return $ableByBorrows && $ableByBooks;
     }
 }
