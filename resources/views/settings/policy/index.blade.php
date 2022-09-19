@@ -35,12 +35,12 @@
                                 </p>
                             </div>
                             <div class="relative flex ml-[60px] mt-[20px]">
-                                <form id="rokRezervacijeForma" class="w-[300px] text-gray-700" action="/settings/policy/{{$reservation->id}}" method="POST">
+                                <form identifier="1" id="rokRezervacijeForma" class="policy w-[300px] text-gray-700" action="/settings/policy/{{$reservation->id}}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <input type="hidden" name="id" class="id" value="{{ $reservation->id }}">
-                                    <input name="value" id="rokRezervacije" type="text" value="{{ $reservation->value }}"
-                                           onkeydown="return event.key != 'Enter';" class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="...">
+                                    <input name="value" id="rokRezervacije" type="number" min="0" value="{{ $reservation->value }}"
+                                           onkeydown="return event.key != 'Enter';" class="inputValue h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="...">
                                     <p style="color: green;" hidden id="savedMessage1"><i class="fa fa-check  ml-[5px]"></i> Rok za rezervaciju je uspješno sačuvan</p>
                                     <div id="errorDiv1">
                                         <p style="color: red;" hidden class="e1"><i class="fa fa-x  ml-[5px]"></i> Morate unijeti rok za rezervaciju</p>
@@ -63,12 +63,12 @@
                                 </p>
                             </div>
                             <div class="relative flex ml-[60px] mt-[20px]">
-                                <form id="rokVracanjaForma" class="w-[300px] text-gray-700" action="/settings/policy/{{ $return->id }}" method="POST">
+                                <form identifier="2" id="rokVracanjaForma" class="policy w-[300px] text-gray-700" action="/settings/policy/{{ $return->id }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <input type="hidden" name="id" class="id" value="{{ $return->id }}">
-                                    <input name="value" id="rokVracanja" type="text" value="{{ $return->value }}"
-                                           onkeydown="return event.key != 'Enter';" class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="...">
+                                    <input name="value" id="rokVracanja" type="number" min="0" value="{{ $return->value }}"
+                                           onkeydown="return event.key != 'Enter';" class="inputValue h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="...">
                                     <p style="color: green" hidden id="savedMessage2"><i class="fa fa-check  ml-[5px]"></i> Rok vraćanja je uspješno sačuvan</p>
                                     <div id="errorDiv2">
                                         <p style="color: red;" hidden class="e1"><i class="fa fa-x  ml-[5px]"></i> Morate unijeti rok vraćanja</p>
@@ -91,12 +91,12 @@
                                 </p>
                             </div>
                             <div class="relative flex ml-[60px] mt-[20px]">
-                                <form id="rokKonfliktaForma" class="w-[300px] text-gray-700" action="/settings/policy/{{ $conflict->id }}" method="POST">
+                                <form identifier="3" id="rokKonfliktaForma" class="policy w-[300px] text-gray-700" action="/settings/policy/{{ $conflict->id }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <input type="hidden" name="id" class="id" value="{{ $conflict->id }}">
-                                    <input name="value" id="rokKonflikta" type="text" value="{{ $conflict->value }}"
-                                           onkeydown="return event.key != 'Enter';" class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="...">
+                                    <input name="value" id="rokKonflikta" type="number" min="0" value="{{ $conflict->value }}"
+                                           onkeydown="return event.key != 'Enter';" class="inputValue h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="...">
                                     <p style="color: green;" hidden id="savedMessage3"><i class="fa fa-check  ml-[5px]"></i> Rok konflikta je uspješno sačuvan</p>
                                     <div id="errorDiv3">
                                         <p style="color: red;" hidden class="e1"><i class="fa fa-x  ml-[5px]"></i> Morate unijeti rok konflikta</p>
@@ -120,12 +120,12 @@
                                 </p>
                             </div>
                             <div class="relative flex ml-[60px] mt-[20px]">
-                                <form id="maxIzdavanjaForma" class="w-[300px] text-gray-700" action="/settings/policy/{{ $conflict->id }}" method="POST">
+                                <form identifier="4" id="maxIzdavanjaForma" class="policy w-[300px] text-gray-700" action="/settings/policy/{{ $conflict->id }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <input type="hidden" name="id" class="id" value="{{ $maxBorrows->id }}">
-                                    <input name="value" id="maxIzdavanja" type="text" value="{{ $maxBorrows->value }}"
-                                           onkeydown="return event.key != 'Enter';" class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="...">
+                                    <input name="value" id="maxIzdavanja" type="number" min="0" value="{{ $maxBorrows->value }}"
+                                           onkeydown="return event.key != 'Enter';" class="inputValue h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="...">
                                     <p style="color: green;" hidden id="savedMessage4"><i class="fa fa-check  ml-[5px]"></i> Varijabla je uspješno sačuvana</p>
                                     <div id="errorDiv4">
                                         <p style="color: red;" hidden class="e1"><i class="fa fa-x  ml-[5px]"></i> Morate unijeti broj knjiga</p>
