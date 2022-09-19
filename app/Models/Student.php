@@ -121,7 +121,7 @@ class Student extends User
             } else {
                 $ableByBooks = true;
 
-//                mozda je ovo nepotrebno
+//                mozda je ovo nepotrebno ali neka ostane
                 if ($this->active()->count() + $this->activeRes()->count() >= $maxRes->value * 2) {
                     $ableByRes = false;
                 }
