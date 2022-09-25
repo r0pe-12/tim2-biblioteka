@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\Book\BookByCategoryArrayCollection;
 use App\Http\Resources\Book\BookByCategoryCollection;
 use App\Http\Resources\Book\BookResource;
 use App\Http\Resources\Category\CategoriesWithBooksCollection;
@@ -28,6 +29,11 @@ class BookController extends BaseController
     {
         //
         if (\request()->filled('category')) {
+            if (is_array(\request()->post('category'))) {
+                $categories = Category::whereIn('id', \request()->post('category'))->get();
+                return BookByCategoryArrayCollection::collection($categories);
+            }
+
             $category = Category::findOrFail(\request('category'));
             return BookByCategoryCollection::collection($category->books);
         }
