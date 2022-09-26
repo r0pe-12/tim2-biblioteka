@@ -29,12 +29,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::get('/', fn() => view('landingPage'));
+
 Route::middleware(['auth', 'librarian'])->group(function (){
     Route::post('/search', [SearchController::class, 'search']);
 
 //    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-    Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard.index');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.index');
     Route::get('/activity', [DashboardController::class, 'activity'])->name('dashboard.activity');
 
     Route::middleware('admin')->group(function () {
