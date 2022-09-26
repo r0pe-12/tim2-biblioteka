@@ -43,8 +43,7 @@
 {{--    <meta property="og:type" content="website">--}}
 </head>
 
-<body data-home-page="https://website2951745.nicepage.io/Home-1.html?version=ec2f40f5-b347-4b11-ad93-42a4c55062ac"
-      data-home-page-title="Home 1" class="u-body u-xl-mode" data-lang="en">
+<body class="u-body u-xl-mode" data-lang="en">
 {{--<a href="#" id="scroll" style="display: none;"><span></span></a>--}}
 <a href="javascript:void(0);" id="rocketmeluncur" class="showrocket" ><i></i></a>
 <header class="u-clearfix u-header u-header sticky-header" id="sec-9c34">
