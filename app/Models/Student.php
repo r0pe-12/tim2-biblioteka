@@ -102,10 +102,44 @@ class Student extends User
                 });
     }
 
-    public function ableToGet(){
+    public function ableToGet($book_id, $res = false){
         # code
+        if ($res){
+            $maxRes = Policy::maxBorrows();
+            $activeRes = $this->activeRes()->count();
+
+            $ableByRes = $maxRes->value > $activeRes;
+
+//            ako je u polisi definisano da se NE moze izdavati vise primjeraka iste knjige onda upadamo u ovaj if
+            if (Policy::allowManyBooks()->value != 1) {
+                $ableByBooks = $this->activeRes()->where('book_id', $book_id)->count() === 0;
+
+//                ako vec ima knjigu kod sebe a pokusava da je rezervise nece moci ove noci
+                if ($this->active()->where('book_id', $book_id)->count() > 0) {
+                    $ableByRes = false;
+                }
+            } else {
+                $ableByBooks = true;
+
+//                mozda je ovo nepotrebno ali neka ostane
+                if ($this->active()->count() + $this->activeRes()->count() >= $maxRes->value * 2) {
+                    $ableByRes = false;
+                }
+            }
+            return $ableByRes && $ableByBooks;
+        }
+
         $maxBorrows = Policy::maxBorrows();
         $borrows = $this->active()->count();
-        return $maxBorrows->value > $borrows;
+
+        $ableByBorrows = $maxBorrows->value > $borrows;
+
+        if (Policy::allowManyBooks()->value != 1) {
+            $ableByBooks = $this->active()->where('book_id', $book_id)->count() === 0;
+        } else {
+            $ableByBooks = true;
+        }
+
+        return $ableByBorrows && $ableByBooks;
     }
 }

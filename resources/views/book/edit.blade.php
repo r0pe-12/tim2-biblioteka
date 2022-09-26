@@ -196,7 +196,7 @@
                                 <div class="mt-[20px]">
                                     <p>Količina <span class="text-red-500">*</span></p>
                                     <input autocomplete="off" value="{{ $book->samples }}"
-                                           type="number" name="knjigaKolicina" id="knjigaKolicina"
+                                           type="number" name="knjigaKolicina" id="knjigaKolicina" min="0"
                                            class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsKnjigaKolicina()">
                                     <div id="validateKnjigaKolicina"></div>
                                 </div>
@@ -233,7 +233,7 @@
                             <div class="w-[50%] mb-[150px]">
                                 <div class="mt-[20px]">
                                     <p>Broj strana <span class="text-red-500">*</span></p>
-                                    <input type="number" name="brStrana" id="brStrana" value="{{ $book->pageNum }}"
+                                    <input type="number" name="brStrana" id="brStrana" min="0" value="{{ $book->pageNum }}"
                                            class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsBrStrana()">
                                     <div id="validateBrStrana"></div>
                                 </div>
@@ -330,7 +330,7 @@
                                  class="relative flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
                                 <div x-ref="dnd"
                                      class="relative flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer">
-                                    <input accept="*" type="file" multiple name="pictures[]"
+                                    <input accept="*" type="file" multiple name="pictures[]" id="multimediaInput"
                                            class="absolute inset-0 z-50 w-full h-full p-0 m-0 outline-none opacity-0 cursor-pointer"
                                            @change="addFiles($event)"
                                            @dragover="$refs.dnd.classList.add('border-blue-400'); $refs.dnd.classList.add('ring-4'); $refs.dnd.classList.add('ring-inset');"

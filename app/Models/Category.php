@@ -19,6 +19,11 @@ class Category extends Model
         if ($path){
             return '/storage/images/categories/' . $path;
         }
-        return asset('img/settings.jpg');
+        return asset('img/settings.svg');
+    }
+
+    public function books(){
+        # code
+        return $this->belongsToMany(Book::class);
     }
 }

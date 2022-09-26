@@ -115,7 +115,7 @@
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-4">
-                                   <img src="{{ $category->iconPath }}" alt="" class="object-cover w-8 h-8 mr-2 rounded-full">
+                                   <img src="{{ $category->iconPath }}" alt="" class="object-cover w-8 h-8 mr-2 rounded">
                                     <p class="ml-4 text-center">{{ $category->name }}</p>
                                 </td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $category->description }}</td>

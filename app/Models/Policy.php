@@ -63,6 +63,20 @@ class Policy extends Model
         return $maxBorrows;
     }
 
+    const ALLOWMANYBOOKS = 5;
+    const ALLOWMANYBOOKS_NAME = 'allow_many_books';
+    public static function allowManyBooks(){
+        # code
+        $maxBorrows = Policy::findOrNew(Policy::ALLOWMANYBOOKS);
+        if (!$maxBorrows->id){
+            $maxBorrows->id = Policy::ALLOWMANYBOOKS;
+            $maxBorrows->name = Policy::ALLOWMANYBOOKS_NAME;
+            $maxBorrows->value = 0;
+            $maxBorrows->save();
+        }
+        return $maxBorrows;
+    }
+
     use HasFactory;
     protected $fillable = ['name', 'value'];
 }

@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\CheckToken;
 use App\Http\Middleware\LibrarianMiddleware;
 use App\Http\Middleware\LoginActivity;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -67,6 +68,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => AdminMiddleware::class,
-        'librarian' => LibrarianMiddleware::class
+        'librarian' => LibrarianMiddleware::class,
+        'check.token' => CheckToken::class
     ];
 }

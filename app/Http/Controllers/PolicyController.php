@@ -24,7 +24,9 @@ class PolicyController extends Controller
 
         $maxBorrows = Policy::maxBorrows();
 
-        return view('settings.policy.index', compact('reservation', 'return', 'conflict', 'maxBorrows'));
+        $allowManyBooks = Policy::allowManyBooks();
+
+        return view('settings.policy.index', compact('reservation', 'return', 'conflict', 'maxBorrows', 'allowManyBooks'));
     }
 
     /**

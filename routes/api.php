@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BookController;
+use App\Http\Controllers\Api\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +17,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'check.token'], function () {
+
+    Route::controller(AuthController::class)->group(function () {
+        Route::post('login', 'login')->name('api-login');
+        Route::post('register', 'register')->name('api-register');
+    });
+
+});
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+//    user
+    Route::controller(AuthController::class)->group(function () {
+        Route::post('logout', 'logout')->name('api-logout');
+    });
+
+    Route::controller(StudentController::class)->group(function () {
+        Route::post('/users/me', 'me')->name('api-me');
+        Route::put('/users/me', 'update')->name('api-update');
+
+        Route::get('/users/me/izdavanja', 'izdavanja');
+        Route::get('/users/me/rezervacije', 'rezervacije');
+    });
+//    END-user
+
+//    knjige
+    Route::controller(BookController::class)->group(function () {
+        Route::get('/categories', 'categories');
+
+        Route::get('/books', 'index')->name('api.books.index');
+        Route::get('/books/{book}', 'show');
+        Route::post('/books/{book}/reserve', 'reserve');
+
+        Route::post('/books/{book}/review', 'review');
+    });
+//    END-knjige
 });

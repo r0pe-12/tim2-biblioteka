@@ -18,19 +18,35 @@ function validate(value, errorDiv) {
     return send;
 }
 
-$('#rokRezervacije').on('input propertychange change', function() {
+$('form.policy').on('input propertychange change', function() {
     clearTimeout(timeoutId);
-    $("#savedMessage1").fadeOut();
+    var savedMsg = $('#savedMessage'+this.getAttribute('identifier'));
+    savedMsg.fadeOut();
 
-    var errorDiv = document.getElementById('errorDiv1');
+    var errorDiv = document.getElementById('errorDiv'+this.getAttribute('identifier'));
 
     $(errorDiv.querySelector('.e1')).fadeOut();
     $(errorDiv.querySelector('.e2')).fadeOut();
     $(errorDiv.querySelector('.e3')).fadeOut();
 
-    var form = document.getElementById('rokRezervacijeForma');
-    var value = $('#rokRezervacije').val();
-    var id = form.querySelector('.id').value;
+    var form = this;
+    let value, data;
+    var id = form.querySelector('.id').value
+
+    var input = $('.inputValue', this);
+    if (input.prop('type').toLowerCase() === 'checkbox') {
+        if (input.prop('checked')) {
+            value = 1;
+            data = $(form).serialize()
+
+        } else {
+            value = 0;
+            data = $(form).serialize() + '&value=' + value;
+        }
+    } else {
+        value = input.val();
+        data = $(form).serialize()
+    }
 
     var send = validate(value, errorDiv);
 
@@ -44,140 +60,15 @@ $('#rokRezervacije').on('input propertychange change', function() {
 
             $.ajax({
                 type: "POST",
-                url: "/settings/policy/" + id,
-                data: $(form).serialize(),
+                url: form.action,
+                data: data,
                 success:function(data){
                     setTimeout(function () {
-                        $("#savedMessage1").fadeIn();
+                        savedMsg.fadeIn();
                     }, 200);
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
-                    $("#savedMessage1").fadeOut();
-                }
-            });
-        }, 500);
-    }
-
-});
-
-$('#rokVracanja').on('input propertychange change', function() {
-    clearTimeout(timeoutId);
-    $("#savedMessage2").fadeOut();
-
-    var errorDiv = document.getElementById('errorDiv2');
-
-    $(errorDiv.querySelector('.e1')).fadeOut();
-    $(errorDiv.querySelector('.e2')).fadeOut();
-    $(errorDiv.querySelector('.e3')).fadeOut();
-
-    var form = document.getElementById('rokVracanjaForma');
-    var value = $('#rokVracanja').val();
-    var id = form.querySelector('.id').value;
-
-    var send = validate(value, errorDiv)
-
-    if (send) {
-        setTimeout(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                type: "POST",
-                url: "/settings/policy/" + id,
-                data: $(form).serialize(),
-                success:function(){
-                    setTimeout(function () {
-                        $("#savedMessage2").fadeIn();
-                    }, 200);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    $("#savedMessage2").fadeOut();
-                }
-            });
-        }, 500);
-    }
-
-});
-
-$('#rokKonflikta').on('input propertychange change', function() {
-    clearTimeout(timeoutId);
-    $("#savedMessage3").fadeOut()
-
-    var errorDiv = document.getElementById('errorDiv3');
-
-    $(errorDiv.querySelector('.e1')).fadeOut();
-    $(errorDiv.querySelector('.e2')).fadeOut();
-    $(errorDiv.querySelector('.e3')).fadeOut();
-
-    var form = document.getElementById('rokKonfliktaForma');
-    var value = $('#rokKonflikta').val();
-    var id = form.querySelector('.id').value;
-
-    var send = validate(value, errorDiv);
-    if (send) {
-        setTimeout(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                type: "POST",
-                url: "/settings/policy/" + id,
-                data: $('#rokKonfliktaForma').serialize(),
-                success:function(){
-                    setTimeout(function () {
-                        $("#savedMessage3").fadeIn()
-                    }, 200);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    $("#savedMessage3").fadeOut()
-                }
-            });
-        }, 500);
-    }
-
-});
-
-$('#maxIzdavanja').on('input propertychange change', function() {
-    clearTimeout(timeoutId);
-    $("#savedMessage4").fadeOut();
-
-    var errorDiv = document.getElementById('errorDiv4');
-
-    $(errorDiv.querySelector('.e1')).fadeOut();
-    $(errorDiv.querySelector('.e2')).fadeOut();
-    $(errorDiv.querySelector('.e3')).fadeOut();
-
-    var form = document.getElementById('maxIzdavanjaForma');
-    var value = $('#maxIzdavanja').val();
-    var id = form.querySelector('.id').value;
-
-    var send = validate(value, errorDiv);
-
-    if (send) {
-        setTimeout(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                type: "POST",
-                url: "/settings/policy/" + id,
-                data: $(form).serialize(),
-                success:function(){
-                    setTimeout(function () {
-                        $("#savedMessage4").fadeIn();
-                    }, 200);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    $("#savedMessage4").fadeOut();
+                    savedMsg.fadeOut();
                 }
             });
         }, 500);

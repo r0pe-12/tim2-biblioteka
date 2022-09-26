@@ -67,6 +67,12 @@ class Book extends Model
         return $this->belongsTo(BookBind::class, 'bookbind_id');
     }
 
+//    1-many rel between books and reviews
+    public function reviews(){
+        # code
+        return $this->hasMany(BookReview::class);
+    }
+
 //    1-many relation between books and formats
     public function format(){
         # code

@@ -7,7 +7,7 @@
 
 
 
-$('button[type="submit"]').on('click', function (e) {
+$('button[type="submit"] .sure').on('click', function (e) {
    $(this).attr('disabled', true);
     $(this).closest('form').submit();
 })
@@ -195,10 +195,12 @@ function dataFileDnD() {
       );
     },
     remove(index) {
-      let files = [...this.files];
-      files.splice(index, 1);
+        let files = [...this.files];
+        const input = $('#multimediaInput');
+        files.splice(index, 1);
 
-      this.files = createFileList(files);
+        this.files = createFileList(files);
+        input[0].files = this.files;
     },
     drop(e) {
       let removed, add;
@@ -1095,6 +1097,12 @@ function validacijaKnjigaOD(event, nextTab= null) {
         errors++;
     }
 
+    if (knjigaKolicina < 0) {
+        $('#validateKnjigaKolicina').append('<p style="color:red;font-size:13px;">Količina mora biti pozitivan broj!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
     if (errors === 0) {
         if (!(nextTab === null)) {
             tab(nextTab)
@@ -1126,6 +1134,12 @@ function validacijaKnjigaSpec(event, nextTab = null) {
     //  specifikacija
     if (brStrana.length == 0) {
         $('#validateBrStrana').append('<p style="color:red;font-size:13px;">Morate unijeti broj strana!</p>');
+        event.preventDefault();
+        errors++;
+    }
+
+    if (brStrana < 0) {
+        $('#validateBrStrana').append('<p style="color:red;font-size:13px;">Broj strana mora biti pozitivan broj!</p>');
         event.preventDefault();
         errors++;
     }
@@ -4085,3 +4099,10 @@ $('.activity-reset-datum').on('click', function () {
     $(button).append(span);
 
 })
+
+$('.toggle').click(function(e){
+    e.preventDefault(); // The flicker is a codepen thing
+    $(this).toggleClass('toggle-on');
+    var checkbox = this.closest('form.policy').querySelector('input[type="checkbox"]');
+    $(checkbox).click();
+});
