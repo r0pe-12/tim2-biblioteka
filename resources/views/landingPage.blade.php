@@ -38,9 +38,9 @@
 		}
     </script>
 
-    <meta name="theme-color" content="#2799b1">
-    <meta property="og:title" content="Home 1">
-    <meta property="og:type" content="website">
+{{--    <meta name="theme-color" content="#2799b1">--}}
+{{--    <meta property="og:title" content="Home 1">--}}
+{{--    <meta property="og:type" content="website">--}}
 </head>
 
 <body data-home-page="https://website2951745.nicepage.io/Home-1.html?version=ec2f40f5-b347-4b11-ad93-42a4c55062ac"
