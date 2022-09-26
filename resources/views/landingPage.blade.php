@@ -11,12 +11,11 @@
     <meta name="author" content="bildstudio"/>
     <!-- End Meta -->
 
+
     <!-- Title -->
     <title> InTheLoop | Library - ICT Cortex student project</title>
     <link rel="shortcut icon" href="{{ asset('img/landing/intheloop-icon.svg') }}" type="image/vnd.microsoft.icon"/>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
     <link rel="stylesheet" href="{{ asset('css/landing/nicepage.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('css/landing/Home-1.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('css/landing/custom.css') }}">
@@ -29,14 +28,14 @@
     <link id="u-page-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
 
-    <script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "Organization",
-			"name": "",
-			"logo": "{{asset('img/landing/default-logo')}}"
-		}
-    </script>
+{{--    <script type="application/ld+json">--}}
+{{--		{--}}
+{{--			"@context": "https://schema.org",--}}
+{{--			"@type": "Organization",--}}
+{{--			"name": "",--}}
+{{--			"logo": "{{asset('img/landing/default-logo')}}"--}}
+{{--		}--}}
+{{--    </script>--}}
 
 {{--    <meta name="theme-color" content="#2799b1">--}}
 {{--    <meta property="og:title" content="Home 1">--}}
