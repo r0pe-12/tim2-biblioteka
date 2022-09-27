@@ -43,7 +43,7 @@
 {{--    <meta property="og:type" content="website">--}}
 </head>
 
-<body class="u-body u-xl-mode" data-lang="en">
+<body class="u-body u-xl-mode" style="overflow-x: hidden" data-lang="en">
 {{--<a href="#" id="scroll" style="display: none;"><span></span></a>--}}
 <a href="javascript:void(0);" id="rocketmeluncur" class="showrocket" ><i></i></a>
 <header class="u-clearfix u-header u-header sticky-header" id="sec-9c34">
@@ -148,7 +148,7 @@
                     <div class="u-container-layout u-valign-middle u-container-layout-1">
                         <h1 class="u-text u-text-body-alt-color u-text-1" data-animation-name="fadeIn"
                             data-animation-duration="1000" data-animation-direction="Left"
-                            data-animation-delay="250"> Library Education</h1>
+                            data-animation-delay="250"> Dobro došli u školsku biblioteku</h1>
                         <p class="u-text u-text-body-alt-color u-text-2" data-animation-name="fadeIn"
                            data-animation-duration="1000" data-animation-direction="Up"
                            data-animation-delay="250">Duis aute irure dolor in reprehenderit in
