@@ -43,7 +43,7 @@
 {{--    <meta property="og:type" content="website">--}}
 </head>
 
-<body class="u-body u-xl-mode" style="overflow-x: hidden" data-lang="en">
+<body class="u-body u-xl-mode" style="overflow-x: clip" data-lang="en">
 {{--<a href="#" id="scroll" style="display: none;"><span></span></a>--}}
 <a href="javascript:void(0);" id="rocketmeluncur" class="showrocket" ><i></i></a>
 <header class="u-clearfix u-header u-header sticky-header" id="sec-9c34">
