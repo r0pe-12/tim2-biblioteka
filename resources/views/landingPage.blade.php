@@ -222,7 +222,7 @@
                                      data-animation-direction="Right" data-animation-delay="250" alt="">
                             </div>
                         </div>
-                        <div
+                        <div data-animation-name="fadeIn" data-animation-duration="1000" data-animation-direction="Right" data-animation-delay="250"
                             class="u-align-center u-container-style u-layout-cell u-left-cell u-size-20 u-white u-layout-cell-4">
                             <div class="u-container-layout u-valign-top u-container-layout-4">
                                 <h3 class="u-text u-text-default u-text-3"> School librarians hear
