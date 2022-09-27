@@ -1,7 +1,8 @@
-jQuery(window).scroll(function(){
-    if(jQuery(window).scrollTop()<50){
+// todo bug kod ove raketice na telefonu nekako prosiri ekran i ispadne na lijevu stranu
+jQuery(window).scroll(function() {
+    if (jQuery(window).scrollTop() < 50) {
         jQuery('#rocketmeluncur').slideUp(500);
-    }else{
+    } else {
         jQuery('#rocketmeluncur').slideDown(500);
     }
     var ftrocketmeluncur = jQuery("#ft")[0] ? jQuery("#ft")[0] : jQuery(document.body)[0];
@@ -11,27 +12,27 @@ jQuery(window).scroll(function(){
     var basewrocketmeluncur = parseInt(ftrocketmeluncur.clientWidth);
     var swrocketmeluncur = scrolltoprocketmeluncur.clientWidth;
     if (basewrocketmeluncur < 1000) {
-        var leftrocketmeluncur = parseInt(fetchOffset(ftrocketmeluncur)['left']);
+        var leftrocketmeluncur = parseInt(ftrocketmeluncur.offsetLeft);
         leftrocketmeluncur = leftrocketmeluncur < swrocketmeluncur ? leftrocketmeluncur * 2 - swrocketmeluncur : leftrocketmeluncur;
-        scrolltoprocketmeluncur.css('left', '"'+( basewrocketmeluncur + 1 ) + 'px"');
+        scrolltoprocketmeluncur.css('left', (basewrocketmeluncur + leftrocketmeluncur + "px"));
     } else {
-        // scrolltoprocketmeluncur.style.left = 'auto';
-        // scrolltoprocketmeluncur.style.right = '10px';
-
         scrolltoprocketmeluncur.css('left', 'auto');
         scrolltoprocketmeluncur.css('right', '10px');
     }
-})
+});
 
-jQuery('#rocketmeluncur').click(function(){
-    jQuery("html, body").animate({ scrollTop: '0px',display:'none'},{
+jQuery('#rocketmeluncur').click(function() {
+    jQuery("html, body").animate({
+        scrollTop: '0px',
+        display: 'none'
+    }, {
         duration: 600,
         easing: 'linear'
     });
 
     var self = this;
-    this.className += ' '+"launchrocket";
-    setTimeout(function(){
+    this.className += ' ' + "launchrocket";
+    setTimeout(function() {
         self.className = 'showrocket';
-    },800)
+    }, 800);
 });
