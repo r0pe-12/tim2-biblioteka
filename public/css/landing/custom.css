@@ -77,3 +77,11 @@
 .inline {
     display: inline-block;
 }
+
+.link {
+    color: blue;
+}
+
+.link:hover {
+    color: white;
+}

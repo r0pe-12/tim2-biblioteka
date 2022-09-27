@@ -16,9 +16,16 @@
     <title> InTheLoop | Library - ICT Cortex student project</title>
     <link rel="shortcut icon" href="{{ asset('img/landing/intheloop-icon.svg') }}" type="image/vnd.microsoft.icon"/>
 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
     <link rel="stylesheet" href="{{ asset('css/landing/nicepage.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('css/landing/Home-1.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('css/landing/custom.css') }}">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/jquery-1.9.1.min.js') }}" defer=""></script>
 {{--    <script class="u-script" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>--}}
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/nicepage.js') }}" defer=""></script>
@@ -74,16 +81,35 @@
                     <li class="u-nav-item">
                         @if(auth()->check())
                             @if(auth()->user()->isAdmin() || auth()->user()->isLibrarian())
-                                <a class="inline u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                                   href="{{ route('dashboard.index') }}" style="padding: 10px 20px;">Dashboard</a>
+                                <a href="{{ route('dashboard.index') }}" class="link">
+                                    <button class="btn btn-outline-primary" style="margin: 10px 30px;">
+                                            Dashboard
+                                    </button>
+                                </a>
+{{--                                <a class="inline u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"--}}
+{{--                                   href="{{ route('dashboard.index') }}" style="padding: 10px 20px;">Dashboard</a>--}}
                             @else
 
                             @endif
 
-                            <a class="inline u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                               href="{{ route('logout') }}" style="padding: 10px 20px;"
-                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                            >Logout</a>
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ auth()->user()->name . ' ' . auth()->user()->surname }}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                                           href="#profil" style="padding: 10px 20px;"
+                                           onclick=""
+                                        >Profil</a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                                           href="{{ route('logout') }}" style="padding: 10px 20px;"
+                                           onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                                        >Logout</a>
+                                    </li>
+                                </ul>
 
                             <form class="mb-0" id="logout-form" action="{{ route('logout') }}"
                                   method="POST" hidden="">
@@ -91,8 +117,11 @@
                             </form>
 
                         @else
-                            <a class="inline u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                               href="{{ route('login') }}" style="padding: 10px 20px;">Login</a>
+                            <a href="{{ route('login') }}" class="link">
+                                <button class="btn btn-outline-primary">
+                                    Login
+                                </button>
+                            </a>
                         @endif
                     </li>
                 </ul>
