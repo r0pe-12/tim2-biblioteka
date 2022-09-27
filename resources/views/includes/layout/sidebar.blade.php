@@ -15,7 +15,7 @@
                         <div class="ml-[25px]">
                             <span class="flex justify-between w-full fill-current whitespace-nowrap">
                                 <div class="transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                    <a href="/" aria-label="Dashboard">
+                                    <a href="{{ route('dashboard.index') }}" aria-label="Dashboard">
                                         <i class="text-[25px] text-[#707070] fas fa-tachometer-alt transition duration-300 ease-in text-[#576cdf]"></i>
                                         <div class="hidden sidebar-item">
                                             <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in text-[#576cdf]">
@@ -32,7 +32,7 @@
                         <div class="ml-[25px]">
                             <span class="flex justify-between w-full fill-current whitespace-nowrap">
                                 <div class="transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                    <a href="/" aria-label="Dashboard">
+                                    <a href="{{ route('dashboard.index') }}" aria-label="Dashboard">
                                         <i class="text-[25px] text-[#707070] fas fa-tachometer-alt transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
                                         <div class="hidden sidebar-item">
                                             <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
