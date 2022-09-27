@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="{{ asset('css/landing/nicepage.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('css/landing/Home-1.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('css/landing/custom.css') }}">
-    <script class="u-script" type="text/javascript" src="{{ asset('js/landing/jquery-1.9.1.min.js') }}" defer=""></script>
+{{--    <script class="u-script" type="text/javascript" src="{{ asset('js/landing/jquery-1.9.1.min.js') }}" defer=""></script>--}}
+    <script class="u-script" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/nicepage.js') }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/custom.js') }}" defer=""></script>
 
@@ -153,16 +154,10 @@
                            data-animation-delay="250">Duis aute irure dolor in reprehenderit in
                             voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
                             sint occaecat cupidatat non proident</p>
-                        <a href="https://nicepage.com/k/arabic-style-html-templates"
+                        <a href="#"
                            class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-1"
                            data-animation-name="fadeIn" data-animation-duration="1000"
                            data-animation-direction="Up" data-animation-delay="500">learn more</a>
-                        <p class="u-text u-text-body-alt-color u-text-3" data-animation-name="fadeIn"
-                           data-animation-duration="1000" data-animation-direction="Up"
-                           data-animation-delay="500">Images from <a
-                                href="https://www.freepik.com/psd/abstract-background"
-                                class="u-active-none u-border-2 u-border-active-palette-3-base u-border-hover-palette-3-base u-border-white u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-2">Freepik</a>
-                        </p>
                     </div>
                 </div>
                 <div
@@ -202,7 +197,7 @@
                                     individual and aim to instil in them a sense of curiosity
                                     and a love of learning that will continue throughout their
                                     lives.</p>
-                                <a href="https://nicepage.com/k/arabic-style-html-templates"
+                                <a href="#"
                                    class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-1"
                                    data-animation-name="rollIn" data-animation-duration="1000"
                                    data-animation-direction="" data-animation-delay="500">learn
@@ -237,10 +232,6 @@
                                     Habitasse platea dictumst quisque sagittis. Interdum velit
                                     euismod in pellentesque massa placerat duis. Quis viverra
                                     nibh cras pulvinar mattis.<br>
-                                </p>
-                                <p class="u-text u-text-default u-text-5">Images from <a
-                                        href="https://www.freepik.com/psd/woman"
-                                        class="u-border-1 u-border-active-palette-1-base u-border-black u-border-hover-palette-1-base u-btn u-button-link u-button-style u-none u-text-body-color u-btn-2">Freepik</a>
                                 </p>
                             </div>
                         </div>
@@ -308,11 +299,7 @@
                     voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
                     cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
                     laborum. </p>
-                <p class="u-align-left u-text u-text-default u-text-3">Images from <a
-                        href="https://www.freepik.com/psd/woman"
-                        class="u-border-1 u-border-active-palette-1-base u-border-black u-border-hover-palette-1-base u-btn u-button-link u-button-style u-none u-text-body-color u-btn-1">Freepik</a>
-                </p>
-                <a href="https://nicepage.com/k/arabic-style-html-templates"
+                <a href="#"
                    class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-2">learn
                     more</a>
             </div>
@@ -390,15 +377,11 @@
                             <p class="u-text u-text-2">Sample text. Lorem ipsum dolor sit amet,
                                 consectetur adipiscing elit nullam nunc justo sagittis suscipit
                                 ultrices.</p>
-                            <a href="https://nicepage.com/k/arabic-style-html-templates"
+                            <a href="#"
                                class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-1"
                                data-animation-name="rollIn" data-animation-duration="1000"
                                data-animation-direction="" data-animation-delay="500">learn
                                 more</a>
-                            <p class="u-text u-text-default u-text-3">Image from <a
-                                    href="https://www.freepik.com/psd/woman"
-                                    class="u-border-1 u-border-active-palette-1-base u-border-black u-border-hover-palette-1-base u-btn u-button-link u-button-style u-none u-text-body-color u-btn-2">Freepik</a>
-                            </p>
                         </div>
                     </div>
                     <div
@@ -456,21 +439,11 @@
                         <div
                             class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-xl u-container-layout-1">
                             <div class="u-form u-form-1">
-                                <form action="#"
+                                <form action="/"
                                       class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
                                       style="padding: 0;" name="form">
                                     <div
-                                        class="u-form-email u-form-group u-form-partition-factor-2">
-                                        <label for="email-f2a8"
-                                               class="u-label u-label-1">E-mail</label>
-                                        <input type="email"
-                                               placeholder="Enter a valid email address"
-                                               id="email-f2a8" name="email"
-                                               class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle"
-                                               required="">
-                                    </div>
-                                    <div
-                                        class="u-form-group u-form-name u-form-partition-factor-2">
+                                        class="u-form-group u-form-name">
                                         <label for="name-f2a8"
                                                class="u-label u-label-2">Name</label>
                                         <input type="text" placeholder="Enter your Name"
@@ -478,30 +451,14 @@
                                                class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle"
                                                required="">
                                     </div>
-                                    <div class="u-form-group u-form-select u-form-group-3">
-                                        <label for="select-8e9d"
-                                               class="u-form-control-hidden u-label u-label-3">Select</label>
-                                        <div class="u-form-select-wrapper">
-                                            <select id="select-8e9d" name="select"
-                                                    class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle">
-                                                <option value="Item 1">Item 1</option>
-                                                <option value="Item 2">Item 2</option>
-                                                <option value="Item 3">Item 3</option>
-                                            </select>
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                 width="14" height="12"
-                                                 class="u-caret">
-                                                <path fill="currentColor" d="M4 8L0 4h8z">
-                                                </path>
-                                            </svg>
-                                        </div>
-                                    </div>
+
                                     <div
-                                        class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-4">
-                                        <label for="date-4441"
-                                               class="u-label u-label-4">Date</label>
-                                        <input type="date" placeholder="MM/DD/YYYY"
-                                               id="date-4441" name="date"
+                                        class="u-form-email u-form-group u-form-partition-factor-2">
+                                        <label for="email-f2a8"
+                                               class="u-label u-label-1">E-mail</label>
+                                        <input type="email"
+                                               placeholder="Enter a valid email address"
+                                               id="email-f2a8" name="email"
                                                class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle"
                                                required="">
                                     </div>
@@ -537,9 +494,6 @@
                                         to send your message. Please fix errors then try
                                         again.
                                     </div>
-                                    <input type="hidden" value="" name="recaptchaResponse">
-                                    <input type="hidden" name="formServices"
-                                           value="2c742e9d3448506df82852de7a2d8e9a">
                                 </form>
                             </div>
                         </div>

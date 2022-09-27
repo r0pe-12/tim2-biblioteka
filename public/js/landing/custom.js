@@ -13,10 +13,13 @@ jQuery(window).scroll(function(){
     if (basewrocketmeluncur < 1000) {
         var leftrocketmeluncur = parseInt(fetchOffset(ftrocketmeluncur)['left']);
         leftrocketmeluncur = leftrocketmeluncur < swrocketmeluncur ? leftrocketmeluncur * 2 - swrocketmeluncur : leftrocketmeluncur;
-        scrolltoprocketmeluncur.style.left = ( basewrocketmeluncur + leftrocketmeluncur ) + 'px';
+        scrolltoprocketmeluncur.css('left', '"'+( basewrocketmeluncur + 1 ) + 'px"');
     } else {
-        scrolltoprocketmeluncur.style.left = 'auto';
-        scrolltoprocketmeluncur.style.right = '10px';
+        // scrolltoprocketmeluncur.style.left = 'auto';
+        // scrolltoprocketmeluncur.style.right = '10px';
+
+        scrolltoprocketmeluncur.css('left', 'auto');
+        scrolltoprocketmeluncur.css('right', '10px');
     }
 })
 

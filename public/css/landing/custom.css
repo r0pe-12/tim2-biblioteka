@@ -30,6 +30,7 @@
     display: block;
     margin-top: 48px;
     height: 14px;
+    /*todo odje imamo problem kod ovog linka al nije nista bitno cim sve radi kako trema osim sto nam usareni konzolu*/
     background: url(https://1.bp.blogspot.com/-UR9I7YEuEUY/VXIJn8MrBPI/AAAAAAAAKRE/qZObHBd5zIo/s1600/rocket.png) no-repeat 50% -48px;
     opacity: .5;
     -webkit-transition: -webkit-transform .2s;
