@@ -81,13 +81,13 @@
                     <li class="u-nav-item">
                         @if(auth()->check())
                             @if(auth()->user()->isAdmin() || auth()->user()->isLibrarian())
-                                <a href="{{ route('dashboard.index') }}" class="link">
-                                    <button class="btn btn-outline-primary" style="margin: 10px 30px;">
+
+                                <a style="margin: 0 20px;" href="{{ route('dashboard.index') }}" class="link">
+                                    <button class="btn btn-outline-primary">
                                             Dashboard
                                     </button>
                                 </a>
-{{--                                <a class="inline u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"--}}
-{{--                                   href="{{ route('dashboard.index') }}" style="padding: 10px 20px;">Dashboard</a>--}}
+
                             @else
 
                             @endif
@@ -98,7 +98,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li>
                                         <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                                           href="#profil" style="padding: 10px 20px;"
+                                           href="{{ auth()->user()->isAdmin() || auth()->user()->isLibrarian() ? route('librarians.show', auth()->user()->username) : '#profil' }}" style="padding: 10px 20px;"
                                            onclick=""
                                         >Profil</a>
                                     </li>
