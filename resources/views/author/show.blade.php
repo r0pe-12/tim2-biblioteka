@@ -65,32 +65,53 @@
             </div>
 
             <!-- Space for content -->
+            <div class="py-4 text-gray-500 border-[#e4dfdf] pl-[30px]">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-link active" id="osnovniDetalji" data-bs-toggle="tab" href="#osnovniDetalji-tab"  role="tab" aria-controls="osnovniDetalji" aria-selected="true">Osnovni detalji</a>
+                        <a class="nav-link" id="knjige" data-bs-toggle="tab" href="#knjige-tab"  role="tab" aria-controls="knjige" aria-selected="false">Knjige ovog autora</a>
+                    </div>
+                </nav>
+            </div>
+
             <div class="pl-[30px] height-profile pb-[30px] scroll mt-[20px]">
-                <div class="flex flex-row">
-                    <div class="mr-[30px]">
-                        <div class="mt-[20px]">
-                            <span class="text-gray-500">Ime</span>
-                            <p class="font-medium">{{ $author->name }}</p>
-                        </div>
-                        <div class="mt-[40px]">
-                            <span class="text-gray-500">Prezime</span>
-                            <p class="font-medium">{{ $author->surname }}</p>
-                        </div>
-                        <div class="mr-[70px] mt-[20px] flex flex-col max-w-[600px]">
-                            <h4 class="text-gray-500 ">
-                                Storyline (Kratki sadržaj)
-                            </h4>
-                            <div class="scroll" style="max-height: 511px">
-                                <p class=" my-[10px]">
-                                    {!! $author->biography !!}
-                                </p>
+                <div class="tab-content" id="nav-tabContent">
+                    <!-- OSNOVNI DETALjI -->
+                    <div class="tab-pane fade show active" id="osnovniDetalji-tab" role="tabpanel" aria-labelledby="osnovniDetalji">
+                        <div class="flex flex-row">
+                            <div class="mr-[30px]">
+                                <div class="mt-[20px]">
+                                    <span class="text-gray-500">Ime</span>
+                                    <p class="font-medium">{{ $author->name }}</p>
+                                </div>
+                                <div class="mt-[40px]">
+                                    <span class="text-gray-500">Prezime</span>
+                                    <p class="font-medium">{{ $author->surname }}</p>
+                                </div>
+                                <div class="mr-[70px] mt-[20px] flex flex-col max-w-[600px]">
+                                    <h4 class="text-gray-500 ">
+                                        Storyline (Kratki sadržaj)
+                                    </h4>
+                                    <div class="scroll" style="max-height: 511px">
+                                        <p class=" my-[10px]">
+                                            {!! $author->biography !!}
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="ml-[100px]  mt-[20px]">
+                                <img class="p-2 border-2 border-gray-300" width="300px" src="{{ $author->image }}" alt="">
                             </div>
                         </div>
+                    </div>
+                    <!-- kraj OSNOVNI DETALJI -->
+
+                    <!-- KNjIGE OVOG AUTORA -->
+                    <div class="tab-pane fade" id="knjige-tab" role="tabpanel" aria-labelledby="knjige">
 
                     </div>
-                    <div class="ml-[100px]  mt-[20px]">
-                        <img class="p-2 border-2 border-gray-300" width="300px" src="{{ $author->image }}" alt="">
-                    </div>
+                    <!-- kraj KNjIGE OVOG AUTORA -->
                 </div>
             </div>
         </section>
