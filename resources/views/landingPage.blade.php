@@ -98,7 +98,15 @@
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li>
                                         <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                                           href="{{ auth()->user()->isAdmin() || auth()->user()->isLibrarian() ? route('librarians.show', auth()->user()->username) : '#profil' }}" style="padding: 10px 20px;"
+                                           href="
+                                               @if(auth()->user()->isLibrarian())
+                                                    {{ route('librarians.show', auth()->user()->username) }}
+                                                @elseif(auth()->user()->isAdmin())
+                                                    {{ route('admins.show', auth()->user()->username) }}
+                                                @else
+                                                    #profil
+                                               @endif
+                                           " style="padding: 10px 20px;"
                                            onclick=""
                                         >Profil</a>
                                     </li>
