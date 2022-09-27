@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use App\Models\Book;
 use App\Models\Librarian;
 use App\Models\Role;
@@ -16,6 +17,9 @@ class SearchController extends Controller
         # code
         $s = \request()->post('searchWord');
         $books = Book::where('title', 'like', "%{$s}%");
+
+        $authors = Author::where('name', 'like', "%{$s}%")
+                            ->orWhere('surname', 'like', "%{$s}%");
 
         $students = User::where('role_id', '=', Student::ROLE)
                             ->where(function ($q) use ($s) {
@@ -38,7 +42,8 @@ class SearchController extends Controller
         return response()->json([
             'books' => $books->get(),
             'students' => $students->get(),
-            'librarians' => $librarians->get()
+            'librarians' => $librarians->get(),
+            'authors' => $authors->get(),
         ]);
     }
 }
