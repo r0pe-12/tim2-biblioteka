@@ -36,3 +36,7 @@ jQuery('#rocketmeluncur').click(function() {
         self.className = 'showrocket';
     }, 800);
 });
+
+$('.nolink').on('click', function(e) {
+    e.preventDefault();
+});

@@ -85,3 +85,12 @@
 .link:hover {
     color: white;
 }
+
+.text-white{
+    --tw-text-opacity: 1;
+    color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.f16 {
+    font-size: 16px;
+}

@@ -108,28 +108,53 @@
                     </li>
                 </ul>
             </div>
+
+            <!-- za male uredjaje -->
             <div class="u-custom-menu u-nav-container-collapse">
                 <div
                         class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
                     <div class="u-inner-container-layout u-sidenav-overflow">
                         <div class="u-menu-close" style="cursor: pointer;"></div>
                         <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+
                             @if(auth()->check())
                                 @if(auth()->user()->isAdmin() || auth()->user()->isLibrarian())
-                                    <li class="u-nav-item">
-                                        <a class="u-button-style u-nav-link" href="{{ route('dashboard.index') }}"
-                                           style="padding: 10px 20px;">Dashboard</a>
-                                    </li>
+                                   <!-- ako je admin ili bibliotekar na telefonu ne izbacijemo nista jer svakako ne moze na dashboard da udje -->
                                 @else
+                                    <li class="u-nav-item">
+                                        <button class="btn btn-default text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBooks" aria-expanded="false" aria-controls="collapseExample">
+                                            Knjige <i class="fa fa-caret-down"></i>
+                                        </button>
+                                    </li>
 
+                                    <div class="collapse f16" id="collapseBooks">
+                                        <a class="u-button-style u-nav-link" href="#rezervisane"
+                                           style="padding: 10px 20px;">- Rezervisane</a>
+                                        <a class="u-button-style u-nav-link" href="#izdate"
+                                           style="padding: 10px 20px;">- Izdate</a>
+                                        <a class="u-button-style u-nav-link" href="#sveKnjige"
+                                           style="padding: 10px 20px;">- Sve Knjige</a>
+                                    </div>
+                                    <br>
                                 @endif
 
-                                <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link" href="{{ route('logout') }}"
-                                       style="padding: 10px 20px;"
-                                       onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                                    >Logout</a>
-                                </li>
+                                    <li class="u-nav-item">
+                                        <button class="btn btn-default text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUser" aria-expanded="false" aria-controls="collapseExample">
+                                            {{ auth()->user()->name . ' ' . auth()->user()->surname }} <i class="fa fa-caret-down"></i>
+                                        </button>
+                                    </li>
+
+                                    <div class="collapse f16" id="collapseUser">
+
+                                        <a class="u-button-style u-nav-link" href="#profil"
+                                           style="padding: 10px 20px;"
+                                        >Profil</a>
+
+                                        <a class="u-button-style u-nav-link" href="{{ route('logout') }}"
+                                           style="padding: 10px 20px;"
+                                           onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                                        >Logout</a>
+                                    </div>
 
                                 <form class="mb-0" id="logout-form" action="{{ route('logout') }}"
                                       method="POST" hidden="">
