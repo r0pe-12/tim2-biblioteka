@@ -3446,17 +3446,21 @@ $('#searchIcon').on('click', function () {
 
 // when we click outsite header or search wrapper we will hide everything
 window.addEventListener('click', function(e){
-    if (document.getElementById('searchWrapper').contains(e.target) || document.getElementById('siteHeader').contains(e.target)){
-        // Clicked in box
-    } else{
-        // Clicked outside the box
-        $('#searchForm').fadeOut();
-        $('#resultWrapper').fadeOut();
-        $('#info').fadeOut();
-        $('#searchFilter').fadeOut();
-        $('#searchBar').val('');
+    var sForm = document.getElementById('searchForm');
+
+    if (sForm && $(sForm).css('display') === 'block') {
+        if (document.getElementById('searchWrapper').contains(e.target) || document.getElementById('siteHeader').contains(e.target)){
+            // Clicked in box
+        } else{
+            // Clicked outside the box
+            $('#searchForm').fadeOut();
+            $('#resultWrapper').fadeOut();
+            $('#info').fadeOut();
+            $('#searchFilter').fadeOut();
+            $('#searchBar').val('');
+        }
     }
-});
+})
 // $('header').on('mouseleave', function () {
 //     $('#searchBar').fadeOut();
 //     $('#resultWrapper').fadeOut();
