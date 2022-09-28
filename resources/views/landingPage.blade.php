@@ -15,7 +15,7 @@
                             <p class="u-text u-text-body-alt-color u-text-2" data-animation-name="fadeIn"
                                data-animation-duration="1000" data-animation-direction="Up"
                                data-animation-delay="250">Knjige su kao vrata, otvoriš ih i odeš u drugi svijet! </p>
-                            <a href="#"
+                            <a href="#carousel_2f1f"
                                class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-1"
                                data-animation-name="fadeIn" data-animation-duration="1000"
                                data-animation-direction="Up" data-animation-delay="500">learn more</a>
