@@ -7,20 +7,19 @@
                 <div class="u-layout-row" style="">
                     <div
                         class="u-align-left u-container-style u-layout-cell u-left-cell u-shape-rectangle u-size-20-lg u-size-20-xl u-size-23-md u-size-23-sm u-size-23-xs u-size-xs-60 u-layout-cell-1"
-                        >
+                    >
                         <div class="u-container-layout u-valign-middle u-container-layout-1">
                             <h1 class="u-text u-text-body-alt-color u-text-1" data-animation-name="fadeIn"
                                 data-animation-duration="1000" data-animation-direction="Left"
                                 data-animation-delay="250"> Dobro došli u školsku biblioteku</h1>
                             <p class="u-text u-text-body-alt-color u-text-2" data-animation-name="fadeIn"
                                data-animation-duration="1000" data-animation-direction="Up"
-                               data-animation-delay="250">Duis aute irure dolor in reprehenderit in
-                                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                                sint occaecat cupidatat non proident</p>
+                               data-animation-delay="250">Knjige su kao vrata, otvoriš ih i odeš u drugi svijet! </p>
                             <a href="#"
                                class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-1"
                                data-animation-name="fadeIn" data-animation-duration="1000"
                                data-animation-direction="Up" data-animation-delay="500">learn more</a>
+                            <!-- ovo vodi na listu knjigu -->
                         </div>
                     </div>
                     <div
@@ -55,16 +54,16 @@
                                          data-image-height="800" data-animation-name="fadeIn"
                                          data-animation-duration="2000"
                                          data-animation-direction="Left" data-animation-delay="250">
-                                    <h5 class="u-text u-text-1"> Experience what you have learned</h5>
-                                    <p class="u-text u-text-2"> We treat each child as a unique
-                                        individual and aim to instil in them a sense of curiosity
-                                        and a love of learning that will continue throughout their
-                                        lives.</p>
-                                    <a href="#"
-                                       class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-1"
-                                       data-animation-name="rollIn" data-animation-duration="1000"
-                                       data-animation-direction="" data-animation-delay="500">learn
-                                        more</a>
+                                    <h5 class="u-text u-text-1"> Iskusite ono što ste naučili</h5>
+                                    <p class="u-text u-text-2"> Svako dijete tretiramo kao jedinstvenu individuu i
+                                        nastojimo da im usadimo osjećaj radoznalosti i ljubavi prema učenju koja će se
+                                        nastaviti kroz cijeli život.</p>
+
+                                    {{--                                    <a href="#"--}}
+                                    {{--                                       class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-1"--}}
+                                    {{--                                       data-animation-name="rollIn" data-animation-duration="1000"--}}
+                                    {{--                                       data-animation-direction="" data-animation-delay="500">learn--}}
+                                    {{--                                        more</a>--}}
                                 </div>
                             </div>
                         </div>
@@ -77,7 +76,7 @@
                                 data-animation-direction="">
                                 <div
                                     class="u-container-layout u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-valign-top-lg u-valign-top-xl u-container-layout-3"
-                                    >
+                                >
                                     <img class="u-image u-image-round u-radius-20 u-image-2"
                                          src="{{asset('img/landing/kj.jpg')}}" data-image-width="1200"
                                          data-image-height="1002" data-animation-name="fadeIn"
@@ -85,16 +84,16 @@
                                          data-animation-direction="Right" data-animation-delay="250" alt="">
                                 </div>
                             </div>
-                            <div data-animation-name="fadeIn" data-animation-duration="1000" data-animation-direction="Right" data-animation-delay="250"
-                                class="u-align-center u-container-style u-layout-cell u-left-cell u-size-20 u-white u-layout-cell-4">
+                            <div data-animation-name="fadeIn" data-animation-duration="1000"
+                                 data-animation-direction="Right" data-animation-delay="250"
+                                 class="u-align-center u-container-style u-layout-cell u-left-cell u-size-20 u-white u-layout-cell-4">
                                 <div class="u-container-layout u-valign-top u-container-layout-4">
-                                    <h3 class="u-text u-text-default u-text-3"> School librarians hear
-                                        the question all the time</h3>
-                                    <p class="u-text u-text-4">Egestas dui id ornare arcu odio. In
-                                        tellus integer feugiat scelerisque varius morbi enim nunc.
-                                        Habitasse platea dictumst quisque sagittis. Interdum velit
-                                        euismod in pellentesque massa placerat duis. Quis viverra
-                                        nibh cras pulvinar mattis.<br>
+                                    <h3 class="u-text u-text-default u-text-3"> Školski bibliotekari stalno čuju ovo
+                                        pitanje</h3>
+                                    <p class="u-text u-text-4"><b>Koja je svrha čitanja knjiga?</b>
+                                        <br>
+                                        Ima ih mnogo, ali bismo izdvojili, znanje koje se stiče čitanjem!
+                                        <br>
                                     </p>
                                 </div>
                             </div>
@@ -109,14 +108,13 @@
              data-animation-name="fadeIn" data-animation-duration="1000" data-animation-direction="Left"></div>
         <div class="u-list u-list-1">
             <div class="u-repeater u-repeater-1">
-                <div class="u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-1"
-                     data-animation-name="flipIn" data-animation-duration="1000" data-animation-direction="X"
-                     data-animation-delay="250">
+                <div
+                    class="u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-1"
+                    data-animation-name="flipIn" data-animation-duration="1000" data-animation-direction="X"
+                    data-animation-delay="250">
                     <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
                         <h3 class="u-text u-text-default u-text-palette-1-base u-text-1">01</h3>
-                        <p class="u-text u-text-2">Duis aute irure dolor in reprehenderit in voluptate velit
-                            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <p class="u-text u-text-2">Registrujte se i rezervišite svoju knjigu.
                         </p>
                     </div>
                 </div>
@@ -125,9 +123,7 @@
                      data-animation-delay="250">
                     <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2">
                         <h3 class="u-text u-text-default u-text-palette-1-base u-text-3">02</h3>
-                        <p class="u-text u-text-4">Duis aute irure dolor in reprehenderit in voluptate velit
-                            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <p class="u-text u-text-4">Preuzmite svoju željenu knjigu.
                         </p>
                     </div>
                 </div>
@@ -136,9 +132,7 @@
                      data-animation-delay="250">
                     <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3">
                         <h3 class="u-text u-text-default u-text-palette-1-base u-text-5">03</h3>
-                        <p class="u-text u-text-6">Duis aute irure dolor in reprehenderit in voluptate velit
-                            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <p class="u-text u-text-6">Uživajte u svojoj knjizi, jer u znanju je moć!
                         </p>
                     </div>
                 </div>
@@ -168,63 +162,6 @@
                 </div>
             </div>
             <div class="u-gradient u-shape u-shape-circle u-shape-2"></div>
-        </div>
-    </section>
-    <section class="u-align-center u-clearfix u-grey-5 u-section-5" id="sec-686e">
-        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-            <h2 class="u-text u-text-default u-text-1"> Meet our Principal</h2>
-            <div class="u-list u-list-1">
-                <div class="u-repeater u-repeater-1">
-                    <div
-                        class="u-align-left u-container-style u-custom-item u-gradient u-list-item u-radius-20 u-repeater-item u-shape-round u-list-item-1">
-                        <div class="u-container-layout u-similar-container u-container-layout-1">
-                            <h4
-                                class="u-custom-item u-text u-text-body-alt-color u-text-default u-text-2">
-                                Learning is an active process</h4>
-                            <p class="u-custom-item u-text u-text-body-alt-color u-text-default u-text-3">
-                                Sample text. Click to select the text box. Click again or double click
-                                to start editing the text.&nbsp;Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="u-align-left u-container-style u-custom-item u-list-item u-radius-20 u-repeater-item u-shape-round u-video-cover u-white u-list-item-2">
-                        <div class="u-container-layout u-similar-container u-container-layout-2">
-                            <h4 class="u-custom-item u-text u-text-default u-text-4"> Help students set
-                                challenging goals</h4>
-                            <p class="u-custom-item u-text u-text-default u-text-5">Sample text. Click to
-                                select the text box. Click again or double click to start editing the
-                                text.&nbsp;Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
-                    <div
-                        class="u-align-left u-container-style u-custom-item u-list-item u-radius-20 u-repeater-item u-shape-round u-video-cover u-white u-list-item-3">
-                        <div class="u-container-layout u-similar-container u-container-layout-3">
-                            <h4 class="u-custom-item u-text u-text-default u-text-6"> Give students
-                                positive reinforcement</h4>
-                            <p class="u-custom-item u-text u-text-default u-text-7">Sample text. Click to
-                                select the text box. Click again or double click to start editing the
-                                text.&nbsp;Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
-                    <div
-                        class="u-align-left u-container-style u-custom-item u-gradient u-list-item u-radius-20 u-repeater-item u-shape-round u-video-cover u-list-item-4">
-                        <div class="u-container-layout u-similar-container u-container-layout-4">
-                            <h4
-                                class="u-custom-item u-text u-text-body-alt-color u-text-default u-text-8">
-                                Work individually with students</h4>
-                            <p class="u-custom-item u-text u-text-body-alt-color u-text-default u-text-9">
-                                Sample text. Click to select the text box. Click again or double click
-                                to start editing the text.&nbsp;Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <section class="u-clearfix u-section-7" id="carousel_33aa">
@@ -267,11 +204,8 @@
                                                 </g>
                                             </g>
                                         </svg></span>
-                                <p class="u-text u-text-4">Luctus accumsan tortor posuere ac ut
-                                    consequat. Bibendum ut tristique et egestas quis ipsum suspendisse
-                                    ultrices. Gravida in fermentum et sollicitudin ac orci. Purus
-                                    gravida quis blandit turpis. Interdum consectetur libero id
-                                    faucibus nisl tincidunt eget nullam non.<span
+                                <p class="u-text u-text-4">Knjiga je vrednija od svih spomenika ukrašenih slikama,
+                                    reljefom i duborezom, jer ona sama gradi spomenike u srcu onog ko je čita.<span
                                         style="font-style: italic;"></span>
                                 </p>
                             </div>
@@ -361,14 +295,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="u-container-style u-layout-cell u-size-22 u-white u-layout-cell-2">
+                        <div class="u-container-style u-layout-cell u-size-22 u-layout-cell-2" data-image-width="1080"
+                             data-image-height="1080" data-animation-name="fadeIn" data-animation-duration="1000"
+                             data-animation-direction="Right" data-animation-delay="250"> <!-- u-white -->
                             <div class="u-container-layout u-valign-middle u-container-layout-2">
-                                <p class="u-text u-text-default u-text-1"> Ut enim ad minim veniam, quis
-                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                                    occaecat cupidatat non proident, sunt in culpa qui officia
-                                    deserunt mollit anim id est laborum.</p>
+                                <img src="{{ asset('img/landing/slika.jpg') }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -379,20 +310,10 @@
 
 
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-90c0">
-        <div class="u-clearfix u-sheet u-sheet-1">
-            <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the text box.
-                Click again or double click to start editing the text.</p>
+        <div class="bg-white py-3">
+            <div class="d-flex justify-content-center">
+                <span style="color: black">Powered by &nbsp; <img src="{{ asset('img/landing/intheloop-full-full.svg') }}" class="pb-1" height="20px" alt="Intelco"></span>
+            </div>
         </div>
     </footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-        <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
-            <span>HTML Template</span>
-        </a>
-        <p class="u-text">
-            <span>created with</span>
-        </p>
-        <a class="u-link" href="https://nicepage.com/website-builder" target="_blank">
-            <span>Website Builder</span>
-        </a>.
-    </section>
 </x-landing-layout>
