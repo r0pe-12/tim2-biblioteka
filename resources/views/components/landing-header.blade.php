@@ -35,7 +35,7 @@
 
                             @else
 
-                                <button class="btn btn-outline-primary dropdown-toggle" type="button" style="margin-right: 50px"
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" style="margin-right: 20px"
                                         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Knjige
                                 </button>
