@@ -35,6 +35,32 @@
 
                             @else
 
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" style="margin-right: 50px"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Knjige
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                                           href="#rezervisane" style="padding: 10px 20px;"
+                                        >Rezervisane</a>
+                                    </li>
+                                    <li>
+                                        <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                                           href="#izdate" style="padding: 10px 20px;"
+                                        >Izdate</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                                           href="#sveKnjige" style="padding: 10px 20px;"
+                                        >Sve Knjige</a>
+                                    </li>
+
+                                </ul>
+
                             @endif
 
                             <button class="btn btn-outline-primary dropdown-toggle" type="button"
