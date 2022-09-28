@@ -1,104 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <title>Login | Library - ICT Cortex student project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="description" content="ICT Cortex Library - project for high school students..." />
+    <meta name="keywords" content="ict cortex, cortex, bild, bildstudio, highschool, students, coding" />
+    <meta name="author" content="bildstudio" />
+    <!--===============================================================================================-->
+    <link rel="shortcut icon" href="{{ asset('img/library-favicon.ico') }}" type="image/vnd.microsoft.icon" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth-pages/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth-pages/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth-pages/vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth-pages/vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth-pages/vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth-pages/css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth-pages/css/main.css') }}">
+    <!--===============================================================================================-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function flashMsg(msg, type) {
+            Swal.fire({
+                "title": msg,
+                // "text":msg,
+                "timer":5000,
+                "width":"40rem",
+                "padding":"1.2rem",
+                "showConfirmButton":false,
+                "showCloseButton":true,
+                "timerProgressBar":false,
+                "customClass":{"container":null,"popup":null,"header":null,"title":null,"closeButton":null,"icon":null,"image":null,"content":null,"input":null,"actions":null,"confirmButton":null,"cancelButton":null,"footer":null},
+                "toast":true,
+                "icon":type,
+                "position":"top-end"});
+        }
 
-    <head>
-        <!-- Meta -->
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta http-equiv="content-language" content="en" />
-        <meta name="description" content="ICT Cortex Library - project for high school students..." />
-        <meta name="keywords" content="ict cortex, cortex, bild, bildstudio, highschool, students, coding" />
-        <meta name="author" content="bildstudio" />
-        <!-- End Meta -->
+        window.onload = function () {
+            @if(session('success'))
+            const tempMsg = "{{ session('success') }}";
+            var temp = document.createElement('div');
+            temp.setAttribute('hidden', 'true');
+            temp.innerHTML = tempMsg;
+            const msg = temp.innerHTML;
 
-        <!-- Title -->
-        <title>Login | Library - ICT Cortex student project</title>
-        <link rel="shortcut icon" href="{{ asset('img/library-favicon.ico') }}" type="image/vnd.microsoft.icon" />
-        <!-- End Title -->
+            flashMsg(msg, 'success');
+            @elseif(session('fail'))
+            const tempMsg1 = "{{ session('fail') }}";
+            var temp1 = document.createElement('div');
+            temp1.setAttribute('hidden', 'true');
+            temp1.innerHTML = tempMsg1;
+            const msg1 = temp1.innerHTML;
 
-        <!-- Styles -->
-        @include('includes/layout/styles')
-            <!-- End Styles -->
-    </head>
+            flashMsg(msg1, 'error');
+            @endif
+        }
+    </script>
+</head>
+<body>
 
-    <body>
-    <!-- Main content -->
-        <main class="h-screen small:hidden bg-login scroll">
-            <div class="flex items-center justify-center pt-[13%]">
-                <div class="w-full max-w-md">
-                    <form class="px-12 pt-6 pb-4 mb-4 bg-white rounded shadow-lg" method="POST" action="{{ route('login') }}">
-                        @csrf
-                        @method('POST')
-
-                        <div class="flex justify-center py-2 mb-4 text-2xl text-gray-800 border-b-2">
-                            Online Biblioteka - Login
-                        </div>
-
-                            @error('username')
-                            <span class="invalid-feedback text-sm text-red-500" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                            @enderror
-
-                        <div class="mb-4">
-                            <label class="block mb-2 text-sm font-normal text-gray-700" for="username">
-                                Username
-                            </label>
-
-                            <input
-                                class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                name="username"  type="text" required autofocus placeholder="Username" value="{{ old('username') }}">
-                        </div>
-
-                        <div class="mb-6">
-                            <label class="block mb-2 text-sm font-normal text-gray-700" for="password">
-                                Password
-                            </label>
-                            <input
-                                class="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                type="password" placeholder="Password" name="password" required autocomplete="current-password"
-                            />
-                            @error('password')
-                                <span class="invalid-feedback text-sm text-red-500" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <button type="submit" class="inline-block px-4 py-2 text-white bg-blue-500 rounded shadow-lg btn-animation hover:bg-blue-600 focus:bg-blue-700">
-                                {{ __('Login') }}
-                            </button>&nbsp;&nbsp;
-
-                            <a href="{{route('register')}}" class="inline-block text-sm font-normal text-blue-500 align-baseline hover:text-blue-800" href="{{ route('password.request') }}">
-                                Register &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
-                            </a>
-
-                            <br>
-
-                            @if (Route::has('password.request'))
-                                <a class="inline-block text-sm font-normal text-blue-500 align-baseline hover:text-blue-800" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            @endif
-                        </div>
-                        <p class="text-xs text-center mt-[30px] text-gray-500">
-                            &copy;2022 ICT Cortex. All rights reserved.
-                        </p>
-                    </form>
-                </div>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <img src="{{ asset('auth-pages/images/img-01.png') }}" alt="IMG">
             </div>
-        </main>
-    <!-- End Main content -->
 
-    <!-- Notification for small devices -->
-    @include('includes/layout/inProgress')
+            <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
+                @csrf
+                @method('POST')
 
-        <!-- Scripts -->
-    @include('includes/layout/scripts')
-        <!-- End Scripts -->
+					<span class="login100-form-title">
+						Online Biblioteka
+					</span>
+                @error('username')
+                    <span class="login-error" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
 
-    </body>
 
+                <div class="wrap-input100 validate-input" data-validate = "Username is required">
+                    <input class="input100" type="text" name="username" placeholder="Username" value="{{ old('username') }}">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                    <input class="input100" type="password" name="password" placeholder="Password">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">
+                        Login
+                    </button>
+                </div>
+
+                @if (Route::has('password.request'))
+                    <div class="text-center p-t-12">
+                            <span class="txt1">
+                                Forgot
+                            </span>
+                        <a class="txt2" href="{{ route('password.request') }}">
+                            Username / Password?
+                        </a>
+                    </div>
+                @endif
+
+                <div class="text-center p-t-136">
+                    <a class="txt2" href="{{ route('register') }}">
+                        Create your Account
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--===============================================================================================-->
+<script src="{{ asset('auth-pages/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('auth-pages/vendor/bootstrap/js/popper.js') }}"></script>
+<script src="{{ asset('auth-pages/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('auth-pages/vendor/select2/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('auth-pages/vendor/tilt/tilt.jquery.min.js') }}"></script>
+<script >
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+</script>
+<!--===============================================================================================-->
+<script src="{{ asset('auth-pages/js/main.js') }}"></script>
+
+</body>
 </html>

@@ -3423,6 +3423,9 @@ $('#searchIcon').on('click', function () {
         var knjige = document.getElementById('knjige');
         knjige.textContent = '';
 
+        var autori = document.getElementById('autori');
+        autori.textContent = '';
+
         var ucenici = document.getElementById('ucenici');
         ucenici.textContent = '';
 
@@ -3443,17 +3446,21 @@ $('#searchIcon').on('click', function () {
 
 // when we click outsite header or search wrapper we will hide everything
 window.addEventListener('click', function(e){
-    if (document.getElementById('searchWrapper').contains(e.target) || document.getElementById('siteHeader').contains(e.target)){
-        // Clicked in box
-    } else{
-        // Clicked outside the box
-        $('#searchForm').fadeOut();
-        $('#resultWrapper').fadeOut();
-        $('#info').fadeOut();
-        $('#searchFilter').fadeOut();
-        $('#searchBar').val('');
+    var sForm = document.getElementById('searchForm');
+
+    if (sForm && $(sForm).css('display') === 'block') {
+        if (document.getElementById('searchWrapper').contains(e.target) || document.getElementById('siteHeader').contains(e.target)){
+            // Clicked in box
+        } else{
+            // Clicked outside the box
+            $('#searchForm').fadeOut();
+            $('#resultWrapper').fadeOut();
+            $('#info').fadeOut();
+            $('#searchFilter').fadeOut();
+            $('#searchBar').val('');
+        }
     }
-});
+})
 // $('header').on('mouseleave', function () {
 //     $('#searchBar').fadeOut();
 //     $('#resultWrapper').fadeOut();
@@ -3467,6 +3474,9 @@ $('#searchBar').on('input focusin', function () {
 
     var knjige = document.getElementById('knjige');
     knjige.textContent = '';
+
+    var autori = document.getElementById('autori');
+    autori.textContent = '';
 
     var ucenici = document.getElementById('ucenici');
     ucenici.textContent = '';
@@ -3506,12 +3516,21 @@ $('#searchBar').on('input focusin', function () {
                         knjige.innerText = '';
                         ucenici.innerText = '';
                         bibliotekari.innerText = '';
+                        autori.innerText= '';
 
                         if (data.books.length < 1) {
                             knjige.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronađenih rezultata</li></a>`;
                         } else {
                             $.each(data.books, function (k, v) {
                                 knjige.innerHTML += `<a href="/books/${v.id}" style="font-size: 20px"><li style="padding-left: 15px">${v.title}</li></a>`;
+                            })
+                        }
+
+                        if (data.authors.length < 1) {
+                            autori.innerHTML += `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Nema pronađenih rezultata</li></a>`;
+                        } else {
+                            $.each(data.authors, function (k, v) {
+                                autori.innerHTML += `<a href="/authors/${v.id}" style="font-size: 20px"><li style="padding-left: 15px">${v.name} ${v.surname}</li></a>`;
                             })
                         }
 
@@ -3555,6 +3574,14 @@ $('#knjigeFilter').click(function () {
         $('#knjigaWrapper').fadeOut();
     } else {
         $('#knjigaWrapper').fadeIn();
+    }
+});
+
+$('#autorFilter').click(function () {
+    if (this.checked == false) {
+        $('#autorWrapper').fadeOut();
+    } else {
+        $('#autorWrapper').fadeIn();
     }
 });
 

@@ -24,7 +24,7 @@
         <form onsubmit="event.preventDefault()" id="searchForm" hidden>
             @csrf
             <input id="searchBar" autofocus autocomplete="off" name="searchWord" type="search" placeholder="Search" class="w-[500px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-            <a id="filterDropdown" style="padding-left: 10px" href="#">Filteri <i class="fas fa-caret-down"></i></a>
+            <a id="filterDropdown" style="padding-left: 10px" href="#">Filteri <i class="pl-[4px] fas fa-caret-down"></i></a>
         </form>
 
         <div id="info" style="top: 75px;position: absolute;margin-left: 30px;z-index: 999" hidden class="scrolly w-[500px] flex-1 w-full px-4 py-2  text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none">
@@ -36,6 +36,12 @@
             <div id="knjigaWrapper">
                 Knjige
                 <ul id="knjige" class="search">
+                </ul>
+            </div>
+
+            <div id="autorWrapper" class="search">
+                Autori
+                <ul id="autori">
                 </ul>
             </div>
 
@@ -56,6 +62,9 @@
             <ul>
                 <li onclick="this.querySelector('input').click()" style="cursor: pointer">
                     <input type="checkbox" id="knjigeFilter" checked> Knjige
+                </li>
+                <li onclick="this.querySelector('input').click()" style="padding-top: 5px;cursor: pointer">
+                    <input type="checkbox" id="autorFilter" checked> Autori
                 </li>
                 <li style="padding-top: 5px;cursor: pointer" onclick="this.querySelector('input').click()">
                     <input type="checkbox" id="ucenikFilter" checked> Učenici
@@ -85,8 +94,7 @@
                             </div>
                         </div>
                     </a>
-                    <span
-                        class="absolute bg-[#EF4F4C] text-[11px] font-medium text-white right-[10px] top-[-10px] pl-[4px] pr-[5px] pt-[1px] text-center">12</span>
+{{--                    <span class="absolute bg-[#EF4F4C] text-[11px] font-medium text-white right-[10px] top-[-10px] pl-[4px] pr-[5px] pt-[1px] text-center">12</span>--}}
                 </div>
                 <!-- Add Icon -->
                 <a class="inline-block border-l-[1px] border-gray-300 px-3" href="#" aria-label="Add something" id="dropdownCreate">

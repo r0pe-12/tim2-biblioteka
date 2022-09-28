@@ -19,6 +19,35 @@
     </script>
 @endsection
 
+
+<!-- Delete One Book Modal -->
+<div class="modal fadeM" id="deleteOneModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Da li želite obrisati knjigu: </h5>
+                    <h5 class="modal-title modalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-red-800">
+                        Ova akcija je nepovratna.
+                    </p>
+                </div>
+                @csrf
+                @method('DELETE')
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkaži</button>
+                    <button type="submit" class="sure btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] text-white" style="background: red">
+                        Potvrdi <i class="fas fa-check ml-[4px]"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div {{ $attributes->class(['heading']) }}>
     <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
         <div class="py-[10px] flex flex-row items-center">
@@ -224,15 +253,17 @@
                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                             <span class="px-4 py-0">Izmijeni knjigu</span>
                         </a>
-                        <form method="POST" action="{{ route('books.destroy', $book) }}" enctype="multipart/form-data"
-                              tabindex="0"
-                              class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                              role="menuitem">
-                            @csrf
-                            @method('DELETE')
-                            <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                            <button type="submit"><span class="px-4 py-0">Izbriši knjigu</span></button>
-                        </form>
+                        <a href="#"
+                           class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600 deleteOne"
+                           data-toggle="modal"
+                           data-target="#deleteOneModal"
+                           data-id="{{ $book->id }}"
+                           data-name="{{ $book->title }}"
+                           data-action="{{ route('books.destroy', $book) }}"
+                        >
+                            <i class="fa fa-trash mr-[1px] ml-[5px] py-1"></i>
+                            <span class="px-4 py-0">Izbriši knjigu</span>
+                        </a>
                     </div>
                 </div>
             </div>
