@@ -9,6 +9,9 @@
     <meta name="description" content="ICT Cortex Library - project for high school students..."/>
     <meta name="keywords" content="ict cortex, cortex, bild, bildstudio, highschool, students, coding"/>
     <meta name="author" content="bildstudio"/>
+    @if(auth()->check())
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+    @endif
     <!-- End Meta -->
 
 
@@ -24,15 +27,16 @@
     <link rel="stylesheet" href="{{ asset('css/landing/nicepage.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('css/landing/Home-1.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('css/landing/custom.css') }}">
+    @yield('styles')
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
-    <script class="u-script" type="text/javascript" src="{{ asset('js/landing/jquery-1.9.1.min.js') }}" defer=""></script>
-    {{--    <script class="u-script" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>--}}
+{{--    <script class="u-script" type="text/javascript" src="{{ asset('js/landing/jquery-1.9.1.min.js') }}" defer=""></script>--}}
+        <script class="u-script" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/nicepage.js') }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/custom.js') }}" defer=""></script>
-    @yield('styles')
+    @yield('scripts')
 
     <link id="u-theme-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">

@@ -146,17 +146,17 @@
 
                                     <div class="collapse f16" id="collapseUser">
 
-                                        <a class="u-button-style u-nav-link" href="#profil"
+                                        <a class="u-button-style u-nav-link" href="{{ route('me.edit') }}"
                                            style="padding: 10px 20px;"
                                         >Profil</a>
 
                                         <a class="u-button-style u-nav-link" href="{{ route('logout') }}"
                                            style="padding: 10px 20px;"
-                                           onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                                           onclick="event.preventDefault();document.getElementById('logout-form-mobile').submit();"
                                         >Logout</a>
                                     </div>
 
-                                <form class="mb-0" id="logout-form" action="{{ route('logout') }}"
+                                <form class="mb-0" id="logout-form-mobile" action="{{ route('logout') }}"
                                       method="POST" hidden="">
                                     @csrf
                                 </form>

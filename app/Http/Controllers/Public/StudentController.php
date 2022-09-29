@@ -11,7 +11,9 @@ class StudentController extends Controller
     public function edit()
     {
         # code
-        return view('client.student.edit');
+        return view('client.student.edit', [
+            'user' => auth()->user()
+        ]);
     }
 
     public function show(){

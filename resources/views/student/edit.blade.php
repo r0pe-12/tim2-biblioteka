@@ -233,6 +233,5 @@
             </div>
         </section>
         <!-- End Content -->
-        </main>
         <!-- End Main content -->
 </x-layout>
