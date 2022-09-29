@@ -118,7 +118,7 @@
                                    <img src="{{ $category->iconPath }}" alt="" class="object-cover w-8 h-8 mr-2 rounded">
                                     <p class="ml-4 text-center">{{ $category->name }}</p>
                                 </td>
-                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ $category->description }}</td>
+                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ Str::limit($category->description, 200) }}</td>
                                 <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
 
                                     <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsCategory hover:text-[#606FC7]">
