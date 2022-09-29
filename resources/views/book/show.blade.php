@@ -68,7 +68,7 @@
                                                     <span class="text-gray-500 text-[14px]">Autor/i</span>
                                                     <p class="font-medium">
                                                         @foreach($book->authors as $author)
-                                                            <a href="{{ route('authors.show', $author) }}">{{ $author->name }}</a>{!! $loop->remaining >= 1 ? ',&nbsp;&nbsp;&nbsp;' : ''!!}
+                                                            <a href="{{ route('authors.show', $author) }}">{{ $author->name }} {{ $author->surname }}</a>{!! $loop->remaining >= 1 ? ',&nbsp;&nbsp;&nbsp;' : ''!!}
                                                         @endforeach
                                                     </p>
                                                 </div>
