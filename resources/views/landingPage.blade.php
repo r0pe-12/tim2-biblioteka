@@ -148,17 +148,18 @@
             </div>
             <img class="u-align-left u-image u-image-round u-radius-20 u-image-1" data-image-width="900"
                  data-image-height="900" src="{{ asset('img/landing/5178414.jpg') }}" alt="">
-            <div class="u-container-style u-grey-5 u-group u-radius-20 u-shape-round u-group-1">
+            <div style="min-height: 400px"
+                 class="u-container-style u-grey-5 u-group u-radius-20 u-shape-round u-group-1">
                 <div
                     class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl u-container-layout-1">
-                    <h3 class="u-align-left u-text u-text-default u-text-1"> Good things don’t come easy</h3>
-                    <p class="u-align-left u-text u-text-2"> Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                        laborum. </p>
-                    <a href="#"
-                       class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-2">learn
-                        more</a>
+                    <h3 class="u-align-left u-text u-text-default u-text-1"> Biblioteke se ne prave, one rastu uz
+                        čitaoce poput tebe</h3>
+                    <p class="u-align-left u-text u-text-2"> Knjiga nije hrana, ali jeste poslastica! Zato uronite u
+                        nepregledno more riječi, i klasika, ljubavi i prevara, drame i akcije, uz autorske knjige
+                        najvećih imena književnosti. </p>
+                    {{--                    <a href="#"--}}
+                    {{--                       class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-2">learn--}}
+                    {{--                        more</a>--}}
                 </div>
             </div>
             <div class="u-gradient u-shape u-shape-circle u-shape-2"></div>
@@ -173,21 +174,21 @@
                         <div
                             class="u-align-left u-container-style u-layout-cell u-left-cell u-size-15 u-size-60-md u-layout-cell-1">
                             <div class="u-container-layout u-valign-top u-container-layout-1">
-                                <h4 class="u-text u-text-1"> Online learning</h4>
-                                <p class="u-text u-text-2">Sample text. Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit nullam nunc justo sagittis suscipit
-                                    ultrices.</p>
-                                <a href="#"
-                                   class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-1"
-                                   data-animation-name="rollIn" data-animation-duration="1000"
-                                   data-animation-direction="" data-animation-delay="500">learn
-                                    more</a>
+                                {{--                                <h4 class="u-text u-text-1"> Online learning</h4>--}}
+                                <p class="u-text u-text-2">Nekada se za knjige morala izdvojiti čitava polica, sada
+                                    čitava biblioteka staje u džep! Prijavite se, i obezbijedite sebi sate čitalačkog
+                                    iskustva, sve u par klikova.</p>
+{{--                                <a href="#"--}}
+{{--                                   class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-1"--}}
+{{--                                   data-animation-name="rollIn" data-animation-duration="1000"--}}
+{{--                                   data-animation-direction="" data-animation-delay="500">learn--}}
+{{--                                    more</a>--}}
                             </div>
                         </div>
                         <div
                             class="u-align-left u-container-style u-layout-cell u-size-18-lg u-size-18-xl u-size-21-sm u-size-21-xs u-size-60-md u-layout-cell-2">
-                            <div class="u-container-layout u-valign-bottom u-container-layout-2"><span
-                                    class="u-icon u-text-palette-3-base u-icon-1"><svg
+                            <div class="u-container-layout u-valign-bottom u-container-layout-2">
+                                <span style="padding: 0" class="u-icon u-text-palette-3-base u-icon-1"><svg
                                         class="u-svg-link" preserveAspectRatio="xMidYMin slice"
                                         viewBox="0 0 95.333 95.332" style="">
                                             <use xlink:href="#svg-cbee"></use>
@@ -312,7 +313,9 @@
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-90c0">
         <div class="bg-white py-3">
             <div class="d-flex justify-content-center">
-                <span style="color: black">Powered by &nbsp; <img src="{{ asset('img/landing/intheloop-full-full.svg') }}" class="pb-1" height="20px" alt="Intelco"></span>
+                <span style="color: black">Powered by &nbsp; <img
+                        src="{{ asset('img/landing/intheloop-full-full.svg') }}" class="pb-1" height="20px"
+                        alt="Intelco"></span>
             </div>
         </div>
     </footer>
