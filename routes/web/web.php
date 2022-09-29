@@ -147,3 +147,10 @@ Route::middleware(['auth', 'librarian'])->group(function (){
 
 //    END-test routes
 
+//    rute za ucenika koji se loguje na sajt - client
+Route::middleware(['auth'])->group(function () {
+    Route::controller(\App\Http\Controllers\Public\StudentController::class)->group(function () {
+        Route::get('/me/edit', 'edit')->name('me.edit');
+        Route::get('/me', 'show')->name('me.show');
+    });
+});

@@ -76,7 +76,7 @@
                                                             @elseif(auth()->user()->isAdmin())
                                                                 {{ route('admins.show', auth()->user()->username) }}
                                                             @else
-                                                                #profil
+                                                                {{ route('me.edit') }}
                                                            @endif
                                                        " style="padding: 10px 20px;"
                                        onclick=""

@@ -32,6 +32,7 @@
     {{--    <script class="u-script" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>--}}
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/nicepage.js') }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/custom.js') }}" defer=""></script>
+    @yield('styles')
 
     <link id="u-theme-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
