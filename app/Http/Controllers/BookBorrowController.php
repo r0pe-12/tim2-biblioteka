@@ -42,7 +42,8 @@ class BookBorrowController extends Controller
         if (!($student->ableToGet($book->id))){
             $error = 'Nije moguće izdati knjigu: učenik već ima ' . $student->active()->count() . ' kod sebe. Primjeraka ove knjige ' . $student->active()->where('book_id', $book->id)->count();
 
-            $error = preg_replace('/(.*?).Primjeraka ove knjige 0/m', 'Učenik već ima knjigu kod sebe', $error);
+//            todo isk ne znam sta ce ovo odje pa sam commentirao
+//            $error = preg_replace('/(.*?).Primjeraka ove knjige 0/m', 'Učenik već ima knjigu kod sebe', $error);
 
             return redirect()->route('books.index')->with('fail', $error);
         }
