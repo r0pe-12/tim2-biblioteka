@@ -195,7 +195,7 @@
                                     <input hidden name="value" type="checkbox" value="1" {{ $sendPdf->value == 1 ? 'checked' : '' }}
                                            onkeydown="return event.key != 'Enter';" class="inputValue">
 
-                                    <div class='toggle switch {{ $allowManyBooks->value == 1 ? 'toggle-on' : '' }}'>
+                                    <div class='toggle switch {{ $sendPdf->value == 1 ? 'toggle-on' : '' }}'>
                                         <div class='toggle-text-off'>NE &nbsp</div>
                                         <div class='glow-comp'></div>
                                         <div class='toggle-button'></div>
