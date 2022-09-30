@@ -4,7 +4,7 @@
 
 <div style="margin: auto" class="col-auto">
     <div class="card" style="width: 18rem;height: auto">
-        <a href="#knjigaPrikaz">
+        <a style="height: 461px" href="#knjigaPrikaz">
             <img style="object-fit: cover;height: 100%; width: 100%"
                  src="{{ $book->cover() }}" class="book-image" alt="...">
         </a>
