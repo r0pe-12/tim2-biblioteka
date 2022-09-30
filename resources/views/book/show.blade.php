@@ -144,7 +144,7 @@
                         <div class="tab-pane fade" id="multimedija-tab" role="tabpanel" aria-labelledby="multimedija">
                             <div class="scroll grid p-[10px]" style="max-height: 700px">
                                 @foreach($book->photos as $photo)
-                                    <img src="{{ $photo->path }}" alt="">
+                                    <img style="object-fit: contain" src="{{ $photo->path }}" alt="">
                                 @endforeach
                             </div>
                         </div>
