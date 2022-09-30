@@ -24,6 +24,7 @@ class BookFactory extends Factory
         return [
             //
             'title' => fake()->word,
+            'description' => fake()->text,
             'pageNum' => fake()->numberBetween(30, 3000),
             'script_id' => Script::factory()->create(),
             'bookbind_id' => BookBind::factory()->create(),
