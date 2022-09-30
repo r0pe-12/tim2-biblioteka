@@ -24,6 +24,11 @@
             <div class="u-custom-menu u-nav-container">
                 <ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
                     <li class="u-nav-item">
+                        <a href="{{ route('knjige.index') }}">
+                            <button class="btn btn-outline-primary" type="button" style="margin-right: 20px">
+                                Knjige
+                            </button>
+                        </a>
                         @if(auth()->check())
                             @if(auth()->user()->isAdmin() || auth()->user()->isLibrarian())
 
@@ -34,12 +39,6 @@
                                 </a>
 
                             @else
-
-                                <a href="{{ route('knjige.index') }}">
-                                    <button class="btn btn-outline-primary" type="button" style="margin-right: 20px">
-                                        Knjige
-                                    </button>
-                                </a>
                             @endif
 
                             <button class="btn btn-outline-primary dropdown-toggle" type="button"
@@ -112,18 +111,18 @@
                         <div class="u-menu-close" style="cursor: pointer;"></div>
                         <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
 
+                            <li class="u-nav-item">
+                                <a href="{{ route('knjige.index') }}">
+                                    <button class="btn btn-default text-white" type="button">
+                                        Knjige
+                                    </button>
+                                </a>
+                            </li>
+                            <br>
                             @if(auth()->check())
                                 @if(auth()->user()->isAdmin() || auth()->user()->isLibrarian())
                                    <!-- ako je admin ili bibliotekar na telefonu ne izbacijemo nista jer svakako ne moze na dashboard da udje -->
                                 @else
-                                    <li class="u-nav-item">
-                                        <a href="{{ route('knjige.index') }}">
-                                            <button class="btn btn-default text-white" type="button">
-                                                Knjige
-                                            </button>
-                                        </a>
-                                    </li>
-                                    <br>
                                 @endif
 
                                     <li class="u-nav-item">
@@ -156,8 +155,11 @@
 
                             @else
                                 <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link" href="{{ route('login') }}"
-                                       style="padding: 10px 20px;">Login</a>
+                                    <a href="{{ route('login') }}">
+                                        <button class="btn btn-default text-white" type="button">
+                                            Login
+                                        </button>
+                                    </a>
                                 </li>
                             @endif
                         </ul>
