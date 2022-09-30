@@ -62,7 +62,7 @@ class BookController extends Controller
         $input = $request->validated();
 
 //        creating new record in books table
-        $book = Book::create(Arr::except($input,['categories', 'genres', 'authors', 'pdf']));
+        $book = Book::create(Arr::except($input,['categories', 'genres', 'authors', 'pdf', 'deletePdfs']));
 
         if ($request->hasFile('pictures')){
             foreach ($input['pictures'] as $file){

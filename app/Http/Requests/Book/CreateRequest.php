@@ -40,6 +40,7 @@ class CreateRequest extends FormRequest
             'description' => [''],
             'pdf' => [''],
             'deletePdfs' => ['integer', 'between:0,1'],
+//            'deletePdfs' => [''],
 
 //          this should be assigned through has many relation pivot table
             'categories' => ['required'],

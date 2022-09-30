@@ -278,6 +278,7 @@
 
                                     <div class="mt-[20px]">
                                         <p id="isbnLabel">PDF verzija knjige</p>
+                                        <input type="number" class="hidden" name="deletePdfs" id="delPdfInput" value="0">
                                         <input autocomplete="off"
                                             type="file" accept="application/pdf" name="pdf" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()">
                                         <div id="validateIsbn"></div>
