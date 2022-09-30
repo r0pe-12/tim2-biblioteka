@@ -35,7 +35,7 @@ function pullReserveModal(btn) {
                     } else {
                         Swal.fire(
                             'Greška!',
-                            'Nije moguće rezervisati knjigu',
+                            data.data.errors,
                             'error'
                         )
                     }

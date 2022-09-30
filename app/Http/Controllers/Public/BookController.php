@@ -30,9 +30,11 @@ class BookController extends BaseController
 
         $student = Student::findOrFail(\request()->user()->id);
         if (!($student->ableToGet($book->id, true))){
-            $error = 'Nije moguće rezervisati knjigu: učenik već ima rezervisano ' . $student->activeRes()->count() . '. Primjeraka ove knjige ' . $student->activeRes()->where('book_id', $book->id)->count();
+//            $error = 'Nije moguće rezervisati knjigu: učenik već ima rezervisano ' . $student->activeRes()->count() . '. Primjeraka ove knjige ' . $student->activeRes()->where('book_id', $book->id)->count();
+//
+//            $error = preg_replace('/(.*?).Primjeraka ove knjige 0/m', 'Učenik već ima knjigu kod sebe', $error);
 
-            $error = preg_replace('/(.*?).Primjeraka ove knjige 0/m', 'Učenik već ima knjigu kod sebe', $error);
+            $error = 'Nije moguće rezervisati knjigu.';
 
             return $this->sendError('Failed', ['errors' => $error], Response::HTTP_OK);
         }
