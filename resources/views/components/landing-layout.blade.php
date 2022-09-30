@@ -11,6 +11,7 @@
     <meta name="author" content="bildstudio"/>
     @if(auth()->check())
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="client-name" content="{{ auth()->user()->name . ' ' . auth()->user()->surname }}">
     @endif
     <!-- End Meta -->
 
@@ -36,6 +37,7 @@
         <script class="u-script" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/nicepage.js') }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/custom.js') }}" defer=""></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('scripts')
 
     <link id="u-theme-google-font" rel="stylesheet"
