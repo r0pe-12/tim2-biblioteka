@@ -4142,5 +4142,16 @@ $('#pdf').on('change', function () {
        fileName = file.name.slice(0, 15) + ' ... ' + file.name.slice(-10);
    }
    console.log(fileName);
-   document.getElementById('pdfLabel').innerText = fileName;
+   document.getElementById('pdfLabel').innerHTML = fileName + '<span id="delPdf" style="margin-left: auto; padding-left: 12px"><i class="fa fa-xmark-circle"></i></span>\n';
+});
+
+document.getElementById('pdfLabel').addEventListener('click', function (e) {
+    var del = this.querySelector('#delPdf');
+    if (del.contains(e.target)) {
+        document.getElementById('pdf').value = '';
+        document.getElementById('delPdfInput').value = 1;
+        document.getElementById('pdfLabel').innerHTML = 'PDF obrisan' + '<span id="delPdf" style="margin-left: auto; padding-left: 12px"><i class="fa fa-xmark-circle"></i></span>\n';
+    } else {
+        $('#pdf').click();
+    }
 });

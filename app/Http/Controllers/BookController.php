@@ -181,14 +181,24 @@ class BookController extends Controller
             }
         }
 
-        if ($request->hasFile('pdf')){
+
+        if (!($input['deletePdfs'] == 1)) {
+            if ($request->hasFile('pdf')){
+                if ((!is_null($book->pdf)) && file_exists($pdfPath = public_path() . $book->pdf)){
+                    unlink($pdfPath);
+                }
+
+                $name = str_replace(' ', '_', $book->title . '.pdf');
+                $input['pdf']->storeAs('/pdf', $name);
+                $book->pdf = $name;
+                $book->save();
+            }
+        } else {
             if ((!is_null($book->pdf)) && file_exists($pdfPath = public_path() . $book->pdf)){
                 unlink($pdfPath);
             }
 
-            $name = str_replace(' ', '_', $book->title . '.pdf');
-            $input['pdf']->storeAs('/pdf', $name);
-            $book->pdf = $name;
+            $book->pdf = null;
             $book->save();
         }
 
@@ -198,7 +208,7 @@ class BookController extends Controller
             ]);
         }
 //        creating new record in books table
-        $book->update(Arr::except($input,['categories', 'genres', 'authors', 'pictures', 'cover', 'present', 'pdf']));
+        $book->update(Arr::except($input,['categories', 'genres', 'authors', 'pictures', 'cover', 'present', 'pdf', 'deletePdfs']));
 
 //        attaching book to multiple authors
         $book->authors()->sync($input['authors']);

@@ -294,12 +294,14 @@
                                 </div>
                                 <div class="mt-[20px]">
                                     <p id="isbnLabel">PDF verzija knjige</p>
-                                    <label style="cursor:pointer;" id="pdfLabel"
+                                    <label style="cursor:pointer; overflow: hidden" id="pdfLabel"
                                            class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-                                           for="pdf">{{ is_null($book->pdf) ? 'Izaberi PDF' : $book->getAttributes()['pdf'] }}</label>
+                                           for="pdfdif">{{ is_null($book->pdf) ? 'Izaberi PDF' : $book->getAttributes()['pdf'] }}
+                                        <span id="delPdf" style="margin-left: auto; padding-left: 12px"><i class="fa fa-xmark-circle"></i></span>
+                                    </label>
+                                    <input type="number" class="hidden" name="deletePdfs" id="delPdfInput" value="0">
                                     <input autocomplete="off"
-                                           type="file" accept="application/pdf" name="pdf" id="pdf" class="hidden flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()">
-                                    <div id="validateIsbn"></div>
+                                           type="file" accept="application/pdf" name="pdf" id="pdf" class="hidden flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">
                                     @if($book->pdf)
                                         <a href="{{ $book->pdf }}" target="_blank">Pogledaj PDF</a>
                                     @endif

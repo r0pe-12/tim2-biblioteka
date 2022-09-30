@@ -39,6 +39,7 @@ class CreateRequest extends FormRequest
             'samples' => ['required', 'integer'],
             'description' => [''],
             'pdf' => [''],
+            'deletePdfs' => ['integer', 'between:0,1'],
 
 //          this should be assigned through has many relation pivot table
             'categories' => ['required'],
@@ -73,6 +74,7 @@ class CreateRequest extends FormRequest
             'samples' => $this->knjigaKolicina,
             'description' => $this->kratki_sadrzaj,
             'pdf' => $this->pdf,
+            'deletePdfs' => $this->deletePdfs,
 
 //          this should be assigned through has many relation pivot table
             'categories' => $this->categories,
