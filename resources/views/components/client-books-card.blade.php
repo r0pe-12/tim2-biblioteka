@@ -15,7 +15,7 @@
                 {!! strip_tags(Str::limit($book->description, 100)) !!}
             </div>
             <div class="d-grid gap-2">
-                <button onclick="pullReserveModal(this)" data-book-name="{{ $book->title }}" class="btn btn-prem">Rezerviši</button>
+                <button onclick="pullReserveModal(this)" data-book-id="{{ $book->id }}" data-book-name="{{ $book->title }}" class="btn btn-prem">Rezerviši</button>
             </div>
         </div>
     </div>

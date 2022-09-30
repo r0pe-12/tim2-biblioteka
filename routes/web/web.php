@@ -157,5 +157,7 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(\App\Http\Controllers\Public\BookController::class)->group(function () {
         Route::get('/knjige', 'index')->name('knjige.index');
         Route::get('/knjige/{book}', 'show')->name('knjige.show');
+
+        Route::post('/knjige/{book}/rezervisi', 'reserve')->name('knjige.reserve');
     });
 });
