@@ -153,4 +153,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/me/edit', 'edit')->name('me.edit');
         Route::get('/me', 'show')->name('me.show');
     });
+
+    Route::controller(\App\Http\Controllers\Public\BookController::class)->group(function () {
+        Route::get('/knjige', 'index')->name('knjige.index');
+        Route::get('/knjige/{book}', 'show')->name('knjige.show');
+    });
 });

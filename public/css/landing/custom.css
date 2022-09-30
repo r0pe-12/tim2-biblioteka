@@ -98,3 +98,22 @@
 .hidden {
     display: none;
 }
+
+.card {
+    margin-bottom: 30px;
+    box-shadow: 0 0 2rem 0 rgb(136 152 170 / 15%);
+    border: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+}
+
+.btn-prem {
+    color: #fff;
+    background-color: #4558be;
+    box-shadow: 0 5px 25px rgb(65 84 241 / 40%);
+}

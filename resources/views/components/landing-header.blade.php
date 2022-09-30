@@ -55,7 +55,7 @@
                                     </li>
                                     <li>
                                         <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                                           href="#sveKnjige" style="padding: 10px 20px;"
+                                           href="{{ route('knjige.index') }}" style="padding: 10px 20px;"
                                         >Sve Knjige</a>
                                     </li>
 
@@ -132,7 +132,7 @@
                                            style="padding: 10px 20px;">- Rezervisane</a>
                                         <a class="u-button-style u-nav-link" href="#izdate"
                                            style="padding: 10px 20px;">- Izdate</a>
-                                        <a class="u-button-style u-nav-link" href="#sveKnjige"
+                                        <a class="u-button-style u-nav-link" href="{{ route('knjige.index') }}"
                                            style="padding: 10px 20px;">- Sve Knjige</a>
                                     </div>
                                     <br>

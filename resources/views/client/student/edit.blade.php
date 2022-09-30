@@ -176,7 +176,7 @@
             </div>
         </div>
     <div class="container rounded bg-white mt-5 mb-5">
-        <form id="profileUpdateForm" action="{{ route('api.test') }}" method="POST" onsubmit="profileUpdate(event)">
+        <form id="profileUpdateForm" action="{{ route('api-update') }}" method="POST" onsubmit="profileUpdate(event)">
             @csrf
             <div class="row">
                 <div class="col-md-4 border-right">
