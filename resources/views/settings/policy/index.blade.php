@@ -179,7 +179,7 @@
                         <div class="pl-[30px] flex border-b-[1px] border-[#e4dfdf]  py-[20px]">
                             <div>
                                 <h3>
-                                    Slati pdf verziju knige prilikom izdavanja učeniku
+                                    Slati pdf verziju knjige prilikom izdavanja učeniku
                                 </h3>
                                 <p class="pt-[15px] max-w-[400px]">
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eligendi nihil, vel
