@@ -38,6 +38,7 @@ class CreateRequest extends FormRequest
             'isbn' => ['required', 'regex:/^[0-9]{13}+$/', 'max:13', 'min:13'],
             'samples' => ['required', 'integer'],
             'description' => [''],
+            'pdf' => [''],
 
 //          this should be assigned through has many relation pivot table
             'categories' => ['required'],
@@ -71,6 +72,7 @@ class CreateRequest extends FormRequest
             'isbn' => $this->isbn,
             'samples' => $this->knjigaKolicina,
             'description' => $this->kratki_sadrzaj,
+            'pdf' => $this->pdf,
 
 //          this should be assigned through has many relation pivot table
             'categories' => $this->categories,

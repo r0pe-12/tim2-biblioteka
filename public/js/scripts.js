@@ -4133,3 +4133,14 @@ $('.toggle').click(function(e){
     var checkbox = this.closest('form.policy').querySelector('input[type="checkbox"]');
     $(checkbox).click();
 });
+
+$('#pdf').on('change', function () {
+   var input = $(this);
+   var file = input[0].files[0];
+   var fileName = file.name;
+   if (file.name.length >= 30) {
+       fileName = file.name.slice(0, 15) + ' ... ' + file.name.slice(-10);
+   }
+   console.log(fileName);
+   document.getElementById('pdfLabel').innerText = fileName;
+});

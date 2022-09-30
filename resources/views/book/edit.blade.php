@@ -292,6 +292,18 @@
                                            type="text" name="isbn" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()">
                                     <div id="validateIsbn"></div>
                                 </div>
+                                <div class="mt-[20px]">
+                                    <p id="isbnLabel">PDF verzija knjige</p>
+                                    <label style="cursor:pointer;" id="pdfLabel"
+                                           class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+                                           for="pdf">{{ is_null($book->pdf) ? 'Izaberi PDF' : $book->getAttributes()['pdf'] }}</label>
+                                    <input autocomplete="off"
+                                           type="file" accept="application/pdf" name="pdf" id="pdf" class="hidden flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()">
+                                    <div id="validateIsbn"></div>
+                                    @if($book->pdf)
+                                        <a href="{{ $book->pdf }}" target="_blank">Pogledaj PDF</a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
