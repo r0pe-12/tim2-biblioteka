@@ -52,7 +52,7 @@
                                                         <p> Ovo je potvrda da Vam je bibliotekar "{{ $borrow->librarian->name }} {{ $borrow->librarian->surname }}" uspješno izdao knjigu <b>"{{ $borrow->book->title }}"</b> {{ $borrow->status()->id == \App\Models\BookStatus::RESERVED ? ' na osnovu rezervacije ' : '' }} dana {{ \App\Models\Carbon::parse($borrow->borrow_date)->format('d.m.Y.') }} </p>
                                                         <p> Krajnji rok za vraćanje knjige je: <b>{{ \App\Models\Carbon::parse($borrow->return_date)->format('d.m.Y.') }}</b> </p>
                                                         @if(\App\Models\Policy::sendPdf()->value === 1 && (!is_null($borrow->book->pdf)))
-                                                            <p> <a href="{{ App::make('url')->to($borrow->book->pdf) }}">Ovaj link</a> vodi ka PDF verziji knjige. </p>
+                                                            <p> <a href="{{ url($borrow->book->pdf) }}">Ovaj link</a> vodi ka PDF verziji knjige. </p>
                                                         @endif
                                                         <p> Hvala na korišćenju školske biblioteke. </p>
                                                     </td>
