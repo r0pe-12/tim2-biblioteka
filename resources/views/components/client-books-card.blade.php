@@ -15,7 +15,10 @@
                 {!! strip_tags(Str::limit($book->description, 100)) !!}
             </div>
             <div class="d-grid gap-2">
-                <button onclick="pullReserveModal(this)" data-book-id="{{ $book->id }}" data-book-name="{{ $book->title }}" class="btn btn-prem">Rezerviši</button>
+                @if(auth()->check())
+                    <button {{ $book->ableToBorrow() && \App\Models\Student::findOrFail(auth()->user()->id)->ableToGet($book->id, true) ? '' : 'disabled'}} onclick="pullReserveModal(this)" data-book-id="{{ $book->id }}" data-book-name="{{ $book->title }}" class="btn btn-prem">Rezerviši</button>
+                @endif
+{{--                todo da li moramo odje da mu kazemo da mora da se uloguje da bi rezerviso knjigu vljd nije tolko glup--}}
             </div>
         </div>
     </div>
