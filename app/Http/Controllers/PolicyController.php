@@ -26,7 +26,9 @@ class PolicyController extends Controller
 
         $allowManyBooks = Policy::allowManyBooks();
 
-        return view('settings.policy.index', compact('reservation', 'return', 'conflict', 'maxBorrows', 'allowManyBooks'));
+        $sendPdf = Policy::sendPdf();
+
+        return view('settings.policy.index', compact('reservation', 'return', 'conflict', 'maxBorrows', 'allowManyBooks', 'sendPdf'));
     }
 
     /**

@@ -176,6 +176,41 @@
                                 </form>
                             </div>
                         </div>
+                        <div class="pl-[30px] flex border-b-[1px] border-[#e4dfdf]  py-[20px]">
+                            <div>
+                                <h3>
+                                    Slati pdf verziju knige prilikom izdavanja učeniku
+                                </h3>
+                                <p class="pt-[15px] max-w-[400px]">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eligendi nihil, vel
+                                    necessitatibus saepe laboriosam! Perspiciatis laboriosam culpa veritatis ea
+                                    voluptatum commodi tempora unde, dolorum debitis quia id dicta vitae.
+                                </p>
+                            </div>
+                            <div class="relative flex ml-[60px] mt-[20px]">
+                                <form identifier="6" class="policy w-[300px] text-gray-700" action="/settings/policy/{{$sendPdf->id}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="id" class="id" value="{{ $sendPdf->id }}">
+                                    <input hidden name="value" type="checkbox" value="1" {{ $sendPdf->value == 1 ? 'checked' : '' }}
+                                           onkeydown="return event.key != 'Enter';" class="inputValue">
+
+                                    <div class='toggle switch {{ $allowManyBooks->value == 1 ? 'toggle-on' : '' }}'>
+                                        <div class='toggle-text-off'>NE &nbsp</div>
+                                        <div class='glow-comp'></div>
+                                        <div class='toggle-button'></div>
+                                        <div class='toggle-text-on'>DA</div>
+                                    </div>
+
+                                    <p style="color: green;" hidden id="savedMessage6"><i class="fa fa-check  ml-[5px]"></i> Varijabla je uspješno sačuvana</p>
+                                    <div id="errorDiv6">
+                                        <p class="e1"></p>
+                                        <p class="e2"></p>
+                                        <p class="e3"></p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

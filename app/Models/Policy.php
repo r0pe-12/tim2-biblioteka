@@ -77,6 +77,20 @@ class Policy extends Model
         return $maxBorrows;
     }
 
+    const PDF = 6;
+    const PDF_NAME = 'send_pdf';
+    public static function sendPdf(){
+        # code
+        $sendPdf = Policy::findOrNew(Policy::PDF);
+        if (!$sendPdf->id){
+            $sendPdf->id = Policy::PDF;
+            $sendPdf->name = Policy::PDF_NAME;
+            $sendPdf->value = 0;
+            $sendPdf->save();
+        }
+        return $sendPdf;
+    }
+
     use HasFactory;
     protected $fillable = ['name', 'value'];
 }
