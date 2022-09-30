@@ -16,31 +16,34 @@ function pullReserveModal(btn) {
     }).then((result) => {
         if (result.isConfirmed) {
 
-            setTimeout(function() {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
-                $.ajax({
-                    type: "POST",
-                    url: '/knjige/' + bookId + '/rezervisi',
-                    success:function(data){
-                        setTimeout(function () {
-                            console.log(data)
-                        }, 200);
-                    },
-                    error: function (xhr, ajaxOptions, thrownError, data) {
-                        console.log(data)
+            $.ajax({
+                type: "POST",
+                url: '/knjige/' + bookId + '/rezervisi',
+                success:function(data){
+                    if (data.success) {
+                        Swal.fire(
+                            'Rezervisano!',
+                             data.message,
+                            'success'
+                        )
+                    } else {
+                        Swal.fire(
+                            'Greška!',
+                            'Nije moguće rezervisati knjigu',
+                            'error'
+                        )
                     }
-                });
-            }, 500);
-            // Swal.fire(
-            //     'Deleted!',
-            //     'Your file has been deleted.',
-            //     'success'
-            // )
+                },
+                error: function (xhr, ajaxOptions, thrownError, data) {
+                    console.log(data)
+                }
+            });
         }
     })
 }

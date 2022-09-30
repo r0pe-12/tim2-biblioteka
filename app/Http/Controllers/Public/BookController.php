@@ -55,7 +55,7 @@ class BookController extends BaseController
 
         $status = ReservationStatus::reserved();
 
-        return $this->sendResponse('', 'Book successfully reserved.', Response::HTTP_OK);
+        return $this->sendResponse('', 'Knjiga je rezervisana.', Response::HTTP_OK);
 
     }
 }
