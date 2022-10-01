@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Api\BaseController;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Book\BookResource;
 use App\Models\Book;
 use App\Models\ClosingReason;
 use App\Models\Reservation;
@@ -19,6 +20,17 @@ class BookController extends BaseController
         # code
         return view('client.book.index', [
             'books' => Book::all()
+        ]);
+    }
+
+    public function search(){
+        # code
+        $s = \request()->post('searchWord');
+        $books = Book::where('title', 'like', "%{$s}%");
+
+        return response()->json([
+            'auth' => auth()->check(),
+            'books' => BookResource::collection($books->get()),
         ]);
     }
 

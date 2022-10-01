@@ -121,3 +121,15 @@
 .ms-n5 {
     margin-left: -40px;
 }
+
+.blur {
+    filter: blur(20px);
+}
+
+.blur1 {
+    filter: blur(3px);
+}
+
+.blur2 {
+    filter: blur(2px);
+}

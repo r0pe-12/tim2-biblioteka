@@ -163,3 +163,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/knjige', [\App\Http\Controllers\Public\BookController::class, 'index'])->name('knjige.index');
+Route::post('/client-search', [\App\Http\Controllers\Public\BookController::class, 'search'])->name('knjige.search');

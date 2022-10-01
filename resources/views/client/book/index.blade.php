@@ -1,12 +1,14 @@
 <x-landing-layout>
     @section('scripts')
         <script class="u-script" type="text/javascript" src="{{ asset('js/landing/reserveBook.js') }}" crossorigin="anonymous"></script>
+        <script class="u-script" type="text/javascript" src="{{ asset('js/landing/searchBook.js') }}" crossorigin="anonymous"></script>
     @endsection
     <div class="container rounded bg-white mb-5">
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-6 offset-sm-3 mt-3">
-                    <form onsubmit="event.preventDefault()" id="searchBookForm">
+                    <form onsubmit="event.preventDefault();searchBook()" oninput="searchBook()" id="searchBookForm" method="POST" action="{{ route('knjige.search') }}">
+                        @csrf
                         <div class="input-group">
                             <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="Search" id="searchBar" autocomplete="off" name="searchWord">
                             <span class="input-group-append">
@@ -23,7 +25,7 @@
 
 {{--                </div>--}}
                 <div class="col-md-12">
-                    <div class="row">
+                    <div class="row" id="bookWrapper">
                         @foreach($books as $book)
                             <x-client-books-card :book="$book"/>
                         @endforeach
