@@ -7,15 +7,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta http-equiv="content-language" content="en"/>
-        <meta name="description" content="ICT Cortex Library - project for high school students..."/>
-        <meta name="keywords" content="ict cortex, cortex, bild, bildstudio, highschool, students, coding"/>
-        <meta name="author" content="bildstudio"/>
+        <meta name="description" content="InTheLoop - ICT Cortex Library"/>
+        <meta name="keywords" content="ict cortex, cortex, datadesign, intheloop, highschool, students, coding"/>
+        <meta name="author" content="datadesign"/>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- End Meta -->
 
         <!-- Title -->
-        <title>@yield('title') | Library - ICT Cortex student project</title>
-        <link rel="shortcut icon" href="{{ asset('img/library-favicon.ico') }}" type="image/vnd.microsoft.icon"/>
+        <title>@yield('title') | InTheLoop - Library - Admin</title>
+        <link rel="shortcut icon" href="{{ asset('img/landing/intheloop-icon.svg') }}" type="image/vnd.microsoft.icon"/>
         <!-- End Title -->
 
         <!-- Styles -->
