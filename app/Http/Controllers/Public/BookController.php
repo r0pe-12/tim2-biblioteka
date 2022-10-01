@@ -29,7 +29,7 @@ class BookController extends BaseController
         $books = Book::where('title', 'like', "%{$s}%");
 
         return response()->json([
-            'auth' => auth()->check(),
+            'auth' => auth()->check() && auth()->user()->isStudent(),
             'books' => BookResource::collection($books->get()),
         ]);
     }

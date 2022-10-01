@@ -103,4 +103,10 @@ class User extends Authenticatable
         return $this->role == Role::librarian();
     }
 
+    public function isStudent(): bool
+    {
+        # code
+        return $this->role == Role::student();
+    }
+
 }
