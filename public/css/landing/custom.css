@@ -1,7 +1,7 @@
 .sticky-header {
 	position: sticky;
 	top: 0;
-	z-index: 2;
+	z-index: 12;
 	 background: #fff;
 	/* backdrop-filter: blur(3px); */
 }
@@ -116,4 +116,8 @@
     color: #fff;
     background-color: #4558be;
     box-shadow: 0 5px 25px rgb(65 84 241 / 40%);
+}
+
+.ms-n5 {
+    margin-left: -40px;
 }
