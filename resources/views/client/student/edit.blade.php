@@ -176,8 +176,9 @@
             </div>
         </div>
     <div class="container rounded bg-white mt-5 mb-5">
-        <form id="profileUpdateForm" action="{{ route('api-update') }}" method="POST" onsubmit="profileUpdate(event)">
+        <form id="profileUpdateForm" action="{{ route('me.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="row">
                 <div class="col-md-4 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
@@ -193,19 +194,19 @@
                             <h4 class="text-right">Profile Settings</h4>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" name="firstname" placeholder="First name" value="{{ $user->name }}"></div>
-                            <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="{{ $user->surname }}" name="lastname" placeholder="Surname"></div>
+                            <div class="col-md-6"><label class="labels">Name</label><input onkeydown="removeInvalid(this)" type="text" required class="form-control" name="firstname" placeholder="First name" value="{{ $user->name }}"></div>
+                            <div class="col-md-6"><label class="labels">Surname</label><input onkeydown="removeInvalid(this)" type="text" class="form-control" value="{{ $user->surname }}" name="lastname" placeholder="Surname"></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" name="username" placeholder="Username" value="{{ $user->username }}"></div>
+                            <div class="col-md-12"><label class="labels">Username</label><input pattern="^(?=[a-zA-Z0-9_-]{3,254}$)(?!.*[_-]{2})[^_-].*[^_-]$" onkeydown="removeInvalid(this)" type="text" required class="form-control" name="username" placeholder="Username" value="{{ $user->username }}"></div>
                             <div class="col-md-12"><label class="labels">JMBG</label><input type="text" disabled class="form-control" placeholder="JMBG" value="{{ $user->jmbg }}"></div>
-                            <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" name="email" placeholder="E-mail" value="{{ $user->email }}"></div>
+                            <div class="col-md-12"><label class="labels">Email</label><input type="text" disabled class="form-control" placeholder="E-mail" value="{{ $user->email }}"></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-6"><label class="labels">Password</label><input type="password" class="form-control" placeholder="Password" value=""></div>
-                            <div class="col-md-6"><label class="labels">Confirm Password</label><input type="password" class="form-control" value="" placeholder="Confirm Password"></div>
+                            <div class="col-md-6"><label class="labels">Password</label><input onkeydown="removeInvalid(this)" name="password" type="password" class="form-control" placeholder="Password" value=""></div>
+                            <div class="col-md-6"><label class="labels">Confirm Password</label><input onkeydown="removeInvalid(this)" name="password_confirmation" type="password" class="form-control" value="" placeholder="Confirm Password"></div>
                         </div>
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" id="profileUpdateBtn" type="submit">Save Profile</button></div>
+                        <div class="mt-5 text-center"><button class="btn btn-prem" id="profileUpdateBtn" type="button" onclick="profileUpdateValidation()">Save Profile</button></div>
                     </div>
                 </div>
             </div>

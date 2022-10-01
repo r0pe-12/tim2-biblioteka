@@ -37,6 +37,27 @@
         <script class="u-script" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/nicepage.js') }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/custom.js') }}" defer=""></script>
+    <script>
+        window.onload = function () {
+            @if(session('success'))
+                const tempMsg = "{{ session('success') }}";
+                var temp = document.createElement('div');
+                temp.setAttribute('hidden', 'true');
+                temp.innerHTML = tempMsg;
+                const msg = temp.innerHTML;
+
+                flashMsg(msg, 'success');
+            @elseif(session('fail'))
+                const tempMsg1 = "{{ session('fail') }}";
+                var temp1 = document.createElement('div');
+                temp1.setAttribute('hidden', 'true');
+                temp1.innerHTML = tempMsg1;
+                const msg1 = temp1.innerHTML;
+
+                flashMsg(msg1, 'error');
+            @endif
+        }
+    </script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('scripts')
 

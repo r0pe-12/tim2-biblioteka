@@ -151,6 +151,8 @@ Route::middleware(['auth', 'librarian'])->group(function (){
 Route::middleware(['auth'])->group(function () {
     Route::controller(\App\Http\Controllers\Public\StudentController::class)->group(function () {
         Route::get('/me/edit', 'edit')->name('me.edit');
+        Route::put('/me/update', 'update')->name('me.update');
+
         Route::get('/me', 'show')->name('me.show');
     });
 
