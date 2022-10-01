@@ -21,38 +21,51 @@
         <!-- Styles -->
         @include('includes/layout/styles')
         @yield('styles')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
         <!-- End Styles -->
     </head>
 
     <body class="small:bg-gradient-to-r small:from-green-400 small:to-blue-500">
         <div class="loader-wrapper">
-            <div class="book">
-                <div class="inner">
-                    <div class="left"></div>
-                    <div class="middle"></div>
-                    <div class="right"></div>
-                </div>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+            <div style="width: 300px; height: 300px;" id="lwrapper">
+                <script>
+                    var animation = bodymovin.loadAnimation({
+                        container: document.querySelector('#lwrapper'),
+                        renderer: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        path: '{{ asset('bibliotekaLoader.json') }}'
+                    })
+                    animation.setSpeed(1.5);
+                </script>
             </div>
+{{--            <div class="book">--}}
+{{--                <div class="inner">--}}
+{{--                    <div class="left"></div>--}}
+{{--                    <div class="middle"></div>--}}
+{{--                    <div class="right"></div>--}}
+{{--                </div>--}}
+{{--                <ul>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                </ul>--}}
+{{--            </div>--}}
         </div>
         <!-- Header -->
         @include('includes/layout/header')
