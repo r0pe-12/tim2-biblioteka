@@ -131,13 +131,14 @@
                                         </button>
                                     </li>
 
-                                @if(auth()->user()->isStudent())
                                     <div class="collapse f16" id="collapseUser">
-                                        <a class="u-button-style u-nav-link" href="#rezervisane"
-                                           style="padding: 10px 20px;">- Rezervisane knjige</a>
-                                        <a class="u-button-style u-nav-link" href="#izdate"
-                                           style="padding: 10px 20px;">- Izdate knjige</a>
-                                        <br>
+                                        @if(auth()->user()->isStudent())
+                                            <a class="u-button-style u-nav-link" href="#rezervisane"
+                                               style="padding: 10px 20px;">- Rezervisane knjige</a>
+                                            <a class="u-button-style u-nav-link" href="#izdate"
+                                               style="padding: 10px 20px;">- Izdate knjige</a>
+                                            <br>
+                                       @endif
 
                                         <a class="u-button-style u-nav-link" href="{{ route('me.edit') }}"
                                            style="padding: 10px 20px;"
@@ -148,7 +149,6 @@
                                            onclick="event.preventDefault();document.getElementById('logout-form-mobile').submit();"
                                         >Logout</a>
                                     </div>
-                                @endif
 
                                 <form class="mb-0" id="logout-form-mobile" action="{{ route('logout') }}"
                                       method="POST" hidden="">
