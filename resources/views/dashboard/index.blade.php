@@ -11,8 +11,7 @@
                     labels: labels,
                     datasets: [{
                         label: "Knjige",
-                        {{--data: [{{ count($izdateAll) }}, {{ count($rezervisaneAll) }}, {{ count($prekoracene) }}],--}}
-                        data: [7, 10, 3],
+                        data: [{{ count($izdateAll) }}, {{ count($rezervisaneAll) }}, {{ count($prekoracene) }}],
                         backgroundColor: [
                             'rgba(167, 243, 208, 1)',
                             'rgba(230, 174, 23, 0.75)',
