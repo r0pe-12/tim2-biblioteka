@@ -29,7 +29,8 @@ function searchBook() {
                             wrapper.innerHTML += noAuth(book);
                         });
                     }
-
+                } else {
+                    wrapper.innerHTML = noResult();
                 }
             // }, 200)
             setTimeout(function () {
@@ -90,4 +91,20 @@ function auth(book) {
             </div>`
     return card;
 
+}
+
+function noResult() {
+    var card =
+        `
+        <div style="margin: auto" class="col-auto">
+            <div class="card" style="width: 18rem;height: auto">
+                <div class="card-body">
+                    <h2 class="card-title" style="font-size: x-large; text-align: center">
+                    Nema rezultata
+                    </h2>
+                </div>
+            </div>
+        </div>
+        `
+    return card;
 }
