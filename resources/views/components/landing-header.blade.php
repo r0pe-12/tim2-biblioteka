@@ -32,7 +32,7 @@
                         @if(auth()->check())
                             @if(auth()->user()->isAdmin() || auth()->user()->isLibrarian())
 
-                                <a style="margin: 0 20px;" href="{{ route('dashboard.index') }}" class="link">
+                                <a style="margin-right: 20px" href="{{ route('dashboard.index') }}" class="link">
                                     <button class="btn btn-outline-primary">
                                         Dashboard
                                     </button>
