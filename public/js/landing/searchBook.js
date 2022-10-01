@@ -54,7 +54,7 @@ function noAuth(book) {
                         <h2 class="card-title" style="font-size: x-large"><a href="#knjigaPrikaz">${book.title}</a>
                         </h2>
                         <div class="card-text" style="min-height: 120px">
-                            ${book.description.slice(0, 100).replace(/<\/?[^>]+(>|$)/g, "")}...
+                            ${book.description ? book.description.slice(0, 100).replace(/<\/?[^>]+(>|$)/g, "") + '...' : ''}
                         </div>
                         <div class="d-grid gap-2">
                         </div>
@@ -80,7 +80,7 @@ function auth(book) {
                         <h2 class="card-title" style="font-size: x-large"><a href="#knjigaPrikaz">${book.title}</a>
                         </h2>
                         <div class="card-text" style="min-height: 120px">
-                            ${book.description.slice(0, 100).replace(/<\/?[^>]+(>|$)/g, "")}...
+                            ${book.description ? book.description.slice(0, 100).replace(/<\/?[^>]+(>|$)/g, "") + '...' : ''}
                         </div>
                         <div class="d-grid gap-2">
                             ${btn}
