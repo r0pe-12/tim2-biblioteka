@@ -5,49 +5,60 @@
         @section('scripts')
             <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
             <script>
-                var xValues = ["Izdate knjige", "Rezervisane knjige", "Knjige u prekoračenju"];
-                const ctx = document.getElementById('myChart').getContext('2d');
-                const myChart = new Chart(ctx, {
+                const labels = ["Izdate", "Rezervisane", "U prekoračenju"]
+
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                        label: "Knjige",
+                        {{--data: [{{ count($izdateAll) }}, {{ count($rezervisaneAll) }}, {{ count($prekoracene) }}],--}}
+                        data: [7, 10, 3],
+                        backgroundColor: [
+                            'rgba(167, 243, 208, 1)',
+                            'rgba(230, 174, 23, 0.75)',
+                            'rgba(255, 0, 0, 0.9)',
+                        ],
+                        borderColor: [
+                            'rgba(167, 243, 208, 0.2)',
+                            'rgba(230, 174, 23, 0.2)',
+                            'rgba(255, 0, 0, 0.2)',
+                        ],
+                        borderWidth: 1,
+                    }]
+                };
+
+                const config = {
                     type: 'bar',
-                    data: {
-                        labels:['Izdate', 'Rezervisane', 'U prekoračenju'],
-                        datasets:[{
-                            label: 'Knjige',
-                            data:
-                                [
-                                   {{ count($izdateAll) }},
-                                   {{ count($rezervisaneAll) }},
-                                   {{ count($prekoracene) }},
-                                ],
-
-                            /*data:[
-                            30,
-                            15
-                                ],*/
-
-                            //backgroundColor:'green',
-                            backgroundColor:[
-                                'rgb(6, 78, 59, 0.5)',
-                                'rgb(120, 53, 15, 0.5)',
-                                'rgb(127, 29, 29, 0.5)',
-                            ],
-                            borderWidth:1,
-                            barThickness:40,
-                            borderColor:'#777',
-                            hoverBorderWidth:3,
-                            hoverBorderColor:'#000'
-                        }]
-
-                    },
+                    data,
                     options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
+                        ticks: {
+                            precision: 0
                         },
-                        maxHeight: 1000
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                grid: {
+                                    // beginAtZero: true,
+                                    color: "rgba(235,235,235)",
+                                    borderWidth: 1,
+                                    // borderOffset: 2,
+                                    borderColor: "rgba(120,120,120)"
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: false,
+                                    borderWidth: 1,
+                                    // borderOffset: 2,
+                                    borderColor: "rgba(120,120,120)"
+                                }
+                            }
+                        }
                     }
-                });
+                };
+
+                const myChart = new Chart(document.getElementById('myChart'), config);
+
             </script>
         @endsection
         <!-- Content -->
