@@ -45,13 +45,15 @@ class StudentController extends Controller
         } else{
             unset($input['photoPath']);
         }
-        $student->update([
-            'name' => $input['firstname'],
-            'surname' => $input['lastname'],
-            'username' => $input['username'],
-            'password' => $input['password'] ?? $student->password,
-            'photoPath' => $input['photoPath'] ?? $student->getAttributes()['photoPath']
-        ]);
+
+        $new = $input;
+
+        $new['name'] = $input['firstname'];
+        unset($new['firstname']);
+        $new['surname'] = $input['lastname'];
+        unset($new['lastname']);
+
+        $student->update($new);
         return redirect()->route('me.edit')->with('success', 'Promjene su uspješno sačuvane');
 
     }
