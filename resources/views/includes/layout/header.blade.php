@@ -80,7 +80,7 @@
     <!-- login -->
     <div class="flex-initial">
         <div class="relative flex items-center justify-end">
-            <div class="flex items-center">
+            <div class="flex items-center" style="z-index: 1111">
                 <!-- Notification Icon -->
                 <div class="relative block">
                     <a href="/activity" class="relative inline-block px-3 py-2 focus:outline-none"
