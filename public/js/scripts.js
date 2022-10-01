@@ -3399,7 +3399,7 @@ function flashMsg(msg, type) {
         "showConfirmButton":false,
         "showCloseButton":true,
         "timerProgressBar":false,
-        "customClass":{"container":null,"popup":null,"header":null,"title":null,"closeButton":null,"icon":null,"image":null,"content":null,"input":null,"actions":null,"confirmButton":null,"cancelButton":null,"footer":null},
+        "customClass":{"container":'z-x',"popup":null,"header":null,"title":null,"closeButton":null,"icon":null,"image":null,"content":null,"input":null,"actions":null,"confirmButton":null,"cancelButton":null,"footer":null},
         "toast":true,
         "icon":type,
         "position":"top-end"});

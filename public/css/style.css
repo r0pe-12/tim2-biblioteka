@@ -1,6 +1,10 @@
 /*Font Rubik - import*/
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
 
+.z-x {
+    z-index: 9999 !important;
+}
+
 .switch{
     width: 75px;
     height: 40px;
