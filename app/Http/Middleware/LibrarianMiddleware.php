@@ -19,7 +19,7 @@ class LibrarianMiddleware
         if (auth()->user()->isLibrarian() || auth()->user()->isAdmin()) {
             return $next($request);
         }
-        auth()->logout();
-        return redirect('/login')->with('fail', 'Ovaj sistem je namijenjen iskljucivo bibliotekarima. Instalirajte nasu mobilnu aplikaciju');
+//        auth()->logout();
+        return redirect('/')->with('fail', 'Ovaj sistem je namijenjen iskljucivo bibliotekarima.');
     }
 }
