@@ -107,13 +107,11 @@
                                         Naziv knjige
                                     </th>
 
-                                    <!-- Autor + dropdown filter for autor -->
                                     <th id="autoriMenu"
                                         class="px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer">
                                         Autor
                                     </th>
 
-                                    <!-- Kategorija + dropdown filter for kategorija -->
                                     <th id="kategorijeMenu" class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
                                         Kategorija
                                     </th>
@@ -242,11 +240,9 @@
                                     </th>
                                     <th class="flex items-center px-4 py-4 leading-4 tracking-wider text-left">Naziv</th>
 
-                                    <!-- Autor + dropdown filter for autor -->
                                     <th id="autoriMenu"
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer ">Autor</th>
 
-                                    <!-- Kategorija + dropdown filter for kategorija -->
                                     <th id="kategorijeMenu" class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left">Kategorija</th>
                                     <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Na raspolaganju</th>
                                     <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervisano</th>
