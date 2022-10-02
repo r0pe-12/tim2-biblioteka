@@ -40,8 +40,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('guest');
-        $this->middleware('admin');
+        $this->middleware('guest');
+//        $this->middleware('admin');
     }
 
     /**
@@ -80,12 +80,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         //
-        $role = Role::findOrNew(Role::GUEST);
-        if (!$role->id){
-            $role->id = Role::GUEST;
-            $role->name = Role::GUEST_NAME;
-            $role->save();
-        }
+        $role = Role::student();
         $role->users()->save(auth()->user());
     }
 }
