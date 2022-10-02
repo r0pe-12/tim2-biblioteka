@@ -12,7 +12,7 @@
             <h2 class="card-title" style="font-size: x-large"><a href="#knjigaPrikaz">{{ $book->title }}</a>
             </h2>
             <div class="card-text" style="min-height: 120px">
-                {!! strip_tags(Str::limit($book->description, 100)) !!}
+                {!! html_entity_decode(strip_tags(Str::limit($book->description, 100))) !!}
             </div>
             <div class="d-grid gap-2">
                 @if(auth()->check() && auth()->user()->isStudent())
