@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login | Library - ICT Cortex student project</title>
+    <title>Register | InTheLoop - Library</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -123,7 +123,7 @@
 
                 <!-- email -->
                 <div class="wrap-input100 validate-input" data-validate = "Email is required">
-                    <input class="input100" type="text" name="email" placeholder="Last name" value="{{ old('email') }}">
+                    <input class="input100" type="text" name="email" placeholder="Email" value="{{ old('email') }}">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 							<i class="fa fa-envelope-open" aria-hidden="true"></i>
