@@ -3,6 +3,13 @@ function searchBook() {
     var data = $(form).serialize();
     var wrapper = document.getElementById("bookWrapper");
 
+    // ISTER EG
+    $('body').removeClass('istereg');
+    if( $('#searchBar').val() == 'loop') {
+        $('body').addClass('istereg');
+    }
+
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

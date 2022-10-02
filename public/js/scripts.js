@@ -3488,11 +3488,17 @@ $('#searchBar').on('input focusin', function () {
     var search = $('#searchBar').val();
     $('#resultWrapper').attr('hidden', 'true');
     // if input length is lower than 3 chars ww will display notification
+    $('body').removeClass('istereg');
+    
     if (search.length < 3) {
         $(resultWrapper).fadeOut(1);
         $(info).fadeIn();
         info.querySelector('ul').innerHTML = `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Morate unijeti barem 3 karaktera</li></a>`;
     } else {
+        // ISTER EG
+        if(search == 'loop') {
+            $('body').addClass('istereg');
+        }
         $(info).fadeOut(3);
         $(resultWrapper).fadeIn(2);
         $(resultWrapper).addClass('blur');
