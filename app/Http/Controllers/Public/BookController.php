@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\BaseController;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Book\BookResource;
 use App\Models\Book;
+use App\Models\Category;
 use App\Models\ClosingReason;
 use App\Models\Reservation;
 use App\Models\ReservationStatus;
@@ -26,7 +27,33 @@ class BookController extends BaseController
     public function search(){
         # code
         $s = \request()->post('searchWord');
-        $books = Book::where('title', 'like', "%{$s}%");
+//        $books = Book::where('title', 'like', "%{$s}%");
+
+//        $booksByCat = Category::where('name', 'like', "%{$s}%")->with('books')->get();
+
+        $books =
+            Book::with(['categories', 'genres', 'authors', 'publisher', 'lang', 'bookBind'])
+                ->where('title', 'like', "%{$s}%")
+                ->orWhereHas('categories', function($q) use ($s) {
+                    $q->where('name', 'like', "%{$s}%");
+                })
+                ->orWhereHas('genres', function($q) use ($s) {
+                    $q->where('name', 'like', "%{$s}%");
+                })
+                ->orWhereHas('authors', function($q) use ($s) {
+                    $q->where('name', 'like', "%{$s}%")->orWhere('surname', 'like', "%{$s}%");
+                })
+                ->orWhereHas('publisher', function($q) use ($s) {
+                    $q->where('name', 'like', "%{$s}%");
+                })
+                ->orWhereHas('lang', function($q) use ($s) {
+                    $q->where('name', 'like', "%{$s}%");
+                })
+                ->orWhereHas('bookBind', function($q) use ($s) {
+                    $q->where('name', 'like', "%{$s}%");
+                })
+        ;
+
 
         return response()->json([
             'auth' => auth()->check() && auth()->user()->isStudent(),
