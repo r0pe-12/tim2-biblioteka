@@ -29,7 +29,6 @@ class BookController extends BaseController
         $s = \request()->post('searchWord');
 //        $books = Book::where('title', 'like', "%{$s}%");
 
-//        $booksByCat = Category::where('name', 'like', "%{$s}%")->with('books')->get();
 
         $books =
             Book::with(['categories', 'genres', 'authors', 'publisher', 'lang', 'bookBind'])

@@ -10,7 +10,7 @@
     <meta name="keywords" content="ict cortex, cortex, bild, bildstudio, highschool, students, coding" />
     <meta name="author" content="bildstudio" />
     <!--===============================================================================================-->
-    <link rel="shortcut icon" href="{{ asset('img/library-favicon.ico') }}" type="image/vnd.microsoft.icon" />
+    <link rel="shortcut icon" href="{{ asset('img/landing/intheloop-icon.svg') }}" type="image/vnd.microsoft.icon" />
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('auth-pages/vendor/bootstrap/css/bootstrap.min.css') }}">
     <!--===============================================================================================-->
