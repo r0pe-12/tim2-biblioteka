@@ -44,22 +44,35 @@
         }
 
         window.onload = function () {
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    flashMsg("{{ $error }}", "error");
+                @endforeach
+                {{--const tempMsg = "{{ session('success') }}";--}}
+                {{--var temp = document.createElement('div');--}}
+                {{--temp.setAttribute('hidden', 'true');--}}
+                {{--temp.innerHTML = tempMsg;--}}
+                {{--const msg = temp.innerHTML;--}}
+
+                {{--flashMsg(msg, 'success');--}}
+            @endif
+
             @if(session('success'))
-            const tempMsg = "{{ session('success') }}";
-            var temp = document.createElement('div');
-            temp.setAttribute('hidden', 'true');
-            temp.innerHTML = tempMsg;
-            const msg = temp.innerHTML;
+                const tempMsg = "{{ session('success') }}";
+                var temp = document.createElement('div');
+                temp.setAttribute('hidden', 'true');
+                temp.innerHTML = tempMsg;
+                const msg = temp.innerHTML;
 
-            flashMsg(msg, 'success');
+                flashMsg(msg, 'success');
             @elseif(session('fail'))
-            const tempMsg1 = "{{ session('fail') }}";
-            var temp1 = document.createElement('div');
-            temp1.setAttribute('hidden', 'true');
-            temp1.innerHTML = tempMsg1;
-            const msg1 = temp1.innerHTML;
+                const tempMsg1 = "{{ session('fail') }}";
+                var temp1 = document.createElement('div');
+                temp1.setAttribute('hidden', 'true');
+                temp1.innerHTML = tempMsg1;
+                const msg1 = temp1.innerHTML;
 
-            flashMsg(msg1, 'error');
+                flashMsg(msg1, 'error');
             @endif
         }
     </script>
@@ -80,11 +93,11 @@
 					<span class="login100-form-title">
 						Online Biblioteka
 					</span>
-                @error('username')
-                    <span class="login-error" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+{{--                @error('username')--}}
+{{--                    <span class="login-error" role="alert">--}}
+{{--                        <strong>{{ $message }}</strong>--}}
+{{--                    </span>--}}
+{{--                @enderror--}}
 
 
                 <div class="wrap-input100 validate-input" data-validate = "Username is required">
