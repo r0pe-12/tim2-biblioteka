@@ -99,7 +99,7 @@
                     <input class="input100" type="text" name="username" placeholder="Username" value="{{ old('username') }}">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
-							<i class="fa fa-at" aria-hidden="true"></i>
+							<i class="fa fa-at @error('username') text-danger @enderror" aria-hidden="true"></i>
 						</span>
                 </div>
 
@@ -108,7 +108,7 @@
                     <input class="input100" type="text" name="name" placeholder="First name" value="{{ old('name') }}">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
-							<i class="fa fa-user" aria-hidden="true"></i>
+							<i class="fa fa-user @error('name') text-danger @enderror" aria-hidden="true"></i>
 						</span>
                 </div>
 
@@ -117,7 +117,7 @@
                     <input class="input100" type="text" name="surname" placeholder="Last name" value="{{ old('surname') }}">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
-							<i class="fa fa-user" aria-hidden="true"></i>
+							<i class="fa fa-user @error('surname') text-danger @enderror" aria-hidden="true"></i>
 						</span>
                 </div>
 
@@ -126,7 +126,7 @@
                     <input class="input100" type="text" name="email" placeholder="Email" value="{{ old('email') }}">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
-							<i class="fa fa-envelope-open" aria-hidden="true"></i>
+							<i class="fa fa-envelope-open @error('email') text-danger @enderror" aria-hidden="true"></i>
 						</span>
                 </div>
 
@@ -134,7 +134,7 @@
                     <input class="input100" type="password" name="password" placeholder="Password">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
+							<i class="fa fa-lock @error('password') text-danger @enderror" aria-hidden="true"></i>
 						</span>
                 </div>
 
@@ -142,7 +142,7 @@
                     <input class="input100" type="password" name="password_confirmation" placeholder="Password confirmation">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
+							<i class="fa fa-lock @error('password') text-danger @enderror" aria-hidden="true"></i>
 						</span>
                 </div>
 
