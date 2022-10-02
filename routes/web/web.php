@@ -153,6 +153,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/me/edit', 'edit')->name('me.edit');
         Route::put('/me/update', 'update')->name('me.update');
 
+        Route::get('/me/rezervisane', 'rezervisane')->name('me.rezervisane');
+
         Route::get('/me', 'show')->name('me.show');
     });
 

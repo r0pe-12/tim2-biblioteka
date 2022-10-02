@@ -161,3 +161,50 @@
     -webkit-animation-duration: 4s;
     -webkit-animation-iteration-count: 1;
 }
+
+.inline-block{
+    display: inline-block;
+}
+
+.font-medium{
+    font-weight: 500;
+}
+
+.bg-green-200{
+    --tw-bg-opacity: 1;
+    background-color: rgba(167, 243, 208, var(--tw-bg-opacity));
+}
+
+.bg-red-200{
+    --tw-bg-opacity: 1;
+    background-color: rgba(254, 202, 202, var(--tw-bg-opacity));
+}
+
+.rounded-\[10px\]{
+    border-radius: 10px;
+}
+
+.text-xs{
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
+
+.text-green-800{
+    --tw-text-opacity: 1;
+    color: rgba(6, 95, 70, var(--tw-text-opacity));
+}
+
+.text-red-800{
+    --tw-text-opacity: 1;
+    color: rgba(153, 27, 27, var(--tw-text-opacity));
+}
+
+.px-\[6px\]{
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.py-\[2px\]{
+    padding-top: 2px;
+    padding-bottom: 2px;
+}

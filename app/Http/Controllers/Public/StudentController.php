@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
+use App\Models\Book;
+use App\Models\Policy;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -61,5 +64,15 @@ class StudentController extends Controller
     public function show(){
         # code
         return 'show';
+    }
+
+    public function rezervisane(){
+        # code
+        $student = Student::findOrFail(auth()->user()->id);
+        return view('client.student.rezervisane', [
+            'activeRes' => $student->activeRes()->get(),
+            'archiveRes' => $student->archiveRes()->get(),
+            'res_deadline' => Policy::reservation()
+        ]);
     }
 }
