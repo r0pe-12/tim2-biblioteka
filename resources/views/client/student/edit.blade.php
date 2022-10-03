@@ -198,15 +198,15 @@
                             <div class="col-md-6"><label class="labels">Surname</label><input onkeydown="removeInvalid(this)" type="text" class="form-control" value="{{ $user->surname }}" name="lastname" placeholder="Surname"></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Username</label><input pattern="^(?=[a-zA-Z0-9_-]{3,254}$)(?!.*[_-]{2})[^_-].*[^_-]$" onkeydown="removeInvalid(this)" type="text" required class="form-control" name="username" placeholder="Username" value="{{ $user->username }}"></div>
-                            <div class="col-md-12"><label class="labels">JMBG</label><input type="text" disabled class="form-control" placeholder="JMBG" value="{{ $user->jmbg }}"></div>
+                            <div class="col-md-12"><label class="labels">Username</label><input onkeydown="removeInvalid(this)" type="text" required class="form-control" name="username" placeholder="Username" value="{{ $user->username }}"></div>
+                            <div class="col-md-12"><label class="labels">JMBG</label><input onkeydown="removeInvalid(this)" maxlength="13" type="text" name="jmbg" class="form-control" placeholder="JMBG" value="{{ $user->jmbg }}"></div>
                             <div class="col-md-12"><label class="labels">Email</label><input type="text" disabled class="form-control" placeholder="E-mail" value="{{ $user->email }}"></div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-6"><label class="labels">Password</label><input onkeydown="removeInvalid(this)" name="password" type="password" class="form-control" placeholder="Password" value=""></div>
                             <div class="col-md-6"><label class="labels">Confirm Password</label><input onkeydown="removeInvalid(this)" name="password_confirmation" type="password" class="form-control" value="" placeholder="Confirm Password"></div>
                         </div>
-                        <div class="mt-5 text-center"><button class="btn btn-prem" id="profileUpdateBtn" type="button" onclick="profileUpdateValidation()">Save Profile</button></div>
+                        <div class="mt-5 text-center"><button class="btn btn-prem" id="profileUpdateBtn" type="submit" onclick="profileUpdateValidation(event)">Save Profile</button></div>
                     </div>
                 </div>
             </div>

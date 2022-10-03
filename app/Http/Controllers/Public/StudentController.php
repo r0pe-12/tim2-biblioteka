@@ -27,6 +27,7 @@ class StudentController extends Controller
         $input = \Validator::validate(request()->all(), [
             "firstname" => ['required', 'max:255'],
             "lastname" => ['required', 'max:255'],
+            "jmbg" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
             "username" => ['required', 'max:255', Rule::unique('users')->ignore($student->id), 'alpha_dash'],
             "password" => ['confirmed', 'max:255'],
             "photoPath" => ['']
@@ -53,6 +54,7 @@ class StudentController extends Controller
 
         $new['name'] = $input['firstname'];
         unset($new['firstname']);
+
         $new['surname'] = $input['lastname'];
         unset($new['lastname']);
 
