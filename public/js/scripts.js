@@ -3489,7 +3489,7 @@ $('#searchBar').on('input focusin', function () {
     $('#resultWrapper').attr('hidden', 'true');
     // if input length is lower than 3 chars ww will display notification
     $('body').removeClass('istereg');
-    
+
     if (search.length < 3) {
         $(resultWrapper).fadeOut(1);
         $(info).fadeIn();
@@ -4151,13 +4151,15 @@ $('#pdf').on('change', function () {
    document.getElementById('pdfLabel').innerHTML = fileName + '<span id="delPdf" style="margin-left: auto; padding-left: 12px"><i class="fa fa-xmark-circle"></i></span>\n';
 });
 
-document.getElementById('pdfLabel').addEventListener('click', function (e) {
-    var del = this.querySelector('#delPdf');
-    if (del.contains(e.target)) {
-        document.getElementById('pdf').value = '';
-        document.getElementById('delPdfInput').value = 1;
-        document.getElementById('pdfLabel').innerHTML = 'PDF obrisan' + '<span id="delPdf" style="margin-left: auto; padding-left: 12px"><i class="fa fa-xmark-circle"></i></span>\n';
-    } else {
-        $('#pdf').click();
-    }
-});
+if (/\/books\/.*\/edit/i.test(window.location.pathname)) {
+    document.getElementById('pdfLabel').addEventListener('click', function (e) {
+        var del = this.querySelector('#delPdf');
+        if (del.contains(e.target)) {
+            document.getElementById('pdf').value = '';
+            document.getElementById('delPdfInput').value = 1;
+            document.getElementById('pdfLabel').innerHTML = 'PDF obrisan' + '<span id="delPdf" style="margin-left: auto; padding-left: 12px"><i class="fa fa-xmark-circle"></i></span>\n';
+        } else {
+            $('#pdf').click();
+        }
+    });
+}
