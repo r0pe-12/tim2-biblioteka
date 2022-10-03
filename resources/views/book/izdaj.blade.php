@@ -58,7 +58,8 @@
                                     <label class="text-gray-700" for="date">
                                         {!! Form::date('datumIzdavanja', now('Europe/Belgrade'),
                                             ['class'=>'flex w-[90%] mt-2 px-4 py-2 text-base placeholder-gray-400 bg-white border border-gray-300 appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]',
-                                            'min'=>now('Europe/Belgrade')->format('Y-m-d'),
+                                            'min'=>now('Europe/Belgrade')->subDays(3)->format('Y-m-d'),
+                                            'max'=>now('Europe/Belgrade')->addDays(3)->format('Y-m-d'),
                                             'id' => 'datumIzdavanja',
                                             'onclick' => 'clearErrorsDatumIzdavanja()',
                                             'onchange' => 'funkcijaDatumVracanja()',
