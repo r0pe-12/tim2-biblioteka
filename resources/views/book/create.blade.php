@@ -50,9 +50,9 @@
                 <div class="py-4 text-gray-500 border-[#e4dfdf] pl-[30px]">
                     <nav>
                         <div class="nav nav-pills" id="nav-tab" role="tablist">
-                            <a class="nav-link active" id="osnovniDetalji" data-bs-toggle="tab" href="#osnovniDetalji-tab"  role="tab" aria-controls="osnovniDetalji" aria-selected="true">Osnovni detalji</a>
-                            <a class="nav-link" id="specifikacije" data-bs-toggle="tab" href="#specifikacije-tab"  role="tab" aria-controls="specifikacije" aria-selected="false">Specifikacije</a>
-                            <a class="nav-link" id="multimedija" data-bs-toggle="tab" href="#multimedija-tab"  role="tab" aria-controls="nav-contact" aria-selected="false" aria-disabled="true">Multimedija</a>
+                            <a class="nav-link active" id="osnovniDetalji" data-bs-toggle="tab" disabled href="#osnovniDetalji-tab"  role="tab" aria-controls="osnovniDetalji" aria-selected="true">Osnovni detalji</a>
+                            <a class="nav-link" id="specifikacije" data-bs-toggle="tab" disabled href="#specifikacije-tab"  role="tab" aria-controls="specifikacije" aria-selected="false">Specifikacije</a>
+                            <a class="nav-link" id="multimedija" data-bs-toggle="tab" disabled href="#multimedija-tab"  role="tab" aria-controls="nav-contact" aria-selected="false" aria-disabled="true">Multimedija</a>
 
 {{--                            <div class="text-white text-right flex flex-row" style="margin-right: 5.6%; margin-left: auto">--}}
 {{--                                <a href="{{ route('books.index') }}">--}}
