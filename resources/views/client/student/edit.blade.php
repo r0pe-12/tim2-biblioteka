@@ -183,7 +183,7 @@
                 <div class="col-md-4 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <div id="empty-cover-art" class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid">
-                            <input hidden onchange="cropperFunction(event)" id="upload-picture" value="" name="picture-raw" type="file" class="hidden" :accept="accept">
+                            <input hidden onchange="cropperFunction(event)" id="upload-picture" value="" name="picture-raw" type="file" class="hidden" accept="image/*" :accept="accept">
                             <img style="cursor: pointer" class="rounded-circle mt-5" id="image-output" width="150px" src="{{ $user->photoPath }}" onclick="$('#upload-picture').click()" alt="profilePhoto">
                         </div>
                         <span class="font-weight-bold">{{ $user->name }} {{ $user->surname }}</span><span class="text-black-50">{{ $user->email }}</span><span> </span></div>
