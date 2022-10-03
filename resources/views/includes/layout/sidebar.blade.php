@@ -282,27 +282,27 @@
                                 </div>
                             </li>
                         @endif
-                        <li><hr class="dropdown-divider"></li>
-
-                        <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-                            <div class="ml-[25px]">
-                                <span class="flex justify-between w-full whitespace-nowrap">
-                                    <div>
-                                        <a href="{{ config('vars.api-docs') }}" aria-label="Dokumentacija" target="_blank">
-                                            <i class="text-[22px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-server"></i>
-                                            <div class="hidden sidebar-item">
-                                                <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                                                    For developers
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </span>
-                            </div>
-                        </li>
                         @break
                     @default
                 @endswitch
+                <li><hr class="dropdown-divider"></li>
+
+                <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+                    <div class="ml-[25px]">
+                        <span class="flex justify-between w-full whitespace-nowrap">
+                            <div>
+                                <a href="{{ config('vars.api-docs') }}" aria-label="Dokumentacija" target="_blank">
+                                    <i class="text-[22px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-server"></i>
+                                    <div class="hidden sidebar-item">
+                                        <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
+                                            For developers
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </span>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
