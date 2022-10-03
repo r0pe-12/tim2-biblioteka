@@ -206,10 +206,10 @@ class AdminController extends Controller
     public function deleteProfilePhoto(User $user){
         # code
         if (file_exists($photoPath = public_path() . $user->photoPath)){
-            $user->photoPath = null;
-            $user->save();
             unlink($photoPath);
         }
+        $user->photoPath = null;
+        $user->save();
     }
 //    END-izbriši profilnu sliku
 

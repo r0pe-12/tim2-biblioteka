@@ -216,10 +216,10 @@ class LibrarianController extends Controller
         # code
         $this->authorize('view', $user);
         if (file_exists($photoPath = public_path() . $user->photoPath)){
-            $user->photoPath = null;
-            $user->save();
             unlink($photoPath);
         }
+        $user->photoPath = null;
+        $user->save();
     }
 //    END-izbriši profilnu sliku
 

@@ -201,10 +201,10 @@ class AuthorController extends Controller
     public function deleteProfilePhoto(Author $author){
         # code
         if (file_exists($photoPath = public_path() . $author->image)){
-            $author->image = null;
-            $author->save();
             unlink($photoPath);
         }
+        $author->image = null;
+        $author->save();
     }
 //    END-izbriši profilnu sliku
 
