@@ -5,7 +5,7 @@ function searchBook() {
 
     // ISTER EG
     $('body').removeClass('istereg');
-    if( $('#searchBar').val() == 'loop') {
+    if( $('#searchBar').val().toLowerCase() === 'loop') {
         $('body').addClass('istereg');
     }
 
@@ -65,6 +65,7 @@ function noAuth(book) {
                             ${book.description ? book.description.slice(0, 100).replace(/<\/?[^>]+(>|$)/g, "") + '...' : ''}
                         </div>
                         <div class="d-grid gap-2">
+                            <button disabled class="btn btn-premium">Nije moguće rezervisati knjigu</button>
                         </div>
                     </div>
                 </div>

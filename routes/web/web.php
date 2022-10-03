@@ -161,7 +161,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(\App\Http\Controllers\Public\BookController::class)->group(function () {
 //        Route::get('/knjige', 'index')->name('knjige.index');
-        Route::get('/knjige/{book}', 'show')->name('knjige.show');
+//        Route::get('/knjige/{book}', 'show')->name('knjige.show');
 
         Route::post('/knjige/{book}/rezervisi', 'reserve')->name('knjige.reserve');
 
@@ -170,4 +170,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/knjige', [\App\Http\Controllers\Public\BookController::class, 'index'])->name('knjige.index');
+Route::get('/knjige/{book}', [\App\Http\Controllers\Public\BookController::class, 'show'])->name('knjige.show');
+
 Route::post('/client-search', [\App\Http\Controllers\Public\BookController::class, 'search'])->name('knjige.search');

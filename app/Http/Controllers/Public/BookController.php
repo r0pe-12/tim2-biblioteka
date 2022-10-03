@@ -25,6 +25,13 @@ class BookController extends BaseController
         ]);
     }
 
+    public function show(Book $book){
+        # code
+        return view('client.book.show', [
+            'book' => $book
+        ]);
+    }
+
     public function search(){
         # code
         $s = \request()->post('searchWord');

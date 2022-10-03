@@ -1,4 +1,7 @@
 <x-landing-layout>
+    @section('title')
+        Evidencija rezervacija
+    @endsection
     @section('scripts')
         <script class="u-script" src="{{ asset('js/landing/cancelRes.js') }}"></script>
     @endsection
@@ -34,7 +37,9 @@
                                                 @if(count($activeRes) > 0)
                                                     @foreach($activeRes as $reservation)
                                                         <tr>
-                                                            <td>{{ $reservation->book->title }}</td>
+                                                            <td>
+                                                                <a href="{{ route('knjige.show', $reservation->book) }}">{{ $reservation->book->title }}</a>
+                                                            </td>
                                                             <td>{{ \Carbon\Carbon::parse($reservation->submttingDate)->format('d.m.Y') }}</td>
                                                             <td>{{ \Carbon\Carbon::parse($reservation->submttingDate)->addDays($res_deadline->value)->format('d.m.Y') }}</td>
                                                             <td>{{ $reservation->status }}</td>
@@ -68,7 +73,9 @@
                                             @if(count($archiveRes) > 0)
                                                 @foreach($archiveRes as $reservation)
                                                     <tr>
-                                                        <td>{{ $reservation->book->title }}</td>
+                                                        <td>
+                                                            <a href="{{ route('knjige.show', $reservation->book) }}">{{ $reservation->book->title }}</a>
+                                                        </td>
                                                         <td>{{ \Carbon\Carbon::parse($reservation->submttingDate)->format('d.m.Y') }}</td>
                                                         <td>{{ \Carbon\Carbon::parse($reservation->closingDate)->format('d.m.Y') }}</td>
                                                         <td>

@@ -1,4 +1,7 @@
 <x-landing-layout>
+    @section('title')
+        Library
+    @endsection
     <section style="z-index: 1;"
              class="u-align-center u-clearfix u-image u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-section-1"
              id="sec-6c81" data-image-width="1980" data-image-height="1114">
@@ -157,7 +160,7 @@
                     <p class="u-align-left u-text u-text-2"> Knjiga nije hrana, ali jeste poslastica! Zato uronite u
                         nepregledno more riječi, i klasika, ljubavi i prevara, drame i akcije, uz autorske knjige
                         najvećih imena književnosti. </p>
-				<a href="{{  route('knjige.index') }}"class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-2">Knjige</a>
+				<a href="{{  route('knjige.index') }}"class="u-border-none u-btn u-btn-round u-button-style u-palette-3-base u-radius-10 u-text-palette-1-base u-btn-2">sve knjige</a>
                 </div>
             </div>
             <div class="u-gradient u-shape u-shape-circle u-shape-2"></div>

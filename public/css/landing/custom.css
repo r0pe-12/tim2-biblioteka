@@ -208,3 +208,65 @@
     padding-top: 2px;
     padding-bottom: 2px;
 }
+
+/*<!-- design by https://github.com/Alldden -->*/
+
+.main_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 350px;
+    width: 100%;
+    overflow: hidden
+}
+
+#main_product_image {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+.thumbnail_images {
+    list-style: none;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.thumbnail_images ul {
+    list-style: none;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 10px
+}
+
+.thumbnail_images ul li {
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid #eee;
+    cursor: pointer;
+    transition: all 0.5s
+}
+
+.thumbnail_images ul li:hover {
+    border: 2px solid #000
+}
+
+.thumbnail_image {
+    height: 70px;
+}
+@media (max-width: 992px) {
+    .thumbnail_image {
+        height: 50px;
+    }
+}
+
+@media (max-width: 422px) {
+    .thumbnail_image {
+        height: 35px;
+    }
+}
+

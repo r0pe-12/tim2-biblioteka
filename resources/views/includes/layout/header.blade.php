@@ -23,7 +23,7 @@
 
         <form onsubmit="event.preventDefault()" id="searchForm" hidden>
             @csrf
-            <input id="searchBar" autofocus autocomplete="off" name="searchWord" type="search" placeholder="Search" class="w-[500px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+            <input id="searchBar" autofocus autocomplete="off" name="searchWord" type="search" placeholder="Pretraži sve, npr. 'loop'" class="w-[500px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
             <a id="filterDropdown" style="padding-left: 10px" href="#">Filteri <i class="pl-[4px] fas fa-caret-down"></i></a>
         </form>
 
