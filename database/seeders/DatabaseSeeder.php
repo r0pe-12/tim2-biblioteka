@@ -26,6 +26,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          User::factory()->create([
+             'username' => 'server',
+             'name' => 'Server',
+             'surname' => ' ',
+             'jmbg' => '0000000000000',
+             'role_id' => Role::librarian()->id,
+             'password' => '@password@'
+         ]);
+
+         User::factory()->create([
              'username' => 'bibliotekar',
              'role_id' => Role::librarian()->id,
              'password' => '@password'
