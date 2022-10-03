@@ -1,4 +1,3 @@
-// todo bug kod ove raketice na telefonu nekako prosiri ekran i ispadne na lijevu stranu
 jQuery(window).scroll(function() {
     if (jQuery(window).scrollTop() < 50) {
         jQuery('#rocketmeluncur').slideUp(500);
@@ -40,3 +39,19 @@ jQuery('#rocketmeluncur').click(function() {
 $('.nolink').on('click', function(e) {
     e.preventDefault();
 });
+
+function flashMsg(msg, type) {
+    Swal.fire({
+        "title": msg,
+        // "text":msg,
+        "timer":5000,
+        "width":"40rem",
+        "padding":"1.2rem",
+        "showConfirmButton":false,
+        "showCloseButton":true,
+        "timerProgressBar":false,
+        "customClass":{"container":'z-x',"popup":null,"header":null,"title":null,"closeButton":null,"icon":null,"image":null,"content":null,"input":null,"actions":null,"confirmButton":null,"cancelButton":null,"footer":null},
+        "toast":true,
+        "icon":type,
+        "position":"top-end"});
+}

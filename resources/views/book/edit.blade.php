@@ -61,9 +61,9 @@
             <div class="py-4 text-gray-500 border-[#e4dfdf] pl-[30px]">
                 <nav>
                     <div class="nav nav-pills" id="nav-tab" role="tablist">
-                        <a class="nav-link active" id="osnovniDetalji" data-bs-toggle="tab" href="#osnovniDetalji-tab"  role="tab" aria-controls="osnovniDetalji" aria-selected="true">Osnovni detalji</a>
-                        <a class="nav-link" id="specifikacije" data-bs-toggle="tab" href="#specifikacije-tab"  role="tab" aria-controls="specifikacije" aria-selected="false">Specifikacije</a>
-                        <a class="nav-link" id="multimedija" data-bs-toggle="tab" href="#multimedija-tab"  role="tab" aria-controls="multimedija" aria-selected="false">Multimedija</a>
+                        <a class="nav-link active" id="osnovniDetalji" data-bs-toggle="tab" disabled href="#osnovniDetalji-tab"  role="tab" aria-controls="osnovniDetalji" aria-selected="true">Osnovni detalji</a>
+                        <a class="nav-link" id="specifikacije" data-bs-toggle="tab" disabled href="#specifikacije-tab"  role="tab" aria-controls="specifikacije" aria-selected="false">Specifikacije</a>
+                        <a class="nav-link" id="multimedija" data-bs-toggle="tab" disabled href="#multimedija-tab"  role="tab" aria-controls="multimedija" aria-selected="false">Multimedija</a>
 
                         {{--                            <div class="text-white text-right flex flex-row" style="margin-right: 5.6%; margin-left: auto">--}}
                         {{--                                <a href="{{ route('books.index') }}">--}}
@@ -291,6 +291,20 @@
                                     <input autocomplete="off" value="{{ $book->isbn }}" onkeyup="isbnCheck()" maxlength="13"
                                            type="text" name="isbn" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()">
                                     <div id="validateIsbn"></div>
+                                </div>
+                                <div class="mt-[20px]">
+                                    <p id="isbnLabel">PDF verzija knjige</p>
+                                    <label style="cursor:pointer; overflow: hidden" id="pdfLabel"
+                                           class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+                                           for="pdfdif">{{ is_null($book->pdf) ? 'Izaberi PDF' : $book->getAttributes()['pdf'] }}
+                                        <span id="delPdf" style="margin-left: auto; padding-left: 12px"><i class="fa fa-xmark-circle"></i></span>
+                                    </label>
+                                    <input type="number" class="hidden" name="deletePdfs" id="delPdfInput" value="0">
+                                    <input autocomplete="off"
+                                           type="file" accept="application/pdf" name="pdf" id="pdf" class="hidden flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">
+                                    @if($book->pdf)
+                                        <a href="{{ $book->pdf }}" target="_blank">Pogledaj PDF</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

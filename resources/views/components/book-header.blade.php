@@ -214,7 +214,7 @@
                 </div>
             </div>
         </div>
-        <div class="pt-[24px] mr-[30px]">
+        <div style="z-index: 999" class="pt-[24px] mr-[30px]">
 
             <!-- star rating -->
                 <div class="stars-outer book-rating" title="{{ $book->reviews->count() > 0 ? round($book->reviews->sum('star') / $book->reviews->count(), 1) : 'Nema komentara' }}">

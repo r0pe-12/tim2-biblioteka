@@ -77,7 +77,7 @@
                         class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
                         <i class="fas fa-plus mr-[15px]"></i> Nova knjiga
                     </a>
-                    <a href="#" class="text-red-800 multiple" id="deleteMany" hidden data-toggle="modal" data-target="#deleteManyModal"><i class="fa fa-trash ml-4"></i> Izbrisi knjige</a>
+                    <a href="#" class="text-red-800 multiple" id="deleteMany" hidden data-toggle="modal" data-target="#deleteManyModal"><i class="fa fa-trash ml-4"></i> Izbriši knjige</a>
 
 
                     <a class="text-blue-800 one" hidden id="detalji" href="#"><i class="far fa-copy"></i> Pogledaj detalje</a>
@@ -87,7 +87,7 @@
                     <a class="text-blue-800 one" hidden id="vrati" href="#"><i class="fas fa-redo-alt"></i> Vrati knjigu</a>
                     <a class="text-blue-800 one" hidden id="rezervisi" href="#"><i class="far fa-calendar-check"></i>  Rezerviši knjigu</a>
 
-                    <a href="#" class="text-red-800 one deleteOne" id="deleteOne" hidden data-toggle="modal" data-target="#deleteOneModal"><i class="fa fa-trash ml-4"></i> Izbrisi knjigu</a>
+                    <a href="#" class="text-red-800 one deleteOne" id="deleteOne" hidden data-toggle="modal" data-target="#deleteOneModal"><i class="fa fa-trash ml-4"></i> Izbriši knjigu</a>
                     <div></div>
                 </div>
                 <!-- Space for content -->

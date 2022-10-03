@@ -80,7 +80,7 @@
     <!-- login -->
     <div class="flex-initial">
         <div class="relative flex items-center justify-end">
-            <div class="flex items-center">
+            <div class="flex items-center" style="z-index: 1111">
                 <!-- Notification Icon -->
                 <div class="relative block">
                     <a href="/activity" class="relative inline-block px-3 py-2 focus:outline-none"
@@ -109,6 +109,14 @@
                     <div class="absolute right-[12px] w-56 mt-[35px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                         aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                         <div class="py-1">
+                            @if(auth()->user()->isAdmin())
+                                <a href="{{ route('admins.create') }}" tabindex="0"
+                                   class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                   role="menuitem">
+                                    <i class="fa fa-user-shield mr-[8px] ml-[5px] py-1"></i>
+                                    <span class="px-4 py-0">Novi administrator</span>
+                                </a>
+                            @endif
                             <a href="{{ route('librarians.create') }}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
@@ -158,12 +166,12 @@
                                 <i class="fas fa-file mr-[8px] ml-[5px] py-1"></i>
                                 <span class="px-4 py-0">Profile</span>
                             </a>
-                            <form method="POST" action="{{ route('logout') }}" enctype="multipart/form-data" tabindex="0"
+                            <form method="POST" action="{{ route('logout') }}" id="logoutDashboardForm" tabindex="0"
                                   class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                   role="menuitem">
                                 @csrf
                                 <i class="fas fa-sign-out-alt mr-[5px] ml-[5px] py-1"></i>
-                                <button type="submit"><span class="px-4 py-0">Logout</span></button>
+                                <a href="#" onclick="$('#logoutDashboardForm').submit()"><span class="px-4 py-0">Logout</span></a>
                             </form>
                         </div>
                     </div>

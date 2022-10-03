@@ -62,7 +62,7 @@ class BookController extends Controller
         $input = $request->validated();
 
 //        creating new record in books table
-        $book = Book::create(Arr::except($input,['categories', 'genres', 'authors']));
+        $book = Book::create(Arr::except($input,['categories', 'genres', 'authors', 'pdf', 'deletePdfs']));
 
         if ($request->hasFile('pictures')){
             foreach ($input['pictures'] as $file){
@@ -73,6 +73,13 @@ class BookController extends Controller
                     'cover' => $file->getClientOriginalName() == $input['cover']
                 ]);
             }
+        }
+
+        if ($request->hasFile('pdf')){
+            $name = str_replace(' ', '_', $book->title . '.pdf');
+            $input['pdf']->storeAs('/pdf', $name);
+            $book->pdf = $name;
+            $book->save();
         }
 
 //        attaching book to multiple authors
@@ -174,13 +181,34 @@ class BookController extends Controller
             }
         }
 
+
+        if (!($input['deletePdfs'] == 1)) {
+            if ($request->hasFile('pdf')){
+                if ((!is_null($book->pdf)) && file_exists($pdfPath = public_path() . $book->pdf)){
+                    unlink($pdfPath);
+                }
+
+                $name = str_replace(' ', '_', $book->title . '.pdf');
+                $input['pdf']->storeAs('/pdf', $name);
+                $book->pdf = $name;
+                $book->save();
+            }
+        } else {
+            if ((!is_null($book->pdf)) && file_exists($pdfPath = public_path() . $book->pdf)){
+                unlink($pdfPath);
+            }
+
+            $book->pdf = null;
+            $book->save();
+        }
+
         if (is_numeric($input['cover'])){
             Galery::find($input['cover'])->update([
                 'cover' => 1
             ]);
         }
 //        creating new record in books table
-        $book->update(Arr::except($input,['categories', 'genres', 'authors', 'pictures', 'cover', 'present']));
+        $book->update(Arr::except($input,['categories', 'genres', 'authors', 'pictures', 'cover', 'present', 'pdf', 'deletePdfs']));
 
 //        attaching book to multiple authors
         $book->authors()->sync($input['authors']);

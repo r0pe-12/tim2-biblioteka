@@ -24,43 +24,21 @@
             <div class="u-custom-menu u-nav-container">
                 <ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
                     <li class="u-nav-item">
+                        <a href="{{ route('knjige.index') }}">
+                            <button class="btn btn-outline-primary" type="button" style="margin-right: 20px">
+                                Knjige
+                            </button>
+                        </a>
                         @if(auth()->check())
                             @if(auth()->user()->isAdmin() || auth()->user()->isLibrarian())
 
-                                <a style="margin: 0 20px;" href="{{ route('dashboard.index') }}" class="link">
+                                <a style="margin-right: 20px" href="{{ route('dashboard.index') }}" class="link">
                                     <button class="btn btn-outline-primary">
                                         Dashboard
                                     </button>
                                 </a>
 
                             @else
-
-                                <button class="btn btn-outline-primary dropdown-toggle" type="button" style="margin-right: 20px"
-                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Knjige
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li>
-                                        <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                                           href="#rezervisane" style="padding: 10px 20px;"
-                                        >Rezervisane</a>
-                                    </li>
-                                    <li>
-                                        <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                                           href="#izdate" style="padding: 10px 20px;"
-                                        >Izdate</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li>
-                                        <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                                           href="#sveKnjige" style="padding: 10px 20px;"
-                                        >Sve Knjige</a>
-                                    </li>
-
-                                </ul>
-
                             @endif
 
                             <button class="btn btn-outline-primary dropdown-toggle" type="button"
@@ -68,6 +46,22 @@
                                 {{ auth()->user()->name . ' ' . auth()->user()->surname }}
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                @if(!(auth()->user()->isAdmin() || auth()->user()->isLibrarian()))
+                                    <li>
+                                        <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                                           href="{{ route('me.rezervisane') }}" style="padding: 10px 20px;"
+                                        >Rezervisane knjige</a>
+                                    </li>
+                                    <li>
+                                        <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                                           href="{{ route('me.izdate') }}" style="padding: 10px 20px;"
+                                        >Izdate knjige</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                @endif
+
                                 <li>
                                     <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
                                        href="
@@ -76,7 +70,7 @@
                                                             @elseif(auth()->user()->isAdmin())
                                                                 {{ route('admins.show', auth()->user()->username) }}
                                                             @else
-                                                                #profil
+                                                                {{ route('me.edit') }}
                                                            @endif
                                                        " style="padding: 10px 20px;"
                                        onclick=""
@@ -117,25 +111,18 @@
                         <div class="u-menu-close" style="cursor: pointer;"></div>
                         <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
 
+                            <li class="u-nav-item">
+                                <a href="{{ route('knjige.index') }}">
+                                    <button class="btn btn-default text-white" type="button">
+                                        Knjige
+                                    </button>
+                                </a>
+                            </li>
+                            <br>
                             @if(auth()->check())
                                 @if(auth()->user()->isAdmin() || auth()->user()->isLibrarian())
                                    <!-- ako je admin ili bibliotekar na telefonu ne izbacijemo nista jer svakako ne moze na dashboard da udje -->
                                 @else
-                                    <li class="u-nav-item">
-                                        <button class="btn btn-default text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBooks" aria-expanded="false" aria-controls="collapseExample">
-                                            Knjige <i class="fa fa-caret-down"></i>
-                                        </button>
-                                    </li>
-
-                                    <div class="collapse f16" id="collapseBooks">
-                                        <a class="u-button-style u-nav-link" href="#rezervisane"
-                                           style="padding: 10px 20px;">- Rezervisane</a>
-                                        <a class="u-button-style u-nav-link" href="#izdate"
-                                           style="padding: 10px 20px;">- Izdate</a>
-                                        <a class="u-button-style u-nav-link" href="#sveKnjige"
-                                           style="padding: 10px 20px;">- Sve Knjige</a>
-                                    </div>
-                                    <br>
                                 @endif
 
                                     <li class="u-nav-item">
@@ -145,26 +132,36 @@
                                     </li>
 
                                     <div class="collapse f16" id="collapseUser">
+                                        @if(auth()->user()->isStudent())
+                                            <a class="u-button-style u-nav-link" href="{{ route('me.rezervisane') }}"
+                                               style="padding: 10px 20px;">- Rezervisane knjige</a>
+                                            <a class="u-button-style u-nav-link" href="{{ route('me.izdate') }}"
+                                               style="padding: 10px 20px;">- Izdate knjige</a>
+                                            <br>
+                                       @endif
 
-                                        <a class="u-button-style u-nav-link" href="#profil"
+                                        <a class="u-button-style u-nav-link" href="{{ route('me.edit') }}"
                                            style="padding: 10px 20px;"
                                         >Profil</a>
 
                                         <a class="u-button-style u-nav-link" href="{{ route('logout') }}"
                                            style="padding: 10px 20px;"
-                                           onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                                           onclick="event.preventDefault();document.getElementById('logout-form-mobile').submit();"
                                         >Logout</a>
                                     </div>
 
-                                <form class="mb-0" id="logout-form" action="{{ route('logout') }}"
+                                <form class="mb-0" id="logout-form-mobile" action="{{ route('logout') }}"
                                       method="POST" hidden="">
                                     @csrf
                                 </form>
 
                             @else
                                 <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link" href="{{ route('login') }}"
-                                       style="padding: 10px 20px;">Login</a>
+                                    <a href="{{ route('login') }}">
+                                        <button class="btn btn-default text-white" type="button">
+                                            Login
+                                        </button>
+                                    </a>
                                 </li>
                             @endif
                         </ul>

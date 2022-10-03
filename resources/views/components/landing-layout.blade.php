@@ -9,11 +9,15 @@
     <meta name="description" content="ICT Cortex Library - project for high school students..."/>
     <meta name="keywords" content="ict cortex, cortex, bild, bildstudio, highschool, students, coding"/>
     <meta name="author" content="bildstudio"/>
+    @if(auth()->check())
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="client-name" content="{{ auth()->user()->name . ' ' . auth()->user()->surname }}">
+    @endif
     <!-- End Meta -->
 
 
     <!-- Title -->
-    <title> InTheLoop | Library - ICT Cortex student project</title>
+    <title> InTheLoop - Library</title>
     <link rel="shortcut icon" href="{{ asset('img/landing/intheloop-icon.svg') }}" type="image/vnd.microsoft.icon"/>
 
     <!-- CSS only -->
@@ -24,14 +28,38 @@
     <link rel="stylesheet" href="{{ asset('css/landing/nicepage.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('css/landing/Home-1.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('css/landing/custom.css') }}">
+    @yield('styles')
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
-    <script class="u-script" type="text/javascript" src="{{ asset('js/landing/jquery-1.9.1.min.js') }}" defer=""></script>
-    {{--    <script class="u-script" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>--}}
+{{--    <script class="u-script" type="text/javascript" src="{{ asset('js/landing/jquery-1.9.1.min.js') }}" defer=""></script>--}}
+        <script class="u-script" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/nicepage.js') }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ asset('js/landing/custom.js') }}" defer=""></script>
+    <script>
+        window.onload = function () {
+            @if(session('success'))
+                const tempMsg = "{{ session('success') }}";
+                var temp = document.createElement('div');
+                temp.setAttribute('hidden', 'true');
+                temp.innerHTML = tempMsg;
+                const msg = temp.innerHTML;
+
+                flashMsg(msg, 'success');
+            @elseif(session('fail'))
+                const tempMsg1 = "{{ session('fail') }}";
+                var temp1 = document.createElement('div');
+                temp1.setAttribute('hidden', 'true');
+                temp1.innerHTML = tempMsg1;
+                const msg1 = temp1.innerHTML;
+
+                flashMsg(msg1, 'error');
+            @endif
+        }
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @yield('scripts')
 
     <link id="u-theme-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">

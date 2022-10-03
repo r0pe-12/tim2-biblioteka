@@ -191,4 +191,19 @@ class Book extends Model
         return $able;
     }
 
+    public function getPdfAttribute($path){
+        # code
+        if (is_null($path)) {
+            return null;
+        }
+        if (str_contains($path, 'http://') || str_contains($path, 'https://')){
+            return $path;
+        }
+        if ($path){
+            return '/storage/pdf/' . $path;
+        }
+
+        return null;
+    }
+
 }

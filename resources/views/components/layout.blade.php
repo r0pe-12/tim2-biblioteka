@@ -7,52 +7,65 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta http-equiv="content-language" content="en"/>
-        <meta name="description" content="ICT Cortex Library - project for high school students..."/>
-        <meta name="keywords" content="ict cortex, cortex, bild, bildstudio, highschool, students, coding"/>
-        <meta name="author" content="bildstudio"/>
+        <meta name="description" content="InTheLoop - ICT Cortex Library"/>
+        <meta name="keywords" content="ict cortex, cortex, datadesign, intheloop, highschool, students, coding"/>
+        <meta name="author" content="datadesign"/>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- End Meta -->
 
         <!-- Title -->
-        <title>@yield('title') | Library - ICT Cortex student project</title>
-        <link rel="shortcut icon" href="{{ asset('img/library-favicon.ico') }}" type="image/vnd.microsoft.icon"/>
+        <title>@yield('title') | InTheLoop - Library - Admin</title>
+        <link rel="shortcut icon" href="{{ asset('img/landing/intheloop-icon.svg') }}" type="image/vnd.microsoft.icon"/>
         <!-- End Title -->
 
         <!-- Styles -->
         @include('includes/layout/styles')
         @yield('styles')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
         <!-- End Styles -->
     </head>
 
     <body class="small:bg-gradient-to-r small:from-green-400 small:to-blue-500">
         <div class="loader-wrapper">
-            <div class="book">
-                <div class="inner">
-                    <div class="left"></div>
-                    <div class="middle"></div>
-                    <div class="right"></div>
-                </div>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+            <div style="width: 300px; height: 300px;" id="lwrapper">
+                <script>
+                    var animation = bodymovin.loadAnimation({
+                        container: document.querySelector('#lwrapper'),
+                        renderer: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        path: '{{ asset('bibliotekaLoader.json') }}'
+                    })
+                    animation.setSpeed(1.5);
+                </script>
             </div>
+{{--            <div class="book">--}}
+{{--                <div class="inner">--}}
+{{--                    <div class="left"></div>--}}
+{{--                    <div class="middle"></div>--}}
+{{--                    <div class="right"></div>--}}
+{{--                </div>--}}
+{{--                <ul>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                    <li></li>--}}
+{{--                </ul>--}}
+{{--            </div>--}}
         </div>
         <!-- Header -->
         @include('includes/layout/header')

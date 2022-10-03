@@ -68,7 +68,7 @@
                                                     <span class="text-gray-500 text-[14px]">Autor/i</span>
                                                     <p class="font-medium">
                                                         @foreach($book->authors as $author)
-                                                            <a href="{{ route('authors.show', $author) }}">{{ $author->name }}</a>{!! $loop->remaining >= 1 ? ',&nbsp;&nbsp;&nbsp;' : ''!!}
+                                                            <a href="{{ route('authors.show', $author) }}">{{ $author->name }} {{ $author->surname }}</a>{!! $loop->remaining >= 1 ? ',&nbsp;&nbsp;&nbsp;' : ''!!}
                                                         @endforeach
                                                     </p>
                                                 </div>
@@ -143,9 +143,15 @@
                         <!-- MULTIMEDIJA -->
                         <div class="tab-pane fade" id="multimedija-tab" role="tabpanel" aria-labelledby="multimedija">
                             <div class="scroll grid p-[10px]" style="max-height: 700px">
-                                @foreach($book->photos as $photo)
-                                    <img src="{{ $photo->path }}" alt="">
-                                @endforeach
+                                @if($book->photos->count() > 0)
+                                    @foreach($book->photos as $photo)
+                                        <img style="object-fit: contain" src="{{ $photo->path }}" alt="">
+                                    @endforeach
+                                    @else
+                                        <span></span>
+                                        <span>Nema multimedije</span>
+                                        <span></span>
+                                @endif
                             </div>
                         </div>
                         <!-- kraj MULTIMEDIJA -->

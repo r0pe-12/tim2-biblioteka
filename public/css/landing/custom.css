@@ -1,7 +1,7 @@
 .sticky-header {
 	position: sticky;
 	top: 0;
-	z-index: 2;
+	z-index: 12;
 	 background: #fff;
 	/* backdrop-filter: blur(3px); */
 }
@@ -93,4 +93,118 @@
 
 .f16 {
     font-size: 16px;
+}
+
+.hidden {
+    display: none;
+}
+
+.card {
+    margin-bottom: 30px;
+    box-shadow: 0 0 2rem 0 rgb(136 152 170 / 15%);
+    border: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+}
+
+.btn-prem {
+    color: #fff;
+    background-color: #4558be;
+    box-shadow: 0 5px 25px rgb(65 84 241 / 40%);
+}
+
+.ms-n5 {
+    margin-left: -40px;
+}
+
+.blur {
+    filter: blur(20px);
+}
+
+.blur1 {
+    filter: blur(3px);
+}
+
+.blur2 {
+    filter: blur(2px);
+}
+
+@-moz-keyframes roll {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+@-o-keyframes roll {
+    100% {
+        -o-transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes roll {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.istereg {
+    -moz-animation-name: roll;
+    -moz-animation-duration: 4s;
+    -moz-animation-iteration-count: 1;
+    -o-animation-name: roll;
+    -o-animation-duration: 4s;
+    -o-animation-iteration-count: 1;
+    -webkit-animation-name: roll;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-iteration-count: 1;
+}
+
+.inline-block{
+    display: inline-block;
+}
+
+.font-medium{
+    font-weight: 500;
+}
+
+.bg-green-200{
+    --tw-bg-opacity: 1;
+    background-color: rgba(167, 243, 208, var(--tw-bg-opacity));
+}
+
+.bg-red-200{
+    --tw-bg-opacity: 1;
+    background-color: rgba(254, 202, 202, var(--tw-bg-opacity));
+}
+
+.rounded-\[10px\]{
+    border-radius: 10px;
+}
+
+.text-xs{
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
+
+.text-green-800{
+    --tw-text-opacity: 1;
+    color: rgba(6, 95, 70, var(--tw-text-opacity));
+}
+
+.text-red-800{
+    --tw-text-opacity: 1;
+    color: rgba(153, 27, 27, var(--tw-text-opacity));
+}
+
+.px-\[6px\]{
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.py-\[2px\]{
+    padding-top: 2px;
+    padding-bottom: 2px;
 }

@@ -6,6 +6,7 @@ use App\Http\Resources\Author\AuthorInBookCollection;
 use App\Http\Resources\BookReview\BookReviewCollection;
 use App\Http\Resources\Category\CategoryInBookCollection;
 use App\Http\Resources\Genre\GenreInBookCollection;
+use App\Models\Student;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class BookResource extends JsonResource
@@ -28,6 +29,7 @@ class BookResource extends JsonResource
             'rSamples' => $this->reservedSamples,
 
             'ableToBorrow' => $this->ableToBorrow(), // this returns bool which determines if book can be borrowed or reserved
+            'ableToReserve' => auth()->check() && Student::findOrFail(auth()->user()->id)->ableToGet($this->id, true), // this returns bool which determines if book can be  reserved to auth user
 
             'authors' => AuthorInBookCollection::collection($this->authors),
             'categories' => CategoryInBookCollection::collection($this->categories),

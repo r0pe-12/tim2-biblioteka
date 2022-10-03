@@ -3399,7 +3399,7 @@ function flashMsg(msg, type) {
         "showConfirmButton":false,
         "showCloseButton":true,
         "timerProgressBar":false,
-        "customClass":{"container":null,"popup":null,"header":null,"title":null,"closeButton":null,"icon":null,"image":null,"content":null,"input":null,"actions":null,"confirmButton":null,"cancelButton":null,"footer":null},
+        "customClass":{"container":'z-x',"popup":null,"header":null,"title":null,"closeButton":null,"icon":null,"image":null,"content":null,"input":null,"actions":null,"confirmButton":null,"cancelButton":null,"footer":null},
         "toast":true,
         "icon":type,
         "position":"top-end"});
@@ -3488,11 +3488,17 @@ $('#searchBar').on('input focusin', function () {
     var search = $('#searchBar').val();
     $('#resultWrapper').attr('hidden', 'true');
     // if input length is lower than 3 chars ww will display notification
+    $('body').removeClass('istereg');
+
     if (search.length < 3) {
         $(resultWrapper).fadeOut(1);
         $(info).fadeIn();
         info.querySelector('ul').innerHTML = `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Morate unijeti barem 3 karaktera</li></a>`;
     } else {
+        // ISTER EG
+        if(search == 'loop') {
+            $('body').addClass('istereg');
+        }
         $(info).fadeOut(3);
         $(resultWrapper).fadeIn(2);
         $(resultWrapper).addClass('blur');
@@ -4133,3 +4139,27 @@ $('.toggle').click(function(e){
     var checkbox = this.closest('form.policy').querySelector('input[type="checkbox"]');
     $(checkbox).click();
 });
+
+$('#pdf').on('change', function () {
+   var input = $(this);
+   var file = input[0].files[0];
+   var fileName = file.name;
+   if (file.name.length >= 30) {
+       fileName = file.name.slice(0, 15) + ' ... ' + file.name.slice(-10);
+   }
+   console.log(fileName);
+   document.getElementById('pdfLabel').innerHTML = fileName + '<span id="delPdf" style="margin-left: auto; padding-left: 12px"><i class="fa fa-xmark-circle"></i></span>\n';
+});
+
+if (/\/books\/.*\/edit/i.test(window.location.pathname)) {
+    document.getElementById('pdfLabel').addEventListener('click', function (e) {
+        var del = this.querySelector('#delPdf');
+        if (del.contains(e.target)) {
+            document.getElementById('pdf').value = '';
+            document.getElementById('delPdfInput').value = 1;
+            document.getElementById('pdfLabel').innerHTML = 'PDF obrisan' + '<span id="delPdf" style="margin-left: auto; padding-left: 12px"><i class="fa fa-xmark-circle"></i></span>\n';
+        } else {
+            $('#pdf').click();
+        }
+    });
+}

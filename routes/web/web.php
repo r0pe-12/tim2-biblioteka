@@ -147,3 +147,27 @@ Route::middleware(['auth', 'librarian'])->group(function (){
 
 //    END-test routes
 
+//    rute za ucenika koji se loguje na sajt - client
+Route::middleware(['auth'])->group(function () {
+    Route::controller(\App\Http\Controllers\Public\StudentController::class)->group(function () {
+        Route::get('/me/edit', 'edit')->name('me.edit');
+        Route::put('/me/update', 'update')->name('me.update');
+
+        Route::get('/me/rezervisane', 'rezervisane')->name('me.rezervisane');
+        Route::get('/me/izdate', 'izdate')->name('me.izdate');
+
+        Route::get('/me', 'show')->name('me.show');
+    });
+
+    Route::controller(\App\Http\Controllers\Public\BookController::class)->group(function () {
+//        Route::get('/knjige', 'index')->name('knjige.index');
+        Route::get('/knjige/{book}', 'show')->name('knjige.show');
+
+        Route::post('/knjige/{book}/rezervisi', 'reserve')->name('knjige.reserve');
+
+        Route::post('/rezervacije/{reservation}/otkazi', 'cancelRes')->name('knjige.res.cancel');
+    });
+});
+
+Route::get('/knjige', [\App\Http\Controllers\Public\BookController::class, 'index'])->name('knjige.index');
+Route::post('/client-search', [\App\Http\Controllers\Public\BookController::class, 'search'])->name('knjige.search');

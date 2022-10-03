@@ -20,7 +20,7 @@ class AdminMiddleware
             return redirect('/login')->with('fail', 'Kontaktirajte bibliotekara vase skole');
         }
         if (!(auth()->user()->isAdmin())) {
-            return redirect('/')->with('fail', 'Kontaktirajte administratora sistema');
+            return redirect('/dashboard')->with('fail', 'Kontaktirajte administratora sistema');
         }
         return $next($request);
     }
