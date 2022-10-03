@@ -35,7 +35,9 @@
                                                 @if(count($izdate) > 0)
                                                     @foreach($izdate as $zapis)
                                                         <tr>
-                                                            <td>{{ $zapis->book->title }}</td>
+                                                            <td>
+                                                                <a href="{{ route('knjige.show', $zapis->book) }}">{{ $zapis->book->title }}</a>
+                                                            </td>
                                                             <td>{{ \Carbon\Carbon::parse($zapis->borrow_date)->format('d.m.Y') }}</td>
                                                             <td><span><x-date-diff :zapis="$zapis"/></span></td>
                                                             <td>{{ $zapis->librarian->name }} {{ $zapis->librarian->surname }}</td>
@@ -68,7 +70,9 @@
                                             @if(count($returned) > 0)
                                                 @foreach($returned as $zapis)
                                                     <tr>
-                                                        <td>{{ $zapis->book->title }}</td>
+                                                        <td>
+                                                            <a href="{{ route('knjige.show', $zapis->book) }}">{{ $zapis->book->title }}</a>
+                                                        </td>
                                                         <td>{{ \Carbon\Carbon::parse($zapis->borrow_date)->format('d.m.Y') }}</td>
                                                         <td>{{ \Carbon\Carbon::parse($zapis->statuses()->latest()->first()->pivot->datum)->format('d.m.Y') }}</td>
                                                         <td><span><x-date-diff :zapis="$zapis" :holded="true"/></span></td>
@@ -101,7 +105,9 @@
                                             @if(count($otpisane) > 0)
                                                 @foreach($otpisane as $zapis)
                                                     <tr>
-                                                        <td>{{ $zapis->book->title }}</td>
+                                                        <td>
+                                                            <a href="{{ route('knjige.show', $zapis->book) }}">{{ $zapis->book->title }}</a>
+                                                        </td>
                                                         <td>{{ \Carbon\Carbon::parse($zapis->borrow_date)->format('d.m.Y') }}</td>
                                                         <td>{{ \Carbon\Carbon::parse($zapis->statuses()->latest()->first()->pivot->datum)->format('d.m.Y') }}</td>
                                                         <td><span><x-date-diff :zapis="$zapis" :holded="true"/></span></td>
@@ -134,7 +140,9 @@
                                             @if(count($prekoracene) > 0)
                                                 @foreach($prekoracene as $prekoracena)
                                                     <tr>
-                                                        <td>{{ $prekoracena->book->title }}</td>
+                                                        <td>
+                                                            <a href="{{ route('knjige.show', $prekoracena->book) }}">{{ $prekoracena->book->title }}</a>
+                                                        </td>
                                                         <td>{{ \Carbon\Carbon::parse($prekoracena->borrow_date)->format('d.m.Y') }}</td>
                                                         <td>
                                                             <div
@@ -147,7 +155,7 @@
                                                 @endforeach
                                             @else
                                                 <tr>
-                                                    <td class="text-center" colspan="4">Nemate otpisanih knjiga</td>
+                                                    <td class="text-center" colspan="4">Nemate prekoračenih knjiga</td>
                                                 </tr>
                                             @endif
                                             </tbody>
