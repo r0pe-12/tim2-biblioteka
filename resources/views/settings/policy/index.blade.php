@@ -209,7 +209,7 @@
                     <div class="pl-[30px] flex border-b-[1px] border-[#e4dfdf]  py-[20px]">
                         <div>
                             <h3>
-                                Slati pdf verziju knjige prilikom izdavanja učeniku
+                                Slati PDF verziju knjige prilikom izdavanja učeniku
                             </h3>
                             <p class="pt-[15px] max-w-[400px]">
                                 Ova funcionalnost je opciona, učeniku se na e-mail dostavlja PDF verzija koja će
