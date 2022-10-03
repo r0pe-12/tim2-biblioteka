@@ -1,4 +1,7 @@
 <x-landing-layout>
+    @section('title')
+        Knjige
+    @endsection
     @section('scripts')
         <script class="u-script" type="text/javascript" src="{{ asset('js/landing/reserveBook.js') }}" crossorigin="anonymous"></script>
         <script class="u-script" type="text/javascript" src="{{ asset('js/landing/searchBook.js') }}" crossorigin="anonymous"></script>

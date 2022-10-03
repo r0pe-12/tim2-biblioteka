@@ -17,7 +17,7 @@
 
 
     <!-- Title -->
-    <title> InTheLoop - Library</title>
+    <title> InTheLoop - @yield('title')</title>
     <link rel="shortcut icon" href="{{ asset('img/landing/intheloop-icon.svg') }}" type="image/vnd.microsoft.icon"/>
 
     <!-- CSS only -->

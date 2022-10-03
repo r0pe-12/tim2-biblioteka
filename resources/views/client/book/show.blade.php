@@ -1,4 +1,7 @@
 <x-landing-layout>
+    @section('title')
+        Knjiga {{ $book->title }}
+    @endsection
     @section('scripts')
         <script class="u-script" type="text/javascript" src="{{ asset('js/landing/reserveBook.js') }}" crossorigin="anonymous"></script>
     @endsection

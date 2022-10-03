@@ -1,4 +1,7 @@
 <x-landing-layout>
+    @section('title')
+        Evidencija izdavanja
+    @endsection
     <div class="container rounded bg-white mb-5">
         <!-- design by https://github.com/Alldden -->
         <div class="card-body">

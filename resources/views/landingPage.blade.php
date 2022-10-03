@@ -1,4 +1,7 @@
 <x-landing-layout>
+    @section('title')
+        Library
+    @endsection
     <section style="z-index: 1;"
              class="u-align-center u-clearfix u-image u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-section-1"
              id="sec-6c81" data-image-width="1980" data-image-height="1114">

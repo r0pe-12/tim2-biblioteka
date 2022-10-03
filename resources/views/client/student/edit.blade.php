@@ -1,4 +1,7 @@
 <x-landing-layout>
+    @section('title')
+        Edit Profila
+    @endsection
     @section('styles')
         <style>
             body {

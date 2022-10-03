@@ -1,4 +1,7 @@
 <x-landing-layout>
+    @section('title')
+        Evidencija rezervacija
+    @endsection
     @section('scripts')
         <script class="u-script" src="{{ asset('js/landing/cancelRes.js') }}"></script>
     @endsection
