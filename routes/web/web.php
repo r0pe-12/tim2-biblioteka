@@ -164,6 +164,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/knjige/{book}', 'show')->name('knjige.show');
 
         Route::post('/knjige/{book}/rezervisi', 'reserve')->name('knjige.reserve');
+
+        Route::post('/rezervacije/{reservation}/otkazi', 'cancelRes')->name('knjige.res.cancel');
     });
 });
 

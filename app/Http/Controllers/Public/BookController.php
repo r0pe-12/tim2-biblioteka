@@ -11,6 +11,7 @@ use App\Models\ClosingReason;
 use App\Models\Reservation;
 use App\Models\ReservationStatus;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -97,5 +98,26 @@ class BookController extends BaseController
 
         return $this->sendResponse('', 'Knjiga je rezervisana.', Response::HTTP_OK);
 
+    }
+
+    public function cancelRes(Reservation $reservation){
+        # code
+        $student = Student::findOrFail(\request()->user()->id);
+        if ($student->id != $reservation->student_id){
+            return $this->sendError('Failed', ['errors' => 'Nije moguće otkazati rezervaciju.'], Response::HTTP_OK);
+        }
+
+        $reservation->closingReason_id = ClosingReason::cancelled()->id;
+        $reservation->closingDate = today("Europe/Belgrade");
+        $reservation->librarian1_id = 1;
+        $reservation->save();
+
+        $newResStatus = ReservationStatus::closed();
+        $reservation->statuses()->attach($newResStatus);
+
+        $reservation->book->reservedSamples--;
+        $reservation->book->save();
+
+        return $this->sendResponse('', '', Response::HTTP_OK);
     }
 }

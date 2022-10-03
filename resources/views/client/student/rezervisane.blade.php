@@ -1,4 +1,7 @@
 <x-landing-layout>
+    @section('scripts')
+        <script class="u-script" src="{{ asset('js/landing/cancelRes.js') }}"></script>
+    @endsection
     <div class="container rounded bg-white mb-5">
         <!-- design by https://github.com/Alldden -->
         <div class="card-body">
@@ -35,7 +38,7 @@
                                                             <td>{{ \Carbon\Carbon::parse($reservation->submttingDate)->format('d.m.Y') }}</td>
                                                             <td>{{ \Carbon\Carbon::parse($reservation->submttingDate)->addDays($res_deadline->value)->format('d.m.Y') }}</td>
                                                             <td>{{ $reservation->status }}</td>
-                                                            <td><button class="btn btn-outline-danger">Otkaži</button></td>
+                                                            <td><button class="btn btn-outline-danger" data-book-name="{{ $reservation->book->title }}" data-res-id="{{ $reservation->id }}" onclick="pullCancelResModal(this)">Otkaži</button></td>
                                                         </tr>
                                                     @endforeach
                                                 @else
