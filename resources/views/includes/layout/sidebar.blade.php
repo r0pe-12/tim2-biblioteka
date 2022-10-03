@@ -288,7 +288,7 @@
                             <div class="ml-[25px]">
                                 <span class="flex justify-between w-full whitespace-nowrap">
                                     <div>
-                                        <a href="{{ config('vars.api-docs') }}" aria-label="Dokumentacija">
+                                        <a href="{{ config('vars.api-docs') }}" aria-label="Dokumentacija" target="_blank">
                                             <i class="text-[22px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-server"></i>
                                             <div class="hidden sidebar-item">
                                                 <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
