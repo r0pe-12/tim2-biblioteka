@@ -10,7 +10,7 @@
                     <form onsubmit="event.preventDefault();searchBook()" oninput="searchBook()" id="searchBookForm" method="POST" action="{{ route('knjige.search') }}">
                         @csrf
                         <div class="input-group">
-                            <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="Search" id="searchBar" autocomplete="off" name="searchWord">
+                            <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="Pretraži sve, npr. 'loop'" id="searchBar" autocomplete="off" name="searchWord">
                             <span class="input-group-append">
                                 <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="submit">
                                     <i class="fa fa-search"></i>
