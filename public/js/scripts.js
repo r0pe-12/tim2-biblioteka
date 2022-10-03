@@ -3496,7 +3496,7 @@ $('#searchBar').on('input focusin', function () {
         info.querySelector('ul').innerHTML = `<a href="#" style="font-size: 20px"><li style="padding-left: 15px">Morate unijeti barem 3 karaktera</li></a>`;
     } else {
         // ISTER EG
-        if(search == 'loop') {
+        if(search.toLowerCase() === 'loop') {
             $('body').addClass('istereg');
         }
         $(info).fadeOut(3);
