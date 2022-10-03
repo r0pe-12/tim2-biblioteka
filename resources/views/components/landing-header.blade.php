@@ -54,7 +54,7 @@
                                     </li>
                                     <li>
                                         <a class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-                                           href="#izdate" style="padding: 10px 20px;"
+                                           href="{{ route('me.izdate') }}" style="padding: 10px 20px;"
                                         >Izdate knjige</a>
                                     </li>
                                     <li>
@@ -135,7 +135,7 @@
                                         @if(auth()->user()->isStudent())
                                             <a class="u-button-style u-nav-link" href="{{ route('me.rezervisane') }}"
                                                style="padding: 10px 20px;">- Rezervisane knjige</a>
-                                            <a class="u-button-style u-nav-link" href="#izdate"
+                                            <a class="u-button-style u-nav-link" href="{{ route('me.izdate') }}"
                                                style="padding: 10px 20px;">- Izdate knjige</a>
                                             <br>
                                        @endif

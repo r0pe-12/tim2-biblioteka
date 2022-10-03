@@ -75,4 +75,15 @@ class StudentController extends Controller
             'res_deadline' => Policy::reservation()
         ]);
     }
+
+    public function izdate(){
+        # code
+        $student = Student::findOrFail(auth()->user()->id);
+        return view('client.student.izdate', [
+            'izdate' => $student->active(),
+            'returned' => $student->returned(),
+            'otpisane' => $student->otpisane(),
+            'prekoracene' => $student->prekoracene()
+        ]);
+    }
 }
