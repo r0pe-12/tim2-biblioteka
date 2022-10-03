@@ -32,6 +32,9 @@ function pullReserveModal(btn) {
                              data.message,
                             'success'
                         )
+                        setTimeout(function (){
+                            window.location.reload();
+                        }, 1000)
                     } else {
                         Swal.fire(
                             'Greška!',

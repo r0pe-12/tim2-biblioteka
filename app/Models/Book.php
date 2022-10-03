@@ -206,4 +206,10 @@ class Book extends Model
         return null;
     }
 
+    public function getDescriptionAttribute($val){
+        # code
+        $new = preg_replace('/<script>(.*)<\/script>/m', '', $val);
+        return $new;
+    }
+
 }

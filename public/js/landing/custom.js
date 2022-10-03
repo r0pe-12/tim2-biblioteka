@@ -55,3 +55,7 @@ function flashMsg(msg, type) {
         "icon":type,
         "position":"top-end"});
 }
+
+function changeImg(photo) {
+    $('#main_product_image').attr('src', photo.src);
+}
