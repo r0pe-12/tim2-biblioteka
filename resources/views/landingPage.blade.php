@@ -289,9 +289,8 @@
                                         <div class="u-form-send-message u-form-send-success"> Thank
                                             you! Your message has been sent.
                                         </div>
-                                        <div class="u-form-send-error u-form-send-message"> Unable
-                                            to send your message. Please fix errors then try
-                                            again.
+                                        <div style="background-color: #62C584 !important;" class="u-form-send-error u-form-send-message">
+                                            Vaša poruka je uspješno poslata.
                                         </div>
                                     </form>
                                 </div>
@@ -316,7 +315,7 @@
             <div class="d-flex justify-content-center">
                 <span style="color: black">Powered by &nbsp; <img
                         src="{{ asset('img/landing/intheloop-full-full.svg') }}" class="pb-1" height="20px"
-                        alt="Intelco"></span>
+                        alt="InTheLoop"></span>
             </div>
         </div>
     </footer>
