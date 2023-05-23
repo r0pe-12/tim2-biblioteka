@@ -18,6 +18,7 @@ use App\Models\Galery;
 use App\Models\Reservation;
 use App\Models\ReservationStatus;
 use App\Models\Student;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Arr;
@@ -62,7 +63,6 @@ class BookController extends BaseController
         # code
         return new EditBookResource($book);
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -156,6 +156,11 @@ class BookController extends BaseController
         return $this->sendResponse(new BookResource($book), 'Book successfully updated.', Response::HTTP_OK);
     }
 
+    /**
+     * @param Book $book
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function reserve(Book $book, Request $request)
     {
         # code
