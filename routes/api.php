@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('/books', 'index')->name('api.books.index');
             Route::get('/books/{book}', 'show');
             Route::get('/books/{book}/edit', 'edit');
+            Route::post('/books/{book}/update', 'update');
             Route::post('/books/{book}/reserve', 'reserve');
 
             Route::post('/books/{book}/review', 'review');
