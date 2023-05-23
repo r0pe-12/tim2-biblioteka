@@ -8,6 +8,7 @@ use App\Http\Resources\Category\CategoryInBookCollection;
 use App\Http\Resources\Genre\GenreInBookCollection;
 use App\Models\Student;
 use Illuminate\Http\Resources\Json\JsonResource;
+use function Symfony\Component\Translation\t;
 
 class BookResource extends JsonResource
 {
@@ -39,6 +40,10 @@ class BookResource extends JsonResource
             'description' => $this->description,
             'rating' => $this->reviews->count() > 0 ? round($this->reviews->sum('star') / $this->reviews->count(), 2) : 'Nema komentara',
 //            'comments' => $this->reviews->count() > 0 ? BookReviewCollection::collection($this->reviews) : 'Nema komentara',
+
+            'pages' => $this->pageNum,
+            'pDate' => $this->publishDate,
+            'isbn' => $this->isbn,
         ];
     }
 }
