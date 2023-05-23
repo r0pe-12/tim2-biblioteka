@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\BookBind;
+namespace App\Http\Resources\Language;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BookBindInBookCollection extends JsonResource
+class LanguageResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.

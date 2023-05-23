@@ -2,10 +2,10 @@
 
 namespace App\Http\Resources\Book;
 
-use App\Http\Resources\Author\AuthorInBookCollection;
+use App\Http\Resources\Author\AuthorResource;
 use App\Http\Resources\BookReview\BookReviewCollection;
-use App\Http\Resources\Category\CategoryInBookCollection;
-use App\Http\Resources\Genre\GenreInBookCollection;
+use App\Http\Resources\Category\CategoryResource;
+use App\Http\Resources\Genre\GenreResource;
 use App\Models\Student;
 use Illuminate\Http\Resources\Json\JsonResource;
 use function Symfony\Component\Translation\t;
@@ -33,9 +33,9 @@ class BookResource extends JsonResource
             'ableToBorrow' => $this->ableToBorrow(), // this returns bool which determines if book can be borrowed or reserved
             'ableToReserve' => auth()->check() && Student::findOrFail(auth()->user()->id)->ableToGet($this->id, true), // this returns bool which determines if book can be  reserved to auth user
 
-            'authors' => AuthorInBookCollection::collection($this->authors),
-            'categories' => CategoryInBookCollection::collection($this->categories),
-            'genres' => GenreInBookCollection::collection($this->genres),
+            'authors' => AuthorResource::collection($this->authors),
+            'categories' => CategoryResource::collection($this->categories),
+            'genres' => GenreResource::collection($this->genres),
 
             'description' => $this->description,
             'rating' => $this->reviews->count() > 0 ? round($this->reviews->sum('star') / $this->reviews->count(), 2) : 'Nema komentara',

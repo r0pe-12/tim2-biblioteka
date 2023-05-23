@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Language;
+namespace App\Http\Resources\Author;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LanguageInBookCollection extends JsonResource
+class AuthorResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -16,7 +16,8 @@ class LanguageInBookCollection extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name
+            'name' => $this->name,
+            'surname' => $this->surname
         ];
     }
 }

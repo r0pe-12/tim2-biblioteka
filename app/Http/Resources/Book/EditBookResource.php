@@ -2,14 +2,14 @@
 
 namespace App\Http\Resources\Book;
 
-use App\Http\Resources\Author\AuthorInBookCollection;
-use App\Http\Resources\BookBind\BookBindInBookCollection;
-use App\Http\Resources\Category\CategoryInBookCollection;
-use App\Http\Resources\Format\FormatInBookCollection;
-use App\Http\Resources\Genre\GenreInBookCollection;
-use App\Http\Resources\Language\LanguageInBookCollection;
-use App\Http\Resources\Publisher\PublisherInBookCollection;
-use App\Http\Resources\Script\ScriptInBookCollection;
+use App\Http\Resources\Author\AuthorResource;
+use App\Http\Resources\BookBind\BookBindResource;
+use App\Http\Resources\Category\CategoryResource;
+use App\Http\Resources\Format\FormatResource;
+use App\Http\Resources\Genre\GenreResource;
+use App\Http\Resources\Language\LanguageResource;
+use App\Http\Resources\Publisher\PublisherResource;
+use App\Http\Resources\Script\ScriptResource;
 use App\Models\Author;
 use App\Models\BookBind;
 use App\Models\Category;
@@ -32,14 +32,14 @@ class EditBookResource extends JsonResource
     {
         return [
             'book' => new BookResource($this),
-            'categories' => CategoryInBookCollection::collection(Category::all()),
-            'genres' => GenreInBookCollection::collection(Genre::all()),
-            'authors' => AuthorInBookCollection::collection(Author::all()),
-            'publishers' => PublisherInBookCollection::collection(Publisher::all()),
-            'scripts' => ScriptInBookCollection::collection(Script::all()),
-            'languages' => LanguageInBookCollection::collection(Language::all()),
-            'bookbinds' => BookBindInBookCollection::collection(BookBind::all()),
-            'formats' => FormatInBookCollection::collection(Format::all()),
+            'categories' => CategoryResource::collection(Category::all()),
+            'genres' => GenreResource::collection(Genre::all()),
+            'authors' => AuthorResource::collection(Author::all()),
+            'publishers' => PublisherResource::collection(Publisher::all()),
+            'scripts' => ScriptResource::collection(Script::all()),
+            'languages' => LanguageResource::collection(Language::all()),
+            'bookbinds' => BookBindResource::collection(BookBind::all()),
+            'formats' => FormatResource::collection(Format::all()),
         ];
     }
 }

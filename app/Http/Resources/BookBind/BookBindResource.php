@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Author;
+namespace App\Http\Resources\BookBind;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AuthorInBookCollection extends JsonResource
+class BookBindResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -16,8 +16,7 @@ class AuthorInBookCollection extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'surname' => $this->surname
+            'name' => $this->name
         ];
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Resources\Format;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class FormatInBookCollection extends JsonResource
+class FormatResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
