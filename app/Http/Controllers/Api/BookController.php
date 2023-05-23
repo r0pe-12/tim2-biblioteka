@@ -6,6 +6,7 @@ use App\Http\Requests\Book\CreateRequest;
 use App\Http\Resources\Book\BookByCategoryArrayCollection;
 use App\Http\Resources\Book\BookByCategoryCollection;
 use App\Http\Resources\Book\BookResource;
+use App\Http\Resources\Book\CreateBookResource;
 use App\Http\Resources\Book\EditBookCollection;
 use App\Http\Resources\Book\EditBookResource;
 use App\Http\Resources\Category\CategoriesWithBooksCollection;
@@ -39,6 +40,14 @@ class BookController extends BaseController
         return BookResource::collection($books);
     }
 
+    /**
+     * @return CreateBookResource
+     */
+    public function create()
+    {
+        # code
+        return new CreateBookResource([]);
+    }
 
     /**
      * Display the specified resource.
