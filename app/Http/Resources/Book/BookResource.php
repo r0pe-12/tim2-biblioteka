@@ -3,9 +3,22 @@
 namespace App\Http\Resources\Book;
 
 use App\Http\Resources\Author\AuthorResource;
+use App\Http\Resources\BookBind\BookBindResource;
 use App\Http\Resources\BookReview\BookReviewCollection;
 use App\Http\Resources\Category\CategoryResource;
+use App\Http\Resources\Format\FormatResource;
 use App\Http\Resources\Genre\GenreResource;
+use App\Http\Resources\Language\LanguageResource;
+use App\Http\Resources\Publisher\PublisherResource;
+use App\Http\Resources\Script\ScriptResource;
+use App\Models\Author;
+use App\Models\BookBind;
+use App\Models\Category;
+use App\Models\Format;
+use App\Models\Genre;
+use App\Models\Language;
+use App\Models\Publisher;
+use App\Models\Script;
 use App\Models\Student;
 use Illuminate\Http\Resources\Json\JsonResource;
 use function Symfony\Component\Translation\t;
@@ -15,7 +28,7 @@ class BookResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
@@ -36,6 +49,12 @@ class BookResource extends JsonResource
             'authors' => AuthorResource::collection($this->authors),
             'categories' => CategoryResource::collection($this->categories),
             'genres' => GenreResource::collection($this->genres),
+
+            'publisher' => new PublisherResource($this->publisher),
+            'script' => new ScriptResource($this->script),
+            'language' => new LanguageResource($this->lang),
+            'bookbind' => new BookBindResource($this->bookbind),
+            'format' => new FormatResource($this->format),
 
             'description' => $this->description,
             'rating' => $this->reviews->count() > 0 ? round($this->reviews->sum('star') / $this->reviews->count(), 2) : 'Nema komentara',
