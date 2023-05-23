@@ -156,14 +156,15 @@ class BookController extends BaseController
         return $this->sendResponse(new BookResource($book), 'Book successfully updated.', Response::HTTP_OK);
     }
 
-    public function reserve(Book $book)
+    public function reserve(Book $book, Request $request)
     {
         # code
         if (!($book->ableToBorrow())) {
             return $this->sendError('Not enough samples.', ['errors' => 'Nedovoljno primjeraka'], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        $student = Student::findOrFail(\request()->user()->id);
+        $student = Student::findOrFail($request->student_id);
+
         if (!($student->ableToGet($book->id, true))) {
             $error = 'Nije moguće rezervisati knjigu: učenik već ima rezervisano ' . $student->activeRes()->count() . '. Primjeraka ove knjige ' . $student->activeRes()->where('book_id', $book->id)->count();
 
