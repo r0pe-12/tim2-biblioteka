@@ -41,15 +41,16 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     });
 //    END-user
 
-//    knjige
-    Route::controller(BookController::class)->group(function () {
-        Route::get('/categories', 'categories');
+    Route::group(['middleware' => 'librarian'], function () {
+        //    knjige
+        Route::controller(BookController::class)->group(function () {
+            Route::get('/books', 'index')->name('api.books.index');
+            Route::get('/books/{book}', 'show');
+            Route::post('/books/{book}/reserve', 'reserve');
 
-        Route::get('/books', 'index')->name('api.books.index');
-        Route::get('/books/{book}', 'show');
-        Route::post('/books/{book}/reserve', 'reserve');
-
-        Route::post('/books/{book}/review', 'review');
+            Route::post('/books/{book}/review', 'review');
+        });
+        //    END-knjige
     });
-//    END-knjige
+
 });

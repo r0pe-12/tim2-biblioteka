@@ -28,32 +28,8 @@ class BookController extends BaseController
     public function index()
     {
         //
-        if (\request()->filled('category')) {
-            if (is_array(\request()->post('category'))) {
-                $categories = Category::whereIn('id', \request()->post('category'))->get();
-                return BookByCategoryArrayCollection::collection($categories);
-            }
-
-            $category = Category::findOrFail(\request('category'));
-            return BookByCategoryCollection::collection($category->books);
-        }
-
-        $categories = Category::all();
-
-        return CategoriesWithBooksCollection::collection($categories);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return AnonymousResourceCollection
-     */
-    public function categories()
-    {
-        //
-        $categories = Category::all();
-
-        return CategoryTileCollection::collection($categories);
+        $books = Book::all();
+        return BookResource::collection($books);
     }
 
 
@@ -105,26 +81,4 @@ class BookController extends BaseController
         return $this->sendResponse('', 'Book successfully reserved.', Response::HTTP_OK);
     }
 
-    public function review(Book $book){
-        # code
-        $validator = Validator::make(\request()->all(), [
-            'body' => ['required'],
-            'star' => ['required', 'integer', 'between:0,5']
-        ]);
-
-        if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->messages(), Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
-
-        $review = new BookReview([
-            'book_id' => $book->id,
-            'student_id' => \request()->user()->id,
-            'body' => \request('body'),
-            'star' => \request('star')
-        ]);
-
-        $review->save();
-
-        return $this->sendResponse('', 'Book review successfully created.', Response::HTTP_OK);
-    }
 }

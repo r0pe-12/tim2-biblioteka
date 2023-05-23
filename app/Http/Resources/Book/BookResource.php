@@ -27,6 +27,7 @@ class BookResource extends JsonResource
             'samples' => $this->samples,
             'bSamples' => $this->borrowedSamples,
             'rSamples' => $this->reservedSamples,
+            'fSamples' => $this->failed()->count(),
 
             'ableToBorrow' => $this->ableToBorrow(), // this returns bool which determines if book can be borrowed or reserved
             'ableToReserve' => auth()->check() && Student::findOrFail(auth()->user()->id)->ableToGet($this->id, true), // this returns bool which determines if book can be  reserved to auth user
@@ -37,7 +38,7 @@ class BookResource extends JsonResource
 
             'description' => $this->description,
             'rating' => $this->reviews->count() > 0 ? round($this->reviews->sum('star') / $this->reviews->count(), 2) : 'Nema komentara',
-            'comments' => $this->reviews->count() > 0 ? BookReviewCollection::collection($this->reviews) : 'Nema komentara',
+//            'comments' => $this->reviews->count() > 0 ? BookReviewCollection::collection($this->reviews) : 'Nema komentara',
         ];
     }
 }
