@@ -50,6 +50,50 @@ class BookController extends BaseController
     }
 
     /**
+     * Store resource to db
+     *
+     * @param CreateRequest $request
+     * @return JsonResponse
+     */
+    public function store(CreateRequest $request)
+    {
+        # code
+        $input = $request->validated();
+
+//        creating new record in books table
+        $book = Book::create(Arr::except($input, ['categories', 'genres', 'authors', 'pdf', 'deletePdfs']));
+
+//        if ($request->hasFile('pictures')) {
+//            foreach ($input['pictures'] as $file) {
+//                $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
+//                $file->storeAs('/images/books', $name);
+//                $book->photos()->create([
+//                    'path' => $name,
+//                    'cover' => $file->getClientOriginalName() == $input['cover']
+//                ]);
+//            }
+//        }
+//
+//        if ($request->hasFile('pdf')) {
+//            $name = str_replace(' ', '_', $book->title . '.pdf');
+//            $input['pdf']->storeAs('/pdf', $name);
+//            $book->pdf = $name;
+//            $book->save();
+//        }
+
+//        attaching book to multiple authors
+        $book->authors()->sync($input['authors']);
+
+//        attaching book to multiple categories
+        $book->categories()->sync($input['categories']);
+
+//        attaching book to multiple genres
+        $book->genres()->sync($input['genres']);
+
+        return $this->sendResponse(new BookResource($book), 'Book successfully created.', Response::HTTP_OK);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param Book $book
