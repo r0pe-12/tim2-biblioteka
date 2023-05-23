@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Resources\Book\BookByCategoryArrayCollection;
 use App\Http\Resources\Book\BookByCategoryCollection;
 use App\Http\Resources\Book\BookResource;
+use App\Http\Resources\Book\EditBookCollection;
+use App\Http\Resources\Book\EditBookResource;
 use App\Http\Resources\Category\CategoriesWithBooksCollection;
 use App\Http\Resources\Category\CategoryTileCollection;
 use App\Models\Book;
@@ -43,6 +45,17 @@ class BookController extends BaseController
     {
         //
         return new BookResource($book);
+    }
+
+    /**
+     * Display the page for editing the spec resource
+     *
+     * @param Book $book
+     * @return EditBookResource
+     */
+    public function edit(Book $book){
+        # code
+        return new EditBookResource($book);
     }
 
     public function reserve(Book $book){
