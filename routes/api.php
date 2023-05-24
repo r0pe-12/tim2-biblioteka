@@ -54,6 +54,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('/books/{book}/edit', 'edit');
             Route::post('/books/{book}/update', 'update');
 
+            Route::delete('/books/{book}/destroy', 'destroy');
+
             Route::post('/books/{book}/reserve', 'reserve');
 
             Route::post('/books/{book}/review', 'review');

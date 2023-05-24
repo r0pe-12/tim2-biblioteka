@@ -252,4 +252,30 @@ class BookController extends BaseController
         return $this->sendResponse('', 'Book successfully reserved.', Response::HTTP_OK);
     }
 
+    /**
+     * Destroy resource from storage
+     *
+     * @param Book $book
+     * @return JsonResponse
+     */
+    public function destroy(Book $book)
+    {
+        # code
+        $photos = [];
+        $photos = $book->photos;
+
+        try {
+            $book->delete();
+        } catch (\Exception $e) {
+            $error = 'Brisanje knjige "' . $book->title . '" nije moguće';
+            return $this->sendError('Failed', ['errors' => $error], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        foreach ($photos as $photo) {
+            if (file_exists($photoPath = public_path() . $photo->path)) {
+                unlink($photoPath);
+            }
+        }
+        return $this->sendResponse('', 'Book successfully removed.', Response::HTTP_OK);
+    }
 }
