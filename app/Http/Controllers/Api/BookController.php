@@ -481,6 +481,12 @@ class BookController extends BaseController
         return $this->sendResponse('', $msg, Response::HTTP_OK);
     }
 
+    /**
+     * Otpisi book
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function otpisi(Request $request)
     {
         # code
