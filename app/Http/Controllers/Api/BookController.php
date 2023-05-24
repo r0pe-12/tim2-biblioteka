@@ -429,6 +429,15 @@ class BookController extends BaseController
     public function borrows(Request $request)
     {
         # code
-        return new BookBorrowCollection([]);
+        $request->validate([
+            'book_id' => ['int']
+        ]);
+
+        $book = null;
+        if ($id = $request->book_id) {
+            $book = Book::findOrFail($id);
+        }
+
+        return new BookBorrowCollection(['book' => $book]);
     }
 }

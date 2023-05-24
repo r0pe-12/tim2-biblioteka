@@ -14,11 +14,20 @@ class BookBorrowCollection extends JsonResource
     /**
      * Transform the resource collection into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
     {
+        if ($book = $this['book']) {
+            return [
+                'izdate' => $book->active(),
+                'prekoracene' => $book->failed(),
+                'otpisane' => $book->otpisane(),
+                'vracene' => $book->returned()
+            ];
+        }
+
         return [
             'izdate' => BookBorrowResource::collection(Borrow::izdavanja()),
             'prekoracene' => BookBorrowResource::collection(WriteOff::prekoracene()),
