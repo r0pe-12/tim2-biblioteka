@@ -325,7 +325,7 @@ class BookController extends BaseController
      * Return all reservations for single book or every book
      *
      * @param Request $request
-     * @return AnonymousResourceCollection
+     * @return BookReservationCollection
      */
     public function reservations(Request $request)
     {
@@ -333,16 +333,12 @@ class BookController extends BaseController
         $request->validate([
             'book_id' => ['int']
         ]);
+
+        $book = null;
         if ($id = $request->book_id) {
             $book = Book::findOrFail($id);
-            $reservations = $book->activeRes()->get()
-                ->merge($book->archiveRes()->get());
-        } else {
-            $reservations = Reservation::active()->get()
-                ->merge(Reservation::archive()->get());
-
         }
-        return BookReservationCollection::collection($reservations);
+        return new BookReservationCollection(['book' => $book]);
     }
 
     /**
