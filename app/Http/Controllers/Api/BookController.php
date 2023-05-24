@@ -278,4 +278,37 @@ class BookController extends BaseController
         }
         return $this->sendResponse('', 'Book successfully removed.', Response::HTTP_OK);
     }
+
+    public function bulkDelete(Request $request)
+    {
+        # code
+        $request->validate([
+            'ids' => ['required', 'array']
+        ]);
+        $ids = $request->ids;
+        $books = Book::whereIn('id', $ids);
+
+        $galery = [];
+        foreach ($books->get() as $book) {
+            $galery[] = $book->photos;
+        }
+
+
+        try {
+            $books->delete();
+        } catch (\Exception $e) {
+            $error = 'Brisanje knjiga nije moguće';
+            return $this->sendError('Failed', ['errors' => $error], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        foreach ($galery as $photos) {
+            foreach ($photos as $photo) {
+                if (file_exists($photoPath = public_path() . $photo->path)) {
+                    unlink($photoPath);
+                }
+            }
+        }
+        return $this->sendResponse('', 'Books successfully removed.', Response::HTTP_OK);
+
+    }
 }
