@@ -3,21 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\Book\CreateRequest;
-use App\Http\Resources\Book\BookByCategoryArrayCollection;
-use App\Http\Resources\Book\BookByCategoryCollection;
 use App\Http\Resources\Book\BookResource;
 use App\Http\Resources\Book\CreateBookResource;
-use App\Http\Resources\Book\EditBookCollection;
 use App\Http\Resources\Book\EditBookResource;
 use App\Http\Resources\Book\Evidencija\BookBorrowCollection;
 use App\Http\Resources\Book\Evidencija\BookReservationCollection;
-use App\Http\Resources\Category\CategoriesWithBooksCollection;
-use App\Http\Resources\Category\CategoryTileCollection;
 use App\Models\Book;
-use App\Models\BookReview;
 use App\Models\BookStatus;
 use App\Models\Borrow;
-use App\Models\Category;
 use App\Models\ClosingReason;
 use App\Models\Galery;
 use App\Models\Reservation;
@@ -25,11 +18,9 @@ use App\Models\ReservationStatus;
 use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
 class BookController extends BaseController
