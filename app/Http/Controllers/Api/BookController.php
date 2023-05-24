@@ -523,6 +523,25 @@ class BookController extends BaseController
     }
 
     /**
+     * Delete zapis
+     *
+     * @param Borrow $borrow
+     * @return JsonResponse
+     */
+    public function deleteBorrow(Borrow $borrow)
+    {
+        # code
+        if ($borrow->isActive()) {
+            $error = 'Transakcija aktivna';
+            return $this->sendError('failed', ['errors' => $error], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+        $borrow->statuses()->sync([]);
+        $borrow->delete();
+        $msg = 'Zapis izdavanja knjige "' . $borrow->book->title . '" je uspješno obrisan';
+        return $this->sendResponse('', $msg, Response::HTTP_OK);
+    }
+
+    /**
      * @param Request $request
      * @return BookBorrowCollection
      */
