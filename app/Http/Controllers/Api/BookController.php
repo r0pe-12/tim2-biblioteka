@@ -481,6 +481,41 @@ class BookController extends BaseController
         return $this->sendResponse('', $msg, Response::HTTP_OK);
     }
 
+    public function otpisi(Request $request)
+    {
+        # code
+        $request->validate([
+            'toWriteoff' => 'required',
+        ]);
+        if (!is_array($ids = $request->toWriteoff)) {
+            $ids = explode(',', $ids);
+        }
+        foreach ($ids as $id) {
+            if (!(Borrow::find($id)->isActive())) {
+                $error = 'Transakcija neaktivna';
+                return $this->sendError('failed', ['errors' => $error], Response::HTTP_UNPROCESSABLE_ENTITY);
+            }
+        }
+        foreach ($ids as $id) {
+            $borrow = Borrow::findOrFail($id);
+            $book = $borrow->book()->first();
+
+            $borrow->librarian1_id = auth()->user()->id;
+            $borrow->active = 0;
+            $borrow->mail = 0;
+            $borrow->save();
+
+            $newStatus = BookStatus::failed();
+
+            $borrow->statuses()->attach($newStatus);
+            $book->borrowedSamples--;
+            $book->samples--;
+            $book->save();
+        }
+        $msg = 'Knjiga: ' . $book->title . '  je uspješno otpisana';
+        return $this->sendResponse('', $msg, Response::HTTP_OK);
+    }
+
     /**
      * @param Request $request
      * @return BookBorrowCollection
