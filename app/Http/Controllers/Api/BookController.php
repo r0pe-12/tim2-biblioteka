@@ -217,6 +217,11 @@ class BookController extends BaseController
     public function reserve(Book $book, Request $request)
     {
         # code
+
+        $request->validate([
+           'student_id' => ['required']
+        ]);
+
         if (!($book->ableToBorrow())) {
             return $this->sendError('Not enough samples.', ['errors' => 'Nedovoljno primjeraka'], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
