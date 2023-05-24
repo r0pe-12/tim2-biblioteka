@@ -49,8 +49,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('/books/create', 'create');
             Route::post('/books/store', 'store');
 
-            Route::get('/books/{book}', 'show');
-
             Route::get('/books/{book}/edit', 'edit');
             Route::post('/books/{book}/update', 'update');
 
@@ -58,9 +56,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::delete('/books/bulkdelete', 'bulkDelete');
 
             Route::post('/books/{book}/reserve', 'reserve');
+            Route::get('/books/reservations', 'reservations');
+
             Route::post('/books/{book}/izdaj', 'izdaj');
 
             Route::post('/books/{book}/review', 'review');
+
+            Route::get('/books/{book}', 'show');
         });
         //    END-knjige
     });

@@ -9,6 +9,7 @@ use App\Http\Resources\Book\BookResource;
 use App\Http\Resources\Book\CreateBookResource;
 use App\Http\Resources\Book\EditBookCollection;
 use App\Http\Resources\Book\EditBookResource;
+use App\Http\Resources\Book\Evidencija\BookReservationCollection;
 use App\Http\Resources\Category\CategoriesWithBooksCollection;
 use App\Http\Resources\Category\CategoryTileCollection;
 use App\Models\Book;
@@ -326,6 +327,31 @@ class BookController extends BaseController
         $status = ReservationStatus::reserved();
 
         return $this->sendResponse('', 'Book successfully reserved.', Response::HTTP_OK);
+    }
+
+    /**
+     * Return all reservations for single book or every book
+     *
+     * @param Request $request
+     * @return AnonymousResourceCollection
+     */
+    public function reservations(Request $request)
+    {
+        # code
+
+        $request->validate([
+            'book_id' => ['int']
+        ]);
+        if ($id = $request->book_id) {
+            $book = Book::findOrFail($id);
+            $reservations = $book->activeRes()->get()
+                ->merge($book->archiveRes()->get());
+        } else {
+            $reservations = Reservation::active()->get()
+                ->merge(Reservation::archive()->get());
+
+        }
+        return BookReservationCollection::collection($reservations);
     }
 
     /**
