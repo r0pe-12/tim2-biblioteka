@@ -437,6 +437,44 @@ class BookController extends BaseController
         return $this->sendResponse('', $msg, Response::HTTP_OK);
     }
 
+    public function vrati(Request $request)
+    {
+        # code
+        $request->validate([
+            'toReturn' => 'required',
+        ]);
+        if (!is_array($ids = $request->toReturn)) {
+            $ids = explode(',', $ids);
+        }
+        foreach ($ids as $id) {
+            if (!(Borrow::find($id)->isActive())) {
+                $error = 'Transakcija neaktivna';
+                return $this->sendError('failed', ['errors' => $error], Response::HTTP_UNPROCESSABLE_ENTITY);
+            }
+        }
+        foreach ($ids as $id) {
+            $borrow = Borrow::findOrFail($id);
+            $book = $borrow->book()->first();
+
+            if ($book->failed()->contains($borrow)) {
+                $newStatus = BookStatus::returned1();
+            } else {
+                $newStatus = BookStatus::returned();
+            }
+
+            $borrow->librarian1_id = auth()->user()->id;
+            $borrow->active = 0;
+            $borrow->mail = 0;
+            $borrow->save();
+
+            $borrow->statuses()->attach($newStatus);
+            $book->borrowedSamples--;
+            $book->save();
+        }
+        $msg = 'Knjiga: ' . $book->title . '  je uspješno vraćena';
+        return $this->sendResponse('', $msg, Response::HTTP_OK);
+    }
+
     /**
      * @param Request $request
      * @return BookBorrowCollection
