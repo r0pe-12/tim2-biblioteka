@@ -338,7 +338,6 @@ class BookController extends BaseController
     public function reservations(Request $request)
     {
         # code
-
         $request->validate([
             'book_id' => ['int']
         ]);
