@@ -437,6 +437,12 @@ class BookController extends BaseController
         return $this->sendResponse('', $msg, Response::HTTP_OK);
     }
 
+    /**
+     * Return a book
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function vrati(Request $request)
     {
         # code
