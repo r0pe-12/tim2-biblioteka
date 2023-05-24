@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('/books/reservations', 'reservations');
 
             Route::post('/books/{book}/izdaj', 'izdaj');
+            Route::get('/books/borrows', 'borrows');
 
             Route::post('/books/{book}/review', 'review');
 

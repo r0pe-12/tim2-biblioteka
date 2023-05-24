@@ -9,6 +9,7 @@ use App\Http\Resources\Book\BookResource;
 use App\Http\Resources\Book\CreateBookResource;
 use App\Http\Resources\Book\EditBookCollection;
 use App\Http\Resources\Book\EditBookResource;
+use App\Http\Resources\Book\Evidencija\BookBorrowCollection;
 use App\Http\Resources\Book\Evidencija\BookReservationCollection;
 use App\Http\Resources\Category\CategoriesWithBooksCollection;
 use App\Http\Resources\Category\CategoryTileCollection;
@@ -419,5 +420,15 @@ class BookController extends BaseController
         }
 
         return $this->sendResponse('', $msg, Response::HTTP_OK);
+    }
+
+    /**
+     * @param Request $request
+     * @return BookBorrowCollection
+     */
+    public function borrows(Request $request)
+    {
+        # code
+        return new BookBorrowCollection([]);
     }
 }
