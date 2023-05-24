@@ -370,6 +370,25 @@ class BookController extends BaseController
     }
 
     /**
+     * Delete zapis
+     *
+     * @param Reservation $reservation
+     * @return JsonResponse
+     */
+    public function deleteReservation(Reservation $reservation)
+    {
+        # code
+        if ($reservation->isActive()) {
+            $error = 'Transakcija aktivna';
+            return $this->sendError('failed', ['errors' => $error], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+        $reservation->statuses()->sync([]);
+        $reservation->delete();
+        $msg = 'Zapis rezervacije knjige "' . $reservation->book->title . '" je uspješno obrisan';
+        return $this->sendResponse('', $msg, Response::HTTP_OK);
+    }
+
+    /**
      * Izdaj knjigu
      *
      * @param Book $book
