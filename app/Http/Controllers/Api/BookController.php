@@ -210,57 +210,6 @@ class BookController extends BaseController
     }
 
     /**
-     * @param Book $book
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function reserve(Book $book, Request $request)
-    {
-        # code
-
-        $request->validate([
-            'student_id' => ['required'],
-            'datumRezervisanja' => ['date'],
-        ]);
-
-        $date = $request->datumRezervisanja ?: today('Europe/Belgrade');
-
-        if (!($book->ableToBorrow())) {
-            return $this->sendError('Not enough samples.', ['errors' => 'Nedovoljno primjeraka'], Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
-
-        $student = Student::findOrFail($request->student_id);
-
-        if (!($student->ableToGet($book->id, true))) {
-            $error = 'Nije moguće rezervisati knjigu: učenik već ima rezervisano ' . $student->activeRes()->count() . '. Primjeraka ove knjige ' . $student->activeRes()->where('book_id', $book->id)->count();
-
-            $error = preg_replace('/(.*?).Primjeraka ove knjige 0/m', 'Učenik već ima knjigu kod sebe', $error);
-
-            return $this->sendError('Failed', ['errors' => $error], Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
-
-//        \request()->dd();
-
-        $reservation = new Reservation([
-            'student_id' => \request()->user()->id,
-            'librarian_id' => 1,
-            'closingReason_id' => ClosingReason::open()->id,
-            'submttingDate' => $date->format('Y-m-d'),
-        ]);
-        $book->reservations()->save($reservation);
-
-        $resStatus = ReservationStatus::reserved();
-        $reservation->statuses()->attach($resStatus);
-
-        $book->reservedSamples++;
-        $book->save();
-
-        $status = ReservationStatus::reserved();
-
-        return $this->sendResponse('', 'Book successfully reserved.', Response::HTTP_OK);
-    }
-
-    /**
      * Destroy resource from storage
      *
      * @param Book $book
@@ -318,5 +267,60 @@ class BookController extends BaseController
         }
         return $this->sendResponse('', 'Books successfully removed.', Response::HTTP_OK);
 
+    }
+
+
+
+//    BOOK RESERVATIONS AND BORROWS
+
+    /**
+     * @param Book $book
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function reserve(Book $book, Request $request)
+    {
+        # code
+
+        $request->validate([
+            'student_id' => ['required'],
+            'datumRezervisanja' => ['date'],
+        ]);
+
+        $date = $request->datumRezervisanja ?: today('Europe/Belgrade');
+
+        if (!($book->ableToBorrow())) {
+            return $this->sendError('Not enough samples.', ['errors' => 'Nedovoljno primjeraka'], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        $student = Student::findOrFail($request->student_id);
+
+        if (!($student->ableToGet($book->id, true))) {
+            $error = 'Nije moguće rezervisati knjigu: učenik već ima rezervisano ' . $student->activeRes()->count() . '. Primjeraka ove knjige ' . $student->activeRes()->where('book_id', $book->id)->count();
+
+            $error = preg_replace('/(.*?).Primjeraka ove knjige 0/m', 'Učenik već ima knjigu kod sebe', $error);
+
+            return $this->sendError('Failed', ['errors' => $error], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+//        \request()->dd();
+
+        $reservation = new Reservation([
+            'student_id' => \request()->user()->id,
+            'librarian_id' => 1,
+            'closingReason_id' => ClosingReason::open()->id,
+            'submttingDate' => $date->format('Y-m-d'),
+        ]);
+        $book->reservations()->save($reservation);
+
+        $resStatus = ReservationStatus::reserved();
+        $reservation->statuses()->attach($resStatus);
+
+        $book->reservedSamples++;
+        $book->save();
+
+        $status = ReservationStatus::reserved();
+
+        return $this->sendResponse('', 'Book successfully reserved.', Response::HTTP_OK);
     }
 }
