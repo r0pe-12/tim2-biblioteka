@@ -346,6 +346,34 @@ class BookController extends BaseController
     }
 
     /**
+     * Cancel single reservation
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function cancelReservation(Request $request)
+    {
+        # code
+        $request->validate([
+            'reservation_id' => ['required', 'int']
+        ]);
+
+        $reservation = Reservation::findOrFail($request->reservation_id);
+
+        $reservation->closingReason_id = ClosingReason::cancelled()->id;
+        $reservation->closingDate = today("Europe/Belgrade");
+        $reservation->librarian1_id = auth()->user()->id;
+        $reservation->save();
+
+        $newResStatus = ReservationStatus::closed();
+        $reservation->statuses()->attach($newResStatus);
+
+        $reservation->book->reservedSamples--;
+        $reservation->book->save();
+        return $this->sendResponse('', 'Rezervacija je uspješno otkazana', Response::HTTP_OK);
+    }
+
+    /**
      * Izdaj knjigu
      *
      * @param Book $book
