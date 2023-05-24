@@ -219,8 +219,11 @@ class BookController extends BaseController
         # code
 
         $request->validate([
-           'student_id' => ['required']
+            'student_id' => ['required'],
+            'datumRezervisanja' => ['date'],
         ]);
+
+        $date = $request->datumRezervisanja ?: today('Europe/Belgrade');
 
         if (!($book->ableToBorrow())) {
             return $this->sendError('Not enough samples.', ['errors' => 'Nedovoljno primjeraka'], Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -242,7 +245,7 @@ class BookController extends BaseController
             'student_id' => \request()->user()->id,
             'librarian_id' => 1,
             'closingReason_id' => ClosingReason::open()->id,
-            'submttingDate' => today('Europe/Belgrade')->format('Y-m-d'),
+            'submttingDate' => $date->format('Y-m-d'),
         ]);
         $book->reservations()->save($reservation);
 
