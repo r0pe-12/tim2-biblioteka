@@ -13,13 +13,17 @@ use App\Http\Resources\Category\CategoriesWithBooksCollection;
 use App\Http\Resources\Category\CategoryTileCollection;
 use App\Models\Book;
 use App\Models\BookReview;
+use App\Models\BookStatus;
+use App\Models\Borrow;
 use App\Models\Category;
 use App\Models\ClosingReason;
 use App\Models\Galery;
 use App\Models\Reservation;
 use App\Models\ReservationStatus;
 use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Arr;
@@ -287,7 +291,7 @@ class BookController extends BaseController
             'datumRezervisanja' => ['date'],
         ]);
 
-        $date = $request->datumRezervisanja ?: today('Europe/Belgrade');
+        $date = $request->datumRezervisanja ? Carbon::parse($request->datumRezervisanja) : today('Europe/Belgrade');
 
         if (!($book->ableToBorrow())) {
             return $this->sendError('Not enough samples.', ['errors' => 'Nedovoljno primjeraka'], Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -306,8 +310,8 @@ class BookController extends BaseController
 //        \request()->dd();
 
         $reservation = new Reservation([
-            'student_id' => \request()->user()->id,
-            'librarian_id' => 1,
+            'student_id' => $request->student_id,
+            'librarian_id' => auth()->user()->id,
             'closingReason_id' => ClosingReason::open()->id,
             'submttingDate' => $date->format('Y-m-d'),
         ]);
@@ -322,5 +326,73 @@ class BookController extends BaseController
         $status = ReservationStatus::reserved();
 
         return $this->sendResponse('', 'Book successfully reserved.', Response::HTTP_OK);
+    }
+
+    /**
+     * Izdaj knjigu
+     *
+     * @param Book $book
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function izdaj(Book $book, Request $request)
+    {
+        # code
+        $request->validate([
+            'student_id' => ['required', 'int'],
+            'datumIzdavanja' => ['required', 'date'],
+            'datumVracanja' => ['required', 'date'],
+        ]);
+
+        $student = Student::findOrFail($request->student_id);
+        if (!($student->ableToGet($book->id))) {
+            $error = 'Nije moguće izdati knjigu: učenik već ima ' . $student->active()->count() . ' kod sebe. Primjeraka ove knjige ' . $student->active()->where('book_id', $book->id)->count();
+
+            return $this->sendError('Failed', ['errors' => $error], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        $borrow = new Borrow([
+            'active' => 1,
+            'librarian_id' => auth()->user()->id,
+            'student_id' => $request->student_id,
+            'borrow_date' => Carbon::parse($request->datumIzdavanja),
+            'return_date' => Carbon::parse($request->datumVracanja),
+        ]);
+        $book->borrows()->save($borrow);
+        $isRes = false;
+        if ($book->activeRes()->get()->contains($res = $book->activeRes()->where('student_id', '=', $borrow->student_id)->first())) {
+            $res->closingReason_id = ClosingReason::bookBorrowed()->id;
+            $res->closingDate = today("Europe/Belgrade");
+            $res->librarian1_id = auth()->user()->id;
+            $res->save();
+
+            $newResStatus = ReservationStatus::closed();
+            $res->statuses()->attach($newResStatus);
+
+            $res->book->reservedSamples--;
+            $res->book->save();
+
+            $status = BookStatus::reserved();
+            $isRes = true;
+        } else {
+            if (!($book->ableToBorrow())) {
+                $error = "Nije moguće izdati knjigu: nedovoljno primjeraka";
+                return $this->sendError('Failed', ['errors' => $error], Response::HTTP_UNPROCESSABLE_ENTITY);
+            }
+            $status = BookStatus::borrowed();
+        }
+
+        $borrow->statuses()->attach($status);
+
+        $book->borrowedSamples = $book->borrowedSamples + 1;
+        $book->save();
+
+        if ($isRes) {
+            $msg = 'Knjiga je uspješno izdata učeniku po rezervaciji: ' . Student::find($request->student_id)->name . ' ' . Student::find($request->student_id)->surname;
+        } else {
+            $msg = 'Knjiga je uspješno izdata učeniku: ' . Student::find($request->student_id)->name . ' ' . Student::find($request->student_id)->surname;
+        }
+
+        return $this->sendResponse('', $msg, Response::HTTP_OK);
     }
 }

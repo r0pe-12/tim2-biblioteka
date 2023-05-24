@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::delete('/books/bulkdelete', 'bulkDelete');
 
             Route::post('/books/{book}/reserve', 'reserve');
+            Route::post('/books/{book}/izdaj', 'izdaj');
 
             Route::post('/books/{book}/review', 'review');
         });
