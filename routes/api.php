@@ -71,6 +71,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('/books/{book}', 'show');
         });
         //    END-knjige
+
+        //  students
+        Route::controller(StudentController::class)->group(function () {
+            Route::post('/students/store', 'store');
+        });
+        //  END-students
     });
 
 });

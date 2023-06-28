@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Api;
+namespace App\Http\Requests\Api\Student;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -31,7 +31,7 @@ class StudentUpdateRequest extends FormRequest
             "jmbg" => ['required', 'regex:/^[0-9]{13}+$/', 'min:13', 'max:13'],
             "email" => ['required', 'email', 'max:255', Rule::unique('users')->ignore($this->id)],
             "username" => ['required', 'max:255', Rule::unique('users')->ignore($this->id), 'alpha_dash'],
-            "password" => ['confirmed', 'max:255'],
+            "password" => ['required', 'confirmed', 'max:255'],
             "photoPath" => ['']
         ];
     }
@@ -49,6 +49,7 @@ class StudentUpdateRequest extends FormRequest
     }
 
     public $validator = null;
+
     protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     {
         $this->validator = $validator;

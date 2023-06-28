@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\Api\StudentUpdateRequest;
+use App\Http\Requests\Api\Student\StudentCreateRequest;
+use App\Http\Requests\Api\Student\StudentUpdateRequest;
 use App\Http\Resources\User\UserAllBorrowsResource;
 use App\Http\Resources\User\UserAllReservationsResource;
 use App\Http\Resources\User\UserResource;
+use App\Models\Role;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -65,19 +68,19 @@ class StudentController extends BaseController
         $student = $request->user();
 
         $input = $request->validated();
-        if (is_null($input['password'])){
+        if (is_null($input['password'])) {
             unset($input['password']);
         }
-        if ($file = $request->file('photoPath')){
+        if ($file = $request->file('photoPath')) {
             $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
             $file->storeAs('/images/users', $name);
             $input['photoPath'] = $name;
 
-            if (file_exists($photoPath = public_path() . $student->photoPath)){
+            if (file_exists($photoPath = public_path() . $student->photoPath)) {
                 unlink($photoPath);
             }
 
-        } else{
+        } else {
             unset($input['photoPath']);
         }
         $student->update($input);
@@ -85,5 +88,32 @@ class StudentController extends BaseController
         $success = new UserResource($student);
 
         return $this->sendResponse($success, 'User updated successfully.', Response::HTTP_OK);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return JsonResponse
+     */
+    public function store(StudentCreateRequest $request)
+    {
+        //
+        if (isset($request->validator) && $request->validator->fails()) {
+            return $this->sendError('Validation Error.', $request->validator->messages(), Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        $input = $request->validated();
+        if ($file = $request->file('photoPath')) {
+            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
+            $file->storeAs('/images/users', $name);
+            $input['photoPath'] = $name;
+        }
+        $student = new User($input);
+
+        $role = Role::student();
+        $role->users()->save($student);
+
+        return $this->sendResponse(new UserResource($student), 'Book successfully created.', Response::HTTP_OK);
     }
 }
