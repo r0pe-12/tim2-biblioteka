@@ -114,6 +114,6 @@ class StudentController extends BaseController
         $role = Role::student();
         $role->users()->save($student);
 
-        return $this->sendResponse(new UserResource($student), 'Book successfully created.', Response::HTTP_OK);
+        return $this->sendResponse(new UserResource($student), 'User successfully created.', Response::HTTP_OK);
     }
 }
