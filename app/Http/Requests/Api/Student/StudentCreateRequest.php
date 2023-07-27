@@ -30,6 +30,7 @@ class StudentCreateRequest extends FormRequest
             "email" => ['required', 'email', 'max:255', 'unique:users'],
             "username" => ['required', 'max:255', 'unique:users', 'alpha_dash'],
             "password" => ['required', 'confirmed', 'min:8', 'max:255'],
+            "role_id" => ['required', 'int'],
             "photoPath" => [''],
         ];
     }

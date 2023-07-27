@@ -10,6 +10,7 @@ use App\Http\Resources\User\UserResource;
 use App\Models\Role;
 use App\Models\Student;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -109,11 +110,53 @@ class StudentController extends BaseController
             $file->storeAs('/images/users', $name);
             $input['photoPath'] = $name;
         }
-        $student = new User($input);
+        $student = new User(\Arr::except($input, 'role_id'));
 
-        $role = Role::student();
+        $role = Role::findOrFail($input['role_id']);
         $role->users()->save($student);
 
         return $this->sendResponse(new UserResource($student), 'User successfully created.', Response::HTTP_OK);
+    }
+
+    /**
+     * @param Student $student
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function update1(Student $student, StudentUpdateRequest $request)
+    {
+        $input = $request->validated();
+        if (is_null($input['password'])) {
+            unset($input['password']);
+        }
+        if ($file = $request->file('photoPath')) {
+            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
+            $file->storeAs('/images/users', $name);
+            $input['photoPath'] = $name;
+
+            if (file_exists($photoPath = public_path() . $student->photoPath)) {
+                unlink($photoPath);
+            }
+
+        } else {
+            unset($input['photoPath']);
+        }
+        $student->update($input);
+
+        $success = new UserResource($student);
+
+        return $this->sendResponse($success, 'User updated successfully.', Response::HTTP_OK);
+    }
+
+    public function destroy(User $user)
+    {
+        # code
+        try {
+            $user->delete();
+        } catch (\Exception $e) {
+            $error = 'Brisanje ucenika nije moguće';
+            return $this->sendError('Failed', ['errors' => $error], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+        return $this->sendResponse('', 'User successfully removed.', Response::HTTP_OK);
     }
 }

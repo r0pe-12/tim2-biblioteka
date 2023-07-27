@@ -36,17 +36,6 @@ class StudentUpdateRequest extends FormRequest
         ];
     }
 
-    /**
-     * Prepare the data for validation.
-     *
-     * @return void
-     */
-    protected function prepareForValidation(): void
-    {
-        $this->merge([
-            'id' => request()->user()->id,
-        ]);
-    }
 
     public $validator = null;
 
