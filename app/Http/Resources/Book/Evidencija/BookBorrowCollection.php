@@ -21,10 +21,10 @@ class BookBorrowCollection extends JsonResource
     {
         if ($book = $this['book']) {
             return [
-                'izdate' => $book->active(),
-                'prekoracene' => $book->failed(),
-                'otpisane' => $book->otpisane(),
-                'vracene' => $book->returned()
+                'izdate' =>  BookBorrowResource::collection($book->active()->get()),
+                'prekoracene' =>  BookBorrowResource::collection($book->failed()),
+                'otpisane' =>  BookBorrowResource::collection($book->otpisane()),
+                'vracene' =>  BookBorrowResource::collection($book->returned())
             ];
         }
 
