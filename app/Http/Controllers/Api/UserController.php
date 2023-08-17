@@ -113,6 +113,12 @@ class UserController extends BaseController
         return UserResource::collection($users);
     }
 
+    public function show(User $user)
+    {
+        //
+        return new UserResource($user);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
