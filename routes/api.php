@@ -34,10 +34,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::controller(UserController::class)->group(function () {
         Route::post('/users/me', 'me')->name('api-me');
-        Route::put('/users/me', 'update')->name('api-update');
+        Route::put('/users/me', 'updateMe')->name('api-update-me');
 
-        Route::get('/users/me/izdavanja', 'izdavanja');
-        Route::get('/users/me/rezervacije', 'rezervacije');
+        Route::get('/users/me/izdavanja', 'izdavanjaMe');
+        Route::get('/users/me/rezervacije', 'rezervacijeMe');
     });
 //    END-user
 
@@ -75,7 +75,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         //  students
         Route::controller(UserController::class)->group(function () {
             Route::post('/users/store', 'store');
-            Route::put('/users/{student}', 'update1');
+            Route::put('/users/{student}', 'update');
             Route::delete('users/{user}', 'destroy');
         });
         //  END-students

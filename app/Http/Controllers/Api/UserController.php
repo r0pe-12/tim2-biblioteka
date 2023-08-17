@@ -32,7 +32,7 @@ class UserController extends BaseController
      *
      * @return UserAllBorrowsResource
      */
-    public function izdavanja()
+    public function izdavanjaMe()
     {
         //
         $user = Student::findOrFail(request()->user()->id);
@@ -45,7 +45,7 @@ class UserController extends BaseController
      *
      * @return UserAllReservationsResource
      */
-    public function rezervacije()
+    public function rezervacijeMe()
     {
         //
         $user = Student::findOrFail(request()->user()->id);
@@ -59,7 +59,7 @@ class UserController extends BaseController
      * @param StudentUpdateRequest $request
      * @return JsonResponse
      */
-    public function update(StudentUpdateRequest $request)
+    public function updateMe(StudentUpdateRequest $request)
     {
         //
         if (isset($request->validator) && $request->validator->fails()) {
@@ -123,7 +123,7 @@ class UserController extends BaseController
      * @param Request $request
      * @return JsonResponse
      */
-    public function update1(Student $student, StudentUpdateRequest $request)
+    public function update(Student $student, StudentUpdateRequest $request)
     {
         $input = $request->validated();
         if (is_null($input['password'])) {
