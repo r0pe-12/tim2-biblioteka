@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
          ]);
 
          User::factory()->create([
-             'username' => 'bibliotekar-123',
+             'username' => 'bibliotekar',
              'role_id' => Role::librarian()->id,
              'password' => 'password'
          ]);
