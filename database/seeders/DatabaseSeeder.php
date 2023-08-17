@@ -35,21 +35,21 @@ class DatabaseSeeder extends Seeder
          ]);
 
          User::factory()->create([
-             'username' => 'bibliotekar',
+             'username' => 'bibliotekar-123',
              'role_id' => Role::librarian()->id,
-             'password' => '@password'
+             'password' => 'password'
          ]);
 
          User::factory()->create([
              'username' => 'admin-123',
              'role_id' => Role::admin()->id,
-             'password' => 'sundjerbob123'
+             'password' => 'password'
          ]);
 
          User::factory()->create([
-             'username' => 'ucenik',
+             'username' => 'ucenik-123',
              'role_id' => Role::student()->id,
-             'password' => 'sundjerbob'
+             'password' => 'password'
          ]);
 
          User::factory(10)->create([
