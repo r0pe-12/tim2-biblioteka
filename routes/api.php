@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BookController;
-use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('logout', 'logout')->name('api-logout');
     });
 
-    Route::controller(StudentController::class)->group(function () {
+    Route::controller(UserController::class)->group(function () {
         Route::post('/users/me', 'me')->name('api-me');
         Route::put('/users/me', 'update')->name('api-update');
 
@@ -73,7 +73,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         //    END-knjige
 
         //  students
-        Route::controller(StudentController::class)->group(function () {
+        Route::controller(UserController::class)->group(function () {
             Route::post('/users/store', 'store');
             Route::put('/users/{student}', 'update1');
             Route::delete('users/{user}', 'destroy');

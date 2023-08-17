@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class StudentController extends BaseController
+class UserController extends BaseController
 {
     /**
      * Display a listing of my profile.
