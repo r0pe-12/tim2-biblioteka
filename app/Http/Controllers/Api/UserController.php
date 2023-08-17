@@ -7,6 +7,7 @@ use App\Http\Requests\Api\Student\StudentUpdateRequest;
 use App\Http\Resources\User\UserAllBorrowsResource;
 use App\Http\Resources\User\UserAllReservationsResource;
 use App\Http\Resources\User\UserResource;
+use App\Models\Librarian;
 use App\Models\Role;
 use App\Models\Student;
 use App\Models\User;
@@ -89,6 +90,27 @@ class UserController extends BaseController
         $success = new UserResource($student);
 
         return $this->sendResponse($success, 'User updated successfully.', Response::HTTP_OK);
+    }
+
+    /**
+     * List all users (based on role id)
+     *
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function index(Request $request)
+    {
+        //
+        $request->validate([
+            'role_id' => ['int']
+        ]);
+
+        $users = match ($request->role_id) {
+            Librarian::ROLE => Librarian::all(),
+            Student::ROLE => Student::all(),
+            default => User::all(),
+        };
+
+        return UserResource::collection($users);
     }
 
     /**
