@@ -52,15 +52,15 @@ class DatabaseSeeder extends Seeder
              'password' => 'password'
          ]);
 
-         User::factory(10)->create([
-             'role_id' => Role::student()->id,
-         ]);
-
-         $book = Book::factory(3)
-             ->has(Category::factory()->count(3))
-             ->has(Genre::factory()->count(3))
-             ->has(Author::factory()->count(3))
-            ->create();
+//         User::factory(10)->create([
+//             'role_id' => Role::student()->id,
+//         ]);
+//
+//         $book = Book::factory(3)
+//             ->has(Category::factory()->count(3))
+//             ->has(Genre::factory()->count(3))
+//             ->has(Author::factory()->count(3))
+//            ->create();
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
