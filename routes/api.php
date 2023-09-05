@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\BookController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -81,6 +82,16 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::delete('users/{user}', 'destroy');
         });
         //  END-students
+
+        //  authors
+        Route::controller(AuthorController::class)->group(function () {
+            Route::get('/authors', 'index');
+            Route::get('/authors/{author}', 'show');
+            Route::post('/authors/store', 'store');
+            Route::put('/authors/{author}', 'update');
+            Route::delete('/authors/{author}', 'destroy');
+        });
+        //  END-authors
     });
 
 });
