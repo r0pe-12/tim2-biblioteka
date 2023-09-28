@@ -7,6 +7,7 @@ use App\Http\Resources\BookBind\BookBindResource;
 use App\Http\Resources\BookReview\BookReviewCollection;
 use App\Http\Resources\Category\CategoryResource;
 use App\Http\Resources\Format\FormatResource;
+use App\Http\Resources\Gallery\GalleryResource;
 use App\Http\Resources\Genre\GenreResource;
 use App\Http\Resources\Language\LanguageResource;
 use App\Http\Resources\Publisher\PublisherResource;
@@ -37,6 +38,7 @@ class BookResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'photo' => str_contains($this->cover(), 'http://') || str_contains($this->cover(), 'https://') ? $this->cover() : url($this->cover()),
+            'pictures' => GalleryResource::collection($this->photos),
 
             'samples' => $this->samples,
             'bSamples' => $this->borrowedSamples,

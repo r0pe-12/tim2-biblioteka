@@ -57,19 +57,18 @@ class BookController extends BaseController
         # code
         $input = $request->validated();
 
+
 //        creating new record in books table
         $book = Book::create(Arr::except($input, ['categories', 'genres', 'authors', 'pdf', 'deletePdfs']));
 
-//        if ($request->hasFile('pictures')) {
-//            foreach ($input['pictures'] as $file) {
-//                $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
-//                $file->storeAs('/images/books', $name);
-//                $book->photos()->create([
-//                    'path' => $name,
-//                    'cover' => $file->getClientOriginalName() == $input['cover']
-//                ]);
-//            }
-//        }
+        if ($pictures = $input['pictures']) {
+            foreach ($pictures as $file) {
+                $book->photos()->create([
+                    'path' => $file[0],
+                    'cover' => $file[1] ?? false
+                ]);
+            }
+        }
 //
 //        if ($request->hasFile('pdf')) {
 //            $name = str_replace(' ', '_', $book->title . '.pdf');
@@ -127,43 +126,37 @@ class BookController extends BaseController
         $input = $request->validated();
 
 
-//        if (!($present = $input['present'])){
-//            $present = [];
-//        }
-//
-//        if  (count($photos = $book->photos) > 0){
-////            we are making array of ids which book has
-//            foreach ($photos as $photo) {
-//                $current[] = $photo->id;
-//            }
-//
-//            $diff = array_diff($current, $present);
-////            for every id that is deleted we are going to remove it from db and delete photo which is related to it
-//            foreach ($diff as $id) {
-//                $photo = Galery::find($id);
-//
-//                if (file_exists($photoPath = public_path() . $photo->path)){
-//                    unlink($photoPath);
-//                }
-//
-//                $photo->delete();
-//            }
-//        }
+        if (!($present = $input['present'])) {
+            $present = [];
+        }
+
+        if (count($photos = $book->photos) > 0) {
+//            we are making array of ids which book has
+            foreach ($photos as $photo) {
+                $current[] = $photo->id;
+            }
+
+            $diff = array_diff($current, $present);
+//            for every id that is deleted we are going to remove it from db and delete photo which is related to it
+            foreach ($diff as $id) {
+                $photo = Galery::find($id);
+
+                $photo->delete();
+            }
+        }
 
         $book->photos()->update([
             'cover' => 0
         ]);
 
-//        if ($request->hasFile('pictures')){
-//            foreach ($input['pictures'] as $file){
-//                $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
-//                $file->storeAs('/images/books', $name);
-//                $book->photos()->create([
-//                    'path' => $name,
-//                    'cover' => $file->getClientOriginalName() == $input['cover']
-//                ]);
-//            }
-//        }
+        if ($pictures = $input['pictures']) {
+            foreach ($pictures as $file) {
+                $book->photos()->create([
+                    'path' => $file[0],
+                    'cover' => $file[1] ?? false
+                ]);
+            }
+        }
 
 
         if (!($input['deletePdfs'] == 1)) {
