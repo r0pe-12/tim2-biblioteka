@@ -73,18 +73,7 @@ class UserController extends BaseController
         if (is_null($input['password'])) {
             unset($input['password']);
         }
-        if ($file = $request->file('photoPath')) {
-            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
-            $file->storeAs('/images/users', $name);
-            $input['photoPath'] = $name;
 
-            if (file_exists($photoPath = public_path() . $student->photoPath)) {
-                unlink($photoPath);
-            }
-
-        } else {
-            unset($input['photoPath']);
-        }
         $student->update($input);
 
         $success = new UserResource($student);
@@ -133,11 +122,7 @@ class UserController extends BaseController
         }
 
         $input = $request->validated();
-        if ($file = $request->file('photoPath')) {
-            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
-            $file->storeAs('/images/users', $name);
-            $input['photoPath'] = $name;
-        }
+
         $student = new User(\Arr::except($input, 'role_id'));
 
         $role = Role::findOrFail($input['role_id']);
@@ -157,18 +142,7 @@ class UserController extends BaseController
         if (is_null($input['password'])) {
             unset($input['password']);
         }
-        if ($file = $request->file('photoPath')) {
-            $name = now('Europe/Belgrade')->format('Y_m_d\_H_i_s') . '_' . $file->getClientOriginalName();
-            $file->storeAs('/images/users', $name);
-            $input['photoPath'] = $name;
 
-            if (file_exists($photoPath = public_path() . $student->photoPath)) {
-                unlink($photoPath);
-            }
-
-        } else {
-            unset($input['photoPath']);
-        }
         $student->update($input);
 
         $success = new UserResource($student);

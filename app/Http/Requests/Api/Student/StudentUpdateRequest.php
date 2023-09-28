@@ -24,7 +24,7 @@ class StudentUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        $user = $this->route('student');
+        $user = $this->route('student') ?? auth()->user();
         return [
             //
             "name" => ['required', 'max:255'],
@@ -33,7 +33,7 @@ class StudentUpdateRequest extends FormRequest
             "email" => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             "username" => ['required', 'max:255', Rule::unique('users')->ignore($user->id), 'alpha_dash'],
             "password" => ['required', 'confirmed', 'max:255'],
-            "photoPath" => ['']
+            "photoPath" => ['nullable', 'url']
         ];
     }
 
