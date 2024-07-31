@@ -102,6 +102,39 @@ class UserController extends BaseController
         return UserResource::collection($users);
     }
 
+    public function librarians(Request $request)
+    {
+        //
+        $request->validate([
+            'role_id' => ['int']
+        ]);
+
+        $users = match ($request->role_id) {
+            Librarian::ROLE => Librarian::all(),
+            Student::ROLE => Student::all(),
+            default => User::all(),
+        };
+	$users = Librarian::all();
+        return UserResource::collection($users);
+    }
+
+
+    public function students(Request $request)
+    {
+        //
+        $request->validate([
+            'role_id' => ['int']
+        ]);
+
+        $users = match ($request->role_id) {
+            Librarian::ROLE => Librarian::all(),
+            Student::ROLE => Student::all(),
+            default => User::all(),
+        };
+        $users = Student::all();
+        return UserResource::collection($users);
+    }
+
     public function show(User $user)
     {
         //
