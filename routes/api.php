@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\BookController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,7 @@ Route::group(['middleware' => 'check.token'], function () {
         Route::post('login', 'login')->name('api-login');
         Route::post('register', 'register')->name('api-register');
     });
-
+    Route::post('forgot_password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('api-password.reset');
 });
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
