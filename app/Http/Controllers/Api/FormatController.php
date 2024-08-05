@@ -27,7 +27,7 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Arr;
 use Symfony\Component\HttpFoundation\Response;
 
-class BookController extends BaseController
+class FormatController extends BaseController
 {
     public function formats(){
         $result = Format::all();
