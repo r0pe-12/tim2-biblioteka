@@ -77,8 +77,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         //  students
         Route::controller(UserController::class)->group(function () {
             Route::get('/users', 'index');
-Route::get('/librarians', 'librarians');
-Route::get('/students', 'students');
+            Route::get('/librarians', 'librarians');
+            Route::get('/students', 'students');
             Route::get('/users/{user}', 'show');
             Route::post('/users/store', 'store');
             Route::put('/users/{student}', 'update');
@@ -93,6 +93,12 @@ Route::get('/students', 'students');
             Route::post('/authors/store', 'store');
             Route::put('/authors/{author}', 'update');
             Route::delete('/authors/{author}', 'destroy');
+        });
+        Route::controller(FormatController::class)->group(function () {
+            Route::get('/formats', 'formats');
+            Route::get('/scripts', 'scripts');
+            Route::get('/bookbinds', 'bookbinds');
+            Route::get('/languages', 'languages');
         });
         //  END-authors
     });
