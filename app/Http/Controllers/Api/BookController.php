@@ -459,13 +459,13 @@ class BookController extends BaseController
     {
         # code
         $request->validate([
-            'toReturn' => 'required',
+            'toReturn' => ['required', 'exists:borrows,id'],
         ]);
         if (!is_array($ids = $request->toReturn)) {
             $ids = explode(',', $ids);
         }
         foreach ($ids as $id) {
-            if (!(Borrow::find($id)->isActive())) {
+            if (!(Borrow::find($id)?->isActive())) {
                 $error = 'Transakcija neaktivna';
                 return $this->sendError('failed', ['errors' => $error], Response::HTTP_UNPROCESSABLE_ENTITY);
             }
@@ -503,13 +503,13 @@ class BookController extends BaseController
     {
         # code
         $request->validate([
-            'toWriteoff' => 'required',
+            'toWriteoff' => ['required', 'exists:borrows,id'],
         ]);
         if (!is_array($ids = $request->toWriteoff)) {
             $ids = explode(',', $ids);
         }
         foreach ($ids as $id) {
-            if (!(Borrow::find($id)->isActive())) {
+            if (!(Borrow::find($id)?->isActive())) {
                 $error = 'Transakcija neaktivna';
                 return $this->sendError('failed', ['errors' => $error], Response::HTTP_UNPROCESSABLE_ENTITY);
             }
