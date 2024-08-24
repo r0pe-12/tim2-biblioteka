@@ -19,6 +19,7 @@ class BookBorrowResource extends JsonResource
         return [
             'id' => $this->id,
             'knjiga' => new BookResource($this->book),
+            'student' => new UserReviewResource($this->student),
             'bibliotekar0' => new UserReviewResource($this->librarian),
             'bibliotekar1' => new UserReviewResource($this->librarian1),
             'borrow_date' => $this->borrow_date,
